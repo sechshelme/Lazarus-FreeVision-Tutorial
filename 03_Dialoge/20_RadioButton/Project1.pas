@@ -103,7 +103,7 @@ Das Menü wurde noch ein wenig geändert/ergänzt.
   end;
 
 (*
-Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den CheckBoxen.
+Den Dialog mit RadioButton ergänzen, die funktioniert fast gleich wie bei den CheckBoxen.
 *)
   //code+
   procedure TMyApp.MyParameter;
