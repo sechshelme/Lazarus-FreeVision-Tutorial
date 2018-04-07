@@ -81,7 +81,7 @@ Aufruf einer MessageBox.
         end;
         cmList: begin
           // MessageBox aufrufen.
-          MessageBox('Ich bin eine Liste', nil, mfError + mfOkButton);
+          MessageBox('Ich bin eine Message-Box', nil, mfError + mfOkButton);
         end;
         else begin
           Exit;
