@@ -248,7 +248,7 @@ Mit <b>PLabel</b> könnte man auch Text ausgeben, aber für festen Text eignet s
       Options := Options or ofCentered; // Dialog zentrieren
 
       // StaticText einfügen.
-      Rect.Grow(-1, -1);                // Rect in allen Richtungen um 1 verkleinern.
+      Rect.Assign(2, 2, 40, 8);
       Insert(New(PStaticText, Init(Rect,
         #13 +
         'Free Vison Tutorial 1.0' + #13 +

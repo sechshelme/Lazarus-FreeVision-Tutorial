@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>45 Werte des Dialoges auf Platte speichern</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
+    <b><h1>03 Dialoge</h1></b>
+    <b><h2>45 Werte des Dialoges auf Platte speichern</h2></b>
+<img src="image.png" alt="Selfhtml"><br><br>
+Das die Werte des Dialoges auch nach beenden der Anwendung erhalten bleiben, speichern wir die Daten auf die Platte.<br>
+Es wird nicht überprüft, ob geschrieben werden kann, etc.<br>
+Wen man dies will müsste man mit <b>IOResult</b>, etc. überprüfen.<br>
+<hr><br>
+Hier kommt noch <b>sysutils</b> hinzu, sie wird für <b>FileExits</b> gebraucht.<br>
+<pre><code><b><font color="0000BB">uses</font></b>
+  SysUtils, <i><font color="#FFFF00">// Für Dateioperationen</font></i></pre></code>
+Die Datei, in welcher sich die Daten für den Dialog befinden.<br>
+<pre><code><b><font color="0000BB">const</font></b>
+  DialogDatei = <font color="#FF0000">'parameter.cfg'</font>;</pre></code>
+Zu Beginn werden die Daten, wen vorhaden von der Platte geladen, ansonten werden sie erzeugt.<br>
+<pre><code>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> Init;
+    <i><font color="#FFFF00">// Prüfen ob Datei vorhanden.</font></i>
+    <b><font color="0000BB">if</font></b> FileExists(DialogDatei) <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <i><font color="#FFFF00">// Daten von Platte laden.</font></i>
+      AssignFile(fParameterData, DialogDatei);
+      Reset(fParameterData);
+      <b><font color="0000BB">Read</font></b>(fParameterData, ParameterData);
+      CloseFile(fParameterData);
+      <i><font color="#FFFF00">// ansonsten Default-Werte nehmen.</font></i>
+    <b><font color="0000BB">end</font></b> <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">with</font></b> ParameterData <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
+        Druck := %<font color="#0077BB">0101</font>;
+        Schrift := <font color="#0077BB">2</font>;
+        Hinweis := <font color="#FF0000">'Hello world !'</font>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</pre></code>
+Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
+  <b><font color="0000BB">var</font></b>
+    Dia: PDialog;
+    Rect: TRect;
+    dummy: word;
+    Ptr: PView;
+  <b><font color="0000BB">begin</font></b>
+    Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">35</font>, <font color="#0077BB">15</font>);
+    Rect.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
+    Dia := <b><font color="0000BB">New</font></b>(PDialog, Init(Rect, <font color="#FF0000">'Parameter'</font>));
+    <b><font color="0000BB">with</font></b> Dia^ <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
+
+      <i><font color="#FFFF00">// CheckBoxen</font></i>
+      Rect.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">3</font>, <font color="#0077BB">18</font>, <font color="#0077BB">7</font>);
+      Ptr := <b><font color="0000BB">New</font></b>(PCheckBoxes, Init(Rect,
+        NewSItem(<font color="#FF0000">'~D~atei'</font>,
+        NewSItem(<font color="#FF0000">'~Z~eile'</font>,
+        NewSItem(<font color="#FF0000">'D~a~tum'</font>,
+        NewSItem(<font color="#FF0000">'~Z~eit'</font>,
+        <b><font color="0000BB">nil</font></b>))))));
+      Insert(Ptr);
+      <i><font color="#FFFF00">// Label für CheckGroup.</font></i>
+      Rect.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">2</font>, <font color="#0077BB">10</font>, <font color="#0077BB">3</font>);
+      Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'Dr~u~cken'</font>, Ptr)));
+
+      <i><font color="#FFFF00">// RadioButton</font></i>
+      Rect.Assign(<font color="#0077BB">21</font>, <font color="#0077BB">3</font>, <font color="#0077BB">33</font>, <font color="#0077BB">6</font>);
+      Ptr := <b><font color="0000BB">New</font></b>(PRadioButtons, Init(Rect,
+        NewSItem(<font color="#FF0000">'~G~ross'</font>,
+        NewSItem(<font color="#FF0000">'~M~ittel'</font>,
+        NewSItem(<font color="#FF0000">'~K~lein'</font>,
+        <b><font color="0000BB">nil</font></b>)))));
+      Insert(Ptr);
+      <i><font color="#FFFF00">// Label für RadioGroup.</font></i>
+      Rect.Assign(<font color="#0077BB">20</font>, <font color="#0077BB">2</font>, <font color="#0077BB">31</font>, <font color="#0077BB">3</font>);
+      Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'~S~chrift'</font>, Ptr)));
+
+      <i><font color="#FFFF00">// Edit Zeile</font></i>
+      Rect.Assign(<font color="#0077BB">3</font>, <font color="#0077BB">10</font>, <font color="#0077BB">32</font>, <font color="#0077BB">11</font>);
+      Ptr := <b><font color="0000BB">New</font></b>(PInputLine, Init(Rect, <font color="#0077BB">50</font>));
+      Insert(Ptr);
+      <i><font color="#FFFF00">// Label für Edit Zeile</font></i>
+      Rect.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">9</font>, <font color="#0077BB">10</font>, <font color="#0077BB">10</font>);
+      Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'~H~inweis'</font>, Ptr)));
+
+      <i><font color="#FFFF00">// Ok-Button</font></i>
+      Rect.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">12</font>, <font color="#0077BB">17</font>, <font color="#0077BB">14</font>);
+      Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
+
+      <i><font color="#FFFF00">// Schliessen-Button</font></i>
+      Rect.Assign(<font color="#0077BB">19</font>, <font color="#0077BB">12</font>, <font color="#0077BB">32</font>, <font color="#0077BB">14</font>);
+      Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~A~bbruch'</font>, cmCancel, bfNormal)));
+    <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">if</font></b> ValidView(Dia) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b> <i><font color="#FFFF00">// Prüfen ob genügend Speicher.</font></i>
+      Dia^.SetData(ParameterData);      <i><font color="#FFFF00">// Dialog mit den Werten laden.</font></i>
+      dummy := Desktop^.ExecView(Dia);  <i><font color="#FFFF00">// Dialog ausführen.</font></i>
+      <b><font color="0000BB">if</font></b> dummy = cmOK <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>        <i><font color="#FFFF00">// Wen Dialog mit Ok beenden, dann Daten vom Dialog in Record laden.</font></i>
+        Dia^.GetData(ParameterData);
+
+        <i><font color="#FFFF00">// Daten auf Platte speichern.</font></i>
+        AssignFile(fParameterData,DialogDatei);
+        Rewrite(fParameterData);
+        <b><font color="0000BB">Write</font></b>(fParameterData, ParameterData);
+        CloseFile(fParameterData);
+      <b><font color="0000BB">end</font></b>;
+
+      <b><font color="0000BB">Dispose</font></b>(Dia, Done);               <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</pre></code>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
+</html>
