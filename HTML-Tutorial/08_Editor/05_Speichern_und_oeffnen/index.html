@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>05 Speichern und oeffnen</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
+    <b><h1>08 Editor</h1></b>
+    <b><h2>05 Speichern und oeffnen</h2></b>
+<img src="image.png" alt="Selfhtml"><br><br>
+Ein Editor wird erst brauchbar, wen Dateifunktionen dazu kommen, zB. öffnen und speichern.<br>
+Das Öffnen ist ähnlich von wie ein leerses Fenster erzeugen.<br>
+Einziger Unterschied, man gibt einen Dateinamen mit, welcher mit einem FileDialog ermittelt wird.<br>
+Für das einfache speichern, muss man nicht viel machen. Man muss nur das Event <b>cmSave</b> aufrufen, zB. über das Menü.<br>
+<hr><br>
+Hier ist noch OpenWindows und SaveAll dazu gekommen.<br>
+<pre><code>  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
+    <b><font color="0000BB">constructor</font></b> Init;
+
+    <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;
+    <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;
+
+    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
+    <b><font color="0000BB">procedure</font></b> OutOfMemory; <b><font color="0000BB">virtual</font></b>;
+
+    <b><font color="0000BB">procedure</font></b> NewWindows(FileName: ShortString);
+    <b><font color="0000BB">procedure</font></b> OpenWindows;
+    <b><font color="0000BB">procedure</font></b> SaveAll;
+    <b><font color="0000BB">procedure</font></b> CloseAll;
+  <b><font color="0000BB">end</font></b>;</pre></code>
+Der <b>Speichern unter</b>-Dialog ist schon fest verbaut, aber leider in Englisch.<br>
+Daher wird diese Funktion auf eine eigene Routine umgeleitet.<br>
+Auch habe ich die Maske <b>*.*</b> durch <b>*.txt</b> ersetzt.<br>
+Für die restlichen Diloage, werden die original Routinen verwendet, dies geschieht mit <b>StdEditorDialog(...</b>.<br>
+Die Deklaration von <b>MyApp</b> ist schon hier oben, weil sie hier schon gebraucht wird.<br>
+<br>
+Bei MyApp.Init werden noch die neuen Standard-Dialoge zugeordnet.<br>
+<pre><code><b><font color="0000BB">var</font></b>
+  MyApp: TMyApp;
+
+  <b><font color="0000BB">function</font></b> MyStdEditorDialog(Dialog: Int16; Info: Pointer): Word;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">case</font></b> Dialog <b><font color="0000BB">of</font></b>
+      edSaveAs: <b><font color="0000BB">begin</font></b>                 <i><font color="#FFFF00">// Neuer Dialog in Deutsch.</font></i>
+        Result := MyApp.ExecuteDialog(<b><font color="0000BB">New</font></b>(PFileDialog, Init(<font color="#FF0000">'*.txt'</font>, <font color="#FF0000">'Datei speichern unter'</font>, <font color="#FF0000">'~D~atei-<b><font color="0000BB">Name</font></b>'</font>, fdOkButton, <font color="#0077BB">101</font>)), Info);
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">else</font></b>
+      StdEditorDialog(Dialog, Info);  <i><font color="#FFFF00">// Original Dialoge aufrufen.</font></i>
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;
+
+  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> Init;
+    EditorDialog := @MyStdEditorDialog; <i><font color="#FFFF00">// Die neue Dialog-Routine.</font></i>
+    DisableCommands([cmSave, cmSaveAs, cmCut, cmCopy, cmPaste, cmClear, cmUndo]);
+    NewWindows(<font color="#FF0000">''</font>);                     <i><font color="#FFFF00">// Leeres Fenster erzeugen.</font></i>
+  <b><font color="0000BB">end</font></b>;</pre></code>
+Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+  <b><font color="0000BB">var</font></b>
+    Rect: TRect;
+  <b><font color="0000BB">begin</font></b>
+    GetExtent(Rect);
+    Rect.B.Y := Rect.A.Y + <font color="#0077BB">1</font>;
+
+    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(Rect, NewMenu(
+      NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(
+        NewItem(<font color="#FF0000">'~N~eu'</font>, <font color="#FF0000">'F4'</font>, kbF4, cmNewWin, hcNoContext,
+        NewItem(<font color="#FF0000">'~O~effnen...'</font>, <font color="#FF0000">'F3'</font>, kbF3, cmOpen, hcNoContext,
+        NewItem(<font color="#FF0000">'~S~peichern'</font>, <font color="#FF0000">'F2'</font>, kbF2, cmSave, hcNoContext,
+        NewItem(<font color="#FF0000">'Speichern ~u~nter...'</font>, <font color="#FF0000">''</font>, kbNoKey, cmSaveAs, hcNoContext,
+        NewItem(<font color="#FF0000">'~A~lle speichern'</font>, <font color="#FF0000">''</font>, kbNoKey, cmSaveAll, hcNoContext,
+        NewLine(
+        NewItem(<font color="#FF0000">'~B~eenden'</font>, <font color="#FF0000">'Alt-X'</font>, kbAltX, cmQuit, hcNoContext, <b><font color="0000BB">nil</font></b>)))))))),
+      NewSubMenu(<font color="#FF0000">'~F~enster'</font>, hcNoContext, NewMenu(
+        NewItem(<font color="#FF0000">'~N~ebeneinander'</font>, <font color="#FF0000">''</font>, kbNoKey, cmTile, hcNoContext,
+        NewItem(<font color="#FF0000">#154</font><font color="#FF0000">'ber~l~append'</font>, <font color="#FF0000">''</font>, kbNoKey, cmCascade, hcNoContext,
+        NewItem(<font color="#FF0000">'~A~lle schliessen'</font>, <font color="#FF0000">''</font>, kbNoKey, cmCloseAll, hcNoContext,
+        NewItem(<font color="#FF0000">'Anzeige ~e~rneuern'</font>, <font color="#FF0000">''</font>, kbNoKey, cmRefresh, hcNoContext,
+        NewLine(
+        NewItem(<font color="#FF0000">'Gr'</font><font color="#FF0000">#148</font><font color="#FF0000">'sse/~P~osition'</font>, <font color="#FF0000">'Ctrl+F5'</font>, kbCtrlF5, cmResize, hcNoContext,
+        NewItem(<font color="#FF0000">'Ver~g~'</font><font color="#FF0000">#148</font><font color="#FF0000">'ssern'</font>, <font color="#FF0000">'F5'</font>, kbF5, cmZoom, hcNoContext,
+        NewItem(<font color="#FF0000">'~N~'</font><font color="#FF0000">#132</font><font color="#FF0000">'chstes'</font>, <font color="#FF0000">'F6'</font>, kbF6, cmNext, hcNoContext,
+        NewItem(<font color="#FF0000">'~V~orheriges'</font>, <font color="#FF0000">'Shift+F6'</font>, kbShiftF6, cmPrev, hcNoContext,
+        NewLine(
+        NewItem(<font color="#FF0000">'~S~chliessen'</font>, <font color="#FF0000">'Alt+F3'</font>, kbAltF3, cmClose, hcNoContext, <b><font color="0000BB">Nil</font></b>)))))))))))), <b><font color="0000BB">nil</font></b>)))));
+
+  <b><font color="0000BB">end</font></b>;</pre></code>
+Einfügen eines Editorfensters.<br>
+Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows(FileName: ShortString);
+  <b><font color="0000BB">var</font></b>
+    Win: PEditWindow;
+    Rect: TRect;
+  <b><font color="0000BB">const</font></b>
+    WinCounter: integer = <font color="#0077BB">0</font>;      <i><font color="#FFFF00">// Zählt Fenster</font></i>
+  <b><font color="0000BB">begin</font></b>
+    Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
+    Inc(WinCounter);
+    Win := <b><font color="0000BB">New</font></b>(PEditWindow, Init(Rect, FileName, WinCounter));
+
+    <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      Desktop^.Insert(Win);
+    <b><font color="0000BB">end</font></b> <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>                <i><font color="#FFFF00">// Fügt das Fenster ein.</font></i>
+      Dec(WinCounter);
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</pre></code>
+Eine Datei öffnen und dies in ein Edit-Fenster laden.<br>
+Dabei wird ein <b>FileDialog</b> aufgerufen, in dem man eine Datei auswählen kann.<br>
+Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, dies geschieht automatisch.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.OpenWindows;
+  <b><font color="0000BB">var</font></b>
+    FileDialog: PFileDialog;
+    FileName: ShortString;
+  <b><font color="0000BB">begin</font></b>
+    FileName := <font color="#FF0000">'*.*'</font>;
+    <b><font color="0000BB">New</font></b>(FileDialog, Init(FileName, <font color="#FF0000">'Datei '</font><font color="#FF0000">#148</font><font color="#FF0000">'ffnen'</font>, <font color="#FF0000">'~D~ateiname'</font>, fdOpenButton, <font color="#0077BB">1</font>));
+    <b><font color="0000BB">if</font></b> ExecuteDialog(FileDialog, @FileName) <> cmCancel <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      NewWindows(FileName); <i><font color="#FFFF00">// Neues Fenster mit der ausgewählten Datei.</font></i>
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</pre></code>
+Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schliessen.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.SaveAll;
+
+    <b><font color="0000BB">procedure</font></b> SendSave(P: PView);
+    <b><font color="0000BB">begin</font></b>
+      Message(P, evCommand, cmSave, <b><font color="0000BB">nil</font></b>); <i><font color="#FFFF00">// Das Kommando speicherm mitgeben.</font></i>
+    <b><font color="0000BB">end</font></b>;
+
+  <b><font color="0000BB">begin</font></b>
+    Desktop^.ForEach(@SendSave);          <i><font color="#FFFF00">// Auf alle Fenster anwenden.</font></i>
+  <b><font color="0000BB">end</font></b>;</pre></code>
+Die verschiednen Events abfangen und abarbeiten.<br>
+Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt <b>PEditWindow</b> automatisch für einem.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+
+    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmNewWin: <b><font color="0000BB">begin</font></b>
+          NewWindows(<font color="#FF0000">''</font>);   <i><font color="#FFFF00">// Leeres Fenster erzeugen.</font></i>
+        <b><font color="0000BB">end</font></b>;
+        cmOpen: <b><font color="0000BB">begin</font></b>
+          OpenWindows;      <i><font color="#FFFF00">// Datei öffnen.</font></i>
+        <b><font color="0000BB">end</font></b>;
+        cmSaveAll: <b><font color="0000BB">begin</font></b>
+          SaveAll;          <i><font color="#FFFF00">// Alle speichern.</font></i>
+        <b><font color="0000BB">end</font></b>;
+        cmCloseAll:<b><font color="0000BB">begin</font></b>
+          CloseAll;         <i><font color="#FFFF00">// Schliesst alle Fenster.</font></i>
+        <b><font color="0000BB">end</font></b>;
+        cmRefresh: <b><font color="0000BB">begin</font></b>
+          ReDraw;           <i><font color="#FFFF00">// Anwendung neu zeichnen.</font></i>
+        <b><font color="0000BB">end</font></b>;
+        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+          <b><font color="0000BB">Exit</font></b>;
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</pre></code>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>05 String formatieren</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
+    <b><h1>12 Diverses</h1></b>
+    <b><h2>05 String formatieren</h2></b>
+<img src="image.png" alt="Selfhtml"><br><br>
+Hier wird eine Bereichsbegrenzung für <b>PInputLine</b> gezeigt.<br>
+Bei der ersten Zeile ist nur eine Zahl zwischen 0 und 99 erlaubt.<br>
+Bei der zweiten Zeile muss es ein Wochentag ( Montag - Freitag ) sein.<br>
+Für den zweiten Fall wäre eine ListBox idealer, mir geht zum zeigen wie es mit der <b>PInputLine</b> geht.<br>
+<hr><br>
+<hr><br>
+<b>Unit mit dem neuen Dialog.</b><br>
+<br><br>
+Ein Dialog mit <b>PInputLine</b> welche eine Prüfung bekommen.<br>
+Wen man <b>Ok</b> drückt, wird ein Validate-Prüfungen ausgeführt.<br>
+Bei <b>Abbruch</b> gibt es keine Prüfung.<br>
+<pre><code><b><font color="0000BB">unit</font></b> MyDialog;
+</pre></code>
+Die Deklaration des Dialoges, hier wird nur das Init überschrieben, welches die Komponenten, für den Dialog erzeugt.<br>
+So nebenbei werden noch die beiden Validate überschrieben.<br>
+Dies wird nur gemacht, das eine deutsche Fehlermeldung bei falscher Eingabe kommt.<br>
+<pre><code><b><font color="0000BB">type</font></b>
+  PMyDialog = ^TMyDialog;
+  TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
+    <b><font color="0000BB">constructor</font></b> Init;
+  <b><font color="0000BB">end</font></b>;
+</pre></code>
+Die beiden neuen Fehlermeldungen.<br>
+<pre><code></pre></code>
+Hier sieht man, das eine Validate-Prüfung zu den <b>PInputLines</b> dazu kommt.<br>
+<pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
+<b><font color="0000BB">const</font></b>
+  acht = <font color="#0077BB">8</font>;
+  vier = <font color="#0077BB">16</font>;
+  Mo = <font color="#FF0000">'Montag'</font>;
+  Fr = <font color="#FF0000">'Freitag'</font>;
+<b><font color="0000BB">var</font></b>
+  Rect: TRect;
+  Params:<b><font color="0000BB">record</font></b>
+    s1, s2: PString;
+    i1, i2: Int32;
+  <b><font color="0000BB">end</font></b>;
+  s: ShortString;
+  p: Pointer;
+
+<b><font color="0000BB">begin</font></b>
+  Params.s1 := NewStr(Mo);
+  Params.s2 := NewStr(Fr);
+  Params.i1 := acht;
+  Params.i2 := vier;
+  p := @Params;
+
+  FormatStr(s, <font color="#FF0000">'Gearbeitet wird zwischen %s und %s'</font><font color="#FF0000">#13</font>+
+    <font color="#FF0000">'und dies zwischen %d:00 und %d:00 Uhr.'</font>, (@Params)^);
+
+  Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">52</font>, <font color="#0077BB">11</font>);
+  Rect.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
+  <b><font color="0000BB">inherited</font></b> Init(Rect, <font color="#FF0000">'<b><font color="0000BB">String</font></b> formatieren'</font>);
+
+  <i><font color="#FFFF00">// ---Statictext;</font></i>
+  Rect.Assign(<font color="#0077BB">3</font>, <font color="#0077BB">2</font>, <font color="#0077BB">50</font>, <font color="#0077BB">5</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PStaticText, Init(Rect, s)));
+
+  <i><font color="#FFFF00">// ---Ok-Button</font></i>
+  Rect.Assign(<font color="#0077BB">20</font>, <font color="#0077BB">8</font>, <font color="#0077BB">32</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
+<b><font color="0000BB">end</font></b>;
+
+</pre></code>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
+</html>
