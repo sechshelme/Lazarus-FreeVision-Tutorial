@@ -1,4 +1,4 @@
-FPC FreeVision Tutorial
+FPC FreeVision Tutorial ( TurboVision )
 
 Im Ordner "HTML-Tutorial" befindet sich das ganze Tutorial im HTML-Format, somit ist es im Browser anschaubar.
 
