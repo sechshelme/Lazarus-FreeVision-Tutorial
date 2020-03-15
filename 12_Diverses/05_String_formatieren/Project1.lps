@@ -8,8 +8,7 @@
         <Filename Value="Project1.pas"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="57"/>
-        <CursorPos X="25" Y="105"/>
+        <CursorPos X="19" Y="9"/>
         <UsageCount Value="33"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -18,7 +17,6 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="MyDialog"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="6"/>
         <CursorPos X="50" Y="37"/>
         <UsageCount Value="29"/>
         <Loaded Value="True"/>
@@ -132,7 +130,7 @@
         <Filename Value="/home/tux/fpcupdeluxe_ATmega328/fpcsrc/packages/fv/src/drivers.pas"/>
         <UnitName Value="Drivers"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="1489"/>
+        <TopLine Value="1507"/>
         <CursorPos Y="1536"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>

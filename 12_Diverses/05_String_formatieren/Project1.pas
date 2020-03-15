@@ -6,6 +6,7 @@ Dabei sind filgende Formatierungen möglich:
 %s: String
 %d: Dezimalzahlen
 %x: Hexadezimal
+%#: Formatierungen
 *)
 //lineal
 program Project1;
