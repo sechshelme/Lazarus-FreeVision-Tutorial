@@ -5,7 +5,7 @@ unit MyDialog;
 interface
 
 uses
-  App, Objects, Drivers, Views, MsgBox, Dialogs, Validate;
+  App, Objects, Drivers, Views, MsgBox, Dialogs;
 
 //type+
 type
@@ -24,26 +24,27 @@ const
   vier = 16;
   Mo = 'Montag';
   Fr = 'Freitag';
+
 var
   Rect: TRect;
   Params:record
     s1, s2: PString;
-    i1, i2: Int32;
+    i1, i2: PtrInt;
   end;
   s: ShortString;
-  p: Pointer;
+//init-
 
+//draw+
 begin
   Params.s1 := NewStr(Mo);
   Params.s2 := NewStr(Fr);
   Params.i1 := acht;
   Params.i2 := vier;
-  p := @Params;
 
   FormatStr(s, 'Gearbeitet wird zwischen %s und %s'#13+
     'und dies zwischen %d:00 und %d:00 Uhr.', (@Params)^);
 
-  Rect.Assign(0, 0, 52, 11);
+  Rect.Assign(0, 0, 52, 13);
   Rect.Move(23, 3);
   inherited Init(Rect, 'String formatieren');
 
@@ -55,10 +56,8 @@ begin
   Rect.Assign(20, 8, 32, 10);
   Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
 end;
-
-//init-
-
-//draw+
 //draw-
+
+
 
 end.
