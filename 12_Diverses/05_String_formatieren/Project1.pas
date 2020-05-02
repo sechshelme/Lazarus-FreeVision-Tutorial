@@ -4,9 +4,13 @@ Mit <b>FormatStr</b> können Strings formatiert werden.
 Dabei sind filgende Formatierungen möglich:
 %c: Char
 %s: String
-%d: Dezimalzahlen
+%d: Ganzzahlen
 %x: Hexadezimal
 %#: Formatierungen
+Bei Realzahlen muss man sich folgendermassen behelfen:
+//code+
+procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);
+//code-
 *)
 //lineal
 program Project1;
