@@ -15,10 +15,14 @@ uses
 
 const
   cmAbout = 1001;     // About anzeigen
-  cmList = 1002;      // Datei Liste
   cmPara = 1003;      // Parameter
+  cmMenuEnlish = 1005;
+  cmMenuGerman = 1006;
 
 type
+
+  { TMyApp }
+
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;                 // Statuszeile
     procedure InitMenuBar; virtual;                    // Menü
@@ -26,6 +30,8 @@ type
 
     procedure MyParameter;
     // neue Funktion für einen Dialog.
+  private
+    menuGer, menuEng: PMenu;
   end;
 
   procedure TMyApp.InitStatusLine;
@@ -50,32 +56,35 @@ type
   var
     Rect: TRect;                       // Rechteck für die Menüzeilen-Position.
 
-    M: PMenu;                          // Ganzes Menü
-    SM0, SM1,                          // Submenu
-    M0_0, M0_1, M0_2, M0_3, M0_4, M0_5, M1_0: PMenuItem;
-    // Einfache Menüpunkte
-
   begin
+
+    menuGer := NewMenu(NewSubMenu('~D~atei', hcNoContext,
+      NewMenu(NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext,
+      NewLine(NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose,
+      hcNoContext, NewLine(NewItem('~B~eenden', 'Alt-X', kbAltX,
+      cmQuit, hcNoContext, nil)))))), NewSubMenu('~O~ptionen', hcNoContext,
+      NewMenu(NewItem('Deutsch', 'Alt-D', kbAltD, cmMenuGerman,
+      hcNoContext, NewItem('Englisch', 'Alt-E', kbAltE, cmMenuEnlish,
+      hcNoContext, nil))), NewSubMenu('~H~ilfe', hcNoContext,
+      NewMenu(NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))));
+
+
+    menuEng := NewMenu(NewSubMenu('~F~ile', hcNoContext,
+      NewMenu(NewItem('~P~arameters...', '', kbF2, cmPara, hcNoContext,
+      NewLine(NewItem('~C~lose', 'Alt-F3', kbAltF3, cmClose,
+      hcNoContext, NewLine(NewItem('E~x~it', 'Alt-X', kbAltX,
+      cmQuit, hcNoContext, nil)))))), NewSubMenu('~O~ptions', hcNoContext,
+      NewMenu(NewItem('German', 'Alt-D', kbAltD, cmMenuGerman, hcNoContext,
+      NewItem('English', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))),
+      NewSubMenu('~H~elp', hcNoContext,
+      NewMenu(NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))));
+
     GetExtent(Rect);
     Rect.B.Y := Rect.A.Y + 1;
-
-    M := NewMenu(NewSubMenu('~D~atei', hcNoContext,
-    NewMenu(NewItem('~M~enu ändern', 'F2', kbF2, cmList, hcNoContext,
-      NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext,
-      NewLine(
-      NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
-      NewLine(
-      NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil))))))),
-    NewSubMenu('~H~ilfe', hcNoContext,
-    NewMenu(NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil)));
-
-    MenuBar := New(PMenuBar, Init(Rect, M));
+    MenuBar := New(PMenuBar, Init(Rect, menuGer));
   end;
 
   procedure TMyApp.HandleEvent(var Event: TEvent);
-  var
-    r: TRect;
-    m: PMenuItem;
   begin
     inherited HandleEvent(Event);
 
@@ -83,15 +92,13 @@ type
       case Event.Command of
         cmAbout: begin
         end;
-        cmList: begin
-
-          GetExtent(r);
-          r.B.Y := r.A.Y + 1;
-          m := NewItem('Close', '', kbAltX, cmPara, hcNoContext, nil);
-          MenuBar := New(PMenuBar, Init(r, NewMenu(m)));
-//          Dispose(MenuBar, Done);
-          insert(MenuBar);
-//                    ReDraw;
+        cmMenuEnlish: begin
+          MenuBar^.Menu := menuEng;
+          ReDraw;
+        end;
+        cmMenuGerman: begin
+          MenuBar^.Menu := menuGer;
+          ReDraw;
         end;
         cmPara: begin
           MyParameter;
