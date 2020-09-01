@@ -32,24 +32,28 @@ type
     // neue Funktion für einen Dialog.
   private
     menuGer, menuEng: PMenu;
+    StatusGer, StatusEng: PStatusDef;
   end;
 
   procedure TMyApp.InitStatusLine;
   var
     Rect: TRect;              // Rechteck für die Statuszeilen Position.
 
-    P0: PStatusDef;           // Pointer ganzer Eintrag.
-    P1, P2, P3: PStatusItem;  // Poniter auf die einzelnen Hot-Key.
   begin
     GetExtent(Rect);
     Rect.A.Y := Rect.B.Y - 1;
 
-    P3 := NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil);
-    P2 := NewStatusKey('~F10~ Menu', kbF10, cmMenu, P3);
-    P1 := NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit, P2);
-    P0 := NewStatusDef(0, $FFFF, P1, nil);
+    StatusGer := NewStatusDef(0, $FFFF,
+    NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
+    NewStatusKey('~F10~ Menue', kbF10, cmMenu,
+    NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil);
 
-    StatusLine := New(PStatusLine, Init(Rect, P0));
+    StatusEng := NewStatusDef(0, $FFFF,
+    NewStatusKey('~Alt+X~ Exit', kbAltX, cmQuit,
+    NewStatusKey('~F10~ Menu', kbF10, cmMenu,
+    NewStatusKey('~F1~ Help', kbF1, cmHelp, nil))), nil);
+
+    StatusLine := New(PStatusLine, Init(Rect, StatusGer));
   end;
 
   procedure TMyApp.InitMenuBar;
@@ -58,26 +62,31 @@ type
 
   begin
 
-    menuGer := NewMenu(NewSubMenu('~D~atei', hcNoContext,
-      NewMenu(NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext,
-      NewLine(NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose,
-      hcNoContext, NewLine(NewItem('~B~eenden', 'Alt-X', kbAltX,
-      cmQuit, hcNoContext, nil)))))), NewSubMenu('~O~ptionen', hcNoContext,
-      NewMenu(NewItem('Deutsch', 'Alt-D', kbAltD, cmMenuGerman,
-      hcNoContext, NewItem('Englisch', 'Alt-E', kbAltE, cmMenuEnlish,
-      hcNoContext, nil))), NewSubMenu('~H~ilfe', hcNoContext,
-      NewMenu(NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))));
+    menuGer := NewMenu(
+      NewSubMenu('~D~atei', hcNoContext, NewMenu(
+        NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
+        NewLine(
+        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))),
+      NewSubMenu('~O~ptionen', hcNoContext, NewMenu(
+        NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext,
+        NewLine(
+        NewItem('~D~eutsch', 'Alt-D', kbAltD, cmMenuGerman, hcNoContext,
+        NewItem('~E~nglisch', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))))),
+      NewSubMenu('~H~ilfe', hcNoContext, NewMenu(
+        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))));
 
-
-    menuEng := NewMenu(NewSubMenu('~F~ile', hcNoContext,
-      NewMenu(NewItem('~P~arameters...', '', kbF2, cmPara, hcNoContext,
-      NewLine(NewItem('~C~lose', 'Alt-F3', kbAltF3, cmClose,
-      hcNoContext, NewLine(NewItem('E~x~it', 'Alt-X', kbAltX,
-      cmQuit, hcNoContext, nil)))))), NewSubMenu('~O~ptions', hcNoContext,
-      NewMenu(NewItem('German', 'Alt-D', kbAltD, cmMenuGerman, hcNoContext,
-      NewItem('English', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))),
-      NewSubMenu('~H~elp', hcNoContext,
-      NewMenu(NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))));
+    menuEng := NewMenu(
+      NewSubMenu('~F~ile', hcNoContext, NewMenu(
+        NewItem('~P~arameters...', '', kbF2, cmPara, hcNoContext,
+        NewLine(
+        NewItem('~C~lose', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
+        NewLine(
+        NewItem('E~x~it', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))))),
+      NewSubMenu('~O~ptions', hcNoContext, NewMenu(
+        NewItem('German', 'Alt-D', kbAltD, cmMenuGerman, hcNoContext,
+        NewItem('English', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))),
+      NewSubMenu('~H~elp', hcNoContext, NewMenu(
+        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))));
 
     GetExtent(Rect);
     Rect.B.Y := Rect.A.Y + 1;
@@ -94,10 +103,16 @@ type
         end;
         cmMenuEnlish: begin
           MenuBar^.Menu := menuEng;
+          MenuBar^.Draw;
+          StatusLine^.Defs := StatusEng;
+          StatusLine^.Draw;
           ReDraw;
         end;
         cmMenuGerman: begin
           MenuBar^.Menu := menuGer;
+          MenuBar^.Draw;
+          StatusLine^.Defs := StatusGer;
+          StatusLine^.Draw;
           ReDraw;
         end;
         cmPara: begin
