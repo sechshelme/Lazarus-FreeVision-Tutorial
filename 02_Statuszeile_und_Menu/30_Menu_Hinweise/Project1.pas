@@ -36,12 +36,11 @@ type
     procedure InitMenuBar; virtual;      // Menü
   end;
 
-  PHintStatusLine = ^THintStatusLine;
-
 (*
-Die Status-Zeile muss vererbt werden.
+Die Hint-Zeile muss vererbt werden.
 *)
 //code+
+  PHintStatusLine = ^THintStatusLine;
   THintStatusLine = object(TStatusLine)
     function Hint(AHelpCtx : Word): ShortString; virtual;
   end;
@@ -61,10 +60,7 @@ Die Status-Zeile muss vererbt werden.
     end;
   end;
 // code-
-(*
-Fur die Statuszeile muss man das neue vererbte Object nehmen.
-*)
-//code+
+
   procedure TMyApp.InitStatusLine;
   var
     Rect: TRect;
@@ -77,8 +73,10 @@ Fur die Statuszeile muss man das neue vererbte Object nehmen.
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
   end;
-//code-
-
+(*
+Im Menü muss die hcxxx Konstante mitgegeben werden.
+*)
+//code+
   procedure TMyApp.InitMenuBar;
   var
     Rect: TRect;                   // Rechteck für die Menüzeilen-Position.
@@ -97,6 +95,7 @@ Fur die Statuszeile muss man das neue vererbte Object nehmen.
       NewSubMenu('~H~ilfe', hcHelp, NewMenu(
         NewItem('~A~bout...', '', kbNoKey, cmAbout, hcAbout, nil)), nil))))));
   end;
+//code-
 
 var
   MyApp: TMyApp;
