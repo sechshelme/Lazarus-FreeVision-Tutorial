@@ -18,7 +18,7 @@ object Form1: TForm1
     Align = alBottom
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Panel1'
-    TabOrder = 0
+    TabOrder = 6
     OnClick = Panel1Click
   end
   object Buttonminus: TButton
@@ -37,7 +37,7 @@ object Form1: TForm1
     Width = 32
     Caption = '+'
     OnClick = ButtonminusClick
-    TabOrder = 2
+    TabOrder = 0
   end
   object Buttonleft: TButton
     Left = 104
@@ -46,7 +46,7 @@ object Form1: TForm1
     Width = 32
     Caption = '<'
     OnClick = ButtonminusClick
-    TabOrder = 3
+    TabOrder = 2
   end
   object Buttonright: TButton
     Left = 152
@@ -55,7 +55,7 @@ object Form1: TForm1
     Width = 32
     Caption = '>'
     OnClick = ButtonminusClick
-    TabOrder = 4
+    TabOrder = 3
   end
   object Buttondown: TButton
     Left = 248
@@ -73,6 +73,6 @@ object Form1: TForm1
     Width = 32
     Caption = '^'
     OnClick = ButtonminusClick
-    TabOrder = 6
+    TabOrder = 4
   end
 end
