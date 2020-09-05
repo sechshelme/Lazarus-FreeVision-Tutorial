@@ -4,9 +4,75 @@ object Form1: TForm1
   Top = 150
   Width = 1317
   Caption = 'Form1'
-  OnClick = FormClick
+  ClientHeight = 756
+  ClientWidth = 1317
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnPaint = FormPaint
   LCLVersion = '2.0.8.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 708
+    Top = 48
+    Width = 1317
+    Align = alBottom
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'Panel1'
+    TabOrder = 0
+    OnClick = Panel1Click
+  end
+  object Buttonminus: TButton
+    Left = 56
+    Height = 25
+    Top = 8
+    Width = 32
+    Caption = '-'
+    OnClick = ButtonminusClick
+    TabOrder = 1
+  end
+  object Buttonplus: TButton
+    Left = 16
+    Height = 25
+    Top = 8
+    Width = 32
+    Caption = '+'
+    OnClick = ButtonminusClick
+    TabOrder = 2
+  end
+  object Buttonleft: TButton
+    Left = 104
+    Height = 25
+    Top = 8
+    Width = 32
+    Caption = '<'
+    OnClick = ButtonminusClick
+    TabOrder = 3
+  end
+  object Buttonright: TButton
+    Left = 152
+    Height = 25
+    Top = 8
+    Width = 32
+    Caption = '>'
+    OnClick = ButtonminusClick
+    TabOrder = 4
+  end
+  object Buttondown: TButton
+    Left = 248
+    Height = 25
+    Top = 8
+    Width = 32
+    Caption = 'v'
+    OnClick = ButtonminusClick
+    TabOrder = 5
+  end
+  object Buttonup: TButton
+    Left = 200
+    Height = 25
+    Top = 8
+    Width = 32
+    Caption = '^'
+    OnClick = ButtonminusClick
+    TabOrder = 6
+  end
 end
