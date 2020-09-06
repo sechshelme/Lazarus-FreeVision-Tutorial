@@ -35,6 +35,31 @@ type
     StatusGer, StatusEng: PStatusLine;
   end;
 
+procedure TMyApp.InitMenuBar;
+begin
+  MenuBar := nil;
+end;
+
+procedure TMyApp.InitStatusLine;
+var
+  Rect: TRect;                       // Rechteck für die Menüzeilen-Position.
+begin
+  GetExtent(Rect);
+  Rect.A.Y := Rect.B.Y - 1;
+
+  StatusGer := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
+    NewStatusKey('~F10~ Menue', kbF10, cmMenu,
+    NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
+
+  StatusEng := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    NewStatusKey('~Alt+X~ Exit', kbAltX, cmQuit,
+    NewStatusKey('~F10~ Menu', kbF10, cmMenu,
+    NewStatusKey('~F1~ Help', kbF1, cmHelp, nil))), nil)));
+
+  StatusLine := StatusGer;
+end;
+
   constructor TMyApp.Init;
   var
     Rect: TRect;              // Rechteck für die Statuszeilen Position.
@@ -75,31 +100,6 @@ type
     Message(@Self, evCommand, cmMenu, nil);
   end;
 
-  procedure TMyApp.InitStatusLine;
-  var
-    Rect: TRect;                       // Rechteck für die Menüzeilen-Position.
-  begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
-
-    StatusGer := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
-      NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
-      NewStatusKey('~F10~ Menue', kbF10, cmMenu,
-      NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
-
-    StatusEng := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
-      NewStatusKey('~Alt+X~ Exit', kbAltX, cmQuit,
-      NewStatusKey('~F10~ Menu', kbF10, cmMenu,
-      NewStatusKey('~F1~ Help', kbF1, cmHelp, nil))), nil)));
-
-    StatusLine := StatusGer;
-  end;
-
-  procedure TMyApp.InitMenuBar;
-  begin
-    MenuBar := nil;
-  end;
-
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     Rect: TRect;              // Rechteck für die Statuszeilen Position.
@@ -113,6 +113,18 @@ type
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
+          MenuBar^.Menu^.Items := NewItem('neuer sehr langer Eintrag','bla bla bla',kbNoKey, cmAbout, hcNoContext, MenuBar^.Menu^.Items);
+//          MenuBar^.Menu^.Default:=;
+
+Rect.Assign(3, 3, 75, 22);
+
+//MenuBar^.GetItemRect(MenuBar^.Menu^.Items,Rect);
+MenuBar^.Locate(Rect);
+//MenuBar^.Size.X:=41;
+//MenuBar^.Size.Y:=20;
+          Delete(MenuBar);
+//          MenuBar := menuEng;
+          Insert(MenuBar);
         end;
         cmMenuEnlish: begin
 
