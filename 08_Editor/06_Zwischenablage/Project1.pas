@@ -159,10 +159,10 @@ var
         Result := MyApp.ExecuteDialog(New(PFileDialog, Init('*.txt',
           'Datei speichern unter', '~D~atei-Name', fdOkButton, 101)), Info);
       end;
-      edFind:                                   // Der kommplet neue Suchen-Dialog.
+      edFind: begin                             // Der kommplet neue Suchen-Dialog.
         Result := Application^.ExecuteDialog(DECreateFindDialog, Info);
-      edReplace:                                // Der kommplet neue Ersetzen-Dialog.
-      begin
+      end;
+      edReplace: begin                          // Der kommplet neue Ersetzen-Dialog.
         Result := MyApp.ExecuteDialog(DECreateReplaceDialog, Info);
       end;
       else begin
