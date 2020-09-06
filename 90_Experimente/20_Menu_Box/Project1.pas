@@ -30,7 +30,6 @@ type
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
 
     procedure MyParameter;
-    // neue Funktion für einen Dialog.
   private
     menuGer, menuEng: PMenuBox;
     StatusGer, StatusEng: PStatusLine;
@@ -41,9 +40,11 @@ type
     Rect: TRect;              // Rechteck für die Statuszeilen Position.
   begin
     inherited Init;
-    Rect.Assign(3, 3, 20, 20);
+    Rect.Assign(3, 3, 30, 20);
 
     menuGer := New(PMenuBox, Init(Rect, NewMenu(
+      NewItem('~W~indows', 'Alt-W', kbAltW, cmAbout, hcNoContext,
+      NewLine(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
         NewLine(
@@ -54,7 +55,7 @@ type
         NewItem('~D~eutsch', 'Alt-D', kbAltD, cmMenuGerman, hcNoContext,
         NewItem('~E~nglisch', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))))),
       NewSubMenu('~H~ilfe', hcNoContext, NewMenu(
-        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil)))),nil));
+        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil)))))),nil));
 
     menuEng := New(PMenuBox, Init(Rect, NewMenu(
       NewSubMenu('~F~ile', hcNoContext, NewMenu(
@@ -70,9 +71,8 @@ type
         NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil)))),nil));
 
     Insert(menuGer);
-//Desktop^.Insert(menuGer);
-//    Insert(menuEng);
     MenuBar := menuGer;
+    Message(@Self, evCommand, cmMenu, nil);
   end;
 
   procedure TMyApp.InitStatusLine;
@@ -113,6 +113,11 @@ type
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
+          MenuBar^.Menu^.Items := NewLine(MenuBar^.Menu^.Items);
+//          MenuBar^.Size.Y:=20;
+//          Delete(MenuBar);
+//          MenuBar := menuEng;
+//          Insert(MenuBar);
         end;
         cmMenuEnlish: begin
 
@@ -144,6 +149,7 @@ type
           Exit;
         end;
       end;
+      Message(@Self, evCommand, cmMenu, nil);
     end;
     ClearEvent(Event);
   end;

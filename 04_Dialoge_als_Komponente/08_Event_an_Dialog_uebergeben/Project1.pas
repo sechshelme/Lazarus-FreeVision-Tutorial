@@ -20,8 +20,8 @@ Events für den Buttonklick.
 *)
 //code+
 const
-  cmDia1 = 1001;
-  cmDia2 = 1002;
+  cmDia1   = 1001;
+  cmDia2   = 1002;
   cmDiaAll = 1003;
 //code-
 
