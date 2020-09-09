@@ -13,20 +13,25 @@ type
 
   TView = class(TObject)
   private
-    Canvas: TCanvas;
+    Panel: TPanel;
     A, B: TPoint;
     FCaption: string;
     FColor: TColor;
+    MousePos: TPoint;
+    isDown: boolean;
+
     procedure SetCaption(AValue: string);
     procedure SetColor(AValue: TColor);
   public
     property Caption: string read FCaption write SetCaption;
     property Color: TColor read FColor write SetColor;
-    constructor Create(c: TCanvas);
+    constructor Create(c: TPanel);
+    function MouseDown(x, y: integer): boolean;
+    function MouseMove(Shift: TShiftState; X, Y: integer): boolean;
+
     procedure Assign(AX, AY, BX, BY: integer);
     procedure Move(x, y: integer);
     procedure Draw;
-    function isInBounds(x, y: integer): boolean;
   end;
 
   { TForm1 }
@@ -48,8 +53,8 @@ type
       Shift: TShiftState; X, Y: integer);
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
   private
-    MousePos: TPoint;
-    isDown: boolean;
+//    MousePos: TPoint;
+//    isDown: boolean;
     Views: array of TView;
   public
   end;
@@ -79,9 +84,51 @@ begin
   FColor := AValue;
 end;
 
-constructor TView.Create(c: TCanvas);
+constructor TView.Create(c: TPanel);
 begin
-  Canvas := c;
+  Panel := c;
+  Panel.DoubleBuffered := True;
+end;
+
+function TView.MouseDown(x, y: integer): boolean;
+begin
+  Result := (x >= A.X) and (y >= A.Y) and (x <= B.X) and (y <= B.Y);
+  isDown := Result;
+  MousePos.X := x;
+  MousePos.Y := y;
+end;
+
+function TView.MouseMove(Shift: TShiftState; X, Y: integer): boolean;
+begin
+  if ssLeft in Shift then begin
+    if (x <> MousePos.X) or (y <> MousePos.Y) then begin
+      Result := True;
+      Self.Move(X - MousePos.X, Y - MousePos.Y);
+      Panel.Refresh;
+
+      MousePos.X := x;
+      MousePos.Y := y;
+    end else begin
+      Result := False;
+    end;
+
+  end;
+
+  //  if ssLeft in Shift then begin
+  //    if Length(Views) > 0 then begin
+  //      if isDown then begin
+  //        x1 := X - MousePos.X;
+  //        y1 := Y - MousePos.Y;
+  //        Views[0].Move(x1, y1);
+  //        MousePos.X := X;
+  //        MousePos.Y := Y;
+  //        Repaint;
+  //      end;
+  //    end;
+  //  end else begin
+  //    isDown := False;
+  //  end;
+
 end;
 
 procedure TView.Assign(AX, AY, BX, BY: integer);
@@ -116,14 +163,9 @@ end;
 
 procedure TView.Draw;
 begin
-  Canvas.Brush.Color := FColor;
-  Canvas.Rectangle(A.X, A.Y, B.X, B.Y);
-  Canvas.TextOut(A.X, A.Y, Caption);
-end;
-
-function TView.isInBounds(x, y: integer): boolean;
-begin
-  Result := (x >= A.X) and (y >= A.Y) and (x <= B.X) and (y <= B.Y);
+  Panel.Canvas.Brush.Color := FColor;
+  Panel.Canvas.Rectangle(A.X, A.Y, B.X, B.Y);
+  Panel.Canvas.TextOut(A.X, A.Y, Caption);
 end;
 
 { TForm1 }
@@ -133,7 +175,7 @@ var
   v: TView;
 begin
   if TButton(Sender).Name = 'Buttonplus' then begin
-    v := TView.Create(Panel1.Canvas);
+    v := TView.Create(Panel1);
     v.Assign(Random(Width), Random(Height), Random(Width), Random(Height));
     v.Color := Random($FFFFFF);
     v.Caption := IntToStr(Length(Views));
@@ -169,10 +211,10 @@ var
 begin
   Randomize;
   DoubleBuffered := True;
-  isDown := False;
+//  isDown := False;
   SetLength(Views, 10);
   for i := 0 to Length(Views) - 1 do begin
-    Views[i] := TView.Create(Panel1.Canvas);
+    Views[i] := TView.Create(Panel1);
     with Panel1 do begin
       Views[i].Assign(Random(Width), Random(Height), Random(Width), Random(Height));
     end;
@@ -211,15 +253,17 @@ var
 begin
   i := 0;
   while i < Length(Views) do begin
-    if Views[i].isInBounds(X, Y) then begin
+    if Views[i].MouseDown(X, Y) then begin
       //      Caption := Length(Views).ToString();
-      v := Views[i];
-      Delete(Views, i, 1);
-      Insert(v, Views, 0);
-      Repaint;
-      MousePos.X := X;
-      MousePos.Y := Y;
-      isDown := True;
+      if i <> 0 then begin
+        v := Views[i];
+        Delete(Views, i, 1);
+        Insert(v, Views, 0);
+        Panel1.Repaint;
+      end;
+//      MousePos.X := X;
+//      MousePos.Y := Y;
+//      isDown := True;
       Exit;
     end else begin
     end;
@@ -227,26 +271,13 @@ begin
   end;
   //  Caption := x1.ToString + '  ' + y2.ToString + '  ' + i.ToString + ' False';
 
-  Caption := y.ToString + '   ' + MousePos.y.ToString;
+//  Caption := y.ToString + '   ' + MousePos.y.ToString;
 end;
 
 procedure TForm1.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
-var
-  x1, y1: integer;
 begin
-  if ssLeft in Shift then begin
-    if Length(Views) > 0 then begin
-      if isDown then begin
-        x1 := X - MousePos.X;
-        y1 := Y - MousePos.Y;
-        Views[0].Move(x1, y1);
-        MousePos.X := X;
-        MousePos.Y := Y;
-        Repaint;
-      end;
-    end;
-  end else begin
-    isDown := False;
+  if Length(Views) > 0 then begin
+    Views[0].MouseMove(Shift, X, Y);
   end;
 end;
 
