@@ -29,12 +29,19 @@ type
     destructor Destroy; override;
     procedure Insert(V: TView);
 
-    function MouseDown(x, y: integer): boolean;
-    function MouseMove(Shift: TShiftState; X, Y: integer): boolean;
+    function MouseDown(x, y: integer): boolean; virtual;  override;
+    function MouseMove(Shift: TShiftState; X, Y: integer): boolean; virtual; override;
 
     procedure Assign(AX, AY, BX, BY: integer);
-    procedure Move(x, y: integer);
-    procedure Draw;
+    procedure Move(x, y: integer); virtual;
+    procedure Draw; virtual;
+  end;
+
+  { TWindow }
+
+  TWindow = class(TView)
+    function MouseDown(x, y: integer): boolean; virtual;
+    function MouseMove(Shift: TShiftState; X, Y: integer): boolean; virtual;
   end;
 
   TDesktop = class(TView)
@@ -74,6 +81,18 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TWindow }
+
+function TWindow.MouseDown(x, y: integer): boolean;
+begin
+       Panel.Color:=Random($ffffff);
+end;
+
+function TWindow.MouseMove(Shift: TShiftState; X, Y: integer): boolean;
+begin
+
+end;
 
 { TView }
 
@@ -126,12 +145,12 @@ begin
   while i < Length(View) do begin
     if View[i].MouseDown(X, Y) then begin
       WriteLn(i);
-//      if i <> 0 then begin
+      if i <> 0 then begin
         v := View[i];
         Delete(View, i, 1);
         system.Insert(v, View, 0);
         Panel.Repaint;
-  //    end;
+      end;
       Exit;
     end else begin
       Inc(i);
@@ -158,9 +177,9 @@ begin
     isDown := False;
   end;
 
-  //if Length(Views) > 0 then begin
-  //  Views[0].MouseMove(Shift, X, Y);
-  //end;
+  if Length(View) > 0 then begin
+    View[0].MouseMove(Shift, X, Y);
+  end;
 
 end;
 
@@ -201,7 +220,7 @@ begin
   Panel.Canvas.Brush.Color := FColor;
   Panel.Canvas.Rectangle(A.X, A.Y, B.X, B.Y);
   Panel.Canvas.TextOut(A.X, A.Y, Caption);
-  for i := 0 to Length(View) - 1 do begin
+  for i := Length(View) - 1 downto 0 do begin
     View[i].Draw;
   end;
 end;
@@ -246,56 +265,37 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 var
   i: integer;
-  v: TView;
+  win: TWindow;
 begin
   Panel1.DoubleBuffered := True;
   Panel := Panel1;
   Randomize;
-  //SetLength(Views, 5);
-  //for i := 0 to Length(Views) - 1 do begin
-  //  Views[i] := TView.Create;
-  //  with Panel1 do begin
-  //    Views[i].Assign(Random(Width), Random(Height), Random(Width), Random(Height));
-  //  end;
-  //  Views[i].Color := Random($FFFFFF);
-  //  Views[i].Caption := IntToStr(i);
-  //end;
 
   Desktop := TDesktop.Create;
   Desktop.Assign(10, 10, Panel1.Width - 20, Panel1.Height - 20);
   Desktop.Color := clGreen;
   Desktop.Caption := 'Desktop';
 
-  for i := 0 to 2 do begin
-    v := TView.Create;
+  for i := 0 to 10 do begin
+    win := TWindow.Create;
     with Panel do begin
-      v.Assign(Random(Width), Random(Height), Random(Width), Random(Height));
+      win.Assign(Random(Width), Random(Height), Random(Width), Random(Height));
     end;
-    v.Color := Random($FFFFFF);
-    v.Caption := IntToStr(i);
-    Desktop.Insert(v);
+    win.Color := Random($FFFFFF);
+    win.Caption := IntToStr(i);
+    Desktop.Insert(win);
   end;
   //  Desktop.Draw;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
-var
-  i: integer;
 begin
-  //for i := 0 to Length(Views) - 1 do begin
-  //  Views[i].Free;
-  //end;
   Desktop.Free;
 end;
 
 procedure TForm1.FormPaint(Sender: TObject);
-var
-  i: integer;
 begin
   Desktop.Draw;
-  //for i := Length(Views) - 1 downto 0 do begin
-  //  Views[i].Draw;
-  //end;
 end;
 
 procedure TForm1.Panel1Click(Sender: TObject);
@@ -304,35 +304,12 @@ end;
 
 procedure TForm1.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: integer);
-var
-  i: integer;
-  v: TView;
 begin
-  i := 0;
-  //
-  //  while i < Length(Views) do begin
-  //    if Views[i].MouseDown(X, Y) then begin
-  //      if i <> 0 then begin
-  //        v := Views[i];
-  //        Delete(Views, i, 1);
-  //        Insert(v, Views, 0);
-  //        Panel1.Repaint;
-  //      end;
-  //      Exit;
-  //    end else begin
-  //    end;
-  //    Inc(i);
-  //  end;
-  //
-
   Desktop.MouseDown(X, Y);
 end;
 
 procedure TForm1.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
 begin
-  //if Length(Views) > 0 then begin
-  //  Views[0].MouseMove(Shift, X, Y);
-  //end;
   Desktop.MouseMove(Shift, X, Y);
 end;
 
