@@ -18,7 +18,7 @@ type
   { TWindow }
 
   TWindow = class(TView)
-    procedure Draw; virtual;
+    procedure Draw; override;
   end;
 
   { TForm1 }

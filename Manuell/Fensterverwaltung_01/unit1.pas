@@ -29,8 +29,8 @@ type
     destructor Destroy; override;
     procedure Insert(V: TView);
 
-    function MouseDown(x, y: integer): boolean; virtual;  override;
-    function MouseMove(Shift: TShiftState; X, Y: integer): boolean; virtual; override;
+    function MouseDown(x, y: integer): boolean; virtual;
+    function MouseMove(Shift: TShiftState; X, Y: integer): boolean; virtual;
 
     procedure Assign(AX, AY, BX, BY: integer);
     procedure Move(x, y: integer); virtual;
@@ -40,8 +40,8 @@ type
   { TWindow }
 
   TWindow = class(TView)
-    function MouseDown(x, y: integer): boolean; virtual;
-    function MouseMove(Shift: TShiftState; X, Y: integer): boolean; virtual;
+    function MouseDown(x, y: integer): boolean; override;
+    function MouseMove(Shift: TShiftState; X, Y: integer): boolean; override;
   end;
 
   TDesktop = class(TView)
@@ -86,12 +86,37 @@ implementation
 
 function TWindow.MouseDown(x, y: integer): boolean;
 begin
-       Panel.Color:=Random($ffffff);
+  Result := inherited MouseDown(x, y);
+  if Result then begin
+    if y > A.Y + 15 then begin
+      isDown := False;
+    end;
+  end;
 end;
 
 function TWindow.MouseMove(Shift: TShiftState; X, Y: integer): boolean;
 begin
+  if ssLeft in Shift then begin
+    if isDown then begin
 
+      if (x <> MousePos.X) or (y <> MousePos.Y) then begin
+        Result := True;
+        Self.Move(X - MousePos.X, Y - MousePos.Y);
+        Panel.Refresh;
+
+        MousePos.X := x;
+        MousePos.Y := y;
+      end else begin
+        Result := False;
+      end;
+    end;
+  end else begin
+    isDown := False;
+  end;
+
+  if Length(View) > 0 then begin
+    //    View[0].MouseMove(Shift, X, Y);
+  end;
 end;
 
 { TView }
@@ -144,7 +169,6 @@ begin
   i := 0;
   while i < Length(View) do begin
     if View[i].MouseDown(X, Y) then begin
-      WriteLn(i);
       if i <> 0 then begin
         v := View[i];
         Delete(View, i, 1);
@@ -160,22 +184,27 @@ end;
 
 function TView.MouseMove(Shift: TShiftState; X, Y: integer): boolean;
 begin
-  if ssLeft in Shift then begin
-    if isDown then begin
-      if (x <> MousePos.X) or (y <> MousePos.Y) then begin
-        Result := True;
-        Self.Move(X - MousePos.X, Y - MousePos.Y);
-        Panel.Refresh;
+  Result := (x >= A.X) and (y >= A.Y) and (x <= B.X) and (y <= B.Y);
+  isDown := Result;
 
-        MousePos.X := x;
-        MousePos.Y := y;
-      end else begin
-        Result := False;
-      end;
-    end;
-  end else begin
-    isDown := False;
-  end;
+  //if ssLeft in Shift then begin
+  //  if isDown then begin
+  //    if (x <> MousePos.X) or (y <> MousePos.Y) then begin
+  //      Result := True;
+  //      //Self.Move(X - MousePos.X, Y - MousePos.Y);
+  //      //Panel.Refresh;
+  //      //
+  //      MousePos.X := x;
+  //      MousePos.Y := y;
+  //    end else begin
+  //      Result := False;
+  //    end;
+  //  end;
+  //end else begin
+  //  isDown := False;
+  //end;
+  //
+
 
   if Length(View) > 0 then begin
     View[0].MouseMove(Shift, X, Y);
