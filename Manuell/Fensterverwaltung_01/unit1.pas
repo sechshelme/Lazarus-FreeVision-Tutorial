@@ -30,22 +30,30 @@ type
     procedure Insert(V: TView);
 
     function MouseDown(x, y: integer): boolean; virtual;
-    function MouseMove(Shift: TShiftState; X, Y: integer): boolean; virtual;
+    procedure MouseMove(Shift: TShiftState; X, Y: integer); virtual;
 
     procedure Assign(AX, AY, BX, BY: integer);
     procedure Move(x, y: integer); virtual;
+    procedure Resize(x, y: integer); virtual;
     procedure Draw; virtual;
   end;
 
   { TWindow }
 
   TWindow = class(TView)
+  private
+    isMoveable, isResize: boolean;
+  public
+    constructor Create;
     function MouseDown(x, y: integer): boolean; override;
-    function MouseMove(Shift: TShiftState; X, Y: integer): boolean; override;
+    procedure MouseMove(Shift: TShiftState; X, Y: integer); override;
+    procedure Draw; override;
   end;
 
-  TDesktop = class(TView)
+  { TDesktop }
 
+  TDesktop = class(TView)
+    constructor Create;
   end;
 
 
@@ -82,41 +90,14 @@ implementation
 
 {$R *.lfm}
 
-{ TWindow }
+const
+  TitelBarSize = 15;
+  minWinSize = 50;
 
-function TWindow.MouseDown(x, y: integer): boolean;
+{ TDesktop }
+
+constructor TDesktop.Create;
 begin
-  Result := inherited MouseDown(x, y);
-  if Result then begin
-    if y > A.Y + 15 then begin
-      isDown := False;
-    end;
-  end;
-end;
-
-function TWindow.MouseMove(Shift: TShiftState; X, Y: integer): boolean;
-begin
-  if ssLeft in Shift then begin
-    if isDown then begin
-
-      if (x <> MousePos.X) or (y <> MousePos.Y) then begin
-        Result := True;
-        Self.Move(X - MousePos.X, Y - MousePos.Y);
-        Panel.Refresh;
-
-        MousePos.X := x;
-        MousePos.Y := y;
-      end else begin
-        Result := False;
-      end;
-    end;
-  end else begin
-    isDown := False;
-  end;
-
-  if Length(View) > 0 then begin
-    //    View[0].MouseMove(Shift, X, Y);
-  end;
 end;
 
 { TView }
@@ -139,6 +120,7 @@ end;
 
 constructor TView.Create;
 begin
+  isDown := False;
 end;
 
 destructor TView.Destroy;
@@ -182,34 +164,14 @@ begin
   end;
 end;
 
-function TView.MouseMove(Shift: TShiftState; X, Y: integer): boolean;
+procedure TView.MouseMove(Shift: TShiftState; X, Y: integer);
 begin
-  Result := (x >= A.X) and (y >= A.Y) and (x <= B.X) and (y <= B.Y);
-  isDown := Result;
-
-  //if ssLeft in Shift then begin
-  //  if isDown then begin
-  //    if (x <> MousePos.X) or (y <> MousePos.Y) then begin
-  //      Result := True;
-  //      //Self.Move(X - MousePos.X, Y - MousePos.Y);
-  //      //Panel.Refresh;
-  //      //
-  //      MousePos.X := x;
-  //      MousePos.Y := y;
-  //    end else begin
-  //      Result := False;
-  //    end;
-  //  end;
-  //end else begin
-  //  isDown := False;
-  //end;
-  //
-
+  //Result := (x >= A.X) and (y >= A.Y) and (x <= B.X) and (y <= B.Y);
+  //  isDown := Result;
 
   if Length(View) > 0 then begin
     View[0].MouseMove(Shift, X, Y);
   end;
-
 end;
 
 procedure TView.Assign(AX, AY, BX, BY: integer);
@@ -242,6 +204,18 @@ begin
   Inc(B.Y, y);
 end;
 
+procedure TView.Resize(x, y: integer);
+begin
+  Inc(B.X, x);
+  if B.X - A.X < minWinSize then begin
+    B.X := A.X + minWinSize;
+  end;
+  Inc(B.Y, y);
+  if B.Y - A.Y < minWinSize then begin
+    B.Y := A.Y + minWinSize;
+  end;
+end;
+
 procedure TView.Draw;
 var
   i: integer;
@@ -252,6 +226,56 @@ begin
   for i := Length(View) - 1 downto 0 do begin
     View[i].Draw;
   end;
+end;
+
+{ TWindow }
+
+constructor TWindow.Create;
+begin
+  isMoveable := False;
+  isResize := False;
+end;
+
+function TWindow.MouseDown(x, y: integer): boolean;
+begin
+  Result := inherited MouseDown(x, y);
+  if Result then begin
+    isMoveable := y < A.Y + TitelBarSize;
+    isResize := (y > B.Y - TitelBarSize) and (x > B.X - TitelBarSize);
+  end;
+end;
+
+procedure TWindow.MouseMove(Shift: TShiftState; X, Y: integer);
+begin
+  if ssLeft in Shift then begin
+    if isDown then begin
+      if isMoveable then begin
+        Self.Move(X - MousePos.X, Y - MousePos.Y);
+      end;
+      if isResize then begin
+        Self.Resize(X - MousePos.X, Y - MousePos.Y);
+      end;
+      Panel.Refresh;
+      MousePos.X := x;
+      MousePos.Y := y;
+    end;
+  end else begin
+    isDown := False;
+    isMoveable := False;
+    isResize := False;
+  end;
+
+  if Length(View) > 0 then begin
+    //    View[0].MouseMove(Shift, X, Y);
+  end;
+end;
+
+procedure TWindow.Draw;
+begin
+  FColor := clBlue;
+  inherited Draw;
+  Panel.Canvas.Brush.Color := clGray;
+  Panel.Canvas.Rectangle(A.X, A.Y, B.X, A.Y + TitelBarSize);
 end;
 
 { TForm1 }
