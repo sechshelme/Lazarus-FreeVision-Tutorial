@@ -1,19 +1,19 @@
 object Form1: TForm1
   Left = 472
-  Height = 756
+  Height = 946
   Top = 150
-  Width = 1317
-  Caption = 'Form1'
-  ClientHeight = 756
-  ClientWidth = 1317
+  Width = 1184
+  Caption = '♿'
+  ClientHeight = 946
+  ClientWidth = 1184
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   LCLVersion = '2.0.8.0'
   object Panel1: TPanel
     Left = 0
-    Height = 708
+    Height = 898
     Top = 48
-    Width = 1317
+    Width = 1184
     Align = alBottom
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Panel1'

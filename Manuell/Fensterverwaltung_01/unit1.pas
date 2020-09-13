@@ -13,7 +13,8 @@ type
 
   TView = class(TObject)
   private
-    A, B: TPoint;
+    bit: TBitmap;
+    ViewRect: TRect;
     FCaption: string;
     FColor: TColor;
     MousePos: TPoint;
@@ -49,6 +50,23 @@ type
     procedure MouseMove(Shift: TShiftState; X, Y: integer); override;
     procedure Draw; override;
   end;
+
+  { TButton }
+
+  TButton2 = class(TView)
+  private
+  public
+    procedure Draw; override;
+  end;
+
+  { TDialog }
+
+  TDialog=class(TWindow)private
+    btn0, btn1, btn2:TButton2; public
+    constructor Create;
+    destructor Destroy; override;
+  end;
+
 
   { TDesktop }
 
@@ -91,8 +109,37 @@ implementation
 {$R *.lfm}
 
 const
-  TitelBarSize = 15;
+  TitelBarSize = 20;
   minWinSize = 50;
+
+{ TDialog }
+
+constructor TDialog.Create;
+begin
+  inherited Create;
+  btn0:=TButton2.Create;
+  btn0.Assign(10, 40, 30, 50);
+  btn0.Caption := 'btn0';
+  Self.Insert(btn0);
+
+  btn1:=TButton2.Create;
+  btn1.Assign(40, 40, 60, 50);
+  btn1.Caption := 'btn1';
+  Self.Insert(btn1);
+
+  btn2:=TButton2.Create;
+  btn2.Assign(70, 40, 90, 50);
+  btn2.Caption := 'btn2';
+  Self.Insert(btn2);
+end;
+
+destructor TDialog.Destroy;
+begin
+//  btn0.Free;
+//  btn1.Free;
+//  btn2.Free;
+  inherited Destroy;
+end;
 
 { TDesktop }
 
@@ -121,6 +168,7 @@ end;
 constructor TView.Create;
 begin
   isDown := False;
+  bit := TBitmap.Create;
 end;
 
 destructor TView.Destroy;
@@ -130,6 +178,7 @@ begin
   for i := 0 to Length(View) - 1 do begin
     View[i].Free;
   end;
+  bit.Free;
   inherited Destroy;
 end;
 
@@ -143,7 +192,9 @@ var
   i: integer;
   v: TView;
 begin
-  Result := (x >= A.X) and (y >= A.Y) and (x <= B.X) and (y <= B.Y);
+  with ViewRect do begin
+    Result := (x >= Left) and (y >= Top) and (x <= Right) and (y <= Bottom);
+  end;
   isDown := Result;
   MousePos.X := x;
   MousePos.Y := y;
@@ -166,53 +217,37 @@ end;
 
 procedure TView.MouseMove(Shift: TShiftState; X, Y: integer);
 begin
-  //Result := (x >= A.X) and (y >= A.Y) and (x <= B.X) and (y <= B.Y);
-  //  isDown := Result;
-
   if Length(View) > 0 then begin
     View[0].MouseMove(Shift, X, Y);
   end;
 end;
 
 procedure TView.Assign(AX, AY, BX, BY: integer);
-
-  procedure swap(var a: integer; var b: integer);
-  var
-    c: integer;
-  begin
-    if a > b then begin
-      c := a;
-      a := b;
-      b := c;
-    end;
-  end;
-
 begin
-  swap(AX, BX);
-  swap(AY, BY);
-  A.X := AX;
-  A.Y := AY;
-  B.X := BX;
-  B.Y := BY;
+  ViewRect.Left := AX;
+  ViewRect.Right := BX;
+  ViewRect.Top := AY;
+  ViewRect.Bottom := BY;
+  ViewRect.NormalizeRect;
 end;
 
 procedure TView.Move(x, y: integer);
 begin
-  Inc(A.X, x);
-  Inc(A.Y, y);
-  Inc(B.X, x);
-  Inc(B.Y, y);
+  Inc(ViewRect.Left, x);
+  Inc(ViewRect.Right, x);
+  Inc(ViewRect.Top, y);
+  Inc(ViewRect.Bottom, y);
 end;
 
 procedure TView.Resize(x, y: integer);
 begin
-  Inc(B.X, x);
-  if B.X - A.X < minWinSize then begin
-    B.X := A.X + minWinSize;
+  Inc(ViewRect.Right, x);
+  if ViewRect.Right - ViewRect.Left < minWinSize then begin
+    ViewRect.Right := ViewRect.Left + minWinSize;
   end;
-  Inc(B.Y, y);
-  if B.Y - A.Y < minWinSize then begin
-    B.Y := A.Y + minWinSize;
+  Inc(ViewRect.Bottom, y);
+  if ViewRect.Bottom - ViewRect.Top < minWinSize then begin
+    ViewRect.Bottom := ViewRect.Top + minWinSize;
   end;
 end;
 
@@ -221,8 +256,8 @@ var
   i: integer;
 begin
   Panel.Canvas.Brush.Color := FColor;
-  Panel.Canvas.Rectangle(A.X, A.Y, B.X, B.Y);
-  Panel.Canvas.TextOut(A.X, A.Y, Caption);
+  Panel.Canvas.Rectangle(ViewRect);
+  //  Panel.Canvas.TextOut(ViewRect.Left, ViewRect.Top, Caption);
   for i := Length(View) - 1 downto 0 do begin
     View[i].Draw;
   end;
@@ -240,8 +275,9 @@ function TWindow.MouseDown(x, y: integer): boolean;
 begin
   Result := inherited MouseDown(x, y);
   if Result then begin
-    isMoveable := y < A.Y + TitelBarSize;
-    isResize := (y > B.Y - TitelBarSize) and (x > B.X - TitelBarSize);
+    isMoveable := y < ViewRect.Top + TitelBarSize;
+    isResize := (y > ViewRect.Bottom - TitelBarSize) and
+      (x > ViewRect.Right - TitelBarSize);
   end;
 end;
 
@@ -271,11 +307,25 @@ begin
 end;
 
 procedure TWindow.Draw;
+var
+  w, h: integer;
 begin
   FColor := clBlue;
   inherited Draw;
   Panel.Canvas.Brush.Color := clGray;
-  Panel.Canvas.Rectangle(A.X, A.Y, B.X, A.Y + TitelBarSize);
+  Panel.Canvas.Rectangle(ViewRect.Left, ViewRect.Top, ViewRect.Right,
+    ViewRect.Top + TitelBarSize);
+
+  Panel.Canvas.GetTextSize(Caption, w, h);
+
+  with ViewRect do begin
+    Panel.Canvas.TextOut(Left + Width div 2 - w div 2, ViewRect.Top + 2, Caption);
+  end;
+
+  Panel.Canvas.Rectangle(ViewRect.Right - TitelBarSize, ViewRect.Bottom - TitelBarSize,
+    ViewRect.Right,         ViewRect.Bottom);
+  Panel.Canvas.TextOut(ViewRect.Right - TitelBarSize + 4,
+    ViewRect.Bottom - TitelBarSize + 1, '⤡');
 end;
 
 { TForm1 }
@@ -318,7 +368,7 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 var
   i: integer;
-  win: TWindow;
+  win: TDialog;
 begin
   Panel1.DoubleBuffered := True;
   Panel := Panel1;
@@ -330,12 +380,12 @@ begin
   Desktop.Caption := 'Desktop';
 
   for i := 0 to 10 do begin
-    win := TWindow.Create;
+    win := TDialog.Create;
     with Panel do begin
       win.Assign(Random(Width), Random(Height), Random(Width), Random(Height));
     end;
     win.Color := Random($FFFFFF);
-    win.Caption := IntToStr(i);
+    win.Caption := 'Fenster: ' + IntToStr(i);
     Desktop.Insert(win);
   end;
   //  Desktop.Draw;
@@ -364,6 +414,14 @@ end;
 procedure TForm1.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
 begin
   Desktop.MouseMove(Shift, X, Y);
+end;
+
+{ TButton }
+
+procedure TButton2.Draw;
+begin
+  Color:=clYellow;
+  inherited Draw;
 end;
 
 end.
