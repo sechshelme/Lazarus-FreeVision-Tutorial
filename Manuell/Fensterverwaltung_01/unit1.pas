@@ -36,8 +36,8 @@ type
     procedure Assign(AX, AY, BX, BY: integer);
     procedure Move(x, y: integer); virtual;
     procedure Resize(x, y: integer); virtual;
-    procedure Draw(c:TCanvas); virtual;
-    procedure DrawBitmap(c:TCanvas); virtual;
+    procedure Draw; virtual;
+    procedure DrawBitmap(c: TCanvas); virtual;
   end;
 
   { TWindow }
@@ -49,7 +49,7 @@ type
     constructor Create;
     function MouseDown(x, y: integer): boolean; override;
     procedure MouseMove(Shift: TShiftState; X, Y: integer); override;
-    procedure Draw(c:TCanvas); override;
+    procedure Draw; override;
   end;
 
   { TButton }
@@ -59,7 +59,7 @@ type
   TButton2 = class(TView)
   private
   public
-    procedure Draw(c:TCanvas); override;
+    procedure Draw; override;
   end;
 
   { TDialog }
@@ -123,17 +123,17 @@ constructor TDialog.Create;
 begin
   inherited Create;
   btn0 := TButton2.Create;
-  btn0.Assign(10, 40, 30, 50);
+  btn0.Assign(10, 40, 50, 60);
   btn0.Caption := 'btn0';
   Self.Insert(btn0);
 
   btn1 := TButton2.Create;
-  btn1.Assign(40, 40, 60, 50);
+  btn1.Assign(60, 40, 100, 60);
   btn1.Caption := 'btn1';
   Self.Insert(btn1);
 
   btn2 := TButton2.Create;
-  btn2.Assign(70, 40, 90, 50);
+  btn2.Assign(110, 40, 150, 60);
   btn2.Caption := 'btn2';
   Self.Insert(btn2);
 end;
@@ -259,23 +259,16 @@ begin
   Bitmap.Height := ViewRect.Height;
 end;
 
-procedure TView.Draw(c:TCanvas);
+procedure TView.Draw;
 var
   i: integer;
 begin
   Bitmap.Canvas.Brush.Color := FColor;
   Bitmap.Canvas.Rectangle(0, 0, ViewRect.Width, ViewRect.Height);
-
-  //  Panel.Canvas.Draw(ViewRect.Left, ViewRect.Top, Bitmap);
-
-  //  Panel.Canvas.Brush.Color := FColor;
-  //  Panel.Canvas.Rectangle(ViewRect);
-  //  Panel.Canvas.TextOut(ViewRect.Left, ViewRect.Top, Caption);
   for i := Length(View) - 1 downto 0 do begin
-    View[i].Draw(Bitmap.Canvas);
+    View[i].Draw;
+    View[i].DrawBitmap(Bitmap.Canvas);
   end;
-
-  DrawBitmap(c);
 end;
 
 procedure TView.DrawBitmap(c: TCanvas);
@@ -327,12 +320,12 @@ begin
   end;
 end;
 
-procedure TWindow.Draw(c: TCanvas);
+procedure TWindow.Draw;
 var
   w, h: integer;
 begin
   FColor := clBlue;
-  inherited Draw(c);
+  inherited Draw;
 
   Bitmap.Canvas.Brush.Color := clGray;
   Bitmap.Canvas.Rectangle(0, 0, ViewRect.Width, TitelBarSize);
@@ -349,15 +342,16 @@ begin
   Bitmap.Canvas.TextOut(ViewRect.Width - TitelBarSize + 4,
     ViewRect.Height - TitelBarSize + 1, '⤡');
 
-  DrawBitmap(c);
+  //  DrawBitmap(c);
 end;
 
 { TButton }
 
-procedure TButton2.Draw(c: TCanvas);
+procedure TButton2.Draw;
 begin
   Color := clYellow;
-  inherited Draw(c);
+  inherited Draw;
+  Bitmap.Canvas.TextOut(3, 1, Caption);
 end;
 
 { TForm1 }
@@ -401,13 +395,15 @@ procedure TForm1.FormCreate(Sender: TObject);
 var
   i: integer;
   win: TDialog;
+const
+  rand = 40;
 begin
   Panel1.DoubleBuffered := True;
   Panel := Panel1;
   Randomize;
 
   Desktop := TDesktop.Create;
-  Desktop.Assign(10, 10, Panel1.Width - 20, Panel1.Height - 20);
+  Desktop.Assign(rand, rand, Panel1.Width - rand, Panel1.Height - rand);
   Desktop.Color := clGreen;
   Desktop.Caption := 'Desktop';
 
@@ -430,7 +426,8 @@ end;
 
 procedure TForm1.FormPaint(Sender: TObject);
 begin
-  Desktop.Draw(Panel1.Canvas);
+  Desktop.Draw;
+  Desktop.DrawBitmap(Panel1.Canvas);
 end;
 
 procedure TForm1.Panel1Click(Sender: TObject);
