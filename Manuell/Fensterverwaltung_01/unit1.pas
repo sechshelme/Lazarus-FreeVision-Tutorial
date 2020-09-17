@@ -13,22 +13,24 @@ type
 
   TView = class(TObject)
   private
+  protected
     Bitmap: TBitmap;
     ViewRect: TRect;
     FCaption: string;
     FColor: TColor;
     MousePos: TPoint;
     isDown: boolean;
+    Parent: TView;
     View: array of TView;
-
     procedure SetCaption(AValue: string);
     procedure SetColor(AValue: TColor);
+    function calcOfs: TPoint;
   public
     property Caption: string read FCaption write SetCaption;
     property Color: TColor read FColor write SetColor;
-    constructor Create;
+    constructor Create; virtual;
     destructor Destroy; override;
-    procedure Insert(V: TView);
+    procedure Insert(AView: TView);
 
     function MouseDown(x, y: integer): boolean; virtual;
     procedure MouseMove(Shift: TShiftState; X, Y: integer); virtual;
@@ -43,22 +45,22 @@ type
   { TWindow }
 
   TWindow = class(TView)
-  private
+  protected
     isMoveable, isResize: boolean;
   public
-    constructor Create;
+    constructor Create; override;
     function MouseDown(x, y: integer): boolean; override;
     procedure MouseMove(Shift: TShiftState; X, Y: integer); override;
     procedure Draw; override;
   end;
-
-  { TButton }
 
   { TButton2 }
 
   TButton2 = class(TView)
   private
   public
+    constructor Create; override;
+    function MouseDown(x, y: integer): boolean; override;
     procedure Draw; override;
   end;
 
@@ -68,7 +70,7 @@ type
   private
     btn0, btn1, btn2: TButton2;
   public
-    constructor Create;
+    constructor Create;  override;
     destructor Destroy; override;
   end;
 
@@ -76,7 +78,7 @@ type
   { TDesktop }
 
   TDesktop = class(TView)
-    constructor Create;
+    constructor Create;  override;
   end;
 
 
@@ -96,8 +98,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
-    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: integer);
+    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
   private
     //    Views: array of TView;
@@ -122,6 +123,7 @@ const
 constructor TDialog.Create;
 begin
   inherited Create;
+
   btn0 := TButton2.Create;
   btn0.Assign(10, 40, 50, 60);
   btn0.Caption := 'btn0';
@@ -171,6 +173,7 @@ end;
 constructor TView.Create;
 begin
   inherited Create;
+  Parent := nil;
   isDown := False;
   Bitmap := TBitmap.Create;
 end;
@@ -186,18 +189,35 @@ begin
   inherited Destroy;
 end;
 
-procedure TView.Insert(V: TView);
+procedure TView.Insert(AView: TView);
 begin
-  System.Insert(V, View, 0);
+  AView.Parent := Self;
+  System.Insert(AView, View, 0);
+end;
+
+function TView.calcOfs: TPoint;
+var
+  v: TView;
+begin
+  Result := ViewRect.TopLeft;
+  v := Parent;
+  while v <> nil do begin
+    Inc(Result.X, v.ViewRect.Left);
+    Inc(Result.Y, v.ViewRect.Top);
+    v := v.Parent;
+  end;
 end;
 
 function TView.MouseDown(x, y: integer): boolean;
 var
   i: integer;
   v: TView;
+  p: TPoint;
 begin
+  p := calcOfs;
+
   with ViewRect do begin
-    Result := (x >= Left) and (y >= Top) and (x <= Right) and (y <= Bottom);
+    Result := (x >= p.X) and (y >= p.Y) and (x <= p.X + Width) and (y <= p.Y + Height);
   end;
   isDown := Result;
   MousePos.X := x;
@@ -286,12 +306,14 @@ begin
 end;
 
 function TWindow.MouseDown(x, y: integer): boolean;
+var
+  p: TPoint;
 begin
   Result := inherited MouseDown(x, y);
+  p := calcOfs;
   if Result then begin
-    isMoveable := y < ViewRect.Top + TitelBarSize;
-    isResize := (y > ViewRect.Bottom - TitelBarSize) and
-      (x > ViewRect.Right - TitelBarSize);
+    isMoveable := y < p.Y + TitelBarSize;
+    isResize := (x > p.X + ViewRect.Width - TitelBarSize) and (y > p.Y + ViewRect.Height - TitelBarSize);
   end;
 end;
 
@@ -342,14 +364,27 @@ begin
   Bitmap.Canvas.TextOut(ViewRect.Width - TitelBarSize + 4,
     ViewRect.Height - TitelBarSize + 1, '⤡');
 
-  //  DrawBitmap(c);
 end;
 
 { TButton }
 
+constructor TButton2.Create;
+begin
+  inherited Create;
+  Color := clYellow;
+end;
+
+function TButton2.MouseDown(x, y: integer): boolean;
+begin
+  Result := inherited MouseDown(x, y);
+  if Result then begin
+    Color := Random($FFFFFF);
+    Panel.Repaint;
+  end;
+end;
+
 procedure TButton2.Draw;
 begin
-  Color := clYellow;
   inherited Draw;
   Bitmap.Canvas.TextOut(3, 1, Caption);
 end;
@@ -395,6 +430,7 @@ procedure TForm1.FormCreate(Sender: TObject);
 var
   i: integer;
   win: TDialog;
+  l, r: integer;
 const
   rand = 40;
 begin
@@ -407,16 +443,20 @@ begin
   Desktop.Color := clGreen;
   Desktop.Caption := 'Desktop';
 
-  for i := 0 to 10 do begin
+  for i := 0 to 19 do begin
     win := TDialog.Create;
     with Panel do begin
-      win.Assign(Random(Width), Random(Height), Random(Width), Random(Height));
+      l := Random(Width);
+      r := Random(Height);
+
+      //      l:=200;r:=200;
+
+      win.Assign(l, r, l + Random(500) + 200, r + Random(500) + 200);
     end;
     win.Color := Random($FFFFFF);
     win.Caption := 'Fenster: ' + IntToStr(i);
     Desktop.Insert(win);
   end;
-  //  Desktop.Draw;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -425,7 +465,12 @@ begin
 end;
 
 procedure TForm1.FormPaint(Sender: TObject);
+var
+  i: integer;
 begin
+  for i := 1 to 10 do begin
+    Panel1.Canvas.Line(i * 100, 0, i * 100, Panel1.Height);
+  end;
   Desktop.Draw;
   Desktop.DrawBitmap(Panel1.Canvas);
 end;
@@ -434,8 +479,7 @@ procedure TForm1.Panel1Click(Sender: TObject);
 begin
 end;
 
-procedure TForm1.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: integer);
+procedure TForm1.Panel1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
 begin
   Desktop.MouseDown(X, Y);
 end;
