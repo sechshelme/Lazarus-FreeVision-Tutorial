@@ -198,7 +198,8 @@ procedure TForm1.FormPaint(Sender: TObject);
 var
   i: integer;
 begin
-//  for i := 1 to 10 do begin
+
+  //  for i := 1 to 10 do begin
 //    Panel1.Canvas.Line(i * 100, 0, i * 100, Panel1.Height);
 //  end;
   Desktop.Draw;
