@@ -1,4 +1,4 @@
-unit Button;
+unit WMButton;
 
 {$mode objfpc}{$H+}
 
@@ -6,13 +6,12 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-
-  View;
+  WMView;
 
 type
-  { TButton2 }
+  { TButton }
 
-  TButton2 = class(TView)
+  TButton = class(TView)
   private
     FCommand: integer;
   public
@@ -27,20 +26,20 @@ implementation
 
 { TButton }
 
-constructor TButton2.Create;
+constructor TButton.Create;
 begin
   inherited Create;
   Color := clYellow;
 end;
 
-function TButton2.MouseDown(x, y: integer): boolean;
+function TButton.MouseDown(x, y: integer): boolean;
 var
   ev: TEvent;
 begin
   Result := inherited MouseDown(x, y);
   if Result then begin
-    Color := Random($FFFFFF);
-    Panel.Repaint;
+//    Color := Random($FFFFFF);
+//    Panel.Repaint;
 
     ev.State := Mouse;
     ev.Command := FCommand;
@@ -48,17 +47,18 @@ begin
   end;
 end;
 
-procedure TButton2.Draw;
+procedure TButton.Draw;
 begin
   inherited Draw;
   Bitmap.Canvas.TextOut(3, 1, Caption);
 end;
 
-procedure TButton2.EventHandle(Event: TEvent);
+procedure TButton.EventHandle(Event: TEvent);
 begin
   inherited EventHandle(Event);
 end;
 
 end.
+
 
 

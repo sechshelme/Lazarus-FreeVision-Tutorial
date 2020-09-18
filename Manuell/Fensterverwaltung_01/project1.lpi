@@ -30,7 +30,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="4">
+    <Units Count="6">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -44,15 +44,25 @@
         <UnitName Value="Unit1"/>
       </Unit1>
       <Unit2>
-        <Filename Value="button.pas"/>
+        <Filename Value="wmbutton.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Button"/>
+        <UnitName Value="WMButton"/>
       </Unit2>
       <Unit3>
-        <Filename Value="view.pas"/>
+        <Filename Value="wmview.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="View"/>
+        <UnitName Value="WMView"/>
       </Unit3>
+      <Unit4>
+        <Filename Value="wmwindow.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WMWindow"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="wmdialog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WMDialog"/>
+      </Unit5>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

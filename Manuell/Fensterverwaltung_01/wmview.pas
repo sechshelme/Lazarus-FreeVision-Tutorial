@@ -1,4 +1,4 @@
-unit View;
+unit WMView;
 
 {$mode objfpc}{$H+}
 
