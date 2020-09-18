@@ -30,7 +30,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="2">
+    <Units Count="4">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -43,6 +43,16 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="button.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Button"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="view.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="View"/>
+      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
