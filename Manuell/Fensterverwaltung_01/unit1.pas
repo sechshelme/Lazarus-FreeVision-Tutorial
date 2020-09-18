@@ -8,6 +8,11 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls;
 
 type
+  TEvent=record
+    State:(Mouse,KeyPress,cm);
+    Command:Integer;
+  end;
+
 
   { TView }
 
@@ -40,6 +45,7 @@ type
     procedure Resize(x, y: integer); virtual;
     procedure Draw; virtual;
     procedure DrawBitmap(c: TCanvas); virtual;
+    procedure EventHandle(Event:TEvent);virtual;
   end;
 
   { TWindow }
@@ -58,10 +64,13 @@ type
 
   TButton2 = class(TView)
   private
+    FCommand: Integer;
   public
+    property Command:Integer read FCommand write FCommand;
     constructor Create; override;
     function MouseDown(x, y: integer): boolean; override;
     procedure Draw; override;
+    procedure EventHandle(Event:TEvent);virtual;
   end;
 
   { TDialog }
@@ -118,6 +127,10 @@ const
   TitelBarSize = 20;
   minWinSize = 50;
 
+  cmBtn0=1000;
+  cmBtn1=1001;
+  cmBtn2=1002;
+
 { TDialog }
 
 constructor TDialog.Create;
@@ -127,16 +140,19 @@ begin
   btn0 := TButton2.Create;
   btn0.Assign(10, 40, 50, 60);
   btn0.Caption := 'btn0';
+  btn0.Command:=cmBtn0;
   Self.Insert(btn0);
 
   btn1 := TButton2.Create;
   btn1.Assign(60, 40, 100, 60);
   btn1.Caption := 'btn1';
+  btn1.Command:=cmBtn1;
   Self.Insert(btn1);
 
   btn2 := TButton2.Create;
   btn2.Assign(110, 40, 150, 60);
   btn2.Caption := 'btn2';
+  btn2.Command:=cmBtn2;
   Self.Insert(btn2);
 end;
 
@@ -296,6 +312,11 @@ begin
   c.Draw(ViewRect.Left, ViewRect.Top, Bitmap);
 end;
 
+procedure TView.EventHandle(Event: TEvent);
+begin
+
+end;
+
 { TWindow }
 
 constructor TWindow.Create;
@@ -351,7 +372,6 @@ begin
 
   Bitmap.Canvas.Brush.Color := clGray;
   Bitmap.Canvas.Rectangle(0, 0, ViewRect.Width, TitelBarSize);
-
   Bitmap.Canvas.GetTextSize(Caption, w, h);
 
   with ViewRect do begin
@@ -363,7 +383,6 @@ begin
 
   Bitmap.Canvas.TextOut(ViewRect.Width - TitelBarSize + 4,
     ViewRect.Height - TitelBarSize + 1, '⤡');
-
 end;
 
 { TButton }
@@ -375,18 +394,33 @@ begin
 end;
 
 function TButton2.MouseDown(x, y: integer): boolean;
+var
+  ev:TEvent;
 begin
   Result := inherited MouseDown(x, y);
   if Result then begin
     Color := Random($FFFFFF);
     Panel.Repaint;
   end;
+
+  ev.State:=Mouse;
+  ev.Command:=FCommand;
+  EventHandle(ev);
 end;
 
 procedure TButton2.Draw;
 begin
   inherited Draw;
   Bitmap.Canvas.TextOut(3, 1, Caption);
+end;
+
+procedure TButton2.EventHandle(Event: TEvent);
+begin
+  inherited EventHandle(Event);
+  if Parent<>nil then begin
+//    Parent.EventHandle(e);
+  end;
+
 end;
 
 { TForm1 }
