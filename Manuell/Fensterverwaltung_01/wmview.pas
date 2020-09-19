@@ -10,7 +10,7 @@ uses
 type
 
   TEvent = record
-    State: (Mouse, KeyPress, cm);
+    State: (Mouse, KeyPress, cm, Repaint);
     Command: integer;
   end;
 
@@ -36,6 +36,7 @@ type
     constructor Create; virtual;
     destructor Destroy; override;
     procedure Insert(AView: TView);
+    procedure Delete(AView: TView);
 
     function MouseDown(x, y: integer): boolean; virtual;
     procedure MouseMove(Shift: TShiftState; X, Y: integer); virtual;
@@ -51,9 +52,10 @@ type
 const
   TitelBarSize = 20;
   minWinSize = 50;
+  cmClose = 1;
 
-var
-  Panel: TPanel;
+//var
+//  Panel: TPanel;
 
 implementation
 
@@ -100,6 +102,18 @@ begin
   System.Insert(AView, View, 0);
 end;
 
+procedure TView.Delete(AView: TView);
+var
+  i: integer = 0;
+begin
+  if Length(View) > 0 then begin
+    View[0].Free;
+    WriteLn(Length(View));
+    system.Delete(View, 0, 1);
+    WriteLn(Length(View));
+  end;
+end;
+
 function TView.calcOfs: TPoint;
 var
   v: TView;
@@ -118,6 +132,7 @@ var
   i: integer;
   v: TView;
   p: TPoint;
+  ev: TEvent;
 begin
   p := calcOfs;
 
@@ -133,9 +148,11 @@ begin
     if View[i].MouseDown(X, Y) then begin
       if i <> 0 then begin
         v := View[i];
-        Delete(View, i, 1);
+        system.Delete(View, i, 1);
         system.Insert(v, View, 0);
-        Panel.Repaint;
+        ev.State := Repaint;
+        EventHandle(ev);
+        //        Panel.Repaint;
       end;
       Exit;
     end else begin
@@ -209,4 +226,3 @@ begin
 end;
 
 end.
-

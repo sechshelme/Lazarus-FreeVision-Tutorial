@@ -14,13 +14,14 @@ type
 
   TDesktop = class(TView)
     constructor Create; override;
+    procedure EventHandle(Event: TEvent); override;
   end;
 
   { TMyDialog }
 
   TMyDialog = class(TDialog)
   private
-    btn0, btn1, btn2: TButton;
+    btnClose, btn0, btn1, btn2: TButton;
   public
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
@@ -42,6 +43,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormPaint(Sender: TObject);
+    procedure FormResize(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
     procedure Panel1MouseDown(Sender: TObject; WMButton: TMouseButton; Shift: TShiftState; X, Y: integer);
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
@@ -62,6 +64,9 @@ const
   cmBtn0 = 1000;
   cmBtn1 = 1001;
   cmBtn2 = 1002;
+
+const
+  rand = 40;
 
 { TMyDialog }
 
@@ -86,13 +91,17 @@ begin
   btn2.Caption := 'btn2';
   btn2.Command := cmBtn2;
   Self.Insert(btn2);
+
+  btnClose := TButton.Create;
+  btnClose.Assign(160, 40, 220, 60);
+  btnClose.Caption := 'Close';
+  btnClose.Command := cmClose;
+  Self.Insert(btnClose);
 end;
 
 procedure TMyDialog.EventHandle(Event: TEvent);
 begin
-  inherited EventHandle(Event);
-
-  if Event.State = Mouse then begin
+  if Event.State = cm then begin
     case Event.Command of
       cmBtn0: begin
         WriteLn('Button 0 gedrückt');
@@ -102,9 +111,13 @@ begin
       end;
       cmBtn2: begin
         WriteLn('Button 2 gedrückt');
+      end else  begin
+//         if Parent<>nil;
       end;
     end;
   end;
+
+  inherited EventHandle(Event);
 end;
 
 { TDesktop }
@@ -112,6 +125,23 @@ end;
 constructor TDesktop.Create;
 begin
   inherited Create;
+end;
+
+procedure TDesktop.EventHandle(Event: TEvent);
+begin
+  inherited EventHandle(Event);
+  case Event.State of
+    Repaint: begin
+      Draw;
+      DrawBitmap(Form1.Panel1.Canvas);
+    end;
+    cm: begin
+      WriteLn('close');
+      Delete(nil);
+      Draw;
+      DrawBitmap(Form1.Panel1.Canvas);
+    end;
+  end;
 end;
 
 { TForm1 }
@@ -157,11 +187,9 @@ var
   win: TWindow;
   Dialog: TMyDialog;
   l, r: integer;
-const
-  rand = 40;
 begin
   Panel1.DoubleBuffered := True;
-  Panel := Panel1;
+  //  Panel := Panel1;
   Randomize;
 
   Desktop := TDesktop.Create;
@@ -171,7 +199,7 @@ begin
 
   for i := 0 to 19 do begin
     win := TWindow.Create;
-    with Panel do begin
+    with Panel1 do begin
       l := Random(Width);
       r := Random(Height);
 
@@ -197,13 +225,23 @@ end;
 procedure TForm1.FormPaint(Sender: TObject);
 var
   i: integer;
+  ev: TEvent;
 begin
+  //      Panel.Refresh;
+  ev.State := WMView.Repaint;
+  Desktop.EventHandle(ev);
 
   //  for i := 1 to 10 do begin
-//    Panel1.Canvas.Line(i * 100, 0, i * 100, Panel1.Height);
-//  end;
-  Desktop.Draw;
-  Desktop.DrawBitmap(Panel1.Canvas);
+  //    Panel1.Canvas.Line(i * 100, 0, i * 100, Panel1.Height);
+  //  end;
+end;
+
+procedure TForm1.FormResize(Sender: TObject);
+begin
+  Desktop.Assign(rand, rand, Panel1.Width - rand, Panel1.Height - rand);
+  //  ev.State:=WMView.Repaint;
+  //Desktop.EventHandle(ev);
+
 end;
 
 procedure TForm1.Panel1Click(Sender: TObject);

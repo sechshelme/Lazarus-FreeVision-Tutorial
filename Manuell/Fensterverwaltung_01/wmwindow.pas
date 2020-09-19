@@ -47,6 +47,8 @@ begin
 end;
 
 procedure TWindow.MouseMove(Shift: TShiftState; X, Y: integer);
+var
+  ev: TEvent;
 begin
   if ssLeft in Shift then begin
     if isDown then begin
@@ -56,7 +58,9 @@ begin
       if isResize then begin
         Self.Resize(X - MousePos.X, Y - MousePos.Y);
       end;
-      Panel.Refresh;
+      ev.State := Repaint;
+      //      Panel.Refresh;
+      EventHandle(ev);
       MousePos.X := x;
       MousePos.Y := y;
     end;

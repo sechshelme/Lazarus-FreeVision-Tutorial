@@ -41,7 +41,7 @@ begin
 //    Color := Random($FFFFFF);
 //    Panel.Repaint;
 
-    ev.State := Mouse;
+    ev.State := cm;
     ev.Command := FCommand;
     EventHandle(ev);
   end;
