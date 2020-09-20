@@ -51,7 +51,7 @@ var
   ev: TEvent;
 begin
   if ssLeft in Shift then begin
-    if isDown then begin
+    if isMouseDown then begin
       if isMoveable then begin
         Self.Move(X - MousePos.X, Y - MousePos.Y);
       end;
@@ -65,7 +65,7 @@ begin
       MousePos.Y := y;
     end;
   end else begin
-    isDown := False;
+    isMouseDown := False;
     isMoveable := False;
     isResize := False;
   end;

@@ -24,7 +24,7 @@ type
     FCaption: string;
     FColor: TColor;
     MousePos: TPoint;
-    isDown: boolean;
+    isMouseDown: boolean;
     Parent: TView;
     View: array of TView;
     procedure SetCaption(AValue: string);
@@ -38,6 +38,7 @@ type
     procedure Insert(AView: TView);
     procedure Delete(AView: TView);
 
+    function IsMousInView(x, y: integer): boolean; virtual;
     function MouseDown(x, y: integer): boolean; virtual;
     procedure MouseMove(Shift: TShiftState; X, Y: integer); virtual;
 
@@ -81,7 +82,7 @@ constructor TView.Create;
 begin
   inherited Create;
   Parent := nil;
-  isDown := False;
+  isMouseDown := False;
   Bitmap := TBitmap.Create;
 end;
 
@@ -127,33 +128,41 @@ begin
   end;
 end;
 
-function TView.MouseDown(x, y: integer): boolean;
+function TView.IsMousInView(x, y: integer): boolean;
 var
-  i: integer;
-  v: TView;
   p: TPoint;
-  ev: TEvent;
 begin
   p := calcOfs;
 
   with ViewRect do begin
     Result := (x >= p.X) and (y >= p.Y) and (x <= p.X + Width) and (y <= p.Y + Height);
   end;
-  isDown := Result;
+  isMouseDown:=Result;
+end;
+
+function TView.MouseDown(x, y: integer): boolean;
+var
+  i: integer;
+  v: TView;
+  ev: TEvent;
+begin
+  Result := IsMousInView(x, y);
+//  isMouseDown := Result;
   MousePos.X := x;
   MousePos.Y := y;
 
   i := 0;
   while i < Length(View) do begin
-    if View[i].MouseDown(X, Y) then begin
+    if View[i].IsMousInView(X, Y) then begin
       if i <> 0 then begin
         v := View[i];
         system.Delete(View, i, 1);
         system.Insert(v, View, 0);
         ev.State := Repaint;
         EventHandle(ev);
-        //        Panel.Repaint;
       end;
+      View[i].MouseDown(x, y);
+
       Exit;
     end else begin
       Inc(i);

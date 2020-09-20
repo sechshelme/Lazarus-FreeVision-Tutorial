@@ -111,8 +111,8 @@ begin
       end;
       cmBtn2: begin
         WriteLn('Button 2 gedrückt');
-      end else  begin
-//         if Parent<>nil;
+      end else begin
+        //         if Parent<>nil;
       end;
     end;
   end;
@@ -136,10 +136,12 @@ begin
       DrawBitmap(Form1.Panel1.Canvas);
     end;
     cm: begin
-      WriteLn('close');
-      Delete(nil);
-      Draw;
-      DrawBitmap(Form1.Panel1.Canvas);
+      if Event.Command = cmClose then begin
+        WriteLn('close');
+        Delete(nil);
+        Draw;
+        DrawBitmap(Form1.Panel1.Canvas);
+      end;
     end;
   end;
 end;

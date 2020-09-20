@@ -37,9 +37,13 @@ var
   ev: TEvent;
 begin
   Result := inherited MouseDown(x, y);
-  if Result then begin
-//    Color := Random($FFFFFF);
-//    Panel.Repaint;
+
+
+//  if Result then begin
+    if IsMousInView(x,y) then begin
+    Color := Random($FFFFFF);
+    ev.State := Repaint;
+    EventHandle(ev);
 
     ev.State := cm;
     ev.Command := FCommand;
