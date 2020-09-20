@@ -47,6 +47,7 @@ type
     procedure Panel1Click(Sender: TObject);
     procedure Panel1MouseDown(Sender: TObject; WMButton: TMouseButton; Shift: TShiftState; X, Y: integer);
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
+    procedure Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
   private
     //    Views: array of TView;
     Desktop: TView;
@@ -101,8 +102,8 @@ end;
 
 procedure TMyDialog.EventHandle(Event: TEvent);
 begin
-  if Event.State = cm then begin
-    case Event.Command of
+  if Event.What = wh then begin
+    case Event.Value0 of
       cmBtn0: begin
         WriteLn('Button 0 gedrückt');
       end;
@@ -130,14 +131,13 @@ end;
 procedure TDesktop.EventHandle(Event: TEvent);
 begin
   inherited EventHandle(Event);
-  case Event.State of
-    Repaint: begin
+  case Event.What of
+    whRepaint: begin
       Draw;
       DrawBitmap(Form1.Panel1.Canvas);
     end;
-    cm: begin
-      if Event.Command = cmClose then begin
-        WriteLn('close');
+    wh: begin
+      if Event.Value0 = cmClose then begin
         Delete(nil);
         Draw;
         DrawBitmap(Form1.Panel1.Canvas);
@@ -229,8 +229,7 @@ var
   i: integer;
   ev: TEvent;
 begin
-  //      Panel.Refresh;
-  ev.State := WMView.Repaint;
+  ev.What := WMView.whRepaint;
   Desktop.EventHandle(ev);
 
   //  for i := 1 to 10 do begin
@@ -241,9 +240,6 @@ end;
 procedure TForm1.FormResize(Sender: TObject);
 begin
   Desktop.Assign(rand, rand, Panel1.Width - rand, Panel1.Height - rand);
-  //  ev.State:=WMView.Repaint;
-  //Desktop.EventHandle(ev);
-
 end;
 
 procedure TForm1.Panel1Click(Sender: TObject);
@@ -258,6 +254,11 @@ end;
 procedure TForm1.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
 begin
   Desktop.MouseMove(Shift, X, Y);
+end;
+
+procedure TForm1.Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+begin
+  Desktop.MouseUp(X, Y);
 end;
 
 end.

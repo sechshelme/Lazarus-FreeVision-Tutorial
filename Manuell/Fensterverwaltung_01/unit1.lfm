@@ -22,6 +22,7 @@ object Form1: TForm1
     OnClick = Panel1Click
     OnMouseDown = Panel1MouseDown
     OnMouseMove = Panel1MouseMove
+    OnMouseUp = Panel1MouseUp
     OnPaint = FormPaint
   end
   object Buttonminus: TButton

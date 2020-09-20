@@ -10,8 +10,8 @@ uses
 type
 
   TEvent = record
-    State: (Mouse, KeyPress, cm, Repaint);
-    Command: integer;
+    What: (whMouse, whKeyPress, wh, whRepaint);
+    Value0: integer;
   end;
 
   { TView }
@@ -39,8 +39,9 @@ type
     procedure Delete(AView: TView);
 
     function IsMousInView(x, y: integer): boolean; virtual;
-    function MouseDown(x, y: integer): boolean; virtual;
+    procedure MouseDown(x, y: integer); virtual;
     procedure MouseMove(Shift: TShiftState; X, Y: integer); virtual;
+    procedure MouseUp(x, y: integer); virtual;
 
     procedure Assign(AX, AY, BX, BY: integer);
     procedure Move(x, y: integer); virtual;
@@ -137,17 +138,15 @@ begin
   with ViewRect do begin
     Result := (x >= p.X) and (y >= p.Y) and (x <= p.X + Width) and (y <= p.Y + Height);
   end;
-  isMouseDown:=Result;
 end;
 
-function TView.MouseDown(x, y: integer): boolean;
+procedure TView.MouseDown(x, y: integer);
 var
   i: integer;
   v: TView;
   ev: TEvent;
 begin
-  Result := IsMousInView(x, y);
-//  isMouseDown := Result;
+  isMouseDown := IsMousInView(x, y);
   MousePos.X := x;
   MousePos.Y := y;
 
@@ -158,15 +157,13 @@ begin
         v := View[i];
         system.Delete(View, i, 1);
         system.Insert(v, View, 0);
-        ev.State := Repaint;
+        ev.What := whRepaint;
         EventHandle(ev);
       end;
-      View[i].MouseDown(x, y);
-
+      View[0].MouseDown(x, y);
       Exit;
-    end else begin
-      Inc(i);
     end;
+    Inc(i);
   end;
 end;
 
@@ -175,6 +172,11 @@ begin
   if Length(View) > 0 then begin
     View[0].MouseMove(Shift, X, Y);
   end;
+end;
+
+procedure TView.MouseUp(x, y: integer);
+begin
+  isMouseDown := False;
 end;
 
 procedure TView.Assign(AX, AY, BX, BY: integer);
