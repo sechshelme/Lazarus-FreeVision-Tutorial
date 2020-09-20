@@ -110,9 +110,9 @@ var
 begin
   if Length(View) > 0 then begin
     View[0].Free;
-    WriteLn(Length(View));
+//    WriteLn(Length(View));
     system.Delete(View, 0, 1);
-    WriteLn(Length(View));
+//    WriteLn(Length(View));
   end;
 end;
 
