@@ -54,14 +54,23 @@ begin
         EventHandle(ev);
       end;
       MouseUp: begin
+        Color := clYellow;
+        ev.What := whRepaint;
+        EventHandle(ev);
         if IsMousInView(x, y) then begin
           ev.What := whcmCommand;
           ev.Value0 := FCommand;
           EventHandle(ev);
         end;
-        Color := clYellow;
-//        ev.What := whRepaint;
-//        EventHandle(ev);
+      end;
+      MouseMove: begin
+        if IsMousInView(x, y) then begin
+          Color := clGray;
+        end else begin
+          Color := clYellow;
+        end;
+        ev.What := whRepaint;
+        EventHandle(ev);
       end;
     end;
   end;
