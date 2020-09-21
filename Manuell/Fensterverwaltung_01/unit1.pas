@@ -143,6 +143,18 @@ begin
         DrawBitmap(Form1.Panel1.Canvas);
       end;
     end;
+
+
+    //whMouse: begin
+    //  case Event.Value0 of
+    //    MouseDown: begin
+    //      WriteLn('d');
+    //    end;
+    //    MouseUp: begin
+    //      WriteLn('u');
+    //    end;
+    //  end;
+    //end;
   end;
 end;
 
@@ -247,13 +259,17 @@ begin
 end;
 
 procedure TForm1.Panel1MouseDown(Sender: TObject; WMButton: TMouseButton; Shift: TShiftState; X, Y: integer);
-var
-  Sh: integer;
 begin
   if ssLeft in Shift then begin
     Desktop.EventHandle(getMouseCommand(WMView.MouseDown, x, y));
   end;
-  //  Desktop.MouseDown(X, Y);
+end;
+
+procedure TForm1.Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+begin
+//  if ssLeft in Shift then begin
+    Desktop.EventHandle(getMouseCommand(WMView.MouseUp, x, y));
+//  end;
 end;
 
 procedure TForm1.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
@@ -261,15 +277,6 @@ begin
   if ssLeft in Shift then begin
     Desktop.EventHandle(getMouseCommand(WMView.MouseMove, x, y));
   end;
-  //  Desktop.MouseMove(Shift, X, Y);
-end;
-
-procedure TForm1.Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
-begin
-  if ssLeft in Shift then begin
-    Desktop.EventHandle(getMouseCommand(WMView.MouseUp, x, y));
-  end;
-  //  Desktop.MouseUp(X, Y);
 end;
 
 end.

@@ -17,9 +17,6 @@ type
     isMoveable, isResize: boolean;
   public
     constructor Create; override;
-    //procedure MouseDown(x, y: integer); override;
-    //procedure MouseMove(Shift: TShiftState; X, Y: integer); override;
-    //procedure MouseUp(x, y: integer); override;
     procedure EventHandle(Event: TEvent); override;
     procedure Draw; override;
   end;
@@ -35,50 +32,6 @@ begin
   isMoveable := False;
   isResize := False;
 end;
-
-//procedure TWindow.MouseDown(x, y: integer);
-//var
-//  p: TPoint;
-//begin
-//  inherited MouseDown(x, y);
-//
-//  p := calcOfs;
-//  isMoveable := y < p.Y + TitelBarSize;
-//  isResize := (x > p.X + ViewRect.Width - TitelBarSize) and (y > p.Y + ViewRect.Height - TitelBarSize);
-//end;
-//
-//procedure TWindow.MouseMove(Shift: TShiftState; X, Y: integer);
-//var
-//  ev: TEvent;
-//begin
-//  if ssLeft in Shift then begin
-//    if isMouseDown then begin
-//      if isMoveable then begin
-//        Self.Move(X - MousePos.X, Y - MousePos.Y);
-//      end;
-//      if isResize then begin
-//        Self.Resize(X - MousePos.X, Y - MousePos.Y);
-//      end;
-//      ev.What := whRepaint;
-//      EventHandle(ev);
-//      MousePos.X := x;
-//      MousePos.Y := y;
-//    end;
-//  end else begin
-//    isMouseDown := False;
-//  end;
-//
-//  if Length(View) > 0 then begin
-//    //    View[0].MouseMove(Shift, X, Y);
-//  end;
-//end;
-//
-//procedure TWindow.MouseUp(x, y: integer);
-//begin
-//  inherited MouseUp(x, y);
-//  isMoveable := False;
-//  isResize := False;
-//end;
 
 procedure TWindow.EventHandle(Event: TEvent);
 var
@@ -121,12 +74,9 @@ begin
           //    View[0].MouseMove(Shift, X, Y);
         end;
 
-
       end;
-
     end;
   end;
-
 end;
 
 procedure TWindow.Draw;
