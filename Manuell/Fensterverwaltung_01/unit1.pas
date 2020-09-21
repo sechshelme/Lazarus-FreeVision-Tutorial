@@ -102,7 +102,7 @@ end;
 
 procedure TMyDialog.EventHandle(Event: TEvent);
 begin
-  if Event.What = wh then begin
+  if Event.What = whcmCommand then begin
     case Event.Value0 of
       cmBtn0: begin
         WriteLn('Button 0 gedrückt');
@@ -136,7 +136,7 @@ begin
       Draw;
       DrawBitmap(Form1.Panel1.Canvas);
     end;
-    wh: begin
+    whcmCommand: begin
       if Event.Value0 = cmClose then begin
         Delete(nil);
         Draw;
@@ -247,18 +247,29 @@ begin
 end;
 
 procedure TForm1.Panel1MouseDown(Sender: TObject; WMButton: TMouseButton; Shift: TShiftState; X, Y: integer);
+var
+  Sh: integer;
 begin
-  Desktop.MouseDown(X, Y);
+  if ssLeft in Shift then begin
+    Desktop.EventHandle(getMouseCommand(WMView.MouseDown, x, y));
+  end;
+  //  Desktop.MouseDown(X, Y);
 end;
 
 procedure TForm1.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
 begin
-  Desktop.MouseMove(Shift, X, Y);
+  if ssLeft in Shift then begin
+    Desktop.EventHandle(getMouseCommand(WMView.MouseMove, x, y));
+  end;
+  //  Desktop.MouseMove(Shift, X, Y);
 end;
 
 procedure TForm1.Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
 begin
-  Desktop.MouseUp(X, Y);
+  if ssLeft in Shift then begin
+    Desktop.EventHandle(getMouseCommand(WMView.MouseUp, x, y));
+  end;
+  //  Desktop.MouseUp(X, Y);
 end;
 
 end.

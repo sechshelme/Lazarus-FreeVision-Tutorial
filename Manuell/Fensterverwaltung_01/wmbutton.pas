@@ -17,7 +17,7 @@ type
   public
     property Command: integer read FCommand write FCommand;
     constructor Create; override;
-    procedure MouseDown(x, y: integer); override;
+//    procedure MouseDown(x, y: integer); override;
     procedure Draw; override;
     procedure EventHandle(Event: TEvent); override;
   end;
@@ -32,22 +32,22 @@ begin
   Color := clYellow;
 end;
 
-procedure TButton.MouseDown(x, y: integer);
-var
-  ev: TEvent;
-begin
-  inherited MouseDown(x, y);
-
-  if isMouseDown then begin
-//    Color := Random($FFFFFF);
-//    ev.What := whRepaint;
+//procedure TButton.MouseDown(x, y: integer);
+//var
+//  ev: TEvent;
+//begin
+//  inherited MouseDown(x, y);
+//
+//  if isMouseDown then begin
+////    Color := Random($FFFFFF);
+////    ev.What := whRepaint;
+////    EventHandle(ev);
+//
+//    ev.What := whcmCommand;
+//    ev.Value0 := FCommand;
 //    EventHandle(ev);
-
-    ev.What := wh;
-    ev.Value0 := FCommand;
-    EventHandle(ev);
-  end;
-end;
+//  end;
+//end;
 
 procedure TButton.Draw;
 begin
@@ -56,8 +56,18 @@ begin
 end;
 
 procedure TButton.EventHandle(Event: TEvent);
+var
+  ev: TEvent;
 begin
   inherited EventHandle(Event);
+
+  if Event.What=whMouse then begin
+    if Event.Value0=MouseDown then begin
+      ev.What := whcmCommand;
+      ev.Value0 := FCommand;
+      EventHandle(ev);
+    end;
+  end;
 end;
 
 end.

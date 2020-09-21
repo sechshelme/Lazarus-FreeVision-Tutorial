@@ -7,11 +7,16 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls;
 
+const
+  MouseDown = 0;
+  MouseUp = 1;
+  MouseMove = 2;
+
 type
 
   TEvent = record
-    What: (whMouse, whKeyPress, wh, whRepaint);
-    Value0: integer;
+    What: (whMouse, whKeyPress, whcmCommand, whRepaint);
+    Value0, Value1, Value2, Value3: PtrInt;
   end;
 
   { TView }
@@ -39,9 +44,9 @@ type
     procedure Delete(AView: TView);
 
     function IsMousInView(x, y: integer): boolean; virtual;
-    procedure MouseDown(x, y: integer); virtual;
-    procedure MouseMove(Shift: TShiftState; X, Y: integer); virtual;
-    procedure MouseUp(x, y: integer); virtual;
+    //    procedure MouseDown(x, y: integer); virtual;
+    //    procedure MouseMove(Shift: TShiftState; X, Y: integer); virtual;
+    //    procedure MouseUp(x, y: integer); virtual;
 
     procedure Assign(AX, AY, BX, BY: integer);
     procedure Move(x, y: integer); virtual;
@@ -59,7 +64,18 @@ const
 //var
 //  Panel: TPanel;
 
+function getMouseCommand(Command, x, y: PtrInt): TEvent;
+
 implementation
+
+function getMouseCommand(Command, x, y: PtrInt): TEvent;
+begin
+  Result.What := whMouse;
+  Result.Value0 := Command;
+  Result.Value1 := x;
+  Result.Value2 := y;
+  Result.Value3 := 0;
+end;
 
 { TView }
 
@@ -110,9 +126,9 @@ var
 begin
   if Length(View) > 0 then begin
     View[0].Free;
-//    WriteLn(Length(View));
+    //    WriteLn(Length(View));
     system.Delete(View, 0, 1);
-//    WriteLn(Length(View));
+    //    WriteLn(Length(View));
   end;
 end;
 
@@ -138,45 +154,6 @@ begin
   with ViewRect do begin
     Result := (x >= p.X) and (y >= p.Y) and (x <= p.X + Width) and (y <= p.Y + Height);
   end;
-end;
-
-procedure TView.MouseDown(x, y: integer);
-var
-  i: integer;
-  v: TView;
-  ev: TEvent;
-begin
-  isMouseDown := IsMousInView(x, y);
-  MousePos.X := x;
-  MousePos.Y := y;
-
-  i := 0;
-  while i < Length(View) do begin
-    if View[i].IsMousInView(X, Y) then begin
-      if i <> 0 then begin
-        v := View[i];
-        system.Delete(View, i, 1);
-        system.Insert(v, View, 0);
-        ev.What := whRepaint;
-        EventHandle(ev);
-      end;
-      View[0].MouseDown(x, y);
-      Exit;
-    end;
-    Inc(i);
-  end;
-end;
-
-procedure TView.MouseMove(Shift: TShiftState; X, Y: integer);
-begin
-  if Length(View) > 0 then begin
-    View[0].MouseMove(Shift, X, Y);
-  end;
-end;
-
-procedure TView.MouseUp(x, y: integer);
-begin
-  isMouseDown := False;
 end;
 
 procedure TView.Assign(AX, AY, BX, BY: integer);
@@ -229,10 +206,95 @@ begin
   c.Draw(ViewRect.Left, ViewRect.Top, Bitmap);
 end;
 
+//procedure TView.MouseDown(x, y: integer);
+//var
+//  i: integer;
+//  v: TView;
+//  ev: TEvent;
+//begin
+//  isMouseDown := IsMousInView(x, y);
+//  MousePos.X := x;
+//  MousePos.Y := y;
+//
+//  i := 0;
+//  while i < Length(View) do begin
+//    if View[i].IsMousInView(X, Y) then begin
+//      if i <> 0 then begin
+//        v := View[i];
+//        system.Delete(View, i, 1);
+//        system.Insert(v, View, 0);
+//        ev.What := whRepaint;
+//        EventHandle(ev);
+//      end;
+//      View[0].MouseDown(x, y);
+//      Exit;
+//    end;
+//    Inc(i);
+//  end;
+//end;
+//
+//procedure TView.MouseMove(Shift: TShiftState; X, Y: integer);
+//begin
+//  if Length(View) > 0 then begin
+//    View[0].MouseMove(Shift, X, Y);
+//  end;
+//end;
+//
+//procedure TView.MouseUp(x, y: integer);
+//begin
+//  isMouseDown := False;
+//end;
+
 procedure TView.EventHandle(Event: TEvent);
+var
+  x, y, i: integer;
+  v: TView;
+  ev: TEvent;
 begin
+  x := Event.Value1;
+  y := Event.Value2;
+  case Event.What of
+    whMouse: begin
+      case Event.Value0 of
+        MouseDown: begin
+          isMouseDown := IsMousInView(x, y);
+          MousePos.X := x;
+          MousePos.Y := y;
+          i := 0;
+          while i < Length(View) do begin
+            if View[i].IsMousInView(X, Y) then begin
+              if i <> 0 then begin
+                v := View[i];
+                system.Delete(View, i, 1);
+                system.Insert(v, View, 0);
+                ev.What := whRepaint;
+                EventHandle(ev);
+              end;
+              View[0].EventHandle(getMouseCommand(MouseDown,x,y));
+              Exit;
+            end;
+            Inc(i);
+          end;
+        end;
+        MouseUp: begin
+          isMouseDown := False;
+        end;
+        MouseMove: begin
+          if Length(View) > 0 then begin
+            View[0].EventHandle(getMouseCommand(MouseMove,x,y));
+          end;
+        end;
+      end;
+    end;
+    else begin
+      if Parent <> nil then begin
+        Parent.EventHandle(Event);
+      end;
+    end;
+  end;
+
   if Parent <> nil then begin
-    Parent.EventHandle(Event);
+//    Parent.EventHandle(Event);
   end;
 end;
 
