@@ -36,7 +36,7 @@ begin
   isMoveable := False;
   isResize := False;
   Client := TView.Create;
-  Client.Color:=clGray;
+  Client.Color := clGray;
   Client.Assign(5, TitelBarSize + 5, 420, 360);
   Insert(Client);
 end;
