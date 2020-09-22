@@ -16,8 +16,12 @@ type
   protected
     isMoveable, isResize: boolean;
   public
+    Client: TView;
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
+    procedure Assign(AX, AY, BX, BY: integer); override;
+    procedure Move(x, y: integer); override;
+    procedure Resize(x, y: integer); override;
     procedure Draw; override;
   end;
 
@@ -31,6 +35,10 @@ begin
   FColor := clBlue;
   isMoveable := False;
   isResize := False;
+  Client := TView.Create;
+  Client.Color:=clGray;
+  Client.Assign(5, TitelBarSize + 5, 420, 360);
+  Insert(Client);
 end;
 
 procedure TWindow.EventHandle(Event: TEvent);
@@ -77,6 +85,25 @@ begin
       end;
     end;
   end;
+end;
+
+procedure TWindow.Assign(AX, AY, BX, BY: integer);
+const
+  r = 5;
+begin
+  inherited Assign(AX, AY, BX, BY);
+  Client.Assign(r, TitelBarSize + r, ViewRect.Width - r, ViewRect.Height - r);
+end;
+
+procedure TWindow.Move(x, y: integer);
+begin
+  inherited Move(x, y);
+end;
+
+procedure TWindow.Resize(x, y: integer);
+begin
+  inherited Resize(x, y);
+  Client.Resize(x, y);
 end;
 
 procedure TWindow.Draw;

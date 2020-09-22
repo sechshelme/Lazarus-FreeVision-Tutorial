@@ -49,7 +49,7 @@ type
     function IsMousInView(x, y: integer): boolean; virtual;
     procedure EventHandle(Event: TEvent); virtual;
 
-    procedure Assign(AX, AY, BX, BY: integer);
+    procedure Assign(AX, AY, BX, BY: integer); virtual;
     procedure Move(x, y: integer); virtual;
     procedure Resize(x, y: integer); virtual;
     procedure Draw; virtual;

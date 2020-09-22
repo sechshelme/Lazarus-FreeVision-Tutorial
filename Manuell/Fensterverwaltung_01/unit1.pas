@@ -79,25 +79,25 @@ begin
   btn0.Assign(10, 40, 50, 60);
   btn0.Caption := 'btn0';
   btn0.Command := cmBtn0;
-  Self.Insert(btn0);
+  Self.Client.Insert(btn0);
 
   btn1 := TButton.Create;
   btn1.Assign(60, 40, 100, 60);
   btn1.Caption := 'btn1';
   btn1.Command := cmBtn1;
-  Self.Insert(btn1);
+  Self.Client.Insert(btn1);
 
   btn2 := TButton.Create;
   btn2.Assign(110, 40, 150, 60);
   btn2.Caption := 'btn2';
   btn2.Command := cmBtn2;
-  Self.Insert(btn2);
+  Self.Client.Insert(btn2);
 
   btnClose := TButton.Create;
   btnClose.Assign(160, 40, 220, 60);
   btnClose.Caption := 'Close';
   btnClose.Command := cmClose;
-  Self.Insert(btnClose);
+  Self.Client.Insert(btnClose);
 end;
 
 procedure TMyDialog.EventHandle(Event: TEvent);
