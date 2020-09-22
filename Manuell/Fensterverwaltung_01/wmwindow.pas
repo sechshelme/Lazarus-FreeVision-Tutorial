@@ -13,10 +13,12 @@ type
   { TWindow }
 
   TWindow = class(TView)
+  private
+    FClient: TView;
   protected
     isMoveable, isResize: boolean;
   public
-    Client: TView;
+    property Client: TView read FClient write FClient;
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
     procedure Assign(AX, AY, BX, BY: integer); override;
@@ -32,13 +34,12 @@ implementation
 constructor TWindow.Create;
 begin
   inherited Create;
-  FColor := clBlue;
+  FColor := clLtGray;
   isMoveable := False;
   isResize := False;
-  Client := TView.Create;
-  Client.Color := clGray;
-  Client.Assign(5, TitelBarSize + 5, 420, 360);
-  Insert(Client);
+  FClient := TView.Create;
+  FClient.Color := clBlue;
+  Insert(FClient);
 end;
 
 procedure TWindow.EventHandle(Event: TEvent);
@@ -64,16 +65,17 @@ begin
       MouseMove: begin
         if isMouseDown then begin
           if isMoveable then begin
-            Self.Move(X - MousePos.X, Y - MousePos.Y);
+            Move(X - MousePos.X, Y - MousePos.Y);
           end;
           if isResize then begin
-            Self.Resize(X - MousePos.X, Y - MousePos.Y);
+           Resize(X - MousePos.X, Y - MousePos.Y);
+//            Move(X - MousePos.X, 0);
+//            Resize(-(X - MousePos.X), Y - MousePos.Y);
           end;
           ev.What := whRepaint;
           EventHandle(ev);
           MousePos.X := x;
           MousePos.Y := y;
-
         end else begin
           isMouseDown := False;
         end;
@@ -88,11 +90,9 @@ begin
 end;
 
 procedure TWindow.Assign(AX, AY, BX, BY: integer);
-const
-  r = 5;
 begin
   inherited Assign(AX, AY, BX, BY);
-  Client.Assign(r, TitelBarSize + r, ViewRect.Width - r, ViewRect.Height - r);
+  Client.Assign(BorderSize, TitelBarSize, ViewRect.Width - BorderSize, ViewRect.Height - BorderSize);
 end;
 
 procedure TWindow.Move(x, y: integer);
@@ -103,28 +103,35 @@ end;
 procedure TWindow.Resize(x, y: integer);
 begin
   inherited Resize(x, y);
-  Client.Resize(x, y);
+  if FViewRect.Right - FViewRect.Left < minWinSize then begin
+    FViewRect.Right := FViewRect.Left + minWinSize;
+  end;
+  if FViewRect.Bottom - FViewRect.Top < minWinSize then begin
+    FViewRect.Bottom := FViewRect.Top + minWinSize;
+  end;
+  Client.Assign(BorderSize, TitelBarSize, ViewRect.Width - BorderSize, ViewRect.Height - BorderSize);
 end;
 
 procedure TWindow.Draw;
 var
-  w, h: integer;
+  w: integer = 0;
+  h: integer = 0;
 begin
   inherited Draw;
 
-  Bitmap.Canvas.Brush.Color := clGray;
-  Bitmap.Canvas.Rectangle(0, 0, ViewRect.Width, TitelBarSize);
+  Bitmap.Canvas.Brush.Style := bsClear;
+  Bitmap.Canvas.Brush.Color := clLtGray;
   Bitmap.Canvas.GetTextSize(Caption, w, h);
 
   with ViewRect do begin
     Bitmap.Canvas.TextOut(Width div 2 - w div 2, 2, Caption);
   end;
 
-  Bitmap.Canvas.Rectangle(ViewRect.Width - TitelBarSize, ViewRect.Height - TitelBarSize,
-    ViewRect.Width, ViewRect.Height);
-
-  Bitmap.Canvas.TextOut(ViewRect.Width - TitelBarSize + 4,
-    ViewRect.Height - TitelBarSize + 1, '⤡');
+  //Bitmap.Canvas.Rectangle(ViewRect.Width - TitelBarSize, ViewRect.Height - TitelBarSize,
+  //  ViewRect.Width, ViewRect.Height);
+  //
+  //Bitmap.Canvas.TextOut(ViewRect.Width - TitelBarSize + 4,
+  //  ViewRect.Height - TitelBarSize + 1, '⤡');
 end;
 
 end.

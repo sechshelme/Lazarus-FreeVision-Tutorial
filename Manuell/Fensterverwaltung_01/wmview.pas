@@ -26,19 +26,20 @@ type
 
   TView = class(TObject)
   private
+    procedure SetCaption(AValue: string);
+    procedure SetColor(AValue: TColor);
   protected
     Bitmap: TBitmap;
-    ViewRect: TRect;
+    FViewRect: TRect;
     FCaption: string;
     FColor: TColor;
     MousePos: TPoint;
     isMouseDown: boolean;
     Parent: TView;
     View: array of TView;
-    procedure SetCaption(AValue: string);
-    procedure SetColor(AValue: TColor);
     function calcOfs: TPoint;
   public
+    property ViewRect: TRect read FViewRect write FViewRect;
     property Caption: string read FCaption write SetCaption;
     property Color: TColor read FColor write SetColor;
     constructor Create; virtual;
@@ -57,6 +58,7 @@ type
   end;
 
 const
+  BorderSize = 5;
   TitelBarSize = 20;
   minWinSize = 50;
 
@@ -122,7 +124,7 @@ var
 begin
   if Length(View) > 0 then begin
     View[0].Free;
-    View[0]:=nil;
+    View[0] := nil;
     system.Delete(View, 0, 1);
   end;
 end;
@@ -153,10 +155,10 @@ end;
 
 procedure TView.Assign(AX, AY, BX, BY: integer);
 begin
-  ViewRect.Left := AX;
-  ViewRect.Right := BX;
-  ViewRect.Top := AY;
-  ViewRect.Bottom := BY;
+  FViewRect.Left := AX;
+  FViewRect.Right := BX;
+  FViewRect.Top := AY;
+  FViewRect.Bottom := BY;
   ViewRect.NormalizeRect;
   Bitmap.Width := ViewRect.Width;
   Bitmap.Height := ViewRect.Height;
@@ -164,22 +166,16 @@ end;
 
 procedure TView.Move(x, y: integer);
 begin
-  Inc(ViewRect.Left, x);
-  Inc(ViewRect.Right, x);
-  Inc(ViewRect.Top, y);
-  Inc(ViewRect.Bottom, y);
+  Inc(FViewRect.Left, x);
+  Inc(FViewRect.Right, x);
+  Inc(FViewRect.Top, y);
+  Inc(FViewRect.Bottom, y);
 end;
 
 procedure TView.Resize(x, y: integer);
 begin
-  Inc(ViewRect.Right, x);
-  if ViewRect.Right - ViewRect.Left < minWinSize then begin
-    ViewRect.Right := ViewRect.Left + minWinSize;
-  end;
-  Inc(ViewRect.Bottom, y);
-  if ViewRect.Bottom - ViewRect.Top < minWinSize then begin
-    ViewRect.Bottom := ViewRect.Top + minWinSize;
-  end;
+  Inc(FViewRect.Right, x);
+  Inc(FViewRect.Bottom, y);
   Bitmap.Width := ViewRect.Width;
   Bitmap.Height := ViewRect.Height;
 end;

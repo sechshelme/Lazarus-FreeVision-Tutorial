@@ -25,7 +25,7 @@ implementation
 constructor TDialog.Create;
 begin
   inherited Create;
-  FColor := clLtGray;
+  Client.Color := clGray;
 end;
 
 destructor TDialog.Destroy;

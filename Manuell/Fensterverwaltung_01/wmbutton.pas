@@ -64,7 +64,7 @@ begin
         end;
       end;
       MouseMove: begin
-        if IsMousInView(x, y) then begin
+        if isMouseDown and IsMousInView(x, y) then begin
           Color := clGray;
         end else begin
           Color := clYellow;
