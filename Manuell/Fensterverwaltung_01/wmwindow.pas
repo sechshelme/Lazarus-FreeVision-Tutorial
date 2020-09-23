@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMView;
+  WMView, WMButton;
 
 type
 
@@ -15,6 +15,7 @@ type
   TWindow = class(TView)
   private
     FClient: TView;
+    CloseBtn: TButton;
   protected
     isMoveable, isResize: boolean;
   public
@@ -37,9 +38,15 @@ begin
   FColor := clLtGray;
   isMoveable := False;
   isResize := False;
+
   FClient := TView.Create;
   FClient.Color := clBlue;
   Insert(FClient);
+
+  CloseBtn := TButton.Create;
+  CloseBtn.Caption := 'X';
+  CloseBtn.Command := cmClose;
+  Insert(CloseBtn);
 end;
 
 procedure TWindow.EventHandle(Event: TEvent);
@@ -55,8 +62,12 @@ begin
     case Event.Value0 of
       MouseDown: begin
         p := calcOfs;
-        isMoveable := y < p.Y + TitelBarSize;
-        isResize := (x > p.X + ViewRect.Width - TitelBarSize) and (y > p.Y + ViewRect.Height - TitelBarSize);
+        if CloseBtn.IsMousInView(x, y) then begin
+          isMouseDown := False;
+        end else begin
+          isMoveable := y < p.Y + TitelBarSize;
+          isResize := (x > p.X + ViewRect.Width - TitelBarSize) and (y > p.Y + ViewRect.Height - TitelBarSize);
+        end;
       end;
       MouseUp: begin
         isMoveable := False;
@@ -68,9 +79,9 @@ begin
             Move(X - MousePos.X, Y - MousePos.Y);
           end;
           if isResize then begin
-           Resize(X - MousePos.X, Y - MousePos.Y);
-//            Move(X - MousePos.X, 0);
-//            Resize(-(X - MousePos.X), Y - MousePos.Y);
+            Resize(X - MousePos.X, Y - MousePos.Y);
+            //            Move(X - MousePos.X, 0);
+            //            Resize(-(X - MousePos.X), Y - MousePos.Y);
           end;
           ev.What := whRepaint;
           EventHandle(ev);
@@ -93,6 +104,7 @@ procedure TWindow.Assign(AX, AY, BX, BY: integer);
 begin
   inherited Assign(AX, AY, BX, BY);
   Client.Assign(BorderSize, TitelBarSize, ViewRect.Width - BorderSize, ViewRect.Height - BorderSize);
+  CloseBtn.Assign(ViewRect.Width - TitelBarSize + BorderSize, BorderSize, ViewRect.Width - BorderSize, TitelBarSize - BorderSize);
 end;
 
 procedure TWindow.Move(x, y: integer);
@@ -110,6 +122,9 @@ begin
     FViewRect.Bottom := FViewRect.Top + minWinSize;
   end;
   Client.Assign(BorderSize, TitelBarSize, ViewRect.Width - BorderSize, ViewRect.Height - BorderSize);
+  CloseBtn.Assign(ViewRect.Width - TitelBarSize + BorderSize, BorderSize, ViewRect.Width - BorderSize, TitelBarSize - BorderSize);
+  //  CloseBtn.ViewRect.Left := CloseBtn.ViewRect.Left + x;
+//    ViewRect.Left := ViewRect.Left + x;
 end;
 
 procedure TWindow.Draw;
