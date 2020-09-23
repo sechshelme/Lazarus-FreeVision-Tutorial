@@ -58,8 +58,8 @@ type
   end;
 
 const
-  BorderSize = 5;
-  TitelBarSize = 24;
+  BorderSize = 7;
+  TitelBarSize = BorderSize*5;
   minWinSize = 50;
 
 function getMouseCommand(Command, x, y: PtrInt): TEvent;

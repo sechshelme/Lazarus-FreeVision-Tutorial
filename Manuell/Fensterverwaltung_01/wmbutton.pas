@@ -32,9 +32,15 @@ begin
 end;
 
 procedure TButton.Draw;
+var
+  w, h: integer;
 begin
   inherited Draw;
-  Bitmap.Canvas.TextOut(3, 1, Caption);
+  Bitmap.Canvas.GetTextSize(Caption, w, h);
+
+  with ViewRect do begin
+    Bitmap.Canvas.TextOut(Width div 2 - w div 2, 2, Caption);
+  end;
 end;
 
 procedure TButton.EventHandle(Event: TEvent);
@@ -77,5 +83,4 @@ begin
 end;
 
 end.
-
 

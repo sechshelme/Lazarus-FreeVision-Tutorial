@@ -17,7 +17,7 @@ type
     FClient: TView;
     CloseBtn: TButton;
   protected
-    isMoveable, isResize: boolean;
+    isMoveable, isResizeLeft, isResizeTop, isResizeRight, isResizeBottom: boolean;
   public
     property Client: TView read FClient write FClient;
     constructor Create; override;
@@ -37,10 +37,13 @@ begin
   inherited Create;
   FColor := clLtGray;
   isMoveable := False;
-  isResize := False;
+  isResizeLeft := False;
+  isResizeTop := False;
+  isResizeRight := False;
+  isResizeBottom := False;
 
   FClient := TView.Create;
-  FClient.Color := clBlue;
+  FClient.Color := clWhite;
   Insert(FClient);
 
   CloseBtn := TButton.Create;
@@ -59,30 +62,60 @@ begin
   x := Event.Value1;
   y := Event.Value2;
   if Event.What = whMouse then begin
+    p := calcOfs;
     case Event.Value0 of
       MouseDown: begin
-        p := calcOfs;
         if CloseBtn.IsMousInView(x, y) then begin
           isMouseDown := False;
         end else begin
-          isMoveable := y < p.Y + TitelBarSize;
-          isResize := (x > p.X + ViewRect.Width - TitelBarSize) and (y > p.Y + ViewRect.Height - TitelBarSize);
+          isMoveable := (x > p.X + BorderSize) and (x < p.X + ViewRect.Width - TitelBarSize) and (y > p.Y + BorderSize) and (y < p.Y + TitelBarSize - BorderSize);
+
+          isResizeLeft := x < p.x + BorderSize;
+          isResizeTop := y < p.y + BorderSize;
+          isResizeRight := x > p.X + ViewRect.Width - BorderSize;
+          isResizeBottom := y > p.Y + ViewRect.Height - BorderSize;
         end;
       end;
       MouseUp: begin
         isMoveable := False;
-        isResize := False;
+        isResizeLeft := False;
+        isResizeTop := False;
+        isResizeRight := False;
+        isResizeBottom := False;
       end;
       MouseMove: begin
         if isMouseDown then begin
           if isMoveable then begin
             Move(X - MousePos.X, Y - MousePos.Y);
           end;
-          if isResize then begin
-            Resize(X - MousePos.X, Y - MousePos.Y);
-            //            Move(X - MousePos.X, 0);
-            //            Resize(-(X - MousePos.X), Y - MousePos.Y);
+
+          if isResizeLeft then begin
+            if x > p.X + ViewRect.Width - minWinSize then begin
+              x := p.X + ViewRect.Width - minWinSize;
+            end;
+            Move(x - MousePos.X, 0);
+            Resize(-(x - MousePos.X), 0);
           end;
+          if isResizeTop then begin
+            if y > p.Y + ViewRect.Height - minWinSize then begin
+              y := p.Y + ViewRect.Height - minWinSize;
+            end;
+            Move(0, y - MousePos.Y);
+            Resize(0, -(y - MousePos.Y));
+          end;
+          if isResizeRight then begin
+            if x < p.X + minWinSize then begin
+              x := p.X + minWinSize;
+            end;
+            Resize(x - MousePos.X, 0);
+          end;
+          if isResizeBottom then begin
+            if y < p.Y + minWinSize then begin
+              y := p.Y + minWinSize;
+            end;
+            Resize(0, y - MousePos.Y);
+          end;
+
           ev.What := whRepaint;
           EventHandle(ev);
           MousePos.X := x;
@@ -115,16 +148,8 @@ end;
 procedure TWindow.Resize(x, y: integer);
 begin
   inherited Resize(x, y);
-  if FViewRect.Right - FViewRect.Left < minWinSize then begin
-    FViewRect.Right := FViewRect.Left + minWinSize;
-  end;
-  if FViewRect.Bottom - FViewRect.Top < minWinSize then begin
-    FViewRect.Bottom := FViewRect.Top + minWinSize;
-  end;
   Client.Assign(BorderSize, TitelBarSize, ViewRect.Width - BorderSize, ViewRect.Height - BorderSize);
   CloseBtn.Assign(ViewRect.Width - TitelBarSize + BorderSize, BorderSize, ViewRect.Width - BorderSize, TitelBarSize - BorderSize);
-  //  CloseBtn.ViewRect.Left := CloseBtn.ViewRect.Left + x;
-//    ViewRect.Left := ViewRect.Left + x;
 end;
 
 procedure TWindow.Draw;
@@ -135,18 +160,13 @@ begin
   inherited Draw;
 
   Bitmap.Canvas.Brush.Style := bsClear;
-  Bitmap.Canvas.Brush.Color := clLtGray;
+  Bitmap.Canvas.Brush.Color := clSkyBlue;
+  Bitmap.Canvas.Rectangle(BorderSize, BorderSize, ViewRect.Width - TitelBarSize, TitelBarSize - BorderSize);
   Bitmap.Canvas.GetTextSize(Caption, w, h);
 
   with ViewRect do begin
-    Bitmap.Canvas.TextOut(Width div 2 - w div 2, 2, Caption);
+    Bitmap.Canvas.TextOut(Width div 2 - w div 2, BorderSize + 2, Caption);
   end;
-
-  //Bitmap.Canvas.Rectangle(ViewRect.Width - TitelBarSize, ViewRect.Height - TitelBarSize,
-  //  ViewRect.Width, ViewRect.Height);
-  //
-  //Bitmap.Canvas.TextOut(ViewRect.Width - TitelBarSize + 4,
-  //  ViewRect.Height - TitelBarSize + 1, '⤡');
 end;
 
 end.
