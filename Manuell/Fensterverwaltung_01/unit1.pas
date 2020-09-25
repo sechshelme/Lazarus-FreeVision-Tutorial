@@ -6,16 +6,9 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMView, WMButton, WMWindow, WMDialog;
+  WMView, WMButton, WMWindow, WMDialog,WMDesktop;
 
 type
-
-  { TDesktop }
-
-  TDesktop = class(TView)
-    constructor Create; override;
-    procedure EventHandle(Event: TEvent); override;
-  end;
 
   { TMyDialog }
 
@@ -26,6 +19,15 @@ type
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
   end;
+
+  { TApplication }
+
+  TApplication=Class(TView)
+    private  Desktop:TDesktop;
+      public
+    constructor Create; override;
+  end;
+
 
 
 
@@ -68,6 +70,13 @@ const
 
 const
   rand = 40;
+
+{ TApplication }
+
+constructor TApplication.Create;
+begin
+  inherited Create;
+end;
 
 { TMyDialog }
 
@@ -119,43 +128,6 @@ begin
   end;
 
   inherited EventHandle(Event);
-end;
-
-{ TDesktop }
-
-constructor TDesktop.Create;
-begin
-  inherited Create;
-end;
-
-procedure TDesktop.EventHandle(Event: TEvent);
-begin
-  inherited EventHandle(Event);
-  case Event.What of
-    whRepaint: begin
-      Draw;
-      DrawBitmap(Form1.Panel1.Canvas);
-    end;
-    whcmCommand: begin
-      if Event.Value0 = cmClose then begin
-        Delete(nil);
-        Draw;
-        DrawBitmap(Form1.Panel1.Canvas);
-      end;
-    end;
-
-
-    //whMouse: begin
-    //  case Event.Value0 of
-    //    MouseDown: begin
-    //      WriteLn('d');
-    //    end;
-    //    MouseUp: begin
-    //      WriteLn('u');
-    //    end;
-    //  end;
-    //end;
-  end;
 end;
 
 { TForm1 }
@@ -229,6 +201,7 @@ begin
   //  Dialog.Color := clGreen;
   Dialog.Caption := 'Mein Dialog';
   Desktop.Insert(Dialog);
+
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);

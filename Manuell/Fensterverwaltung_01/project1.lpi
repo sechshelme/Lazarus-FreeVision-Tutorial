@@ -31,7 +31,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="6">
+    <Units Count="7">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -64,6 +64,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="WMDialog"/>
       </Unit5>
+      <Unit6>
+        <Filename Value="wmdesktop.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WMDesktop"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
