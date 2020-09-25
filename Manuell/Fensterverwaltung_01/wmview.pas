@@ -59,7 +59,7 @@ type
 
 const
   BorderSize = 7;
-  TitelBarSize = BorderSize*5;
+  TitelBarSize = BorderSize * 5;
   minWinSize = 50;
 
 function getMouseCommand(Command, x, y: PtrInt): TEvent;
@@ -106,7 +106,9 @@ var
   i: integer;
 begin
   for i := 0 to Length(View) - 1 do begin
-    View[i].Free;
+    if View[i] <> nil then begin
+      View[i].Free;
+    end;
   end;
   Bitmap.Free;
   inherited Destroy;

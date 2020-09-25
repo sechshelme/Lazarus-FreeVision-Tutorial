@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMView, WMButton, WMWindow, WMDialog,WMDesktop;
+  WMView, WMButton, WMWindow, WMDialog, WMDesktop, WMApplication;
 
 type
 
@@ -19,17 +19,6 @@ type
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
   end;
-
-  { TApplication }
-
-  TApplication=Class(TView)
-    private  Desktop:TDesktop;
-      public
-    constructor Create; override;
-  end;
-
-
-
 
   { TForm1 }
 
@@ -51,8 +40,7 @@ type
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
     procedure Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
   private
-    //    Views: array of TView;
-    Desktop: TView;
+    App: TApplication;
   public
   end;
 
@@ -67,16 +55,6 @@ const
   cmBtn0 = 1000;
   cmBtn1 = 1001;
   cmBtn2 = 1002;
-
-const
-  rand = 40;
-
-{ TApplication }
-
-constructor TApplication.Create;
-begin
-  inherited Create;
-end;
 
 { TMyDialog }
 
@@ -178,10 +156,9 @@ begin
   //  Panel := Panel1;
   Randomize;
 
-  Desktop := TDesktop.Create;
-  Desktop.Assign(rand, rand, Panel1.Width - rand, Panel1.Height - rand);
-  Desktop.Color := clGreen;
-  Desktop.Caption := 'Desktop';
+  App := TApplication.Create;
+  App.Assign(0, 0, Panel1.Width, Panel1.Height);
+  App.Caption := 'Application';
 
   for i := 0 to 19 do begin
     win := TWindow.Create;
@@ -193,20 +170,18 @@ begin
     end;
     //    win.Color := Random($FFFFFF);
     win.Caption := 'Fenster: ' + IntToStr(i);
-    Desktop.Insert(win);
+    App.Desktop.Insert(win);
   end;
 
   Dialog := TMyDialog.Create;
   Dialog.Assign(100, 100, 400, 300);
-  //  Dialog.Color := clGreen;
   Dialog.Caption := 'Mein Dialog';
-  Desktop.Insert(Dialog);
-
+  App.Desktop.Insert(Dialog);
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
-  Desktop.Free;
+  App.Free;
 end;
 
 procedure TForm1.FormPaint(Sender: TObject);
@@ -215,7 +190,7 @@ var
   ev: TEvent;
 begin
   ev.What := WMView.whRepaint;
-  Desktop.EventHandle(ev);
+  App.EventHandle(ev);
 
   //  for i := 1 to 10 do begin
   //    Panel1.Canvas.Line(i * 100, 0, i * 100, Panel1.Height);
@@ -224,7 +199,7 @@ end;
 
 procedure TForm1.FormResize(Sender: TObject);
 begin
-  Desktop.Assign(rand, rand, Panel1.Width - rand, Panel1.Height - rand);
+  App.Assign(0, 0, Panel1.Width, Panel1.Height);
 end;
 
 procedure TForm1.Panel1Click(Sender: TObject);
@@ -234,21 +209,21 @@ end;
 procedure TForm1.Panel1MouseDown(Sender: TObject; WMButton: TMouseButton; Shift: TShiftState; X, Y: integer);
 begin
   if ssLeft in Shift then begin
-    Desktop.EventHandle(getMouseCommand(WMView.MouseDown, x, y));
+    App.EventHandle(getMouseCommand(WMView.MouseDown, x, y));
   end;
 end;
 
 procedure TForm1.Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
 begin
-//  if ssLeft in Shift then begin
-    Desktop.EventHandle(getMouseCommand(WMView.MouseUp, x, y));
-//  end;
+  //  if ssLeft in Shift then begin
+  App.EventHandle(getMouseCommand(WMView.MouseUp, x, y));
+  //  end;
 end;
 
 procedure TForm1.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
 begin
   if ssLeft in Shift then begin
-    Desktop.EventHandle(getMouseCommand(WMView.MouseMove, x, y));
+    App.EventHandle(getMouseCommand(WMView.MouseMove, x, y));
   end;
 end;
 
