@@ -37,10 +37,7 @@ var
 begin
   inherited Draw;
   Bitmap.Canvas.GetTextSize(Caption, w, h);
-
-  with ViewRect do begin
-    Bitmap.Canvas.TextOut(Width div 2 - w div 2, 2, Caption);
-  end;
+  Bitmap.Canvas.TextOut(Width div 2 - w div 2, 2, Caption);
 end;
 
 procedure TButton.EventHandle(Event: TEvent);

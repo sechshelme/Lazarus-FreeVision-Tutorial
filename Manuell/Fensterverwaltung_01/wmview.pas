@@ -29,18 +29,28 @@ type
   private
     procedure SetCaption(AValue: string);
     procedure SetColor(AValue: TColor);
+    procedure SetHeight(AValue: integer);
+    procedure SetWidth(AValue: integer);
   protected
-    Bitmap: TBitmap;
-    FViewRect: TRect;
+    FHeight: integer;
+    FLeft: integer;
+    FTop: integer;
+    FWidth: integer;
     FCaption: string;
     FColor: TColor;
+
+    Bitmap: TBitmap;
     MousePos: TPoint;
     isMouseDown: boolean;
     Parent: TView;
     View: array of TView;
     function calcOfs: TPoint;
   public
-    property ViewRect: TRect read FViewRect write FViewRect;
+    property Left: integer read FLeft write FLeft;
+    property Top: integer read FTop write FTop;
+    property Width: integer read FWidth write SetWidth;
+    property Height: integer read FHeight write SetHeight;
+
     property Caption: string read FCaption write SetCaption;
     property Color: TColor read FColor write SetColor;
     constructor Create; virtual;
@@ -94,6 +104,22 @@ begin
   FColor := AValue;
 end;
 
+procedure TView.SetWidth(AValue: integer);
+begin
+  if FWidth <> AValue then begin
+    FWidth := AValue;
+    Bitmap.Width := Width;
+  end;
+end;
+
+procedure TView.SetHeight(AValue: integer);
+begin
+  if FHeight <> AValue then begin
+    FHeight := AValue;
+    Bitmap.Height := FHeight;
+  end;
+end;
+
 constructor TView.Create;
 begin
   inherited Create;
@@ -136,11 +162,12 @@ function TView.calcOfs: TPoint;
 var
   v: TView;
 begin
-  Result := ViewRect.TopLeft;
+  Result.X := Left;
+  Result.Y := Top;
   v := Parent;
   while v <> nil do begin
-    Inc(Result.X, v.ViewRect.Left);
-    Inc(Result.Y, v.ViewRect.Top);
+    Inc(Result.X, v.Left);
+    Inc(Result.Y, v.Top);
     v := v.Parent;
   end;
 end;
@@ -151,36 +178,32 @@ var
 begin
   p := calcOfs;
 
-  with ViewRect do begin
-    Result := (x >= p.X) and (y >= p.Y) and (x <= p.X + Width) and (y <= p.Y + Height);
-  end;
+  Result := (x >= p.X) and (y >= p.Y) and (x <= p.X + Width) and (y <= p.Y + Height);
 end;
 
 procedure TView.Assign(AX, AY, BX, BY: integer);
 begin
-  FViewRect.Left := AX;
-  FViewRect.Right := BX;
-  FViewRect.Top := AY;
-  FViewRect.Bottom := BY;
-  ViewRect.NormalizeRect;
-  Bitmap.Width := ViewRect.Width;
-  Bitmap.Height := ViewRect.Height;
+  Left := AX;
+  Width := BX - AX;
+  Top := AY;
+  Height := BY - AY;
+  //  ViewRect.NormalizeRect;
+  //  Bitmap.Width := Width;
+  //  Bitmap.Height := Height;
 end;
 
 procedure TView.Move(x, y: integer);
 begin
-  Inc(FViewRect.Left, x);
-  Inc(FViewRect.Right, x);
-  Inc(FViewRect.Top, y);
-  Inc(FViewRect.Bottom, y);
+  Inc(FLeft, x);
+  Inc(FTop, y);
 end;
 
 procedure TView.Resize(x, y: integer);
 begin
-  Inc(FViewRect.Right, x);
-  Inc(FViewRect.Bottom, y);
-  Bitmap.Width := ViewRect.Width;
-  Bitmap.Height := ViewRect.Height;
+  Width := Width + x;
+  Height := Height + y;
+  //  Bitmap.Width := Width;
+  //  Bitmap.Height := Height;
 end;
 
 procedure TView.Draw;
@@ -188,7 +211,7 @@ var
   i: integer;
 begin
   Bitmap.Canvas.Brush.Color := FColor;
-  Bitmap.Canvas.Rectangle(0, 0, ViewRect.Width, ViewRect.Height);
+  Bitmap.Canvas.Rectangle(0, 0, Width, Height);
   for i := Length(View) - 1 downto 0 do begin
     View[i].Draw;
     View[i].DrawBitmap(Bitmap.Canvas);
@@ -197,7 +220,7 @@ end;
 
 procedure TView.DrawBitmap(Canvas: TCanvas);
 begin
-  Canvas.Draw(ViewRect.Left, ViewRect.Top, Bitmap);
+  Canvas.Draw(Left, Top, Bitmap);
 end;
 
 procedure TView.EventHandle(Event: TEvent);
