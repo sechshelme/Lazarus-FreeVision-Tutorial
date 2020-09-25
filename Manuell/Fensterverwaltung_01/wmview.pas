@@ -10,6 +10,7 @@ uses
 const
   cmNone = 0;
   cmClose = 1;
+  cmQuit = 2;
 
   MouseDown = 0;
   MouseUp = 1;

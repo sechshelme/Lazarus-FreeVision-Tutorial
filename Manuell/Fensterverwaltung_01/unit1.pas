@@ -14,7 +14,7 @@ type
 
   TMyDialog = class(TDialog)
   private
-    btnClose, btn0, btn1, btn2: TButton;
+    btnClose,btnQuit, btn0, btn1, btn2: TButton;
   public
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
@@ -85,6 +85,12 @@ begin
   btnClose.Caption := 'Close';
   btnClose.Command := cmClose;
   Self.Client.Insert(btnClose);
+
+  btnQuit := TButton.Create;
+  btnQuit.Assign(230, 40, 290, 60);
+  btnQuit.Caption := 'Quit';
+  btnQuit.Command := cmQuit;
+  Self.Client.Insert(btnQuit);
 end;
 
 procedure TMyDialog.EventHandle(Event: TEvent);
