@@ -62,45 +62,51 @@ constructor TMyDialog.Create;
 begin
   inherited Create;
 
+  Left := 100;
+  Top := 100;
+  Width := 500;
+  Height := 200;
+  Caption := 'Mein Dialog';
+
   btn0 := TButton.Create;
   btn0.Anchors := [akRight, akBottom];
-  btn0.Assign(10, 40, 50, 60);
+  btn0.Top := Client.Height - btn0.Height - 10;
+  btn0.Left := Client.Width - (btn0.Width + 10) * 5;
   btn0.Caption := 'btn0';
   btn0.Command := cmBtn0;
-  Self.Client.Insert(btn0);
+  Client.Insert(btn0);
 
   btn1 := TButton.Create;
-  //  btn1.Anchors:=[akRight,akBottom];
-  btn1.Assign(60, 40, 100, 60);
+  btn1.Anchors := [akRight, akBottom];
+  btn1.Top := Client.Height - btn1.Height - 10;
+  btn1.Left := Client.Width - (btn0.Width + 10) * 4;
   btn1.Caption := 'btn1';
   btn1.Command := cmBtn1;
-  Self.Client.Insert(btn1);
+  Client.Insert(btn1);
 
   btn2 := TButton.Create;
   btn2.Anchors := [akRight, akBottom];
-  btn2.Assign(110, 40, 150, 60);
+  btn2.Top := Client.Height - btn2.Height - 10;
+  btn2.Left := Client.Width - (btn0.Width + 10) * 3;
   btn2.Caption := 'btn2';
   btn2.Command := cmBtn2;
-  Self.Client.Insert(btn2);
+  Client.Insert(btn2);
 
   btnClose := TButton.Create;
-  //  btnClose.Anchors:=[akRight,akBottom];
-  btnClose.Assign(160, 40, 220, 60);
+  btnClose.Anchors := [akRight, akBottom];
+  btnClose.Top := Client.Height - btnClose.Height - 10;
+  btnClose.Left := Client.Width - (btn0.Width + 10) * 2;
   btnClose.Caption := 'Close';
   btnClose.Command := cmClose;
-  Self.Client.Insert(btnClose);
+  Client.Insert(btnClose);
 
   btnQuit := TButton.Create;
-  //  btnQuit.Anchors:=[akRight,akBottom];
-  btnQuit.Anchors := [akRight, akBottom, akLeft, akTop];
-  //  btnQuit.Assign(230, 40, 290, 60);
-  btnQuit.Width := 60;
-  btnQuit.Left := 230;
-  btnQuit.Top := 40;
-
+  btnQuit.Anchors := [akRight, akBottom];
+  btnQuit.Top := Client.Height - btnQuit.Height - 10;
+  btnQuit.Left := Client.Width - btn0.Width - 10;
   btnQuit.Caption := 'Quit';
   btnQuit.Command := cmQuit;
-  Self.Client.Insert(btnQuit);
+  Client.Insert(btnQuit);
 end;
 
 procedure TMyDialog.EventHandle(Event: TEvent);
@@ -188,17 +194,10 @@ begin
   end;
 
   Dialog := TMyDialog.Create;
-  Dialog.Left := 100;
-  Dialog.Top := 100;
-  Dialog.Width := 500;
-  Dialog.Height := 200;
-  Dialog.Caption := 'Mein Dialog';
   App.Desktop.Insert(Dialog);
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
-var
-  a: TAnchors;
 begin
   App.Free;
 end;
@@ -218,7 +217,8 @@ end;
 
 procedure TForm1.FormResize(Sender: TObject);
 begin
-  App.Assign(0, 0, Panel1.Width, Panel1.Height);
+  App.Width := Panel1.Width;
+  App.Height := Panel1.Height;
 end;
 
 procedure TForm1.Panel1Click(Sender: TObject);

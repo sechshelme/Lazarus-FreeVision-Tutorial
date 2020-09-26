@@ -38,6 +38,7 @@ begin
   Desktop := TDesktop.Create;
   with Form1 do begin
     Desktop.Assign(0, rand, Panel1.Width, Panel1.Height - rand);
+//    Desktop.Anchors:= [akLeft, akRight, akTop, akBottom];
   end;
   Desktop.Color := clGreen;
   Desktop.Caption := 'Desktop';
