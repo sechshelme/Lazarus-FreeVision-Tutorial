@@ -55,7 +55,6 @@ begin
   CloseBtn.Width := TitelBarSize - BorderSize * 2;
   CloseBtn.Height := TitelBarSize - BorderSize * 2;
 
-  //  CloseBtn.Assign(Width - TitelBarSize + BorderSize, BorderSize, Width - BorderSize, TitelBarSize - BorderSize);
   CloseBtn.Caption := 'X';
   CloseBtn.Command := cmClose;
   Insert(CloseBtn);

@@ -14,7 +14,7 @@ type
 
   TMyDialog = class(TDialog)
   private
-    btnClose,btnQuit, btn0, btn1, btn2: TButton;
+    btnClose, btnQuit, btn0, btn1, btn2: TButton;
   public
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
@@ -63,37 +63,40 @@ begin
   inherited Create;
 
   btn0 := TButton.Create;
-  btn0.Anchors:=[akRight,akBottom];
+  btn0.Anchors := [akRight, akBottom];
   btn0.Assign(10, 40, 50, 60);
   btn0.Caption := 'btn0';
   btn0.Command := cmBtn0;
   Self.Client.Insert(btn0);
 
   btn1 := TButton.Create;
-//  btn1.Anchors:=[akRight,akBottom];
+  //  btn1.Anchors:=[akRight,akBottom];
   btn1.Assign(60, 40, 100, 60);
   btn1.Caption := 'btn1';
   btn1.Command := cmBtn1;
   Self.Client.Insert(btn1);
 
   btn2 := TButton.Create;
-  btn2.Anchors:=[akRight,akBottom];
+  btn2.Anchors := [akRight, akBottom];
   btn2.Assign(110, 40, 150, 60);
   btn2.Caption := 'btn2';
   btn2.Command := cmBtn2;
   Self.Client.Insert(btn2);
 
   btnClose := TButton.Create;
-//  btnClose.Anchors:=[akRight,akBottom];
+  //  btnClose.Anchors:=[akRight,akBottom];
   btnClose.Assign(160, 40, 220, 60);
   btnClose.Caption := 'Close';
   btnClose.Command := cmClose;
   Self.Client.Insert(btnClose);
 
   btnQuit := TButton.Create;
-//  btnQuit.Anchors:=[akRight,akBottom];
-//  btnQuit.Assign(230, 40, 290, 60);
-btnQuit.Left:=230;btnQuit.Top:=40;
+  //  btnQuit.Anchors:=[akRight,akBottom];
+  btnQuit.Anchors := [akRight, akBottom, akLeft, akTop];
+  //  btnQuit.Assign(230, 40, 290, 60);
+  btnQuit.Width := 60;
+  btnQuit.Left := 230;
+  btnQuit.Top := 40;
 
   btnQuit.Caption := 'Quit';
   btnQuit.Command := cmQuit;
@@ -163,38 +166,39 @@ var
   i: integer;
   win: TWindow;
   Dialog: TMyDialog;
-  l, r: integer;
 begin
   Panel1.DoubleBuffered := True;
-  //  Panel := Panel1;
   Randomize;
 
   App := TApplication.Create;
-  App.Assign(0, 0, Panel1.Width, Panel1.Height);
+  App.Width := Panel1.Width;
+  App.Height := Panel1.Height;
   App.Caption := 'Application';
 
   for i := 0 to 19 do begin
     win := TWindow.Create;
     with Panel1 do begin
-      l := Random(Width);
-      r := Random(Height);
-
-      win.Assign(l, r, l + Random(500) + 200, r + Random(500) + 200);
+      win.Left := Random(App.Width * 2 div 3);
+      win.Top := Random(App.Height * 2 div 3);
+      win.Width := Random(App.Width div 3) + 100;
+      win.Height := Random(App.Height div 3) + 100;
     end;
-    //    win.Color := Random($FFFFFF);
     win.Caption := 'Fenster: ' + IntToStr(i);
     App.Desktop.Insert(win);
   end;
 
   Dialog := TMyDialog.Create;
-  Dialog.Assign(100, 100, 400, 300);
+  Dialog.Left := 100;
+  Dialog.Top := 100;
+  Dialog.Width := 500;
+  Dialog.Height := 200;
   Dialog.Caption := 'Mein Dialog';
   App.Desktop.Insert(Dialog);
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 var
-  a:TAnchors;
+  a: TAnchors;
 begin
   App.Free;
 end;
