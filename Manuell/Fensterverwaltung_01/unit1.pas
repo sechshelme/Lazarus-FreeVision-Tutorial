@@ -63,31 +63,38 @@ begin
   inherited Create;
 
   btn0 := TButton.Create;
+  btn0.Anchors:=[akRight,akBottom];
   btn0.Assign(10, 40, 50, 60);
   btn0.Caption := 'btn0';
   btn0.Command := cmBtn0;
   Self.Client.Insert(btn0);
 
   btn1 := TButton.Create;
+//  btn1.Anchors:=[akRight,akBottom];
   btn1.Assign(60, 40, 100, 60);
   btn1.Caption := 'btn1';
   btn1.Command := cmBtn1;
   Self.Client.Insert(btn1);
 
   btn2 := TButton.Create;
+  btn2.Anchors:=[akRight,akBottom];
   btn2.Assign(110, 40, 150, 60);
   btn2.Caption := 'btn2';
   btn2.Command := cmBtn2;
   Self.Client.Insert(btn2);
 
   btnClose := TButton.Create;
+//  btnClose.Anchors:=[akRight,akBottom];
   btnClose.Assign(160, 40, 220, 60);
   btnClose.Caption := 'Close';
   btnClose.Command := cmClose;
   Self.Client.Insert(btnClose);
 
   btnQuit := TButton.Create;
-  btnQuit.Assign(230, 40, 290, 60);
+//  btnQuit.Anchors:=[akRight,akBottom];
+//  btnQuit.Assign(230, 40, 290, 60);
+btnQuit.Left:=230;btnQuit.Top:=40;
+
   btnQuit.Caption := 'Quit';
   btnQuit.Command := cmQuit;
   Self.Client.Insert(btnQuit);
@@ -186,6 +193,8 @@ begin
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
+var
+  a:TAnchors;
 begin
   App.Free;
 end;

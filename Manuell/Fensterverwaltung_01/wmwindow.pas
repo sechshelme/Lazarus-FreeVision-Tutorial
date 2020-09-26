@@ -22,9 +22,6 @@ type
     property Client: TView read FClient write FClient;
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
-    procedure Assign(AX, AY, BX, BY: integer); override;
-    procedure Move(x, y: integer); override;
-    procedure Resize(x, y: integer); override;
     procedure Draw; override;
   end;
 
@@ -43,10 +40,22 @@ begin
   isResizeBottom := False;
 
   FClient := TView.Create;
+  FClient.Anchors := [akLeft, akRight, akTop, akBottom];
+  FClient.Width := Width - BorderSize * 2;
+  FClient.Height := Height - TitelBarSize - BorderSize;
+  FClient.Top := TitelBarSize;
+  FClient.Left := BorderSize;
   FClient.Color := clWhite;
   Insert(FClient);
 
   CloseBtn := TButton.Create;
+  CloseBtn.Anchors := [akRight];
+  CloseBtn.Top := BorderSize;
+  CloseBtn.Left := Width - TitelBarSize + BorderSize;
+  CloseBtn.Width := TitelBarSize - BorderSize * 2;
+  CloseBtn.Height := TitelBarSize - BorderSize * 2;
+
+  //  CloseBtn.Assign(Width - TitelBarSize + BorderSize, BorderSize, Width - BorderSize, TitelBarSize - BorderSize);
   CloseBtn.Caption := 'X';
   CloseBtn.Command := cmClose;
   Insert(CloseBtn);
@@ -58,7 +67,6 @@ var
   p: TPoint;
   ev: TEvent;
 begin
-  inherited EventHandle(Event);
   x := Event.Value1;
   y := Event.Value2;
   if Event.What = whMouse then begin
@@ -131,25 +139,7 @@ begin
       end;
     end;
   end;
-end;
-
-procedure TWindow.Assign(AX, AY, BX, BY: integer);
-begin
-  inherited Assign(AX, AY, BX, BY);
-  Client.Assign(BorderSize, TitelBarSize, Width - BorderSize, Height - BorderSize);
-  CloseBtn.Assign(Width - TitelBarSize + BorderSize, BorderSize, Width - BorderSize, TitelBarSize - BorderSize);
-end;
-
-procedure TWindow.Move(x, y: integer);
-begin
-  inherited Move(x, y);
-end;
-
-procedure TWindow.Resize(x, y: integer);
-begin
-  inherited Resize(x, y);
-  Client.Assign(BorderSize, TitelBarSize, Width - BorderSize, Height - BorderSize);
-  CloseBtn.Assign(Width - TitelBarSize + BorderSize, BorderSize, Width - BorderSize, TitelBarSize - BorderSize);
+  inherited EventHandle(Event);
 end;
 
 procedure TWindow.Draw;

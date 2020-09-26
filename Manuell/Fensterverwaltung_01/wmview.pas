@@ -46,6 +46,7 @@ type
     View: array of TView;
     function calcOfs: TPoint;
   public
+    Anchors: set of (akTop, akLeft, akRight, akBottom);
     property Left: integer read FLeft write FLeft;
     property Top: integer read FTop write FTop;
     property Width: integer read FWidth write SetWidth;
@@ -105,16 +106,40 @@ begin
 end;
 
 procedure TView.SetWidth(AValue: integer);
+var
+  i, d: integer;
 begin
   if FWidth <> AValue then begin
+    d := AValue - FWidth;
+    for i := 0 to Length(View) - 1 do begin
+      if akRight in View[i].Anchors then begin
+        if akLeft in View[i].Anchors then begin
+          View[i].Width := View[i].Width + d;
+        end else begin
+          View[i].Left := View[i].Left + d;
+        end;
+      end;
+    end;
     FWidth := AValue;
     Bitmap.Width := Width;
   end;
 end;
 
 procedure TView.SetHeight(AValue: integer);
+var
+  i, d: integer;
 begin
   if FHeight <> AValue then begin
+    d := AValue - FHeight;
+    for i := 0 to Length(View) - 1 do begin
+      if akBottom in View[i].Anchors then begin
+        if akTop in View[i].Anchors then begin
+          View[i].Height := View[i].Height + d;
+        end else begin
+          View[i].Top := View[i].Top + d;
+        end;
+      end;
+    end;
     FHeight := AValue;
     Bitmap.Height := FHeight;
   end;
@@ -123,9 +148,12 @@ end;
 constructor TView.Create;
 begin
   inherited Create;
+  Bitmap := TBitmap.Create;
+  Anchors := [akTop, akLeft];
+  Width:=75;
+  Height:=25;
   Parent := nil;
   isMouseDown := False;
-  Bitmap := TBitmap.Create;
 end;
 
 destructor TView.Destroy;

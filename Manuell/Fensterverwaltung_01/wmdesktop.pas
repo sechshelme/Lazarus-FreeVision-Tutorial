@@ -31,7 +31,6 @@ procedure TDesktop.EventHandle(Event: TEvent);
 var
   ev:TEvent;
 begin
-  inherited EventHandle(Event);
   case Event.What of
     whcmCommand: begin
       if Event.Value0 = cmClose then begin
@@ -41,6 +40,7 @@ begin
       end;
     end;
   end;
+  inherited EventHandle(Event);
 end;
 
 end.

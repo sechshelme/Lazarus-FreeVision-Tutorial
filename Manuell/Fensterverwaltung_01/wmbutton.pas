@@ -45,8 +45,6 @@ var
   x, y: integer;
   ev: TEvent;
 begin
-  inherited EventHandle(Event);
-
   if Event.What = whMouse then begin
     x := Event.Value1;
     y := Event.Value2;
@@ -55,12 +53,13 @@ begin
         Color := clGray;
         ev.What := whRepaint;
         EventHandle(ev);
+        isMouseDown:=True;
       end;
       MouseUp: begin
         Color := clYellow;
         ev.What := whRepaint;
         EventHandle(ev);
-        if IsMousInView(x, y) then begin
+        if isMouseDown and IsMousInView(x, y) then begin
           ev.What := whcmCommand;
           ev.Value0 := FCommand;
           EventHandle(ev);
@@ -77,6 +76,7 @@ begin
       end;
     end;
   end;
+  inherited EventHandle(Event);
 end;
 
 end.

@@ -48,7 +48,6 @@ procedure TApplication.EventHandle(Event: TEvent);
 var
   ev:TEvent;
 begin
-  inherited EventHandle(Event);
   case Event.What of
     whcmCommand: begin
       if Event.Value0 = cmQuit then begin
@@ -63,6 +62,7 @@ begin
       DrawBitmap(Form1.Panel1.Canvas);
     end;
   end;
+  inherited EventHandle(Event);
 end;
 
 end.
