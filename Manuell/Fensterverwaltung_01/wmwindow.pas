@@ -93,34 +93,35 @@ begin
       MouseMove: begin
         if isMouseDown then begin
           if isMoveable then begin
-            Move(X - MousePos.X, Y - MousePos.Y);
+            Left := Left + (x - MousePos.X);
+            Top := Top + (y - MousePos.Y);
           end;
 
           if isResizeLeft then begin
             if x > p.X + Width - minWinSize then begin
               x := p.X + Width - minWinSize;
             end;
-            Move(x - MousePos.X, 0);
-            Resize(-(x - MousePos.X), 0);
+            Left := Left + (x - MousePos.X);
+            Width := Width - (x - MousePos.X);
           end;
           if isResizeTop then begin
             if y > p.Y + Height - minWinSize then begin
               y := p.Y + Height - minWinSize;
             end;
-            Move(0, y - MousePos.Y);
-            Resize(0, -(y - MousePos.Y));
+            Top := Top + (y - MousePos.Y);
+            Height := Height - (y - MousePos.Y);
           end;
           if isResizeRight then begin
             if x < p.X + minWinSize then begin
               x := p.X + minWinSize;
             end;
-            Resize(x - MousePos.X, 0);
+            Width := Width + (x - MousePos.X);
           end;
           if isResizeBottom then begin
             if y < p.Y + minWinSize then begin
               y := p.Y + minWinSize;
             end;
-            Resize(0, y - MousePos.Y);
+            Height := Height + (y - MousePos.Y);
           end;
 
           ev.What := whRepaint;
@@ -130,11 +131,6 @@ begin
         end else begin
           isMouseDown := False;
         end;
-
-        if Length(View) > 0 then begin
-          //    View[0].MouseMove(Shift, X, Y);
-        end;
-
       end;
     end;
   end;

@@ -13,7 +13,8 @@ type
   { TToolBar }
 
   TToolBar = class(TView)
-    BtnClose:TButton;
+    BtnClose: TButton;
+    btnQuit: TButton;
     constructor Create; override;
   end;
 
@@ -48,10 +49,16 @@ begin
   btnClose := TButton.Create;
   btnClose.Top := BorderSize;
   btnClose.Left := BorderSize;
-
   btnClose.Caption := 'Close';
   btnClose.Command := cmClose;
   Insert(btnClose);
+
+  btnQuit := TButton.Create;
+  btnQuit.Top := BorderSize;
+  btnQuit.Left := btnQuit.Width + BorderSize * 2;
+  btnQuit.Caption := 'Quit';
+  btnQuit.Command := cmQuit;
+  Insert(btnQuit);
 end;
 
 

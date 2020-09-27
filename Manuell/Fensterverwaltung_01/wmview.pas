@@ -62,9 +62,6 @@ type
     function IsMousInView(x, y: integer): boolean; virtual;
     procedure EventHandle(Event: TEvent); virtual;
 
-    procedure Assign(AX, AY, BX, BY: integer); virtual;
-    procedure Move(x, y: integer); virtual;
-    procedure Resize(x, y: integer); virtual;
     procedure Draw; virtual;
     procedure DrawBitmap(Canvas: TCanvas); virtual;
   end;
@@ -205,33 +202,7 @@ var
   p: TPoint;
 begin
   p := calcOfs;
-
   Result := (x >= p.X) and (y >= p.Y) and (x <= p.X + Width) and (y <= p.Y + Height);
-end;
-
-procedure TView.Assign(AX, AY, BX, BY: integer);
-begin
-  Left := AX;
-  Width := BX - AX;
-  Top := AY;
-  Height := BY - AY;
-  //  ViewRect.NormalizeRect;
-  //  Bitmap.Width := Width;
-  //  Bitmap.Height := Height;
-end;
-
-procedure TView.Move(x, y: integer);
-begin
-  Inc(FLeft, x);
-  Inc(FTop, y);
-end;
-
-procedure TView.Resize(x, y: integer);
-begin
-  Width := Width + x;
-  Height := Height + y;
-  //  Bitmap.Width := Width;
-  //  Bitmap.Height := Height;
 end;
 
 procedure TView.Draw;
