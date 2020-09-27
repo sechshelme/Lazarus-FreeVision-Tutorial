@@ -28,6 +28,8 @@ implementation
 constructor TButton.Create;
 begin
   inherited Create;
+  Width := 75;
+  Height := 25;
   Color := clYellow;
 end;
 
@@ -53,7 +55,7 @@ begin
         Color := clGray;
         ev.What := whRepaint;
         EventHandle(ev);
-        isMouseDown:=True;
+        isMouseDown := True;
       end;
       MouseUp: begin
         Color := clYellow;

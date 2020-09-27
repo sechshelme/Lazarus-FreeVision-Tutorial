@@ -150,8 +150,8 @@ begin
   inherited Create;
   Bitmap := TBitmap.Create;
   Anchors := [akTop, akLeft];
-  Width:=75;
-  Height:=25;
+  Width := 48;
+  Height := 48;
   Parent := nil;
   isMouseDown := False;
 end;
