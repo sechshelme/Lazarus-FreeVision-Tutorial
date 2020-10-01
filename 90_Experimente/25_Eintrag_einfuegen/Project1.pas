@@ -113,18 +113,22 @@ end;
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
-          MenuBar^.Menu^.Items := NewItem('neuer sehr langer Eintrag','bla bla bla',kbNoKey, cmAbout, hcNoContext, MenuBar^.Menu^.Items);
+          MenuBar^.Menu^.Items^.Next^.Next^.SubMenu^.Items :=
+            NewItem('neuer sehr langer Eintrag','bla bla bla',kbNoKey, cmAbout, hcNoContext, MenuBar^.Menu^.Items^.Next^.Next^.SubMenu^.Items);
+
+
+//          MenuBar^.Menu^.Items := NewItem('neuer sehr langer Eintrag','bla bla bla',kbNoKey, cmAbout, hcNoContext, MenuBar^.Menu^.Items);
 //          MenuBar^.Menu^.Default:=;
 
-Rect.Assign(3, 3, 75, 22);
+//Rect.Assign(3, 3, 75, 22);
 
 //MenuBar^.GetItemRect(MenuBar^.Menu^.Items,Rect);
-MenuBar^.Locate(Rect);
+//MenuBar^.Locate(Rect);
 //MenuBar^.Size.X:=41;
 //MenuBar^.Size.Y:=20;
-          Delete(MenuBar);
+  //        Delete(MenuBar);
 //          MenuBar := menuEng;
-          Insert(MenuBar);
+    //      Insert(MenuBar);
         end;
         cmMenuEnlish: begin
 

@@ -10,6 +10,16 @@ uses
 
 type
 
+  { TMyToolBar }
+
+  TMyToolBar = class(TToolBar)
+  private
+    BtnClose: TButton;
+    btnQuit: TButton;
+  public
+    constructor Create; override;
+  end;
+
   { TMyDialog }
 
   TMyDialog = class(TDialog)
@@ -18,6 +28,15 @@ type
   public
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
+  end;
+
+  { TMyApp }
+
+  TMyApp = class(TApplication)
+  private
+    MyToolBar: TMyToolBar;
+  public
+    constructor Create; override;
   end;
 
   { TForm1 }
@@ -40,7 +59,7 @@ type
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
     procedure Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
   private
-    App: TApplication;
+    App: TMyApp;
   public
   end;
 
@@ -55,6 +74,35 @@ const
   cmBtn0 = 1000;
   cmBtn1 = 1001;
   cmBtn2 = 1002;
+
+{ TMyApp }
+
+constructor TMyApp.Create;
+begin
+  inherited Create;
+  MyToolBar := TMyToolBar.Create;
+  Insert(MyToolBar);
+end;
+
+{ TMyToolBar }
+
+constructor TMyToolBar.Create;
+begin
+  inherited Create;
+  btnClose := TButton.Create;
+  btnClose.Top := BorderSize;
+  btnClose.Left := BorderSize;
+  btnClose.Caption := 'Close';
+  btnClose.Command := cmClose;
+  Insert(btnClose);
+
+  btnQuit := TButton.Create;
+  btnQuit.Top := BorderSize;
+  btnQuit.Left := btnQuit.Width + BorderSize * 2;
+  btnQuit.Caption := 'Quit';
+  btnQuit.Command := cmQuit;
+  Insert(btnQuit);
+end;
 
 { TMyDialog }
 
@@ -176,10 +224,11 @@ begin
   Panel1.DoubleBuffered := True;
   Randomize;
 
-  App := TApplication.Create;
+  App := TMyApp.Create;
   App.Width := Panel1.Width;
   App.Height := Panel1.Height;
   App.Caption := 'Application';
+
 
   for i := 0 to 19 do begin
     win := TWindow.Create;

@@ -13,8 +13,6 @@ type
   { TToolBar }
 
   TToolBar = class(TView)
-    BtnClose: TButton;
-    btnQuit: TButton;
     constructor Create; override;
   end;
 
@@ -46,19 +44,14 @@ begin
   inherited Create;
   Color := clGray;
 
-  btnClose := TButton.Create;
-  btnClose.Top := BorderSize;
-  btnClose.Left := BorderSize;
-  btnClose.Caption := 'Close';
-  btnClose.Command := cmClose;
-  Insert(btnClose);
+  //ToolBar := TToolBar.Create;
+  Top := 0;
+  Height := rand;
+  Anchors := [akLeft, akRight, akTop];
+  ////  ToolBar.Color := clGreen;
+  Caption := 'ToolBar';
+  //Insert(ToolBar);
 
-  btnQuit := TButton.Create;
-  btnQuit.Top := BorderSize;
-  btnQuit.Left := btnQuit.Width + BorderSize * 2;
-  btnQuit.Caption := 'Quit';
-  btnQuit.Command := cmQuit;
-  Insert(btnQuit);
 end;
 
 
@@ -77,13 +70,15 @@ begin
   Desktop.Caption := 'Desktop';
   Insert(Desktop);
 
-  ToolBar := TToolBar.Create;
-  ToolBar.Top := 0;
-  ToolBar.Height := rand;
-  ToolBar.Anchors := [akLeft, akRight, akTop];
-  //  ToolBar.Color := clGreen;
-  ToolBar.Caption := 'ToolBar';
-  Insert(ToolBar);
+  ToolBar:=nil;
+
+  //ToolBar := TToolBar.Create;
+  //ToolBar.Top := 0;
+  //ToolBar.Height := rand;
+  //ToolBar.Anchors := [akLeft, akRight, akTop];
+  ////  ToolBar.Color := clGreen;
+  //ToolBar.Caption := 'ToolBar';
+  //Insert(ToolBar);
 end;
 
 procedure TApplication.EventHandle(Event: TEvent);
