@@ -16,6 +16,11 @@ const
   MouseUp = 1;
   MouseMove = 2;
 
+const
+  BorderSize = 7;
+  TitelBarSize = BorderSize * 5;
+  minWinSize = 50;
+
 type
 
   TEvent = record
@@ -65,11 +70,6 @@ type
     procedure Draw; virtual;
     procedure DrawBitmap(Canvas: TCanvas); virtual;
   end;
-
-const
-  BorderSize = 7;
-  TitelBarSize = BorderSize * 5;
-  minWinSize = 50;
 
 function getMouseCommand(Command, x, y: PtrInt): TEvent;
 
@@ -146,6 +146,7 @@ constructor TView.Create;
 begin
   inherited Create;
   Bitmap := TBitmap.Create;
+  Bitmap.Canvas.Font.Style := [fsBold];
   Anchors := [akTop, akLeft];
   Width := 48;
   Height := 48;

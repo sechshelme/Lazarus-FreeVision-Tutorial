@@ -35,11 +35,12 @@ end;
 
 procedure TButton.Draw;
 var
-  w, h: integer;
+  w: integer = 0;
+  h: integer = 0;
 begin
   inherited Draw;
   Bitmap.Canvas.GetTextSize(Caption, w, h);
-  Bitmap.Canvas.TextOut(Width div 2 - w div 2, 2, Caption);
+  Bitmap.Canvas.TextOut((Width - w) div 2, (Height - h) div 2, Caption);
 end;
 
 procedure TButton.EventHandle(Event: TEvent);

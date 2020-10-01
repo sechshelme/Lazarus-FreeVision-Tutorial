@@ -10,16 +10,6 @@ uses
 
 type
 
-  { TMyToolBar }
-
-  TMyToolBar = class(TToolBar)
-  private
-    BtnClose: TButton;
-    btnQuit: TButton;
-  public
-    constructor Create; override;
-  end;
-
   { TMyDialog }
 
   TMyDialog = class(TDialog)
@@ -33,28 +23,21 @@ type
   { TMyApp }
 
   TMyApp = class(TApplication)
-  private
-    MyToolBar: TMyToolBar;
+  public
   public
     constructor Create; override;
+    procedure NewWindow;
+    procedure NewDialog;
+    procedure EventHandle(Event: TEvent); override;
   end;
 
   { TForm1 }
 
   TForm1 = class(TForm)
-    Buttonup: StdCtrls.TButton;
-    Buttonminus: StdCtrls.TButton;
-    Buttonleft: StdCtrls.TButton;
-    Buttonright: StdCtrls.TButton;
-    Buttonplus: StdCtrls.TButton;
-    Buttondown: StdCtrls.TButton;
-    Panel1: TPanel;
-    procedure ButtonminusClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure Panel1Click(Sender: TObject);
     procedure Panel1MouseDown(Sender: TObject; WMButton: TMouseButton; Shift: TShiftState; X, Y: integer);
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
     procedure Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
@@ -74,34 +57,66 @@ const
   cmBtn0 = 1000;
   cmBtn1 = 1001;
   cmBtn2 = 1002;
+  cmNewWindow = 1003;
+  cmNewDialog = 1004;
 
 { TMyApp }
 
 constructor TMyApp.Create;
 begin
   inherited Create;
-  MyToolBar := TMyToolBar.Create;
-  Insert(MyToolBar);
+  ToolBar.AddButton('NewWin', cmNewWindow);
+  ToolBar.AddButton('NewDia', cmNewDialog);
+  ToolBar.AddButton('Close', cmClose);
+  ToolBar.AddButton('Quit', cmQuit);
 end;
 
-{ TMyToolBar }
-
-constructor TMyToolBar.Create;
+procedure TMyApp.NewWindow;
+var
+  win: TWindow;
+const
+  ctr: integer = 1;
 begin
-  inherited Create;
-  btnClose := TButton.Create;
-  btnClose.Top := BorderSize;
-  btnClose.Left := BorderSize;
-  btnClose.Caption := 'Close';
-  btnClose.Command := cmClose;
-  Insert(btnClose);
+  win := TWindow.Create;
+  win.Left := Random(Width * 2 div 3);
+  win.Top := Random(Height * 2 div 3);
+  win.Width := Random(Width div 3) + 100;
+  win.Height := Random(Height div 3) + 100;
+  win.Caption := 'Fenster: ' + IntToStr(ctr);
+  Inc(ctr);
+  Desktop.Insert(win);
+end;
 
-  btnQuit := TButton.Create;
-  btnQuit.Top := BorderSize;
-  btnQuit.Left := btnQuit.Width + BorderSize * 2;
-  btnQuit.Caption := 'Quit';
-  btnQuit.Command := cmQuit;
-  Insert(btnQuit);
+procedure TMyApp.NewDialog;
+var
+  Dialog: TMyDialog;
+begin
+  Dialog := TMyDialog.Create;
+  Desktop.Insert(Dialog);
+end;
+
+procedure TMyApp.EventHandle(Event: TEvent);
+var
+  ev: TEvent;
+begin
+  if Event.What = whcmCommand then begin
+    case Event.Value0 of
+      cmNewWindow: begin
+        NewWindow;
+        ev.What := WMView.whRepaint;
+        EventHandle(ev);
+      end;
+      cmNewDialog: begin
+        NewDialog;
+        ev.What := WMView.whRepaint;
+        EventHandle(ev);
+      end;
+      else begin
+      end;
+    end;
+  end;
+
+  inherited EventHandle(Event);
 end;
 
 { TMyDialog }
@@ -180,70 +195,26 @@ end;
 
 { TForm1 }
 
-procedure TForm1.ButtonminusClick(Sender: TObject);
-var
-  v: TView;
-begin
-  //if TButton(Sender).Name = 'Buttonplus' then begin
-  //  v := TView.Create;
-  //  v.Assign(Random(Width), Random(Height), Random(Width), Random(Height));
-  //  v.Color := Random($FFFFFF);
-  //  v.Caption := IntToStr(Length(Views));
-  //  Insert(v, Views, 0);
-  //end;
-  //
-  //if Length(Views) > 0 then begin
-  //  case TButton(Sender).Name of
-  //    'Buttonminus': begin
-  //      Views[0].Free;
-  //      Delete(Views, 0, 1);
-  //    end;
-  //    'Buttonleft': begin
-  //      Views[0].Move(-8, 0);
-  //    end;
-  //    'Buttonright': begin
-  //      Views[0].Move(8, 0);
-  //    end;
-  //    'Buttonup': begin
-  //      Views[0].Move(0, -8);
-  //    end;
-  //    'Buttondown': begin
-  //      Views[0].Move(0, 8);
-  //    end;
-  //  end;
-  //  Repaint;
-  //end;
-end;
-
 procedure TForm1.FormCreate(Sender: TObject);
 var
   i: integer;
-  win: TWindow;
   Dialog: TMyDialog;
 begin
-  Panel1.DoubleBuffered := True;
+  ClientWidth := 800;
+  ClientHeight := 600;
+  DoubleBuffered := True;
   Randomize;
 
   App := TMyApp.Create;
-  App.Width := Panel1.Width;
-  App.Height := Panel1.Height;
+  App.Width := ClientWidth;
+  App.Height := ClientHeight;
   App.Caption := 'Application';
 
-
   for i := 0 to 19 do begin
-    win := TWindow.Create;
-    with Panel1 do begin
-      win.Left := Random(App.Width * 2 div 3);
-      win.Top := Random(App.Height * 2 div 3);
-      win.Width := Random(App.Width div 3) + 100;
-      win.Height := Random(App.Height div 3) + 100;
-    end;
-    win.Caption := 'Fenster: ' + IntToStr(i);
-    App.Desktop.Insert(win);
+    App.NewWindow;
   end;
 
-  Dialog := TMyDialog.Create;
-  App.Desktop.Insert(Dialog);
+  App.NewDialog;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -253,25 +224,16 @@ end;
 
 procedure TForm1.FormPaint(Sender: TObject);
 var
-  i: integer;
   ev: TEvent;
 begin
   ev.What := WMView.whRepaint;
   App.EventHandle(ev);
-
-  //  for i := 1 to 10 do begin
-  //    Panel1.Canvas.Line(i * 100, 0, i * 100, Panel1.Height);
-  //  end;
 end;
 
 procedure TForm1.FormResize(Sender: TObject);
 begin
-  App.Width := Panel1.Width;
-  App.Height := Panel1.Height;
-end;
-
-procedure TForm1.Panel1Click(Sender: TObject);
-begin
+  App.Width := ClientWidth;
+  App.Height := ClientHeight;
 end;
 
 procedure TForm1.Panel1MouseDown(Sender: TObject; WMButton: TMouseButton; Shift: TShiftState; X, Y: integer);
@@ -283,9 +245,7 @@ end;
 
 procedure TForm1.Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
 begin
-  //  if ssLeft in Shift then begin
   App.EventHandle(getMouseCommand(WMView.MouseUp, x, y));
-  //  end;
 end;
 
 procedure TForm1.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);

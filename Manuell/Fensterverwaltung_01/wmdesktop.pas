@@ -31,15 +31,6 @@ procedure TDesktop.EventHandle(Event: TEvent);
 var
   ev:TEvent;
 begin
-  //case Event.What of
-  //  whcmCommand: begin
-  //    if Event.Value0 = cmClose then begin
-  //      Delete(nil);
-  //      ev.What := whRepaint;
-  //      EventHandle(ev);
-  //    end;
-  //  end;
-  //end;
   inherited EventHandle(Event);
 end;
 

@@ -14,6 +14,7 @@ type
 
   TToolBar = class(TView)
     constructor Create; override;
+    procedure AddButton(const ACaption:String;ACommand:Integer);
   end;
 
 { TApplication }
@@ -43,15 +44,22 @@ constructor TToolBar.Create;
 begin
   inherited Create;
   Color := clGray;
-
-  //ToolBar := TToolBar.Create;
   Top := 0;
   Height := rand;
   Anchors := [akLeft, akRight, akTop];
-  ////  ToolBar.Color := clGreen;
   Caption := 'ToolBar';
-  //Insert(ToolBar);
+end;
 
+procedure TToolBar.AddButton(const ACaption: String; ACommand: Integer);
+var
+  btn:TButton;
+begin
+  btn:=TButton.Create;
+  btn.Top:=BorderSize;
+  btn.Left:=Length(View)*80+BorderSize;
+  btn.Caption:=ACaption;
+  btn.Command:=ACommand;
+  Insert(btn);
 end;
 
 
@@ -70,15 +78,8 @@ begin
   Desktop.Caption := 'Desktop';
   Insert(Desktop);
 
-  ToolBar:=nil;
-
-  //ToolBar := TToolBar.Create;
-  //ToolBar.Top := 0;
-  //ToolBar.Height := rand;
-  //ToolBar.Anchors := [akLeft, akRight, akTop];
-  ////  ToolBar.Color := clGreen;
-  //ToolBar.Caption := 'ToolBar';
-  //Insert(ToolBar);
+  ToolBar := TToolBar.Create;
+  Insert(ToolBar);
 end;
 
 procedure TApplication.EventHandle(Event: TEvent);
@@ -89,10 +90,7 @@ begin
     whcmCommand: begin
       case Event.Value0 of
         cmQuit: begin
-          //        Delete(nil);
           Form1.Close;
-          //        ev.What := whRepaint;
-          //        EventHandle(ev);
         end;
         cmClose: begin
           Desktop.Delete(nil);
@@ -103,7 +101,9 @@ begin
     end;
     whRepaint: begin
       Draw;
-      DrawBitmap(Form1.Panel1.Canvas);
+      DrawBitmap(Form1.Canvas);
+    end;
+    else begin
     end;
   end;
   inherited EventHandle(Event);
