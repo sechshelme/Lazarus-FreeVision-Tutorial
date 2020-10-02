@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Graphics,
-  WMView, WMDesktop, WMButton,WMMenu;
+  WMView, WMDesktop, WMButton, WMMenu;
 
 type
 
@@ -14,7 +14,7 @@ type
 
   TToolBar = class(TView)
     constructor Create; override;
-    procedure AddButton(const ACaption:String;ACommand:Integer);
+    procedure AddButton(const ACaption: string; ACommand: integer);
   end;
 
 { TApplication }
@@ -25,7 +25,7 @@ type
   public
     Desktop: TDesktop;
     ToolBar: TToolBar;
-    MenuBar:TMenuBox;
+    MenuBar: TMenuBox;
 
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
@@ -51,15 +51,15 @@ begin
   Caption := 'ToolBar';
 end;
 
-procedure TToolBar.AddButton(const ACaption: String; ACommand: Integer);
+procedure TToolBar.AddButton(const ACaption: string; ACommand: integer);
 var
-  btn:TButton;
+  btn: TButton;
 begin
-  btn:=TButton.Create;
-  btn.Top:=BorderSize;
-  btn.Left:=Length(View)*80+BorderSize;
-  btn.Caption:=ACaption;
-  btn.Command:=ACommand;
+  btn := TButton.Create;
+  btn.Top := BorderSize;
+  btn.Left := Length(View) * 80 + BorderSize;
+  btn.Caption := ACaption;
+  btn.Command := ACommand;
   Insert(btn);
 end;
 
@@ -72,7 +72,7 @@ begin
   Color := clMaroon;
 
   Desktop := TDesktop.Create;
-  Desktop.Top := rand*2;
+  Desktop.Top := rand * 2;
   Desktop.Height := Height - 2 * rand;
   Desktop.Anchors := [akLeft, akRight, akTop, akBottom];
   Desktop.Color := clGreen;
@@ -82,7 +82,9 @@ begin
   ToolBar := TToolBar.Create;
   Insert(ToolBar);
 
-  MenuBar:=TMenuBox.Create;
+  MenuBar := TMenuBox.Create;
+  MenuBar.Left := 200;
+  MenuBar.Top := 200;
   Insert(MenuBar);
 end;
 

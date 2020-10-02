@@ -77,14 +77,18 @@ begin
   SetLength(MenuItems.Items, 4);
 
   MenuItems.Items[0].Caption := '&Datei';
-  SetLength(MenuItems.Items[0].Items, 7);
+  SetLength(MenuItems.Items[0].Items, 8);
   MenuItems.Items[0].Items[0].Caption := '&Neu';
-  MenuItems.Items[0].Items[1].Caption := '-';
-  MenuItems.Items[0].Items[2].Caption := '&Oeffnen...';
+  MenuItems.Items[0].Items[0].Command := cmNewWindow;
+  MenuItems.Items[0].Items[1].Caption := '&Oeffnen...';
+  MenuItems.Items[0].Items[2].Caption := '-';
   MenuItems.Items[0].Items[3].Caption := '&Speichern';
-  MenuItems.Items[0].Items[4].Caption := '&Schliessen';
-  MenuItems.Items[0].Items[5].Caption := '-';
-  MenuItems.Items[0].Items[6].Caption := '&Beenden';
+  MenuItems.Items[0].Items[4].Caption := 'Speichern &unter...';
+  MenuItems.Items[0].Items[5].Caption := '&Schliessen';
+  MenuItems.Items[0].Items[6].Caption := '-';
+  MenuItems.Items[0].Items[6].Command := cmClose;
+  MenuItems.Items[0].Items[7].Caption := '&Beenden';
+  MenuItems.Items[0].Items[7].Command := cmQuit;
 
   MenuItems.Items[1].Caption := '&Bearbeiten';
   SetLength(MenuItems.Items[1].Items, 3);
@@ -110,7 +114,7 @@ begin
   MenuItems.Items[3].Items[0].Caption := '&Hilfe';
   MenuItems.Items[3].Items[1].Caption := '&About...';
 
-  MenuBar.MenuItem:=MenuItems;
+  MenuBar.MenuItem:=MenuItems.Items[0];
 
   TestAusgabe(MenuItems);
 

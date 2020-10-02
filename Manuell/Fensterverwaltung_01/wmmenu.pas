@@ -20,7 +20,7 @@ type
   TMenuBox = class(TView)
   private
     FMenuItem: TMenuItems;
-    ItemHeight: integer;
+    akMenuPos, ItemHeight: integer;
     procedure SetMenuItem(AValue: TMenuItems);
   public
     property MenuItem: TMenuItems read FMenuItem write SetMenuItem;
@@ -80,12 +80,58 @@ var
 begin
   inherited Draw;
   for i := 0 to Length(FMenuItem.Items) - 1 do begin
+    if i = akMenuPos then begin
+      Bitmap.Canvas.Font.Color := clRed;
+    end else begin
+      Bitmap.Canvas.Font.Color := clBlack;
+    end;
     Bitmap.Canvas.TextOut(0, i * ItemHeight, FMenuItem.Items[i].Caption);
   end;
 end;
 
 procedure TMenuBox.EventHandle(Event: TEvent);
+var
+  x, y: integer;
+  p: TPoint;
+  ev: TEvent;
 begin
+  if Event.What = whMouse then begin
+    p := calcOfs;
+    x := Event.Value1 - p.X;
+    y := Event.Value2 - p.Y;
+
+
+    WriteLn(x, '    ', y);
+
+    case Event.Value0 of
+      MouseDown: begin
+        akMenuPos := y div ItemHeight;
+        Color := clGray;
+        ev.What := whRepaint;
+        EventHandle(ev);
+        isMouseDown := True;
+      end;
+      MouseUp: begin
+        Color := clYellow;
+        ev.What := whRepaint;
+        EventHandle(ev);
+        if isMouseDown and IsMousInView(x, y) then begin
+          ev.What := whcmCommand;
+          //          ev.Value0 := FCommand;
+          EventHandle(ev);
+        end;
+      end;
+      MouseMove: begin
+        if isMouseDown and IsMousInView(x, y) then begin
+          Color := clGray;
+        end else begin
+          Color := clYellow;
+        end;
+        ev.What := whRepaint;
+        EventHandle(ev);
+      end;
+    end;
+  end;
   inherited EventHandle(Event);
 end;
 
