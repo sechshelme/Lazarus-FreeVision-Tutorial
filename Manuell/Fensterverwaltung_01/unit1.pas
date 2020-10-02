@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMView, WMButton, WMWindow, WMDialog, WMDesktop, WMApplication;
+  WMView, WMButton, WMWindow, WMDialog, WMDesktop, WMApplication, WMMenu;
 
 type
 
@@ -63,12 +63,62 @@ const
 { TMyApp }
 
 constructor TMyApp.Create;
+var
+  i: integer;
 begin
   inherited Create;
+  Width := 800;
+  Height := 600;
   ToolBar.AddButton('NewWin', cmNewWindow);
   ToolBar.AddButton('NewDia', cmNewDialog);
   ToolBar.AddButton('Close', cmClose);
   ToolBar.AddButton('Quit', cmQuit);
+
+  SetLength(MenuItems.Items, 4);
+
+  MenuItems.Items[0].Caption := '&Datei';
+  SetLength(MenuItems.Items[0].Items, 7);
+  MenuItems.Items[0].Items[0].Caption := '&Neu';
+  MenuItems.Items[0].Items[1].Caption := '-';
+  MenuItems.Items[0].Items[2].Caption := '&Oeffnen...';
+  MenuItems.Items[0].Items[3].Caption := '&Speichern';
+  MenuItems.Items[0].Items[4].Caption := '&Schliessen';
+  MenuItems.Items[0].Items[5].Caption := '-';
+  MenuItems.Items[0].Items[6].Caption := '&Beenden';
+
+  MenuItems.Items[1].Caption := '&Bearbeiten';
+  SetLength(MenuItems.Items[1].Items, 3);
+  MenuItems.Items[1].Items[0].Caption := '&Ausschneiden';
+  MenuItems.Items[1].Items[1].Caption := '&Kopieren';
+  MenuItems.Items[1].Items[2].Caption := '&Einfügen';
+
+  MenuItems.Items[2].Caption := '&Optionen';
+  SetLength(MenuItems.Items[2].Items, 4);
+  MenuItems.Items[2].Items[0].Caption := 'Opt&1';
+  MenuItems.Items[2].Items[1].Caption := 'Opt&2';
+  MenuItems.Items[2].Items[2].Caption := 'Opt&3';
+  MenuItems.Items[2].Items[3].Caption := '&Mehr';
+
+  SetLength(MenuItems.Items[2].Items[3].Items, 4);
+  MenuItems.Items[2].Items[3].Items[0].Caption := 'Test&1';
+  MenuItems.Items[2].Items[3].Items[1].Caption := 'Test&2';
+  MenuItems.Items[2].Items[3].Items[2].Caption := 'Test&3';
+  MenuItems.Items[2].Items[3].Items[3].Caption := 'Test&4';
+
+  MenuItems.Items[3].Caption := '&Hilfe';
+  SetLength(MenuItems.Items[3].Items, 2);
+  MenuItems.Items[3].Items[0].Caption := '&Hilfe';
+  MenuItems.Items[3].Items[1].Caption := '&About...';
+
+  MenuBar.MenuItem:=MenuItems;
+
+  TestAusgabe(MenuItems);
+
+  for i := 0 to 19 do begin
+    NewWindow;
+  end;
+
+  NewDialog;
 end;
 
 procedure TMyApp.NewWindow;
@@ -196,9 +246,6 @@ end;
 { TForm1 }
 
 procedure TForm1.FormCreate(Sender: TObject);
-var
-  i: integer;
-  Dialog: TMyDialog;
 begin
   ClientWidth := 800;
   ClientHeight := 600;
@@ -209,12 +256,6 @@ begin
   App.Width := ClientWidth;
   App.Height := ClientHeight;
   App.Caption := 'Application';
-
-  for i := 0 to 19 do begin
-    App.NewWindow;
-  end;
-
-  App.NewDialog;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);

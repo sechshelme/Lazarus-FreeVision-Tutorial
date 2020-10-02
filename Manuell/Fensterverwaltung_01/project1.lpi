@@ -31,7 +31,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="8">
+    <Units Count="9">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -74,6 +74,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="WMApplication"/>
       </Unit7>
+      <Unit8>
+        <Filename Value="wmmenu.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WMMenu"/>
+      </Unit8>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

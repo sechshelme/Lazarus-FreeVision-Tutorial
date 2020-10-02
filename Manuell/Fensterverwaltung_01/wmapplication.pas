@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Graphics,
-  WMView, WMDesktop, WMButton;
+  WMView, WMDesktop, WMButton,WMMenu;
 
 type
 
@@ -25,6 +25,7 @@ type
   public
     Desktop: TDesktop;
     ToolBar: TToolBar;
+    MenuBar:TMenuBox;
 
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
@@ -44,7 +45,7 @@ constructor TToolBar.Create;
 begin
   inherited Create;
   Color := clGray;
-  Top := 0;
+  Top := rand;
   Height := rand;
   Anchors := [akLeft, akRight, akTop];
   Caption := 'ToolBar';
@@ -71,7 +72,7 @@ begin
   Color := clMaroon;
 
   Desktop := TDesktop.Create;
-  Desktop.Top := rand;
+  Desktop.Top := rand*2;
   Desktop.Height := Height - 2 * rand;
   Desktop.Anchors := [akLeft, akRight, akTop, akBottom];
   Desktop.Color := clGreen;
@@ -80,6 +81,9 @@ begin
 
   ToolBar := TToolBar.Create;
   Insert(ToolBar);
+
+  MenuBar:=TMenuBox.Create;
+  Insert(MenuBar);
 end;
 
 procedure TApplication.EventHandle(Event: TEvent);
