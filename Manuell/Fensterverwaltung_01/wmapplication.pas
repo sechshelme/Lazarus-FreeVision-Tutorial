@@ -105,6 +105,9 @@ begin
         end;
       end;
     end;
+    whMouseCommand: begin
+        WriteLn('m ',Event.Value0);
+    end;
     whRepaint: begin
       Draw;
       DrawBitmap(Form1.Canvas);

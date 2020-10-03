@@ -24,7 +24,7 @@ const
 type
 
   TEvent = record
-    What: (whMouse, whKeyPress, whcmCommand, whRepaint);
+    What: (whMouse, whKeyPress, whcmCommand, whMouseCommand, whRepaint);
     Value0, Value1, Value2, Value3: PtrInt;
   end;
 
@@ -276,6 +276,13 @@ begin
       if Parent <> nil then begin
         Parent.EventHandle(Event);
       end;
+    end;
+    whMouseCommand: begin
+      if Parent <> nil then begin
+        Parent.EventHandle(Event);
+      end;
+    end;
+    else begin
     end;
   end;
 end;

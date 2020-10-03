@@ -80,9 +80,14 @@ var
 begin
   inherited Draw;
   for i := 0 to Length(FMenuItem.Items) - 1 do begin
-    if i = akMenuPos then begin
-      Bitmap.Canvas.Font.Color := clRed;
+    if (i = akMenuPos) and (FMenuItem.Items[i].Caption <> '-') then begin
+      Bitmap.Canvas.Brush.Color := clBlue;
+      Bitmap.Canvas.Pen.Color := clBlue;
+      Bitmap.Canvas.Rectangle(0, akMenuPos * ItemHeight, Width, (akMenuPos + 1) * ItemHeight);
+      Bitmap.Canvas.Font.Color := clWhite;
     end else begin
+      Bitmap.Canvas.Brush.Color := FColor;
+      Bitmap.Canvas.Pen.Color := clBlack;
       Bitmap.Canvas.Font.Color := clBlack;
     end;
     Bitmap.Canvas.TextOut(0, i * ItemHeight, FMenuItem.Items[i].Caption);
@@ -97,35 +102,31 @@ var
 begin
   if Event.What = whMouse then begin
     p := calcOfs;
-    x := Event.Value1 - p.X;
-    y := Event.Value2 - p.Y;
-
-
-    WriteLn(x, '    ', y);
+    x := Event.Value1;
+    y := Event.Value2;
 
     case Event.Value0 of
       MouseDown: begin
-        akMenuPos := y div ItemHeight;
-        Color := clGray;
+        akMenuPos := (y - p.Y) div ItemHeight;
         ev.What := whRepaint;
         EventHandle(ev);
         isMouseDown := True;
       end;
       MouseUp: begin
-        Color := clYellow;
         ev.What := whRepaint;
         EventHandle(ev);
+
+        ev.What := whMouseCommand;
         if isMouseDown and IsMousInView(x, y) then begin
-          ev.What := whcmCommand;
-          //          ev.Value0 := FCommand;
-          EventHandle(ev);
+          ev.Value0 := akMenuPos;
+        end else begin
+          ev.Value0 := -1;
         end;
+        EventHandle(ev);
       end;
       MouseMove: begin
         if isMouseDown and IsMousInView(x, y) then begin
-          Color := clGray;
-        end else begin
-          Color := clYellow;
+          akMenuPos := (y - p.Y) div ItemHeight;
         end;
         ev.What := whRepaint;
         EventHandle(ev);
