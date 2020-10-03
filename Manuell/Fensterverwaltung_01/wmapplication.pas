@@ -105,7 +105,7 @@ begin
         end;
       end;
     end;
-    whMouseCommand: begin
+    whMenuCommand: begin
         WriteLn('m ',Event.Value0);
     end;
     whRepaint: begin

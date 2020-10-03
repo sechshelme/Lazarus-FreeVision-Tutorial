@@ -116,7 +116,7 @@ begin
         ev.What := whRepaint;
         EventHandle(ev);
 
-        ev.What := whMouseCommand;
+        ev.What := whMenuCommand;
         if isMouseDown and IsMousInView(x, y) then begin
           ev.Value0 := akMenuPos;
         end else begin
