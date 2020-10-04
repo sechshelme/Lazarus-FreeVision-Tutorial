@@ -66,11 +66,11 @@ var
   p: TPoint;
   ev: TEvent;
 begin
-  x := Event.Value1;
-  y := Event.Value2;
+  x := Event.x;
+  y := Event.y;
   if Event.What = whMouse then begin
     p := calcOfs;
-    case Event.Value0 of
+    case Event.MouseCommand of
       MouseDown: begin
         if CloseBtn.IsMousInView(x, y) then begin
           isMouseDown := False;

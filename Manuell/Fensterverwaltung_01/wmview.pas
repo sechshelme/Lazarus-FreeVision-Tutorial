@@ -25,7 +25,11 @@ type
 
   TEvent = record
     What: (whMouse, whKeyPress, whcmCommand, whMenuCommand, whRepaint);
-    Value0, Value1, Value2, Value3: PtrInt;
+    case integer of
+      0: (Value0, Value1, Value2, Value3: PtrInt);
+      1: (Command: PtrInt);
+      2: (MouseCommand, x, y: PtrInt);
+      3: (Index, Left, Top: PtrInt);
   end;
 
   { TView }
@@ -78,10 +82,9 @@ implementation
 function getMouseCommand(Command, x, y: PtrInt): TEvent;
 begin
   Result.What := whMouse;
-  Result.Value0 := Command;
-  Result.Value1 := x;
-  Result.Value2 := y;
-  Result.Value3 := 0;
+  Result.Command := Command;
+  Result.x := x;
+  Result.y := y;
 end;
 
 { TView }
@@ -231,9 +234,9 @@ var
 begin
   case Event.What of
     whMouse: begin
-      x := Event.Value1;
-      y := Event.Value2;
-      case Event.Value0 of
+      x := Event.x;
+      y := Event.y;
+      case Event.MouseCommand of
         MouseDown: begin
           isMouseDown := IsMousInView(x, y);
           MousePos.X := x;

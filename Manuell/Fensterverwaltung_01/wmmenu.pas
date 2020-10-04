@@ -11,7 +11,7 @@ uses
 type
   TMenuItems = record
     Caption: string;
-    Command: integer;
+    Command, Index: integer;
     Items: array of TMenuItems;
   end;
 
@@ -22,7 +22,8 @@ type
     akMenuPos, ItemHeight, ItemWidth: integer;
     FMenuItem: TMenuItems;
     procedure SetMenuItem(AValue: TMenuItems); virtual;
-  public       constructor Create; override;
+  public
+    constructor Create; override;
     property MenuItem: TMenuItems read FMenuItem write SetMenuItem;
   end;
 
@@ -50,17 +51,24 @@ type
 var
   MenuItems: TMenuItems;
 
-procedure TestAusgabe(m: TMenuItems; nesting: integer = 0);
+procedure FillIndex(m: TMenuItems; nesting: integer = 0);
 
 implementation
 
-procedure TestAusgabe(m: TMenuItems; nesting: integer = 0);
+procedure FillIndex(m: TMenuItems; nesting: integer = 0);
 var
   i: integer;
+const
+  index: integer = 0;
 begin
+  if nesting = 0 then begin
+    index := 0;
+  end;
   for i := 0 to Length(m.Items) - 1 do begin
-    WriteLn(StringOfChar(' ', nesting * 2), m.Items[i].Caption);
-    TestAusgabe(m.Items[i], nesting + 1);
+    WriteLn(index: 4, StringOfChar(' ', nesting * 2), m.Items[i].Caption);
+    m.Items[i].Index:=index;
+    Inc(index);
+    FillIndex(m.Items[i], nesting + 1);
   end;
 end;
 
@@ -94,15 +102,71 @@ end;
 procedure TMenuBar.SetMenuItem(AValue: TMenuItems);
 begin
   inherited SetMenuItem(AValue);
+  Height := ItemHeight;
+  Width := ItemWidth * Length(FMenuItem.Items);
 end;
 
 procedure TMenuBar.Draw;
+var
+  i: integer;
 begin
   inherited Draw;
+  for i := 0 to Length(FMenuItem.Items) - 1 do begin
+    if i = akMenuPos then begin
+      Bitmap.Canvas.Brush.Color := clBlue;
+      Bitmap.Canvas.Pen.Color := clBlue;
+      Bitmap.Canvas.Rectangle(akMenuPos * ItemWidth, 0, (akMenuPos + 1) * ItemWidth, Height);
+      Bitmap.Canvas.Font.Color := clWhite;
+    end else begin
+      Bitmap.Canvas.Brush.Color := FColor;
+      Bitmap.Canvas.Pen.Color := clBlack;
+      Bitmap.Canvas.Font.Color := clBlack;
+    end;
+    Bitmap.Canvas.TextOut(i * ItemWidth, 0, FMenuItem.Items[i].Caption);
+  end;
 end;
 
 procedure TMenuBar.EventHandle(Event: TEvent);
+var
+  x, y: integer;
+  p: TPoint;
+  ev: TEvent;
 begin
+  if Event.What = whMouse then begin
+    p := calcOfs;
+    x := Event.x;
+    y := Event.y;
+
+    case Event.MouseCommand of
+      MouseDown: begin
+        akMenuPos := (x - p.X) div ItemWidth;
+        ev.What := whRepaint;
+        EventHandle(ev);
+        isMouseDown := True;
+      end;
+      MouseUp: begin
+        ev.What := whRepaint;
+        EventHandle(ev);
+
+        ev.What := whMenuCommand;
+        if isMouseDown and IsMousInView(x, y) then begin
+          ev.Index := FMenuItem.Items[akMenuPos].Index;
+          ev.Left:=ItemWidth*akMenuPos+p.X;
+          ev.Top:=ItemHeight+p.Y;
+        end else begin
+          ev.Index := -1;
+        end;
+        EventHandle(ev);
+      end;
+      MouseMove: begin
+        if isMouseDown and IsMousInView(x, y) then begin
+          akMenuPos := (x - p.X) div ItemWidth;
+        end;
+        ev.What := whRepaint;
+        EventHandle(ev);
+      end;
+    end;
+  end;
   inherited EventHandle(Event);
 end;
 
@@ -143,10 +207,10 @@ var
 begin
   if Event.What = whMouse then begin
     p := calcOfs;
-    x := Event.Value1;
-    y := Event.Value2;
+    x := Event.x;
+    y := Event.y;
 
-    case Event.Value0 of
+    case Event.MouseCommand of
       MouseDown: begin
         akMenuPos := (y - p.Y) div ItemHeight;
         ev.What := whRepaint;
@@ -159,9 +223,9 @@ begin
 
         ev.What := whMenuCommand;
         if isMouseDown and IsMousInView(x, y) then begin
-          ev.Value0 := akMenuPos;
+          ev.Index := FMenuItem.Items[akMenuPos].Index;
         end else begin
-          ev.Value0 := -1;
+          ev.Index := -1;
         end;
         EventHandle(ev);
       end;

@@ -114,9 +114,9 @@ begin
   MenuItems.Items[3].Items[0].Caption := '&Hilfe';
   MenuItems.Items[3].Items[1].Caption := '&About...';
 
-  MenuBar.MenuItem:=MenuItems.Items[0];
+  MenuBar.MenuItem := MenuItems;
 
-  TestAusgabe(MenuItems);
+  FillIndex(MenuItems); // ???????????????????'
 
   for i := 0 to 19 do begin
     NewWindow;
@@ -154,7 +154,7 @@ var
   ev: TEvent;
 begin
   if Event.What = whcmCommand then begin
-    case Event.Value0 of
+    case Event.Command of
       cmNewWindow: begin
         NewWindow;
         ev.What := WMView.whRepaint;
@@ -229,7 +229,7 @@ end;
 procedure TMyDialog.EventHandle(Event: TEvent);
 begin
   if Event.What = whcmCommand then begin
-    case Event.Value0 of
+    case Event.Command of
       cmBtn0: begin
         WriteLn('Button 0 gedrückt');
       end;

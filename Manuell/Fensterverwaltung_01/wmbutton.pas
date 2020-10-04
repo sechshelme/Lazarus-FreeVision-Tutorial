@@ -49,9 +49,9 @@ var
   ev: TEvent;
 begin
   if Event.What = whMouse then begin
-    x := Event.Value1;
-    y := Event.Value2;
-    case Event.Value0 of
+    x := Event.x;
+    y := Event.y;
+    case Event.MouseCommand of
       MouseDown: begin
         Color := clGray;
         ev.What := whRepaint;
@@ -64,7 +64,7 @@ begin
         EventHandle(ev);
         if isMouseDown and IsMousInView(x, y) then begin
           ev.What := whcmCommand;
-          ev.Value0 := FCommand;
+          ev.Command := FCommand;
           EventHandle(ev);
         end;
       end;

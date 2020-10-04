@@ -25,8 +25,8 @@ type
   public
     Desktop: TDesktop;
     ToolBar: TToolBar;
-    MenuBar: TMenuBox;
-
+    MenuBar: TMenuBar;
+    MenuBox: array of TMenuBox;
     constructor Create; override;
     procedure EventHandle(Event: TEvent); override;
   end;
@@ -82,19 +82,32 @@ begin
   ToolBar := TToolBar.Create;
   Insert(ToolBar);
 
-  MenuBar := TMenuBox.Create;
-  MenuBar.Left := 5;
+  MenuBar := TMenuBar.Create;
+  MenuBar.Left := 50;
   MenuBar.Top := 5;
   Insert(MenuBar);
+end;
+
+function FindSubMenu(m: TMenuItems; index: integer): TMenuItems;
+var
+  i: integer;
+begin
+  for i := 0 to Length(m.Items) - 1 do begin
+    if m.Items[i].Index = index then begin
+      Result := m.Items[i];
+    end;
+  end;
 end;
 
 procedure TApplication.EventHandle(Event: TEvent);
 var
   ev: TEvent;
+  m: TMenuItems;
+  l: integer;
 begin
   case Event.What of
     whcmCommand: begin
-      case Event.Value0 of
+      case Event.Command of
         cmQuit: begin
           Form1.Close;
         end;
@@ -106,7 +119,20 @@ begin
       end;
     end;
     whMenuCommand: begin
-        WriteLn('m ',Event.Value0);
+      m := FindSubMenu(MenuItems, Event.Index);
+      l := Length(MenuBox);
+      SetLength(MenuBox, l + 1);
+      MenuBox[l] := TMenuBox.Create;
+      MenuBox[l].MenuItem := m;
+      MenuBox[l].Left := Event.Left;
+      MenuBox[l].Top := Event.Top;
+      Insert(MenuBox[l]);
+
+      WriteLn(m.Caption);
+      WriteLn('m ', Event.Index);
+
+      ev.What := whRepaint;
+      EventHandle(ev);
     end;
     whRepaint: begin
       Draw;
@@ -119,7 +145,6 @@ begin
 end;
 
 end.
-
 
 
 
