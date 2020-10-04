@@ -15,16 +15,33 @@ type
     Items: array of TMenuItems;
   end;
 
+  { TMenu }
+
+  TMenu = class(TView)
+  private
+    akMenuPos, ItemHeight, ItemWidth: integer;
+    FMenuItem: TMenuItems;
+    procedure SetMenuItem(AValue: TMenuItems); virtual;
+  public       constructor Create; override;
+    property MenuItem: TMenuItems read FMenuItem write SetMenuItem;
+  end;
+
+  { TMenuBar }
+
+  TMenuBar = class(TMenu)
+  private
+    procedure SetMenuItem(AValue: TMenuItems); override;
+  public
+    procedure Draw; override;
+    procedure EventHandle(Event: TEvent); override;
+  end;
+
   { TMenuBox }
 
-  TMenuBox = class(TView)
+  TMenuBox = class(TMenu)
   private
-    FMenuItem: TMenuItems;
-    akMenuPos, ItemHeight: integer;
-    procedure SetMenuItem(AValue: TMenuItems);
+    procedure SetMenuItem(AValue: TMenuItems); override;
   public
-    property MenuItem: TMenuItems read FMenuItem write SetMenuItem;
-    constructor Create; override;
     procedure Draw; override;
     procedure EventHandle(Event: TEvent); override;
   end;
@@ -47,31 +64,55 @@ begin
   end;
 end;
 
-{ TMenuBox }
+{ TMenu }
 
-procedure TMenuBox.SetMenuItem(AValue: TMenuItems);
+constructor TMenu.Create;
+begin
+  inherited Create;
+  FColor := clWhite;
+end;
+
+procedure TMenu.SetMenuItem(AValue: TMenuItems);
 var
   w: integer = 0;
   h: integer = 0;
   i: integer;
 begin
   FMenuItem := AValue;
-  FColor := clWhite;
-
-  Width := 0;
+  ItemWidth := 0;
   for i := 0 to Length(FMenuItem.Items) - 1 do begin
     Bitmap.Canvas.GetTextSize(FMenuItem.Items[i].Caption, w, h);
-    if w > Width then begin
-      Width := w;
+    if w > ItemWidth then begin
+      ItemWidth := w;
     end;
   end;
   ItemHeight := h;
-  Height := ItemHeight * Length(FMenuItem.Items);
 end;
 
-constructor TMenuBox.Create;
+{ TMenuBar }
+
+procedure TMenuBar.SetMenuItem(AValue: TMenuItems);
 begin
-  inherited Create;
+  inherited SetMenuItem(AValue);
+end;
+
+procedure TMenuBar.Draw;
+begin
+  inherited Draw;
+end;
+
+procedure TMenuBar.EventHandle(Event: TEvent);
+begin
+  inherited EventHandle(Event);
+end;
+
+{ TMenuBox }
+
+procedure TMenuBox.SetMenuItem(AValue: TMenuItems);
+begin
+  inherited SetMenuItem(AValue);
+  Height := ItemHeight * Length(FMenuItem.Items);
+  Width := ItemWidth;
 end;
 
 procedure TMenuBox.Draw;

@@ -83,8 +83,8 @@ begin
   Insert(ToolBar);
 
   MenuBar := TMenuBox.Create;
-  MenuBar.Left := 200;
-  MenuBar.Top := 200;
+  MenuBar.Left := 5;
+  MenuBar.Top := 5;
   Insert(MenuBar);
 end;
 
