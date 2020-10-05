@@ -88,22 +88,24 @@ begin
   Insert(MenuBar);
 end;
 
-function FindSubMenu(m: TMenuItems; index: integer): TMenuItems;
-var
-  i: integer;
-begin
-  for i := 0 to Length(m.Items) - 1 do begin
-    if m.Items[i].Index = index then begin
-      Result := m.Items[i];
-    end;
-  end;
-end;
+//function FindSubMenu(m: TMenuItems; index: integer): Integer;
+//var
+//  i: integer;
+//begin
+//  Result:=-1;
+//  for i := 0 to Length(m.Items) - 1 do begin
+//    if m.Items[i].Index = index then begin
+//      Result := i;
+//    end;
+//  end;
+//end;
 
 procedure TApplication.EventHandle(Event: TEvent);
 var
   ev: TEvent;
-  m: TMenuItems;
-  l: integer;
+  mItem: TMenuItems;
+  index, l: integer;
+  menu: TMenu;
 begin
   case Event.What of
     whcmCommand: begin
@@ -119,20 +121,30 @@ begin
       end;
     end;
     whMenuCommand: begin
-      m := FindSubMenu(MenuItems, Event.Index);
-      l := Length(MenuBox);
-      SetLength(MenuBox, l + 1);
-      MenuBox[l] := TMenuBox.Create;
-      MenuBox[l].MenuItem := m;
-      MenuBox[l].Left := Event.Left;
-      MenuBox[l].Top := Event.Top;
-      Insert(MenuBox[l]);
+      if Event.Index>=0 then begin
+      menu := TMenu(Event.Sender);
+      mItem := menu.MenuItem.Items[Event.Index];
+      if Length(mItem.Items) > 0 then begin
+        l := Length(MenuBox);
+        SetLength(MenuBox, l + 1);
+        MenuBox[l] := TMenuBox.Create;
+        MenuBox[l].MenuItem := mItem;
+        MenuBox[l].Left := Event.Left;
+        MenuBox[l].Top := Event.Top;
+        Insert(MenuBox[l]);
+      end else begin
+        ev.What := whcmCommand;
+        ev.Command := mItem.Command;
+        EventHandle(ev);
+      end;
 
-      WriteLn(m.Caption);
-      WriteLn('m ', Event.Index);
+
+      WriteLn(mItem.Caption);
+      WriteLn('index: ', Event.Index);
 
       ev.What := whRepaint;
       EventHandle(ev);
+      end;
     end;
     whRepaint: begin
       Draw;
@@ -145,6 +157,3 @@ begin
 end;
 
 end.
-
-
-

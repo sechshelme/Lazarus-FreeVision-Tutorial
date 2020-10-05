@@ -29,7 +29,7 @@ type
       0: (Value0, Value1, Value2, Value3: PtrInt);
       1: (Command: PtrInt);
       2: (MouseCommand, x, y: PtrInt);
-      3: (Index, Left, Top: PtrInt);
+      3: (Index, Left, Top: PtrInt; Sender:TObject);
   end;
 
   { TView }

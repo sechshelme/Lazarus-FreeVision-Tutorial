@@ -74,7 +74,7 @@ begin
   ToolBar.AddButton('Close', cmClose);
   ToolBar.AddButton('Quit', cmQuit);
 
-  SetLength(MenuItems.Items, 4);
+  SetLength(MenuItems.Items, 5);
 
   MenuItems.Items[0].Caption := '&Datei';
   SetLength(MenuItems.Items[0].Items, 8);
@@ -85,8 +85,8 @@ begin
   MenuItems.Items[0].Items[3].Caption := '&Speichern';
   MenuItems.Items[0].Items[4].Caption := 'Speichern &unter...';
   MenuItems.Items[0].Items[5].Caption := '&Schliessen';
+  MenuItems.Items[0].Items[5].Command := cmClose;
   MenuItems.Items[0].Items[6].Caption := '-';
-  MenuItems.Items[0].Items[6].Command := cmClose;
   MenuItems.Items[0].Items[7].Caption := '&Beenden';
   MenuItems.Items[0].Items[7].Command := cmQuit;
 
@@ -107,16 +107,17 @@ begin
   MenuItems.Items[2].Items[3].Items[0].Caption := 'Test&1';
   MenuItems.Items[2].Items[3].Items[1].Caption := 'Test&2';
   MenuItems.Items[2].Items[3].Items[2].Caption := 'Test&3';
-  MenuItems.Items[2].Items[3].Items[3].Caption := 'Test&4';
+  MenuItems.Items[2].Items[3].Items[3].Caption := '&Close';
+  MenuItems.Items[2].Items[3].Items[3].Command := cmClose;
 
   MenuItems.Items[3].Caption := '&Hilfe';
   SetLength(MenuItems.Items[3].Items, 2);
   MenuItems.Items[3].Items[0].Caption := '&Hilfe';
   MenuItems.Items[3].Items[1].Caption := '&About...';
 
+  MenuItems.Items[4].Caption := '&Close';
+  MenuItems.Items[4].Command := cmClose;
   MenuBar.MenuItem := MenuItems;
-
-  FillIndex(MenuItems); // ???????????????????'
 
   for i := 0 to 19 do begin
     NewWindow;

@@ -11,7 +11,7 @@ uses
 type
   TMenuItems = record
     Caption: string;
-    Command, Index: integer;
+    Command: integer;
     Items: array of TMenuItems;
   end;
 
@@ -23,7 +23,9 @@ type
     FMenuItem: TMenuItems;
     procedure SetMenuItem(AValue: TMenuItems); virtual;
   public
+    MenuCounter: integer; static;
     constructor Create; override;
+    destructor Destroy; override;
     property MenuItem: TMenuItems read FMenuItem write SetMenuItem;
   end;
 
@@ -51,33 +53,23 @@ type
 var
   MenuItems: TMenuItems;
 
-procedure FillIndex(m: TMenuItems; nesting: integer = 0);
-
 implementation
-
-procedure FillIndex(m: TMenuItems; nesting: integer = 0);
-var
-  i: integer;
-const
-  index: integer = 0;
-begin
-  if nesting = 0 then begin
-    index := 0;
-  end;
-  for i := 0 to Length(m.Items) - 1 do begin
-    WriteLn(index: 4, StringOfChar(' ', nesting * 2), m.Items[i].Caption);
-    m.Items[i].Index:=index;
-    Inc(index);
-    FillIndex(m.Items[i], nesting + 1);
-  end;
-end;
 
 { TMenu }
 
 constructor TMenu.Create;
 begin
   inherited Create;
+  Inc(MenuCounter);
   FColor := clWhite;
+  WriteLn('mcc ', MenuCounter);
+end;
+
+destructor TMenu.Destroy;
+begin
+  Dec(MenuCounter);
+  WriteLn('mcc ', MenuCounter);
+  inherited Destroy;
 end;
 
 procedure TMenu.SetMenuItem(AValue: TMenuItems);
@@ -149,10 +141,11 @@ begin
         EventHandle(ev);
 
         ev.What := whMenuCommand;
+        ev.Sender := Self;
         if isMouseDown and IsMousInView(x, y) then begin
-          ev.Index := FMenuItem.Items[akMenuPos].Index;
-          ev.Left:=ItemWidth*akMenuPos+p.X;
-          ev.Top:=ItemHeight+p.Y;
+          ev.Index:=akMenuPos;
+          ev.Left := ItemWidth * akMenuPos + p.X;
+          ev.Top := ItemHeight + p.Y;
         end else begin
           ev.Index := -1;
         end;
@@ -222,8 +215,11 @@ begin
         EventHandle(ev);
 
         ev.What := whMenuCommand;
+        ev.Sender := Self;
         if isMouseDown and IsMousInView(x, y) then begin
-          ev.Index := FMenuItem.Items[akMenuPos].Index;
+          ev.Index:=akMenuPos;
+          ev.Left := ItemWidth + p.X;
+          ev.Top := ItemHeight * akMenuPos + p.Y;
         end else begin
           ev.Index := -1;
         end;
