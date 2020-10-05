@@ -74,7 +74,7 @@ begin
   ToolBar.AddButton('Close', cmClose);
   ToolBar.AddButton('Quit', cmQuit);
 
-  SetLength(MenuItems.Items, 5);
+  SetLength(MenuItems.Items, 6);
 
   MenuItems.Items[0].Caption := '&Datei';
   SetLength(MenuItems.Items[0].Items, 8);
@@ -118,8 +118,10 @@ begin
   MenuItems.Items[3].Items[0].Caption := '&Hilfe';
   MenuItems.Items[3].Items[1].Caption := '&About...';
 
-  MenuItems.Items[4].Caption := '&Close';
-  MenuItems.Items[4].Command := cmClose;
+  MenuItems.Items[4].Caption := '&New';
+  MenuItems.Items[4].Command := cmNewWindow;
+  MenuItems.Items[5].Caption := '&Close';
+  MenuItems.Items[5].Command := cmClose;
   MenuBar.MenuItem := MenuItems;
 
   for i := 0 to 19 do begin

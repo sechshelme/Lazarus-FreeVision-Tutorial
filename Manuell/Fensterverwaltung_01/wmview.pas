@@ -34,13 +34,15 @@ type
       0: (Value0, Value1, Value2, Value3: PtrInt);
       1: (Command: PtrInt);
       2: (MouseCommand, x, y: PtrInt);
-      3: (Index, Left, Top: PtrInt; Sender:TObject);
+      3: (Index, Left, Top: PtrInt;
+        Sender: TObject);
   end;
 
   { TView }
 
   TView = class(TObject)
   private
+    ViewCounter: integer; static;
     procedure SetCaption(AValue: string);
     procedure SetColor(AValue: TColor);
     procedure SetHeight(AValue: integer);
@@ -80,17 +82,7 @@ type
     procedure DrawBitmap(Canvas: TCanvas); virtual;
   end;
 
-function getMouseCommand(Command, x, y: PtrInt): TEvent;
-
 implementation
-
-function getMouseCommand(Command, x, y: PtrInt): TEvent;
-begin
-  Result.What := whMouse;
-  Result.Command := Command;
-  Result.x := x;
-  Result.y := y;
-end;
 
 { TView }
 
@@ -160,12 +152,16 @@ begin
   Height := 48;
   Parent := nil;
   isMouseDown := False;
+  WriteLn('New View  ', ViewCounter);
+  Inc(ViewCounter);
 end;
 
 destructor TView.Destroy;
 var
   i: integer;
 begin
+  Dec(ViewCounter);
+  WriteLn('Close View ', ViewCounter);
   for i := 0 to Length(View) - 1 do begin
     if View[i] <> nil then begin
       View[i].Free;
@@ -256,12 +252,12 @@ begin
                 ev.What := whRepaint;
                 EventHandle(ev);
               end;
-              ev.What:=whMouse;
-              ev.MouseCommand:=MouseDown;
-              ev.x:=x;
-              ev.y:=y;
+              ev.What := whMouse;
+              ev.MouseCommand := MouseDown;
+              ev.x := x;
+              ev.y := y;
               View[0].EventHandle(ev);
-//              View[0].EventHandle(getMouseCommand(MouseDown, x, y));
+              //              View[0].EventHandle(getMouseCommand(MouseDown, x, y));
               Exit;
             end;
             Inc(index);
@@ -270,22 +266,22 @@ begin
         MouseUp: begin
           isMouseDown := False;
           if Length(View) > 0 then begin
-            ev.What:=whMouse;
-            ev.MouseCommand:=MouseUp;
-            ev.x:=x;
-            ev.y:=y;
+            ev.What := whMouse;
+            ev.MouseCommand := MouseUp;
+            ev.x := x;
+            ev.y := y;
             View[0].EventHandle(ev);
-//            View[0].EventHandle(getMouseCommand(MouseUp, x, y));
+            //            View[0].EventHandle(getMouseCommand(MouseUp, x, y));
           end;
         end;
         MouseMove: begin
           if Length(View) > 0 then begin
-            ev.What:=whMouse;
-            ev.MouseCommand:=MouseMove;
-            ev.x:=x;
-            ev.y:=y;
+            ev.What := whMouse;
+            ev.MouseCommand := MouseMove;
+            ev.x := x;
+            ev.y := y;
             View[0].EventHandle(ev);
-//            View[0].EventHandle(getMouseCommand(MouseMove, x, y));
+            //            View[0].EventHandle(getMouseCommand(MouseMove, x, y));
           end;
         end;
       end;

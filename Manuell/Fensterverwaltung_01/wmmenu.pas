@@ -23,7 +23,7 @@ type
     FMenuItem: TMenuItems;
     procedure SetMenuItem(AValue: TMenuItems); virtual;
   public
-    MenuCounter: integer; static;
+    MenuCounter: Integer; static;
     constructor Create; override;
     destructor Destroy; override;
     property MenuItem: TMenuItems read FMenuItem write SetMenuItem;
@@ -62,13 +62,13 @@ begin
   inherited Create;
   Inc(MenuCounter);
   FColor := clWhite;
-  WriteLn('mcc ', MenuCounter);
+//  WriteLn('mcc ', MenuCounter);
 end;
 
 destructor TMenu.Destroy;
 begin
   Dec(MenuCounter);
-  WriteLn('mcc ', MenuCounter);
+//  WriteLn('mcc ', MenuCounter);
   inherited Destroy;
 end;
 

@@ -144,17 +144,17 @@ begin
         end else begin
           ev.What := whcmCommand;
           ev.Command := mItem.Command;
+          EventHandle(ev);
+//          Event.What:=whNone;
           for i := TMenuBox.MenuCounter - 1 downto 1 do begin
             Delete(View[0]);
             l := Length(MenuBox);
             SetLength(MenuBox, l - 1);
-            WriteLn('l', l);
+//            WriteLn('l', l);
             //
-            WriteLn('delete');
+//            WriteLn('delete');
 
           end;
-          EventHandle(ev);
-          Event.What:=whNone;
         end;
 
         ev.What := whRepaint;
