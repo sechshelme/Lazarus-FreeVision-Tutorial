@@ -137,9 +137,6 @@ begin
         isMouseDown := True;
       end;
       MouseUp: begin
-        ev.What := whRepaint;
-        EventHandle(ev);
-
         ev.What := whMenuCommand;
         ev.Sender := Self;
         if isMouseDown and IsMousInView(x, y) then begin
@@ -211,9 +208,6 @@ begin
         isMouseDown := True;
       end;
       MouseUp: begin
-        ev.What := whRepaint;
-        EventHandle(ev);
-
         ev.What := whMenuCommand;
         ev.Sender := Self;
         if isMouseDown and IsMousInView(x, y) then begin

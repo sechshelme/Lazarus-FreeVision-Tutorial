@@ -104,9 +104,12 @@ begin
   MenuItems.Items[2].Items[3].Caption := '&Mehr';
 
   SetLength(MenuItems.Items[2].Items[3].Items, 4);
-  MenuItems.Items[2].Items[3].Items[0].Caption := 'Test&1';
-  MenuItems.Items[2].Items[3].Items[1].Caption := 'Test&2';
-  MenuItems.Items[2].Items[3].Items[2].Caption := 'Test&3';
+  MenuItems.Items[2].Items[3].Items[0].Caption := 'Test&0';
+  MenuItems.Items[2].Items[3].Items[0].Command := cmTest0;
+  MenuItems.Items[2].Items[3].Items[1].Caption := 'Test&1';
+  MenuItems.Items[2].Items[3].Items[1].Command := cmTest1;
+  MenuItems.Items[2].Items[3].Items[2].Caption := 'Test&2';
+  MenuItems.Items[2].Items[3].Items[2].Command := cmTest2;
   MenuItems.Items[2].Items[3].Items[3].Caption := '&Close';
   MenuItems.Items[2].Items[3].Items[3].Command := cmClose;
 
@@ -165,6 +168,15 @@ begin
         NewDialog;
         ev.What := WMView.whRepaint;
         EventHandle(ev);
+      end;
+      cmTest0: begin
+        WriteLn('test0');
+      end;
+      cmTest1: begin
+        WriteLn('test1');
+      end;
+      cmTest2: begin
+        WriteLn('test2');
       end;
       else begin
       end;

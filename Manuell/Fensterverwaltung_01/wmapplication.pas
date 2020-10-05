@@ -104,10 +104,19 @@ procedure TApplication.EventHandle(Event: TEvent);
 var
   ev: TEvent;
   mItem: TMenuItems;
-  index, l: integer;
+  i, l: integer;
   menu: TMenu;
 begin
   case Event.What of
+    whMouse: begin
+      //if Length(MenuBox) > 0 then begin
+      //  if MenuBox[Length(MenuBox) - 1].IsMousInView(Event.x, Event.y) then begin
+      //    WriteLn('mouse', Event.x, '   ', Event.y);
+      //  end else begin
+      //    WriteLn('êlse');
+      //  end;
+      //end;
+    end;
     whcmCommand: begin
       case Event.Command of
         cmQuit: begin
@@ -121,29 +130,35 @@ begin
       end;
     end;
     whMenuCommand: begin
-      if Event.Index>=0 then begin
-      menu := TMenu(Event.Sender);
-      mItem := menu.MenuItem.Items[Event.Index];
-      if Length(mItem.Items) > 0 then begin
-        l := Length(MenuBox);
-        SetLength(MenuBox, l + 1);
-        MenuBox[l] := TMenuBox.Create;
-        MenuBox[l].MenuItem := mItem;
-        MenuBox[l].Left := Event.Left;
-        MenuBox[l].Top := Event.Top;
-        Insert(MenuBox[l]);
-      end else begin
-        ev.What := whcmCommand;
-        ev.Command := mItem.Command;
+      if Event.Index >= 0 then begin
+        menu := TMenu(Event.Sender);
+        mItem := menu.MenuItem.Items[Event.Index];
+        if Length(mItem.Items) > 0 then begin
+          l := Length(MenuBox);
+          SetLength(MenuBox, l + 1);
+          MenuBox[l] := TMenuBox.Create;
+          MenuBox[l].MenuItem := mItem;
+          MenuBox[l].Left := Event.Left;
+          MenuBox[l].Top := Event.Top;
+          Insert(MenuBox[l]);
+        end else begin
+          ev.What := whcmCommand;
+          ev.Command := mItem.Command;
+          for i := TMenuBox.MenuCounter - 1 downto 1 do begin
+            Delete(View[0]);
+            l := Length(MenuBox);
+            SetLength(MenuBox, l - 1);
+            WriteLn('l', l);
+            //
+            WriteLn('delete');
+
+          end;
+          EventHandle(ev);
+        end;
+
+        ev.What := whRepaint;
         EventHandle(ev);
-      end;
-
-
-      WriteLn(mItem.Caption);
-      WriteLn('index: ', Event.Index);
-
-      ev.What := whRepaint;
-      EventHandle(ev);
+      end else begin
       end;
     end;
     whRepaint: begin

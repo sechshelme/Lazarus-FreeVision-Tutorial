@@ -72,16 +72,16 @@ begin
     p := calcOfs;
     case Event.MouseCommand of
       MouseDown: begin
-        if CloseBtn.IsMousInView(x, y) then begin
-          isMouseDown := False;
-        end else begin
+//        if CloseBtn.IsMousInView(x, y) then begin
+//          isMouseDown := False;
+//        end else begin
           isMoveable := (x > p.X + BorderSize) and (x < p.X + Width - TitelBarSize) and (y > p.Y + BorderSize) and (y < p.Y + TitelBarSize - BorderSize);
 
           isResizeLeft := x < p.x + BorderSize;
           isResizeTop := y < p.y + BorderSize;
           isResizeRight := x > p.X + Width - BorderSize;
           isResizeBottom := y > p.Y + Height - BorderSize;
-        end;
+  //      end;
       end;
       MouseUp: begin
         isMoveable := False;

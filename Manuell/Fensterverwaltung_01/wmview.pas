@@ -12,6 +12,11 @@ const
   cmClose = 1;
   cmQuit = 2;
 
+  cmTest0 = 100;
+  cmTest1 = 101;
+  cmTest2 = 102;
+  cmTest3 = 103;
+
   MouseDown = 0;
   MouseUp = 1;
   MouseMove = 2;
