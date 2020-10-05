@@ -36,7 +36,7 @@ type
     procedure SetMenuItem(AValue: TMenuItems); override;
   public
     procedure Draw; override;
-    procedure EventHandle(Event: TEvent); override;
+    procedure EventHandle(var Event: TEvent); override;
   end;
 
   { TMenuBox }
@@ -46,7 +46,7 @@ type
     procedure SetMenuItem(AValue: TMenuItems); override;
   public
     procedure Draw; override;
-    procedure EventHandle(Event: TEvent); override;
+    procedure EventHandle(var Event: TEvent); override;
   end;
 
 
@@ -118,7 +118,7 @@ begin
   end;
 end;
 
-procedure TMenuBar.EventHandle(Event: TEvent);
+procedure TMenuBar.EventHandle(var Event: TEvent);
 var
   x, y: integer;
   p: TPoint;
@@ -189,7 +189,7 @@ begin
   end;
 end;
 
-procedure TMenuBox.EventHandle(Event: TEvent);
+procedure TMenuBox.EventHandle(var Event: TEvent);
 var
   x, y: integer;
   p: TPoint;

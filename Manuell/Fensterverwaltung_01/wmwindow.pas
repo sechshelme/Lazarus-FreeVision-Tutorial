@@ -21,7 +21,7 @@ type
   public
     property Client: TView read FClient write FClient;
     constructor Create; override;
-    procedure EventHandle(Event: TEvent); override;
+    procedure EventHandle(var Event: TEvent); override;
     procedure Draw; override;
   end;
 
@@ -60,7 +60,7 @@ begin
   Insert(CloseBtn);
 end;
 
-procedure TWindow.EventHandle(Event: TEvent);
+procedure TWindow.EventHandle(var Event: TEvent);
 var
   x, y: integer;
   p: TPoint;

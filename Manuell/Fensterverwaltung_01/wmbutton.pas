@@ -18,7 +18,7 @@ type
     property Command: integer read FCommand write FCommand;
     constructor Create; override;
     procedure Draw; override;
-    procedure EventHandle(Event: TEvent); override;
+    procedure EventHandle(var Event: TEvent); override;
   end;
 
 implementation
@@ -43,7 +43,7 @@ begin
   Bitmap.Canvas.TextOut((Width - w) div 2, (Height - h) div 2, Caption);
 end;
 
-procedure TButton.EventHandle(Event: TEvent);
+procedure TButton.EventHandle(var Event: TEvent);
 var
   x, y: integer;
   ev: TEvent;

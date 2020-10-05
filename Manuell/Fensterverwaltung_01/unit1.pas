@@ -17,7 +17,7 @@ type
     btnClose, btnQuit, btn0, btn1, btn2: TButton;
   public
     constructor Create; override;
-    procedure EventHandle(Event: TEvent); override;
+    procedure EventHandle(var Event: TEvent); override;
   end;
 
   { TMyApp }
@@ -28,7 +28,7 @@ type
     constructor Create; override;
     procedure NewWindow;
     procedure NewDialog;
-    procedure EventHandle(Event: TEvent); override;
+    procedure EventHandle(var Event: TEvent); override;
   end;
 
   { TForm1 }
@@ -153,7 +153,7 @@ begin
   Desktop.Insert(Dialog);
 end;
 
-procedure TMyApp.EventHandle(Event: TEvent);
+procedure TMyApp.EventHandle(var Event: TEvent);
 var
   ev: TEvent;
 begin
@@ -239,7 +239,7 @@ begin
   Client.Insert(btnQuit);
 end;
 
-procedure TMyDialog.EventHandle(Event: TEvent);
+procedure TMyDialog.EventHandle(var Event: TEvent);
 begin
   if Event.What = whcmCommand then begin
     case Event.Command of
@@ -295,21 +295,42 @@ begin
 end;
 
 procedure TForm1.Panel1MouseDown(Sender: TObject; WMButton: TMouseButton; Shift: TShiftState; X, Y: integer);
+var
+  ev: TEvent;
 begin
   if ssLeft in Shift then begin
-    App.EventHandle(getMouseCommand(WMView.MouseDown, x, y));
+    ev.What:=whMouse;
+    ev.MouseCommand:=WMView.MouseDown;
+    ev.x:=x;
+    ev.y:=y;
+//    App.EventHandle(getMouseCommand(WMView.MouseDown, x, y));
+    App.EventHandle(ev);
   end;
 end;
 
 procedure TForm1.Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+var
+  ev: TEvent;
 begin
-  App.EventHandle(getMouseCommand(WMView.MouseUp, x, y));
+  ev.What:=whMouse;
+  ev.MouseCommand:=WMView.MouseUp;
+  ev.x:=x;
+  ev.y:=y;
+  App.EventHandle(ev);
+//  App.EventHandle(getMouseCommand(WMView.MouseUp, x, y));
 end;
 
 procedure TForm1.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
+var
+  ev: TEvent;
 begin
   if ssLeft in Shift then begin
-    App.EventHandle(getMouseCommand(WMView.MouseMove, x, y));
+    ev.What:=whMouse;
+    ev.MouseCommand:=WMView.MouseMove;
+    ev.x:=x;
+    ev.y:=y;
+    App.EventHandle(ev);
+ //   App.EventHandle(getMouseCommand(WMView.MouseMove, x, y));
   end;
 end;
 

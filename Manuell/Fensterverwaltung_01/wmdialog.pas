@@ -17,7 +17,7 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure EventHandle(Event: TEvent); override;
+    procedure EventHandle(var Event: TEvent); override;
   end;
 
 implementation
@@ -33,7 +33,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TDialog.EventHandle(Event: TEvent);
+procedure TDialog.EventHandle(var Event: TEvent);
 begin
   inherited EventHandle(Event);
 end;

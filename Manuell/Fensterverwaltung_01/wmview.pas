@@ -29,7 +29,7 @@ const
 type
 
   TEvent = record
-    What: (whMouse, whKeyPress, whcmCommand, whMenuCommand, whRepaint);
+    What: (whNone, whMouse, whKeyPress, whcmCommand, whMenuCommand, whRepaint);
     case integer of
       0: (Value0, Value1, Value2, Value3: PtrInt);
       1: (Command: PtrInt);
@@ -74,7 +74,7 @@ type
     procedure Delete(AView: TView);
 
     function IsMousInView(x, y: integer): boolean; virtual;
-    procedure EventHandle(Event: TEvent); virtual;
+    procedure EventHandle(var Event: TEvent); virtual;
 
     procedure Draw; virtual;
     procedure DrawBitmap(Canvas: TCanvas); virtual;
@@ -231,7 +231,7 @@ begin
   Canvas.Draw(Left, Top, Bitmap);
 end;
 
-procedure TView.EventHandle(Event: TEvent);
+procedure TView.EventHandle(var Event: TEvent);
 var
   x, y, index: integer;
   v: TView;
@@ -256,7 +256,12 @@ begin
                 ev.What := whRepaint;
                 EventHandle(ev);
               end;
-              View[0].EventHandle(getMouseCommand(MouseDown, x, y));
+              ev.What:=whMouse;
+              ev.MouseCommand:=MouseDown;
+              ev.x:=x;
+              ev.y:=y;
+              View[0].EventHandle(ev);
+//              View[0].EventHandle(getMouseCommand(MouseDown, x, y));
               Exit;
             end;
             Inc(index);
@@ -265,12 +270,22 @@ begin
         MouseUp: begin
           isMouseDown := False;
           if Length(View) > 0 then begin
-            View[0].EventHandle(getMouseCommand(MouseUp, x, y));
+            ev.What:=whMouse;
+            ev.MouseCommand:=MouseUp;
+            ev.x:=x;
+            ev.y:=y;
+            View[0].EventHandle(ev);
+//            View[0].EventHandle(getMouseCommand(MouseUp, x, y));
           end;
         end;
         MouseMove: begin
           if Length(View) > 0 then begin
-            View[0].EventHandle(getMouseCommand(MouseMove, x, y));
+            ev.What:=whMouse;
+            ev.MouseCommand:=MouseMove;
+            ev.x:=x;
+            ev.y:=y;
+            View[0].EventHandle(ev);
+//            View[0].EventHandle(getMouseCommand(MouseMove, x, y));
           end;
         end;
       end;

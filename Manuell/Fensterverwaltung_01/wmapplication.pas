@@ -28,7 +28,7 @@ type
     MenuBar: TMenuBar;
     MenuBox: array of TMenuBox;
     constructor Create; override;
-    procedure EventHandle(Event: TEvent); override;
+    procedure EventHandle(var Event: TEvent); override;
   end;
 
 implementation
@@ -100,7 +100,7 @@ end;
 //  end;
 //end;
 
-procedure TApplication.EventHandle(Event: TEvent);
+procedure TApplication.EventHandle(var Event: TEvent);
 var
   ev: TEvent;
   mItem: TMenuItems;
@@ -154,6 +154,7 @@ begin
 
           end;
           EventHandle(ev);
+          Event.What:=whNone;
         end;
 
         ev.What := whRepaint;

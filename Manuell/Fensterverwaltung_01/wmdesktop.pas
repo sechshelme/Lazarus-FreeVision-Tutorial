@@ -14,7 +14,7 @@ type
 
   TDesktop = class(TView)
     constructor Create; override;
-    procedure EventHandle(Event: TEvent); override;
+    procedure EventHandle(var Event: TEvent); override;
   end;
 
 
@@ -27,7 +27,7 @@ begin
   inherited Create;
 end;
 
-procedure TDesktop.EventHandle(Event: TEvent);
+procedure TDesktop.EventHandle(var Event: TEvent);
 var
   ev:TEvent;
 begin
