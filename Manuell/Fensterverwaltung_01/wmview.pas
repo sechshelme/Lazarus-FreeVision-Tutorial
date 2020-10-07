@@ -16,6 +16,9 @@ const
   cmTest1 = 101;
   cmTest2 = 102;
   cmTest3 = 103;
+  cmopti0=104;
+  cmopti1=105;
+  cmopti2=106;
 
   MouseDown = 0;
   MouseUp = 1;

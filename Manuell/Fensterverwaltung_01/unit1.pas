@@ -97,11 +97,15 @@ begin
   MenuItems.Items[1].Items[2].Caption := '&Einfügen';
 
   MenuItems.Items[2].Caption := '&Optionen';
-  SetLength(MenuItems.Items[2].Items, 4);
-  MenuItems.Items[2].Items[0].Caption := 'Opt&1';
-  MenuItems.Items[2].Items[1].Caption := 'Opt&2';
-  MenuItems.Items[2].Items[2].Caption := 'Opt&3';
-  MenuItems.Items[2].Items[3].Caption := '&Mehr';
+  SetLength(MenuItems.Items[2].Items, 5);
+  MenuItems.Items[2].Items[0].Caption := 'Opt&0';
+  MenuItems.Items[2].Items[0].Command := cmopti0;
+  MenuItems.Items[2].Items[1].Caption := 'Opt&1';
+  MenuItems.Items[2].Items[1].Command := cmopti1;
+  MenuItems.Items[2].Items[2].Caption := 'Opt&2';
+  MenuItems.Items[2].Items[2].Command := cmopti2;
+  MenuItems.Items[2].Items[3].Caption := '&Mehr0';
+  MenuItems.Items[2].Items[4].Caption := '&Mehr1';
 
   SetLength(MenuItems.Items[2].Items[3].Items, 4);
   MenuItems.Items[2].Items[3].Items[0].Caption := 'Test&0';
@@ -179,6 +183,15 @@ begin
       end;
       cmTest2: begin
         WriteLn('test2');
+      end;
+      cmopti0: begin
+        WriteLn('opti0');
+      end;
+      cmopti1: begin
+        WriteLn('opti1');
+      end;
+      cmopti2: begin
+        WriteLn('opti2');
       end;
       else begin
       end;

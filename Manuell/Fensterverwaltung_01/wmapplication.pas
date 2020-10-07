@@ -106,16 +106,27 @@ var
   mItem: TMenuItems;
   i, l: integer;
   menu: TMenu;
+  ClickInMenu: boolean;
 begin
   case Event.What of
     whMouse: begin
-      //if Length(MenuBox) > 0 then begin
-      //  if MenuBox[Length(MenuBox) - 1].IsMousInView(Event.x, Event.y) then begin
-      //    WriteLn('mouse', Event.x, '   ', Event.y);
-      //  end else begin
-      //    WriteLn('êlse');
-      //  end;
-      //end;
+      if Event.MouseCommand = MouseDown then begin
+        ClickInMenu := False;
+        WriteLn(TMenuBox.MenuCounter);
+        for i := TMenuBox.MenuCounter - 2 downto 0 do begin
+          if MenuBox[i].IsMousInView(Event.x, Event.y) then begin
+            ClickInMenu := True;
+          end;
+        end;
+
+        if not ClickInMenu then begin
+          for i := TMenuBox.MenuCounter - 1 downto 1 do begin
+            Delete(View[0]);
+            l := Length(MenuBox);
+            SetLength(MenuBox, l - 1);
+          end;
+        end;
+      end;
     end;
     whcmCommand: begin
       case Event.Command of
@@ -145,15 +156,10 @@ begin
           ev.What := whcmCommand;
           ev.Command := mItem.Command;
           EventHandle(ev);
-//          Event.What:=whNone;
           for i := TMenuBox.MenuCounter - 1 downto 1 do begin
             Delete(View[0]);
             l := Length(MenuBox);
             SetLength(MenuBox, l - 1);
-//            WriteLn('l', l);
-            //
-//            WriteLn('delete');
-
           end;
         end;
 

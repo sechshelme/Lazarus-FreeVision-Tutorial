@@ -1,6 +1,7 @@
 unit WMMenu;
 
 {$mode objfpc}{$H+}
+{$modeswitch advancedrecords}
 
 interface
 
@@ -13,6 +14,7 @@ type
     Caption: string;
     Command: integer;
     Items: array of TMenuItems;
+//    procedure Add(
   end;
 
   { TMenu }

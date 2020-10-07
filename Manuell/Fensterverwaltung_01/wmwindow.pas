@@ -143,7 +143,6 @@ var
   h: integer = 0;
 begin
   inherited Draw;
-
   Bitmap.Canvas.Brush.Style := bsClear;
   Bitmap.Canvas.Brush.Color := clSkyBlue;
   Bitmap.Canvas.Rectangle(BorderSize, BorderSize, Width - TitelBarSize, TitelBarSize - BorderSize);
