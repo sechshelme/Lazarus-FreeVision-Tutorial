@@ -76,7 +76,7 @@ type
     constructor Create; virtual;
     destructor Destroy; override;
     procedure Insert(AView: TView);
-    procedure Delete(AView: TView);
+    procedure Delete(AIndex: Integer);
 
     function IsMousInView(x, y: integer): boolean; virtual;
     procedure EventHandle(var Event: TEvent); virtual;
@@ -180,14 +180,14 @@ begin
   System.Insert(AView, View, 0);
 end;
 
-procedure TView.Delete(AView: TView);   // nicht fertig
+procedure TView.Delete(AIndex: Integer);   // nicht fertig
 var
   i: integer = 0;
 begin
-  if Length(View) > 0 then begin
-    View[0].Free;
-    View[0] := nil;
-    system.Delete(View, 0, 1);
+  if Length(View) > AIndex then begin
+    View[AIndex].Free;
+    View[AIndex] := nil;
+    system.Delete(View, AIndex, 1);
   end;
 end;
 
@@ -217,6 +217,7 @@ procedure TView.Draw;
 var
   i: integer;
 begin
+  Bitmap.Canvas.Pen.Color := clBlack;
   Bitmap.Canvas.Brush.Color := FColor;
   Bitmap.Canvas.Rectangle(0, 0, Width, Height);
   for i := Length(View) - 1 downto 0 do begin

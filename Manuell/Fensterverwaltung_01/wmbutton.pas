@@ -45,12 +45,9 @@ end;
 
 procedure TButton.EventHandle(var Event: TEvent);
 var
-  x, y: integer;
   ev: TEvent;
 begin
   if Event.What = whMouse then begin
-    x := Event.x;
-    y := Event.y;
     case Event.MouseCommand of
       MouseDown: begin
         Color := clGray;
@@ -62,14 +59,14 @@ begin
         Color := clYellow;
         ev.What := whRepaint;
         EventHandle(ev);
-        if isMouseDown and IsMousInView(x, y) then begin
+        if isMouseDown and IsMousInView(Event.x, Event.y) then begin
           ev.What := whcmCommand;
           ev.Command := FCommand;
           EventHandle(ev);
         end;
       end;
       MouseMove: begin
-        if isMouseDown and IsMousInView(x, y) then begin
+        if isMouseDown and IsMousInView(Event.x, Event.y) then begin
           Color := clGray;
         end else begin
           Color := clYellow;

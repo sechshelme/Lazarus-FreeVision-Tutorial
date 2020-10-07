@@ -2,6 +2,7 @@ unit WMMenu;
 
 {$mode objfpc}{$H+}
 {$modeswitch advancedrecords}
+{$modeswitch arrayoperators}
 
 interface
 
@@ -10,11 +11,14 @@ uses
   WMView, WMDesktop, WMButton;
 
 type
+
+  { TMenuItems }
+
   TMenuItems = record
     Caption: string;
     Command: integer;
     Items: array of TMenuItems;
-//    procedure Add(
+    procedure Add(ACaption: string; ACommand: integer; AItems: TMenuItems);
   end;
 
   { TMenu }
@@ -25,7 +29,8 @@ type
     FMenuItem: TMenuItems;
     procedure SetMenuItem(AValue: TMenuItems); virtual;
   public
-    MenuCounter: Integer; static;
+    MenuCounter: integer; static;
+    Index: integer;
     constructor Create; override;
     destructor Destroy; override;
     property MenuItem: TMenuItems read FMenuItem write SetMenuItem;
@@ -57,20 +62,34 @@ var
 
 implementation
 
+{ TMenuItems }
+
+procedure TMenuItems.Add(ACaption: string; ACommand: integer; AItems: TMenuItems);
+var
+  l: integer;
+begin
+  l := Length(Items);
+  SetLength(Items, l + 1);
+  Items[l].Caption := ACaption;
+  Items[l].Command := ACommand;
+  //  Items[l].Items := AItems;
+end;
+
 { TMenu }
 
 constructor TMenu.Create;
 begin
   inherited Create;
   Inc(MenuCounter);
+  index := MenuCounter;
   FColor := clWhite;
-//  WriteLn('mcc ', MenuCounter);
+  //  WriteLn('mcc ', MenuCounter);
 end;
 
 destructor TMenu.Destroy;
 begin
   Dec(MenuCounter);
-//  WriteLn('mcc ', MenuCounter);
+  //  WriteLn('mcc ', MenuCounter);
   inherited Destroy;
 end;
 
@@ -88,7 +107,8 @@ begin
       ItemWidth := w;
     end;
   end;
-  ItemHeight := h;
+  ItemHeight := h + 4;
+  Inc(ItemWidth, 4);
 end;
 
 { TMenuBar }
@@ -98,6 +118,8 @@ begin
   inherited SetMenuItem(AValue);
   Height := ItemHeight;
   Width := ItemWidth * Length(FMenuItem.Items);
+
+  Width:=Parent.Width;
 end;
 
 procedure TMenuBar.Draw;
@@ -116,7 +138,7 @@ begin
       Bitmap.Canvas.Pen.Color := clBlack;
       Bitmap.Canvas.Font.Color := clBlack;
     end;
-    Bitmap.Canvas.TextOut(i * ItemWidth, 0, FMenuItem.Items[i].Caption);
+    Bitmap.Canvas.TextOut(i * ItemWidth + 1, 1, FMenuItem.Items[i].Caption);
   end;
 end;
 
@@ -142,7 +164,7 @@ begin
         ev.What := whMenuCommand;
         ev.Sender := Self;
         if isMouseDown and IsMousInView(x, y) then begin
-          ev.Index:=akMenuPos;
+          ev.Index := akMenuPos;
           ev.Left := ItemWidth * akMenuPos + p.X;
           ev.Top := ItemHeight + p.Y;
         end else begin
@@ -187,7 +209,7 @@ begin
       Bitmap.Canvas.Pen.Color := clBlack;
       Bitmap.Canvas.Font.Color := clBlack;
     end;
-    Bitmap.Canvas.TextOut(0, i * ItemHeight, FMenuItem.Items[i].Caption);
+    Bitmap.Canvas.TextOut(1, i * ItemHeight + 1, FMenuItem.Items[i].Caption);
   end;
 end;
 
@@ -213,7 +235,7 @@ begin
         ev.What := whMenuCommand;
         ev.Sender := Self;
         if isMouseDown and IsMousInView(x, y) then begin
-          ev.Index:=akMenuPos;
+          ev.Index := akMenuPos;
           ev.Left := ItemWidth + p.X;
           ev.Top := ItemHeight * akMenuPos + p.Y;
         end else begin

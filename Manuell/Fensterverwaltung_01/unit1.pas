@@ -117,6 +117,16 @@ begin
   MenuItems.Items[2].Items[3].Items[3].Caption := '&Close';
   MenuItems.Items[2].Items[3].Items[3].Command := cmClose;
 
+  SetLength(MenuItems.Items[2].Items[4].Items, 4);
+  MenuItems.Items[2].Items[4].Items[0].Caption := 'Test&0';
+  MenuItems.Items[2].Items[4].Items[0].Command := cmTest0;
+  MenuItems.Items[2].Items[4].Items[1].Caption := 'Test&1';
+  MenuItems.Items[2].Items[4].Items[1].Command := cmTest1;
+  MenuItems.Items[2].Items[4].Items[2].Caption := 'Test&2';
+  MenuItems.Items[2].Items[4].Items[2].Command := cmTest2;
+  MenuItems.Items[2].Items[4].Items[3].Caption := '&Close';
+  MenuItems.Items[2].Items[4].Items[3].Command := cmClose;
+
   MenuItems.Items[3].Caption := '&Hilfe';
   SetLength(MenuItems.Items[3].Items, 2);
   MenuItems.Items[3].Items[0].Caption := '&Hilfe';
