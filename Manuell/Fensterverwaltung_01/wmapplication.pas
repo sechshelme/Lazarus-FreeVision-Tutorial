@@ -80,13 +80,13 @@ begin
   Insert(Desktop);
 
   MenuBar := TMenuBar.Create;
-//  MenuBar.Left := 50;
-//  MenuBar.Top := 5;
+  //  MenuBar.Left := 50;
+  //  MenuBar.Top := 5;
   Insert(MenuBar);
 
-    ToolBar := TToolBar.Create;
-    ToolBar.Top:=MenuBar.Height;
-    Insert(ToolBar);
+  ToolBar := TToolBar.Create;
+  ToolBar.Top := MenuBar.Height;
+  Insert(ToolBar);
 end;
 
 procedure TApplication.EventHandle(var Event: TEvent);
@@ -110,11 +110,11 @@ begin
         end;
 
         if not ClickInMenu then begin
-          for i := TMenuBox.MenuCounter - 1 downto 1 do begin
-            Delete(0);
-            l := Length(MenuBox);
-            SetLength(MenuBox, l - 1);
+          for i := TMenuBox.MenuCounter - 2 downto 0 do begin
+            Delete(MenuBox[i]);
           end;
+          SetLength(MenuBox, 0);
+
           ev.What := whRepaint;
           EventHandle(ev);
         end;
@@ -137,8 +137,8 @@ begin
         menu := TMenu(Event.Sender);
         mItem := menu.MenuItem.Items[Event.Index];
         if Length(mItem.Items) > 0 then begin  // Ist SubMenu Link ?
-          for i := TMenuBox.MenuCounter - 1 downto menu.Index do begin
-            Delete(1);
+          for i := TMenuBox.MenuCounter - 2 downto menu.Index - 1 do begin
+            Delete(MenuBox[i]);
             l := Length(MenuBox);
             SetLength(MenuBox, l - 1);
           end;
@@ -154,11 +154,10 @@ begin
           ev.What := whcmCommand;
           ev.Command := mItem.Command;
           EventHandle(ev);
-          for i := TMenuBox.MenuCounter - 1 downto 1 do begin
-            Delete(0);
-            l := Length(MenuBox);
-            SetLength(MenuBox, l - 1);
+          for i := TMenuBox.MenuCounter - 2 downto 0 do begin
+            Delete(MenuBox[i]);
           end;
+          SetLength(MenuBox, 0);
         end;
 
         ev.What := whRepaint;

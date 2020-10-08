@@ -77,6 +77,7 @@ type
     destructor Destroy; override;
     procedure Insert(AView: TView);
     procedure Delete(AIndex: Integer);
+    procedure Delete(AView: TView);
 
     function IsMousInView(x, y: integer): boolean; virtual;
     procedure EventHandle(var Event: TEvent); virtual;
@@ -182,13 +183,28 @@ end;
 
 procedure TView.Delete(AIndex: Integer);   // nicht fertig
 var
-  i: integer = 0;
+  i: Integer = 0;
 begin
   if Length(View) > AIndex then begin
     View[AIndex].Free;
     View[AIndex] := nil;
     system.Delete(View, AIndex, 1);
   end;
+end;
+
+procedure TView.Delete(AView: TView);
+var
+  i: Integer;
+begin
+  for i:=0 to Length(View)-1 do begin
+    if View[i]=AView then begin
+      View[i].Free;
+      View[i] := nil;
+      system.Delete(View, i, 1);
+      Exit;
+    end;
+  end;
+//  WriteLn('Element gibt es nicht !');
 end;
 
 function TView.calcOfs: TPoint;

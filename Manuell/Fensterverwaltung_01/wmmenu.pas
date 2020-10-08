@@ -11,14 +11,11 @@ uses
   WMView, WMDesktop, WMButton;
 
 type
-
-  { TMenuItems }
-
   TMenuItems = record
     Caption: string;
     Command: integer;
     Items: array of TMenuItems;
-    procedure Add(ACaption: string; ACommand: integer; AItems: TMenuItems);
+//    procedure Add(ACaption: string; ACommand: integer; AItems: TMenuItems);
   end;
 
   { TMenu }
@@ -64,16 +61,16 @@ implementation
 
 { TMenuItems }
 
-procedure TMenuItems.Add(ACaption: string; ACommand: integer; AItems: TMenuItems);
-var
-  l: integer;
-begin
-  l := Length(Items);
-  SetLength(Items, l + 1);
-  Items[l].Caption := ACaption;
-  Items[l].Command := ACommand;
-  //  Items[l].Items := AItems;
-end;
+//procedure TMenuItems.Add(ACaption: string; ACommand: integer; AItems: TMenuItems);
+//var
+//  l: integer;
+//begin
+//  l := Length(Items);
+//  SetLength(Items, l + 1);
+//  Items[l].Caption := ACaption;
+//  Items[l].Command := ACommand;
+//  //  Items[l].Items := AItems;
+//end;
 
 { TMenu }
 
