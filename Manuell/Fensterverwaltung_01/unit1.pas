@@ -36,6 +36,8 @@ type
   TForm1 = class(TForm)
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure FormPaint(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure Panel1MouseDown(Sender: TObject; WMButton: TMouseButton; Shift: TShiftState; X, Y: integer);
@@ -324,11 +326,10 @@ var
   ev: TEvent;
 begin
   if ssLeft in Shift then begin
-    ev.What:=whMouse;
-    ev.MouseCommand:=WMView.MouseDown;
-    ev.x:=x;
-    ev.y:=y;
-//    App.EventHandle(getMouseCommand(WMView.MouseDown, x, y));
+    ev.What := whMouse;
+    ev.MouseCommand := WMView.MouseDown;
+    ev.x := x;
+    ev.y := y;
     App.EventHandle(ev);
   end;
 end;
@@ -337,12 +338,11 @@ procedure TForm1.Panel1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TSh
 var
   ev: TEvent;
 begin
-  ev.What:=whMouse;
-  ev.MouseCommand:=WMView.MouseUp;
-  ev.x:=x;
-  ev.y:=y;
+  ev.What := whMouse;
+  ev.MouseCommand := WMView.MouseUp;
+  ev.x := x;
+  ev.y := y;
   App.EventHandle(ev);
-//  App.EventHandle(getMouseCommand(WMView.MouseUp, x, y));
 end;
 
 procedure TForm1.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
@@ -350,13 +350,40 @@ var
   ev: TEvent;
 begin
   if ssLeft in Shift then begin
-    ev.What:=whMouse;
-    ev.MouseCommand:=WMView.MouseMove;
-    ev.x:=x;
-    ev.y:=y;
+    ev.What := whMouse;
+    ev.MouseCommand := WMView.MouseMove;
+    ev.x := x;
+    ev.y := y;
     App.EventHandle(ev);
- //   App.EventHandle(getMouseCommand(WMView.MouseMove, x, y));
   end;
+end;
+
+procedure TForm1.FormKeyPress(Sender: TObject; var Key: char);
+var
+  ev: TEvent;
+begin
+  ev.What := whKeyPress;
+  ev.PressKey := Key;
+
+  App.EventHandle(ev);
+  Key := #0;
+end;
+
+procedure TForm1.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+var
+  ev: TEvent;
+begin
+  WriteLn(key);
+  if Key in [33..46, 112..123] then begin
+
+    ev.What := whKeyPress;
+    ev.PressKey := #0;
+    ev.DownKey := Key;
+    ev.shift := Shift;
+
+    App.EventHandle(ev);
+  end;
+  Key := 0;
 end;
 
 end.

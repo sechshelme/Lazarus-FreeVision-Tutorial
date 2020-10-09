@@ -16,9 +16,9 @@ const
   cmTest1 = 101;
   cmTest2 = 102;
   cmTest3 = 103;
-  cmopti0=104;
-  cmopti1=105;
-  cmopti2=106;
+  cmopti0 = 104;
+  cmopti1 = 105;
+  cmopti2 = 106;
 
   MouseDown = 0;
   MouseUp = 1;
@@ -34,11 +34,15 @@ type
   TEvent = record
     What: (whNone, whMouse, whKeyPress, whcmCommand, whMenuCommand, whRepaint);
     case integer of
-      0: (Value0, Value1, Value2, Value3: PtrInt);
-      1: (Command: PtrInt);
-      2: (MouseCommand, x, y: PtrInt);
-      3: (Index, Left, Top: PtrInt;
+      whNone: (Value0, Value1, Value2, Value3: PtrInt);
+      whMouse: (MouseCommand, x, y: PtrInt);
+      whKeyPress: (PressKey: char;
+        DownKey: byte;
+        shift: TShiftState);
+      whcmCommand: (Command: PtrInt);
+      whMenuCommand: (Index, Left, Top: PtrInt;
         Sender: TObject);
+      whRepaint: (was: (all, Windows));
   end;
 
   { TView }
@@ -76,7 +80,7 @@ type
     constructor Create; virtual;
     destructor Destroy; override;
     procedure Insert(AView: TView);
-    procedure Delete(AIndex: Integer);
+    procedure Delete(AIndex: integer);
     procedure Delete(AView: TView);
 
     function IsMousInView(x, y: integer): boolean; virtual;
@@ -181,9 +185,9 @@ begin
   System.Insert(AView, View, 0);
 end;
 
-procedure TView.Delete(AIndex: Integer);   // nicht fertig
+procedure TView.Delete(AIndex: integer);   // nicht fertig
 var
-  i: Integer = 0;
+  i: integer = 0;
 begin
   if Length(View) > AIndex then begin
     View[AIndex].Free;
@@ -194,17 +198,17 @@ end;
 
 procedure TView.Delete(AView: TView);
 var
-  i: Integer;
+  i: integer;
 begin
-  for i:=0 to Length(View)-1 do begin
-    if View[i]=AView then begin
+  for i := 0 to Length(View) - 1 do begin
+    if View[i] = AView then begin
       View[i].Free;
       View[i] := nil;
       system.Delete(View, i, 1);
       Exit;
     end;
   end;
-//  WriteLn('Element gibt es nicht !');
+  //  WriteLn('Element gibt es nicht !');
 end;
 
 function TView.calcOfs: TPoint;
@@ -304,6 +308,11 @@ begin
             //            View[0].EventHandle(getMouseCommand(MouseMove, x, y));
           end;
         end;
+      end;
+    end;
+    whKeyPress: begin
+      if Length(View) > 0 then begin
+        View[0].EventHandle(Event);
       end;
     end;
     whRepaint: begin

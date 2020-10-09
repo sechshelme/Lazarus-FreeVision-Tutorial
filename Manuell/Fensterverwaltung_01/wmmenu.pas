@@ -15,7 +15,7 @@ type
     Caption: string;
     Command: integer;
     Items: array of TMenuItems;
-//    procedure Add(ACaption: string; ACommand: integer; AItems: TMenuItems);
+    //    procedure Add(ACaption: string; ACommand: integer; AItems: TMenuItems);
   end;
 
   { TMenu }
@@ -116,7 +116,7 @@ begin
   Height := ItemHeight;
   Width := ItemWidth * Length(FMenuItem.Items);
 
-  Width:=Parent.Width;
+  Width := Parent.Width;
 end;
 
 procedure TMenuBar.Draw;
@@ -145,37 +145,64 @@ var
   p: TPoint;
   ev: TEvent;
 begin
-  if Event.What = whMouse then begin
-    p := calcOfs;
-    x := Event.x;
-    y := Event.y;
-
-    case Event.MouseCommand of
-      MouseDown: begin
-        akMenuPos := (x - p.X) div ItemWidth;
-        ev.What := whRepaint;
-        EventHandle(ev);
-        isMouseDown := True;
-      end;
-      MouseUp: begin
-        ev.What := whMenuCommand;
-        ev.Sender := Self;
-        if isMouseDown and IsMousInView(x, y) then begin
-          ev.Index := akMenuPos;
-          ev.Left := ItemWidth * akMenuPos + p.X;
-          ev.Top := ItemHeight + p.Y;
-        end else begin
-          ev.Index := -1;
-        end;
-        EventHandle(ev);
-      end;
-      MouseMove: begin
-        if isMouseDown and IsMousInView(x, y) then begin
+  case Event.What of
+    whMouse: begin
+      p := calcOfs;
+      x := Event.x;
+      y := Event.y;
+      case Event.MouseCommand of
+        MouseDown: begin
           akMenuPos := (x - p.X) div ItemWidth;
+          ev.What := whRepaint;
+          EventHandle(ev);
+          isMouseDown := True;
         end;
-        ev.What := whRepaint;
-        EventHandle(ev);
+        MouseUp: begin
+          ev.What := whMenuCommand;
+          ev.Sender := Self;
+          if isMouseDown and IsMousInView(x, y) then begin
+            ev.Index := akMenuPos;
+            ev.Left := ItemWidth * akMenuPos + p.X;
+            ev.Top := ItemHeight + p.Y;
+          end else begin
+            ev.Index := -1;
+          end;
+          EventHandle(ev);
+        end;
+        MouseMove: begin
+          if isMouseDown and IsMousInView(x, y) then begin
+            akMenuPos := (x - p.X) div ItemWidth;
+          end;
+          ev.What := whRepaint;
+          EventHandle(ev);
+        end;
       end;
+    end;
+    whKeyPress: begin
+      case Event.PressKey of
+        #0: begin
+          WriteLn('left');
+          case Event.DownKey of
+            37: begin
+              if akMenuPos > 0 then begin
+                Dec(akMenuPos);
+              end else begin
+                akMenuPos := Length(FMenuItem.Items) - 1;
+              end;
+            end;
+            39: begin
+              if akMenuPos < Length(FMenuItem.Items) - 1 then begin
+                Inc(akMenuPos);
+              end else begin
+                akMenuPos := 0;
+              end;
+            end;
+          end;
+
+        end;
+      end;
+      ev.What := whRepaint;
+      EventHandle(ev);
     end;
   end;
   inherited EventHandle(Event);
