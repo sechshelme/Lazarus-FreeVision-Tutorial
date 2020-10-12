@@ -117,18 +117,6 @@ begin
       end;
     end;
     whKeyPress: begin
-      //      if Length( View)>0 then View[0].EventHandle(Event);
-      //case Event.DownKey of
-      //  13: begin
-      //    WriteLn('enter');
-      //    ev.What := whMenuCommand;
-      //    ev.Sender := Self;
-      //    ev.Index := akMenuPos;
-      //    EventHandle(ev);
-      //  end;
-      //end;
-      //ev.What := whRepaint;
-      //EventHandle(ev);
     end;
 
     whMenuCommand: begin
@@ -195,7 +183,6 @@ begin
   Inc(MenuCounter);
   index := MenuCounter;
   FColor := clWhite;
-  HideCursor;
   //  WriteLn('mcc ', MenuCounter);
 end;
 
@@ -214,21 +201,26 @@ end;
 procedure TMenuView.EventHandle(var Event: TEvent);
 var
   ev: TEvent;
+  p: TPoint;
 begin
   case Event.What of
     whKeyPress: begin
-      WriteLn(Event.PressKey);
       case Event.PressKey of
         #13: begin
-          WriteLn('enter');
+          p := calcOfs;
           ev.What := whMenuCommand;
           ev.Sender := Self;
           ev.Index := akMenuPos;
-//          EventHandle(ev);
+          if Self.ClassName = 'TMenuBox' then begin
+            ev.Left := ItemWidth + p.X;
+            ev.Top := ItemHeight * akMenuPos + p.Y;
+          end else begin
+            ev.Left := ItemWidth * akMenuPos + p.X;
+            ev.Top := ItemHeight + p.Y;
+          end;
+          EventHandle(ev);
         end;
       end;
-      ev.What := whRepaint;
-      EventHandle(ev);
     end else begin
     end;
   end;
@@ -270,6 +262,7 @@ end;
 constructor TMenuBar.Create;
 begin
   inherited Create;
+  HideCursor;
   Anchors := [akLeft, akRight, akTop];
 end;
 
@@ -335,7 +328,6 @@ begin
     whKeyPress: begin
       case Event.PressKey of
         #0: begin
-          WriteLn('left');
           case Event.DownKey of
             37: begin
               if akMenuPos > 0 then begin
@@ -434,7 +426,6 @@ begin
     whKeyPress: begin
       case Event.PressKey of
         #0: begin
-          WriteLn('left');
           case Event.DownKey of
             35: begin
               akMenuPos := Length(FMenuItem.Items) - 1;
