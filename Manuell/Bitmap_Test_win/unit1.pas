@@ -64,20 +64,20 @@ begin
 
 
   r.Init;
-    r.Description.Init_BPP32_R8G8B8A8_BIO_TTB(100,100);
-//  r.Description.Init_BPP32_B8G8R8A8_BIO_TTB(100, 100);
+//    r.Description.Init_BPP32_R8G8B8A8_BIO_TTB(100,100);
+  r.Description.Init_BPP32_A8R8G8B8_BIO_TTB(100, 100);
   r.CreateData(True);
-  bitmap.LoadFromRawImage(r, True);
+//  bitmap.LoadFromRawImage(r, True);
   bitmap.Width := 100;
   bitmap.Height := 100;
-//  bitmap.LoadFromFile('project1.bmp');
+  bitmap.LoadFromFile('project1.bmp');
 
   bitmap.Canvas.Pen.Color := clYellow;
   bitmap.Canvas.Brush.Color := clGreen;
 
 //  RawRectangle(6, 6, 86, 86, bitmap.RawImage);
-  RawRectangle(6, 6, 46, 46, bitmap.RawImage);
-  bitmap.Canvas.Rectangle(6, 6, 86, 86);
+//  RawRectangle(6, 6, 46, 46, bitmap.RawImage);
+//  bitmap.Canvas.Rectangle(6, 6, 86, 86);
   Canvas.Draw(10, 10, bitmap);
   bitmap.Free;
 end;

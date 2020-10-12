@@ -46,7 +46,7 @@ begin
   FClient.Top := TitelBarSize;
   FClient.Left := BorderSize;
   FClient.Color := clWhite;
-  Insert(FClient);
+  InsertView(FClient);
 
   CloseBtn := TButton.Create;
   CloseBtn.Anchors := [akRight];
@@ -57,7 +57,7 @@ begin
 
   CloseBtn.Caption := 'X';
   CloseBtn.Command := cmClose;
-  Insert(CloseBtn);
+  InsertView(CloseBtn);
 end;
 
 procedure TWindow.EventHandle(var Event: TEvent);

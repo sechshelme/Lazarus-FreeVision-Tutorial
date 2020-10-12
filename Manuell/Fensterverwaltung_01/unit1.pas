@@ -138,7 +138,7 @@ begin
   MenuItems.Items[4].Command := cmNewWindow;
   MenuItems.Items[5].Caption := '&Close';
   MenuItems.Items[5].Command := cmClose;
-  MenuBar.MenuItem := MenuItems;
+  Menu.MenuBar.MenuItem := MenuItems;
 
   for i := 0 to 19 do begin
     NewWindow;
@@ -160,7 +160,7 @@ begin
   win.Height := Random(Height div 3) + 100;
   win.Caption := 'Fenster: ' + IntToStr(ctr);
   Inc(ctr);
-  Desktop.Insert(win);
+  Desktop.InsertView(win);
 end;
 
 procedure TMyApp.NewDialog;
@@ -168,7 +168,7 @@ var
   Dialog: TMyDialog;
 begin
   Dialog := TMyDialog.Create;
-  Desktop.Insert(Dialog);
+  Desktop.InsertView(Dialog);
 end;
 
 procedure TMyApp.EventHandle(var Event: TEvent);
@@ -231,7 +231,7 @@ begin
   btn0.Left := Client.Width - (btn0.Width + 10) * 5;
   btn0.Caption := 'btn0';
   btn0.Command := cmBtn0;
-  Client.Insert(btn0);
+  Client.InsertView(btn0);
 
   btn1 := TButton.Create;
   btn1.Anchors := [akRight, akBottom];
@@ -239,7 +239,7 @@ begin
   btn1.Left := Client.Width - (btn0.Width + 10) * 4;
   btn1.Caption := 'btn1';
   btn1.Command := cmBtn1;
-  Client.Insert(btn1);
+  Client.InsertView(btn1);
 
   btn2 := TButton.Create;
   btn2.Anchors := [akRight, akBottom];
@@ -247,7 +247,7 @@ begin
   btn2.Left := Client.Width - (btn0.Width + 10) * 3;
   btn2.Caption := 'btn2';
   btn2.Command := cmBtn2;
-  Client.Insert(btn2);
+  Client.InsertView(btn2);
 
   btnClose := TButton.Create;
   btnClose.Anchors := [akRight, akBottom];
@@ -255,7 +255,7 @@ begin
   btnClose.Left := Client.Width - (btn0.Width + 10) * 2;
   btnClose.Caption := 'Close';
   btnClose.Command := cmClose;
-  Client.Insert(btnClose);
+  Client.InsertView(btnClose);
 
   btnQuit := TButton.Create;
   btnQuit.Anchors := [akRight, akBottom];
@@ -263,7 +263,7 @@ begin
   btnQuit.Left := Client.Width - btn0.Width - 10;
   btnQuit.Caption := 'Quit';
   btnQuit.Command := cmQuit;
-  Client.Insert(btnQuit);
+  Client.InsertView(btnQuit);
 end;
 
 procedure TMyDialog.EventHandle(var Event: TEvent);
@@ -283,7 +283,6 @@ begin
       end;
     end;
   end;
-
   inherited EventHandle(Event);
 end;
 
@@ -364,7 +363,6 @@ var
 begin
   ev.What := whKeyPress;
   ev.PressKey := Key;
-
   App.EventHandle(ev);
   Key := #0;
 end;
@@ -373,7 +371,7 @@ procedure TForm1.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState)
 var
   ev: TEvent;
 begin
-  WriteLn(key);
+//  WriteLn(key);
   if Key in [33..46, 112..123] then begin
 
     ev.What := whKeyPress;
@@ -383,7 +381,7 @@ begin
 
     App.EventHandle(ev);
   end;
-  Key := 0;
+//  Key := 0;
 end;
 
 end.

@@ -61,8 +61,8 @@ type
     FWidth: integer;
     FCaption: string;
     FColor: TColor;
+    FBitmap: TBitmap;
 
-    Bitmap: TBitmap;
     MousePos: TPoint;
     isMouseDown: boolean;
     Parent: TView;
@@ -77,11 +77,13 @@ type
 
     property Caption: string read FCaption write SetCaption;
     property Color: TColor read FColor write SetColor;
+    property Bitmap: TBitmap read FBitmap write FBitmap;
     constructor Create; virtual;
     destructor Destroy; override;
-    procedure Insert(AView: TView);
-    procedure Delete(AIndex: integer);
-    procedure Delete(AView: TView);
+    procedure InsertView(AView: TView);
+    procedure DeleteView(AIndex: integer);
+    procedure DeleteView(AView: TView);
+    procedure LastView(AView: TView);
 
     function IsMousInView(x, y: integer): boolean; virtual;
     procedure EventHandle(var Event: TEvent); virtual;
@@ -179,24 +181,24 @@ begin
   inherited Destroy;
 end;
 
-procedure TView.Insert(AView: TView);
+procedure TView.InsertView(AView: TView);
 begin
   AView.Parent := Self;
-  System.Insert(AView, View, 0);
+  Insert(AView, View, 0);
 end;
 
-procedure TView.Delete(AIndex: integer);   // nicht fertig
+procedure TView.DeleteView(AIndex: integer);   // nicht fertig
 var
   i: integer = 0;
 begin
   if Length(View) > AIndex then begin
     View[AIndex].Free;
     View[AIndex] := nil;
-    system.Delete(View, AIndex, 1);
+    Delete(View, AIndex, 1);
   end;
 end;
 
-procedure TView.Delete(AView: TView);
+procedure TView.DeleteView(AView: TView);
 var
   i: integer;
 begin
@@ -209,6 +211,22 @@ begin
     end;
   end;
   //  WriteLn('Element gibt es nicht !');
+end;
+
+procedure TView.LastView(AView: TView);
+var
+  v: TView;
+  l, i:Integer;
+begin
+  l:=Length(View);
+  for i := 0 to l - 1 do begin
+    if View[i] = AView then begin
+      v:=View[i];
+
+      Delete(View, i, 1);
+      Insert(v, View, l-1);
+    end;
+  end;
 end;
 
 function TView.calcOfs: TPoint;
@@ -271,8 +289,8 @@ begin
             if View[index].IsMousInView(X, Y) then begin
               if index <> 0 then begin
                 v := View[index];
-                system.Delete(View, index, 1);
-                system.Insert(v, View, 0);
+                Delete(View, index, 1);
+                Insert(v, View, 0);
                 ev.What := whRepaint;
                 EventHandle(ev);
               end;
