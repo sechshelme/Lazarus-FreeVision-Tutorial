@@ -104,12 +104,20 @@ begin
             Break;
           end;
         end;
+        if MenuBar.IsMousInView(Event.x, Event.y) then begin
+          ClickInMenu := True;
+        end;
 
-        if not ClickInMenu then begin
+        if (not ClickInMenu) and (TMenuBox.MenuCounter > 1) then begin
           for i := TMenuBox.MenuCounter - 2 downto 0 do begin
             DeleteView(MenuBox[i]);
           end;
           SetLength(MenuBox, 0);
+
+          if Parent <> nil then begin
+            Parent.LastView(Self);
+          end;
+          MenuBar.HideCursor;
 
           ev.What := whRepaint;
           EventHandle(ev);
@@ -117,6 +125,7 @@ begin
       end;
     end;
     whKeyPress: begin
+//      WriteLn('menuwindows');
     end;
 
     whMenuCommand: begin
@@ -145,6 +154,7 @@ begin
             DeleteView(MenuBox[i]);
           end;
           SetLength(MenuBox, 0);
+
           if Parent <> nil then begin
             Parent.LastView(Self);
           end;
@@ -221,7 +231,8 @@ begin
           EventHandle(ev);
         end;
       end;
-    end else begin
+    end;
+    else begin
     end;
   end;
 
@@ -307,7 +318,7 @@ begin
         MouseUp: begin
           ev.What := whMenuCommand;
           ev.Sender := Self;
-          if isMouseDown and IsMousInView(x, y) then begin
+          if isMouseDown and IsMousInView(x, y) and (akMenuPos < Length(FMenuItem.Items)) then begin
             ev.Index := akMenuPos;
             ev.Left := ItemWidth * akMenuPos + p.X;
             ev.Top := ItemHeight + p.Y;

@@ -25,7 +25,7 @@ type
   public
     Desktop: TDesktop;
     ToolBar: TToolBar;
-    Menu:TMenuWindow;
+    Menu: TMenuWindow;
     constructor Create; override;
     procedure EventHandle(var Event: TEvent); override;
   end;
@@ -73,7 +73,7 @@ begin
   Menu := TMenuWindow.Create;
   //  MenuBar.Left := 50;
   //  MenuBar.Top := 5;
-//  Menu.Height:= Height;
+  //  Menu.Height:= Height;
   InsertView(Menu);
 
   ToolBar := TToolBar.Create;
@@ -105,6 +105,22 @@ begin
           EventHandle(ev);
         end;
       end;
+    end;
+    whKeyPress: begin
+      case Event.PressKey of
+        #0: begin
+//          WriteLn(integer(pointer( View[0])));
+          case Event.DownKey of
+            121: begin   // F10
+              if Event.shift = [] then begin
+                FirstView(Menu);
+              end;
+            end;
+          end;
+        end;
+      end;
+      ev.What := whRepaint;
+      EventHandle(ev);
     end;
     whRepaint: begin
       Draw;

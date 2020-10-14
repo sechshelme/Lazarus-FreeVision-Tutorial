@@ -84,6 +84,7 @@ type
     procedure DeleteView(AIndex: integer);
     procedure DeleteView(AView: TView);
     procedure LastView(AView: TView);
+    procedure FirstView(AView: TView);
 
     function IsMousInView(x, y: integer): boolean; virtual;
     procedure EventHandle(var Event: TEvent); virtual;
@@ -216,15 +217,30 @@ end;
 procedure TView.LastView(AView: TView);
 var
   v: TView;
-  l, i:Integer;
+  l, i: integer;
 begin
-  l:=Length(View);
+  l := Length(View);
   for i := 0 to l - 1 do begin
     if View[i] = AView then begin
-      v:=View[i];
-
+      v := View[i];
       Delete(View, i, 1);
-      Insert(v, View, l-1);
+      Insert(v, View, l - 1);
+    end;
+  end;
+end;
+
+procedure TView.FirstView(AView: TView);
+var
+  v: TView;
+  l, i: integer;
+begin
+  l := Length(View);
+  WriteLn('dfgfdgfd');
+  for i := 0 to l - 1 do begin
+    if View[i] = AView then begin
+      v := View[i];
+      Delete(View, i, 1);
+      Insert(v, View, 0);
     end;
   end;
 end;
