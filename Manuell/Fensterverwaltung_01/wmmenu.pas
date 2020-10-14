@@ -125,7 +125,17 @@ begin
       end;
     end;
     whKeyPress: begin
-//      WriteLn('menuwindows');
+      //case Event.PressKey of
+      //  #0: begin
+      //    case Event.DownKey of
+      //      37, 39: begin
+      //        MenuBar.EventHandle(Event);
+      //      end;
+      //    end;
+      //  end;
+      //end;
+      //ev.What := whRepaint;
+      //EventHandle(ev);
     end;
 
     whMenuCommand: begin
@@ -217,18 +227,18 @@ begin
     whKeyPress: begin
       case Event.PressKey of
         #13: begin
-          p := calcOfs;
-          ev.What := whMenuCommand;
-          ev.Sender := Self;
-          ev.Index := akMenuPos;
-          if Self.ClassName = 'TMenuBox' then begin
-            ev.Left := ItemWidth + p.X;
-            ev.Top := ItemHeight * akMenuPos + p.Y;
-          end else begin
-            ev.Left := ItemWidth * akMenuPos + p.X;
-            ev.Top := ItemHeight + p.Y;
-          end;
-          EventHandle(ev);
+          //p := calcOfs;
+          //ev.What := whMenuCommand;
+          //ev.Sender := Self;
+          //ev.Index := akMenuPos;
+          //if Self.ClassName = 'TMenuBox' then begin
+          //  ev.Left := ItemWidth + p.X;
+          //  ev.Top := ItemHeight * akMenuPos + p.Y;
+          //end else begin
+          //  ev.Left := ItemWidth * akMenuPos + p.X;
+          //  ev.Top := ItemHeight + p.Y;
+          //end;
+          //EventHandle(ev);
         end;
       end;
     end;
@@ -355,10 +365,19 @@ begin
               end;
             end;
           end;
+          ev.What := whRepaint;
+          EventHandle(ev);
+        end;
+        #13: begin
+          p := calcOfs;
+          ev.What := whMenuCommand;
+          ev.Sender := Self;
+          ev.Index := akMenuPos;
+            ev.Left := ItemWidth * akMenuPos + p.X;
+            ev.Top := ItemHeight + p.Y;
+          EventHandle(ev);
         end;
       end;
-      ev.What := whRepaint;
-      EventHandle(ev);
     end else begin
     end;
   end;
@@ -459,10 +478,19 @@ begin
               end;
             end;
           end;
+          ev.What := whRepaint;
+          EventHandle(ev);
+        end;
+        #13: begin
+          p := calcOfs;
+          ev.What := whMenuCommand;
+          ev.Sender := Self;
+          ev.Index := akMenuPos;
+            ev.Left := ItemWidth + p.X;
+            ev.Top := ItemHeight * akMenuPos + p.Y;
+          EventHandle(ev);
         end;
       end;
-      ev.What := whRepaint;
-      EventHandle(ev);
     end else begin
     end;
   end;
