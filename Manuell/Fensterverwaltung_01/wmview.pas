@@ -189,8 +189,6 @@ begin
 end;
 
 procedure TView.DeleteView(AIndex: integer);   // nicht fertig
-var
-  i: integer = 0;
 begin
   if Length(View) > AIndex then begin
     View[AIndex].Free;
@@ -235,7 +233,6 @@ var
   l, i: integer;
 begin
   l := Length(View);
-  WriteLn('dfgfdgfd');
   for i := 0 to l - 1 do begin
     if View[i] = AView then begin
       v := View[i];

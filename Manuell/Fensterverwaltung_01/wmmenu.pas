@@ -26,8 +26,8 @@ type
     FMenuItem: TMenuItems;
     procedure SetMenuItem(AValue: TMenuItems); virtual;
   public
-    MenuCounter: integer; static;
-    Index: integer;
+    MenuCount: integer; static;
+    Nesting: integer;
     property MenuItem: TMenuItems read FMenuItem write SetMenuItem;
     constructor Create; override;
     destructor Destroy; override;
@@ -61,7 +61,7 @@ type
   TMenuWindow = class(TView)
   private
     function ClickInMenu(x, y: integer): boolean;
-    procedure KillSubMenu;
+    procedure KillSubMenu(First: integer; BackMenu: boolean);
   public
     MenuBar: TMenuBar;
     MenuBox: array of TMenuBox;
@@ -94,7 +94,7 @@ var
 begin
   Result := False;
 
-  for i := 0 to TMenuBox.MenuCounter - 2 do begin
+  for i := 0 to TMenuBox.MenuCount - 2 do begin
     if MenuBox[i].IsMousInView(x, y) then begin
       Result := True;
       Exit;
@@ -105,41 +105,35 @@ begin
   end;
 end;
 
-procedure TMenuWindow.KillSubMenu;
+procedure TMenuWindow.KillSubMenu(First: integer; BackMenu: boolean);
 var
   i: integer;
 begin
-  for i := 0 to TMenuBox.MenuCounter - 2 do begin
+  for i := First to TMenuBox.MenuCount - 2 do begin
     DeleteView(MenuBox[i]);
   end;
-  SetLength(MenuBox, 0);
+  SetLength(MenuBox, First);
 
-  if Parent <> nil then begin
-    Parent.LastView(Self);
+  if BackMenu then begin
+    if Parent <> nil then begin
+      Parent.LastView(Self);
+    end;
+    MenuBar.HideCursor;
   end;
-  MenuBar.HideCursor;
 end;
 
 procedure TMenuWindow.EventHandle(var Event: TEvent);
 var
   ev: TEvent;
   mItem: TMenuItems;
-  i, l: integer;
+  l: integer;
   menu: TMenuView;
 begin
   case Event.What of
     whMouse: begin
       if Event.MouseCommand = MouseDown then begin
-        if (not ClickInMenu(Event.x, Event.y)) and (TMenuBox.MenuCounter > 1) then begin
-          for i := 0 to TMenuBox.MenuCounter - 2 do begin
-            DeleteView(MenuBox[i]);
-          end;
-          SetLength(MenuBox, 0);
-
-          if Parent <> nil then begin
-            Parent.LastView(Self);
-          end;
-          MenuBar.HideCursor;
+          if not ClickInMenu(Event.x, Event.y) then begin
+          KillSubMenu(0,True);
 
           ev.What := whRepaint;
           EventHandle(ev);
@@ -165,14 +159,10 @@ begin
         menu := TMenuView(Event.Sender);
         mItem := menu.MenuItem.Items[Event.Index];
         if Length(mItem.Items) > 0 then begin  // Ist SubMenu Link ?
-          for i := TMenuBox.MenuCounter - 2 downto menu.Index - 1 do begin
-            DeleteView(MenuBox[i]);
-            l := Length(MenuBox);
-            SetLength(MenuBox, l - 1);
-          end;
+          KillSubMenu(menu.Nesting - 1, False);
 
-          l := Length(MenuBox);
-          SetLength(MenuBox, l + 1);
+          SetLength(MenuBox, menu.Nesting);
+          l := Length(MenuBox) - 1;
           MenuBox[l] := TMenuBox.Create;
           MenuBox[l].MenuItem := mItem;
           MenuBox[l].Left := Event.Left;
@@ -182,14 +172,13 @@ begin
           ev.What := whcmCommand;
           ev.Command := mItem.Command;
           EventHandle(ev);
-          KillSubMenu;
+          KillSubMenu(0, True);
         end;
-
-        ev.What := whRepaint;
-        EventHandle(ev);
       end else begin
-        KillSubMenu;   ////////////////
+        KillSubMenu(0, True);
       end;
+      ev.What := whRepaint;
+      EventHandle(ev);
     end else begin
     end;
   end;
@@ -217,16 +206,16 @@ end;
 constructor TMenuView.Create;
 begin
   inherited Create;
-  Inc(MenuCounter);
-  index := MenuCounter;
+  Inc(MenuCount);
+  Nesting := MenuCount;
   FColor := clWhite;
-  //  WriteLn('mcc ', MenuCounter);
+  //  WriteLn('mcc ', MenuCount);
 end;
 
 destructor TMenuView.Destroy;
 begin
-  Dec(MenuCounter);
-  //  WriteLn('mcc ', MenuCounter);
+  Dec(MenuCount);
+  //  WriteLn('mcc ', MenuCount);
   inherited Destroy;
 end;
 
