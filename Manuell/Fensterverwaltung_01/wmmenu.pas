@@ -59,6 +59,9 @@ type
   { TMenuWindow }
 
   TMenuWindow = class(TView)
+  private
+    function ClickInMenu(x, y: integer): boolean;
+    procedure KillSubMenu;
   public
     MenuBar: TMenuBar;
     MenuBox: array of TMenuBox;
@@ -85,31 +88,50 @@ begin
   InsertView(MenuBar);
 end;
 
+function TMenuWindow.ClickInMenu(x, y: integer): boolean;
+var
+  i: integer;
+begin
+  Result := False;
+
+  for i := 0 to TMenuBox.MenuCounter - 2 do begin
+    if MenuBox[i].IsMousInView(x, y) then begin
+      Result := True;
+      Exit;
+    end;
+  end;
+  if MenuBar.IsMousInView(x, y) then begin
+    Result := True;
+  end;
+end;
+
+procedure TMenuWindow.KillSubMenu;
+var
+  i: integer;
+begin
+  for i := 0 to TMenuBox.MenuCounter - 2 do begin
+    DeleteView(MenuBox[i]);
+  end;
+  SetLength(MenuBox, 0);
+
+  if Parent <> nil then begin
+    Parent.LastView(Self);
+  end;
+  MenuBar.HideCursor;
+end;
+
 procedure TMenuWindow.EventHandle(var Event: TEvent);
 var
   ev: TEvent;
   mItem: TMenuItems;
   i, l: integer;
   menu: TMenuView;
-  ClickInMenu: boolean;
 begin
   case Event.What of
     whMouse: begin
       if Event.MouseCommand = MouseDown then begin
-        ClickInMenu := False;
-
-        for i := TMenuBox.MenuCounter - 2 downto 0 do begin
-          if MenuBox[i].IsMousInView(Event.x, Event.y) then begin
-            ClickInMenu := True;
-            Break;
-          end;
-        end;
-        if MenuBar.IsMousInView(Event.x, Event.y) then begin
-          ClickInMenu := True;
-        end;
-
-        if (not ClickInMenu) and (TMenuBox.MenuCounter > 1) then begin
-          for i := TMenuBox.MenuCounter - 2 downto 0 do begin
+        if (not ClickInMenu(Event.x, Event.y)) and (TMenuBox.MenuCounter > 1) then begin
+          for i := 0 to TMenuBox.MenuCounter - 2 do begin
             DeleteView(MenuBox[i]);
           end;
           SetLength(MenuBox, 0);
@@ -160,20 +182,15 @@ begin
           ev.What := whcmCommand;
           ev.Command := mItem.Command;
           EventHandle(ev);
-          for i := TMenuBox.MenuCounter - 2 downto 0 do begin
-            DeleteView(MenuBox[i]);
-          end;
-          SetLength(MenuBox, 0);
-
-          if Parent <> nil then begin
-            Parent.LastView(Self);
-          end;
-          MenuBar.HideCursor;
+          KillSubMenu;
         end;
 
         ev.What := whRepaint;
         EventHandle(ev);
+      end else begin
+        KillSubMenu;   ////////////////
       end;
+    end else begin
     end;
   end;
 
@@ -373,8 +390,8 @@ begin
           ev.What := whMenuCommand;
           ev.Sender := Self;
           ev.Index := akMenuPos;
-            ev.Left := ItemWidth * akMenuPos + p.X;
-            ev.Top := ItemHeight + p.Y;
+          ev.Left := ItemWidth * akMenuPos + p.X;
+          ev.Top := ItemHeight + p.Y;
           EventHandle(ev);
         end;
       end;
@@ -486,8 +503,8 @@ begin
           ev.What := whMenuCommand;
           ev.Sender := Self;
           ev.Index := akMenuPos;
-            ev.Left := ItemWidth + p.X;
-            ev.Top := ItemHeight * akMenuPos + p.Y;
+          ev.Left := ItemWidth + p.X;
+          ev.Top := ItemHeight * akMenuPos + p.Y;
           EventHandle(ev);
         end;
       end;
