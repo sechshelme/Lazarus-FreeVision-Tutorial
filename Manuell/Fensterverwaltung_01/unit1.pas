@@ -119,7 +119,7 @@ begin
   MenuItems.Items[2].Items[3].Items[3].Caption := '&Close';
   MenuItems.Items[2].Items[3].Items[3].Command := cmClose;
 
-  SetLength(MenuItems.Items[2].Items[4].Items, 4);
+  SetLength(MenuItems.Items[2].Items[4].Items, 5);
   MenuItems.Items[2].Items[4].Items[0].Caption := 'Test&0';
   MenuItems.Items[2].Items[4].Items[0].Command := cmTest0;
   MenuItems.Items[2].Items[4].Items[1].Caption := 'Test&1';
@@ -128,6 +128,19 @@ begin
   MenuItems.Items[2].Items[4].Items[2].Command := cmTest2;
   MenuItems.Items[2].Items[4].Items[3].Caption := '&Close';
   MenuItems.Items[2].Items[4].Items[3].Command := cmClose;
+  MenuItems.Items[2].Items[4].Items[4].Caption := '&Sub';
+
+
+  SetLength(MenuItems.Items[2].Items[4].Items[4].Items, 4);
+  MenuItems.Items[2].Items[4].Items[4].Items[0].Caption := '&s0';
+  MenuItems.Items[2].Items[4].Items[4].Items[0].Command := cmNewDialog;
+  MenuItems.Items[2].Items[4].Items[4].Items[1].Caption := '&s1';
+  MenuItems.Items[2].Items[4].Items[4].Items[1].Command := cmNewDialog;
+  MenuItems.Items[2].Items[4].Items[4].Items[2].Caption := '&s2';
+  MenuItems.Items[2].Items[4].Items[4].Items[2].Command := cmNewDialog;
+  MenuItems.Items[2].Items[4].Items[4].Items[3].Caption := '&s3';
+  MenuItems.Items[2].Items[4].Items[4].Items[3].Command := cmNewDialog;
+
 
   MenuItems.Items[3].Caption := '&Hilfe';
   SetLength(MenuItems.Items[3].Items, 2);
