@@ -71,9 +71,6 @@ begin
   Color := clMaroon;
 
   Menu := TMenuWindow.Create;
-  //  MenuBar.Left := 50;
-  //  MenuBar.Top := 5;
-  //  Menu.Height:= Height;
   InsertView(Menu);
 
   ToolBar := TToolBar.Create;
@@ -109,11 +106,11 @@ begin
     whKeyPress: begin
       case Event.PressKey of
         #0: begin
-//          WriteLn(integer(pointer( View[0])));
           case Event.DownKey of
             121: begin   // F10
               if Event.shift = [] then begin
                 FirstView(Menu);
+                Menu.MenuBar.ShowCursor;
               end;
             end;
           end;
