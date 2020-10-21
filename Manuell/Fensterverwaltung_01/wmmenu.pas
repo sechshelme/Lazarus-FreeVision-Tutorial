@@ -33,8 +33,8 @@ type
     property Index: integer read FIndex;
     constructor Create; override;
     destructor Destroy; override;
-    procedure HideCursor;
-    procedure ShowCursor;
+    procedure HideCursor; virtual;
+    procedure ShowCursor; virtual;
   end;
 
   { TMenuBar }
@@ -42,10 +42,12 @@ type
   TMenuBar = class(TMenuView)
   private
     procedure SetMenuItem(AValue: TMenuItems); override;
+    procedure SendMenuCommand;
   public
     constructor Create; override;
     procedure Draw; override;
     procedure EventHandle(var Event: TEvent); override;
+    procedure ShowCursor; override;
   end;
 
   { TMenuBox }
@@ -132,15 +134,13 @@ var
   mItem: TMenuItems;
   l: integer;
   menu: TMenuView;
-  isSubMenu: boolean;
+
 begin
-  isSubMenu := False;
   case Event.What of
     whMouse: begin
       if Event.MouseCommand = MouseDown then begin
         if not ClickInMenu(Event.x, Event.y) then begin
           KillSubMenu(0, True);
-
           ev.What := whRepaint;
           EventHandle(ev);
         end;
@@ -163,27 +163,8 @@ begin
         end;
         #0: begin
           if Event.DownKey in [37, 39] then begin
-            isSubMenu := Length(MenuBox) > 0;
             KillSubMenu(0, False);
           end;
-          //
-          //          case Event.DownKey of
-          //            37: begin
-          //              if akMenuPos > 0 then begin
-          //                Dec(akMenuPos);
-          //              end else begin
-          //                akMenuPos := Length(FMenuItem.Items) - 1;
-          //              end;
-          //            end;
-          //            39: begin
-          //              if akMenuPos < Length(FMenuItem.Items) - 1 then begin
-          //                Inc(akMenuPos);
-          //              end else begin
-          //                akMenuPos := 0;
-          //              end;
-          //            end;
-          //          end;
-
           ev.What := whRepaint;
           EventHandle(ev);
         end;
@@ -219,20 +200,6 @@ begin
   end;
 
   inherited EventHandle(Event);
-
-  //if isSubMenu then begin
-  //  WriteLn(isSubMenu);
-  //  mItem := menu.MenuItem.Items[MenuBar.Index];
-  //  SetLength(MenuBox, 1);
-  //  MenuBox[0] := TMenuBox.Create;
-  //  MenuBox[0].MenuItem := mItem;
-  //  MenuBox[0].Left := Event.Left;
-  //  MenuBox[0].Top := Event.Top;
-  //  InsertView(MenuBox[0]);
-  //  ev.What := whRepaint;
-  //  EventHandle(ev);
-  //  isSubMenu:=False;
-  //end;
 end;
 
 procedure TMenuWindow.Draw;
@@ -258,24 +225,12 @@ begin
   Inc(MenuCount);
   Nesting := MenuCount;
   FColor := clWhite;
-  //  WriteLn('mcc ', MenuCount);
 end;
 
 destructor TMenuView.Destroy;
 begin
   Dec(MenuCount);
-  //  WriteLn('mcc ', MenuCount);
   inherited Destroy;
-end;
-
-procedure TMenuView.HideCursor;
-begin
-  FIndex := -1;
-end;
-
-procedure TMenuView.ShowCursor;
-begin
-  FIndex := 0;
 end;
 
 procedure TMenuView.SetMenuItem(AValue: TMenuItems);
@@ -296,6 +251,16 @@ begin
   Inc(ItemWidth, 4);
 end;
 
+procedure TMenuView.HideCursor;
+begin
+  FIndex := -1;
+end;
+
+procedure TMenuView.ShowCursor;
+begin
+  FIndex := 0;
+end;
+
 { TMenuBar }
 
 procedure TMenuBar.SetMenuItem(AValue: TMenuItems);
@@ -307,6 +272,22 @@ begin
   if Parent <> nil then begin
     Width := Parent.Width;
   end;
+end;
+
+procedure TMenuBar.SendMenuCommand;
+var
+  x, y: integer;
+  p: TPoint;
+  ev: TEvent;
+
+begin
+  p := calcOfs;
+  ev.What := whMenuCommand;
+  ev.Sender := Self;
+  ev.Index := Index;
+  ev.Left := ItemWidth * Index + p.X;
+  ev.Top := ItemHeight + p.Y;
+  EventHandle(ev);
 end;
 
 constructor TMenuBar.Create;
@@ -341,76 +322,89 @@ var
   x, y: integer;
   p: TPoint;
   ev: TEvent;
+
 begin
-  case Event.What of
-    whMouse: begin
-      p := calcOfs;
-      x := Event.x;
-      y := Event.y;
-      case Event.MouseCommand of
-        MouseDown: begin
-          FIndex := (x - p.X) div ItemWidth;
-          ev.What := whRepaint;
-          EventHandle(ev);
-          isMouseDown := True;
-        end;
-        MouseUp: begin
-          ev.What := whMenuCommand;
-          ev.Sender := Self;
-          if isMouseDown and IsMousInView(x, y) and (Index < Length(FMenuItem.Items)) then begin
-            ev.Index := Index;
-            ev.Left := ItemWidth * Index + p.X;
-            ev.Top := ItemHeight + p.Y;
-          end else begin
-            ev.Index := -1;
-          end;
-          EventHandle(ev);
-        end;
-        MouseMove: begin
-          if isMouseDown and IsMousInView(x, y) then begin
+  if Length(FMenuItem.Items) > 0 then begin
+    case Event.What of
+      whMouse: begin
+        p := calcOfs;
+        x := Event.x;
+        y := Event.y;
+        case Event.MouseCommand of
+          MouseDown: begin
             FIndex := (x - p.X) div ItemWidth;
+            ev.What := whRepaint;
+            EventHandle(ev);
+            isMouseDown := True;
           end;
-          ev.What := whRepaint;
-          EventHandle(ev);
+          MouseUp: begin
+            ev.What := whMenuCommand;
+            ev.Sender := Self;
+            if isMouseDown and IsMousInView(x, y) and (Index < Length(FMenuItem.Items)) then begin
+              ev.Index := Index;
+              ev.Left := ItemWidth * Index + p.X;
+              ev.Top := ItemHeight + p.Y;
+            end else begin
+              ev.Index := -1;
+            end;
+            EventHandle(ev);
+          end;
+          MouseMove: begin
+            if isMouseDown and IsMousInView(x, y) then begin
+              FIndex := (x - p.X) div ItemWidth;
+            end;
+            ev.What := whRepaint;
+            EventHandle(ev);
+          end;
         end;
       end;
-    end;
-    whKeyPress: begin
-      case Event.PressKey of
-        #0: begin
-          case Event.DownKey of
-            37: begin
-              if Index > 0 then begin
-                Dec(FIndex);
-              end else begin
-                FIndex := Length(FMenuItem.Items) - 1;
+      whKeyPress: begin
+        case Event.PressKey of
+          #0: begin
+            case Event.DownKey of
+              37: begin
+                if Index > 0 then begin
+                  Dec(FIndex);
+                end else begin
+                  FIndex := Length(FMenuItem.Items) - 1;
+                end;
+                if Length(FMenuItem.Items[FIndex].Items) > 0 then begin
+                  SendMenuCommand;
+                end;
+              end;
+              39: begin
+                if FIndex < Length(FMenuItem.Items) - 1 then begin
+                  Inc(FIndex);
+                end else begin
+                  FIndex := 0;
+                end;
+                if Length(FMenuItem.Items[FIndex].Items) > 0 then begin
+                  SendMenuCommand;
+                end;
               end;
             end;
-            39: begin
-              if FIndex < Length(FMenuItem.Items) - 1 then begin
-                Inc(FIndex);
-              end else begin
-                FIndex := 0;
-              end;
-            end;
+            ev.What := whRepaint;
+            EventHandle(ev);
           end;
-          ev.What := whRepaint;
-          EventHandle(ev);
+          #13: begin
+            SendMenuCommand;
+          end;
         end;
-        #13: begin
-          p := calcOfs;
-          ev.What := whMenuCommand;
-          ev.Sender := Self;
-          ev.Index := Index;
-          ev.Left := ItemWidth * Index + p.X;
-          ev.Top := ItemHeight + p.Y;
-          EventHandle(ev);
-        end;
+      end else begin
       end;
-    end else begin
     end;
   end;
   inherited EventHandle(Event);
+end;
+
+procedure TMenuBar.ShowCursor;
+begin
+  inherited ShowCursor;
+  if Length(FMenuItem.Items) > 0 then begin
+    if Length(FMenuItem.Items[FIndex].Items) > 0 then begin
+      SendMenuCommand;
+    end;
+  end;
 end;
 
 { TMenuBox }

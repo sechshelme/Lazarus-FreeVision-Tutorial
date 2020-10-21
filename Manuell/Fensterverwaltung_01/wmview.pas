@@ -52,8 +52,9 @@ type
     ViewCounter: integer; static;
     procedure SetCaption(AValue: string);
     procedure SetColor(AValue: TColor);
-    procedure SetHeight(AValue: integer);
-    procedure SetWidth(AValue: integer);
+  protected
+    procedure SetHeight(AValue: integer); virtual;
+    procedure SetWidth(AValue: integer); virtual;
   protected
     FHeight: integer;
     FLeft: integer;

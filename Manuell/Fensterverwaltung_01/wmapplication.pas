@@ -22,6 +22,8 @@ type
 type
   TApplication = class(TView)
   private
+  protected
+    procedure SetHeight(AValue: integer); override;
   public
     Desktop: TDesktop;
     ToolBar: TToolBar;
@@ -65,6 +67,16 @@ end;
 
 { TApplication }
 
+procedure TApplication.SetHeight(AValue: integer);
+begin
+  inherited SetHeight(AValue);
+  if (Menu <> nil) and (ToolBar <> nil) and (Desktop <> nil) then begin
+    ToolBar.Top := Menu.MenuBar.Height;
+    Desktop.Top := Menu.MenuBar.Height + ToolBar.Height;
+    Desktop.Height := Height - Menu.MenuBar.Height - ToolBar.Height;
+  end;
+end;
+
 constructor TApplication.Create;
 begin
   inherited Create;
@@ -74,12 +86,12 @@ begin
   InsertView(Menu);
 
   ToolBar := TToolBar.Create;
-  ToolBar.Top := Menu.Height;
+//  ToolBar.Top := Menu.Height;
   InsertView(ToolBar);
 
   Desktop := TDesktop.Create;
-  Desktop.Top := rand * 2;
-  Desktop.Height := Height - 2 * rand;
+//  Desktop.Top := Menu.Height + ToolBar.Height;
+//  Desktop.Height := Height - 2 * rand;
   Desktop.Anchors := [akLeft, akRight, akTop, akBottom];
   Desktop.Color := clGreen;
   Desktop.Caption := 'Desktop';
