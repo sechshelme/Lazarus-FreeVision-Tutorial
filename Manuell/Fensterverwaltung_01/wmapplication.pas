@@ -86,12 +86,9 @@ begin
   InsertView(Menu);
 
   ToolBar := TToolBar.Create;
-//  ToolBar.Top := Menu.Height;
   InsertView(ToolBar);
 
   Desktop := TDesktop.Create;
-//  Desktop.Top := Menu.Height + ToolBar.Height;
-//  Desktop.Height := Height - 2 * rand;
   Desktop.Anchors := [akLeft, akRight, akTop, akBottom];
   Desktop.Color := clGreen;
   Desktop.Caption := 'Desktop';

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMView, WMButton, WMWindow, WMDialog, WMDesktop, WMApplication, WMMenu;
+  WMView, WMButton, WMWindow, WMDialog, WMDesktop, WMApplication, WMMenu, WMMemo;
 
 type
 
@@ -28,6 +28,7 @@ type
     constructor Create; override;
     procedure NewWindow;
     procedure NewDialog;
+    procedure NewMemo;
     procedure EventHandle(var Event: TEvent); override;
   end;
 
@@ -61,6 +62,7 @@ const
   cmBtn2 = 1002;
   cmNewWindow = 1003;
   cmNewDialog = 1004;
+  cmNewMemo = 1005;
 
 { TMyApp }
 
@@ -73,6 +75,7 @@ begin
   Height := 600;
   ToolBar.AddButton('NewWin', cmNewWindow);
   ToolBar.AddButton('NewDia', cmNewDialog);
+  ToolBar.AddButton('NewMemo', cmNewMemo);
   ToolBar.AddButton('Close', cmClose);
   ToolBar.AddButton('Quit', cmQuit);
 
@@ -184,6 +187,20 @@ begin
   Desktop.InsertView(Dialog);
 end;
 
+procedure TMyApp.NewMemo;
+var
+  Memo: TMemo;
+begin
+  Memo := TMemo.Create;
+  Memo.Client.Color:=clBlue;
+  Memo.Left := Random(Width * 2 div 3);
+  Memo.Top := Random(Height * 2 div 3);
+  Memo.Width := Random(Width div 3) + 100;
+  Memo.Height := Random(Height div 3) + 100;
+  Memo.Caption := 'Memo';
+  Desktop.InsertView(Memo);
+end;
+
 procedure TMyApp.EventHandle(var Event: TEvent);
 var
   ev: TEvent;
@@ -197,6 +214,11 @@ begin
       end;
       cmNewDialog: begin
         NewDialog;
+        ev.What := WMView.whRepaint;
+        EventHandle(ev);
+      end;
+      cmNewMemo: begin
+        NewMemo;
         ev.What := WMView.whRepaint;
         EventHandle(ev);
       end;
@@ -384,7 +406,7 @@ procedure TForm1.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState)
 var
   ev: TEvent;
 begin
-//  WriteLn(key);
+  //  WriteLn(key);
   if Key in [33..46, 112..123] then begin
 
     ev.What := whKeyPress;
@@ -394,7 +416,7 @@ begin
 
     App.EventHandle(ev);
   end;
-//  Key := 0;
+  //  Key := 0;
 end;
 
 end.

@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, Unit1, WMButton, WMView, WMWindow, WMDialog, WMDesktop, WMApplication,
-  WMMenu
+  WMMenu, WMMemo
   { you can add units after this };
 
 {$R *.res}

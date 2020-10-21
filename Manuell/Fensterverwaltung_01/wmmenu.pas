@@ -319,7 +319,7 @@ end;
 
 procedure TMenuBar.EventHandle(var Event: TEvent);
 var
-  x, y: integer;
+  x, y: PtrInt;
   p: TPoint;
   ev: TEvent;
 
