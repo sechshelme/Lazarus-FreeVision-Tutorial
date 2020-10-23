@@ -5,24 +5,9 @@ program project1;
 uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   cthreads, {$ENDIF} {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Classes,
-  SysUtils,
-  Forms,
-  Controls,
-  Graphics,
-  Dialogs,
-  ExtCtrls,
-  StdCtrls,
-  Unit1,
-  WMButton,
-  WMView,
-  WMWindow,
-  WMDialog,
-  WMDesktop,
-  WMApplication,
-  WMMenu,
-  WMMemo,
-  WMToolbar { you can add units after this };
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
+  WMButton, WMView, WMWindow, WMDialog, WMDesktop, WMApplication,
+  WMMenu, WMMemo, WMToolbar;
 
 {$R *.res}
 

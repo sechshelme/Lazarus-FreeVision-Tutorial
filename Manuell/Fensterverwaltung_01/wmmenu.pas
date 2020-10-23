@@ -459,9 +459,12 @@ begin
           ev.What := whMenuCommand;
           ev.Sender := Self;
           if isMouseDown and IsMousInView(x, y) then begin
-            ev.Index := Index;
+            if FIndex >= Length(FMenuItem.Items) - 1 then begin
+              FIndex := Length(FMenuItem.Items) - 1;
+            end;
+            ev.Index := FIndex;
             ev.Left := ItemWidth + p.X;
-            ev.Top := ItemHeight * Index + p.Y;
+            ev.Top := ItemHeight * FIndex + p.Y;
           end else begin
             ev.Index := -1;
           end;
@@ -508,9 +511,9 @@ begin
           p := calcOfs;
           ev.What := whMenuCommand;
           ev.Sender := Self;
-          ev.Index := Index;
+          ev.Index := FIndex;
           ev.Left := ItemWidth + p.X;
-          ev.Top := ItemHeight * Index + p.Y;
+          ev.Top := ItemHeight * FIndex + p.Y;
           EventHandle(ev);
         end;
       end;

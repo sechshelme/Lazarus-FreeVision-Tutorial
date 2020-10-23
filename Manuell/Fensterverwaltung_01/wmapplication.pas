@@ -52,6 +52,7 @@ procedure TApplication.FormKeyDown(Sender: TObject; var Key: word; Shift: TShift
 var
   ev: TEvent;
 begin
+  WriteLn(Key);
   if Key in [33..46, 112..123] then begin
     ev.What := whKeyPress;
     ev.PressKey := #0;
