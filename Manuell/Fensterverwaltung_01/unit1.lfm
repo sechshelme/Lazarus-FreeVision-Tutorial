@@ -5,13 +5,5 @@ object Form1: TForm1
   Width = 943
   Caption = '♿'
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
-  OnKeyDown = FormKeyDown
-  OnKeyPress = FormKeyPress
-  OnMouseDown = Panel1MouseDown
-  OnMouseMove = Panel1MouseMove
-  OnMouseUp = Panel1MouseUp
-  OnPaint = FormPaint
-  OnResize = FormResize
   LCLVersion = '2.1.0.0'
 end

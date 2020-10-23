@@ -31,7 +31,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="10">
+    <Units Count="11">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -84,6 +84,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="WMMemo"/>
       </Unit9>
+      <Unit10>
+        <Filename Value="wmtoolbar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WMToolbar"/>
+      </Unit10>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -5,23 +5,22 @@ unit WMApplication;
 interface
 
 uses
-  Classes, SysUtils, Graphics,
-  WMView, WMDesktop, WMButton, WMMenu;
-
-type
-
-  { TToolBar }
-
-  TToolBar = class(TView)
-    constructor Create; override;
-    procedure AddButton(const ACaption: string; ACommand: integer);
-  end;
+  Classes, SysUtils, Graphics, Forms, Controls,
+  WMView, WMDesktop, WMButton, WMMenu, WMToolbar;
 
 { TApplication }
 
 type
   TApplication = class(TView)
   private
+    Form: TForm;
+    procedure FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: char);
+    procedure FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
+    procedure FormMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+    procedure FormPaint(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   protected
     procedure SetHeight(AValue: integer); override;
   public
@@ -29,43 +28,91 @@ type
     ToolBar: TToolBar;
     Menu: TMenuWindow;
     constructor Create; override;
+    destructor Destroy; override;
+    procedure Run;
     procedure EventHandle(var Event: TEvent); override;
   end;
 
 implementation
 
-uses
-  Unit1;  //????????????????????????????????????????????'''''
-
 const
   rand = 40;
 
-{ TToolBar }
-
-constructor TToolBar.Create;
-begin
-  inherited Create;
-  Color := clGray;
-  Top := rand;
-  Height := rand;
-  Anchors := [akLeft, akRight, akTop];
-  Caption := 'ToolBar';
-end;
-
-procedure TToolBar.AddButton(const ACaption: string; ACommand: integer);
-var
-  btn: TButton;
-begin
-  btn := TButton.Create;
-  btn.Top := BorderSize;
-  btn.Left := Length(View) * 80 + BorderSize;
-  btn.Caption := ACaption;
-  btn.Command := ACommand;
-  InsertView(btn);
-end;
-
-
 { TApplication }
+
+procedure TApplication.FormPaint(Sender: TObject);
+var
+  ev: TEvent;
+begin
+  ev.What := WMView.whRepaint;
+  EventHandle(ev);
+end;
+
+procedure TApplication.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+var
+  ev: TEvent;
+begin
+  if Key in [33..46, 112..123] then begin
+    ev.What := whKeyPress;
+    ev.PressKey := #0;
+    ev.DownKey := Key;
+    ev.shift := Shift;
+    EventHandle(ev);
+  end;
+end;
+
+procedure TApplication.FormKeyPress(Sender: TObject; var Key: char);
+var
+  ev: TEvent;
+begin
+  ev.What := whKeyPress;
+  ev.PressKey := Key;
+  EventHandle(ev);
+  Key := #0;
+end;
+
+procedure TApplication.FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+var
+  ev: TEvent;
+begin
+  if ssLeft in Shift then begin
+    ev.What := whMouse;
+    ev.MouseCommand := WMView.MouseDown;
+    ev.x := x;
+    ev.y := y;
+    EventHandle(ev);
+  end;
+end;
+
+procedure TApplication.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
+var
+  ev: TEvent;
+begin
+  if ssLeft in Shift then begin
+    ev.What := whMouse;
+    ev.MouseCommand := WMView.MouseMove;
+    ev.x := x;
+    ev.y := y;
+    EventHandle(ev);
+  end;
+end;
+
+procedure TApplication.FormMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+var
+  ev: TEvent;
+begin
+  ev.What := whMouse;
+  ev.MouseCommand := WMView.MouseUp;
+  ev.x := x;
+  ev.y := y;
+  EventHandle(ev);
+end;
+
+procedure TApplication.FormResize(Sender: TObject);
+begin
+  Width := Form.ClientWidth;
+  Height := Form.ClientHeight;
+end;
 
 procedure TApplication.SetHeight(AValue: integer);
 begin
@@ -80,6 +127,22 @@ end;
 constructor TApplication.Create;
 begin
   inherited Create;
+  Randomize;
+
+  Form := TForm.Create(nil);
+  Form.Position:=poDesktopCenter;
+  Form.ClientWidth := 800;
+  Form.ClientHeight := 600;
+  Form.DoubleBuffered := True;
+  Form.Caption := '♿';
+  Form.OnPaint := @FormPaint;
+  Form.OnResize := @FormResize;
+  Form.OnKeyDown := @FormKeyDown;
+  Form.OnKeyPress := @FormKeyPress;
+  Form.OnMouseDown := @FormMouseDown;
+  Form.OnMouseMove := @FormMouseMove;
+  Form.OnMouseUp := @FormMouseUp;
+
   Color := clMaroon;
 
   Menu := TMenuWindow.Create;
@@ -95,6 +158,17 @@ begin
   InsertView(Desktop);
 end;
 
+destructor TApplication.Destroy;
+begin
+  Form.Free;
+  inherited Destroy;
+end;
+
+procedure TApplication.Run;
+begin
+  Form.ShowModal;
+end;
+
 procedure TApplication.EventHandle(var Event: TEvent);
 var
   ev: TEvent;
@@ -103,7 +177,7 @@ begin
     whcmCommand: begin
       case Event.Command of
         cmQuit: begin
-          Form1.Close;
+          Form.Close;
         end;
         cmClose: begin
           Desktop.DeleteView(0);
@@ -130,7 +204,7 @@ begin
     end;
     whRepaint: begin
       Draw;
-      DrawBitmap(Form1.Canvas);
+      DrawBitmap(Form.Canvas);
     end;
     else begin
     end;
