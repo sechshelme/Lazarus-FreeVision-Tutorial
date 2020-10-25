@@ -38,7 +38,8 @@ var
   App: TMyForm;
 
 begin
-  Application.Scaled:=True;
+//  Application.Scaled:=True;
+  Application.Initialize;
   App := TMyForm.Create(nil);
   App.ShowModal;
   App.Free;

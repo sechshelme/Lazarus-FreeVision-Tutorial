@@ -157,6 +157,7 @@ end;
 constructor TSystem.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
+  Application.Initialize;
   Position := poDesktopCenter;
   DoubleBuffered := True;
   OnPaint := @FormPaint;
