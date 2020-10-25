@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMView, WMButton, WMWindow;
+  WMSystem,  WMView, WMButton, WMWindow;
 
 type
 
@@ -52,11 +52,11 @@ begin
       x := Event.x;
       y := Event.y;
       case Event.MouseCommand of
-        MouseDown: begin
+        EvMouseDown: begin
         end;
-        MouseUp: begin
+        EvMouseUp: begin
         end;
-        MouseMove: begin
+        EvMouseMove: begin
         end;
       end;
     end;

@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils,
 
-  WMView;
+  WMSystem,  WMView;
 
 type
     { TDesktop }

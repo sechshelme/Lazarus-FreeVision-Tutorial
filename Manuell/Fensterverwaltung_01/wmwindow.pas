@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMView, WMButton;
+  WMSystem, WMView, WMButton;
 
 type
 
@@ -71,22 +71,22 @@ begin
   if Event.What = whMouse then begin
     p := calcOfs;
     case Event.MouseCommand of
-      MouseDown: begin
-          isMoveable := (x > p.X + BorderSize) and (x < p.X + Width - TitelBarSize) and (y > p.Y + BorderSize) and (y < p.Y + TitelBarSize - BorderSize);
+      EvMouseDown: begin
+        isMoveable := (x > p.X + BorderSize) and (x < p.X + Width - TitelBarSize) and (y > p.Y + BorderSize) and (y < p.Y + TitelBarSize - BorderSize);
 
-          isResizeLeft := x < p.x + BorderSize;
-          isResizeTop := y < p.y + BorderSize;
-          isResizeRight := x > p.X + Width - BorderSize;
-          isResizeBottom := y > p.Y + Height - BorderSize;
+        isResizeLeft := x < p.x + BorderSize;
+        isResizeTop := y < p.y + BorderSize;
+        isResizeRight := x > p.X + Width - BorderSize;
+        isResizeBottom := y > p.Y + Height - BorderSize;
       end;
-      MouseUp: begin
+      EvMouseUp: begin
         isMoveable := False;
         isResizeLeft := False;
         isResizeTop := False;
         isResizeRight := False;
         isResizeBottom := False;
       end;
-      MouseMove: begin
+      EvMouseMove: begin
         if isMouseDown then begin
           if isMoveable then begin
             Left := Left + (x - MousePos.X);

@@ -7,7 +7,7 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   Interfaces, // this includes the LCL widgetset
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
   WMButton, WMView, WMWindow, WMDialog, WMDesktop, WMApplication,
-  WMMenu, WMMemo, WMToolbar;
+  WMMenu, WMMemo, WMToolbar, WMSystem;
 
 {$R *.res}
 
@@ -187,17 +187,17 @@ const
       case Event.Command of
         cmNewWindow: begin
           NewWindow;
-          ev.What := WMView.whRepaint;
+          ev.What := whRepaint;
           EventHandle(ev);
         end;
         cmNewDialog: begin
           NewDialog;
-          ev.What := WMView.whRepaint;
+          ev.What := whRepaint;
           EventHandle(ev);
         end;
         cmNewMemo: begin
           NewMemo;
-          ev.What := WMView.whRepaint;
+          ev.What := whRepaint;
           EventHandle(ev);
         end;
         cmTest0: begin
@@ -304,6 +304,7 @@ var
   App: TMyApp;
 
 begin
+  Application.Scaled:=True;
   App := TMyApp.Create;
   App.Run;
   App.Free;

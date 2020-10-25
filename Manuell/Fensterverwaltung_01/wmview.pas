@@ -5,45 +5,10 @@ unit WMView;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls;
-
-const
-  cmNone = 0;
-  cmClose = 1;
-  cmQuit = 2;
-
-  cmTest0 = 100;
-  cmTest1 = 101;
-  cmTest2 = 102;
-  cmTest3 = 103;
-  cmopti0 = 104;
-  cmopti1 = 105;
-  cmopti2 = 106;
-
-  MouseDown = 0;
-  MouseUp = 1;
-  MouseMove = 2;
-
-const
-  BorderSize = 7;
-  TitelBarSize = BorderSize * 5;
-  minWinSize = 50;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
+  WMSystem;
 
 type
-
-  TEvent = record
-    What: (whNone, whMouse, whKeyPress, whcmCommand, whMenuCommand, whRepaint);
-    case integer of
-      whNone: (Value0, Value1, Value2, Value3: PtrInt);
-      whMouse: (MouseCommand, x, y: PtrInt);
-      whKeyPress: (PressKey: char;
-        DownKey: byte;
-        shift: TShiftState);
-      whcmCommand: (Command: PtrInt);
-      whMenuCommand: (Index, Left, Top: PtrInt;
-        Sender: TObject);
-      whRepaint: (was: (all, Windows));
-  end;
 
   { TView }
 
@@ -294,7 +259,7 @@ begin
       x := Event.x;
       y := Event.y;
       case Event.MouseCommand of
-        MouseDown: begin
+        EvMouseDown: begin
           isMouseDown := IsMousInView(x, y);
           MousePos.X := x;
           MousePos.Y := y;
@@ -309,7 +274,7 @@ begin
                 EventHandle(ev);
               end;
               ev.What := whMouse;
-              ev.MouseCommand := MouseDown;
+              ev.MouseCommand := EvMouseDown;
               ev.x := x;
               ev.y := y;
               View[0].EventHandle(ev);
@@ -319,21 +284,21 @@ begin
             Inc(index);
           end;
         end;
-        MouseUp: begin
+        EvMouseUp: begin
           isMouseDown := False;
           if Length(View) > 0 then begin
             ev.What := whMouse;
-            ev.MouseCommand := MouseUp;
+            ev.MouseCommand := EvMouseUp;
             ev.x := x;
             ev.y := y;
             View[0].EventHandle(ev);
             //            View[0].EventHandle(getMouseCommand(MouseUp, x, y));
           end;
         end;
-        MouseMove: begin
+        EvMouseMove: begin
           if Length(View) > 0 then begin
             ev.What := whMouse;
-            ev.MouseCommand := MouseMove;
+            ev.MouseCommand := EvMouseMove;
             ev.x := x;
             ev.y := y;
             View[0].EventHandle(ev);

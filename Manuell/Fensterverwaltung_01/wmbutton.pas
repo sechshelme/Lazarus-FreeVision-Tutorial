@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMView;
+  WMSystem, WMView;
 
 type
   { TButton }
@@ -49,13 +49,13 @@ var
 begin
   if Event.What = whMouse then begin
     case Event.MouseCommand of
-      MouseDown: begin
+      EvMouseDown: begin
         Color := clGray;
         ev.What := whRepaint;
         EventHandle(ev);
         isMouseDown := True;
       end;
-      MouseUp: begin
+      EvMouseUp: begin
         Color := clYellow;
         ev.What := whRepaint;
         EventHandle(ev);
@@ -65,7 +65,7 @@ begin
           EventHandle(ev);
         end;
       end;
-      MouseMove: begin
+      EvMouseMove: begin
         if isMouseDown and IsMousInView(Event.x, Event.y) then begin
           Color := clGray;
         end else begin

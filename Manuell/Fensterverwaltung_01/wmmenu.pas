@@ -8,7 +8,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMView, WMDesktop, WMButton;
+  WMSystem, WMView, WMDesktop, WMButton;
 
 type
   TMenuItems = record
@@ -138,7 +138,7 @@ var
 begin
   case Event.What of
     whMouse: begin
-      if Event.MouseCommand = MouseDown then begin
+      if Event.MouseCommand = EvMouseDown then begin
         if not ClickInMenu(Event.x, Event.y) then begin
           KillSubMenu(0, True);
           ev.What := whRepaint;
@@ -331,13 +331,13 @@ begin
         x := Event.x;
         y := Event.y;
         case Event.MouseCommand of
-          MouseDown: begin
+          EvMouseDown: begin
             FIndex := (x - p.X) div ItemWidth;
             ev.What := whRepaint;
             EventHandle(ev);
             isMouseDown := True;
           end;
-          MouseUp: begin
+          EvMouseUp: begin
             ev.What := whMenuCommand;
             ev.Sender := Self;
             if isMouseDown and IsMousInView(x, y) and (Index < Length(FMenuItem.Items)) then begin
@@ -349,7 +349,7 @@ begin
             end;
             EventHandle(ev);
           end;
-          MouseMove: begin
+          EvMouseMove: begin
             if isMouseDown and IsMousInView(x, y) then begin
               FIndex := (x - p.X) div ItemWidth;
             end;
@@ -449,13 +449,13 @@ begin
       y := Event.y;
 
       case Event.MouseCommand of
-        MouseDown: begin
+        EvMouseDown: begin
           FIndex := (y - p.Y) div ItemHeight;
           ev.What := whRepaint;
           EventHandle(ev);
           isMouseDown := True;
         end;
-        MouseUp: begin
+        EvMouseUp: begin
           ev.What := whMenuCommand;
           ev.Sender := Self;
           if isMouseDown and IsMousInView(x, y) then begin
@@ -470,7 +470,7 @@ begin
           end;
           EventHandle(ev);
         end;
-        MouseMove: begin
+        EvMouseMove: begin
           if isMouseDown and IsMousInView(x, y) then begin
             FIndex := (y - p.Y) div ItemHeight;
           end;

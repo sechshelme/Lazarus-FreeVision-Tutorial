@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMView, WMButton, WMWindow;
+  WMSystem,  WMView, WMButton, WMWindow;
 
 type
 

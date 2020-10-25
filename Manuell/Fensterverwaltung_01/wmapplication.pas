@@ -6,21 +6,15 @@ interface
 
 uses
   Classes, SysUtils, Graphics, Forms, Controls,
-  WMView, WMDesktop, WMButton, WMMenu, WMToolbar;
+  WMSystem, WMView, WMDesktop, WMButton, WMMenu, WMToolbar;
 
 { TApplication }
 
 type
   TApplication = class(TView)
   private
-    Form: TForm;
-    procedure FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
-    procedure FormKeyPress(Sender: TObject; var Key: char);
-    procedure FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
-    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
-    procedure FormMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
-    procedure FormPaint(Sender: TObject);
-    procedure FormResize(Sender: TObject);
+    Form: TSystem;
+    procedure EvH(var Event: TEvent);
   protected
     procedure SetHeight(AValue: integer); override;
   public
@@ -40,79 +34,9 @@ const
 
 { TApplication }
 
-procedure TApplication.FormPaint(Sender: TObject);
-var
-  ev: TEvent;
+procedure TApplication.EvH(var Event: TEvent);
 begin
-  ev.What := WMView.whRepaint;
-  EventHandle(ev);
-end;
-
-procedure TApplication.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
-var
-  ev: TEvent;
-begin
-  WriteLn(Key);
-  if Key in [33..46, 112..123] then begin
-    ev.What := whKeyPress;
-    ev.PressKey := #0;
-    ev.DownKey := Key;
-    ev.shift := Shift;
-    EventHandle(ev);
-  end;
-end;
-
-procedure TApplication.FormKeyPress(Sender: TObject; var Key: char);
-var
-  ev: TEvent;
-begin
-  ev.What := whKeyPress;
-  ev.PressKey := Key;
-  EventHandle(ev);
-  Key := #0;
-end;
-
-procedure TApplication.FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
-var
-  ev: TEvent;
-begin
-  if ssLeft in Shift then begin
-    ev.What := whMouse;
-    ev.MouseCommand := WMView.MouseDown;
-    ev.x := x;
-    ev.y := y;
-    EventHandle(ev);
-  end;
-end;
-
-procedure TApplication.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
-var
-  ev: TEvent;
-begin
-  if ssLeft in Shift then begin
-    ev.What := whMouse;
-    ev.MouseCommand := WMView.MouseMove;
-    ev.x := x;
-    ev.y := y;
-    EventHandle(ev);
-  end;
-end;
-
-procedure TApplication.FormMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
-var
-  ev: TEvent;
-begin
-  ev.What := whMouse;
-  ev.MouseCommand := WMView.MouseUp;
-  ev.x := x;
-  ev.y := y;
-  EventHandle(ev);
-end;
-
-procedure TApplication.FormResize(Sender: TObject);
-begin
-  Width := Form.ClientWidth;
-  Height := Form.ClientHeight;
+  EventHandle(Event);
 end;
 
 procedure TApplication.SetHeight(AValue: integer);
@@ -130,21 +54,15 @@ begin
   inherited Create;
   Randomize;
 
-  Form := TForm.Create(nil);
-  Form.Position:=poDesktopCenter;
+  Form := TSystem.Create(nil);
   Form.ClientWidth := 800;
   Form.ClientHeight := 600;
   Form.DoubleBuffered := True;
   Form.Caption := '♿';
-  Form.OnPaint := @FormPaint;
-  Form.OnResize := @FormResize;
-  Form.OnKeyDown := @FormKeyDown;
-  Form.OnKeyPress := @FormKeyPress;
-  Form.OnMouseDown := @FormMouseDown;
-  Form.OnMouseMove := @FormMouseMove;
-  Form.OnMouseUp := @FormMouseUp;
 
   Color := clMaroon;
+
+  Form.OnEventHandle:=@EvH;
 
   Menu := TMenuWindow.Create;
   InsertView(Menu);
