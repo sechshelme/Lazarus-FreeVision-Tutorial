@@ -14,7 +14,7 @@ type
 
   TMemo = class(TView)
   private
-    sl: TStringList;  s:String;
+    sl: TStringList;
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -24,14 +24,15 @@ type
 
 implementation
 
-
-
 { TMemo }
 
 constructor TMemo.Create;
 begin
   inherited Create;
+  Width := 75;
+  Height := 25;
   sl := TStringList.Create;
+  sl.SkipLastLineBreak:=True;
   Color:=clBlue;
   Bitmap.Canvas.Font.Color:=clYellow;
 end;
@@ -71,15 +72,16 @@ begin
             39: begin
             end;
           end;
-          //          ev.What := whRepaint;
-          //        EventHandle(ev);
         end;
-        #13, 'A'..'z': begin
-          sl.Text := sl.Text + Event.PressKey;
-          s:=s+Event.PressKey;
+        #13: begin
+          sl.Add('');
           ev.What := whRepaint;
           EventHandle(ev);
-//          WriteLn(byte(Event.PressKey));
+        end;
+         'A'..'z': begin
+          sl.Text := sl.Text + Event.PressKey;
+          ev.What := whRepaint;
+          EventHandle(ev);
         end;
       end;
     end else begin
@@ -93,10 +95,6 @@ var
   i: integer;
 begin
   inherited Draw;
-//  WriteLn(sl.Text);
-  WriteLn(s);
-  sl.Text:=s;
- Bitmap.Canvas.Rectangle(0,0,100,100);
   for i := 0 to sl.Count - 1 do begin
     Bitmap.Canvas.TextOut(0, i * 20, sl[i]);
   end;

@@ -32,6 +32,12 @@ implementation
 constructor TWindow.Create;
 begin
   inherited Create;
+
+  //if Parent <> nil then begin
+  //  Width := Parent.Width div 3 * 2;
+  //  Height := Parent.Height div 3 * 2;
+  //end;
+
   FColor := clLtGray;
   isMoveable := False;
   isResizeLeft := False;
@@ -41,10 +47,10 @@ begin
 
   FClient := TView.Create;
   FClient.Anchors := [akLeft, akRight, akTop, akBottom];
-  FClient.Width := Width - BorderSize * 2;
-  FClient.Height := Height - TitelBarSize - BorderSize;
   FClient.Top := TitelBarSize;
   FClient.Left := BorderSize;
+  FClient.Width := Width - BorderSize * 2;
+  FClient.Height := Height - TitelBarSize - BorderSize;
   FClient.Color := clWhite;
   InsertView(FClient);
 

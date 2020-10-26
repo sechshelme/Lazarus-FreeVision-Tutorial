@@ -71,13 +71,12 @@ const
   begin
     inherited Create;
     Memo := TMemo.Create;
-//   Memo.Anchors := [akLeft, akRight, akTop, akBottom];
-   Memo.Anchors := [akRight, akBottom];
-  Memo.Left:=10;
-  Memo.Top:=10;
-//  Memo.Width:=100;
-//  Memo.Height:=100;
-  Client.InsertView(Memo);
+    Memo.Width := Client.Width - 10;
+    Memo.Height := Client.Height - 10;
+    Memo.Anchors := [akLeft, akTop, akRight, akBottom];
+    Memo.Top := 5;
+    Memo.Left := 5;
+    Client.InsertView(Memo);
   end;
 
   { TMyDialog }
@@ -278,16 +277,15 @@ const
 
   procedure TMyApp.NewEditor;
   var
-    Memo: TMyEditor;
+    Edit: TMyEditor;
   begin
-    Memo := TMyEditor.Create;
-    //    Memo.Color := clBlue;
-    Memo.Left := Random(Width * 2 div 3);
-    Memo.Top := Random(Height * 2 div 3);
-    Memo.Width := Random(Width div 3) + 100;
-    Memo.Height := Random(Height div 3) + 100;
-    Memo.Caption := 'Memo';
-    Desktop.InsertView(Memo);
+    Edit := TMyEditor.Create;
+    Edit.Left := Random(Width * 2 div 3);
+    Edit.Top := Random(Height * 2 div 3);
+    Edit.Width := Random(Width div 3) + 100;
+    Edit.Height := Random(Height div 3) + 100;
+    Edit.Caption := 'Memo';
+    Desktop.InsertView(Edit);
   end;
 
   procedure TMyApp.EventHandle(var Event: TEvent);
