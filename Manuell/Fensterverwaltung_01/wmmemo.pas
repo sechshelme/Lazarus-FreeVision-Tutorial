@@ -12,7 +12,7 @@ type
 
   { TMemo }
 
-  TMemo = class(TWindow)
+  TMemo = class(TView)
   private
     sl: TStringList;  s:String;
   public
@@ -32,6 +32,8 @@ constructor TMemo.Create;
 begin
   inherited Create;
   sl := TStringList.Create;
+  Color:=clBlue;
+  Bitmap.Canvas.Font.Color:=clYellow;
 end;
 
 destructor TMemo.Destroy;
@@ -94,7 +96,7 @@ begin
 //  WriteLn(sl.Text);
   WriteLn(s);
   sl.Text:=s;
- Client.Bitmap.Canvas.Rectangle(0,0,100,100);
+ Bitmap.Canvas.Rectangle(0,0,100,100);
   for i := 0 to sl.Count - 1 do begin
     Bitmap.Canvas.TextOut(0, i * 20, sl[i]);
   end;

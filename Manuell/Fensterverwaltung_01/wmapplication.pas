@@ -13,7 +13,7 @@ uses
 type
   TApplication = class(TView)
   private
-    Form: TSystem;
+    SystemForm: TSystem;
     procedure EvH(var Event: TEvent);
   protected
     procedure SetHeight(AValue: integer); override;
@@ -54,15 +54,15 @@ begin
   inherited Create;
   Randomize;
 
-  Form := TSystem.Create(nil);
-  Form.ClientWidth := 800;
-  Form.ClientHeight := 600;
-  Form.DoubleBuffered := True;
-  Form.Caption := '♿';
+  SystemForm := TSystem.Create(nil);
+  SystemForm.ClientWidth := 800;
+  SystemForm.ClientHeight := 600;
+  SystemForm.DoubleBuffered := True;
+  SystemForm.Caption := '♿';
 
   Color := clMaroon;
 
-  Form.OnEventHandle:=@EvH;
+  SystemForm.OnEventHandle := @EvH;
 
   Menu := TMenuWindow.Create;
   InsertView(Menu);
@@ -79,13 +79,13 @@ end;
 
 destructor TApplication.Destroy;
 begin
-  Form.Free;
+  SystemForm.Free;
   inherited Destroy;
 end;
 
 procedure TApplication.Run;
 begin
-  Form.ShowModal;
+  SystemForm.ShowModal;
 end;
 
 procedure TApplication.EventHandle(var Event: TEvent);
@@ -96,7 +96,7 @@ begin
     whcmCommand: begin
       case Event.Command of
         cmQuit: begin
-          Form.Close;
+          SystemForm.Close;
         end;
         cmClose: begin
           Desktop.DeleteView(0);
@@ -122,8 +122,10 @@ begin
       EventHandle(ev);
     end;
     whRepaint: begin
+      Height := SystemForm.Height;
+      Width := SystemForm.Width;
       Draw;
-      DrawBitmap(Form.Canvas);
+      DrawBitmap(SystemForm.Canvas);
     end;
     else begin
     end;

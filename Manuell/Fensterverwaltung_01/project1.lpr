@@ -5,9 +5,24 @@ program project1;
 uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   cthreads, {$ENDIF} {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  WMButton, WMView, WMWindow, WMDialog, WMDesktop, WMApplication,
-  WMMenu, WMMemo, WMToolbar, WMSystem;
+  Classes,
+  SysUtils,
+  Forms,
+  Controls,
+  Graphics,
+  Dialogs,
+  ExtCtrls,
+  StdCtrls,
+  WMButton,
+  WMView,
+  WMWindow,
+  WMDialog,
+  WMDesktop,
+  WMApplication,
+  WMMenu,
+  WMMemo,
+  WMToolbar,
+  WMSystem;
 
 {$R *.res}
 
@@ -22,15 +37,23 @@ type
     procedure EventHandle(var Event: TEvent); override;
   end;
 
+  { TMyEditor }
+
+  TMyEditor = class(TWindow)
+  private
+    Memo: TMemo;
+  public
+    constructor Create; override;
+  end;
+
   { TMyApp }
 
   TMyApp = class(TApplication)
   public
-  public
     constructor Create; override;
     procedure NewWindow;
     procedure NewDialog;
-    procedure NewMemo;
+    procedure NewEditor;
     procedure EventHandle(var Event: TEvent); override;
   end;
 
@@ -41,6 +64,94 @@ const
   cmNewWindow = 1003;
   cmNewDialog = 1004;
   cmNewMemo = 1005;
+
+  { TMyEditor }
+
+  constructor TMyEditor.Create;
+  begin
+    inherited Create;
+    Memo := TMemo.Create;
+//   Memo.Anchors := [akLeft, akRight, akTop, akBottom];
+   Memo.Anchors := [akRight, akBottom];
+  Memo.Left:=10;
+  Memo.Top:=10;
+//  Memo.Width:=100;
+//  Memo.Height:=100;
+  Client.InsertView(Memo);
+  end;
+
+  { TMyDialog }
+
+  constructor TMyDialog.Create;
+  begin
+    inherited Create;
+
+    Left := 100;
+    Top := 100;
+    Width := 500;
+    Height := 200;
+    Caption := 'Mein Dialog';
+
+    btn0 := TButton.Create;
+    btn0.Anchors := [akRight, akBottom];
+    btn0.Top := Client.Height - btn0.Height - 10;
+    btn0.Left := Client.Width - (btn0.Width + 10) * 5;
+    btn0.Caption := 'btn0';
+    btn0.Command := cmBtn0;
+    Client.InsertView(btn0);
+
+    btn1 := TButton.Create;
+    btn1.Anchors := [akRight, akBottom];
+    btn1.Top := Client.Height - btn1.Height - 10;
+    btn1.Left := Client.Width - (btn0.Width + 10) * 4;
+    btn1.Caption := 'btn1';
+    btn1.Command := cmBtn1;
+    Client.InsertView(btn1);
+
+    btn2 := TButton.Create;
+    btn2.Anchors := [akRight, akBottom];
+    btn2.Top := Client.Height - btn2.Height - 10;
+    btn2.Left := Client.Width - (btn0.Width + 10) * 3;
+    btn2.Caption := 'btn2';
+    btn2.Command := cmBtn2;
+    Client.InsertView(btn2);
+
+    btnClose := TButton.Create;
+    btnClose.Anchors := [akRight, akBottom];
+    btnClose.Top := Client.Height - btnClose.Height - 10;
+    btnClose.Left := Client.Width - (btn0.Width + 10) * 2;
+    btnClose.Caption := 'Close';
+    btnClose.Command := cmClose;
+    Client.InsertView(btnClose);
+
+    btnQuit := TButton.Create;
+    btnQuit.Anchors := [akRight, akBottom];
+    btnQuit.Top := Client.Height - btnQuit.Height - 10;
+    btnQuit.Left := Client.Width - btn0.Width - 10;
+    btnQuit.Caption := 'Quit';
+    btnQuit.Command := cmQuit;
+    Client.InsertView(btnQuit);
+  end;
+
+  procedure TMyDialog.EventHandle(var Event: TEvent);
+  begin
+    if Event.What = whcmCommand then begin
+      case Event.Command of
+        cmBtn0: begin
+          WriteLn('Button 0 gedrückt');
+        end;
+        cmBtn1: begin
+          WriteLn('Button 1 gedrückt');
+        end;
+        cmBtn2: begin
+          WriteLn('Button 2 gedrückt');
+        end else begin
+          //         if Parent<>nil;
+        end;
+      end;
+    end;
+    inherited EventHandle(Event);
+  end;
 
   { TMyApp }
 
@@ -165,12 +276,12 @@ const
     Desktop.InsertView(Dialog);
   end;
 
-  procedure TMyApp.NewMemo;
+  procedure TMyApp.NewEditor;
   var
-    Memo: TMemo;
+    Memo: TMyEditor;
   begin
-    Memo := TMemo.Create;
-    Memo.Client.Color := clBlue;
+    Memo := TMyEditor.Create;
+    //    Memo.Color := clBlue;
     Memo.Left := Random(Width * 2 div 3);
     Memo.Top := Random(Height * 2 div 3);
     Memo.Width := Random(Width div 3) + 100;
@@ -196,7 +307,7 @@ const
           EventHandle(ev);
         end;
         cmNewMemo: begin
-          NewMemo;
+          NewEditor;
           ev.What := whRepaint;
           EventHandle(ev);
         end;
@@ -226,85 +337,10 @@ const
     inherited EventHandle(Event);
   end;
 
-  { TMyDialog }
-
-  constructor TMyDialog.Create;
-  begin
-    inherited Create;
-
-    Left := 100;
-    Top := 100;
-    Width := 500;
-    Height := 200;
-    Caption := 'Mein Dialog';
-
-    btn0 := TButton.Create;
-    btn0.Anchors := [akRight, akBottom];
-    btn0.Top := Client.Height - btn0.Height - 10;
-    btn0.Left := Client.Width - (btn0.Width + 10) * 5;
-    btn0.Caption := 'btn0';
-    btn0.Command := cmBtn0;
-    Client.InsertView(btn0);
-
-    btn1 := TButton.Create;
-    btn1.Anchors := [akRight, akBottom];
-    btn1.Top := Client.Height - btn1.Height - 10;
-    btn1.Left := Client.Width - (btn0.Width + 10) * 4;
-    btn1.Caption := 'btn1';
-    btn1.Command := cmBtn1;
-    Client.InsertView(btn1);
-
-    btn2 := TButton.Create;
-    btn2.Anchors := [akRight, akBottom];
-    btn2.Top := Client.Height - btn2.Height - 10;
-    btn2.Left := Client.Width - (btn0.Width + 10) * 3;
-    btn2.Caption := 'btn2';
-    btn2.Command := cmBtn2;
-    Client.InsertView(btn2);
-
-    btnClose := TButton.Create;
-    btnClose.Anchors := [akRight, akBottom];
-    btnClose.Top := Client.Height - btnClose.Height - 10;
-    btnClose.Left := Client.Width - (btn0.Width + 10) * 2;
-    btnClose.Caption := 'Close';
-    btnClose.Command := cmClose;
-    Client.InsertView(btnClose);
-
-    btnQuit := TButton.Create;
-    btnQuit.Anchors := [akRight, akBottom];
-    btnQuit.Top := Client.Height - btnQuit.Height - 10;
-    btnQuit.Left := Client.Width - btn0.Width - 10;
-    btnQuit.Caption := 'Quit';
-    btnQuit.Command := cmQuit;
-    Client.InsertView(btnQuit);
-  end;
-
-  procedure TMyDialog.EventHandle(var Event: TEvent);
-  begin
-    if Event.What = whcmCommand then begin
-      case Event.Command of
-        cmBtn0: begin
-          WriteLn('Button 0 gedrückt');
-        end;
-        cmBtn1: begin
-          WriteLn('Button 1 gedrückt');
-        end;
-        cmBtn2: begin
-          WriteLn('Button 2 gedrückt');
-        end else begin
-          //         if Parent<>nil;
-        end;
-      end;
-    end;
-    inherited EventHandle(Event);
-  end;
-
-
 var
   App: TMyApp;
 
 begin
-  Application.Scaled:=True;
   App := TMyApp.Create;
   App.Run;
   App.Free;

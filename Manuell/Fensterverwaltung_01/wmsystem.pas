@@ -45,7 +45,7 @@ type
       whRepaint: (was: (all, Windows));
   end;
 
-  TEventHandle = procedure(var Event: TEvent) of Object;
+  TEventHandle = procedure(var Event: TEvent) of object;
 
   { TSystem }
 
@@ -57,8 +57,6 @@ type
     procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
     procedure FormMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: integer);
     procedure FormPaint(Sender: TObject);
-    procedure FormResize(Sender: TObject);
-    procedure privEventHandle(var Event: TEvent); virtual;
   public
     OnEventHandle: TEventHandle;
     constructor Create(TheOwner: TComponent); override;
@@ -69,17 +67,34 @@ implementation
 
 { TSystem }
 
+constructor TSystem.Create(TheOwner: TComponent);
+begin
+  inherited Create(TheOwner);
+  Application.Initialize;
+//  Application.Scaled:=True;
+  Position := poDesktopCenter;
+  DoubleBuffered := True;
+  OnPaint := @FormPaint;
+  OnKeyDown := @FormKeyDown;
+  OnKeyPress := @FormKeyPress;
+  OnMouseDown := @FormMouseDown;
+  OnMouseMove := @FormMouseMove;
+  OnMouseUp := @FormMouseUp;
+  OnEventHandle := nil;
+end;
+
 procedure TSystem.FormKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
 var
   ev: TEvent;
 begin
-  WriteLn(Key);
-  if Key in [33..46, 112..123] then begin
-    ev.What := whKeyPress;
-    ev.PressKey := #0;
-    ev.DownKey := Key;
-    ev.shift := Shift;
-    privEventHandle(ev);
+  if OnEventHandle <> nil then begin
+    if Key in [33..46, 112..123] then begin
+      ev.What := whKeyPress;
+      ev.PressKey := #0;
+      ev.DownKey := Key;
+      ev.shift := Shift;
+      OnEventHandle(ev);
+    end;
   end;
 end;
 
@@ -87,10 +102,11 @@ procedure TSystem.FormKeyPress(Sender: TObject; var Key: char);
 var
   ev: TEvent;
 begin
-  WriteLn(Key);
-  ev.What := whKeyPress;
-  ev.PressKey := Key;
-  privEventHandle(ev);
+  if OnEventHandle <> nil then begin
+    ev.What := whKeyPress;
+    ev.PressKey := Key;
+    OnEventHandle(ev);
+  end;
   Key := #0;
 end;
 
@@ -98,12 +114,14 @@ procedure TSystem.FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TS
 var
   ev: TEvent;
 begin
-  if ssLeft in Shift then begin
-    ev.What := whMouse;
-    ev.MouseCommand := EvMouseDown;
-    ev.x := x;
-    ev.y := y;
-    privEventHandle(ev);
+  if OnEventHandle <> nil then begin
+    if ssLeft in Shift then begin
+      ev.What := whMouse;
+      ev.MouseCommand := EvMouseDown;
+      ev.x := x;
+      ev.y := y;
+      OnEventHandle(ev);
+    end;
   end;
 end;
 
@@ -111,12 +129,14 @@ procedure TSystem.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integ
 var
   ev: TEvent;
 begin
-  if ssLeft in Shift then begin
-    ev.What := whMouse;
-    ev.MouseCommand := EvMouseMove;
-    ev.x := x;
-    ev.y := y;
-    privEventHandle(ev);
+  if OnEventHandle <> nil then begin
+    if ssLeft in Shift then begin
+      ev.What := whMouse;
+      ev.MouseCommand := EvMouseMove;
+      ev.x := x;
+      ev.y := y;
+      OnEventHandle(ev);
+    end;
   end;
 end;
 
@@ -124,50 +144,23 @@ procedure TSystem.FormMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShi
 var
   ev: TEvent;
 begin
-  ev.What := whMouse;
-  ev.MouseCommand := EvMouseUp;
-  ev.x := x;
-  ev.y := y;
-  privEventHandle(ev);
+  if OnEventHandle <> nil then begin
+    ev.What := whMouse;
+    ev.MouseCommand := EvMouseUp;
+    ev.x := x;
+    ev.y := y;
+    OnEventHandle(ev);
+  end;
 end;
-
 
 procedure TSystem.FormPaint(Sender: TObject);
 var
   ev: TEvent;
 begin
-  ev.What := whRepaint;
-  privEventHandle(ev);
-end;
-
-procedure TSystem.FormResize(Sender: TObject);
-begin
-  Repaint;
-  //  Width := ClientWidth;
-  //  Height := ClientHeight;
-end;
-
-procedure TSystem.privEventHandle(var Event: TEvent);
-begin
   if OnEventHandle <> nil then begin
-    OnEventHandle(Event);
+    ev.What := whRepaint;
+    OnEventHandle(ev);
   end;
-end;
-
-constructor TSystem.Create(TheOwner: TComponent);
-begin
-  inherited Create(TheOwner);
-  Application.Initialize;
-  Position := poDesktopCenter;
-  DoubleBuffered := True;
-  OnPaint := @FormPaint;
-  OnResize := @FormResize;
-  OnKeyDown := @FormKeyDown;
-  OnKeyPress := @FormKeyPress;
-  OnMouseDown := @FormMouseDown;
-  OnMouseMove := @FormMouseMove;
-  OnMouseUp := @FormMouseUp;
-  OnEventHandle := nil;
 end;
 
 end.
