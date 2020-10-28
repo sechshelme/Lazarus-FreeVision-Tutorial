@@ -25,6 +25,10 @@ type
     FIndex: integer;
     FMenuItem: TMenuItems;
     ItemHeight, ItemWidth: integer;
+    arrowWidth: integer;
+  const
+    arrowch = '▶';
+
     procedure SetMenuItem(AValue: TMenuItems); virtual;
   public
     MenuCount: integer; static;
@@ -80,6 +84,7 @@ var
   MenuItems: TMenuItems;
 
 implementation
+
 
 { TMenuWindow }
 
@@ -238,17 +243,28 @@ var
   w: integer = 0;
   h: integer = 0;
   i: integer;
+  isSub: boolean;
 begin
+  Bitmap.Canvas.GetTextSize(arrowch, w, h);
+  arrowWidth := w;
   FMenuItem := AValue;
   ItemWidth := 0;
+  isSub := False;
   for i := 0 to Length(FMenuItem.Items) - 1 do begin
     Bitmap.Canvas.GetTextSize(FMenuItem.Items[i].Caption, w, h);
+    if Length(FMenuItem.Items[i].Items) > 0 then begin
+      isSub := True;
+    end;
+
     if w > ItemWidth then begin
       ItemWidth := w;
     end;
   end;
   ItemHeight := h + 4;
   Inc(ItemWidth, 4);
+  if isSub then begin
+    Inc(ItemWidth, 2 * arrowWidth);
+  end;
 end;
 
 procedure TMenuView.HideCursor;
@@ -433,6 +449,9 @@ begin
       Bitmap.Canvas.Font.Color := clBlack;
     end;
     Bitmap.Canvas.TextOut(1, i * ItemHeight + 1, FMenuItem.Items[i].Caption);
+    if Length(FMenuItem.Items[i].Items) > 0 then begin
+      Bitmap.Canvas.TextOut(ItemWidth - arrowWidth-1, i * ItemHeight + 1, arrowch);
+    end;
   end;
 end;
 
