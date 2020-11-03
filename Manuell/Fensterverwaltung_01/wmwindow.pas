@@ -145,11 +145,14 @@ var
   h: integer = 0;
 begin
   inherited Draw;
+
   Bitmap.Canvas.Brush.Style := bsClear;
   Bitmap.Canvas.Brush.Color := clSkyBlue;
   Bitmap.Canvas.Rectangle(BorderSize, BorderSize, Width - TitelBarSize, TitelBarSize - BorderSize);
   Bitmap.Canvas.GetTextSize(Caption, w, h);
-  Bitmap.Canvas.TextOut(Width div 2 - w div 2, BorderSize + 2, Caption);
+  Bitmap.Canvas.TextRect(Rect(BorderSize, BorderSize, Width - TitelBarSize-2, TitelBarSize - BorderSize),
+    BorderSize + 2, BorderSize + 2, Caption);
+  //  Bitmap.Canvas.TextOut(Width div 2 - w div 2, BorderSize + 2, Caption);
 end;
 
 end.
