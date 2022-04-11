@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>02 Tastatur Event</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
+    <b><h1>05 EventHandle auserhalb Komponenten</h1></b>
+    <b><h2>02 Tastatur Event</h2></b>
+<img src="image.png" alt="Selfhtml"><br><br>
+Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/klickt.<br>
+Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
+<hr><br>
+Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+  <b><font color="0000BB">var</font></b>
+    KeyDialog: PMyKey;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+
+    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmKeyAktion: <b><font color="0000BB">begin</font></b>
+          KeyDialog := <b><font color="0000BB">New</font></b>(PMyKey, Init);
+          <b><font color="0000BB">if</font></b> ValidView(KeyDialog) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b> <i><font color="#FFFF00">// Prüfen ob genügend Speicher.</font></i>
+            Desktop^.ExecView(KeyDialog);           <i><font color="#FFFF00">// Dialog Mausaktion ausführen.</font></i>
+            <b><font color="0000BB">Dispose</font></b>(KeyDialog, Done);               <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
+          <b><font color="0000BB">end</font></b>;
+        <b><font color="0000BB">end</font></b>;
+        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+          <b><font color="0000BB">Exit</font></b>;
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+    ClearEvent(Event);
+  <b><font color="0000BB">end</font></b>;</pre></code>
+<hr><br>
+<b>Unit mit dem Keyboardaktions-Dialog.</b><br>
+<br><br>
+<pre><code><b><font color="0000BB">unit</font></b> MyDialog;
+</pre></code>
+In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei Mausaktionen modifiziert werden.<br>
+<pre><code><b><font color="0000BB">type</font></b>
+  PMyKey = ^TMyKey;
+  TMyKey = <b><font color="0000BB">object</font></b>(TDialog)
+    EditScanCode, EditShiftState,
+    EditZeichen, EditZeichenCode: PInputLine;
+
+    <b><font color="0000BB">constructor</font></b> Init;
+    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
+  <b><font color="0000BB">end</font></b>;
+</pre></code>
+Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
+Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
+<pre><code><b><font color="0000BB">constructor</font></b> TMyKey.Init;
+<b><font color="0000BB">var</font></b>
+  Rect: TRect;
+<b><font color="0000BB">begin</font></b>
+  Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">15</font>);
+  Rect.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
+  <b><font color="0000BB">inherited</font></b> Init(Rect, <font color="#FF0000">'Keyboard-Aktion'</font>);
+
+  <i><font color="#FFFF00">// PosX</font></i>
+  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">2</font>, <font color="#0077BB">30</font>, <font color="#0077BB">3</font>);
+  EditZeichen := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">5</font>));
+  Insert(EditZeichen);
+  EditZeichen^.State := sfDisabled <b><font color="0000BB">or</font></b> EditZeichen^.State;    <i><font color="#FFFF00">// ReadOnly</font></i>
+  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">20</font>, <font color="#0077BB">3</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'Zeichen:'</font>, EditZeichen)));
+
+  <i><font color="#FFFF00">// PosY</font></i>
+  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">4</font>, <font color="#0077BB">30</font>, <font color="#0077BB">5</font>);
+  EditZeichenCode := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">5</font>));
+  EditZeichenCode^.State := sfDisabled <b><font color="0000BB">or</font></b> EditZeichenCode^.State;    <i><font color="#FFFF00">// ReadOnly</font></i>
+  Insert(EditZeichenCode);
+  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">4</font>, <font color="#0077BB">20</font>, <font color="#0077BB">5</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'Zeichencode:'</font>, EditZeichenCode)));
+
+  <i><font color="#FFFF00">// Maus-Tasten</font></i>
+  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">7</font>, <font color="#0077BB">30</font>, <font color="#0077BB">8</font>);
+  EditScanCode := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">7</font>));
+  EditScanCode^.State := sfDisabled <b><font color="0000BB">or</font></b> EditScanCode^.State;  <i><font color="#FFFF00">// ReadOnly</font></i>
+  Insert(EditScanCode);
+  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">7</font>, <font color="#0077BB">20</font>, <font color="#0077BB">8</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'Scancode:'</font>, EditScanCode)));
+
+  <i><font color="#FFFF00">// Maus-Tasten</font></i>
+  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">9</font>, <font color="#0077BB">30</font>, <font color="#0077BB">10</font>);
+  EditShiftState := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">7</font>));
+  EditShiftState^.State := sfDisabled <b><font color="0000BB">or</font></b> EditShiftState^.State;  <i><font color="#FFFF00">// ReadOnly</font></i>
+  Insert(EditShiftState);
+  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">9</font>, <font color="#0077BB">20</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'Shiftstate:'</font>, EditShiftState)));
+
+  <i><font color="#FFFF00">// Ok-Button</font></i>
+  Rect.Assign(<font color="#0077BB">27</font>, <font color="#0077BB">12</font>, <font color="#0077BB">37</font>, <font color="#0077BB">14</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'OK'</font>, cmOK, bfDefault)));
+<b><font color="0000BB">end</font></b>;
+</pre></code>
+Im EventHandle sieht man, das die Tastatur abgefangen wird. Es wird der Zeichencode und der Scancode ausgegeben.<br>
+In der untersten Zeile erscheint ein 3, wen die Shift-Taste mit gewissen anderen Tasten zB. Pfeil-Tasten gedrückt wird.<br>
+Die Tastatur-Daten werden an die <b>EditLines</b> ausgegeben.<br>
+<pre><code><b><font color="0000BB">procedure</font></b> TMyKey.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<b><font color="0000BB">begin</font></b>
+  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+
+  <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
+    evKeyDown: <b><font color="0000BB">begin</font></b>                 <i><font color="#FFFF00">// Taste wurde gedrückt.</font></i>
+      EditZeichen^.Data^:= Event.CharCode;
+      EditZeichen^.Draw;
+      EditZeichenCode^.Data^:= IntToStr(Byte(Event.CharCode));
+      EditZeichenCode^.Draw;
+      EditScanCode^.Data^:= IntToStr(Event.ScanCode);
+      EditScanCode^.Draw;
+      EditShiftState^.Data^:= IntToStr(Event.KeyShift);
+      EditShiftState^.Draw;
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;
+
+<b><font color="0000BB">end</font></b>;
+</pre></code>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
+</html>
