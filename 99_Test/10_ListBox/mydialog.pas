@@ -4,8 +4,12 @@ unit MyDialog;
 
 interface
 
+{$H-}
+
+
+
 uses
-  App, Objects, Drivers, Views, MsgBox, Dialogs,
+  App, Objects, Drivers, Views, Dialogs, MsgBox, StdDlg,
   SysUtils; // Für IntToStr und StrToInt.
 
 //type+
@@ -14,9 +18,9 @@ type
 
   TMyDialog = object(TDialog)
   const
-    cmCounter = 1003;       // Wird lokal für den Zähler-Butoon gebraucht.
+    cmTag = 1000;
   var
-    CounterButton: PButton; // Button mit Zähler.
+    ListBox: PListBox;
 
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
@@ -30,21 +34,20 @@ constructor TMyDialog.Init;
 var
   Rect: TRect;
   ScrollBar: PScrollBar;
-  ListBox: PListBox;
-  pc: PCollection;
-  ps: PString;
-  StringCollection: PStringCollection;
+  StringCollection: PCollection;
 
 begin
-  Rect.Assign(0, 0, 42, 21);
-  Rect.Move(23, 3);
+  Rect.Assign(10, 5, 67, 17);
   inherited Init(Rect, 'ListBox Demo');
 
-  // ListBox
-  Rect.Assign(5, 5, 7, 15);
-  ScrollBar := new(PScrollBar, Init(Rect));
+  Title := NewStr('dfsfdsa');
 
-  StringCollection := new(PStringCollection, Init(0, 1));
+  // ListBox
+  Rect.Assign(31, 2, 32, 7);
+  ScrollBar := new(PScrollBar, Init(Rect));
+  Insert(ScrollBar);
+
+  StringCollection := new(PCollection, Init(0, 1));
   StringCollection^.Insert(NewStr('Montag'));
   StringCollection^.Insert(NewStr('Dienstag'));
   StringCollection^.Insert(NewStr('Mittwoch'));
@@ -53,39 +56,19 @@ begin
   StringCollection^.Insert(NewStr('Samstag'));
   StringCollection^.Insert(NewStr('Sonntag'));
 
-
-
-  //pc := new(PCollection, Init(4, 4));
-  //pc^.Insert(NewStr('abc'));
-  //pc^.Insert(NewStr('abc'));
-  //pc^.Insert(NewStr('abc'));
-  //pc^.Insert(NewStr('abc'));
-  //
-  Rect.Assign(5, 2, 31, 15);
+  Rect.Assign(5, 2, 31, 7);
   ListBox := new(PListBox, Init(Rect, 1, ScrollBar));
   ListBox^.NewList(StringCollection);
-  //  ps:=new(PString);
-  //  ps^:='abcd';
-
-  //  ListBox^.Insert(ps);
-  //  ListBox^.Insert(ps);
-  //  ps := newstr('dsfdsfdsf');
-  //  ListBox^.List^.Insert(ps);
-  //ListBox^.Insert(pc);
-  //ListBox^.Insert(PString, Init('hallo'));
-  //ListBox^.Insert(PString, Init('hallo'));
 
   Insert(ListBox);
+  ListBox^.Insert(NewStr('aaaaaaaaa'));
 
-  // Button, bei den der Titel geändert wird.
-  Rect.Assign(19, 18, 32, 20);
-  CounterButton := new(PButton, Init(Rect, '    ', cmCounter, bfNormal));
-  CounterButton^.Title^ := '1';
-
-  Insert(CounterButton);
+  // Cancel-Button
+  Rect.Assign(19, 9, 32, 10);
+  Insert(new(PButton, Init(Rect, '~T~ag', cmTag, bfNormal)));
 
   // Ok-Button
-  Rect.Assign(7, 18, 17, 20);
+  Rect.Assign(7, 9, 17, 10);
   Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
 end;
 //init-
@@ -93,23 +76,18 @@ end;
 //handleevent+
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 var
-  Counter: integer;
+  s: string;
+
 begin
   inherited HandleEvent(Event);
 
   case Event.What of
     evCommand: begin
       case Event.Command of
-        cmCounter: begin
-          Counter := StrToInt(CounterButton^.Title^); // Titel des Button auslesen.
-          Inc(Counter);                               // Counter erhöhen.
-          if Counter > 9999 then begin                // Auf Überlauf prüfen, weil nur 4 Zeichen zur Verfügung.
-            Counter := 9999;
-          end;
-          CounterButton^.Title^ := IntToStr(Counter); // Neuer Titel an Button übergeben.
-
-          CounterButton^.Draw;                        // Button neu zeichnen.
-          ClearEvent(Event);                          // Event beenden.
+        cmTag: begin
+          str(ListBox^.Focused + 1, s);
+          MessageBox('Wochentag: ' + s + ' gew' + #132 + 'hlt', nil, mfOKButton);
+          ClearEvent(Event);   // Event beenden.
         end;
       end;
     end;
