@@ -63,6 +63,11 @@ begin
   Insert(ListBox);
   ListBox^.Insert(NewStr('aaaaaaaaa'));
 
+  ListBox^.List^.Insert(NewStr('bbbbbbb'));
+  ListBox^.SetRange(ListBox^.List^.Count);
+
+
+
   // Cancel-Button
   Rect.Assign(19, 9, 32, 10);
   Insert(new(PButton, Init(Rect, '~T~ag', cmTag, bfNormal)));
