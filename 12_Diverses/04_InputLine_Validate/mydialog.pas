@@ -55,7 +55,7 @@ var
   // Die Eingabe Zeilen.
   InputLine: PInputLine;
   // Stringliste, welche die erlaubten Strings enthält.
-  StringKollektion: PStringCollection;
+  StringCollektion: PStringCollection;
   i: Integer;
 begin
   // Der Dialog selbst.
@@ -74,15 +74,15 @@ begin
 
   // --- Wochentage
   // Stringliste erzeugen.
-  StringKollektion := new(PStringCollection, Init(10, 2));
+  StringCollektion := new(PStringCollection, Init(10, 2));
   // Stringliste mit den Wochentagen laden.
   for i := 0 to 6 do begin
-    StringKollektion^.Insert(NewStr(WochenTag[i]));
+    StringCollektion^.Insert(NewStr(WochenTag[i]));
   end;
   Rect.Assign(25, 4, 36, 5);
   InputLine := new(PInputLine, Init(Rect, 10));
   // Überprüfung mit der Stringliste.
-  InputLine^.SetValidator(new(PMyStringLookUpValidator, Init(StringKollektion)));
+  InputLine^.SetValidator(new(PMyStringLookUpValidator, Init(StringCollektion)));
   Insert(InputLine);
   Rect.Assign(2, 4, 22, 5);
   Insert(New(PLabel, Init(Rect, '~W~ochentage:', InputLine)));
