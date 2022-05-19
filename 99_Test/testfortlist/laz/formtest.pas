@@ -13,7 +13,7 @@ type
 
   TFormTest = object(TDialog)
     pstr: pshortstring;
-    PListBoxList: PSortedListBox;//PListBox;
+    ListBoxList: PSortedListBox;//PListBox;
     PScrollBarList: PScrollBar;
     PSpeedStrList: PStringCollection;
     PPortStrList: PStringCollection;
@@ -37,10 +37,6 @@ implementation
 constructor TFormTest.Init();
 var
   Rect: TRect;
-  i: integer;
-  s: string = 'Empty';
-  PCnt: DWord;
-  PortList: array of DWord;
 begin
   //Form
   Rect.Assign(0, 0, 57, 12);
@@ -55,23 +51,23 @@ begin
   //StringList
   PPortStrList := new(PStringCollection, Init(0, 1));
   ;  //10,2
-  pstr := NewStr(s);
-  PPortStrList^.Insert(pstr);
-  PPortStrList^.Insert(NewStr('abc'));
-  PPortStrList^.Insert(NewStr('def'));
-  PPortStrList^.Insert(NewStr('1234'));
-  //PPortStrList^.Insert(NewStr(s));
 
-  PCnt := 0;
+  PPortStrList^.Insert(NewStr('Montag'));
+  PPortStrList^.Insert(NewStr('Dienstag'));
+  PPortStrList^.Insert(NewStr('Mittwoch'));
+  PPortStrList^.Insert(NewStr('Donnerstag'));
+  PPortStrList^.Insert(NewStr('Freitag'));
+  PPortStrList^.Insert(NewStr('Samstag'));
+  PPortStrList^.Insert(NewStr('Sonntag'));
 
   //ListBox
   Rect.Assign(2, 2, 54, 6);
-  PListBoxList := New(PSortedListBox, Init(Rect, 1, PScrollBar(PScrollBarList)));
-  PListBoxList^.NewList(PPortStrList);
-  Insert(PListBoxList);
+  ListBoxList := New(PSortedListBox, Init(Rect, 1, PScrollBar(PScrollBarList)));
+  ListBoxList^.NewList(PPortStrList);
+  Insert(ListBoxList);
   //Label
   Rect.Assign(1, 1, 10, 2);
-  insert(new(PLabel, Init(Rect, 'List:', PListBoxList)));
+  insert(new(PLabel, Init(Rect, 'List:', ListBoxList)));
 
   //Button
   Rect.Assign(46, 8, 56, 9);
@@ -84,11 +80,11 @@ var
   i: DWord;
   p: PString;
 begin
-  PListBoxList^.list^.FreeAll;
-  PListBoxList^.list^.DeleteAll;
-  PListBoxList^.FreeAll;
-  Dispose(PPortStrList);
-  //PListBoxList^.Done;
+  //ListBoxList^.list^.FreeAll;
+  //ListBoxList^.list^.DeleteAll;
+  //ListBoxList^.FreeAll;
+  //Dispose(PPortStrList);
+  //ListBoxList^.Done;
 end;
 
 

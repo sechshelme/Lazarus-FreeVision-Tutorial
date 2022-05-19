@@ -29,36 +29,49 @@ implementation
 constructor TMyDialog.Init;
 var
   Rect: TRect;
-  sb: PScrollBar;
+  ScrollBar: PScrollBar;
   ListBox: PListBox;
   pc: PCollection;
   ps: PString;
+  StringCollection: PStringCollection;
+
 begin
   Rect.Assign(0, 0, 42, 21);
   Rect.Move(23, 3);
-  inherited Init(Rect, 'Mein Dialog');
+  inherited Init(Rect, 'ListBox Demo');
 
   // ListBox
   Rect.Assign(5, 5, 7, 15);
-  sb := new(PScrollBar, Init(Rect));
+  ScrollBar := new(PScrollBar, Init(Rect));
 
-  pc := new(PCollection, Init(4, 4));
-  pc^.Insert(NewStr('abc'));
-  pc^.Insert(NewStr('abc'));
-  pc^.Insert(NewStr('abc'));
-  pc^.Insert(NewStr('abc'));
+  StringCollection := new(PStringCollection, Init(0, 1));
+  StringCollection^.Insert(NewStr('Montag'));
+  StringCollection^.Insert(NewStr('Dienstag'));
+  StringCollection^.Insert(NewStr('Mittwoch'));
+  StringCollection^.Insert(NewStr('Donnerstag'));
+  StringCollection^.Insert(NewStr('Freitag'));
+  StringCollection^.Insert(NewStr('Samstag'));
+  StringCollection^.Insert(NewStr('Sonntag'));
 
+
+
+  //pc := new(PCollection, Init(4, 4));
+  //pc^.Insert(NewStr('abc'));
+  //pc^.Insert(NewStr('abc'));
+  //pc^.Insert(NewStr('abc'));
+  //pc^.Insert(NewStr('abc'));
+  //
   Rect.Assign(5, 2, 31, 15);
-  ListBox := new(PListBox, Init(Rect, 3, nil));
-  //  ListBox^.NewList(pc);
+  ListBox := new(PListBox, Init(Rect, 1, ScrollBar));
+  ListBox^.NewList(StringCollection);
   //  ps:=new(PString);
   //  ps^:='abcd';
 
   //  ListBox^.Insert(ps);
   //  ListBox^.Insert(ps);
-  ps := newstr('dsfdsfdsf');
+  //  ps := newstr('dsfdsfdsf');
   //  ListBox^.List^.Insert(ps);
-  ListBox^.Insert(pc);
+  //ListBox^.Insert(pc);
   //ListBox^.Insert(PString, Init('hallo'));
   //ListBox^.Insert(PString, Init('hallo'));
 
