@@ -54,7 +54,6 @@ begin
           Inc(Counter);                                 // Counter erhöhen.
           CounterInputLine^.Data^ := IntToStr(Counter); // Neue Zahl ausgeben.
           CounterInputLine^.Draw;                       // Asugabezeile aktualisieren.
-//          ClearEvent(Event);                            // Event beenden.
         end;
       end;
     end;
