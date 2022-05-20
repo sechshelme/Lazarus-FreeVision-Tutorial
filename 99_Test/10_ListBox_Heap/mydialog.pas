@@ -51,8 +51,7 @@ begin
   ScrollBar := new(PScrollBar, Init(Rect));
   Insert(ScrollBar);
 
-  //  StringCollection := new(PCollection, Init(2, 1));
-  StringCollection := new(PCollection, Init(4, 1));
+  StringCollection := new(PCollection, Init(2, 1));
   StringCollection^.Insert(NewStr('Montag'));
   StringCollection^.Insert(NewStr('Dienstag'));
   StringCollection^.Insert(NewStr('Mittwoch'));
@@ -66,6 +65,10 @@ begin
   ListBox^.NewList(StringCollection);
 
   Insert(ListBox);
+
+  ListBox^.Insert(NewStr('aaaaaaaaa'));
+  ListBox^.FreeItem(1);
+//  ListBox^.List^.AtFree(1);
 
   //  ListBox^.FreeAll;
 
