@@ -22,6 +22,7 @@ type
   var
     ListBox: PListBox;
     List2Box: PSortedListBox;
+    StringCollection:   PStringCollection;
 
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
@@ -37,9 +38,9 @@ type
 var
   Rect: TRect;
   ScrollBar: PScrollBar;
-  StringCollection: PCollection;
   i: Sw_Integer;
   s: PString;
+  p:PObject;
 const
   Tage: array [0..6] of shortstring = (
     'Montag',
@@ -54,6 +55,7 @@ begin
   Rect.Assign(10, 5, 67, 17);
   inherited Init(Rect, 'ListBox Demo');
 
+
   if Title <> nil then begin
     Dispose(Title);
   end;
@@ -64,13 +66,27 @@ begin
   ScrollBar := new(PScrollBar, Init(Rect));
   Insert(ScrollBar);
 
-  StringCollection := new(PCollection, Init(2, 1));
+  StringCollection := new(PStringCollection, Init(2, 1));
 
   for i := 0 to Length(Tage) - 1 do begin
     s := NewStr(Tage[i]);
     StringCollection^.Insert(s);
     //    StringCollection^.Insert(NewStr(Tage[i]));
   end;
+
+
+
+
+   //  P := PObject(StringCollection^.Items^[2]);                                { Convert pointer }
+   //  MessageBox(StringCollection^.Count.ToString, nil, mfOKButton);
+   //If (P<>Nil) Then Dispose(P, Done);                 { Dispose of object }
+   //MessageBox(StringCollection^.Count.ToString, nil, mfOKButton);
+
+
+//   StringCollection^.DeleteAll;
+//   exit;
+
+//MessageBox(StringCollection^.Count.ToString, nil, mfOKButton);
 
   Rect.Assign(5, 2, 31, 7);
   ListBox := new(PListBox, Init(Rect, 1, ScrollBar));
