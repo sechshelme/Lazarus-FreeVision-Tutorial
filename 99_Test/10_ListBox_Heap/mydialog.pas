@@ -41,7 +41,7 @@ var
   i: Sw_Integer;
   s: PString;
 const
-  Tage: array of shortstring = (
+  Tage: array [0..6] of shortstring = (
     'Montag',
     'Dienstag',
     'Mittwoch',
@@ -77,9 +77,9 @@ begin
   ListBox^.NewList(StringCollection);
 
   Insert(ListBox);
-//    ListBox^.FreeItem(2);
-
-//  ListBox^.List^.AtFree(ListBox^.Focused);
+// ListBox^.FreeItem(2);
+// StringCollection^.AtFree(ListBox^.Focused);
+// ListBox^.List^.AtFree(ListBox^.Focused);
 
 
 
