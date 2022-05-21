@@ -75,7 +75,7 @@ type
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     MyDialog: PMyDialog;
-    FileDialog: PFileDialog;
+//    FileDialog: PMyFileDialog;
     FileName: ShortString;
   begin
     inherited HandleEvent(Event);
@@ -91,10 +91,10 @@ type
         end;
         cmFileTest:begin
           FileName := '*.*';
-          New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~D~ateiname', fdOpenButton, 1));
-          if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
-//            NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
-          end;
+//          New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~D~ateiname', fdOpenButton, 1));
+//          if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
+////            NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
+//          end;
         end
         else begin
           Exit;
@@ -112,7 +112,7 @@ type
 
   //Idle 
   procedure TMyApp.Idle;
-    function IsTileable(P: PView): Boolean; far;
+    function IsTileable(P: PView): Boolean;
     begin
       IsTileable := (P^.Options and ofTileable <> 0) and (P^.State and sfVisible <> 0);
     end;

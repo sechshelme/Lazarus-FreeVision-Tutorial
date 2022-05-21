@@ -1,6 +1,6 @@
 //image image.png
 (*
-Der Editor hat eine <b>suchen</b> und <b>ersetzen</b> bekommen.
+Der Editor hat eine <b>Suchen</b> und <b>Ersetzen</b> Funktion bekommen.
 Leider sind die Standard-Dialoge dafür in Englisch.
 Aus diesem Grund, wird es hier neu in deutsch gebaut.
 Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialog der Fall ist.
