@@ -15,8 +15,8 @@ uses
 //type+
 type
   { TMyLisBox }
-  PMyListBox = ^TMyListBox;
-  TMyListBox=object(TListBox)
+  PNewListBox = ^TNewListBox;
+  TNewListBox = object(TListBox)
     destructor Done; virtual;
   end;
 
@@ -27,7 +27,7 @@ type
   const
     cmTag = 1000;
   var
-    ListBox: PMyListBox;
+    ListBox: PNewListBox;
     StringCollection: PStringCollection;
 
     constructor Init;
@@ -39,9 +39,11 @@ implementation
 
 { TMyLisBox }
 
-destructor TMyListBox.Done;
+destructor TNewListBox.Done;
 begin
-  if List <> nil then Dispose(List, Done);
+  if List <> nil then begin
+    Dispose(List, Done);
+  end;
   TListBox.Done;
 end;
 
@@ -70,9 +72,10 @@ begin
   ScrollBar := new(PScrollBar, Init(Rect));
   Insert(ScrollBar);
 
+  // ListBox
   Rect.Assign(5, 2, 31, 7);
-  ListBox := new(PMyListBox, Init(Rect, 1, ScrollBar));
-    ListBox^.NewList(StringCollection);
+  ListBox := new(PNewListBox, Init(Rect, 1, ScrollBar));
+  ListBox^.NewList(StringCollection);
   Insert(ListBox);
 
   // Cancel-Button

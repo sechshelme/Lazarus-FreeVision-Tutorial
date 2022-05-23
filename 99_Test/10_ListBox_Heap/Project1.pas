@@ -15,7 +15,6 @@ uses
   Dialogs,  // Dialoge
   Gadgets,
   StdDlg,
-  MyStdDlg,
   MyDialog;
 
 const
@@ -76,7 +75,7 @@ type
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     MyDialog: PMyDialog;
-    FileDialog: PMyFileDialog;
+//    FileDialog: PFileDialog;
     FileName: ShortString;
   begin
     inherited HandleEvent(Event);
@@ -92,10 +91,10 @@ type
         end;
         cmFileTest:begin
           FileName := '*.*';
-          New(FileDialog, Init);
-          if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
+//          New(FileDialog, Init);
+//          if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
 ////            NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
-          end;
+//          end;
         end
         else begin
           Exit;
