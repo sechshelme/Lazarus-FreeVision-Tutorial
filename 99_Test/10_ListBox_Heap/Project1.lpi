@@ -36,7 +36,7 @@
         </Mode0>
       </Modes>
     </RunParams>
-    <Units Count="3">
+    <Units Count="2">
       <Unit0>
         <Filename Value="Project1.pas"/>
         <IsPartOfProject Value="True"/>
@@ -46,11 +46,6 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="MyDialog"/>
       </Unit1>
-      <Unit2>
-        <Filename Value="myfiledialog.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="MyFileDialog"/>
-      </Unit2>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
