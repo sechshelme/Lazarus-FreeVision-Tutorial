@@ -31,7 +31,7 @@ Den Dialog mit dem Speicher Leak aufrufen.<br>
             <b><font color="0000BB">Dispose</font></b>(MyDialog, Done);       <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
           <b><font color="0000BB">end</font></b>;
         <b><font color="0000BB">end</font></b>;
-        <i><font color="#FFFF00">// Ein FileopenDialog, bei dem alles in Ordnung ist.</font></i>
+        <i><font color="#FFFF00">// Ein FileOpenDialog, bei dem alles in Ordnung ist.</font></i>
         cmFileTest:<b><font color="0000BB">begin</font></b>
           FileName := <font color="#FF0000">'*.*'</font>;
           <b><font color="0000BB">New</font></b>(FileDialog, Init(FileName, <font color="#FF0000">'Datei '</font><font color="#FF0000">#148</font><font color="#FF0000">'ffnen'</font>, <font color="#FF0000">'~D~ateiname'</font>, fdOpenButton, <font color="#0077BB">1</font>));
@@ -152,7 +152,6 @@ Der EventHandle<br>
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
-<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
