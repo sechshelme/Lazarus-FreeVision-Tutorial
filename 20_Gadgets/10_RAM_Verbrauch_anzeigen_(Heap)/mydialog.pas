@@ -110,7 +110,6 @@ begin
     end;
   end;
   inherited HandleEvent(Event);
-
 end;
 //handleevent-
 

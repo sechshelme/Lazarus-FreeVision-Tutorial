@@ -104,7 +104,7 @@ Den Dialog mit dem Speicher Leak aufrufen.
             Dispose(MyDialog, Done);       // Dialog und Speicher frei geben.
           end;
         end;
-        // Ein FileopenDialog, bei dem alles in Ordnung ist.
+        // Ein FileOpenDialog, bei dem alles in Ordnung ist.
         cmFileTest:begin
           FileName := '*.*';
           New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~D~ateiname', fdOpenButton, 1));
