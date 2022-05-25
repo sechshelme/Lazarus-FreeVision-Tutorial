@@ -129,7 +129,6 @@ Als Beweis dafür, wir die Zahl in der Ausgabezeile un eins erhöht.<br>
           Inc(Counter);                                 <i><font color="#FFFF00">// Counter erhöhen.</font></i>
           CounterInputLine^.Data^ := IntToStr(Counter); <i><font color="#FFFF00">// Neue Zahl ausgeben.</font></i>
           CounterInputLine^.Draw;                       <i><font color="#FFFF00">// Asugabezeile aktualisieren.</font></i>
-<i><font color="#FFFF00">//          ClearEvent(Event);                            // Event beenden.</font></i>
         <b><font color="0000BB">end</font></b>;
       <b><font color="0000BB">end</font></b>;
     <b><font color="0000BB">end</font></b>;

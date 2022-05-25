@@ -1,40 +1,89 @@
 <html>
-    <b><h1>99 Test</h1></b>
-    <b><h2>10 ListBox Heap</h2></b>
+    <b><h1>20 Gadgets</h1></b>
+    <b><h2>10 RAM Verbrauch anzeigen (Heap)</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
-In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.<br>
-Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.<br>
-Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows(Titel: ShortString);
+In diesem Beispiel wird eon kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.<br>
+Diese Funktion macht sinn, wen man schauen will, ob man ein Speicher Leak hat.<br>
+Die TListBox ist ein gutes Beispiel, da diese in den original Source einen Bug hat.<br>
+Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.<br>
+    Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.<br>
+<pre><code>    GetExtent(R);
+    R.A.X := R.B.X - <font color="#0077BB">12</font>;
+    R.A.Y := R.B.Y - <font color="#0077BB">1</font>;
+    Heap := <b><font color="0000BB">New</font></b>(PHeapView, Init(R));
+    Insert(Heap); </code></pre>
+Den Dialog mit dem Speicher Leak aufrufen.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>
-    Win: PWindow;
-    Rect: TRect;
+    MyDialog: PMyDialog;
+    FileDialog: PFileDialog;
+    FileName: ShortString;
   <b><font color="0000BB">begin</font></b>
-    Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
-    Win := <b><font color="0000BB">New</font></b>(PWindow, Init(Rect, Titel, wnNoNumber));
-    <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-      Desktop^.Insert(Win);
+    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+<br>
+    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        <i><font color="#FFFF00">// Dialog mit der ListBox, welcher ein Speicher Leak hat.</font></i>
+        cmDialog: <b><font color="0000BB">begin</font></b>
+          MyDialog := <b><font color="0000BB">New</font></b>(PMyDialog, Init);
+          <b><font color="0000BB">if</font></b> ValidView(MyDialog) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+            Desktop^.ExecView(MyDialog);   <i><font color="#FFFF00">// Dialog ausführen.</font></i>
+            <b><font color="0000BB">Dispose</font></b>(MyDialog, Done);       <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
+          <b><font color="0000BB">end</font></b>;
+        <b><font color="0000BB">end</font></b>;
+        <i><font color="#FFFF00">// Ein FileopenDialog, bei dem alles in Ordnung ist.</font></i>
+        cmFileTest:<b><font color="0000BB">begin</font></b>
+          FileName := <font color="#FF0000">'*.*'</font>;
+          <b><font color="0000BB">New</font></b>(FileDialog, Init(FileName, <font color="#FF0000">'Datei '</font><font color="#FF0000">#148</font><font color="#FF0000">'ffnen'</font>, <font color="#FF0000">'~D~ateiname'</font>, fdOpenButton, <font color="#0077BB">1</font>));
+          <b><font color="0000BB">if</font></b> ExecuteDialog(FileDialog, @FileName) <> cmCancel <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+            NewWindows(FileName); <i><font color="#FFFF00">// Neues Fenster mit der ausgewählten Datei.</font></i>
+          <b><font color="0000BB">end</font></b>;
+        <b><font color="0000BB">end</font></b>
+        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+          <b><font color="0000BB">Exit</font></b>;
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+    ClearEvent(Event);
+  <b><font color="0000BB">end</font></b>;</code></pre>
+Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.Idle;
+<br>
+    <b><font color="0000BB">function</font></b> IsTileable(P: PView): Boolean;
+    <b><font color="0000BB">begin</font></b>
+      Result := (P^.Options <b><font color="0000BB">and</font></b> ofTileable <> <font color="#0077BB">0</font>) <b><font color="0000BB">and</font></b> (P^.State <b><font color="0000BB">and</font></b> sfVisible <> <font color="#0077BB">0</font>);
+    <b><font color="0000BB">end</font></b>;
+<br>
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> Idle;
+    Heap^.Update;
+    <b><font color="0000BB">if</font></b> Desktop^.FirstThat(@IsTileable) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      EnableCommands([cmTile, cmCascade])
+    <b><font color="0000BB">end</font></b> <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+      DisableCommands([cmTile, cmCascade]);
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
-Der Dialog mit dem Zähler-Button.<br>
+Der Dialog mit dem dem Speicher Leak<br>
 <pre><code><b><font color="0000BB">unit</font></b> MyDialog;
 </code></pre>
-Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.<br>
-Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
+Eine Vererbung mit einem <b>Destructor</b>, welcher das <b>Leak</b> behebt.<br>
 <pre><code><b><font color="0000BB">type</font></b>
   PListBox = ^TListBox;
   TListBox = <b><font color="0000BB">object</font></b>(Dialogs.TListBox)
     <b><font color="0000BB">destructor</font></b> Done; <b><font color="0000BB">virtual</font></b>;
   <b><font color="0000BB">end</font></b>;
-<br>
-
+</code></pre>
+Eine Vererbung mit einem Destructor, welcher das Leak behebt.<br>
+<pre><code></code></pre>
+Der <b>Destructor</b>, welcher das Speicher Leak behebt.<br>
+<pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
   <b><font color="0000BB">const</font></b>
-    cmTag = <font color="#0077BB">1000</font>;
+    cmTag = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>
   <b><font color="0000BB">var</font></b>
     ListBox: PListBox;
     StringCollection: PStringCollection;
@@ -43,8 +92,7 @@ Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
     <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
   <b><font color="0000BB">end</font></b>;
 </code></pre>
-Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.<br>
-<b>CounterButton</b> wird für die Modifikation gebraucht.<br>
+Komponenten für den Dialog generieren.<br>
 <pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
 <b><font color="0000BB">var</font></b>
   Rect: TRect;
@@ -84,27 +132,21 @@ Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht
   Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
 <b><font color="0000BB">end</font></b>;
 </code></pre>
-Im EventHandle, wird die Zahl im Button beim Drücken erhöht.<br>
-Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.<br>
-Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.<br>
+Der EventHandle<br>
 <pre><code><b><font color="0000BB">procedure</font></b> TMyDialog.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
 <b><font color="0000BB">var</font></b>
-  s: <b><font color="0000BB">string</font></b>;
-<br>
+  s: ShortString;
 <b><font color="0000BB">begin</font></b>
-<br>
   <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
     evCommand: <b><font color="0000BB">begin</font></b>
       <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
         cmOK: <b><font color="0000BB">begin</font></b>
-          <i><font color="#FFFF00">//                    ListBox^.FreeAll;</font></i>
-          <i><font color="#FFFF00">//          MessageBox('Wochentag', nil, mfOKButton);</font></i>
+          <i><font color="#FFFF00">// mache etwas</font></i>
         <b><font color="0000BB">end</font></b>;
-<br>
         cmTag: <b><font color="0000BB">begin</font></b>
           str(ListBox^.Focused + <font color="#0077BB">1</font>, s);
           MessageBox(<font color="#FF0000">'Wochentag: '</font> + s + <font color="#FF0000">' gew'</font> + <font color="#FF0000">#132</font> + <font color="#FF0000">'hlt'</font>, <b><font color="0000BB">nil</font></b>, mfOKButton);
-          ClearEvent(Event);   <i><font color="#FFFF00">// Event beenden.</font></i>
+          ClearEvent(Event);  <i><font color="#FFFF00">// Event beenden.</font></i>
         <b><font color="0000BB">end</font></b>;
       <b><font color="0000BB">end</font></b>;
     <b><font color="0000BB">end</font></b>;

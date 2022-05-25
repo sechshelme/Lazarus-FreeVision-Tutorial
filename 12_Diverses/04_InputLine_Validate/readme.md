@@ -59,7 +59,7 @@ Hier sieht man, das eine Validate-Prüfung zu den <b>PInputLines</b> dazu kommt.
   <i><font color="#FFFF00">// Die Eingabe Zeilen.</font></i>
   InputLine: PInputLine;
   <i><font color="#FFFF00">// Stringliste, welche die erlaubten Strings enthält.</font></i>
-  StringKollektion: PStringCollection;
+  StringCollektion: PStringCollection;
   i: Integer;
 <b><font color="0000BB">begin</font></b>
   <i><font color="#FFFF00">// Der Dialog selbst.</font></i>
@@ -78,15 +78,15 @@ Hier sieht man, das eine Validate-Prüfung zu den <b>PInputLines</b> dazu kommt.
 <br>
   <i><font color="#FFFF00">// --- Wochentage</font></i>
   <i><font color="#FFFF00">// Stringliste erzeugen.</font></i>
-  StringKollektion := <b><font color="0000BB">new</font></b>(PStringCollection, Init(<font color="#0077BB">10</font>, <font color="#0077BB">2</font>));
+  StringCollektion := <b><font color="0000BB">new</font></b>(PStringCollection, Init(<font color="#0077BB">10</font>, <font color="#0077BB">2</font>));
   <i><font color="#FFFF00">// Stringliste mit den Wochentagen laden.</font></i>
   <b><font color="0000BB">for</font></b> i := <font color="#0077BB">0</font> <b><font color="0000BB">to</font></b> <font color="#0077BB">6</font> <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
-    StringKollektion^.Insert(NewStr(WochenTag[i]));
+    StringCollektion^.Insert(NewStr(WochenTag[i]));
   <b><font color="0000BB">end</font></b>;
   Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">4</font>, <font color="#0077BB">36</font>, <font color="#0077BB">5</font>);
   InputLine := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">10</font>));
   <i><font color="#FFFF00">// Überprüfung mit der Stringliste.</font></i>
-  InputLine^.SetValidator(<b><font color="0000BB">new</font></b>(PMyStringLookUpValidator, Init(StringKollektion)));
+  InputLine^.SetValidator(<b><font color="0000BB">new</font></b>(PMyStringLookUpValidator, Init(StringCollektion)));
   Insert(InputLine);
   Rect.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">4</font>, <font color="#0077BB">22</font>, <font color="#0077BB">5</font>);
   Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'~W~ochentage:'</font>, InputLine)));

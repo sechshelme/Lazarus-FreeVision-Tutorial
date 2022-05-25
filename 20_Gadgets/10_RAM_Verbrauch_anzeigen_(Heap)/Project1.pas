@@ -1,7 +1,9 @@
 //image image.png
 (*
-In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.
-Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.
+In diesem Beispiel wird eon kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.
+Diese Funktion macht sinn, wen man schauen will, ob man ein Speicher Leak hat.
+Die TListBox ist ein gutes Beispiel, da diese in den original Source einen Bug hat.
+Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.
 *)
 program Project1;
 
@@ -13,7 +15,7 @@ uses
   Menus,    // Statuszeile
   MsgBox,   // Messageboxen
   Dialogs,  // Dialoge
-  StdDlg,
+  StdDlg,   // Für Datei öffnen
   Gadgets,
   MyDialog;
 
@@ -39,7 +41,7 @@ type
     R: TRect;                 // Rechteck für die Statuszeilen Position.
   begin
 
-    //StatusBar
+    // StatusBar
     GetExtent(R);
     R.A.Y := R.B.Y - 1;
     R.B.X := R.B.X - 12;
@@ -53,11 +55,16 @@ type
       )
     );
 
-    //Heap
+    (*
+    Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.
+    *)
+    //code+
     GetExtent(R);
-    R.A.X := R.B.X - 12; R.A.Y := R.B.Y - 1;
+    R.A.X := R.B.X - 12;
+    R.A.Y := R.B.Y - 1;
     Heap := New(PHeapView, Init(R));
     Insert(Heap); 
+    //code-
   end;
 
   procedure TMyApp.InitMenuBar;
@@ -75,6 +82,10 @@ type
         NewItem('Dia~l~og...', '', kbNoKey, cmDialog, hcNoContext, nil)), nil)))));
   end;
 
+(*
+Den Dialog mit dem Speicher Leak aufrufen.
+*)
+//code+
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     MyDialog: PMyDialog;
@@ -84,14 +95,16 @@ type
     inherited HandleEvent(Event);
 
     if Event.What = evCommand then begin
-      case Event.Command of                        // About Dialog
+      case Event.Command of
+        // Dialog mit der ListBox, welcher ein Speicher Leak hat.
         cmDialog: begin
           MyDialog := New(PMyDialog, Init);
-          if ValidView(MyDialog) <> nil then begin // Prüfen ob genügend Speicher.
-            Desktop^.ExecView(MyDialog);           // Dialog About ausführen.
-            Dispose(MyDialog, Done);               // Dialog und Speicher frei geben.
+          if ValidView(MyDialog) <> nil then begin
+            Desktop^.ExecView(MyDialog);   // Dialog ausführen.
+            Dispose(MyDialog, Done);       // Dialog und Speicher frei geben.
           end;
         end;
+        // Ein FileopenDialog, bei dem alles in Ordnung ist.
         cmFileTest:begin
           FileName := '*.*';
           New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~D~ateiname', fdOpenButton, 1));
@@ -106,6 +119,7 @@ type
     end;
     ClearEvent(Event);
   end;
+//code-
 
   procedure TMyApp.OutOfMemory;
   begin
@@ -113,10 +127,6 @@ type
   end;
 
 
-(*
-Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.
-*)
-  //code+
   procedure TMyApp.NewWindows(Titel: ShortString);
   var
     Win: PWindow;
@@ -128,24 +138,28 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
       Desktop^.Insert(Win);
     end;
   end;
-  //code-
 
-
-  //Idle
+(*
+Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.
+*)
+//code+
   procedure TMyApp.Idle;
+
     function IsTileable(P: PView): Boolean;
     begin
-      IsTileable := (P^.Options and ofTileable <> 0) and (P^.State and sfVisible <> 0);
+      Result := (P^.Options and ofTileable <> 0) and (P^.State and sfVisible <> 0);
     end;
+
   begin
     inherited Idle;
-    //Clock^.Update;
     Heap^.Update;
-    if Desktop^.FirstThat(@IsTileable) <> nil then
+    if Desktop^.FirstThat(@IsTileable) <> nil then begin
       EnableCommands([cmTile, cmCascade])
-    else
+    end else begin
       DisableCommands([cmTile, cmCascade]);
+    end;
   end;
+//code-
 
 var
   MyApp: TMyApp;
@@ -159,26 +173,32 @@ begin
 (*
 <b>Unit mit dem neuen Dialog.</b>
 <br>
-Der Dialog mit dem Zähler-Button.
+Der Dialog mit dem dem Speicher Leak
 *)
 //includepascal mydialog.pas head
 
 (*
-Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.
-Direkt mit <b>Insert(New(...</b> geht nicht mehr.
+Eine Vererbung mit einem <b>Destructor</b>, welcher das <b>Leak</b> behebt.
+*)
+//includepascal mydialog.pas typenewlistbox
+
+(*
+Eine Vererbung mit einem Destructor, welcher das Leak behebt.
+*)
+//includepascal mydialog.pas donelistbox+
+
+(*
+Der <b>Destructor</b>, welcher das Speicher Leak behebt.
 *)
 //includepascal mydialog.pas type
 
 (*
-Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.
-<b>CounterButton</b> wird für die Modifikation gebraucht.
+Komponenten für den Dialog generieren.
 *)
 //includepascal mydialog.pas init
 
 (*
-Im EventHandle, wird die Zahl im Button beim Drücken erhöht.
-Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.
-Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.
+Der EventHandle
 *)
 //includepascal mydialog.pas handleevent
 

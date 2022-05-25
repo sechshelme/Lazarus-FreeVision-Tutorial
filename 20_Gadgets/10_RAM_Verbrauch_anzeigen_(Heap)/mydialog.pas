@@ -12,18 +12,20 @@ interface
 uses
   App, Objects, Drivers, Views, Dialogs, MsgBox, StdDlg;
 
-//type+
+//typenewlistbox+
 type
   PListBox = ^TListBox;
   TListBox = object(Dialogs.TListBox)
     destructor Done; virtual;
   end;
+//typenewlistbox-
 
-
+//type+
+type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
   const
-    cmTag = 1000;
+    cmTag = 1000;  // Lokale Event Konstante
   var
     ListBox: PListBox;
     StringCollection: PStringCollection;
@@ -37,6 +39,7 @@ implementation
 
 { TMyLisBox }
 
+//donelistbox+
 destructor TListBox.Done;
 begin
   if List <> nil then begin
@@ -44,6 +47,7 @@ begin
   end;
   inherited Done;
 end;
+//donelistbox-
 
 //init+
 constructor TMyDialog.Init;
@@ -89,22 +93,18 @@ end;
 //handleevent+
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 var
-  s: string;
-
+  s: ShortString;
 begin
-
   case Event.What of
     evCommand: begin
       case Event.Command of
         cmOK: begin
-          //                    ListBox^.FreeAll;
-          //          MessageBox('Wochentag', nil, mfOKButton);
+          // mache etwas
         end;
-
         cmTag: begin
           str(ListBox^.Focused + 1, s);
           MessageBox('Wochentag: ' + s + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          ClearEvent(Event);   // Event beenden.
+          ClearEvent(Event);  // Event beenden.
         end;
       end;
     end;

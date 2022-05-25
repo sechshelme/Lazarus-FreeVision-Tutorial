@@ -29,7 +29,6 @@ implementation
 constructor TMyView.Init(var Bounds: TRect);
 begin
   inherited Init(Bounds);
-  set
 
   Options := Options OR ofSelectable;  // Fenster anwählbar.
   Options := Options OR ofTopSelect;   // Fenster selektierbar.

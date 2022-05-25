@@ -1,0 +1,28 @@
+--- old_dialogs.pas	2020-04-27 16:15:49.114908000 +0200
++++ new_dialogs.pas	2022-05-24 17:28:37.612055902 +0200
+@@ -352,6 +352,7 @@
+       CONSTRUCTOR Init (Var Bounds: TRect; ANumCols: Sw_Word;
+         AScrollBar: PScrollBar);
+       CONSTRUCTOR Load (Var S: TStream);
++      destructor Done;
+       FUNCTION DataSize: Sw_Word; Virtual;
+       FUNCTION GetText (Item: Sw_Integer; MaxLen: Sw_Integer): String; Virtual;
+       PROCEDURE NewList(AList: PCollection); Virtual;
+@@ -2680,6 +2681,17 @@
+ END;
+ 
+ {--TListBox-----------------------------------------------------------------}
++{  Load -> Platforms DOS/DPMI/WIN/NT/OS2 - Updated 24Mai2022 LdB            }
++{---------------------------------------------------------------------------}
++destructor TListBox.Done;
++begin
++   if List <> nil then begin
++     Dispose(List, Done);
++   end;
++   inherited Done;
++end;
++
++{--TListBox-----------------------------------------------------------------}
+ {  DataSize -> Platforms DOS/DPMI/WIN/NT/Os2 - Updated 06Jun98 LdB          }
+ {---------------------------------------------------------------------------}
+ FUNCTION TListBox.DataSize: Sw_Word;

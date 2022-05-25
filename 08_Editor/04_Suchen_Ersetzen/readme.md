@@ -2,7 +2,7 @@
     <b><h1>08 Editor</h1></b>
     <b><h2>04 Suchen Ersetzen</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
-Der Editor hat eine <b>suchen</b> und <b>ersetzen</b> bekommen.<br>
+Der Editor hat eine <b>Suchen</b> und <b>Ersetzen</b> Funktion bekommen.<br>
 Leider sind die Standard-Dialoge dafür in Englisch.<br>
 Aus diesem Grund, wird es hier neu in deutsch gebaut.<br>
 Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialog der Fall ist.<br>
