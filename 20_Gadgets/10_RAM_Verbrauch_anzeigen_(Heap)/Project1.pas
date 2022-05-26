@@ -38,13 +38,14 @@ type
 
   procedure TMyApp.InitStatusLine;
   var
-    R: TRect;                 // Rechteck für die Statuszeilen Position.
+    R: TRect;    // Rechteck für die Statuszeilen Position.
   begin
 
     // StatusBar
     GetExtent(R);
     R.A.Y := R.B.Y - 1;
     R.B.X := R.B.X - 12;
+
     New(StatusLine,
       Init(R,
         NewStatusDef(0, $FFFF,
@@ -69,7 +70,7 @@ type
 
   procedure TMyApp.InitMenuBar;
   var
-    R: TRect;                          // Rechteck für die Menüzeilen-Position.
+    R: TRect;    // Rechteck für die Menüzeilen-Position.
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
@@ -178,17 +179,7 @@ Der Dialog mit dem dem Speicher Leak
 //includepascal mydialog.pas head
 
 (*
-Eine Vererbung mit einem <b>Destructor</b>, welcher das <b>Leak</b> behebt.
-*)
-//includepascal mydialog.pas typenewlistbox
-
-(*
-Eine Vererbung mit einem Destructor, welcher das Leak behebt.
-*)
-//includepascal mydialog.pas donelistbox+
-
-(*
-Der <b>Destructor</b>, welcher das Speicher Leak behebt.
+Den <b>Destructor</b> deklarieren, welcher das <b>Speicher Leak</b> behebt.
 *)
 //includepascal mydialog.pas type
 
@@ -196,6 +187,13 @@ Der <b>Destructor</b>, welcher das Speicher Leak behebt.
 Komponenten für den Dialog generieren.
 *)
 //includepascal mydialog.pas init
+
+(*
+Manuell den Speicher frei geben.
+Man kann hier versuchsweise das Dispose ausklammern, dann sieht man,
+das man eine Speicherleak bekommt.
+*)
+//includepascal mydialog.pas done
 
 (*
 Der EventHandle
