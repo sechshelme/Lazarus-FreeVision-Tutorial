@@ -11,10 +11,11 @@
     <b><h1>20 Gadgets</h1></b>
     <b><h2>10 RAM Verbrauch anzeigen (Heap)</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
-In diesem Beispiel wird eon kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.<br>
-Diese Funktion macht sinn, wen man schauen will, ob man ein Speicher Leak hat.<br>
+In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.<br>
+Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.<br>
 Die TListBox ist ein gutes Beispiel, da diese in den original Source einen Bug hat.<br>
 Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.<br>
+<hr><br>
     Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.<br>
 <pre><code>    GetExtent(R);
     R.A.X := R.B.X - <font color="#0077BB">12</font>;

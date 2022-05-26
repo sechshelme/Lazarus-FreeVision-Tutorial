@@ -1,10 +1,11 @@
 //image image.png
 (*
-In diesem Beispiel wird eon kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.
-Diese Funktion macht sinn, wen man schauen will, ob man ein Speicher Leak hat.
+In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.
+Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.
 Die TListBox ist ein gutes Beispiel, da diese in den original Source einen Bug hat.
 Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.
 *)
+//lineal
 program Project1;
 
 uses
