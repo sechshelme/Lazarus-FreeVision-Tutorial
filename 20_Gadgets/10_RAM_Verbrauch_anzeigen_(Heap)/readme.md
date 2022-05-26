@@ -135,7 +135,7 @@ Komponenten für den Dialog generieren.<br>
 <i><font color="#FFFF00">//done+</font></i>
 <b><font color="0000BB">destructor</font></b> TMyDialog.Done;
 <b><font color="0000BB">begin</font></b>
-   <b><font color="0000BB">Dispose</font></b>(ListBox^.List, Done);
+   <b><font color="0000BB">Dispose</font></b>(ListBox^.List, Done); <i><font color="#FFFF00">// Dies ausklammern</font></i>
    <b><font color="0000BB">inherited</font></b> Done;
 <b><font color="0000BB">end</font></b>;
 <i><font color="#FFFF00">//done-</font></i>
@@ -146,7 +146,7 @@ Man kann hier versuchsweise das Dispose ausklammern, dann sieht man,<br>
 das man eine Speicherleak bekommt.<br>
 <pre><code><b><font color="0000BB">destructor</font></b> TMyDialog.Done;
 <b><font color="0000BB">begin</font></b>
-   <b><font color="0000BB">Dispose</font></b>(ListBox^.List, Done);
+   <b><font color="0000BB">Dispose</font></b>(ListBox^.List, Done); <i><font color="#FFFF00">// Dies ausklammern</font></i>
    <b><font color="0000BB">inherited</font></b> Done;
 <b><font color="0000BB">end</font></b>;
 </code></pre>

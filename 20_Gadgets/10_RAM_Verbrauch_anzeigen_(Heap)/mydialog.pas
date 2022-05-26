@@ -80,7 +80,7 @@ end;
 //done+
 destructor TMyDialog.Done;
 begin
-   Dispose(ListBox^.List, Done);
+   Dispose(ListBox^.List, Done); // Dies ausklammern
    inherited Done;
 end;
 //done-
