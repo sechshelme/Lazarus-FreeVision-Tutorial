@@ -29,13 +29,13 @@ implementation
 //init+
 constructor TUhrView.Init;
 var
-  Rect: TRect;
+  R: TRect;
 begin
-  Rect.Assign(51, 1, 70, 8);
-  inherited Init(Rect, 'Uhr');
+  R.Assign(51, 1, 70, 8);
+  inherited Init(R, 'Uhr');
 
-  Rect.Assign(7, 4, 13, 6);
-  Insert(new(PButton, Init(Rect, '~O~k', cmOK, bfDefault)));
+  R.Assign(7, 4, 13, 6);
+  Insert(new(PButton, Init(R, '~O~k', cmOK, bfDefault)));
 end;
 //init-
 

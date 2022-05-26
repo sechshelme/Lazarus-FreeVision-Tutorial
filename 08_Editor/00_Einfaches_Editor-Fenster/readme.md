@@ -9,13 +9,13 @@ Einfügen eines leeren Editorfensters.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
   <b><font color="0000BB">var</font></b>
     Win: PEditWindow;
-    Rect: TRect;
+    R: TRect;
   <b><font color="0000BB">const</font></b>
     WinCounter: integer = <font color="#0077BB">0</font>;      <i><font color="#FFFF00">// Zählt Fenster</font></i>
   <b><font color="0000BB">begin</font></b>
-    Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
     Inc(WinCounter);
-    Win := <b><font color="0000BB">New</font></b>(PEditWindow, Init(Rect, <font color="#FF0000">''</font>, WinCounter));
+    Win := <b><font color="0000BB">New</font></b>(PEditWindow, Init(R, <font color="#FF0000">''</font>, WinCounter));
 <br>
     <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
       Desktop^.Insert(Win);

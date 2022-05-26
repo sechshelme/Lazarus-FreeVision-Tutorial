@@ -20,7 +20,7 @@ Im Beispiel wir eine MessageBox aufgerufen.<br>
 Dort wird gezeigt, wie man Werte bei Komponenten zu Laufzeit lesen und schreiben kann.<br>
 Als Beispiel, wird die Zahl im Button bei jedem drücken um 1 erhöht.<br>
 <pre><code><b><font color="0000BB">unit</font></b> MyDialog;
-</pre></code>
+</code></pre>
 Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.<br>
 Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
 <pre><code><b><font color="0000BB">type</font></b>
@@ -34,7 +34,7 @@ Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
     <b><font color="0000BB">constructor</font></b> Init;
     <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
   <b><font color="0000BB">end</font></b>;
-</pre></code>
+</code></pre>
 Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.<br>
 <b>CounterButton</b> wird für die Modifikation gebraucht.<br>
 <pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
@@ -58,7 +58,7 @@ Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht
   Rect.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">8</font>, <font color="#0077BB">17</font>, <font color="#0077BB">10</font>);
   Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
 <b><font color="0000BB">end</font></b>;
-</pre></code>
+</code></pre>
 Im EventHandle, wird die Zahl im Button beim Drücken erhöht.<br>
 Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.<br>
 Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.<br>
@@ -85,7 +85,7 @@ Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponent
   <b><font color="0000BB">end</font></b>;
 
 <b><font color="0000BB">end</font></b>;
-</pre></code>
+</code></pre>
 
     <br><br><br>
 <h2><a href="../../index.html">zurück</a></h2>

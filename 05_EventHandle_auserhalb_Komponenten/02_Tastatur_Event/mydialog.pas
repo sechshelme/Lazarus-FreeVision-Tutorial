@@ -25,47 +25,47 @@ implementation
 //init+
 constructor TMyKey.Init;
 var
-  Rect: TRect;
+  R: TRect;
 begin
-  Rect.Assign(0, 0, 42, 15);
-  Rect.Move(23, 3);
-  inherited Init(Rect, 'Keyboard-Aktion');
+  R.Assign(0, 0, 42, 15);
+  R.Move(23, 3);
+  inherited Init(R, 'Keyboard-Aktion');
 
   // PosX
-  Rect.Assign(25, 2, 30, 3);
-  EditZeichen := new(PInputLine, Init(Rect, 5));
+  R.Assign(25, 2, 30, 3);
+  EditZeichen := new(PInputLine, Init(R, 5));
   Insert(EditZeichen);
   EditZeichen^.State := sfDisabled or EditZeichen^.State;    // ReadOnly
-  Rect.Assign(5, 2, 20, 3);
-  Insert(New(PLabel, Init(Rect, 'Zeichen:', EditZeichen)));
+  R.Assign(5, 2, 20, 3);
+  Insert(New(PLabel, Init(R, 'Zeichen:', EditZeichen)));
 
   // PosY
-  Rect.Assign(25, 4, 30, 5);
-  EditZeichenCode := new(PInputLine, Init(Rect, 5));
+  R.Assign(25, 4, 30, 5);
+  EditZeichenCode := new(PInputLine, Init(R, 5));
   EditZeichenCode^.State := sfDisabled or EditZeichenCode^.State;    // ReadOnly
   Insert(EditZeichenCode);
-  Rect.Assign(5, 4, 20, 5);
-  Insert(New(PLabel, Init(Rect, 'Zeichencode:', EditZeichenCode)));
+  R.Assign(5, 4, 20, 5);
+  Insert(New(PLabel, Init(R, 'Zeichencode:', EditZeichenCode)));
 
   // Maus-Tasten
-  Rect.Assign(25, 7, 30, 8);
-  EditScanCode := new(PInputLine, Init(Rect, 7));
+  R.Assign(25, 7, 30, 8);
+  EditScanCode := new(PInputLine, Init(R, 7));
   EditScanCode^.State := sfDisabled or EditScanCode^.State;  // ReadOnly
   Insert(EditScanCode);
-  Rect.Assign(5, 7, 20, 8);
-  Insert(New(PLabel, Init(Rect, 'Scancode:', EditScanCode)));
+  R.Assign(5, 7, 20, 8);
+  Insert(New(PLabel, Init(R, 'Scancode:', EditScanCode)));
 
   // Maus-Tasten
-  Rect.Assign(25, 9, 30, 10);
-  EditShiftState := new(PInputLine, Init(Rect, 7));
+  R.Assign(25, 9, 30, 10);
+  EditShiftState := new(PInputLine, Init(R, 7));
   EditShiftState^.State := sfDisabled or EditShiftState^.State;  // ReadOnly
   Insert(EditShiftState);
-  Rect.Assign(5, 9, 20, 10);
-  Insert(New(PLabel, Init(Rect, 'Shiftstate:', EditShiftState)));
+  R.Assign(5, 9, 20, 10);
+  Insert(New(PLabel, Init(R, 'Shiftstate:', EditShiftState)));
 
   // Ok-Button
-  Rect.Assign(27, 12, 37, 14);
-  Insert(new(PButton, Init(Rect, 'OK', cmOK, bfDefault)));
+  R.Assign(27, 12, 37, 14);
+  Insert(new(PButton, Init(R, 'OK', cmOK, bfDefault)));
 end;
 //init-
 

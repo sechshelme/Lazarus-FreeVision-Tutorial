@@ -131,10 +131,10 @@ Den Dialog mit dem Speicher Leak aufrufen.
   procedure TMyApp.NewWindows(Titel: ShortString);
   var
     Win: PWindow;
-    Rect: TRect;
+    R: TRect;
   begin
-    Rect.Assign(0, 0, 60, 20);
-    Win := New(PWindow, Init(Rect, Titel, wnNoNumber));
+    R.Assign(0, 0, 60, 20);
+    Win := New(PWindow, Init(R, Titel, wnNoNumber));
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end;

@@ -29,27 +29,27 @@ implementation
 //init+
 constructor TMyDialog.Init;
 var
-  Rect: TRect;
+  R: TRect;
 begin
-  Rect.Assign(0, 0, 42, 11);
-  Rect.Move(23, 3);
-  inherited Init(Rect, 'Mein Dialog');
+  R.Assign(0, 0, 42, 11);
+  R.Move(23, 3);
+  inherited Init(R, 'Mein Dialog');
 
   // StaticText
-  Rect.Assign(5, 2, 41, 8);
-  Insert(new(PStaticText, Init(Rect, 'W' + #132 + 'hle eine Farbe')));
+  R.Assign(5, 2, 41, 8);
+  Insert(new(PStaticText, Init(R, 'W' + #132 + 'hle eine Farbe')));
 
   // Farbe
-  Rect.Assign(7, 5, 15, 7);
-  Insert(new(PButton, Init(Rect, 'blue', cmBlue, bfNormal)));
-  Rect.Assign(17, 5, 25, 7);
-  Insert(new(PButton, Init(Rect, 'cyan', cmCyan, bfNormal)));
-  Rect.Assign(27, 5, 35, 7);
-  Insert(new(PButton, Init(Rect, 'gray', cmGray, bfNormal)));
+  R.Assign(7, 5, 15, 7);
+  Insert(new(PButton, Init(R, 'blue', cmBlue, bfNormal)));
+  R.Assign(17, 5, 25, 7);
+  Insert(new(PButton, Init(R, 'cyan', cmCyan, bfNormal)));
+  R.Assign(27, 5, 35, 7);
+  Insert(new(PButton, Init(R, 'gray', cmGray, bfNormal)));
 
   // Ok-Button
-  Rect.Assign(7, 8, 17, 10);
-  Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+  R.Assign(7, 8, 17, 10);
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
 //init-
 

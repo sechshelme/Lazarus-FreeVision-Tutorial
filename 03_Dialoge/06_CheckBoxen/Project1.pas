@@ -29,25 +29,25 @@ type
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;              // Rechteck für die Statuszeilen Position.
+    R: TRect;                 // Rechteck für die Statuszeilen Position.
 
     P0: PStatusDef;           // Pointer ganzer Eintrag.
     P1, P2, P3: PStatusItem;  // Poniter auf die einzelnen Hot-Key.
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
     P3 := NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil);
     P2 := NewStatusKey('~F10~ Menu', kbF10, cmMenu, P3);
     P1 := NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit, P2);
     P0 := NewStatusDef(0, $FFFF, P1, nil);
 
-    StatusLine := New(PStatusLine, Init(Rect, P0));
+    StatusLine := New(PStatusLine, Init(R, P0));
   end;
 
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;                       // Rechteck für die Menüzeilen-Position.
+    R: TRect;                          // Rechteck für die Menüzeilen-Position.
 
     M: PMenu;                          // Ganzes Menü
     SM0, SM1,                          // Submenu
@@ -55,8 +55,8 @@ type
     M1_0: PMenuItem;                   // Einfache Menüpunkte
 
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
     M1_0 := NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil);
     SM1 := NewSubMenu('~H~ilfe', hcNoContext, NewMenu(M1_0), nil);
@@ -71,7 +71,7 @@ type
 
     M := NewMenu(SM0);
 
-    MenuBar := New(PMenuBar, Init(Rect, M));
+    MenuBar := New(PMenuBar, Init(R, M));
   end;
 
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -102,18 +102,18 @@ Den Dialog mit CheckBoxen ergänzen.
   procedure TMyApp.MyParameter;
   var
     Dia: PDialog;
-    Rect: TRect;
+    R: TRect;
     dummy: word;
     Pw: PView;
   begin
-    Rect.Assign(0, 0, 35, 15);
-    Rect.Move(23, 3);
-    Dia := New(PDialog, Init(Rect, 'Parameter'));
+    R.Assign(0, 0, 35, 15);
+    R.Move(23, 3);
+    Dia := New(PDialog, Init(R, 'Parameter'));
     with Dia^ do begin
 
       // CheckBoxen
-      Rect.Assign(2, 3, 18, 7);
-      Pw := New(PCheckBoxes, Init(Rect,
+      R.Assign(4, 3, 18, 7);
+      Pw := New(PCheckBoxes, Init(R,
         NewSItem('~D~atei',
         NewSItem('~Z~eile',
         NewSItem('D~a~tum',
@@ -122,12 +122,12 @@ Den Dialog mit CheckBoxen ergänzen.
       Insert(Pw);
 
       // Ok-Button
-      Rect.Assign(7, 12, 17, 14);
-      Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+      R.Assign(7, 12, 17, 14);
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 
       // Schliessen-Button
-      Rect.Assign(19, 12, 32, 14);
-      Insert(new(PButton, Init(Rect, '~A~bbruch', cmCancel, bfNormal)));
+      R.Assign(19, 12, 32, 14);
+      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
     dummy := Desktop^.ExecView(Dia);   // Dialog Modal öffnen.
     Dispose(Dia, Done);                // Dialog und Speicher frei geben.

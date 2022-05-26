@@ -30,7 +30,7 @@ Hier ein Dialog für Paramtereingabe.<br>
 Das Menü wird um Parameter und Schliessen erweitert.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
-    Rect: TRect;                       <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
+    R: TRect;                          <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
 <br>
     M: PMenu;                          <i><font color="#FFFF00">// Ganzes Menü</font></i>
     SM0, SM1,                          <i><font color="#FFFF00">// Submenu</font></i>
@@ -38,8 +38,8 @@ Das Menü wird um Parameter und Schliessen erweitert.<br>
     M1_0: PMenuItem;                   <i><font color="#FFFF00">// Einfache Menüpunkte</font></i>
 <br>
   <b><font color="0000BB">begin</font></b>
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + <font color="#0077BB">1</font>;
+    GetExtent(R);
+    R.B.Y := R.A.Y + <font color="#0077BB">1</font>;
 <br>
     M1_0 := NewItem(<font color="#FF0000">'~A~bout...'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext, <b><font color="0000BB">nil</font></b>);
     SM1 := NewSubMenu(<font color="#FF0000">'~H~ilfe'</font>, hcNoContext, NewMenu(M1_0), <b><font color="0000BB">nil</font></b>);
@@ -54,7 +54,7 @@ Das Menü wird um Parameter und Schliessen erweitert.<br>
 <br>
     M := NewMenu(SM0);
 <br>
-    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(Rect, M));
+    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, M));
   <b><font color="0000BB">end</font></b>;</code></pre>
 Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
@@ -83,12 +83,12 @@ Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
   <b><font color="0000BB">var</font></b>
     Dia: PDialog;
-    Rect: TRect;
+    R: TRect;
   <b><font color="0000BB">begin</font></b>
-    Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">35</font>, <font color="#0077BB">15</font>);                    <i><font color="#FFFF00">// Grösse des Dialogs.</font></i>
-    Rect.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);                             <i><font color="#FFFF00">// Position des Dialogs.</font></i>
-    Dia := <b><font color="0000BB">New</font></b>(PDialog, Init(Rect, <font color="#FF0000">'Parameter'</font>)); <i><font color="#FFFF00">// Dialog erzeugen.</font></i>
-    Desktop^.Insert(Dia);                         <i><font color="#FFFF00">// Dialog der App zuweisen.</font></i>
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">35</font>, <font color="#0077BB">15</font>);                    <i><font color="#FFFF00">// Grösse des Dialogs.</font></i>
+    R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);                             <i><font color="#FFFF00">// Position des Dialogs.</font></i>
+    Dia := <b><font color="0000BB">New</font></b>(PDialog, Init(R, <font color="#FF0000">'Parameter'</font>)); <i><font color="#FFFF00">// Dialog erzeugen.</font></i>
+    Desktop^.Insert(Dia);                      <i><font color="#FFFF00">// Dialog der App zuweisen.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
 </html>

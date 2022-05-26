@@ -51,24 +51,24 @@ Im Konstruktor werden die Dialog-Komponeten erzeugt.<br>
 <br>
 <b><font color="0000BB">constructor</font></b> TMyAbout.Init;
 <b><font color="0000BB">var</font></b>
-  Rect: TRect;
+  R: TRect;
 <b><font color="0000BB">begin</font></b>
-  Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">11</font>);
-  Rect.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
+  R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">11</font>);
+  R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
 <br>
-  <b><font color="0000BB">inherited</font></b> Init(Rect, <font color="#FF0000">'About'</font>);  <i><font color="#FFFF00">// Dialog in verdefinierter Grösse erzeugen.</font></i>
+  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'About'</font>);  <i><font color="#FFFF00">// Dialog in verdefinierter Grösse erzeugen.</font></i>
 <br>
   <i><font color="#FFFF00">// StaticText</font></i>
-  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">41</font>, <font color="#0077BB">8</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PStaticText, Init(Rect,
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">41</font>, <font color="#0077BB">8</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PStaticText, Init(R,
     <font color="#FF0000">'Free Vison Tutorial 1.0'</font> + <font color="#FF0000">#13</font> +
     <font color="#FF0000">'2017'</font> + <font color="#FF0000">#13</font> +
     <font color="#FF0000">'Gechrieben von M. Burkhard'</font> + <font color="#FF0000">#13#32#13</font> +
     <font color="#FF0000">'FPC: '</font>+ <font color="#FFFF00">{$I %FPCVERSION%}</font> + <font color="#FF0000">'   OS:'</font>+ <font color="#FFFF00">{$I %FPCTARGETOS%}</font> + <font color="#FF0000">'   CPU:'</font> + <font color="#FFFF00">{$I %FPCTARGETCPU%}</font>)));
 <br>
   <i><font color="#FFFF00">// Ok-Button</font></i>
-  Rect.Assign(<font color="#0077BB">27</font>, <font color="#0077BB">8</font>, <font color="#0077BB">37</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
+  R.Assign(<font color="#0077BB">27</font>, <font color="#0077BB">8</font>, <font color="#0077BB">37</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>

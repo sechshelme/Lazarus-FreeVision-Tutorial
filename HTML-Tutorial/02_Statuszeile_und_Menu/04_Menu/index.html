@@ -19,13 +19,13 @@ Für das Menü werden die gleichen Units wie für die Statuszeile gebraucht.<br>
   Objects,  <i><font color="#FFFF00">// Fensterbereich (TRect)</font></i>
   Drivers,  <i><font color="#FFFF00">// Hotkey</font></i>
   Views,    <i><font color="#FFFF00">// Ereigniss (cmQuit)</font></i>
-  Menus;    <i><font color="#FFFF00">// Statuszeile</font></i></pre></code>
+  Menus;    <i><font color="#FFFF00">// Statuszeile</font></i></code></pre>
 Für ein Menu muss man <b>InitMenuBar</b> vererben.<br>
 <pre><code><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;   <i><font color="#FFFF00">// Statuszeile</font></i>
     <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;      <i><font color="#FFFF00">// Menü</font></i>
-  <b><font color="0000BB">end</font></b>;</pre></code>
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Das Menü erzeugen, das Beispiel hat nur eine einziger Menüpunkt, Beenden.<br>
 Beim Menü sind die Zeichen die mit <b>~x~</b> hervorgehoben sind nicht nur Optischen, sonder auch funktionell.<br>
 Zum beenden, kann man auch <b>[Alt+s]</b>, <b>[b]</b> drücken.<br>
@@ -35,16 +35,16 @@ Der Aufbau der Menüerzeugung ist ähnlich der Statuszeile.<br>
 Beim letzten Menüpunkt kommt immer ein <b>nil</b>.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
-    Rect: TRect;              <i><font color="#FFFF00">// Rechteck für die Memüzeile Position.</font></i>
+    R: TRect;           <i><font color="#FFFF00">// Rechteck für die Memüzeile Position.</font></i>
   <b><font color="0000BB">begin</font></b>
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + <font color="#0077BB">1</font>; <i><font color="#FFFF00">// Position des Menüs, auf oberste Zeile der App setzen.</font></i>
+    GetExtent(R);
+    R.B.Y := R.A.Y + <font color="#0077BB">1</font>; <i><font color="#FFFF00">// Position des Menüs, auf oberste Zeile der App setzen.</font></i>
 
-    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, NewMenu(
       NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(
       NewItem(<font color="#FF0000">'~B~eenden'</font>, <font color="#FF0000">'Alt-X'</font>, kbAltX, cmQuit, hcNoContext,
       <b><font color="0000BB">nil</font></b>)), <b><font color="0000BB">nil</font></b>))));
-  <b><font color="0000BB">end</font></b>;</pre></code>
+  <b><font color="0000BB">end</font></b>;</code></pre>
 
     <br><br><br>
 <h2><a href="../../index.html">zurück</a></h2>

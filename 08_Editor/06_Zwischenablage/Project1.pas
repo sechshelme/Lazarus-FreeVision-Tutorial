@@ -60,37 +60,37 @@ var
   var
     D: PDialog;
     Control: PView;
-    Rect: TRect;
+    R: TRect;
   begin
-    Rect.Assign(0, 0, 38, 12);
-    D := New(PDialog, Init(Rect, 'Suchen'));
+    R.Assign(0, 0, 38, 12);
+    D := New(PDialog, Init(R, 'Suchen'));
     with D^ do begin
       Options := Options or ofCentered;
 
-      Rect.Assign(3, 3, 32, 4);
-      Control := New(PInputLine, Init(Rect, 80));
+      R.Assign(3, 3, 32, 4);
+      Control := New(PInputLine, Init(R, 80));
       Control^.HelpCtx := hcDFindText;
       Insert(Control);
-      Rect.Assign(2, 2, 20, 3);
-      Insert(New(PLabel, Init(Rect, 'Zu ~s~uchenden Text', Control)));
-      Rect.Assign(32, 3, 35, 4);
-      Insert(New(PHistory, Init(Rect, PInputLine(Control), 10)));
+      R.Assign(2, 2, 20, 3);
+      Insert(New(PLabel, Init(R, 'Zu ~s~uchenden Text', Control)));
+      R.Assign(32, 3, 35, 4);
+      Insert(New(PHistory, Init(R, PInputLine(Control), 10)));
 
-      Rect.Assign(3, 5, 35, 7);
-      Control := New(PCheckBoxes, Init(Rect,
+      R.Assign(3, 5, 35, 7);
+      Control := New(PCheckBoxes, Init(R,
         NewSItem('~G~ross- und Kleinschreibung',
         NewSItem('~N~ur ganze W'#148'rter', nil))));
       Control^.HelpCtx := hcCCaseSensitive;
       Insert(Control);
 
-      Rect.Assign(14, 9, 24, 11);
-      Control := New(PButton, Init(Rect, slOK, cmOk, bfDefault));
+      R.Assign(14, 9, 24, 11);
+      Control := New(PButton, Init(R, slOK, cmOk, bfDefault));
       Control^.HelpCtx := hcDOk;
       Insert(Control);
 
-      Inc(Rect.A.X, 12);
-      Inc(Rect.B.X, 12);
-      Control := New(PButton, Init(Rect, slCancel, cmCancel, bfNormal));
+      Inc(R.A.X, 12);
+      Inc(R.B.X, 12);
+      Control := New(PButton, Init(R, slCancel, cmCancel, bfNormal));
       Control^.HelpCtx := hcDCancel;
       Insert(Control);
 
@@ -103,33 +103,33 @@ var
   var
     Dialog: PDialog;
     Control: PView;
-    Rect: TRect;
+    R: TRect;
   begin
-    Rect.Assign(0, 0, 40, 16);
-    Dialog := New(PDialog, Init(Rect, 'Ersetzen'));
+    R.Assign(0, 0, 40, 16);
+    Dialog := New(PDialog, Init(R, 'Ersetzen'));
     with Dialog^ do begin
       Options := Options or ofCentered;
 
-      Rect.Assign(3, 3, 34, 4);
-      Control := New(PInputLine, Init(Rect, 80));
+      R.Assign(3, 3, 34, 4);
+      Control := New(PInputLine, Init(R, 80));
       Control^.HelpCtx := hcDFindText;
       Insert(Control);
-      Rect.Assign(2, 2, 20, 3);
-      Insert(New(PLabel, Init(Rect, 'Zu ~s~uchenden Text', Control)));
-      Rect.Assign(34, 3, 37, 4);
-      Insert(New(PHistory, Init(Rect, PInputLine(Control), 10)));
+      R.Assign(2, 2, 20, 3);
+      Insert(New(PLabel, Init(R, 'Zu ~s~uchenden Text', Control)));
+      R.Assign(34, 3, 37, 4);
+      Insert(New(PHistory, Init(R, PInputLine(Control), 10)));
 
-      Rect.Assign(3, 6, 34, 7);
-      Control := New(PInputLine, Init(Rect, 80));
+      R.Assign(3, 6, 34, 7);
+      Control := New(PInputLine, Init(R, 80));
       Control^.HelpCtx := hcDReplaceText;
       Insert(Control);
-      Rect.Assign(2, 5, 20, 6);
-      Insert(New(PLabel, Init(Rect, 'Neuer ~T~ext', Control)));
-      Rect.Assign(34, 6, 37, 7);
-      Insert(New(PHistory, Init(Rect, PInputLine(Control), 11)));
+      R.Assign(2, 5, 20, 6);
+      Insert(New(PLabel, Init(R, 'Neuer ~T~ext', Control)));
+      R.Assign(34, 6, 37, 7);
+      Insert(New(PHistory, Init(R, PInputLine(Control), 11)));
 
-      Rect.Assign(3, 8, 37, 12);
-      Control := New(Dialogs.PCheckBoxes, Init(Rect,
+      R.Assign(3, 8, 37, 12);
+      Control := New(Dialogs.PCheckBoxes, Init(R,
         NewSItem('~G~ross- und Kleinschreibung',
         NewSItem('~N~ur ganze W'#148'rter',
         NewSItem('~R~egul'#132're Ausdr'#129'cke',
@@ -137,13 +137,13 @@ var
       Control^.HelpCtx := hcCCaseSensitive;
       Insert(Control);
 
-      Rect.Assign(8, 13, 18, 15);
-      Control := New(PButton, Init(Rect, '~O~k', cmOk, bfDefault));
+      R.Assign(8, 13, 18, 15);
+      Control := New(PButton, Init(R, '~O~k', cmOk, bfDefault));
       Control^.HelpCtx := hcDOk;
       Insert(Control);
 
-      Rect.Assign(22, 13, 32, 15);
-      Control := New(PButton, Init(Rect, 'Ab~b~ruch', cmCancel, bfNormal));
+      R.Assign(22, 13, 32, 15);
+      Control := New(PButton, Init(R, 'Ab~b~ruch', cmCancel, bfNormal));
       Control^.HelpCtx := hcDCancel;
       Insert(Control);
 
@@ -187,12 +187,12 @@ var
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
-    StatusLine := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F2~ Speichern', kbF2, cmMenu,
@@ -205,12 +205,12 @@ Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.
   //code+
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
-    MenuBar := New(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
         NewItem('~O~effnen...', 'F3', kbF3, cmOpen, hcNoContext,
@@ -259,13 +259,13 @@ Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.
   function TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = False) : PEditWindow;
   var
     Win: PEditWindow;
-    Rect: TRect;
+    R: TRect;
   const
     WinCounter: integer = 0;
   begin
-    Rect.Assign(0, 0, 60, 20);
+    R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
-    Win := New(PEditWindow, Init(Rect, FileName, WinCounter));
+    Win := New(PEditWindow, Init(R, FileName, WinCounter));
     if ValidView(Win) <> nil then begin
       if Visible then begin
         win^.Hide;        // Fenster verstecken.

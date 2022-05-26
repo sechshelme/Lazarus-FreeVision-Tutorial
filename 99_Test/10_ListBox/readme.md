@@ -29,19 +29,19 @@ Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht
 <b>CounterButton</b> wird für die Modifikation gebraucht.<br>
 <pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
 <b><font color="0000BB">var</font></b>
-  Rect: TRect;
+  R: TRect;
   ScrollBar: PScrollBar;
   StringCollection: PCollection;
 <br>
 <b><font color="0000BB">begin</font></b>
-  Rect.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">5</font>, <font color="#0077BB">67</font>, <font color="#0077BB">17</font>);
-  <b><font color="0000BB">inherited</font></b> Init(Rect, <font color="#FF0000">'ListBox Demo'</font>);
+  R.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">5</font>, <font color="#0077BB">67</font>, <font color="#0077BB">17</font>);
+  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'ListBox Demo'</font>);
 <br>
   Title := NewStr(<font color="#FF0000">'dfsfdsa'</font>);
 <br>
   <i><font color="#FFFF00">// ListBox</font></i>
-  Rect.Assign(<font color="#0077BB">31</font>, <font color="#0077BB">2</font>, <font color="#0077BB">32</font>, <font color="#0077BB">7</font>);
-  ScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(Rect));
+  R.Assign(<font color="#0077BB">31</font>, <font color="#0077BB">2</font>, <font color="#0077BB">32</font>, <font color="#0077BB">7</font>);
+  ScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(R));
   Insert(ScrollBar);
 <br>
   StringCollection := <b><font color="0000BB">new</font></b>(PCollection, Init(<font color="#0077BB">0</font>, <font color="#0077BB">1</font>));
@@ -53,8 +53,8 @@ Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht
   StringCollection^.Insert(NewStr(<font color="#FF0000">'Samstag'</font>));
   StringCollection^.Insert(NewStr(<font color="#FF0000">'Sonntag'</font>));
 <br>
-  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">31</font>, <font color="#0077BB">7</font>);
-  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(Rect, <font color="#0077BB">1</font>, ScrollBar));
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">31</font>, <font color="#0077BB">7</font>);
+  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(R, <font color="#0077BB">1</font>, ScrollBar));
   ListBox^.NewList(StringCollection);
 <br>
   Insert(ListBox);
@@ -66,12 +66,12 @@ Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht
 
 <br>
   <i><font color="#FFFF00">// Cancel-Button</font></i>
-  Rect.Assign(<font color="#0077BB">19</font>, <font color="#0077BB">9</font>, <font color="#0077BB">32</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~T~ag'</font>, cmTag, bfNormal)));
+  R.Assign(<font color="#0077BB">19</font>, <font color="#0077BB">9</font>, <font color="#0077BB">32</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~T~ag'</font>, cmTag, bfNormal)));
 <br>
   <i><font color="#FFFF00">// Ok-Button</font></i>
-  Rect.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">9</font>, <font color="#0077BB">17</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
+  R.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">9</font>, <font color="#0077BB">17</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 Im EventHandle, wird die Zahl im Button beim Drücken erhöht.<br>

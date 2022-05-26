@@ -35,33 +35,33 @@ type
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;              // Rechteck für die Statuszeilen Position.
+    R: TRect;                 // Rechteck für die Statuszeilen Position.
 
     P0: PStatusDef;           // Pointer ganzer Eintrag.
     P1, P2, P3: PStatusItem;  // Poniter auf die einzelnen Hot-Key.
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
     P3 := NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil);
     P2 := NewStatusKey('~F10~ Menu', kbF10, cmMenu, P3);
     P1 := NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit, P2);
     P0 := NewStatusDef(0, $FFFF, P1, nil);
 
-    StatusLine := New(PStatusLine, Init(Rect, P0));
+    StatusLine := New(PStatusLine, Init(R, P0));
   end;
 
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;                       // Rechteck für die Menüzeilen-Position.
+    R: TRect;                          // Rechteck für die Menüzeilen-Position.
 
     M: PMenu;                          // Ganzes Menü
     SM0, SM1,                          // Submenu
     M0_0, M0_1, M0_2, M1_0: PMenuItem; // Einfache Menüpunkte
 
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
     M1_0 := NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil);
     SM1 := NewSubMenu('~H~ilfe', hcNoContext, NewMenu(M1_0), nil);
@@ -73,7 +73,7 @@ type
 
     M := NewMenu(SM0);
 
-    MenuBar := New(PMenuBar, Init(Rect, M));
+    MenuBar := New(PMenuBar, Init(R, M));
   end;
 
 (*

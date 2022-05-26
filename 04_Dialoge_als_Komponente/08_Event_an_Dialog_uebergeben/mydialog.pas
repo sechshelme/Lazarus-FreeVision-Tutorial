@@ -28,12 +28,12 @@ implementation
 //init+
 constructor TMyDialog.Init(var Bounds: TRect; ATitle: TTitleStr);
 var
-  Rect: TRect;
+  R: TRect;
 begin
   inherited Init(Bounds, ATitle);
 
-  Rect.Assign(5, 2, 10, 3);
-  CounterInputLine := new(PInputLine, Init(Rect, 20));
+  R.Assign(5, 2, 10, 3);
+  CounterInputLine := new(PInputLine, Init(R, 20));
   CounterInputLine^.Data^ := '0';
   Insert(CounterInputLine);
 end;

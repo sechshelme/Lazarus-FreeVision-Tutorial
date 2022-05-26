@@ -20,24 +20,24 @@ implementation
 
 constructor TMyAbout.Init;
 var
-  Rect: TRect;
+  R: TRect;
 begin
-  Rect.Assign(0, 0, 42, 11);
-  Rect.Move(23, 3);
+  R.Assign(0, 0, 42, 11);
+  R.Move(23, 3);
 
-  inherited Init(Rect, 'About');  // Dialog in verdefinierter Grösse erzeugen.
+  inherited Init(R, 'About');  // Dialog in verdefinierter Grösse erzeugen.
 
   // StaticText
-  Rect.Assign(5, 2, 41, 8);
-  Insert(new(PStaticText, Init(Rect,
+  R.Assign(5, 2, 41, 8);
+  Insert(new(PStaticText, Init(R,
     'Free Vison Tutorial 1.0' + #13 +
     '2017' + #13 +
     'Gechrieben von M. Burkhard' + #13#32#13 +
     'FPC: '+ {$I %FPCVERSION%} + '   OS:'+ {$I %FPCTARGETOS%} + '   CPU:' + {$I %FPCTARGETCPU%})));
 
   // Ok-Button
-  Rect.Assign(27, 8, 37, 10);
-  Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+  R.Assign(27, 8, 37, 10);
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
 //implementation-
 

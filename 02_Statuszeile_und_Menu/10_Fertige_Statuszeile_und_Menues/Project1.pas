@@ -26,12 +26,12 @@ Mit <b>StdStatusKeys(...</b> wird eine Statuszeile estellt, aber wie oben beschr
 //code+
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
-    StatusLine := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF, StdStatusKeys(nil), nil)));
+    StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF, StdStatusKeys(nil), nil)));
   end;
 //code-
 
@@ -41,12 +41,12 @@ Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber 
   //code+
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
-    MenuBar := New(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         StdFileMenuItems (nil)),
       NewSubMenu('~B~earbeiten', hcNoContext, NewMenu(

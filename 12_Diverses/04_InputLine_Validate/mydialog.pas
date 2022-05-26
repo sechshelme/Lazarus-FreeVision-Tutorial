@@ -51,26 +51,24 @@ const
   // Wochentage, als String, welche in der PInputLine erlaubt sind.
   WochenTag:array[0..6] of String = ('Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
 var
-  Rect: TRect;
-  // Die Eingabe Zeilen.
-  InputLine: PInputLine;
-  // Stringliste, welche die erlaubten Strings enthält.
-  StringCollektion: PStringCollection;
+  R: TRect;
   i: Integer;
+  InputLine: PInputLine;               // Die Eingabe Zeilen.
+  StringCollektion: PStringCollection; // Stringliste, welche die erlaubten Strings enthält.
 begin
   // Der Dialog selbst.
-  Rect.Assign(0, 0, 42, 11);
-  Rect.Move(23, 3);
-  inherited Init(Rect, 'Validate');
+  R.Assign(0, 0, 42, 11);
+  R.Move(23, 3);
+  inherited Init(R, 'Validate');
 
   // --- InputLine mit Bereichsbegrenzung 0-99.
-  Rect.Assign(25, 2, 36, 3);
-  InputLine := new(PInputLine, Init(Rect, 6));
+  R.Assign(25, 2, 36, 3);
+  InputLine := new(PInputLine, Init(R, 6));
   // Validate-Prüfung 0-99.
   InputLine^.SetValidator(new(PMyRangeValidator, Init(0, 99)));
   Insert(InputLine);
-  Rect.Assign(2, 2, 22, 3);
-  Insert(New(PLabel, Init(Rect, '~B~ereich: 0-99', InputLine)));
+  R.Assign(2, 2, 22, 3);
+  Insert(New(PLabel, Init(R, '~B~ereich: 0-99', InputLine)));
 
   // --- Wochentage
   // Stringliste erzeugen.
@@ -79,21 +77,21 @@ begin
   for i := 0 to 6 do begin
     StringCollektion^.Insert(NewStr(WochenTag[i]));
   end;
-  Rect.Assign(25, 4, 36, 5);
-  InputLine := new(PInputLine, Init(Rect, 10));
+  R.Assign(25, 4, 36, 5);
+  InputLine := new(PInputLine, Init(R, 10));
   // Überprüfung mit der Stringliste.
   InputLine^.SetValidator(new(PMyStringLookUpValidator, Init(StringCollektion)));
   Insert(InputLine);
-  Rect.Assign(2, 4, 22, 5);
-  Insert(New(PLabel, Init(Rect, '~W~ochentage:', InputLine)));
+  R.Assign(2, 4, 22, 5);
+  Insert(New(PLabel, Init(R, '~W~ochentage:', InputLine)));
 
   // ---Ok-Button
-  Rect.Assign(7, 8, 19, 10);
-  Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+  R.Assign(7, 8, 19, 10);
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 
   // --- Abbrechen-Button
-  Rect.Assign(24, 8, 36, 10);
-  Insert(new(PButton, Init(Rect, '~A~bbrechen', cmCancel, bfNormal)));
+  R.Assign(24, 8, 36, 10);
+  Insert(new(PButton, Init(R, '~A~bbrechen', cmCancel, bfNormal)));
 end;
 //init-
 

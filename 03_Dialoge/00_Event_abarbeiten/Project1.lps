@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectSession>
-    <Version Value="10"/>
+    <Version Value="12"/>
     <BuildModes Active="Default"/>
     <Units Count="7">
       <Unit0>
         <Filename Value="Project1.pas"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="35"/>
-        <CursorPos Y="99"/>
+        <CursorPos X="21" Y="38"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -53,14 +52,13 @@
       <Unit6>
         <Filename Value="/usr/share/fpcsrc/3.0.2/packages/fv/src/menus.pas"/>
         <UnitName Value="Menus"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="250"/>
         <CursorPos X="10" Y="287"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit6>
     </Units>
-    <JumpHistory Count="27" HistoryIndex="26">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="Project1.pas"/>
         <Caret Line="27" Column="15"/>
@@ -169,6 +167,18 @@
         <Filename Value="Project1.pas"/>
         <Caret Line="88" Column="37" TopLine="24"/>
       </Position27>
+      <Position28>
+        <Filename Value="Project1.pas"/>
+        <Caret Line="56" Column="6" TopLine="28"/>
+      </Position28>
+      <Position29>
+        <Filename Value="Project1.pas"/>
+        <Caret Line="38" Column="6" TopLine="10"/>
+      </Position29>
     </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode="default"/>
+    </RunParams>
   </ProjectSession>
 </CONFIG>

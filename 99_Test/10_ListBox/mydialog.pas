@@ -32,19 +32,19 @@ implementation
 //init+
 constructor TMyDialog.Init;
 var
-  Rect: TRect;
+  R: TRect;
   ScrollBar: PScrollBar;
   StringCollection: PCollection;
 
 begin
-  Rect.Assign(10, 5, 67, 17);
-  inherited Init(Rect, 'ListBox Demo');
+  R.Assign(10, 5, 67, 17);
+  inherited Init(R, 'ListBox Demo');
 
   Title := NewStr('dfsfdsa');
 
   // ListBox
-  Rect.Assign(31, 2, 32, 7);
-  ScrollBar := new(PScrollBar, Init(Rect));
+  R.Assign(31, 2, 32, 7);
+  ScrollBar := new(PScrollBar, Init(R));
   Insert(ScrollBar);
 
   StringCollection := new(PCollection, Init(0, 1));
@@ -56,8 +56,8 @@ begin
   StringCollection^.Insert(NewStr('Samstag'));
   StringCollection^.Insert(NewStr('Sonntag'));
 
-  Rect.Assign(5, 2, 31, 7);
-  ListBox := new(PListBox, Init(Rect, 1, ScrollBar));
+  R.Assign(5, 2, 31, 7);
+  ListBox := new(PListBox, Init(R, 1, ScrollBar));
   ListBox^.NewList(StringCollection);
 
   Insert(ListBox);
@@ -69,12 +69,12 @@ begin
 
 
   // Cancel-Button
-  Rect.Assign(19, 9, 32, 10);
-  Insert(new(PButton, Init(Rect, '~T~ag', cmTag, bfNormal)));
+  R.Assign(19, 9, 32, 10);
+  Insert(new(PButton, Init(R, '~T~ag', cmTag, bfNormal)));
 
   // Ok-Button
-  Rect.Assign(7, 9, 17, 10);
-  Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+  R.Assign(7, 9, 17, 10);
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
 //init-
 

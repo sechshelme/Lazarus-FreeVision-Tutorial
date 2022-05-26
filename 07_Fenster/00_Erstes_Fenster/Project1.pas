@@ -36,12 +36,12 @@ type
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
-    StatusLine := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
@@ -49,12 +49,12 @@ type
 
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
-    MenuBar := New(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
       NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext,
       nil)), nil))));
@@ -67,10 +67,10 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
   procedure TMyApp.NewWindows;
   var
     Win: PWindow;
-    Rect: TRect;
+    R: TRect;
   begin
-    Rect.Assign(0, 0, 60, 20);
-    Win := New(PWindow, Init(Rect, 'Fenster', wnNoNumber));
+    R.Assign(0, 0, 60, 20);
+    Win := New(PWindow, Init(R, 'Fenster', wnNoNumber));
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end;

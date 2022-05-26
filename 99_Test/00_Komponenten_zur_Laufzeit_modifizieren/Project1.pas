@@ -29,12 +29,12 @@ type
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;              // Rechteck für die Statuszeilen Position.
+    R: TRect;              // Rechteck für die Statuszeilen Position.
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
-    StatusLine := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ About...', kbF1, cmAbout, nil))), nil)));
@@ -42,13 +42,12 @@ type
 
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;                       // Rechteck für die Menüzeilen-Position.
-
+    R: TRect;                       // Rechteck für die Menüzeilen-Position.
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
-    MenuBar := New(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~S~chliessen', 'Crt-F4', kbCtrlF4, cmClose, hcNoContext,
         NewLine(

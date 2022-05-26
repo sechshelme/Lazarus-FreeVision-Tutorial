@@ -40,24 +40,24 @@ type
 
   constructor TMyApp.Init;
   var
-    Rect: TRect;              // Rechteck für die Statuszeilen Position.
+    R: TRect;              // Rechteck für die Statuszeilen Position.
   begin
     inherited Init;
 
     // Links
-    Rect.Assign(4, 2, 38, 20);
-    DesktopGer := New(PDesktop, Init(Rect));
+    R.Assign(4, 2, 38, 20);
+    DesktopGer := New(PDesktop, Init(R));
     Insert(DesktopGer);
 
-    Rect.Assign(4, 20, 38, 21);
-    StatusGer := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    R.Assign(4, 20, 38, 21);
+    StatusGer := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menue', kbF10, cmMenu,
       NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
     Insert(StatusGer);
 
-    Rect.Assign(4, 1, 38, 2);
-    menuGer := New(PMenuBar, Init(Rect, NewMenu(
+    R.Assign(4, 1, 38, 2);
+    menuGer := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
         NewLine(
@@ -76,19 +76,19 @@ type
     Desktop := DesktopGer;
 
     // Rechts
-    Rect.Assign(44, 2, 78, 20);
-    DesktopEng := New(PDesktop, Init(Rect));
+    R.Assign(44, 2, 78, 20);
+    DesktopEng := New(PDesktop, Init(R));
     Insert(DesktopEng);
 
-    Rect.Assign(44, 20, 78, 21);
-    StatusEng := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    R.Assign(44, 20, 78, 21);
+    StatusEng := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Exit', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ Help', kbF1, cmHelp, nil))), nil)));
     Insert(StatusEng);
 
-    Rect.Assign(44, 1, 78, 2);
-    menuEng := New(PMenuBar, Init(Rect, NewMenu(
+    R.Assign(44, 1, 78, 2);
+    menuEng := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~F~ile', hcNoContext, NewMenu(
         NewItem('~C~lose', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
         NewLine(
@@ -170,21 +170,21 @@ Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhaf
   procedure TMyApp.MyParameter;
   var
     Dia: PDialog;
-    Rect: TRect;
+    R: TRect;
     dummy: word;
   begin
-    Rect.Assign(0, 0, 35, 15);                    // Grösse des Dialogs.
-    Rect.Move(23, 3);                             // Position des Dialogs.
-    Dia := New(PDialog, Init(Rect, 'Parameter')); // Dialog erzeugen.
+    R.Assign(0, 0, 35, 15);                    // Grösse des Dialogs.
+    R.Move(23, 3);                             // Position des Dialogs.
+    Dia := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.
     with Dia^ do begin
 
       // Ok-Button
-      Rect.Assign(7, 12, 17, 14);
-      Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+      R.Assign(7, 12, 17, 14);
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 
       // Schliessen-Button
-      Rect.Assign(19, 12, 32, 14);
-      Insert(new(PButton, Init(Rect, '~A~bbruch', cmCancel, bfNormal)));
+      R.Assign(19, 12, 32, 14);
+      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
     dummy := Desktop^.ExecView(Dia);   // Dialog Modal öffnen.
     Dispose(Dia, Done);                // Dialog und Speicher frei geben.

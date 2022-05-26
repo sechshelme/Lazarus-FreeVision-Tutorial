@@ -26,12 +26,12 @@ Der Aufbau der Menüerzeugung ist ähnlich der Statuszeile.<br>
 Beim letzten Menüpunkt kommt immer ein <b>nil</b>.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
-    Rect: TRect;              <i><font color="#FFFF00">// Rechteck für die Memüzeile Position.</font></i>
+    R: TRect;           <i><font color="#FFFF00">// Rechteck für die Memüzeile Position.</font></i>
   <b><font color="0000BB">begin</font></b>
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + <font color="#0077BB">1</font>; <i><font color="#FFFF00">// Position des Menüs, auf oberste Zeile der App setzen.</font></i>
+    GetExtent(R);
+    R.B.Y := R.A.Y + <font color="#0077BB">1</font>; <i><font color="#FFFF00">// Position des Menüs, auf oberste Zeile der App setzen.</font></i>
 <br>
-    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, NewMenu(
       NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(
       NewItem(<font color="#FF0000">'~B~eenden'</font>, <font color="#FF0000">'Alt-X'</font>, kbAltX, cmQuit, hcNoContext,
       <b><font color="0000BB">nil</font></b>)), <b><font color="0000BB">nil</font></b>))));

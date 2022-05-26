@@ -27,26 +27,26 @@ implementation
 //init+
 constructor TMyDialog.Init;
 var
-  Rect: TRect;
+  R: TRect;
 begin
-  Rect.Assign(0, 0, 42, 11);
-  Rect.Move(23, 3);
-  inherited Init(Rect, 'Mein Dialog');
+  R.Assign(0, 0, 42, 11);
+  R.Move(23, 3);
+  inherited Init(R, 'Mein Dialog');
 
   // StaticText
-  Rect.Assign(5, 2, 41, 8);
-  Insert(new(PStaticText, Init(Rect, 'Rechter Button z' + #132 + 'hlt Counter hoch')));
+  R.Assign(5, 2, 41, 8);
+  Insert(new(PStaticText, Init(R, 'Rechter Button z' + #132 + 'hlt Counter hoch')));
 
   // Button, bei den der Titel geändert wird.
-  Rect.Assign(19, 8, 32, 10);
-  CounterButton := new(PButton, Init(Rect, '    ', cmCounter, bfNormal));
+  R.Assign(19, 8, 32, 10);
+  CounterButton := new(PButton, Init(R, '    ', cmCounter, bfNormal));
   CounterButton^.Title^ := '1';
 
   Insert(CounterButton);
 
   // Ok-Button
-  Rect.Assign(7, 8, 17, 10);
-  Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+  R.Assign(7, 8, 17, 10);
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
 //init-
 

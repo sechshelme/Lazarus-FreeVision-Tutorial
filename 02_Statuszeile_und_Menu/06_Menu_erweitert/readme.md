@@ -22,15 +22,15 @@ Mit <b>NewLine</b> kann man eine Leerzeile einfügen.<br>
 Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeichnung <b>...</b> zu schreiben.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
-    Rect: TRect;                       <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
+    R: TRect;                          <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
 <br>
     M: PMenu;                          <i><font color="#FFFF00">// Ganzes Menü</font></i>
     SM0, SM1,                          <i><font color="#FFFF00">// Submenu</font></i>
     M0_0, M0_1, M0_2, M1_0: PMenuItem; <i><font color="#FFFF00">// Einfache Menüpunkte</font></i>
 <br>
   <b><font color="0000BB">begin</font></b>
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + <font color="#0077BB">1</font>;
+    GetExtent(R);
+    R.B.Y := R.A.Y + <font color="#0077BB">1</font>;
 <br>
     M1_0 := NewItem(<font color="#FF0000">'~A~bout...'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext, <b><font color="0000BB">nil</font></b>);
     SM1 := NewSubMenu(<font color="#FF0000">'~H~ilfe'</font>, hcNoContext, NewMenu(M1_0), <b><font color="0000BB">nil</font></b>);
@@ -42,7 +42,7 @@ Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeic
 <br>
     M := NewMenu(SM0);
 <br>
-    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(Rect, M));
+    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, M));
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
 </html>

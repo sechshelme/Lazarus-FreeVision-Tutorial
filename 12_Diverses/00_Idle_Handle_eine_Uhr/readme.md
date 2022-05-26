@@ -107,13 +107,13 @@ Hier wird in <b>ZeitStr</b> die Zeit gespeichert, so das sie mit <b>Draw</b> aus
 Im Dioalog wird nur ein OK-Button erzeugt.<br>
 <pre><code><b><font color="0000BB">constructor</font></b> TUhrView.Init;
 <b><font color="0000BB">var</font></b>
-  Rect: TRect;
+  R: TRect;
 <b><font color="0000BB">begin</font></b>
-  Rect.Assign(<font color="#0077BB">51</font>, <font color="#0077BB">1</font>, <font color="#0077BB">70</font>, <font color="#0077BB">8</font>);
-  <b><font color="0000BB">inherited</font></b> Init(Rect, <font color="#FF0000">'Uhr'</font>);
+  R.Assign(<font color="#0077BB">51</font>, <font color="#0077BB">1</font>, <font color="#0077BB">70</font>, <font color="#0077BB">8</font>);
+  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'Uhr'</font>);
 <br>
-  Rect.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">4</font>, <font color="#0077BB">13</font>, <font color="#0077BB">6</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~O~k'</font>, cmOK, bfDefault)));
+  R.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">4</font>, <font color="#0077BB">13</font>, <font color="#0077BB">6</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~k'</font>, cmOK, bfDefault)));
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 In <b>Draw</b> sieht man gut, das die Zeit direkt in den Dialog geschrieben wird.<br>

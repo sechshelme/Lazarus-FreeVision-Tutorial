@@ -43,19 +43,19 @@ Inizialisieren der beiden Statuszeilen.
   //code+
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
     // Statuszeile deutsch
-    StatusGer := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusGer := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menue', kbF10, cmMenu,
       NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
 
     // Statuszeile englisch
-    StatusEng := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusEng := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Exit', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ Help', kbF1, cmHelp, nil))), nil)));
@@ -70,13 +70,13 @@ Inizialisieren der beiden Menüs.
   //code+
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
     // Menü deutsch
-    menuGer := New(PMenuBar, Init(Rect, NewMenu(
+    menuGer := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
         NewLine(
@@ -90,7 +90,7 @@ Inizialisieren der beiden Menüs.
         NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))))));
 
     // Menü englisch
-    menuEng := New(PMenuBar, Init(Rect, NewMenu(
+    menuEng := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~F~ile', hcNoContext, NewMenu(
         NewItem('~C~lose', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
         NewLine(

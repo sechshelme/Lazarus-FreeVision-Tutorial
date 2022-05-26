@@ -13,13 +13,13 @@ Hier wird das neue vererbte Windows erzeugt.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
   <b><font color="0000BB">var</font></b>
     Win: PMyWindow;
-    Rect: TRect;
+    R: TRect;
   <b><font color="0000BB">const</font></b>
     WinCounter: integer = <font color="#0077BB">0</font>;      <i><font color="#FFFF00">// Zählt Fenster</font></i>
   <b><font color="0000BB">begin</font></b>
-    Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
     Inc(WinCounter);
-    Win := <b><font color="0000BB">New</font></b>(PMyWindow, Init(Rect, <font color="#FF0000">'Fenster'</font>, WinCounter));
+    Win := <b><font color="0000BB">New</font></b>(PMyWindow, Init(R, <font color="#FF0000">'Fenster'</font>, WinCounter));
 <br>
     <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
       Desktop^.Insert(Win);
@@ -40,27 +40,27 @@ Ein Indicator wird auch noch eingefügt, welcher die Spalten und Zeilen anzeigt.
 <b><font color="0000BB">var</font></b>
   VScrollBar, HScrollBar : PScrollBar;  <i><font color="#FFFF00">// Rollbalken</font></i>
   Indicator  : PIndicator;              <i><font color="#FFFF00">// Zeilen/Spalten-Anzeige</font></i>
-  Rect: TRect;
+  R: TRect;
 <b><font color="0000BB">begin</font></b>
   <b><font color="0000BB">inherited</font></b> Init(Bounds, ATitle, ANumber);
   Options := Options <b><font color="0000BB">or</font></b> ofTileable;     <i><font color="#FFFF00">// Für Tile und Cascade</font></i>
 <br>
-  Rect.Assign (<font color="#0077BB">18</font>, Size.Y - <font color="#0077BB">1</font>, Size.X - <font color="#0077BB">2</font>, Size.Y);
-  HScrollBar := <b><font color="0000BB">New</font></b> (PScrollBar, Init (Rect));
+  R.Assign (<font color="#0077BB">18</font>, Size.Y - <font color="#0077BB">1</font>, Size.X - <font color="#0077BB">2</font>, Size.Y);
+  HScrollBar := <b><font color="0000BB">New</font></b> (PScrollBar, Init (R));
   HScrollBar^.Max := <font color="#0077BB">100</font>;
   HScrollBar^.Min := <font color="#0077BB">0</font>;
   HScrollBar^.Value := <font color="#0077BB">50</font>;
   Insert (HScrollBar);
 <br>
-  Rect.Assign (Size.X - <font color="#0077BB">1</font>, <font color="#0077BB">1</font>, Size.X, Size.Y - <font color="#0077BB">1</font>);
-  VScrollBar := <b><font color="0000BB">New</font></b> (PScrollBar, Init (Rect));
+  R.Assign (Size.X - <font color="#0077BB">1</font>, <font color="#0077BB">1</font>, Size.X, Size.Y - <font color="#0077BB">1</font>);
+  VScrollBar := <b><font color="0000BB">New</font></b> (PScrollBar, Init (R));
   VScrollBar^.Max := <font color="#0077BB">100</font>;
   VScrollBar^.Min := <font color="#0077BB">0</font>;
   VScrollBar^.Value := <font color="#0077BB">20</font>;
   Insert (VScrollBar);
 <br>
-  Rect.Assign (<font color="#0077BB">2</font>, Size.Y - <font color="#0077BB">1</font>, <font color="#0077BB">16</font>, Size.Y);
-  Indicator := <b><font color="0000BB">New</font></b> (PIndicator, Init (Rect));
+  R.Assign (<font color="#0077BB">2</font>, Size.Y - <font color="#0077BB">1</font>, <font color="#0077BB">16</font>, Size.Y);
+  Indicator := <b><font color="0000BB">New</font></b> (PIndicator, Init (R));
   Insert (Indicator);
 <b><font color="0000BB">end</font></b>;
 </code></pre>

@@ -8,10 +8,10 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows(Titel: ShortString);
   <b><font color="0000BB">var</font></b>
     Win: PWindow;
-    Rect: TRect;
+    R: TRect;
   <b><font color="0000BB">begin</font></b>
-    Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
-    Win := <b><font color="0000BB">New</font></b>(PWindow, Init(Rect, Titel, wnNoNumber));
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
+    Win := <b><font color="0000BB">New</font></b>(PWindow, Init(R, Titel, wnNoNumber));
     <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
       Desktop^.Insert(Win);
     <b><font color="0000BB">end</font></b>;

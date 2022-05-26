@@ -63,12 +63,12 @@ Die Hint-Zeile muss vererbt werden.
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
-    StatusLine := New(PHintStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusLine := New(PHintStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
@@ -79,12 +79,12 @@ Im Menü muss die hcxxx Konstante mitgegeben werden.
 //code+
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;                   // Rechteck für die Menüzeilen-Position.
+    R: TRect;                   // Rechteck für die Menüzeilen-Position.
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
-    MenuBar := New(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcFile, NewMenu(
         NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcClose, nil)),
 

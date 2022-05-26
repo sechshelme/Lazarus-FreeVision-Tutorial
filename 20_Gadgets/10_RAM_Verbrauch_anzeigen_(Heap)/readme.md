@@ -69,18 +69,12 @@ Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
 Der Dialog mit dem dem Speicher Leak<br>
 <pre><code><b><font color="0000BB">unit</font></b> MyDialog;
 </code></pre>
-Eine Vererbung mit einem <b>Destructor</b>, welcher das <b>Leak</b> behebt.<br>
-<pre><code><b><font color="0000BB">type</font></b>
-  PListBox = ^TListBox;
-  TListBox = <b><font color="0000BB">object</font></b>(Dialogs.TListBox)
-    <b><font color="0000BB">destructor</font></b> Done; <b><font color="0000BB">virtual</font></b>;
-  <b><font color="0000BB">end</font></b>;
-</code></pre>
-Eine Vererbung mit einem Destructor, welcher das Leak behebt.<br>
-<pre><code></code></pre>
-Der <b>Destructor</b>, welcher das Speicher Leak behebt.<br>
+Den <b>Destructor</b> deklarieren, welcher das <b>Speicher Leak</b> behebt.<br>
 <pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
+<br>
+  <font color="#FFFF00">{ TMyDialog }</font>
+<br>
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
   <b><font color="0000BB">const</font></b>
     cmTag = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>
@@ -89,13 +83,14 @@ Der <b>Destructor</b>, welcher das Speicher Leak behebt.<br>
     StringCollection: PStringCollection;
 <br>
     <b><font color="0000BB">constructor</font></b> Init;
+    <b><font color="0000BB">destructor</font></b> Done; <b><font color="0000BB">virtual</font></b>;  <i><font color="#FFFF00">// Wegen Speicher Leak</font></i>
     <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
   <b><font color="0000BB">end</font></b>;
 </code></pre>
 Komponenten für den Dialog generieren.<br>
 <pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
 <b><font color="0000BB">var</font></b>
-  Rect: TRect;
+  R: TRect;
   ScrollBar: PScrollBar;
   i: Sw_Integer;
 <b><font color="0000BB">const</font></b>
@@ -103,8 +98,8 @@ Komponenten für den Dialog generieren.<br>
     <font color="#FF0000">'Montag'</font>, <font color="#FF0000">'Dienstag'</font>, <font color="#FF0000">'Mittwoch'</font>, <font color="#FF0000">'Donnerstag'</font>, <font color="#FF0000">'Freitag'</font>, <font color="#FF0000">'Samstag'</font>, <font color="#FF0000">'Sonntag'</font>);
 <br>
 <b><font color="0000BB">begin</font></b>
-  Rect.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">5</font>, <font color="#0077BB">67</font>, <font color="#0077BB">17</font>);
-  <b><font color="0000BB">inherited</font></b> Init(Rect, <font color="#FF0000">'ListBox Demo'</font>);
+  R.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">5</font>, <font color="#0077BB">64</font>, <font color="#0077BB">17</font>);
+  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'ListBox Demo'</font>);
 <br>
   <i><font color="#FFFF00">// StringCollection</font></i>
   StringCollection := <b><font color="0000BB">new</font></b>(PStringCollection, Init(<font color="#0077BB">5</font>, <font color="#0077BB">5</font>));
@@ -113,23 +108,45 @@ Komponenten für den Dialog generieren.<br>
   <b><font color="0000BB">end</font></b>;
 <br>
   <i><font color="#FFFF00">// ScrollBar für ListBox</font></i>
-  Rect.Assign(<font color="#0077BB">31</font>, <font color="#0077BB">2</font>, <font color="#0077BB">32</font>, <font color="#0077BB">7</font>);
-  ScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(Rect));
+  R.Assign(<font color="#0077BB">31</font>, <font color="#0077BB">2</font>, <font color="#0077BB">32</font>, <font color="#0077BB">7</font>);
+  ScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(R));
   Insert(ScrollBar);
 <br>
   <i><font color="#FFFF00">// ListBox</font></i>
-  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">31</font>, <font color="#0077BB">7</font>);
-  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(Rect, <font color="#0077BB">1</font>, ScrollBar));
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">31</font>, <font color="#0077BB">7</font>);
+  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(R, <font color="#0077BB">1</font>, ScrollBar));
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
 <br>
+  <i><font color="#FFFF00">// Tag-Button</font></i>
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">9</font>, <font color="#0077BB">18</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~T~ag'</font>, cmTag, bfNormal)));
+<br>
   <i><font color="#FFFF00">// Cancel-Button</font></i>
-  Rect.Assign(<font color="#0077BB">19</font>, <font color="#0077BB">9</font>, <font color="#0077BB">32</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~T~ag'</font>, cmTag, bfNormal)));
+  R.Move(<font color="#0077BB">15</font>, <font color="#0077BB">0</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~C~ancel'</font>, cmCancel, bfNormal)));
 <br>
   <i><font color="#FFFF00">// Ok-Button</font></i>
-  Rect.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">9</font>, <font color="#0077BB">17</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
+  R.Move(<font color="#0077BB">15</font>, <font color="#0077BB">0</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
+<b><font color="0000BB">end</font></b>;
+<br>
+<i><font color="#FFFF00">//done+</font></i>
+<b><font color="0000BB">destructor</font></b> TMyDialog.Done;
+<b><font color="0000BB">begin</font></b>
+   <b><font color="0000BB">Dispose</font></b>(ListBox^.List, Done);
+   <b><font color="0000BB">inherited</font></b> Done;
+<b><font color="0000BB">end</font></b>;
+<i><font color="#FFFF00">//done-</font></i>
+<br>
+</code></pre>
+Manuell den Speicher frei geben.<br>
+Man kann hier versuchsweise das Dispose ausklammern, dann sieht man,<br>
+das man eine Speicherleak bekommt.<br>
+<pre><code><b><font color="0000BB">destructor</font></b> TMyDialog.Done;
+<b><font color="0000BB">begin</font></b>
+   <b><font color="0000BB">Dispose</font></b>(ListBox^.List, Done);
+   <b><font color="0000BB">inherited</font></b> Done;
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 Der EventHandle<br>

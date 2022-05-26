@@ -42,12 +42,12 @@ type
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;              // Rechteck für die Statuszeilen Position.
+    R: TRect;           // Rechteck für die Statuszeilen Position.
   begin
-    GetExtent(Rect);          // Liefert die Grösse/Position der App, im Normalfall 0, 0, 80, 24.
-    Rect.A.Y := Rect.B.Y - 1; // Position der Statuszeile, auf unterste Zeile der App setzen.
+    GetExtent(R);       // Liefert die Grösse/Position der App, im Normalfall 0, 0, 80, 24.
+    R.A.Y := R.B.Y - 1; // Position der Statuszeile, auf unterste Zeile der App setzen.
 
-    StatusLine := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
@@ -55,12 +55,12 @@ type
 
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
-    MenuBar := New(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
         NewLine(
@@ -93,13 +93,13 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
   procedure TMyApp.NewWindows;
   var
     Win: PMyView;
-    Rect: TRect;
+    R: TRect;
   const
     WinCounter: integer = 0;                    // Zählt Fenster
   begin
-    Rect.Assign(0, 0, 60, 20);
+    R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
-    Win := New(PMyView, Init(Rect));
+    Win := New(PMyView, Init(R));
     Win^.Options := Win^.Options or ofTileable; // Für Tile und Cascade
 
     if ValidView(Win) <> nil then begin

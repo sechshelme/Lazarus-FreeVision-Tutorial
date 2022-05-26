@@ -31,19 +31,19 @@ Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.
 //code+
   PTreeWindow = ^TTreeWindow;
   TTreeWindow = object(TWindow)
-    constructor Init(Rect: TRect);
+    constructor Init(R: TRect);
   end;
 
 
-  constructor TTreeWindow.Init(Rect: TRect);
+  constructor TTreeWindow.Init(R: TRect);
   var
     Outline: POutline;
   begin
-    inherited Init(Rect, 'Computer', wnNoNumber);
+    inherited Init(R, 'Computer', wnNoNumber);
     Options := Options or ofTileable;
-    GetExtent(Rect);
-    Rect.Grow(-1, -1);
-    Outline := New(POutline, Init(Rect, StandardScrollBar(sbHorizontal), StandardScrollBar(sbVertical),
+    GetExtent(R);
+    R.Grow(-1, -1);
+    Outline := New(POutline, Init(R, StandardScrollBar(sbHorizontal), StandardScrollBar(sbVertical),
       NewNode('Computer',
         NewNode('IBM',
           NewNode('XT', nil,
@@ -62,12 +62,12 @@ Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;              // Rechteck für die Statuszeilen Position.
+    R: TRect;              // Rechteck für die Statuszeilen Position.
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
-    StatusLine := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F2~ Baum', kbF2, cmList, nil))), nil)));
@@ -75,12 +75,12 @@ Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.
 
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;                       // Rechteck für die Menüzeilen-Position.
+    R: TRect;                       // Rechteck für die Menüzeilen-Position.
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
-    MenuBar := New(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext,
         NewMenu(NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)),
       NewSubMenu('~B~aum', hcNoContext,
@@ -93,15 +93,15 @@ Hier wird das Fenster erzeugt, welches die Outline enthält.
 //code+
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
-    Rect:TRect;
+    R: TRect;
   begin
     inherited HandleEvent(Event);
 
     if Event.What = evCommand then begin
       case Event.Command of
         cmList: begin
-          Rect.Assign(2, 2, 35, 17);
-          InsertWindow(New(PTreeWindow, Init(Rect)));
+          R.Assign(2, 2, 35, 17);
+          InsertWindow(New(PTreeWindow, Init(R)));
         end
         else begin
           Exit;

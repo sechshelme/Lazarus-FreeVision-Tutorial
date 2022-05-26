@@ -42,17 +42,17 @@ end;
 
 procedure TMyApp.InitStatusLine;
 var
-  Rect: TRect;                       // Rechteck für die Menüzeilen-Position.
+  R: TRect;                       // Rechteck für die Menüzeilen-Position.
 begin
-  GetExtent(Rect);
-  Rect.A.Y := Rect.B.Y - 1;
+  GetExtent(R);
+  R.A.Y := R.B.Y - 1;
 
-  StatusGer := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+  StatusGer := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
     NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
     NewStatusKey('~F10~ Menue', kbF10, cmMenu,
     NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
 
-  StatusEng := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+  StatusEng := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
     NewStatusKey('~Alt+X~ Exit', kbAltX, cmQuit,
     NewStatusKey('~F10~ Menu', kbF10, cmMenu,
     NewStatusKey('~F1~ Help', kbF1, cmHelp, nil))), nil)));
@@ -62,12 +62,12 @@ end;
 
   constructor TMyApp.Init;
   var
-    Rect: TRect;              // Rechteck für die Statuszeilen Position.
+    R: TRect;              // Rechteck für die Statuszeilen Position.
   begin
     inherited Init;
-    Rect.Assign(3, 3, 30, 20);
+    R.Assign(3, 3, 30, 20);
 
-    menuGer := New(PMenuBox, Init(Rect, NewMenu(
+    menuGer := New(PMenuBox, Init(R, NewMenu(
       NewItem('~W~indows', 'Alt-W', kbAltW, cmAbout, hcNoContext,
       NewLine(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
@@ -82,7 +82,7 @@ end;
       NewSubMenu('~H~ilfe', hcNoContext, NewMenu(
         NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil)))))),nil));
 
-    menuEng := New(PMenuBox, Init(Rect, NewMenu(
+    menuEng := New(PMenuBox, Init(R, NewMenu(
       NewSubMenu('~F~ile', hcNoContext, NewMenu(
         NewItem('~C~lose', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
         NewLine(
@@ -102,12 +102,12 @@ end;
 
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
-    Rect: TRect;              // Rechteck für die Statuszeilen Position.
+    R: TRect;              // Rechteck für die Statuszeilen Position.
 
   begin
-    GetExtent(Rect);
+    GetExtent(R);
 
-    Rect.A.Y := Rect.B.Y - 1;
+    R.A.Y := R.B.Y - 1;
     inherited HandleEvent(Event);
 
     if Event.What = evCommand then begin
@@ -120,10 +120,10 @@ end;
 //          MenuBar^.Menu^.Items := NewItem('neuer sehr langer Eintrag','bla bla bla',kbNoKey, cmAbout, hcNoContext, MenuBar^.Menu^.Items);
 //          MenuBar^.Menu^.Default:=;
 
-//Rect.Assign(3, 3, 75, 22);
+//R.Assign(3, 3, 75, 22);
 
-//MenuBar^.GetItemRect(MenuBar^.Menu^.Items,Rect);
-//MenuBar^.Locate(Rect);
+//MenuBar^.GetItemRect(MenuBar^.Menu^.Items,R);
+//MenuBar^.Locate(R);
 //MenuBar^.Size.X:=41;
 //MenuBar^.Size.Y:=20;
   //        Delete(MenuBar);
@@ -178,21 +178,21 @@ Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhaf
   procedure TMyApp.MyParameter;
   var
     Dia: PDialog;
-    Rect: TRect;
+    R: TRect;
     dummy: word;
   begin
-    Rect.Assign(0, 0, 35, 15);                    // Grösse des Dialogs.
-    Rect.Move(23, 3);                             // Position des Dialogs.
-    Dia := New(PDialog, Init(Rect, 'Parameter')); // Dialog erzeugen.
+    R.Assign(0, 0, 35, 15);                    // Grösse des Dialogs.
+    R.Move(23, 3);                             // Position des Dialogs.
+    Dia := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.
     with Dia^ do begin
 
       // Ok-Button
-      Rect.Assign(7, 12, 17, 14);
-      Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+      R.Assign(7, 12, 17, 14);
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 
       // Schliessen-Button
-      Rect.Assign(19, 12, 32, 14);
-      Insert(new(PButton, Init(Rect, '~A~bbruch', cmCancel, bfNormal)));
+      R.Assign(19, 12, 32, 14);
+      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
     dummy := Desktop^.ExecView(Dia);   // Dialog Modal öffnen.
     Dispose(Dia, Done);                // Dialog und Speicher frei geben.

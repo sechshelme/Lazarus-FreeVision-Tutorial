@@ -33,12 +33,12 @@ Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt 
 Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
-    Rect: TRect;
+    R: TRect;
   <b><font color="0000BB">begin</font></b>
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + <font color="#0077BB">1</font>;
+    GetExtent(R);
+    R.B.Y := R.A.Y + <font color="#0077BB">1</font>;
 <br>
-    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, NewMenu(
       NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(
         NewItem(<font color="#FF0000">'~N~eu'</font>, <font color="#FF0000">'F4'</font>, kbF4, cmNewWin, hcNoContext,
         NewItem(<font color="#FF0000">'~O~effnen...'</font>, <font color="#FF0000">'F3'</font>, kbF3, cmOpen, hcNoContext,
@@ -77,13 +77,13 @@ Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
 <pre><code>  <b><font color="0000BB">function</font></b> TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = <b><font color="0000BB">False</font></b>) : PEditWindow;
   <b><font color="0000BB">var</font></b>
     Win: PEditWindow;
-    Rect: TRect;
+    R: TRect;
   <b><font color="0000BB">const</font></b>
     WinCounter: integer = <font color="#0077BB">0</font>;
   <b><font color="0000BB">begin</font></b>
-    Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
     Inc(WinCounter);
-    Win := <b><font color="0000BB">New</font></b>(PEditWindow, Init(Rect, FileName, WinCounter));
+    Win := <b><font color="0000BB">New</font></b>(PEditWindow, Init(R, FileName, WinCounter));
     <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
       <b><font color="0000BB">if</font></b> Visible <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
         win^.Hide;        <i><font color="#FFFF00">// Fenster verstecken.</font></i>

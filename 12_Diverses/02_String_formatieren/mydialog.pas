@@ -26,7 +26,7 @@ const
   Fr = 'Freitag';
 
 var
-  Rect: TRect;
+  R: TRect;
   Params:record
     s1, s2: PString;
     i1, i2: PtrInt;
@@ -44,17 +44,17 @@ begin
   FormatStr(s, 'Gearbeitet wird zwischen %s und %s'#13+
     'und dies zwischen %d:00 und %d:00 Uhr.', (@Params)^);
 
-  Rect.Assign(0, 0, 52, 13);
-  Rect.Move(23, 3);
-  inherited Init(Rect, 'String formatieren');
+  R.Assign(0, 0, 52, 13);
+  R.Move(23, 3);
+  inherited Init(R, 'String formatieren');
 
   // ---Statictext;
-  Rect.Assign(3, 2, 50, 5);
-  Insert(new(PStaticText, Init(Rect, s)));
+  R.Assign(3, 2, 50, 5);
+  Insert(new(PStaticText, Init(R, s)));
 
   // ---Ok-Button
-  Rect.Assign(20, 8, 32, 10);
-  Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+  R.Assign(20, 8, 32, 10);
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
 //draw-
 

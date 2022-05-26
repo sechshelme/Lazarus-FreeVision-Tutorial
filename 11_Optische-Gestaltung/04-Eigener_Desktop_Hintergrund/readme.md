@@ -39,12 +39,12 @@ Der Konstruktor sieht gleich aus wie bei der Hintergrund-Zeichenfarbe.<br>
 Dem ist Egal ob <b>TMyBackground</b> ein Nachkomme von <b>TView</b> oder <b>TBackground</b> ist.<br>
 <pre><code>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
   <b><font color="0000BB">var</font></b>
-    Rect: TRect;
+    R: TRect;
   <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> Init;                                   <i><font color="#FFFF00">// Vorfahre aufrufen</font></i>
-    GetExtent(Rect);
+    <b><font color="0000BB">inherited</font></b> Init;                                <i><font color="#FFFF00">// Vorfahre aufrufen</font></i>
+    GetExtent(R);
 <br>
-    DeskTop^.Insert(<b><font color="0000BB">New</font></b>(PMyBackground, Init(Rect)));  <i><font color="#FFFF00">// Hintergrund einfügen.</font></i>
+    DeskTop^.Insert(<b><font color="0000BB">New</font></b>(PMyBackground, Init(R)));  <i><font color="#FFFF00">// Hintergrund einfügen.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
 </html>

@@ -19,19 +19,19 @@ Deklaration der Komponenten<br>
 Inizialisieren der beiden Statuszeilen.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitStatusLine;
   <b><font color="0000BB">var</font></b>
-    Rect: TRect;
+    R: TRect;
   <b><font color="0000BB">begin</font></b>
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - <font color="#0077BB">1</font>;
+    GetExtent(R);
+    R.A.Y := R.B.Y - <font color="#0077BB">1</font>;
 <br>
     <i><font color="#FFFF00">// Statuszeile deutsch</font></i>
-    StatusGer := <b><font color="0000BB">New</font></b>(PStatusLine, Init(Rect, NewStatusDef(<font color="#0077BB">0</font>, <font color="#0077BB">$</font>FFFF,
+    StatusGer := <b><font color="0000BB">New</font></b>(PStatusLine, Init(R, NewStatusDef(<font color="#0077BB">0</font>, <font color="#0077BB">$</font>FFFF,
       NewStatusKey(<font color="#FF0000">'~Alt+X~ Programm beenden'</font>, kbAltX, cmQuit,
       NewStatusKey(<font color="#FF0000">'~F10~ Menue'</font>, kbF10, cmMenu,
       NewStatusKey(<font color="#FF0000">'~F1~ Hilfe'</font>, kbF1, cmHelp, <b><font color="0000BB">nil</font></b>))), <b><font color="0000BB">nil</font></b>)));
 <br>
     <i><font color="#FFFF00">// Statuszeile englisch</font></i>
-    StatusEng := <b><font color="0000BB">New</font></b>(PStatusLine, Init(Rect, NewStatusDef(<font color="#0077BB">0</font>, <font color="#0077BB">$</font>FFFF,
+    StatusEng := <b><font color="0000BB">New</font></b>(PStatusLine, Init(R, NewStatusDef(<font color="#0077BB">0</font>, <font color="#0077BB">$</font>FFFF,
       NewStatusKey(<font color="#FF0000">'~Alt+X~ <b><font color="0000BB">Exit</font></b>'</font>, kbAltX, cmQuit,
       NewStatusKey(<font color="#FF0000">'~F10~ Menu'</font>, kbF10, cmMenu,
       NewStatusKey(<font color="#FF0000">'~F1~ Help'</font>, kbF1, cmHelp, <b><font color="0000BB">nil</font></b>))), <b><font color="0000BB">nil</font></b>)));
@@ -41,13 +41,13 @@ Inizialisieren der beiden Statuszeilen.<br>
 Inizialisieren der beiden Menüs.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
-    Rect: TRect;
+    R: TRect;
   <b><font color="0000BB">begin</font></b>
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + <font color="#0077BB">1</font>;
+    GetExtent(R);
+    R.B.Y := R.A.Y + <font color="#0077BB">1</font>;
 <br>
     <i><font color="#FFFF00">// Menü deutsch</font></i>
-    menuGer := <b><font color="0000BB">New</font></b>(PMenuBar, Init(Rect, NewMenu(
+    menuGer := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, NewMenu(
       NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(
         NewItem(<font color="#FF0000">'S~c~hliessen'</font>, <font color="#FF0000">'Alt-F3'</font>, kbAltF3, cmClose, hcNoContext,
         NewLine(
@@ -61,7 +61,7 @@ Inizialisieren der beiden Menüs.<br>
         NewItem(<font color="#FF0000">'~A~bout...'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext, <b><font color="0000BB">nil</font></b>)), <b><font color="0000BB">nil</font></b>))))));
 <br>
     <i><font color="#FFFF00">// Menü englisch</font></i>
-    menuEng := <b><font color="0000BB">New</font></b>(PMenuBar, Init(Rect, NewMenu(
+    menuEng := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, NewMenu(
       NewSubMenu(<font color="#FF0000">'~F~ile'</font>, hcNoContext, NewMenu(
         NewItem(<font color="#FF0000">'~C~lose'</font>, <font color="#FF0000">'Alt-F3'</font>, kbAltF3, cmClose, hcNoContext,
         NewLine(

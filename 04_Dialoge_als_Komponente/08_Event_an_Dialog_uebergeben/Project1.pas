@@ -46,43 +46,43 @@ Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kom
 //code+
   constructor TMyApp.Init;
   var
-    Rect: TRect;
+    R: TRect;
     Dia: PDialog;
   begin
     inherited init;
 
     // erster passsiver Dialog
-    Rect.Assign(45, 2, 70, 9);
-    Dialog1 := New(PMyDialog, Init(Rect, 'Dialog 1'));
+    R.Assign(45, 2, 70, 9);
+    Dialog1 := New(PMyDialog, Init(R, 'Dialog 1'));
     Dialog1^.SetState(sfDisabled, True);    // Dialog auf ReadOnly.
     if ValidView(Dialog1) <> nil then begin // Prüfen ob genügend Speicher.
       Desktop^.Insert(Dialog1);
     end;
 
     // zweiter passsiver Dialog
-    Rect.Assign(45, 12, 70, 19);
-    Dialog2 := New(PMyDialog, Init(Rect, 'Dialog 2'));
+    R.Assign(45, 12, 70, 19);
+    Dialog2 := New(PMyDialog, Init(R, 'Dialog 2'));
     Dialog2^.SetState(sfDisabled, True);
     if ValidView(Dialog2) <> nil then begin
       Desktop^.Insert(Dialog2);
     end;
 
     // Steuerdialog
-    Rect.Assign(5, 5, 30, 20);
-    Dia := New(PDialog, Init(Rect, 'Steuerung'));
+    R.Assign(5, 5, 30, 20);
+    Dia := New(PDialog, Init(R, 'Steuerung'));
 
     with Dia^ do begin
-      Rect.Assign(6, 2, 18, 4);
-      Insert(new(PButton, Init(Rect, 'Dialog ~1~', cmDia1, bfNormal)));
+      R.Assign(6, 2, 18, 4);
+      Insert(new(PButton, Init(R, 'Dialog ~1~', cmDia1, bfNormal)));
 
-      Rect.Assign(6, 5, 18, 7);
-      Insert(new(PButton, Init(Rect, 'Dialog ~2~', cmDia2, bfNormal)));
+      R.Move(0, 3);
+      Insert(new(PButton, Init(R, 'Dialog ~2~', cmDia2, bfNormal)));
 
-      Rect.Assign(6, 8, 18, 10);
-      Insert(new(PButton, Init(Rect, '~A~lle', cmDiaAll, bfNormal)));
+      R.Move(0, 3);
+      Insert(new(PButton, Init(R, '~A~lle', cmDiaAll, bfNormal)));
 
-      Rect.Assign(6, 12, 18, 14);
-      Insert(new(PButton, Init(Rect, '~B~eenden', cmQuit, bfNormal)));
+      R.Move(0, 4);
+      Insert(new(PButton, Init(R, '~B~eenden', cmQuit, bfNormal)));
     end;
 
     if ValidView(Dia) <> nil then begin
@@ -93,25 +93,24 @@ Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kom
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
-    StatusLine := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu, nil)), nil)));
   end;
 
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;
-
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
-    MenuBar := New(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)),
       NewSubMenu('~O~ption', hcNoContext, NewMenu(

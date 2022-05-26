@@ -76,23 +76,23 @@ Dem ist Egal ob <b>TMyBackground</b> ein Nachkomme von <b>TView</b> oder <b>TBac
   //code+
   constructor TMyApp.Init;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    inherited Init;                                   // Vorfahre aufrufen
-    GetExtent(Rect);
+    inherited Init;                                // Vorfahre aufrufen
+    GetExtent(R);
 
-    DeskTop^.Insert(New(PMyBackground, Init(Rect)));  // Hintergrund einfügen.
+    DeskTop^.Insert(New(PMyBackground, Init(R)));  // Hintergrund einfügen.
   end;
   //code-
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
-    StatusLine := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ About...', kbF1, cmOption, nil))), nil)));
@@ -100,12 +100,12 @@ Dem ist Egal ob <b>TMyBackground</b> ein Nachkomme von <b>TView</b> oder <b>TBac
 
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
-    MenuBar := New(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)),
       NewSubMenu('~O~ption', hcNoContext, NewMenu(
@@ -132,11 +132,11 @@ Dem ist Egal ob <b>TMyBackground</b> ein Nachkomme von <b>TView</b> oder <b>TBac
   procedure TMyApp.MyOption;
   var
     Dia: PDialog;
-    Rect: TRect;
+    R: TRect;
   begin
-    Rect.Assign(0, 0, 35, 15);
-    Rect.Move(23, 3);
-    Dia := New(PDialog, Init(Rect, 'Parameter'));
+    R.Assign(0, 0, 35, 15);
+    R.Move(23, 3);
+    Dia := New(PDialog, Init(R, 'Parameter'));
 
     if ValidView(Dia) <> nil then begin // Prüfen ob genügend Speicher.
       Desktop^.ExecView(Dia);           // Dialog ausführen.

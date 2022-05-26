@@ -48,40 +48,40 @@ Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
 Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
 <pre><code><b><font color="0000BB">constructor</font></b> TMyMouse.Init;
 <b><font color="0000BB">var</font></b>
-  Rect: TRect;
+  R: TRect;
 <b><font color="0000BB">begin</font></b>
-  Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">13</font>);
-  Rect.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
-  <b><font color="0000BB">inherited</font></b> Init(Rect, <font color="#FF0000">'Mausaktion'</font>);
+  R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">13</font>);
+  R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
+  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'Mausaktion'</font>);
 <br>
   <i><font color="#FFFF00">// PosX</font></i>
-  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">2</font>, <font color="#0077BB">30</font>, <font color="#0077BB">3</font>);
-  EditX := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">5</font>));
+  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">2</font>, <font color="#0077BB">30</font>, <font color="#0077BB">3</font>);
+  EditX := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">5</font>));
   Insert(EditX);
   EditX^.State := sfDisabled <b><font color="0000BB">or</font></b> EditX^.State;    <i><font color="#FFFF00">// ReadOnly</font></i>
-  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">20</font>, <font color="#0077BB">3</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'MausPosition ~X~:'</font>, EditX)));
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">20</font>, <font color="#0077BB">3</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'MausPosition ~X~:'</font>, EditX)));
 <br>
   <i><font color="#FFFF00">// PosY</font></i>
-  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">4</font>, <font color="#0077BB">30</font>, <font color="#0077BB">5</font>);
-  EditY := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">5</font>));
+  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">4</font>, <font color="#0077BB">30</font>, <font color="#0077BB">5</font>);
+  EditY := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">5</font>));
   EditY^.State := sfDisabled <b><font color="0000BB">or</font></b> EditY^.State;    <i><font color="#FFFF00">// ReadOnly</font></i>
   Insert(EditY);
-  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">4</font>, <font color="#0077BB">20</font>, <font color="#0077BB">5</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'MausPosition ~Y~:'</font>, EditY)));
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">4</font>, <font color="#0077BB">20</font>, <font color="#0077BB">5</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'MausPosition ~Y~:'</font>, EditY)));
 <br>
   <i><font color="#FFFF00">// Maus-Tasten</font></i>
-  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">7</font>, <font color="#0077BB">32</font>, <font color="#0077BB">8</font>);
-  EditMB := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">7</font>));
+  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">7</font>, <font color="#0077BB">32</font>, <font color="#0077BB">8</font>);
+  EditMB := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">7</font>));
   EditMB^.State := sfDisabled <b><font color="0000BB">or</font></b> EditMB^.State;  <i><font color="#FFFF00">// ReadOnly</font></i>
   EditMB^.Data^:= <font color="#FF0000">'oben'</font>;                        <i><font color="#FFFF00">// Anfangs ist die Taste oben.</font></i>
   Insert(EditMB);
-  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">7</font>, <font color="#0077BB">20</font>, <font color="#0077BB">8</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'~M~austaste:'</font>, EditMB)));
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">7</font>, <font color="#0077BB">20</font>, <font color="#0077BB">8</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'~M~austaste:'</font>, EditMB)));
 <br>
   <i><font color="#FFFF00">// Ok-Button</font></i>
-  Rect.Assign(<font color="#0077BB">27</font>, <font color="#0077BB">10</font>, <font color="#0077BB">37</font>, <font color="#0077BB">12</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
+  R.Assign(<font color="#0077BB">27</font>, <font color="#0077BB">10</font>, <font color="#0077BB">37</font>, <font color="#0077BB">12</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 Im EventHandle sieht man gut, das dort die Mausaktionen abgefangen werden.<br>

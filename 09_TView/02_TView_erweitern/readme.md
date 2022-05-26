@@ -10,13 +10,13 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
   <b><font color="0000BB">var</font></b>
     Win: PMyView;
-    Rect: TRect;
+    R: TRect;
   <b><font color="0000BB">const</font></b>
     WinCounter: integer = <font color="#0077BB">0</font>;                    <i><font color="#FFFF00">// Zählt Fenster</font></i>
   <b><font color="0000BB">begin</font></b>
-    Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
     Inc(WinCounter);
-    Win := <b><font color="0000BB">New</font></b>(PMyView, Init(Rect));
+    Win := <b><font color="0000BB">New</font></b>(PMyView, Init(R));
     Win^.Options := Win^.Options <b><font color="0000BB">or</font></b> ofTileable; <i><font color="#FFFF00">// Für Tile und Cascade</font></i>
 <br>
     <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>

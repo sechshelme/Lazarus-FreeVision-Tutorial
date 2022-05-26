@@ -25,7 +25,7 @@ Deklaration für die Free-Vision Anwendung.
 //code+
 var
   MyApp: TApplication;
-  //code-
+//code-
 
 (*
 Für die Abarbeitung sind immer die drei Schritte notwendig.

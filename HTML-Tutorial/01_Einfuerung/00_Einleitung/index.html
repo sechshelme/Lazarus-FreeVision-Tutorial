@@ -39,14 +39,14 @@ Free Vision verwendet Codepage 437.<br>
 Aus diese Grund sollte man für eine fehlerfreie Darstellung der Umaute, diese als Char-Konstante verwenden.<br>
 <pre><code>ä = <font color="#FF0000">#132</font>  Ä = <font color="#FF0000">#142</font>
 ö = <font color="#FF0000">#148</font>  Ö = <font color="#FF0000">#153</font>
-ü = <font color="#FF0000">#129</font>  Ü = <font color="#FF0000">#154</font></pre></code>
+ü = <font color="#FF0000">#129</font>  Ü = <font color="#FF0000">#154</font></code></pre>
 <br>
 <b>Genereller Hinweis:</b><br>
 Wen man zur Laufzeit Texte ändern will, zB. <b>Label</b>, <b>StaticText</b>, ist Vorsicht geboten.<br>
 Da die Texte <b>PString</b> gespeichert sind, ist darauf zu achten, das man im Konstruktor (Init) schon genügend Specher für die Texte reserviert.<br>
 Am einfachsten geht dies so, somit hat es dann genügend Platz noch für <b>world</b>.<br>
 <pre><code>  StaticText := <b><font color="0000BB">new</font></b>(PStaticText, Init(Rect, <font color="#FF0000">'Hallo           '</font>));
-  StaticText^.Text^ := <font color="#FF0000">'Hello world'</font>;</pre></code>
+  StaticText^.Text^ := <font color="#FF0000">'Hello world'</font>;</code></pre>
 <br>
 <b>Genereller Hinweis 64Bit:</b><br>
 Bei 64Bit Coden, kann es Fehler geben, <s>das betrifft vor allem Funktionen, welche <b>FormatStr</b> verwenden.</s><br>

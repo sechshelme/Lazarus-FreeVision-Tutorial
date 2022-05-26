@@ -55,26 +55,24 @@ Hier sieht man, das eine Validate-Prüfung zu den <b>PInputLines</b> dazu kommt.
   <i><font color="#FFFF00">// Wochentage, als String, welche in der PInputLine erlaubt sind.</font></i>
   WochenTag:<b><font color="0000BB">array</font></b>[<font color="#0077BB">0</font>..<font color="#0077BB">6</font>] <b><font color="0000BB">of</font></b> <b><font color="0000BB">String</font></b> = (<font color="#FF0000">'Montag'</font>, <font color="#FF0000">'Dienstag'</font>, <font color="#FF0000">'Mittwoch'</font>, <font color="#FF0000">'Donnerstag'</font>, <font color="#FF0000">'Freitag'</font>, <font color="#FF0000">'Samstag'</font>, <font color="#FF0000">'Sonntag'</font>);
 <b><font color="0000BB">var</font></b>
-  Rect: TRect;
-  <i><font color="#FFFF00">// Die Eingabe Zeilen.</font></i>
-  InputLine: PInputLine;
-  <i><font color="#FFFF00">// Stringliste, welche die erlaubten Strings enthält.</font></i>
-  StringCollektion: PStringCollection;
+  R: TRect;
   i: Integer;
+  InputLine: PInputLine;               <i><font color="#FFFF00">// Die Eingabe Zeilen.</font></i>
+  StringCollektion: PStringCollection; <i><font color="#FFFF00">// Stringliste, welche die erlaubten Strings enthält.</font></i>
 <b><font color="0000BB">begin</font></b>
   <i><font color="#FFFF00">// Der Dialog selbst.</font></i>
-  Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">11</font>);
-  Rect.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
-  <b><font color="0000BB">inherited</font></b> Init(Rect, <font color="#FF0000">'Validate'</font>);
+  R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">11</font>);
+  R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
+  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'Validate'</font>);
 <br>
   <i><font color="#FFFF00">// --- InputLine mit Bereichsbegrenzung 0-99.</font></i>
-  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">2</font>, <font color="#0077BB">36</font>, <font color="#0077BB">3</font>);
-  InputLine := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">6</font>));
+  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">2</font>, <font color="#0077BB">36</font>, <font color="#0077BB">3</font>);
+  InputLine := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">6</font>));
   <i><font color="#FFFF00">// Validate-Prüfung 0-99.</font></i>
   InputLine^.SetValidator(<b><font color="0000BB">new</font></b>(PMyRangeValidator, Init(<font color="#0077BB">0</font>, <font color="#0077BB">99</font>)));
   Insert(InputLine);
-  Rect.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">2</font>, <font color="#0077BB">22</font>, <font color="#0077BB">3</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'~B~ereich: 0-99'</font>, InputLine)));
+  R.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">2</font>, <font color="#0077BB">22</font>, <font color="#0077BB">3</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'~B~ereich: 0-99'</font>, InputLine)));
 <br>
   <i><font color="#FFFF00">// --- Wochentage</font></i>
   <i><font color="#FFFF00">// Stringliste erzeugen.</font></i>
@@ -83,21 +81,21 @@ Hier sieht man, das eine Validate-Prüfung zu den <b>PInputLines</b> dazu kommt.
   <b><font color="0000BB">for</font></b> i := <font color="#0077BB">0</font> <b><font color="0000BB">to</font></b> <font color="#0077BB">6</font> <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
     StringCollektion^.Insert(NewStr(WochenTag[i]));
   <b><font color="0000BB">end</font></b>;
-  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">4</font>, <font color="#0077BB">36</font>, <font color="#0077BB">5</font>);
-  InputLine := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">10</font>));
+  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">4</font>, <font color="#0077BB">36</font>, <font color="#0077BB">5</font>);
+  InputLine := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">10</font>));
   <i><font color="#FFFF00">// Überprüfung mit der Stringliste.</font></i>
   InputLine^.SetValidator(<b><font color="0000BB">new</font></b>(PMyStringLookUpValidator, Init(StringCollektion)));
   Insert(InputLine);
-  Rect.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">4</font>, <font color="#0077BB">22</font>, <font color="#0077BB">5</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'~W~ochentage:'</font>, InputLine)));
+  R.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">4</font>, <font color="#0077BB">22</font>, <font color="#0077BB">5</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'~W~ochentage:'</font>, InputLine)));
 <br>
   <i><font color="#FFFF00">// ---Ok-Button</font></i>
-  Rect.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">8</font>, <font color="#0077BB">19</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
+  R.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">8</font>, <font color="#0077BB">19</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
 <br>
   <i><font color="#FFFF00">// --- Abbrechen-Button</font></i>
-  Rect.Assign(<font color="#0077BB">24</font>, <font color="#0077BB">8</font>, <font color="#0077BB">36</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'~A~bbrechen'</font>, cmCancel, bfNormal)));
+  R.Assign(<font color="#0077BB">24</font>, <font color="#0077BB">8</font>, <font color="#0077BB">36</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~A~bbrechen'</font>, cmCancel, bfNormal)));
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>

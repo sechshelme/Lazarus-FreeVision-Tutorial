@@ -64,12 +64,12 @@ end;
 
 procedure TMyApp.InitStatusLine;
 var
-  Rect: TRect;
+  R: TRect;
 begin
-  GetExtent(Rect);
-  Rect.A.Y := Rect.B.Y - 1;
+  GetExtent(R);
+  R.A.Y := R.B.Y - 1;
 
-  StatusLine := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+  StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
     NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
     NewStatusKey('~F10~ Menu', kbF10, cmMenu,
     NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
@@ -77,12 +77,12 @@ end;
 
 procedure TMyApp.InitMenuBar;
 var
-  Rect: TRect;
+  R: TRect;
 begin
-  GetExtent(Rect);
-  Rect.B.Y := Rect.A.Y + 1;
+  GetExtent(R);
+  R.B.Y := R.A.Y + 1;
 
-  MenuBar := New(PMenuBar, Init(Rect, NewMenu(NewSubMenu('~D~atei', hcNoContext, NewMenu(
+  MenuBar := New(PMenuBar, Init(R, NewMenu(NewSubMenu('~D~atei', hcNoContext, NewMenu(
     NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
     NewItem('Neu ~U~hr', 'F5', kbF5, cmNewUhr, hcNoContext,
     NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
@@ -93,13 +93,13 @@ begin
 procedure TMyApp.NewWindows;
 var
   Win: PWindow;
-  Rect: TRect;
+  R: TRect;
 const
   WinCounter: integer = 0;      // Zählt Fenster
 begin
-  Rect.Assign(0, 0, 40, 10);
+  R.Assign(0, 0, 40, 10);
   Inc(WinCounter);
-  Win := New(PWindow, Init(Rect, 'Fenster', WinCounter));
+  Win := New(PWindow, Init(R, 'Fenster', WinCounter));
   if ValidView(Win) <> nil then begin
     Desktop^.Insert(Win);
   end else begin

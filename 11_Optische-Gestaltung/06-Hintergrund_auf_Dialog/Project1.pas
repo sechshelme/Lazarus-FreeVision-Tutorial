@@ -55,22 +55,22 @@ type
 
   constructor TMyApp.Init;
   var
-    Rect: TRect;
+    R: TRect;
   begin
     inherited Init;                                   // Vorfahre aufrufen
-    GetExtent(Rect);
+    GetExtent(R);
 
-    DeskTop^.Insert(New(PMyBackground, Init(Rect)));  // Hintergrund einfügen.
+    DeskTop^.Insert(New(PMyBackground, Init(R)));  // Hintergrund einfügen.
   end;
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
-    StatusLine := New(PStatusLine, Init(Rect, NewStatusDef(0, $FFFF,
+    StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ About...', kbF1, cmOption, nil))), nil)));
@@ -78,12 +78,12 @@ type
 
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;
+    R: TRect;
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
-    MenuBar := New(PMenuBar, Init(Rect, NewMenu(
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)),
       NewSubMenu('~O~ption', hcNoContext, NewMenu(
@@ -115,22 +115,22 @@ Dies kann auch der benutzerdefiniert <b>PMyBackground</b> sein.
   procedure TMyApp.MyOption;
   var
     Dia: PDialog;
-    Rect: TRect;
+    R: TRect;
   begin
-    Rect.Assign(0, 0, 35, 15);
-    Rect.Move(23, 3);
-    Dia := New(PDialog, Init(Rect, 'Parameter'));
+    R.Assign(0, 0, 35, 15);
+    R.Move(23, 3);
+    Dia := New(PDialog, Init(R, 'Parameter'));
 
     with Dia^ do begin
 
       // BackGround
-      GetExtent(Rect);
-      Rect.Grow(-1, -1);
-      Dia^.Insert(New(PBackGround, Init(Rect, #3)));  // Hintergrund einfügen.
+      GetExtent(R);
+      R.Grow(-1, -1);
+      Dia^.Insert(New(PBackGround, Init(R, #3)));  // Hintergrund einfügen.
 
       // Ok-Button
-      Rect.Assign(20, 11, 30, 13);
-      Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+      R.Assign(20, 11, 30, 13);
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
     end;
 
     if ValidView(Dia) <> nil then begin

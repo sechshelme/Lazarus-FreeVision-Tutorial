@@ -23,11 +23,11 @@ implementation
 //init+
 constructor TMyButton.Init(x, y: integer; ATitle: TTitleStr; ACommand: word; AFlags: word);
 var
-  Rect: TRect;
+  R: TRect;
 begin
-  Rect.Assign(x, y, x + Length(StringReplace(ATitle, '~', '', [])) + 2, y + 2);
+  R.Assign(x, y, x + Length(StringReplace(ATitle, '~', '', [])) + 2, y + 2);
 
-  inherited Init(Rect, ATitle, ACommand, AFlags);
+  inherited Init(R, ATitle, ACommand, AFlags);
 end;
 //init-
 

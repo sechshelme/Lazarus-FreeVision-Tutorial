@@ -48,47 +48,47 @@ Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
 Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
 <pre><code><b><font color="0000BB">constructor</font></b> TMyKey.Init;
 <b><font color="0000BB">var</font></b>
-  Rect: TRect;
+  R: TRect;
 <b><font color="0000BB">begin</font></b>
-  Rect.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">15</font>);
-  Rect.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
-  <b><font color="0000BB">inherited</font></b> Init(Rect, <font color="#FF0000">'Keyboard-Aktion'</font>);
+  R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">15</font>);
+  R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
+  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'Keyboard-Aktion'</font>);
 <br>
   <i><font color="#FFFF00">// PosX</font></i>
-  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">2</font>, <font color="#0077BB">30</font>, <font color="#0077BB">3</font>);
-  EditZeichen := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">5</font>));
+  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">2</font>, <font color="#0077BB">30</font>, <font color="#0077BB">3</font>);
+  EditZeichen := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">5</font>));
   Insert(EditZeichen);
   EditZeichen^.State := sfDisabled <b><font color="0000BB">or</font></b> EditZeichen^.State;    <i><font color="#FFFF00">// ReadOnly</font></i>
-  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">20</font>, <font color="#0077BB">3</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'Zeichen:'</font>, EditZeichen)));
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">20</font>, <font color="#0077BB">3</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Zeichen:'</font>, EditZeichen)));
 <br>
   <i><font color="#FFFF00">// PosY</font></i>
-  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">4</font>, <font color="#0077BB">30</font>, <font color="#0077BB">5</font>);
-  EditZeichenCode := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">5</font>));
+  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">4</font>, <font color="#0077BB">30</font>, <font color="#0077BB">5</font>);
+  EditZeichenCode := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">5</font>));
   EditZeichenCode^.State := sfDisabled <b><font color="0000BB">or</font></b> EditZeichenCode^.State;    <i><font color="#FFFF00">// ReadOnly</font></i>
   Insert(EditZeichenCode);
-  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">4</font>, <font color="#0077BB">20</font>, <font color="#0077BB">5</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'Zeichencode:'</font>, EditZeichenCode)));
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">4</font>, <font color="#0077BB">20</font>, <font color="#0077BB">5</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Zeichencode:'</font>, EditZeichenCode)));
 <br>
   <i><font color="#FFFF00">// Maus-Tasten</font></i>
-  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">7</font>, <font color="#0077BB">30</font>, <font color="#0077BB">8</font>);
-  EditScanCode := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">7</font>));
+  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">7</font>, <font color="#0077BB">30</font>, <font color="#0077BB">8</font>);
+  EditScanCode := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">7</font>));
   EditScanCode^.State := sfDisabled <b><font color="0000BB">or</font></b> EditScanCode^.State;  <i><font color="#FFFF00">// ReadOnly</font></i>
   Insert(EditScanCode);
-  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">7</font>, <font color="#0077BB">20</font>, <font color="#0077BB">8</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'Scancode:'</font>, EditScanCode)));
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">7</font>, <font color="#0077BB">20</font>, <font color="#0077BB">8</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Scancode:'</font>, EditScanCode)));
 <br>
   <i><font color="#FFFF00">// Maus-Tasten</font></i>
-  Rect.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">9</font>, <font color="#0077BB">30</font>, <font color="#0077BB">10</font>);
-  EditShiftState := <b><font color="0000BB">new</font></b>(PInputLine, Init(Rect, <font color="#0077BB">7</font>));
+  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">9</font>, <font color="#0077BB">30</font>, <font color="#0077BB">10</font>);
+  EditShiftState := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">7</font>));
   EditShiftState^.State := sfDisabled <b><font color="0000BB">or</font></b> EditShiftState^.State;  <i><font color="#FFFF00">// ReadOnly</font></i>
   Insert(EditShiftState);
-  Rect.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">9</font>, <font color="#0077BB">20</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(Rect, <font color="#FF0000">'Shiftstate:'</font>, EditShiftState)));
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">9</font>, <font color="#0077BB">20</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Shiftstate:'</font>, EditShiftState)));
 <br>
   <i><font color="#FFFF00">// Ok-Button</font></i>
-  Rect.Assign(<font color="#0077BB">27</font>, <font color="#0077BB">12</font>, <font color="#0077BB">37</font>, <font color="#0077BB">14</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(Rect, <font color="#FF0000">'OK'</font>, cmOK, bfDefault)));
+  R.Assign(<font color="#0077BB">27</font>, <font color="#0077BB">12</font>, <font color="#0077BB">37</font>, <font color="#0077BB">14</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'OK'</font>, cmOK, bfDefault)));
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 Im EventHandle sieht man, das die Tastatur abgefangen wird. Es wird der Zeichencode und der Scancode ausgegeben.<br>

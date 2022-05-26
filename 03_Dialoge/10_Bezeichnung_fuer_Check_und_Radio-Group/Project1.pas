@@ -15,8 +15,8 @@ uses
 
 const
   cmAbout = 1001;     // About anzeigen
-  cmList = 1002;      // Datei Liste
-  cmPara = 1003;      // Parameter
+  cmList  = 1002;     // Datei Liste
+  cmPara  = 1003;     // Parameter
 
 type
   TMyApp = object(TApplication)
@@ -29,25 +29,25 @@ type
 
   procedure TMyApp.InitStatusLine;
   var
-    Rect: TRect;              // Rechteck für die Statuszeilen Position.
+    R: TRect;                 // Rechteck für die Statuszeilen Position.
 
     P0: PStatusDef;           // Pointer ganzer Eintrag.
     P1, P2, P3: PStatusItem;  // Poniter auf die einzelnen Hot-Key.
   begin
-    GetExtent(Rect);
-    Rect.A.Y := Rect.B.Y - 1;
+    GetExtent(R);
+    R.A.Y := R.B.Y - 1;
 
     P3 := NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil);
     P2 := NewStatusKey('~F10~ Menu', kbF10, cmMenu, P3);
     P1 := NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit, P2);
     P0 := NewStatusDef(0, $FFFF, P1, nil);
 
-    StatusLine := New(PStatusLine, Init(Rect, P0));
+    StatusLine := New(PStatusLine, Init(R, P0));
   end;
 
   procedure TMyApp.InitMenuBar;
   var
-    Rect: TRect;                       // Rechteck für die Menüzeilen-Position.
+    R: TRect;                          // Rechteck für die Menüzeilen-Position.
 
     M: PMenu;                          // Ganzes Menü
     SM0, SM1, SM2,                     // Submenu
@@ -55,8 +55,8 @@ type
     M1_0, M2_0: PMenuItem;             // Einfache Menüpunkte
 
   begin
-    GetExtent(Rect);
-    Rect.B.Y := Rect.A.Y + 1;
+    GetExtent(R);
+    R.B.Y := R.A.Y + 1;
 
     M2_0 := NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil);
     SM2 := NewSubMenu('~H~ilfe', hcNoContext, NewMenu(M2_0), nil);
@@ -73,7 +73,7 @@ type
 
     M := NewMenu(SM0);
 
-    MenuBar := New(PMenuBar, Init(Rect, M));
+    MenuBar := New(PMenuBar, Init(R, M));
   end;
 
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -105,18 +105,18 @@ Dies funktioniert fast gleich, wie ein normales Label. einziger Unterschied, ans
   procedure TMyApp.MyParameter;
   var
     Dia: PDialog;
-    Rect: TRect;
+    R: TRect;
     dummy: word;
     Ptr: PView;
   begin
-    Rect.Assign(0, 0, 35, 15);
-    Rect.Move(23, 3);
-    Dia := New(PDialog, Init(Rect, 'Parameter'));
+    R.Assign(0, 0, 35, 15);
+    R.Move(23, 3);
+    Dia := New(PDialog, Init(R, 'Parameter'));
     with Dia^ do begin
 
       // CheckBoxen
-      Rect.Assign(2, 3, 18, 7);
-      Ptr := New(PCheckBoxes, Init(Rect,
+      R.Assign(2, 3, 18, 7);
+      Ptr := New(PCheckBoxes, Init(R,
         NewSItem('~D~atei',
         NewSItem('~Z~eile',
         NewSItem('D~a~tum',
@@ -124,28 +124,28 @@ Dies funktioniert fast gleich, wie ein normales Label. einziger Unterschied, ans
         nil))))));
       Insert(Ptr);
       // Label für CheckGroup.
-      Rect.Assign(2, 2, 10, 3);
-      Insert(New(PLabel, Init(Rect, 'Dr~u~cken', Ptr)));
+      R.Assign(2, 2, 10, 3);
+      Insert(New(PLabel, Init(R, 'Dr~u~cken', Ptr)));
 
       // RadioButton
-      Rect.Assign(21, 3, 33, 6);
-      Ptr := New(PRadioButtons, Init(Rect,
+      R.Assign(21, 3, 33, 6);
+      Ptr := New(PRadioButtons, Init(R,
         NewSItem('~G~ross',
         NewSItem('~M~ittel',
         NewSItem('~K~lein',
         nil)))));
       Insert(Ptr);
       // Label für RadioGroup.
-      Rect.Assign(20, 2, 31, 3);
-      Insert(New(PLabel, Init(Rect, '~S~chrift', Ptr)));
+      R.Assign(20, 2, 31, 3);
+      Insert(New(PLabel, Init(R, '~S~chrift', Ptr)));
 
       // Ok-Button
-      Rect.Assign(7, 12, 17, 14);
-      Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
+      R.Assign(7, 12, 17, 14);
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 
       // Schliessen-Button
-      Rect.Assign(19, 12, 32, 14);
-      Insert(new(PButton, Init(Rect, '~A~bbruch', cmCancel, bfNormal)));
+      R.Assign(19, 12, 32, 14);
+      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
     dummy := Desktop^.ExecView(Dia);   // Dialog Modal öffnen.
     Dispose(Dia, Done);                // Dialog und Speicher frei geben.
