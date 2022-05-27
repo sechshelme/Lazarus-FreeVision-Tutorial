@@ -36,14 +36,23 @@ Aus diese Grund sollte man für eine fehlerfreie Darstellung der Umaute, diese a
 
 <b>Genereller Hinweis:</b>
 Wen man zur Laufzeit Texte ändern will, zB. <b>Label</b>, <b>StaticText</b>, ist Vorsicht geboten.
-Da die Texte <b>PString</b> gespeichert sind, ist darauf zu achten, das man im Konstruktor (Init) schon genügend Specher für die Texte reserviert.
+Da die Texte <b>PString</b> gespeichert sind, ist darauf zu achten, das man im Konstruktor (Init) schon genügend Speiher für die Texte reserviert.
 Am einfachsten geht dies so, somit hat es dann genügend Platz noch für <b>world</b>.
 //code+
   StaticText := new(PStaticText, Init(Rect, 'Hallo           '));
   StaticText^.Text^ := 'Hello world';
 //code-
 
+<b>TListBox</b>
+Bei der Komponenten <b>TListBox<b> ist Vorsicht geboten, die <b>TList</b> welche man hier zuordnet, muss man selbst in einem <b>Destructor</b> aufräumen.
+Beispiele gibt es im Kapitel <b>Listen und ListBoxen</b>.
+
 <b>Genereller Hinweis 64Bit:</b>
 Bei 64Bit Coden, kann es Fehler geben, <s>das betrifft vor allem Funktionen, welche <b>FormatStr</b> verwenden.</s>
 Das sieht man leider gut mit der Zeilen und Spalten-Anzeige der Fenster.
+
+<b>Turbo-Vision</b>
+In diesem Tutorial gibt es Sachen, welche <b>nicht</b> 100% kompatibel zu <b>Turbo-Vision</b> sind.
+Gewisse Komponenten und Funktionen wurden erst mit <b>Free-Vision</b> von <b>FPC</b> eingeführt.
+da gehört zB. <b>TabSheet dazu.</b>
 *)
