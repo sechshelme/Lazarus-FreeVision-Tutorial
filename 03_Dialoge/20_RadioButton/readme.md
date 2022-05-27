@@ -1,6 +1,6 @@
 <html>
     <b><h1>03 Dialoge</h1></b>
-    <b><h2>08 RadioButton</h2></b>
+    <b><h2>20 RadioButton</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Dialog um RadioButtons ergänzen.<br>
 <hr><br>

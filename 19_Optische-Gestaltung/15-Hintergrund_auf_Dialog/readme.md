@@ -1,6 +1,6 @@
 <html>
-    <b><h1>11 Optische-Gestaltung</h1></b>
-    <b><h2>06-Hintergrund auf Dialog</h2></b>
+    <b><h1>19 Optische-Gestaltung</h1></b>
+    <b><h2>15-Hintergrund auf Dialog</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei Bedarf, kann man auch ein Hintergrund-Muster auf einen Dialog/Fenster legen.<br>
 <hr><br>

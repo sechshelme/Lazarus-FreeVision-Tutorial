@@ -1,6 +1,6 @@
 <html>
-    <b><h1>08 Editor</h1></b>
-    <b><h2>02 Speichern und oeffnen</h2></b>
+    <b><h1>12 Editor</h1></b>
+    <b><h2>05 Speichern und oeffnen</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Ein Editor wird erst brauchbar, wen Dateifunktionen dazu kommen, zB. öffnen und speichern.<br>
 Das Öffnen ist ähnlich von wie ein leerses Fenster erzeugen.<br>

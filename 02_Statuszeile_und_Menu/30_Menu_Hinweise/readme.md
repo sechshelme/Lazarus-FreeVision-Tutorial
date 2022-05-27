@@ -1,6 +1,6 @@
 <html>
     <b><h1>02 Statuszeile und Menu</h1></b>
-    <b><h2>12 Menu Hinweise</h2></b>
+    <b><h2>30 Menu Hinweise</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinweise in der Statuszeile der Menü-Punkte.<br>
 <hr><br>

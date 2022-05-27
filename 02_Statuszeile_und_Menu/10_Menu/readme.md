@@ -1,6 +1,6 @@
 <html>
     <b><h1>02 Statuszeile und Menu</h1></b>
-    <b><h2>04 Menu</h2></b>
+    <b><h2>10 Menu</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinzufügen eines Menüs.<br>
 <hr><br>

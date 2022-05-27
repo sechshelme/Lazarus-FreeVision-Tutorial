@@ -1,6 +1,6 @@
 <html>
-    <b><h1>08 Editor</h1></b>
-    <b><h2>06 Zwischenablage</h2></b>
+    <b><h1>12 Editor</h1></b>
+    <b><h2>15 Zwischenablage</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wurde ein Zwischenablage hinzugefügt, somit ist auch kopieren und einfügen im Editor möglich.<br>
 Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bekommt, wen man kopieren wählt.<br>

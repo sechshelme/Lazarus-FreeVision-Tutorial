@@ -1,5 +1,5 @@
 <html>
-    <b><h1>06 Komponenten modifizieren</h1></b>
+    <b><h1>10 Komponenten modifizieren</h1></b>
     <b><h2>00 Button modifizieren</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Man kann auch eine Komponente modifzieren, in diesem Beispiel ist es ein Button.<br>

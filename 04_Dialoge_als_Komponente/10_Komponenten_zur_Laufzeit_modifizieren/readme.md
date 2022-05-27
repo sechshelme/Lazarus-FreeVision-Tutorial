@@ -1,6 +1,6 @@
 <html>
     <b><h1>04 Dialoge als Komponente</h1></b>
-    <b><h2>04 Komponenten zur Laufzeit modifizieren</h2></b>
+    <b><h2>10 Komponenten zur Laufzeit modifizieren</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.<br>
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.<br>

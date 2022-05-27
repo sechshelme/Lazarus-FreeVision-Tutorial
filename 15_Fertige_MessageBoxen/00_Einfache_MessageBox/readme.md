@@ -1,5 +1,5 @@
 <html>
-    <b><h1>10 Fertige MessageBoxen</h1></b>
+    <b><h1>15 Fertige MessageBoxen</h1></b>
     <b><h2>00 Einfache MessageBox</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>

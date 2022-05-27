@@ -1,6 +1,6 @@
 <html>
     <b><h1>03 Dialoge</h1></b>
-    <b><h2>10 Bezeichnung fuer Check und Radio-Group</h2></b>
+    <b><h2>25 Bezeichnung fuer Check und Radio-Group</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Radio und Check-Group mit einem Label bezeichnen.<br>
 <hr><br>

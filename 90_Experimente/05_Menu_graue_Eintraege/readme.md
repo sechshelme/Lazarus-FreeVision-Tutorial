@@ -1,6 +1,6 @@
 <html>
     <b><h1>90 Experimente</h1></b>
-    <b><h2>08 Menu graue Eintraege</h2></b>
+    <b><h2>05 Menu graue Eintraege</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Menupunkt kann man auch ineinander verschachteln.<br>
 <hr><br>

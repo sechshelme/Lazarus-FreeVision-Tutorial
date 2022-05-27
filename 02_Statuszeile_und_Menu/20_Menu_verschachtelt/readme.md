@@ -1,6 +1,6 @@
 <html>
     <b><h1>02 Statuszeile und Menu</h1></b>
-    <b><h2>08 Menu verschachtelt</h2></b>
+    <b><h2>20 Menu verschachtelt</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Menupunkt kann man auch ineinander verschachteln.<br>
 <hr><br>

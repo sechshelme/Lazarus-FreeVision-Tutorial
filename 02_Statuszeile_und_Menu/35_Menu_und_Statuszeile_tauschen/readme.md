@@ -1,6 +1,6 @@
 <html>
     <b><h1>02 Statuszeile und Menu</h1></b>
-    <b><h2>14 Menu und Statuszeile tauschen</h2></b>
+    <b><h2>35 Menu und Statuszeile tauschen</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Man kann zur Laufzeit das komplette Menü und Statuszeile austauschen.<br>
 ZB. um die Anwendung mehrsprachig zu machen.<br>

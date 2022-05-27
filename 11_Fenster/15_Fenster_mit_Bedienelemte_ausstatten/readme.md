@@ -1,6 +1,6 @@
 <html>
-    <b><h1>07 Fenster</h1></b>
-    <b><h2>06 Fenster mit Bedienelemte ausstatten</h2></b>
+    <b><h1>11 Fenster</h1></b>
+    <b><h2>15 Fenster mit Bedienelemte ausstatten</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Dem Fenster wurden noch Scrollbalken spendiert.<br>
 Man könnte noch eine Indikator hinzufügen, welcher Zeilen und Spalten anzeigt.<br>

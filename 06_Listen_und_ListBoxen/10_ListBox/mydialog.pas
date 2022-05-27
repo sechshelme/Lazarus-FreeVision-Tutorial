@@ -56,7 +56,8 @@ begin
   Insert(ScrollBar);
 
   // ListBox
-  R.Assign(5, 2, 31, 7);
+  R.A.X := 5;
+  Dec(R.B.X, 1);
   ListBox := new(PListBox, Init(R, 1, ScrollBar));
   ListBox^.NewList(StringCollection);
   Insert(ListBox);

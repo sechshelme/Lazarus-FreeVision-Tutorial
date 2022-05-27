@@ -1,6 +1,6 @@
 <html>
-    <b><h1>09 TView</h1></b>
-    <b><h2>02 TView erweitern</h2></b>
+    <b><h1>14 TView</h1></b>
+    <b><h2>05 TView erweitern</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 <b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.<br>
 Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>

@@ -1,6 +1,6 @@
 <html>
     <b><h1>03 Dialoge</h1></b>
-    <b><h2>12 InputLine (Edit-Zeile)</h2></b>
+    <b><h2>30 InputLine (Edit-Zeile)</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Einfügen eine Edit-Zeile.<br>
 <hr><br>

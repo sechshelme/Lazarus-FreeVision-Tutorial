@@ -1,6 +1,6 @@
 <html>
     <b><h1>03 Dialoge</h1></b>
-    <b><h2>20 StaticText gut fuer ein About</h2></b>
+    <b><h2>50 StaticText gut fuer ein About</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wird ein About-Dialog erstellt, das sieht man gut für was man Label gebrauchen kann.<br>
 <hr><br>

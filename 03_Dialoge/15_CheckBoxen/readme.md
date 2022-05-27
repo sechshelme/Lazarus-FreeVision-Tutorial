@@ -1,6 +1,6 @@
 <html>
     <b><h1>03 Dialoge</h1></b>
-    <b><h2>06 CheckBoxen</h2></b>
+    <b><h2>15 CheckBoxen</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Dialog um CheckBoxen ergänzen.<br>
 <hr><br>

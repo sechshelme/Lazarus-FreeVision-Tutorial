@@ -1,6 +1,6 @@
 <html>
-    <b><h1>12 Diverses</h1></b>
-    <b><h2>06 Baum Ansicht</h2></b>
+    <b><h1>20 Diverses</h1></b>
+    <b><h2>15 Baum Ansicht</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Baumartige Darstellung.<br>
 <hr><br>

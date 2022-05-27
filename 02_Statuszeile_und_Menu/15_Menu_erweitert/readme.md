@@ -1,6 +1,6 @@
 <html>
     <b><h1>02 Statuszeile und Menu</h1></b>
-    <b><h2>06 Menu erweitert</h2></b>
+    <b><h2>15 Menu erweitert</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinzufügen mehrere Menüpunkte.<br>
 Hier wird dies auch der Übersicht zu liebe gesplittet gemacht.<br>

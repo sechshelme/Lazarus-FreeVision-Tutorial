@@ -1,6 +1,6 @@
 <html>
     <b><h1>02 Statuszeile und Menu</h1></b>
-    <b><h2>02 Status Zeile mehrere Eintraege</h2></b>
+    <b><h2>05 Status Zeile mehrere Eintraege</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Ändern der Status-Zeile, mit mehreren Optionen.<br>
 <hr><br>

@@ -1,6 +1,6 @@
 <html>
     <b><h1>04 Dialoge als Komponente</h1></b>
-    <b><h2>02 Dialog mit lokalem Ereigniss</h2></b>
+    <b><h2>05 Dialog mit lokalem Ereigniss</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.<br>
 Im Beispiel wir eine MessageBox aufgerufen.<br>

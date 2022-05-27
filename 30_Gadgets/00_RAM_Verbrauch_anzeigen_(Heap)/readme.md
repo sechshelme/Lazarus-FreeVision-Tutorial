@@ -1,10 +1,10 @@
 <html>
-    <b><h1>20 Gadgets</h1></b>
-    <b><h2>10 RAM Verbrauch anzeigen (Heap)</h2></b>
+    <b><h1>30 Gadgets</h1></b>
+    <b><h2>00 RAM Verbrauch anzeigen (Heap)</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.<br>
 Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.<br>
-Die TListBox ist ein gutes Beispiel, da diese in den original Source einen Bug hat.<br>
+Die <b>TListBox</b> ist ein gutes Beispiel, da diese in den original Source einen Bug hat.<br>
 Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.<br>
 <hr><br>
     Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.<br>
@@ -131,15 +131,6 @@ Komponenten für den Dialog generieren.<br>
   R.Move(<font color="#0077BB">15</font>, <font color="#0077BB">0</font>);
   Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
 <b><font color="0000BB">end</font></b>;
-<br>
-<i><font color="#FFFF00">//done+</font></i>
-<b><font color="0000BB">destructor</font></b> TMyDialog.Done;
-<b><font color="0000BB">begin</font></b>
-   <b><font color="0000BB">Dispose</font></b>(ListBox^.List, Done); <i><font color="#FFFF00">// Dies Versuchsweise ausklammern</font></i>
-   <b><font color="0000BB">inherited</font></b> Done;
-<b><font color="0000BB">end</font></b>;
-<i><font color="#FFFF00">//done-</font></i>
-<br>
 </code></pre>
 Manuell den Speicher frei geben.<br>
 Man kann hier versuchsweise das Dispose ausklammern, dann sieht man,<br>

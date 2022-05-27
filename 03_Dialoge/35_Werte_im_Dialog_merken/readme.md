@@ -1,6 +1,6 @@
 <html>
     <b><h1>03 Dialoge</h1></b>
-    <b><h2>14 Werte im Dialog merken</h2></b>
+    <b><h2>35 Werte im Dialog merken</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Bis jetzt gingen die Werte im Dialog immer wieder verloren, wen man diesen schliesste und wieder öffnete.<br>
 Aus diesem Grund werden jetzt die Werte in einen Record gespeichert.<br>

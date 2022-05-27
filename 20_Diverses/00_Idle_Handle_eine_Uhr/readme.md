@@ -1,5 +1,5 @@
 <html>
-    <b><h1>12 Diverses</h1></b>
+    <b><h1>20 Diverses</h1></b>
     <b><h2>00 Idle Handle eine Uhr</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wird gezeigt, wie man <b>Idle</b> verwenden kann.<br>
@@ -51,13 +51,13 @@ Würde man es bei jedem Idle machen, würde die Uhr nur flimmern.<br>
 <pre><code><b><font color="0000BB">procedure</font></b> TMyApp.Idle;
 <b><font color="0000BB">var</font></b>
   zeitNeu: Integer;
-  s: <b><font color="0000BB">String</font></b>;        <i><font color="#FFFF00">// Speichert die aktuelle Zeit als String.</font></i>
+  s: ShortString;      <i><font color="#FFFF00">// Speichert die aktuelle Zeit als String.</font></i>
 <b><font color="0000BB">begin</font></b>
-  zeitNeu := round(time * <font color="#0077BB">60</font> * <font color="#0077BB">60</font> * <font color="#0077BB">24</font>);                   <i><font color="#FFFF00">// Sekunden berechnen.</font></i>
-  <b><font color="0000BB">if</font></b> zeitNeu <> zeitalt <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>                         <i><font color="#FFFF00">// Nur aktualliesieren wen ein Sek. vorbei.</font></i>
+  zeitNeu := round(time * <font color="#0077BB">60</font> * <font color="#0077BB">60</font> * <font color="#0077BB">24</font>);           <i><font color="#FFFF00">// Sekunden berechnen.</font></i>
+  <b><font color="0000BB">if</font></b> zeitNeu <> zeitalt <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>                 <i><font color="#FFFF00">// Nur aktualliesieren wen ein Sek. vorbei.</font></i>
     zeitalt := zeitNeu;
-    s:= TimeToStr(Now);                                    <i><font color="#FFFF00">// Aktuelle Zeit als String.</font></i>
-    Message(@<b><font color="0000BB">Self</font></b>, evBroadcast, cmUhrRefresh, Pointer(s)); <i><font color="#FFFF00">// Ruft eigener HandleEvent auf.</font></i>
+    s:= TimeToStr(Now);                            <i><font color="#FFFF00">// Aktuelle Zeit als String.</font></i>
+    Message(@<b><font color="0000BB">Self</font></b>, evBroadcast, cmUhrRefresh, @s); <i><font color="#FFFF00">// Ruft eigener HandleEvent auf.</font></i>
   <b><font color="0000BB">end</font></b>;
 <b><font color="0000BB">end</font></b>;</code></pre>
 Dieses HandleEvent interessiert das Kommando <b>cmUhrRefresh</b> nicht.<br>
@@ -97,7 +97,7 @@ Hier wird in <b>ZeitStr</b> die Zeit gespeichert, so das sie mit <b>Draw</b> aus
   PUhrView = ^TUhrView;
   TUhrView = <b><font color="0000BB">object</font></b>(TDialog)
   <b><font color="0000BB">private</font></b>
-    ZeitStr: <b><font color="0000BB">String</font></b>;
+    ZeitStr: ShortString;
   <b><font color="0000BB">public</font></b>
     <b><font color="0000BB">constructor</font></b> Init;
     <b><font color="0000BB">procedure</font></b> Draw; <b><font color="0000BB">Virtual</font></b>;
@@ -141,7 +141,7 @@ Das Kommando <b>cmOk</b> ist nicht besonderes, es schliesst nur den Dialog.<br>
     evBroadcast: <b><font color="0000BB">begin</font></b>
       <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
         cmUhrRefresh: <b><font color="0000BB">begin</font></b>
-          ZeitStr := <b><font color="0000BB">String</font></b>(Event.InfoPtr);
+          ZeitStr := PString(Event.InfoPtr)^;
           Draw;
         <b><font color="0000BB">end</font></b>;
       <b><font color="0000BB">end</font></b>;

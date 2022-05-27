@@ -1,6 +1,6 @@
 <html>
     <b><h1>03 Dialoge</h1></b>
-    <b><h2>18 Werte des Dialoges auf Platte speichern</h2></b>
+    <b><h2>45 Werte des Dialoges auf Platte speichern</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Das die Werte des Dialoges auch nach beenden der Anwendung erhalten bleiben, speichern wir die Daten auf die Platte.<br>
 Es wird nicht überprüft, ob geschrieben werden kann, etc.<br>

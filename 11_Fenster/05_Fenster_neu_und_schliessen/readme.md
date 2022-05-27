@@ -1,6 +1,6 @@
 <html>
-    <b><h1>07 Fenster</h1></b>
-    <b><h2>02 Fenster neu und schliessen</h2></b>
+    <b><h1>11 Fenster</h1></b>
+    <b><h2>05 Fenster neu und schliessen</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Über das Menü Fenster erzeigen und schliessen.<br>
 <hr><br>

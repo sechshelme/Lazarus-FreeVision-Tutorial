@@ -1,5 +1,5 @@
 <html>
-    <b><h1>08 Editor</h1></b>
+    <b><h1>12 Editor</h1></b>
     <b><h2>00 Einfaches Editor-Fenster</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Das Fenster ist nun ein Text-Editor, das man diese Funktion erreicht, nimmt man ein <b>PEditWindow</b>.<br>

@@ -1,6 +1,6 @@
 <html>
     <b><h1>90 Experimente</h1></b>
-    <b><h2>25 Eintrag einfuegen</h2></b>
+    <b><h2>20 Eintrag einfuegen</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Dialog um Buttons ergänzen.<br>
 <hr><br>

@@ -1,6 +1,6 @@
 <html>
     <b><h1>02 Statuszeile und Menu</h1></b>
-    <b><h2>10 Fertige Statuszeile und Menues</h2></b>
+    <b><h2>25 Fertige Statuszeile und Menues</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Für die Statuszeile und das Menü gibt es fertige Items, aber ich bevorzuge es, die Items selbst zu erstellen.<br>
 Die fetigen Items sind nur in Englisch.<br>

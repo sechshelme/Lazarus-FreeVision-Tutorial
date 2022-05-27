@@ -1,6 +1,6 @@
 <html>
     <b><h1>03 Dialoge</h1></b>
-    <b><h2>02 Erster Dialog</h2></b>
+    <b><h2>05 Erster Dialog</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Abarbeiten der Events, der Statuszeile und des Menu.<br>
 <hr><br>

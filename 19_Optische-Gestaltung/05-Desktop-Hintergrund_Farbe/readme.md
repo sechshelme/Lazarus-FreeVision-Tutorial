@@ -1,6 +1,6 @@
 <html>
-    <b><h1>11 Optische-Gestaltung</h1></b>
-    <b><h2>02-Desktop-Hintergrund Farbe</h2></b>
+    <b><h1>19 Optische-Gestaltung</h1></b>
+    <b><h2>05-Desktop-Hintergrund Farbe</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Wen man die Farbe des Hintergrundes änder will, ist ein wenig komplizierter als nur das Zeichen.<br>
 Dazu muss man beim Object <b>TBackground</b> die Funktion <b>GetPalette</b> überschreiben.<br>

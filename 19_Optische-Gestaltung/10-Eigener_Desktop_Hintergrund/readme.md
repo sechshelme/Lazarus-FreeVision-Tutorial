@@ -1,6 +1,6 @@
 <html>
-    <b><h1>11 Optische-Gestaltung</h1></b>
-    <b><h2>04-Eigener Desktop Hintergrund</h2></b>
+    <b><h1>19 Optische-Gestaltung</h1></b>
+    <b><h2>10-Eigener Desktop Hintergrund</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Man hat sogar die Möglichkeit, den ganzen Background selbst zu zeichnen.<br>
 Da man alles selbst zeichent kann man sich den Umweg über <b>TBackGround</b> sparen und direkt <B>TView</b> vererben.<br>

@@ -1,6 +1,6 @@
 <html>
     <b><h1>03 Dialoge</h1></b>
-    <b><h2>16 Freien Speicher ueberpruefen</h2></b>
+    <b><h2>40 Freien Speicher ueberpruefen</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Überprüfen ob genügend Speicher frei ist, um den Dialog zu erzeugen.<br>
 Auf den heutigen Rechner wird die wohl nicht mehr der Fall sein, das der Speicher wegen eines Dialoges überläuft.<br>

@@ -1,6 +1,6 @@
 <html>
-    <b><h1>12 Diverses</h1></b>
-    <b><h2>04 InputLine Validate</h2></b>
+    <b><h1>20 Diverses</h1></b>
+    <b><h2>10 InputLine Validate</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wird eine Bereichsbegrenzung für <b>PInputLine</b> gezeigt.<br>
 Bei der ersten Zeile ist nur eine Zahl zwischen 0 und 99 erlaubt.<br>

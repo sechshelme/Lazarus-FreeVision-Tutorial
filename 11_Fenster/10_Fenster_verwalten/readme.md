@@ -1,6 +1,6 @@
 <html>
-    <b><h1>07 Fenster</h1></b>
-    <b><h2>04 Fenster verwalten</h2></b>
+    <b><h1>11 Fenster</h1></b>
+    <b><h2>10 Fenster verwalten</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Fenster verwalten. Nun ist es möglich über das Menü Steuerkomandos für die Fensterverwaltung zu geben.<br>
 ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.<br>

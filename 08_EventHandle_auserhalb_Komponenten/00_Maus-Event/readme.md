@@ -1,5 +1,5 @@
 <html>
-    <b><h1>05 EventHandle auserhalb Komponenten</h1></b>
+    <b><h1>08 EventHandle auserhalb Komponenten</h1></b>
     <b><h2>00 Maus-Event</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/klickt.<br>
