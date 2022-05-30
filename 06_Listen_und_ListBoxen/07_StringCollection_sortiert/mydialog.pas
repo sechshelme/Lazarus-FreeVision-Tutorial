@@ -28,7 +28,7 @@ var
   R: TRect;
   s: shortstring;
   i: Integer;
-  StringCollection: PUnSortedStrCollection;
+  StringCollection: PStringCollection;
 
 const
   Tage: array [0..6] of shortstring = (
@@ -39,7 +39,7 @@ begin
   inherited Init(R, 'StringCollection Demo');
 
   // StringCollection
-  StringCollection := new(PUnSortedStrCollection, Init(5, 5));
+  StringCollection := new(PStringCollection, Init(5, 5));
   for i := 0 to Length(Tage) - 1 do begin
     StringCollection^.Insert(NewStr(Tage[i]));
   end;

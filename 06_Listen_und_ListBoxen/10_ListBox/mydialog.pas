@@ -35,7 +35,7 @@ constructor TMyDialog.Init;
 var
   R: TRect;
   ScrollBar: PScrollBar;
-  i: Sw_Integer;
+  i: Integer;
 const
   Tage: array [0..6] of shortstring = (
     'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
