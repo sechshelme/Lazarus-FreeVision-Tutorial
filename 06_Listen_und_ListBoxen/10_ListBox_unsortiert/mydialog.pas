@@ -20,10 +20,10 @@ type
     cmTag = 1000;  // Lokale Event Konstante
   var
     ListBox: PListBox;
-    StringCollection: PStringCollection;
+    StringCollection: PUnSortedStrCollection;
 
     constructor Init;
-    destructor Done; virtual;  // Wegen Speicher Leak
+    destructor Done; virtual;  // Wegen Speicher Leak in TList
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
 //type-
@@ -35,7 +35,7 @@ constructor TMyDialog.Init;
 var
   R: TRect;
   ScrollBar: PScrollBar;
-  i: Sw_Integer;
+  i: Integer;
 const
   Tage: array [0..6] of shortstring = (
     'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
@@ -45,7 +45,7 @@ begin
   inherited Init(R, 'ListBox Demo');
 
   // StringCollection
-  StringCollection := new(PStringCollection, Init(5, 5));
+  StringCollection := new(PUnSortedStrCollection, Init(5, 5));
   for i := 0 to Length(Tage) - 1 do begin
     StringCollection^.Insert(NewStr(Tage[i]));
   end;
@@ -56,7 +56,8 @@ begin
   Insert(ScrollBar);
 
   // ListBox
-  R.Assign(5, 2, 31, 7);
+  R.A.X := 5;
+  Dec(R.B.X, 1);
   ListBox := new(PListBox, Init(R, 1, ScrollBar));
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
@@ -78,15 +79,15 @@ end;
 //done+
 destructor TMyDialog.Done;
 begin
-   Dispose(ListBox^.List, Done); // Dies Versuchsweise ausklammern
-   inherited Done;
+  Dispose(ListBox^.List, Done); // Die Liste freigeben
+  inherited Done;
 end;
 //done-
 
 //handleevent+
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 var
-  s: ShortString;
+  s: shortstring;
 begin
   case Event.What of
     evCommand: begin
@@ -96,8 +97,12 @@ begin
         end;
         cmTag: begin
           str(ListBox^.Focused + 1, s);
+          // Eintrag mit Fokus auslesen
+          s := PString(ListBox^.GetFocusedItem)^;
+          // Und ausgeben
           MessageBox('Wochentag: ' + s + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          ClearEvent(Event);  // Event beenden.
+          // Event beenden.
+          ClearEvent(Event);
         end;
       end;
     end;

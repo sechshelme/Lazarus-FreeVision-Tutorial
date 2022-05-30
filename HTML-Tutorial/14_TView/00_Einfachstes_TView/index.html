@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00 Einfachstes TView</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
+    <b><h1>14 TView</h1></b>
+    <b><h2>00 Einfachstes TView</h2></b>
+<img src="image.png" alt="Selfhtml"><br><br>
+<b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.<br>
+Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>
+An diesem View sind keinerlei Änderungen möglich, da noch keine Event, Steurerelemente vorhanden sind.<br>
+<hr><br>
+Im Konstructor wird das View erzeugt.<br>
+<pre><code>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> Init;   <i><font color="#FFFF00">// Der Vorfahre aufrufen.</font></i>
+    NewView;          <i><font color="#FFFF00">// View erzeugen.</font></i>
+  <b><font color="0000BB">end</font></b>;</code></pre>
+Es wird ein einfaches View erzeugt, wie erwarte sieht man nicht viel, ausser eines grauen Rechteckes.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewView;
+  <b><font color="0000BB">var</font></b>
+    Win: PView;
+    R: TRect;
+  <b><font color="0000BB">begin</font></b>
+    R.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">5</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
+    Win := <b><font color="0000BB">New</font></b>(PView, Init(R));
+
+    <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      Desktop^.Insert(Win);
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</code></pre>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
+</html>

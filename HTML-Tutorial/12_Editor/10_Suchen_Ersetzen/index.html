@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>10 Suchen Ersetzen</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
+    <b><h1>12 Editor</h1></b>
+    <b><h2>10 Suchen Ersetzen</h2></b>
+<img src="image.png" alt="Selfhtml"><br><br>
+Der Editor hat eine <b>Suchen</b> und <b>Ersetzen</b> Funktion bekommen.<br>
+Leider sind die Standard-Dialoge dafür in Englisch.<br>
+Aus diesem Grund, wird es hier neu in deutsch gebaut.<br>
+Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialog der Fall ist.<br>
+Gibt man sich mit den englischen Dialogen zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menü anpassen, der Rest geschieht automatisch.<br>
+<hr><br>
+Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verdeutscht.<br>
+<pre><code>  <i><font color="#FFFF00">// === Suchen Dialog</font></i>
+  <b><font color="0000BB">function</font></b> DECreateFindDialog: PDialog;
+  <b><font color="0000BB">var</font></b>
+    D: PDialog;
+    Control: PView;
+    R: TRect;
+  <b><font color="0000BB">begin</font></b>
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">38</font>, <font color="#0077BB">12</font>);
+    D := <b><font color="0000BB">New</font></b>(PDialog, Init(R, <font color="#FF0000">'Suchen'</font>));
+    <b><font color="0000BB">with</font></b> D^ <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
+      Options := Options <b><font color="0000BB">or</font></b> ofCentered;
+
+      R.Assign(<font color="#0077BB">3</font>, <font color="#0077BB">3</font>, <font color="#0077BB">32</font>, <font color="#0077BB">4</font>);
+      Control := <b><font color="0000BB">New</font></b>(PInputLine, Init(R, <font color="#0077BB">80</font>));
+      Control^.HelpCtx := hcDFindText;
+      Insert(Control);
+      R.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">2</font>, <font color="#0077BB">20</font>, <font color="#0077BB">3</font>);
+      Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Zu ~s~uchenden Text'</font>, Control)));
+      R.Assign(<font color="#0077BB">32</font>, <font color="#0077BB">3</font>, <font color="#0077BB">35</font>, <font color="#0077BB">4</font>);
+      Insert(<b><font color="0000BB">New</font></b>(PHistory, Init(R, PInputLine(Control), <font color="#0077BB">10</font>)));
+
+      R.Assign(<font color="#0077BB">3</font>, <font color="#0077BB">5</font>, <font color="#0077BB">35</font>, <font color="#0077BB">7</font>);
+      Control := <b><font color="0000BB">New</font></b>(PCheckBoxes, Init(R,
+        NewSItem(<font color="#FF0000">'~G~ross- und Kleinschreibung'</font>,
+        NewSItem(<font color="#FF0000">'~N~ur ganze W'</font><font color="#FF0000">#148</font><font color="#FF0000">'rter'</font>, <b><font color="0000BB">nil</font></b>))));
+      Control^.HelpCtx := hcCCaseSensitive;
+      Insert(Control);
+
+      R.Assign(<font color="#0077BB">14</font>, <font color="#0077BB">9</font>, <font color="#0077BB">24</font>, <font color="#0077BB">11</font>);
+      Control := <b><font color="0000BB">New</font></b>(PButton, Init(R, slOK, cmOk, bfDefault));
+      Control^.HelpCtx := hcDOk;
+      Insert(Control);
+
+      Inc(R.A.X, <font color="#0077BB">12</font>);
+      Inc(R.B.X, <font color="#0077BB">12</font>);
+      Control := <b><font color="0000BB">New</font></b>(PButton, Init(R, slCancel, cmCancel, bfNormal));
+      Control^.HelpCtx := hcDCancel;
+      Insert(Control);
+
+      SelectNext(<b><font color="0000BB">False</font></b>);
+    <b><font color="0000BB">end</font></b>;
+    Result := D;
+  <b><font color="0000BB">end</font></b>;
+
+  <i><font color="#FFFF00">// === Ersetzen Dialog</font></i>
+  <b><font color="0000BB">function</font></b> DECreateReplaceDialog: PDialog;
+  <b><font color="0000BB">var</font></b>
+    Dialog: PDialog;
+    Control: PView;
+    R: TRect;
+  <b><font color="0000BB">begin</font></b>
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">40</font>, <font color="#0077BB">16</font>);
+    Dialog := <b><font color="0000BB">New</font></b>(PDialog, Init(R, <font color="#FF0000">'Ersetzen'</font>));
+    <b><font color="0000BB">with</font></b> Dialog^ <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
+      Options := Options <b><font color="0000BB">or</font></b> ofCentered;
+
+      R.Assign(<font color="#0077BB">3</font>, <font color="#0077BB">3</font>, <font color="#0077BB">34</font>, <font color="#0077BB">4</font>);
+      Control := <b><font color="0000BB">New</font></b>(PInputLine, Init(R, <font color="#0077BB">80</font>));
+      Control^.HelpCtx := hcDFindText;
+      Insert(Control);
+      R.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">2</font>, <font color="#0077BB">20</font>, <font color="#0077BB">3</font>);
+      Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Zu ~s~uchenden Text'</font>, Control)));
+      R.Assign(<font color="#0077BB">34</font>, <font color="#0077BB">3</font>, <font color="#0077BB">37</font>, <font color="#0077BB">4</font>);
+      Insert(<b><font color="0000BB">New</font></b>(PHistory, Init(R, PInputLine(Control), <font color="#0077BB">10</font>)));
+
+      R.Assign(<font color="#0077BB">3</font>, <font color="#0077BB">6</font>, <font color="#0077BB">34</font>, <font color="#0077BB">7</font>);
+      Control := <b><font color="0000BB">New</font></b>(PInputLine, Init(R, <font color="#0077BB">80</font>));
+      Control^.HelpCtx := hcDReplaceText;
+      Insert(Control);
+      R.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">5</font>, <font color="#0077BB">20</font>, <font color="#0077BB">6</font>);
+      Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Neuer ~T~ext'</font>, Control)));
+      R.Assign(<font color="#0077BB">34</font>, <font color="#0077BB">6</font>, <font color="#0077BB">37</font>, <font color="#0077BB">7</font>);
+      Insert(<b><font color="0000BB">New</font></b>(PHistory, Init(R, PInputLine(Control), <font color="#0077BB">11</font>)));
+
+      R.Assign(<font color="#0077BB">3</font>, <font color="#0077BB">8</font>, <font color="#0077BB">37</font>, <font color="#0077BB">12</font>);
+      Control := <b><font color="0000BB">New</font></b>(Dialogs.PCheckBoxes, Init(R,
+        NewSItem(<font color="#FF0000">'~G~ross- und Kleinschreibung'</font>,
+        NewSItem(<font color="#FF0000">'~N~ur ganze W'</font><font color="#FF0000">#148</font><font color="#FF0000">'rter'</font>,
+        NewSItem(<font color="#FF0000">'~R~egul'</font><font color="#FF0000">#132</font><font color="#FF0000">'re Ausdr'</font><font color="#FF0000">#129</font><font color="#FF0000">'cke'</font>,
+        NewSItem(<font color="#FF0000">'~A~lle ersetzen'</font>, <b><font color="0000BB">nil</font></b>))))));
+      Control^.HelpCtx := hcCCaseSensitive;
+      Insert(Control);
+
+      R.Assign(<font color="#0077BB">8</font>, <font color="#0077BB">13</font>, <font color="#0077BB">18</font>, <font color="#0077BB">15</font>);
+      Control := <b><font color="0000BB">New</font></b>(PButton, Init(R, <font color="#FF0000">'~O~k'</font>, cmOk, bfDefault));
+      Control^.HelpCtx := hcDOk;
+      Insert(Control);
+
+      R.Assign(<font color="#0077BB">22</font>, <font color="#0077BB">13</font>, <font color="#0077BB">32</font>, <font color="#0077BB">15</font>);
+      Control := <b><font color="0000BB">New</font></b>(PButton, Init(R, <font color="#FF0000">'Ab~b~ruch'</font>, cmCancel, bfNormal));
+      Control^.HelpCtx := hcDCancel;
+      Insert(Control);
+
+      SelectNext(<b><font color="0000BB">False</font></b>);
+    <b><font color="0000BB">end</font></b>;
+    Result := Dialog;
+  <b><font color="0000BB">end</font></b>;</code></pre>
+Hier wird die neuen Dialoge eingefügt.<br>
+<pre><code>  <b><font color="0000BB">function</font></b> MyStdEditorDialog(Dialog: Int16; Info: Pointer): word;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">case</font></b> Dialog <b><font color="0000BB">of</font></b>
+      edSaveAs: <b><font color="0000BB">begin</font></b>                           <i><font color="#FFFF00">// Neuer Dialog in Deutsch.</font></i>
+        Result := MyApp.ExecuteDialog(<b><font color="0000BB">New</font></b>(PFileDialog, Init(<font color="#FF0000">'*.txt'</font>,
+          <font color="#FF0000">'Datei speichern unter'</font>, <font color="#FF0000">'~D~atei-<b><font color="0000BB">Name</font></b>'</font>, fdOkButton, <font color="#0077BB">101</font>)), Info);
+      <b><font color="0000BB">end</font></b>;
+      edFind:                                   <i><font color="#FFFF00">// Der kommplet neue Suchen-Dialog.</font></i>
+        Result := Application^.ExecuteDialog(DECreateFindDialog, Info);
+      edReplace:                                <i><font color="#FFFF00">// Der kommplet neue Ersetzen-Dialog.</font></i>
+      <b><font color="0000BB">begin</font></b>
+        Result := MyApp.ExecuteDialog(DECreateReplaceDialog, Info);
+      <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+        Result := StdEditorDialog(Dialog, Info);
+      <b><font color="0000BB">end</font></b>;                                      <i><font color="#FFFF00">// Original Dialoge aufrufen.</font></i>
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</code></pre>
+Im Menü sind die neuen Suchen-Funktionen dazugekommen.<br>
+Dies ist das einzige was man machen muss.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+  <b><font color="0000BB">var</font></b>
+    R: TRect;
+  <b><font color="0000BB">begin</font></b>
+    GetExtent(R);
+    R.B.Y := R.A.Y + <font color="#0077BB">1</font>;
+
+    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, NewMenu(
+      NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(
+        NewItem(<font color="#FF0000">'~N~eu'</font>, <font color="#FF0000">'F4'</font>, kbF4, cmNewWin, hcNoContext,
+        NewItem(<font color="#FF0000">'~O~effnen...'</font>, <font color="#FF0000">'F3'</font>, kbF3, cmOpen, hcNoContext,
+        NewItem(<font color="#FF0000">'~S~peichern'</font>, <font color="#FF0000">'F2'</font>, kbF2, cmSave, hcNoContext,
+        NewItem(<font color="#FF0000">'Speichern ~u~nter...'</font>, <font color="#FF0000">''</font>, kbNoKey, cmSaveAs, hcNoContext,
+        NewItem(<font color="#FF0000">'~A~lle speichern'</font>, <font color="#FF0000">''</font>, kbNoKey, cmSaveAll, hcNoContext,
+        NewLine(
+        NewItem(<font color="#FF0000">'~B~eenden'</font>, <font color="#FF0000">'Alt-X'</font>, kbAltX, cmQuit, hcNoContext, <b><font color="0000BB">nil</font></b>)))))))),
+      NewSubMenu(<font color="#FF0000">'~S~uchen'</font>, hcNoContext, NewMenu(
+        NewItem(<font color="#FF0000">'~S~uchen...'</font>, <font color="#FF0000">'Ctrl+F'</font>, kbCtrlF, cmFind, hcNoContext,
+        NewItem(<font color="#FF0000">'~E~rsetzten...'</font>, <font color="#FF0000">'Ctrl+H'</font>, kbCtrlH, cmReplace, hcNoContext,
+        NewItem(<font color="#FF0000">'Suche ~n~'</font><font color="#FF0000">#132</font><font color="#FF0000">'chstes'</font>, <font color="#FF0000">'Ctrl+N'</font>, kbCtrlN, cmSearchAgain, hcNoContext, <b><font color="0000BB">nil</font></b>)))),
+      NewSubMenu(<font color="#FF0000">'~F~enster'</font>, hcNoContext, NewMenu(
+        NewItem(<font color="#FF0000">'~N~ebeneinander'</font>, <font color="#FF0000">''</font>, kbNoKey, cmTile, hcNoContext,
+        NewItem(<font color="#FF0000">#154</font><font color="#FF0000">'ber~l~append'</font>, <font color="#FF0000">''</font>, kbNoKey, cmCascade, hcNoContext,
+        NewItem(<font color="#FF0000">'~A~lle schliessen'</font>, <font color="#FF0000">''</font>, kbNoKey, cmCloseAll, hcNoContext,
+        NewItem(<font color="#FF0000">'Anzeige ~e~rneuern'</font>, <font color="#FF0000">''</font>, kbNoKey, cmRefresh, hcNoContext,
+        NewLine(
+        NewItem(<font color="#FF0000">'Gr'</font><font color="#FF0000">#148</font><font color="#FF0000">'sse/~P~osition'</font>, <font color="#FF0000">'Ctrl+F5'</font>, kbCtrlF5, cmResize, hcNoContext,
+        NewItem(<font color="#FF0000">'Ver~g~'</font><font color="#FF0000">#148</font><font color="#FF0000">'ssern'</font>, <font color="#FF0000">'F5'</font>, kbF5, cmZoom, hcNoContext,
+        NewItem(<font color="#FF0000">'~N~'</font><font color="#FF0000">#132</font><font color="#FF0000">'chstes'</font>, <font color="#FF0000">'F6'</font>, kbF6, cmNext, hcNoContext,
+        NewItem(<font color="#FF0000">'~V~orheriges'</font>, <font color="#FF0000">'Shift+F6'</font>, kbShiftF6, cmPrev, hcNoContext,
+        NewLine(
+        NewItem(<font color="#FF0000">'~S~chliessen'</font>, <font color="#FF0000">'Alt+F3'</font>, kbAltF3, cmClose, hcNoContext, <b><font color="0000BB">nil</font></b>)))))))))))), <b><font color="0000BB">nil</font></b>))))));
+  <b><font color="0000BB">end</font></b>;</code></pre>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
+</html>

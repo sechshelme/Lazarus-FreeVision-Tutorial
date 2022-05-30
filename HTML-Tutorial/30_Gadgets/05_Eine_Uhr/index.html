@@ -1,17 +1,23 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <title>05 Eine Uhr</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
     <b><h1>30 Gadgets</h1></b>
-    <b><h2>00 RAM Verbrauch anzeigen (Heap)</h2></b>
+    <b><h2>05 Eine Uhr</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
-In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.<br>
-Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.<br>
-Die <b>TListBox</b> ist ein gutes Beispiel, da diese in den original Source einen Bug hat.<br>
-Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.<br>
+In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.<br>
 <hr><br>
-    Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.<br>
+    Erzeugt ein kleines Fenster rechts-unten, welches die Uhr anzeigt.<br>
 <pre><code>    GetExtent(R);
-    R.A.X := R.B.X - <font color="#0077BB">12</font>;
+    R.A.X := R.B.X - <font color="#0077BB">9</font>;
     R.A.Y := R.B.Y - <font color="#0077BB">1</font>;
-    Heap := <b><font color="0000BB">New</font></b>(PHeapView, Init(R));
+    Heap := <b><font color="0000BB">New</font></b>(PClockView, Init(R));
     Insert(Heap); </code></pre>
 Den Dialog mit dem Speicher Leak aufrufen.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
@@ -21,7 +27,7 @@ Den Dialog mit dem Speicher Leak aufrufen.<br>
     FileName: ShortString;
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
-<br>
+
     <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
       <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
         <i><font color="#FFFF00">// Dialog mit der ListBox, welcher ein Speicher Leak hat.</font></i>
@@ -49,12 +55,12 @@ Den Dialog mit dem Speicher Leak aufrufen.<br>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.Idle;
-<br>
+
     <b><font color="0000BB">function</font></b> IsTileable(P: PView): Boolean;
     <b><font color="0000BB">begin</font></b>
       Result := (P^.Options <b><font color="0000BB">and</font></b> ofTileable <> <font color="#0077BB">0</font>) <b><font color="0000BB">and</font></b> (P^.State <b><font color="0000BB">and</font></b> sfVisible <> <font color="#0077BB">0</font>);
     <b><font color="0000BB">end</font></b>;
-<br>
+
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> Idle;
     Heap^.Update;
@@ -73,16 +79,16 @@ Der Dialog mit dem dem Speicher Leak<br>
 Den <b>Destructor</b> deklarieren, welcher das <b>Speicher Leak</b> behebt.<br>
 <pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
-<br>
+
   <font color="#FFFF00">{ TMyDialog }</font>
-<br>
+
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
   <b><font color="0000BB">const</font></b>
     cmTag = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>
   <b><font color="0000BB">var</font></b>
     ListBox: PListBox;
     StringCollection: PStringCollection;
-<br>
+
     <b><font color="0000BB">constructor</font></b> Init;
     <b><font color="0000BB">destructor</font></b> Done; <b><font color="0000BB">virtual</font></b>;  <i><font color="#FFFF00">// Wegen Speicher Leak</font></i>
     <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
@@ -97,36 +103,36 @@ Komponenten für den Dialog generieren.<br>
 <b><font color="0000BB">const</font></b>
   Tage: <b><font color="0000BB">array</font></b> [<font color="#0077BB">0</font>..<font color="#0077BB">6</font>] <b><font color="0000BB">of</font></b> shortstring = (
     <font color="#FF0000">'Montag'</font>, <font color="#FF0000">'Dienstag'</font>, <font color="#FF0000">'Mittwoch'</font>, <font color="#FF0000">'Donnerstag'</font>, <font color="#FF0000">'Freitag'</font>, <font color="#FF0000">'Samstag'</font>, <font color="#FF0000">'Sonntag'</font>);
-<br>
+
 <b><font color="0000BB">begin</font></b>
   R.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">5</font>, <font color="#0077BB">64</font>, <font color="#0077BB">17</font>);
   <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'ListBox Demo'</font>);
-<br>
+
   <i><font color="#FFFF00">// StringCollection</font></i>
   StringCollection := <b><font color="0000BB">new</font></b>(PStringCollection, Init(<font color="#0077BB">5</font>, <font color="#0077BB">5</font>));
   <b><font color="0000BB">for</font></b> i := <font color="#0077BB">0</font> <b><font color="0000BB">to</font></b> Length(Tage) - <font color="#0077BB">1</font> <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
     StringCollection^.Insert(NewStr(Tage[i]));
   <b><font color="0000BB">end</font></b>;
-<br>
+
   <i><font color="#FFFF00">// ScrollBar für ListBox</font></i>
   R.Assign(<font color="#0077BB">31</font>, <font color="#0077BB">2</font>, <font color="#0077BB">32</font>, <font color="#0077BB">7</font>);
   ScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(R));
   Insert(ScrollBar);
-<br>
+
   <i><font color="#FFFF00">// ListBox</font></i>
   R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">31</font>, <font color="#0077BB">7</font>);
   ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(R, <font color="#0077BB">1</font>, ScrollBar));
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
-<br>
+
   <i><font color="#FFFF00">// Tag-Button</font></i>
   R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">9</font>, <font color="#0077BB">18</font>, <font color="#0077BB">11</font>);
   Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~T~ag'</font>, cmTag, bfNormal)));
-<br>
+
   <i><font color="#FFFF00">// Cancel-Button</font></i>
   R.Move(<font color="#0077BB">15</font>, <font color="#0077BB">0</font>);
   Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~C~ancel'</font>, cmCancel, bfNormal)));
-<br>
+
   <i><font color="#FFFF00">// Ok-Button</font></i>
   R.Move(<font color="#0077BB">15</font>, <font color="#0077BB">0</font>);
   Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
@@ -163,5 +169,8 @@ Der EventHandle<br>
   <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <b><font color="0000BB">end</font></b>;
 </code></pre>
-<br>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
 </html>

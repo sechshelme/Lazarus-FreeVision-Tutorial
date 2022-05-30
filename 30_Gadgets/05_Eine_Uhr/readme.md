@@ -1,17 +1,14 @@
 <html>
     <b><h1>30 Gadgets</h1></b>
-    <b><h2>00 RAM Verbrauch anzeigen (Heap)</h2></b>
+    <b><h2>05 Eine Uhr</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
-In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.<br>
-Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.<br>
-Die <b>TListBox</b> ist ein gutes Beispiel, da diese in den original Source einen Bug hat.<br>
-Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.<br>
+In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.<br>
 <hr><br>
-    Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.<br>
+    Erzeugt ein kleines Fenster rechts-unten, welches die Uhr anzeigt.<br>
 <pre><code>    GetExtent(R);
-    R.A.X := R.B.X - <font color="#0077BB">12</font>;
+    R.A.X := R.B.X - <font color="#0077BB">9</font>;
     R.A.Y := R.B.Y - <font color="#0077BB">1</font>;
-    Heap := <b><font color="0000BB">New</font></b>(PHeapView, Init(R));
+    Heap := <b><font color="0000BB">New</font></b>(PClockView, Init(R));
     Insert(Heap); </code></pre>
 Den Dialog mit dem Speicher Leak aufrufen.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
