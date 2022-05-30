@@ -3,6 +3,9 @@
 Im Ordner "HTML-Tutorial" befindet sich das ganze Tutorial im HTML-Format, somit ist es im Browser anschaubar.
 Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
 
+30-05-2022
+Tutorial für <b>Listen</b> hinzugefügt.
+
 26-05-2022
 Alle Deklarationen von <b>TRect</b> von <b>Rec</b>t nach <b>R</b> ersetzt, da dies Free/Turbo-Vision Komform ist.
 
