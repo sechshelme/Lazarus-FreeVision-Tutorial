@@ -29,16 +29,17 @@ implementation
 
 //init+
 const
-  cmTag = 1000;  // Lokale Event Konstante
+  cmMonat = 1000;  // Lokale Event Konstante
 
 constructor TMyDialog.Init;
 var
   R: TRect;
   ScrollBar: PScrollBar;
-  i: Integer;
+  i: integer;
 const
-  Tage: array [0..6] of shortstring = (
-    'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
+  Tage: array [0..11] of shortstring = (
+    'Januar', 'Februar', 'M' + #132'rz', 'April', 'Mai', 'Juni', 'Juli',
+    'August', 'September', 'Oktober', 'November', 'Dezember');
 
 begin
   R.Assign(10, 5, 64, 17);
@@ -51,20 +52,20 @@ begin
   end;
 
   // ScrollBar für ListBox
-  R.Assign(31, 2, 32, 7);
+  R.Assign(42, 2, 43, 7);
   ScrollBar := new(PScrollBar, Init(R));
   Insert(ScrollBar);
 
   // ListBox
   R.A.X := 5;
   Dec(R.B.X, 1);
-  ListBox := new(PListBox, Init(R, 1, ScrollBar));
+  ListBox := new(PListBox, Init(R, 3, ScrollBar));
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
 
   // Tag-Button
   R.Assign(5, 9, 18, 11);
-  Insert(new(PButton, Init(R, '~T~ag', cmTag, bfNormal)));
+  Insert(new(PButton, Init(R, '~M~onat', cmMonat, bfNormal)));
 
   // Cancel-Button
   R.Move(15, 0);
@@ -93,10 +94,10 @@ begin
         cmOK: begin
           // mache etwas
         end;
-        cmTag: begin
+        cmMonat: begin
           // Eintrag mit Fokus auslesen
           // Und ausgeben
-          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
+          MessageBox('Monat: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
           // Event beenden.
           ClearEvent(Event);
         end;

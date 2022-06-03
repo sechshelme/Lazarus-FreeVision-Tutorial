@@ -9,7 +9,7 @@ uses
   SysUtils; // Für IntToStr und StrToInt.
 
 const
-  cmCounterUp = 1010;
+  cmCounterUp = 1010; // Muss gloabal sein
 
 //type+
 type

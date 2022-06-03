@@ -12,11 +12,7 @@ uses
 type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
-  const
-    cmCounter = 1003;       // Wird lokal für den Zähler-Butoon gebraucht.
-  var
     CounterButton: PButton; // Button mit Zähler.
-
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
@@ -25,6 +21,9 @@ type
 implementation
 
 //init+
+const
+  cmCounter = 1003;       // Wird lokal für den Zähler-Button gebraucht.
+
 constructor TMyDialog.Init;
 var
   R: TRect;

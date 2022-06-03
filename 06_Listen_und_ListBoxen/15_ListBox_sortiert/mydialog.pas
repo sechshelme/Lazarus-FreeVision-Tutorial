@@ -16,9 +16,6 @@ type
   { TMyDialog }
 
   TMyDialog = object(TDialog)
-  const
-    cmTag = 1000;  // Lokale Event Konstante
-  var
     ListBox: PListBox;
     StringCollection: PStringCollection;
 
@@ -31,6 +28,9 @@ type
 implementation
 
 //init+
+const
+  cmTag = 1000;  // Lokale Event Konstante
+
 constructor TMyDialog.Init;
 var
   R: TRect;
@@ -86,8 +86,6 @@ end;
 
 //handleevent+
 procedure TMyDialog.HandleEvent(var Event: TEvent);
-var
-  s: shortstring;
 begin
   case Event.What of
     evCommand: begin
@@ -96,11 +94,9 @@ begin
           // mache etwas
         end;
         cmTag: begin
-          str(ListBox^.Focused + 1, s);
           // Eintrag mit Fokus auslesen
-          s := PString(ListBox^.GetFocusedItem)^;
           // Und ausgeben
-          MessageBox('Wochentag: ' + s + ' gew' + #132 + 'hlt', nil, mfOKButton);
+          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
           // Event beenden.
           ClearEvent(Event);
         end;

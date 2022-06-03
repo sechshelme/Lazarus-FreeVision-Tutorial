@@ -12,13 +12,7 @@ uses
 type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
-  const
-    cmBlue = 1006;
-    cmCyan = 1007;
-    cmGray = 1008;
-  var
     CounterButton: PButton; // Button mit Zähler.
-
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
@@ -27,6 +21,11 @@ type
 implementation
 
 //init+
+const
+  cmBlue = 1006;
+  cmCyan = 1007;
+  cmGray = 1008;
+
 constructor TMyDialog.Init;
 var
   R: TRect;

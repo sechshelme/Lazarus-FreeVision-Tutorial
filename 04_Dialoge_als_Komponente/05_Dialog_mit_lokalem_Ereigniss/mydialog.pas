@@ -8,13 +8,9 @@ uses
   App, Objects, Drivers, Views, MsgBox, Dialogs;
 
 //type+
-const
-    cmMsg = 1003;  // Lokales Ereigniss
-
 type
   PMyAbout = ^TMyAbout;
   TMyAbout = object(TDialog)
-
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
@@ -23,6 +19,9 @@ type
 implementation
 
 //init+
+const
+    cmMsg = 1003;  // Lokales Ereigniss
+
 constructor TMyAbout.Init;
 var
   R: TRect;
@@ -36,7 +35,7 @@ begin
   Insert(new(PStaticText, Init(R,
     'Free Vison Tutorial 1.0' + #13 +
     '2017' + #13 +
-    'Gechrieben von M. Burkhard'+ #13#32#13 +
+    'Gechrieben von MB'+ #13#32#13 +
     'FPC: '+ {$I %FPCVERSION%} + '   OS:'+ {$I %FPCTARGETOS%} + '   CPU:' + {$I %FPCTARGETCPU%})));
 
   // MessageBox-Button, mit lokalem Ereigniss.
