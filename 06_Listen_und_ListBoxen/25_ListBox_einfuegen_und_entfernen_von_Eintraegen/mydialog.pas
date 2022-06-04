@@ -30,8 +30,9 @@ implementation
 //init+
 const
   cmMonat = 1000;  // Lokale Event Konstante
-  cmNew = 1001;
-  cmDelete = 1002;
+  cmNewFocus = 1001;
+  cmNewBack = 1002;
+  cmDelete = 1003;
 
 constructor TMyDialog.Init;
 var
@@ -44,7 +45,7 @@ const
     'August', 'September', 'Oktober', 'November', 'Dezember');
 
 begin
-  R.Assign(10, 3, 64, 17);
+  R.Assign(10, 3, 64, 20);
   inherited Init(R, 'ListBox Demo');
 
   // StringCollection
@@ -54,7 +55,7 @@ begin
   end;
 
   // ScrollBar für ListBox
-  R.Assign(22, 2, 23, 10);
+  R.Assign(22, 2, 23, 16);
   ScrollBar := new(PScrollBar, Init(R));
   Insert(ScrollBar);
 
@@ -72,17 +73,21 @@ begin
   R.B.Y := R.A.Y + 2;
   Insert(new(PButton, Init(R, '~M~onat', cmMonat, bfNormal)));
 
-  // Neu-Button
+  // Neu Button bei fukosierten Eintrag
   R.Move(0, 2);
-  Insert(new(PButton, Init(R, '~N~eu', cmNew, bfNormal)));
+  Insert(new(PButton, Init(R, '~N~eu fokus', cmNewFocus, bfNormal)));
+
+  // Neu-Button am Ende der List
+  R.Move(0, 2);
+  Insert(new(PButton, Init(R, '~N~eu hinten', cmNewBack, bfNormal)));
 
   // Enfernen
   R.Move(0, 2);
   Insert(new(PButton, Init(R, '~E~ntfernen', cmDelete, bfNormal)));
 
   // Cancel-Button
-  R.Move(0, 2);
-  Insert(new(PButton, Init(R, '~C~ancel', cmCancel, bfNormal)));
+  R.Move(0, 3);
+  Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
 
   // Ok-Button
   R.Move(0, 2);
@@ -107,17 +112,25 @@ begin
         cmOK: begin
           // mache etwas
         end;
-        cmNew: begin
-          // mache etwas
+        cmNewFocus: begin
+          // Fügt beim markierten Eintrag einen neuen Eintrag ein
+          ListBox^.List^.AtInsert(ListBox^.Focused, NewStr('neu'));
+          ListBox^.SetRange(ListBox^.List^.Count);
+          ListBox^.Draw;
+        end;
+        cmNewBack: begin
+          // Fügt hinten einen neuen Eintrag ein
+          ListBox^.Insert(NewStr('neu'));
+          ListBox^.Draw;
         end;
         cmDelete: begin
+          // Löscht den fokusierte Eintrag
           ListBox^.FreeItem(ListBox^.Focused);
           ListBox^.Draw;
         end;
         cmMonat: begin
+          // Eintrag mit Fokus ausgeben
           if ListBox^.List^.Count > 0 then begin
-            // Eintrag mit Fokus auslesen
-            // Und ausgeben
             MessageBox('Monat: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
           end;
           // Event beenden.

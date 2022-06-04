@@ -1,15 +1,13 @@
 <html>
     <b><h1>06 Listen und ListBoxen</h1></b>
-    <b><h2>10 ListBox unsortiert</h2></b>
+    <b><h2>20 ListBox mehrere Spalten</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
-Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList freigeben.<br>
-Dies ist nicht Free-Vision üblich.<br>
-Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.<br>
+Die <b>ListBox</b> kann auch mehrere Spalten haben.<br>
 <hr><br>
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
-Der Dialog mit der ListBox<br>
+Der Dialog mit der mehrspaltigen ListBox<br>
 <pre><code><b><font color="0000BB">unit</font></b> MyDialog;
 </code></pre>
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
@@ -19,9 +17,6 @@ Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gib
   <font color="#FFFF00">{ TMyDialog }</font>
 <br>
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
-  <b><font color="0000BB">const</font></b>
-    cmTag = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>
-  <b><font color="0000BB">var</font></b>
     ListBox: PListBox;
     StringCollection: PUnSortedStrCollection;
 <br>
@@ -31,14 +26,20 @@ Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gib
   <b><font color="0000BB">end</font></b>;
 </code></pre>
 Komponenten für den Dialog generieren.<br>
-<pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
+Der zweite Parameter bei Init von <b>TListBox</b> gibt die Anzahl Spalten an.<br>
+Hier im Besipiel sind es 3.<br>
+<pre><code><b><font color="0000BB">const</font></b>
+  cmMonat = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>
+<br>
+<b><font color="0000BB">constructor</font></b> TMyDialog.Init;
 <b><font color="0000BB">var</font></b>
   R: TRect;
   ScrollBar: PScrollBar;
-  i: Integer;
+  i: integer;
 <b><font color="0000BB">const</font></b>
-  Tage: <b><font color="0000BB">array</font></b> [<font color="#0077BB">0</font>..<font color="#0077BB">6</font>] <b><font color="0000BB">of</font></b> shortstring = (
-    <font color="#FF0000">'Montag'</font>, <font color="#FF0000">'Dienstag'</font>, <font color="#FF0000">'Mittwoch'</font>, <font color="#FF0000">'Donnerstag'</font>, <font color="#FF0000">'Freitag'</font>, <font color="#FF0000">'Samstag'</font>, <font color="#FF0000">'Sonntag'</font>);
+  Tage: <b><font color="0000BB">array</font></b> [<font color="#0077BB">0</font>..<font color="#0077BB">11</font>] <b><font color="0000BB">of</font></b> shortstring = (
+    <font color="#FF0000">'Januar'</font>, <font color="#FF0000">'Februar'</font>, <font color="#FF0000">'M'</font> + <font color="#FF0000">#132</font><font color="#FF0000">'rz'</font>, <font color="#FF0000">'April'</font>, <font color="#FF0000">'Mai'</font>, <font color="#FF0000">'Juni'</font>, <font color="#FF0000">'Juli'</font>,
+    <font color="#FF0000">'August'</font>, <font color="#FF0000">'September'</font>, <font color="#FF0000">'Oktober'</font>, <font color="#FF0000">'November'</font>, <font color="#FF0000">'Dezember'</font>);
 <br>
 <b><font color="0000BB">begin</font></b>
   R.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">5</font>, <font color="#0077BB">64</font>, <font color="#0077BB">17</font>);
@@ -51,20 +52,20 @@ Komponenten für den Dialog generieren.<br>
   <b><font color="0000BB">end</font></b>;
 <br>
   <i><font color="#FFFF00">// ScrollBar für ListBox</font></i>
-  R.Assign(<font color="#0077BB">31</font>, <font color="#0077BB">2</font>, <font color="#0077BB">32</font>, <font color="#0077BB">7</font>);
+  R.Assign(<font color="#0077BB">42</font>, <font color="#0077BB">2</font>, <font color="#0077BB">43</font>, <font color="#0077BB">7</font>);
   ScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(R));
   Insert(ScrollBar);
 <br>
   <i><font color="#FFFF00">// ListBox</font></i>
   R.A.X := <font color="#0077BB">5</font>;
   Dec(R.B.X, <font color="#0077BB">1</font>);
-  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(R, <font color="#0077BB">1</font>, ScrollBar));
+  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(R, <font color="#0077BB">3</font>, ScrollBar));
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
 <br>
   <i><font color="#FFFF00">// Tag-Button</font></i>
   R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">9</font>, <font color="#0077BB">18</font>, <font color="#0077BB">11</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~T~ag'</font>, cmTag, bfNormal)));
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~M~onat'</font>, cmMonat, bfNormal)));
 <br>
   <i><font color="#FFFF00">// Cancel-Button</font></i>
   R.Move(<font color="#0077BB">15</font>, <font color="#0077BB">0</font>);
@@ -83,10 +84,8 @@ Manuell den Speicher der Liste frei geben.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 Der EventHandle<br>
-Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.<br>
+Wen man auf <b>[Monat]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.<br>
 <pre><code><b><font color="0000BB">procedure</font></b> TMyDialog.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-<b><font color="0000BB">var</font></b>
-  s: shortstring;
 <b><font color="0000BB">begin</font></b>
   <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
     evCommand: <b><font color="0000BB">begin</font></b>
@@ -94,12 +93,10 @@ Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezei
         cmOK: <b><font color="0000BB">begin</font></b>
           <i><font color="#FFFF00">// mache etwas</font></i>
         <b><font color="0000BB">end</font></b>;
-        cmTag: <b><font color="0000BB">begin</font></b>
-          str(ListBox^.Focused + <font color="#0077BB">1</font>, s);
+        cmMonat: <b><font color="0000BB">begin</font></b>
           <i><font color="#FFFF00">// Eintrag mit Fokus auslesen</font></i>
-          s := PString(ListBox^.GetFocusedItem)^;
           <i><font color="#FFFF00">// Und ausgeben</font></i>
-          MessageBox(<font color="#FF0000">'Wochentag: '</font> + s + <font color="#FF0000">' gew'</font> + <font color="#FF0000">#132</font> + <font color="#FF0000">'hlt'</font>, <b><font color="0000BB">nil</font></b>, mfOKButton);
+          MessageBox(<font color="#FF0000">'Monat: '</font> + PString(ListBox^.GetFocusedItem)^ + <font color="#FF0000">' gew'</font> + <font color="#FF0000">#132</font> + <font color="#FF0000">'hlt'</font>, <b><font color="0000BB">nil</font></b>, mfOKButton);
           <i><font color="#FFFF00">// Event beenden.</font></i>
           ClearEvent(Event);
         <b><font color="0000BB">end</font></b>;

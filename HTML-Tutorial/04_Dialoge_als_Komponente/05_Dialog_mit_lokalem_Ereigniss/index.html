@@ -47,19 +47,18 @@ Ausser es ist gewünscht, wen man zB. über das Menü auf den Dialog zugreifen w
 <pre><code><b><font color="0000BB">unit</font></b> MyDialog;
 </code></pre>
 Für den Dialog kommt noch ein HandleEvent hinzu.<br>
-<pre><code><b><font color="0000BB">const</font></b>
-    cmMsg = <font color="#0077BB">1003</font>;  <i><font color="#FFFF00">// Lokales Ereigniss</font></i>
-
-<b><font color="0000BB">type</font></b>
+<pre><code><b><font color="0000BB">type</font></b>
   PMyAbout = ^TMyAbout;
   TMyAbout = <b><font color="0000BB">object</font></b>(TDialog)
-
     <b><font color="0000BB">constructor</font></b> Init;
     <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
   <b><font color="0000BB">end</font></b>;
 </code></pre>
 Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Ereigniss <b>cmMsg</b> abarbeitet.<br>
-<pre><code><b><font color="0000BB">constructor</font></b> TMyAbout.Init;
+<pre><code><b><font color="0000BB">const</font></b>
+    cmMsg = <font color="#0077BB">1003</font>;  <i><font color="#FFFF00">// Lokales Ereigniss</font></i>
+
+<b><font color="0000BB">constructor</font></b> TMyAbout.Init;
 <b><font color="0000BB">var</font></b>
   R: TRect;
 <b><font color="0000BB">begin</font></b>
@@ -72,7 +71,7 @@ Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das 
   Insert(<b><font color="0000BB">new</font></b>(PStaticText, Init(R,
     <font color="#FF0000">'Free Vison Tutorial 1.0'</font> + <font color="#FF0000">#13</font> +
     <font color="#FF0000">'2017'</font> + <font color="#FF0000">#13</font> +
-    <font color="#FF0000">'Gechrieben von M. Burkhard'</font>+ <font color="#FF0000">#13#32#13</font> +
+    <font color="#FF0000">'Gechrieben von MB'</font>+ <font color="#FF0000">#13#32#13</font> +
     <font color="#FF0000">'FPC: '</font>+ <font color="#FFFF00">{$I %FPCVERSION%}</font> + <font color="#FF0000">'   OS:'</font>+ <font color="#FFFF00">{$I %FPCTARGETOS%}</font> + <font color="#FF0000">'   CPU:'</font> + <font color="#FFFF00">{$I %FPCTARGETCPU%}</font>)));
 
   <i><font color="#FFFF00">// MessageBox-Button, mit lokalem Ereigniss.</font></i>

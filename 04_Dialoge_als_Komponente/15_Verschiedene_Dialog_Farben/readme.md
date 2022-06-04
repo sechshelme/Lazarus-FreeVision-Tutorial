@@ -20,19 +20,18 @@ Hier sind 3 Event-Konstante hinzugekommen.<br>
 <pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
-  <b><font color="0000BB">const</font></b>
-    cmBlue = <font color="#0077BB">1006</font>;
-    cmCyan = <font color="#0077BB">1007</font>;
-    cmGray = <font color="#0077BB">1008</font>;
-  <b><font color="0000BB">var</font></b>
     CounterButton: PButton; <i><font color="#FFFF00">// Button mit Zähler.</font></i>
-<br>
     <b><font color="0000BB">constructor</font></b> Init;
     <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
   <b><font color="0000BB">end</font></b>;
 </code></pre>
 Das Bauen des Dialoges ist nichts besonderes.<br>
-<pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
+<pre><code><b><font color="0000BB">const</font></b>
+  cmBlue = <font color="#0077BB">1006</font>;
+  cmCyan = <font color="#0077BB">1007</font>;
+  cmGray = <font color="#0077BB">1008</font>;
+<br>
+<b><font color="0000BB">constructor</font></b> TMyDialog.Init;
 <b><font color="0000BB">var</font></b>
   R: TRect;
 <b><font color="0000BB">begin</font></b>

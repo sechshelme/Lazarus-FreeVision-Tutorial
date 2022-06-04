@@ -28,9 +28,6 @@ Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gib
   <font color="#FFFF00">{ TMyDialog }</font>
 
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
-  <b><font color="0000BB">const</font></b>
-    cmTag = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>
-  <b><font color="0000BB">var</font></b>
     ListBox: PListBox;
     StringCollection: PStringCollection;
 
@@ -40,7 +37,10 @@ Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gib
   <b><font color="0000BB">end</font></b>;
 </code></pre>
 Komponenten für den Dialog generieren.<br>
-<pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
+<pre><code><b><font color="0000BB">const</font></b>
+  cmTag = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>
+
+<b><font color="0000BB">constructor</font></b> TMyDialog.Init;
 <b><font color="0000BB">var</font></b>
   R: TRect;
   ScrollBar: PScrollBar;
@@ -94,8 +94,6 @@ Manuell den Speicher der Liste frei geben.<br>
 Der EventHandle<br>
 Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.<br>
 <pre><code><b><font color="0000BB">procedure</font></b> TMyDialog.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-<b><font color="0000BB">var</font></b>
-  s: shortstring;
 <b><font color="0000BB">begin</font></b>
   <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
     evCommand: <b><font color="0000BB">begin</font></b>
@@ -104,11 +102,9 @@ Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezei
           <i><font color="#FFFF00">// mache etwas</font></i>
         <b><font color="0000BB">end</font></b>;
         cmTag: <b><font color="0000BB">begin</font></b>
-          str(ListBox^.Focused + <font color="#0077BB">1</font>, s);
           <i><font color="#FFFF00">// Eintrag mit Fokus auslesen</font></i>
-          s := PString(ListBox^.GetFocusedItem)^;
           <i><font color="#FFFF00">// Und ausgeben</font></i>
-          MessageBox(<font color="#FF0000">'Wochentag: '</font> + s + <font color="#FF0000">' gew'</font> + <font color="#FF0000">#132</font> + <font color="#FF0000">'hlt'</font>, <b><font color="0000BB">nil</font></b>, mfOKButton);
+          MessageBox(<font color="#FF0000">'Wochentag: '</font> + PString(ListBox^.GetFocusedItem)^ + <font color="#FF0000">' gew'</font> + <font color="#FF0000">#132</font> + <font color="#FF0000">'hlt'</font>, <b><font color="0000BB">nil</font></b>, mfOKButton);
           <i><font color="#FFFF00">// Event beenden.</font></i>
           ClearEvent(Event);
         <b><font color="0000BB">end</font></b>;
