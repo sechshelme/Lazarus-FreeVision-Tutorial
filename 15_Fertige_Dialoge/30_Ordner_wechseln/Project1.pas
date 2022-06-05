@@ -54,7 +54,7 @@ type
         NewLine(
         NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))),
       NewSubMenu('~H~ilfe', hcNoContext, NewMenu(
-        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil)))));
+        NewItem('~A~bout...', '', kbF1, cmAbout, hcNoContext, nil)), nil)))));
 
   end;
 
@@ -65,6 +65,7 @@ Der Ordnerwechsel Dialog
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     ChDirDialog: PChDirDialog;
+    Ordner: ShortString;
   begin
     inherited HandleEvent(Event);
 
@@ -72,6 +73,9 @@ Der Ordnerwechsel Dialog
       case Event.Command of
         cmChDir: begin
           New(ChDirDialog, Init(fdOpenButton, 1));
+          if ExecuteDialog(ChDirDialog, nil) <> cmCancel then begin
+            MessageBox('Ordner wurde gewechselt', nil, mfOKButton);
+          end;
         end;
         else begin
           Exit;
