@@ -4,7 +4,7 @@ Im Ordner <b>HTML-Tutorial</b> befindet sich das ganze Tutorial im HTML-Format, 
 Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
 
 
-Datum | Änderungen 
+| Datum | Änderungen 
 | --- | ---
 | ich bin ein Text | Tutorial für <b>Standard Dialoge</b> hinzugefügt.
 | 05-06-2022 | Tutorial für <b>Standard Dialoge</b> hinzugefügt.
