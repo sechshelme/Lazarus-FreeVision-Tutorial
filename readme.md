@@ -3,6 +3,9 @@
 Im Ordner "HTML-Tutorial" befindet sich das ganze Tutorial im HTML-Format, somit ist es im Browser anschaubar.
 Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
 
+05-06-2022
+Tutorial für <b>Standard Dialoge</b> hinzugefügt.
+
 30-05-2022
 Tutorial für <b>Listen</b> hinzugefügt.
 
