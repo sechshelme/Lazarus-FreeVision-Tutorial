@@ -56,7 +56,7 @@ type
     //Heap
     GetExtent(R);
     R.A.X := R.B.X - 12; R.A.Y := R.B.Y - 1;
-    Heap := New(PHeapView, Init(R));
+    Heap := New(PHeapView, InitComma(R));
     Insert(Heap); 
   end;
 

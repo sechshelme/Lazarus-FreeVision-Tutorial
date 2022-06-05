@@ -127,7 +127,7 @@ Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gib
 (*
 Komponenten für den Dialog generieren.
 Der zweite Parameter bei Init von <b>TListBox</b> gibt die Anzahl Spalten an.
-Hier im Besipiel sind es 3.
+Hier im Beispiel sind es 3.
 *)
 //includepascal mydialog.pas init
 

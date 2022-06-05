@@ -1,6 +1,7 @@
 //image image.png
 (*
-Die <b>ListBox</b> kann auch mehrere Spalten haben.
+Bei <b>ListBox</b> kann man auch Einträge einfügen, entfernen, etc.
+ZT. muss man da direkt auf die Liste zugreifen.
 *)
 //lineal
 program Project1;
@@ -126,8 +127,6 @@ Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gib
 
 (*
 Komponenten für den Dialog generieren.
-Der zweite Parameter bei Init von <b>TListBox</b> gibt die Anzahl Spalten an.
-Hier im Besipiel sind es 3.
 *)
 //includepascal mydialog.pas init
 
@@ -138,7 +137,7 @@ Manuell den Speicher der Liste frei geben.
 
 (*
 Der EventHandle
-Wen man auf <b>[Monat]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.
+Hier sieht man, wie man Einträge einfügt und entfernt.
 *)
 //includepascal mydialog.pas handleevent
 
