@@ -51,10 +51,10 @@ type
 
     MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
-        NewItem('~K~onformation', 'F5', kbF2, cmConformation, hcNoContext,
-        NewItem('~I~nfo', 'F4', kbF2, cmInfo, hcNoContext,
-        NewItem('~F~ehler', 'F3', kbF2, cmError, hcNoContext,
-        NewItem('~W~arnung', 'F2', kbF2, cmWarning, hcNoContext,
+        NewItem('~K~onformation...', 'F5', kbF2, cmConformation, hcNoContext,
+        NewItem('~I~nfo...', 'F4', kbF2, cmInfo, hcNoContext,
+        NewItem('~F~ehler...', 'F3', kbF2, cmError, hcNoContext,
+        NewItem('~W~arnung...', 'F2', kbF2, cmWarning, hcNoContext,
         NewLine(
         NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil))))))),
       NewSubMenu('~H~ilfe', hcNoContext, NewMenu(
@@ -73,7 +73,7 @@ Aufruf einer MessageBox.
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
-          MessageBox('Ich bin ein About...', nil, mfInformation + mfOkButton);
+          MessageBox('Ich bin ein About !', nil, mfInformation + mfOkButton);
         end;
         cmWarning: begin
           MessageBox('Ich bin eine Warnung-Box', nil, mfWarning + mfOkButton);

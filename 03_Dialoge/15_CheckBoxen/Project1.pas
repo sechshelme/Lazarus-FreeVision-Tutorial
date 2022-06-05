@@ -101,25 +101,25 @@ Den Dialog mit CheckBoxen ergänzen.
   //code+
   procedure TMyApp.MyParameter;
   var
-    Dia: PDialog;
+    Dlg: PDialog;
     R: TRect;
     dummy: word;
-    Pw: PView;
+    View: PView;
   begin
     R.Assign(0, 0, 35, 15);
     R.Move(23, 3);
-    Dia := New(PDialog, Init(R, 'Parameter'));
-    with Dia^ do begin
+    Dlg := New(PDialog, Init(R, 'Parameter'));
+    with Dlg^ do begin
 
       // CheckBoxen
       R.Assign(4, 3, 18, 7);
-      Pw := New(PCheckBoxes, Init(R,
+      View := New(PCheckBoxes, Init(R,
         NewSItem('~D~atei',
         NewSItem('~Z~eile',
         NewSItem('D~a~tum',
         NewSItem('~Z~eit',
         nil))))));
-      Insert(Pw);
+      Insert(View);
 
       // Ok-Button
       R.Assign(7, 12, 17, 14);
@@ -129,8 +129,8 @@ Den Dialog mit CheckBoxen ergänzen.
       R.Assign(19, 12, 32, 14);
       Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
-    dummy := Desktop^.ExecView(Dia);   // Dialog Modal öffnen.
-    Dispose(Dia, Done);                // Dialog und Speicher frei geben.
+    dummy := Desktop^.ExecView(Dlg);   // Dialog Modal öffnen.
+    Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
   end;
   //code-
 

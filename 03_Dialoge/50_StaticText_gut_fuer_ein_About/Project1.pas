@@ -238,13 +238,13 @@ Mit <b>PLabel</b> könnte man auch Text ausgeben, aber für festen Text eignet s
   //code+
   procedure TMyApp.About;
   var
-    Dia: PDialog;
+    Dlg: PDialog;
     R: TRect;
   begin
     R.Assign(0, 0, 42, 11);
     R.Move(1, 1);
-    Dia := New(PDialog, Init(R, 'About'));
-    with Dia^ do begin
+    Dlg := New(PDialog, Init(R, 'About'));
+    with Dlg^ do begin
       Options := Options or ofCentered; // Dialog zentrieren
 
       // StaticText einfügen.
@@ -258,9 +258,9 @@ Mit <b>PLabel</b> könnte man auch Text ausgeben, aber für festen Text eignet s
       R.Assign(16, 8, 26, 10);
       Insert(New(PButton, Init(R, '~O~K', cmOK, bfDefault)));
     end;
-    if ValidView(Dia) <> nil then begin
-      Desktop^.ExecView(Dia);           // Modal aufrufen, Funktionsergebniss wird nicht ausgewrtet.
-      Dispose(Dia, Done);               // Dialog frei geben.
+    if ValidView(Dlg) <> nil then begin
+      Desktop^.ExecView(Dlg);           // Modal aufrufen, Funktionsergebniss wird nicht ausgewrtet.
+      Dispose(Dlg, Done);               // Dialog frei geben.
     end;
   end;
   //code-

@@ -108,34 +108,34 @@ Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den 
   //code+
   procedure TMyApp.MyParameter;
   var
-    Dia: PDialog;
+    Dlg: PDialog;
     R: TRect;
     dummy: word;
-    Ptr: PView;
+    View: PView;
   begin
     R.Assign(0, 0, 35, 15);
     R.Move(23, 3);
-    Dia := New(PDialog, Init(R, 'Parameter'));
-    with Dia^ do begin
+    Dlg := New(PDialog, Init(R, 'Parameter'));
+    with Dlg^ do begin
 
       // CheckBoxen
       R.Assign(2, 3, 18, 7);
-      Ptr := New(PCheckBoxes, Init(R,
+      View := New(PCheckBoxes, Init(R,
         NewSItem('~D~atei',
         NewSItem('~Z~eile',
         NewSItem('D~a~tum',
         NewSItem('~Z~eit',
         nil))))));
-      Insert(Ptr);
+      Insert(View);
 
       // RadioButton
       R.Assign(21, 3, 33, 6);
-      Ptr := New(PRadioButtons, Init(R,
+      View := New(PRadioButtons, Init(R,
         NewSItem('~G~ross',
         NewSItem('~M~ittel',
         NewSItem('~K~lein',
         nil)))));
-      Insert(Ptr);
+      Insert(View);
 
       // Ok-Button
       R.Assign(7, 12, 17, 14);
@@ -145,8 +145,8 @@ Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den 
       R.Assign(19, 12, 32, 14);
       Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
-    dummy := Desktop^.ExecView(Dia);   // Dialog Modal öffnen.
-    Dispose(Dia, Done);                // Dialog und Speicher frei geben.
+    dummy := Desktop^.ExecView(Dlg);   // Dialog Modal öffnen.
+    Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
   end;
   //code-
 

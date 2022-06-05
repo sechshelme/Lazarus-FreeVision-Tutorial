@@ -129,13 +129,13 @@ Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.
   //code+
   procedure TMyApp.MyParameter;
   var
-    Dia: PDialog;
+    Dlg: PDialog;
     R: TRect;
   begin
     R.Assign(0, 0, 35, 15);                    // Grösse des Dialogs.
     R.Move(23, 3);                             // Position des Dialogs.
-    Dia := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.
-    Desktop^.Insert(Dia);                      // Dialog der App zuweisen.
+    Dlg := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.
+    Desktop^.Insert(Dlg);                      // Dialog der App zuweisen.
   end;
   //code-
 

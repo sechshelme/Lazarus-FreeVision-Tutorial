@@ -162,48 +162,48 @@ Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.
   //code+
   procedure TMyApp.MyParameter;
   var
-    Dia: PDialog;
+    Dlg: PDialog;
     R: TRect;
     dummy: word;
-    Ptr: PView;
+    View: PView;
   begin
     R.Assign(0, 0, 35, 15);
     R.Move(23, 3);
-    Dia := New(PDialog, Init(R, 'Parameter'));
-    with Dia^ do begin
+    Dlg := New(PDialog, Init(R, 'Parameter'));
+    with Dlg^ do begin
 
       // CheckBoxen
       R.Assign(2, 3, 18, 7);
-      Ptr := New(PCheckBoxes, Init(R,
+      View := New(PCheckBoxes, Init(R,
         NewSItem('~D~atei',
         NewSItem('~Z~eile',
         NewSItem('D~a~tum',
         NewSItem('~Z~eit',
         nil))))));
-      Insert(Ptr);
+      Insert(View);
       // Label für CheckGroup.
       R.Assign(2, 2, 10, 3);
-      Insert(New(PLabel, Init(R, 'Dr~u~cken', Ptr)));
+      Insert(New(PLabel, Init(R, 'Dr~u~cken', View)));
 
       // RadioButton
       R.Assign(21, 3, 33, 6);
-      Ptr := New(PRadioButtons, Init(R,
+      View := New(PRadioButtons, Init(R,
         NewSItem('~G~ross',
         NewSItem('~M~ittel',
         NewSItem('~K~lein',
         nil)))));
-      Insert(Ptr);
+      Insert(View);
       // Label für RadioGroup.
       R.Assign(20, 2, 31, 3);
-      Insert(New(PLabel, Init(R, '~S~chrift', Ptr)));
+      Insert(New(PLabel, Init(R, '~S~chrift', View)));
 
       // Edit Zeile
       R.Assign(3, 10, 32, 11);
-      Ptr := New(PInputLine, Init(R, 50));
-      Insert(Ptr);
+      View := New(PInputLine, Init(R, 50));
+      Insert(View);
       // Label für Edit Zeile
       R.Assign(2, 9, 10, 10);
-      Insert(New(PLabel, Init(R, '~H~inweis', Ptr)));
+      Insert(New(PLabel, Init(R, '~H~inweis', View)));
 
       // Ok-Button
       R.Assign(7, 12, 17, 14);
@@ -213,11 +213,11 @@ Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.
       R.Assign(19, 12, 32, 14);
       Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
-    if ValidView(Dia) <> nil then begin // Prüfen ob genügend Speicher.
-      Dia^.SetData(ParameterData);      // Dialog mit den Werten laden.
-      dummy := Desktop^.ExecView(Dia);  // Dialog ausführen.
+    if ValidView(Dlg) <> nil then begin // Prüfen ob genügend Speicher.
+      Dlg^.SetData(ParameterData);      // Dialog mit den Werten laden.
+      dummy := Desktop^.ExecView(Dlg);  // Dialog ausführen.
       if dummy = cmOK then begin        // Wen Dialog mit Ok beenden, dann Daten vom Dialog in Record laden.
-        Dia^.GetData(ParameterData);
+        Dlg^.GetData(ParameterData);
 
         // Daten auf Platte speichern.
         AssignFile(fParameterData, DialogDatei);
@@ -226,7 +226,7 @@ Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.
         CloseFile(fParameterData);
       end;
 
-      Dispose(Dia, Done);               // Dialog und Speicher frei geben.
+      Dispose(Dlg, Done);               // Dialog und Speicher frei geben.
     end;
   end;
   //code-

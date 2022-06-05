@@ -1,0 +1,28 @@
+<html>
+    <b><h1>15 Fertige MessageBoxen</h1></b>
+    <b><h2>00 Einfache MessageBox</h2></b>
+<img src="image.png" alt="Selfhtml"><br><br>
+Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
+<hr><br>
+Aufruf einer MessageBox.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+<br>
+    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmAbout: <b><font color="0000BB">begin</font></b>
+        <b><font color="0000BB">end</font></b>;
+        cmList: <b><font color="0000BB">begin</font></b>
+          <i><font color="#FFFF00">// MessageBox aufrufen.</font></i>
+          MessageBox(<font color="#FF0000">'Ich bin eine Message-Box'</font>, <b><font color="0000BB">nil</font></b>, mfError + mfOkButton);
+        <b><font color="0000BB">end</font></b>;
+        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+          <b><font color="0000BB">Exit</font></b>;
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+    ClearEvent(Event);
+  <b><font color="0000BB">end</font></b>;</code></pre>
+<br>
+</html>
