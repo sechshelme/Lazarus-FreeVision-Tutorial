@@ -82,13 +82,13 @@ Auch da wird <b>TRect</b> gebraucht für die Grösse.<br>
 Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
   <b><font color="0000BB">var</font></b>
-    Dia: PDialog;
+    Dlg: PDialog;
     R: TRect;
   <b><font color="0000BB">begin</font></b>
     R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">35</font>, <font color="#0077BB">15</font>);                    <i><font color="#FFFF00">// Grösse des Dialogs.</font></i>
     R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);                             <i><font color="#FFFF00">// Position des Dialogs.</font></i>
-    Dia := <b><font color="0000BB">New</font></b>(PDialog, Init(R, <font color="#FF0000">'Parameter'</font>)); <i><font color="#FFFF00">// Dialog erzeugen.</font></i>
-    Desktop^.Insert(Dia);                      <i><font color="#FFFF00">// Dialog der App zuweisen.</font></i>
+    Dlg := <b><font color="0000BB">New</font></b>(PDialog, Init(R, <font color="#FF0000">'Parameter'</font>)); <i><font color="#FFFF00">// Dialog erzeugen.</font></i>
+    Desktop^.Insert(Dlg);                      <i><font color="#FFFF00">// Dialog der App zuweisen.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
 </html>

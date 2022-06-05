@@ -1,4 +1,13 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <title>00 Einfache MessageBox</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
     <b><h1>15 Fertige Dialoge</h1></b>
     <b><h2>00 Einfache MessageBox</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
@@ -8,7 +17,7 @@ Aufruf einer MessageBox.<br>
 <pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
-<br>
+
     <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
       <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
         cmAbout: <b><font color="0000BB">begin</font></b>
@@ -33,5 +42,8 @@ Aufruf einer MessageBox.<br>
     <b><font color="0000BB">end</font></b>;
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
-<br>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
 </html>

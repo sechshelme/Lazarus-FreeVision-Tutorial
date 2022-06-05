@@ -1,4 +1,13 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <title>15 Einfache MessageBox mit Vorgabe Rect</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
     <b><h1>15 Fertige Dialoge</h1></b>
     <b><h2>15 Einfache MessageBox mit Vorgabe Rect</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
@@ -11,12 +20,15 @@ Hier wird mir <b>R.Assign</b> die grösse der Box selbst festgelegt.<br>
     R: TRect;
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
-<br>
+
     <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
       <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
         cmAbout: <b><font color="0000BB">begin</font></b>
           R.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">3</font>, <font color="#0077BB">28</font>, <font color="#0077BB">20</font>);  <i><font color="#FFFF00">// Grösse der Box</font></i>
           MessageBoxRect(R, <font color="#FF0000">'Ich bin eine vorgegebene Box'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
         <b><font color="0000BB">end</font></b>;</code></pre>
-<br>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
 </html>

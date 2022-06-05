@@ -2,7 +2,8 @@
     <b><h1>06 Listen und ListBoxen</h1></b>
     <b><h2>25 ListBox einfuegen und entfernen von Eintraegen</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
-Die <b>ListBox</b> kann auch mehrere Spalten haben.<br>
+Bei <b>ListBox</b> kann man auch Einträge einfügen, entfernen, etc.<br>
+ZT. muss man da direkt auf die Liste zugreifen.<br>
 <hr><br>
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
@@ -26,8 +27,6 @@ Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gib
   <b><font color="0000BB">end</font></b>;
 </code></pre>
 Komponenten für den Dialog generieren.<br>
-Der zweite Parameter bei Init von <b>TListBox</b> gibt die Anzahl Spalten an.<br>
-Hier im Besipiel sind es 3.<br>
 <pre><code><b><font color="0000BB">const</font></b>
   cmMonat = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>
   cmNewFocus = <font color="#0077BB">1001</font>;
@@ -102,7 +101,7 @@ Manuell den Speicher der Liste frei geben.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 Der EventHandle<br>
-Wen man auf <b>[Monat]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.<br>
+Hier sieht man, wie man Einträge einfügt und entfernt.<br>
 <pre><code><b><font color="0000BB">procedure</font></b> TMyDialog.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
 <b><font color="0000BB">begin</font></b>
   <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>

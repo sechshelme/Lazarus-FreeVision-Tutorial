@@ -27,7 +27,7 @@ Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gib
 </code></pre>
 Komponenten für den Dialog generieren.<br>
 Der zweite Parameter bei Init von <b>TListBox</b> gibt die Anzahl Spalten an.<br>
-Hier im Besipiel sind es 3.<br>
+Hier im Beispiel sind es 3.<br>
 <pre><code><b><font color="0000BB">const</font></b>
   cmMonat = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>
 <br>
