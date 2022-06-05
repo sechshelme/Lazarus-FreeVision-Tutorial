@@ -3,7 +3,7 @@
 Im Ordner <b>HTML-Tutorial</b> befindet sich das ganze Tutorial im HTML-Format, somit ist es im Browser anschaubar.
 Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
 
-# Neuerungen:
+## Neuerungen:
 
 | Datum | Änderungen 
 | :---: | ---
