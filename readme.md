@@ -1,3 +1,14 @@
+Here is a simple flow chart:
+
+```mermaid
+classDiagram
+Class03 .. Class04
+```
+
+
+
+
+
 ## FPC FreeVision Tutorial ( TurboVision )
 
 Im Ordner <b>HTML-Tutorial</b> befindet sich das ganze Tutorial im HTML-Format, somit ist es im Browser anschaubar.
@@ -19,21 +30,4 @@ Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
 <img src="image.png">
 
 
-Here is a simple flow chart:
 
-```mermaid
-classDiagram
-Class01 <|-- AveryLongClass : Cool
-Class03 *-- Class04
-Class05 o-- Class06
-Class07 .. Class08
-Class09 --> C2 : Where am i?
-Class09 --* C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-Class08 <--> C2: Cool label
-```
