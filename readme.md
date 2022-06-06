@@ -2,7 +2,7 @@ Here is a simple flow chart:
 
 ```mermaid
 classDiagram
-Class03 .. Class04
+TObject .. TApplication .. TMyApp
 ```
 
 
