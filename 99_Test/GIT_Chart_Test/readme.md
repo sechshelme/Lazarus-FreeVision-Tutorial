@@ -2,7 +2,7 @@
 
 ```mermaid
 classDiagram
-
+direction RL
 
 TObject ..> TView
 TObject : 1 Ich bin die oberste Klasse !
