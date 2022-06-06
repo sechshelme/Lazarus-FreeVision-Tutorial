@@ -4,7 +4,7 @@
 classDiagram
 
 
-TObject ..> TView & a & b & c
+TObject ..> TView
 TView ..> TGroup
 TView ..> TFrame
 TView ..> TScroller
