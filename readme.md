@@ -2,7 +2,16 @@ Here is a simple flow chart:
 
 ```mermaid
 classDiagram
-TObject .. TApplication 
+
+
+TObject .. TView
+TView ..TGroup
+TView ..TFrame
+TView ..TScroller
+TView ..TListViewer
+TGroup ..TProgram
+TGroup ..TWindow
+TProgram .. TApplication 
 TApplication .. TMyApp
 ```
 
