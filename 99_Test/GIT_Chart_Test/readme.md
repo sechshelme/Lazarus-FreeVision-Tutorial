@@ -7,7 +7,7 @@ classDiagram
 TObject ..> TView
 TObject : 1 Ich bin die oberste Klasse !
 TObject : 2 Ich bin die oberste Klasse !
-TObject: 3 Ich bin die oberste Klasse !
+TObject: 3 Ich bin die oberste Klasse !()
 TObject : 4 Ich bin die oberste Klasse !
 TObject: 3 Ich bin die oberste Klasse !
 TView ..> TGroup
