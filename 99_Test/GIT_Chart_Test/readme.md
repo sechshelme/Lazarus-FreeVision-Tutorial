@@ -5,6 +5,7 @@ classDiagram
 
 
 TObject ..> TView
+TObject: Ich bin die oberste Klasse !
 TView ..> TGroup
 TView ..> TFrame
 TView ..> TScroller
@@ -21,7 +22,7 @@ TGroup ..> TWindow
 TProgram ..> TApplication 
 TApplication ..> TMyApp
 class TWindow {
-  +Ich bin ein Fenster
+  Ich bin ein Fenster
   oder auch nicht
 }
 ```
