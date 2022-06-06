@@ -20,6 +20,10 @@ TGroup ..> TProgram
 TGroup ..> TWindow
 TProgram ..> TApplication 
 TApplication ..> TMyApp
+class TWindow {
+  +Ich bin ein Fenster
+  oder auch nicht
+}
 ```
 
 
