@@ -1,24 +1,3 @@
-Here is a simple flow chart:
-
-```mermaid
-classDiagram
-
-
-TObject .. TView
-TView ..TGroup
-TView ..TFrame
-TView ..TScroller
-TView ..TListViewer
-TGroup ..TProgram
-TGroup ..TWindow
-TProgram .. TApplication 
-TApplication .. TMyApp
-```
-
-
-
-
-
 ## FPC FreeVision Tutorial ( TurboVision )
 
 Im Ordner <b>HTML-Tutorial</b> befindet sich das ganze Tutorial im HTML-Format, somit ist es im Browser anschaubar.
