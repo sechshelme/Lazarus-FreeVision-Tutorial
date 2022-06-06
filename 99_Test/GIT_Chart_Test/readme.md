@@ -31,6 +31,7 @@ class TWindow {
 }
 ```
 
+```mermaid
  classDiagram
       Animal <|-- Duck
       Animal <|-- Fish
@@ -52,3 +53,5 @@ class TWindow {
           +bool is_wild
           +run()
       }
+```
+
