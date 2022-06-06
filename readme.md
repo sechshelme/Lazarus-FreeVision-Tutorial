@@ -18,3 +18,13 @@ Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
 
 <img src="image.png">
 
+
+Here is a simple flow chart:
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
