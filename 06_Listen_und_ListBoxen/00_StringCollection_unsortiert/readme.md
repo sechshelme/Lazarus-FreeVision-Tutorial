@@ -12,9 +12,6 @@ Der Dialog mit der UnSortedStrCollection.<br>
 Deklaration des Dialog, nichts Besonderes.<br>
 <pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
-<br>
-  <font color="#FFFF00">{ TMyDialog }</font>
-<br>
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
     <b><font color="0000BB">constructor</font></b> Init;
   <b><font color="0000BB">end</font></b>;

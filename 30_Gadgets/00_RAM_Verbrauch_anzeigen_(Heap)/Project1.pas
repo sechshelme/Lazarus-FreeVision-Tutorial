@@ -2,8 +2,8 @@
 (*
 In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.
 Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.
-Die <b>TListBox</b> ist ein gutes Beispiel, da diese in den original Source einen Bug hat.
-Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.
+Die <b>TListBox</b> ist ein gutes Beispiel, da diese die Liste nicht selbst aufräumt.
+Dort feht der <b>destructor</b>, welcher den Speicher aufräumt. Dies macht auch Sinn, da man Listen auch global verwenden kann.
 *)
 //lineal
 program Project1;

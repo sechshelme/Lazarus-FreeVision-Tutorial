@@ -12,9 +12,6 @@ uses
 //type+
 type
   PMyDialog = ^TMyDialog;
-
-  { TMyDialog }
-
   TMyDialog = object(TDialog)
   const
     cmTag = 1000;  // Lokale Event Konstante

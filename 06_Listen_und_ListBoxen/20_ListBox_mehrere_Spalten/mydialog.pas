@@ -12,9 +12,6 @@ uses
 //type+
 type
   PMyDialog = ^TMyDialog;
-
-  { TMyDialog }
-
   TMyDialog = object(TDialog)
     ListBox: PListBox;
     StringCollection: PUnSortedStrCollection;
@@ -59,7 +56,7 @@ begin
   // ListBox
   R.A.X := 5;
   Dec(R.B.X, 1);
-  ListBox := new(PListBox, Init(R, 3, ScrollBar));
+  ListBox := new(PListBox, Init(R, 3, ScrollBar)); // 3 Spalten
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
 

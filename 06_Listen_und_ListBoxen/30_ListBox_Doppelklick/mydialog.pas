@@ -32,10 +32,8 @@ type
 
 implementation
 
-//init+
 const
   cmTag = 1000;  // Lokale Event Konstante
-//init-
 
 //done+
 destructor TNewListBox.Done;
@@ -111,12 +109,11 @@ begin
   case Event.What of
     evCommand: begin
       case Event.Command of
+        // Bei Doppelklick auf die ListBox oder beim [Ok] klicken.
         cmOK: begin
           MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
         end;
         cmTag: begin
-          // Eintrag mit Fokus auslesen
-          // Und ausgeben
           MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
           // Event beenden.
           ClearEvent(Event);

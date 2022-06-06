@@ -4,8 +4,8 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.<br>
 Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.<br>
-Die <b>TListBox</b> ist ein gutes Beispiel, da diese in den original Source einen Bug hat.<br>
-Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.<br>
+Die <b>TListBox</b> ist ein gutes Beispiel, da diese die Liste nicht selbst aufräumt.<br>
+Dort feht der <b>destructor</b>, welcher den Speicher aufräumt. Dies macht auch Sinn, da man Listen auch global verwenden kann.<br>
 <hr><br>
     Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.<br>
 <pre><code>    GetExtent(R);
@@ -73,9 +73,6 @@ Der Dialog mit dem dem Speicher Leak<br>
 Den <b>Destructor</b> deklarieren, welcher das <b>Speicher Leak</b> behebt.<br>
 <pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
-<br>
-  <font color="#FFFF00">{ TMyDialog }</font>
-<br>
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
   <b><font color="0000BB">const</font></b>
     cmTag = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>

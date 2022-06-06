@@ -2,9 +2,7 @@
     <b><h1>06 Listen und ListBoxen</h1></b>
     <b><h2>15 ListBox sortiert</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
-Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList freigeben.<br>
-Dies ist nicht Free-Vision üblich.<br>
-Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.<br>
+Die ListBox kann auch sortiert sein.<br>
 <hr><br>
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
@@ -15,9 +13,6 @@ Der Dialog mit der ListBox<br>
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
 <pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
-<br>
-  <font color="#FFFF00">{ TMyDialog }</font>
-<br>
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
     ListBox: PListBox;
     StringCollection: PStringCollection;

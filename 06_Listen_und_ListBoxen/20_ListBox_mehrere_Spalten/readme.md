@@ -13,9 +13,6 @@ Der Dialog mit der mehrspaltigen ListBox<br>
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
 <pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
-<br>
-  <font color="#FFFF00">{ TMyDialog }</font>
-<br>
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
     ListBox: PListBox;
     StringCollection: PUnSortedStrCollection;
@@ -59,7 +56,7 @@ Hier im Beispiel sind es 3.<br>
   <i><font color="#FFFF00">// ListBox</font></i>
   R.A.X := <font color="#0077BB">5</font>;
   Dec(R.B.X, <font color="#0077BB">1</font>);
-  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(R, <font color="#0077BB">3</font>, ScrollBar));
+  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(R, <font color="#0077BB">3</font>, ScrollBar)); <i><font color="#FFFF00">// 3 Spalten</font></i>
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
 <br>

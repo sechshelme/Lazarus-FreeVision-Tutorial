@@ -1,8 +1,9 @@
 //image image.png
 (*
 Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList freigeben.
-Dies ist nicht Free-Vision üblich.
-Dort feht der <b>destructor</b>, welcher den Speicher aufräumt.
+Dies ist nicht Free-Vision üblich. Dies hat auch einen Sinn, da man Listen vielfach global verwendet, 
+ansonsten müsste man immer eine Kopie davon anlegen.
+Dort fehlt der <b>destructor</b>, welcher den Speicher aufräumt.
 *)
 //lineal
 program Project1;

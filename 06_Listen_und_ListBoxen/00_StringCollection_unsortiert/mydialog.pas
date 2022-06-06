@@ -12,9 +12,6 @@ uses
 //type+
 type
   PMyDialog = ^TMyDialog;
-
-  { TMyDialog }
-
   TMyDialog = object(TDialog)
     constructor Init;
   end;

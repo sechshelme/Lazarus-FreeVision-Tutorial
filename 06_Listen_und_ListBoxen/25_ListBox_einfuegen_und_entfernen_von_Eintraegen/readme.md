@@ -14,9 +14,6 @@ Der Dialog mit der mehrspaltigen ListBox<br>
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
 <pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
-<br>
-  <font color="#FFFF00">{ TMyDialog }</font>
-<br>
   TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
     ListBox: PListBox;
     StringCollection: PUnSortedStrCollection;

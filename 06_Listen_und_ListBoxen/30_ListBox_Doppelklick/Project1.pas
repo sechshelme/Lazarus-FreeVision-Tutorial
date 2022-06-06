@@ -1,6 +1,6 @@
 //image image.png
 (*
-Die ListBox kann auch sortiert sein.
+Will man bei einer <b>ListBox</b> den Doppelklick auswerten, muss man die ListBox vererben und einen neuen Handleevent einfügen.
 *)
 //lineal
 program Project1;
@@ -120,14 +120,15 @@ Der Dialog mit der ListBox
 //includepascal mydialog.pas head
 
 (*
-Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.
+Das Vererben der ListBox.
+Wen man schon vererbt, habe ich auch gleich den <b>Destructor</b> eingefügt, welcher am Schluss die Liste aufräumt.
 *)
 //includepascal mydialog.pas type
 
 (*
-Komponenten für den Dialog generieren.
+Der neue <b>HandleEvent</b> der beuen ListBox, welcher den Doppelklick abfängt und ihn als [Ok] interprediert.
 *)
-//includepascal mydialog.pas init
+//includepascal mydialog.pas event
 
 (*
 Manuell den Speicher der Liste frei geben.
@@ -135,8 +136,8 @@ Manuell den Speicher der Liste frei geben.
 //includepascal mydialog.pas done
 
 (*
-Der EventHandle
-Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.
+Der EventHandle des Dialogs.
+Hier wird einfach ein [Ok] bei dem Doppelklick abgearbeitet.
 *)
 //includepascal mydialog.pas handleevent
 
