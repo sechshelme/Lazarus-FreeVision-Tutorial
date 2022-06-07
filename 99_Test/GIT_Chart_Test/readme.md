@@ -2,7 +2,7 @@
 
 ```mermaid
 classDiagram
-direction LR
+direction RL
 
 TTimedDialog..>TDialog
 TTimedDialogText..>TStaticText
