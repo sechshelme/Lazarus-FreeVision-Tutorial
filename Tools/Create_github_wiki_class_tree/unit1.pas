@@ -45,7 +45,7 @@ begin
     for j := 0 to sl.Count - 1 do begin
       s := sl[j];
       s := StringReplace(s, ' ', '', [rfIgnoreCase, rfReplaceAll]);
-      if Pos('OBJECT(T', s) > 0 then begin
+      if Pos('OBJECT(T', UpCase(s)) > 0 then begin
         sa := s.Split(['=', '(', ')']);
         if Length(sa) >= 3 then begin
           Memo1.Lines.Add(sa[0] + '..>' + sa[2]);
