@@ -44,8 +44,8 @@ begin
   Memo1.Lines.Add('```mermaid');
   Memo1.Lines.Add('classDiagram');
   Memo1.Lines.Add('direction RL');
-  fsl := FindAllFiles('/home/tux/fpcupdeluxe_avr5/fpcsrc/packages/fv/src', '*.pas;*.inc');
-//  fsl := FindAllFiles('/home/tux/fpcupdeluxe_avr5/fpcsrc/packages/fv/src', 'views.inc');
+  //  fsl := FindAllFiles('/home/tux/fpcupdeluxe_avr5/fpcsrc/packages/fv/src', '*.pas;*.inc');
+  fsl := FindAllFiles('/home/tux/fpcupdeluxe_avr5/fpcsrc/packages/fv/src', 'views.inc');
   for i := 0 to fsl.Count - 1 do begin
     sl := TStringList.Create;
     sl.LoadFromFile(fsl[i]);
@@ -68,8 +68,7 @@ begin
             if Length(sa) >= 2 then begin
               if (Pos('CONSTRUCTOR', UpCase(sl[p])) > 0) or (Pos('DESTRUCTOR', UpCase(sl[p])) > 0) or (Pos('FUNCTION', UpCase(sl[p])) > 0) or
                 (Pos('PROCEDURE', UpCase(sl[p])) > 0) then begin
-                  Memo1.Lines.Add(st + ':' + sa[1] + '()');
-
+//                Memo1.Lines.Add(st + ':' + sa[1] + '()');
               end else begin
                 Memo1.Lines.Add(st + ':' + sa[0] + ' ' + sa[1]);
               end;

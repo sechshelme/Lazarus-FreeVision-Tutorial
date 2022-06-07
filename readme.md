@@ -6,7 +6,6 @@ Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
 ## Klassen-Baum:
 
 [Klassen-Baum](Class_Tree.md)
-[Klassen-Baummit Bezeichner](Class_Tree_with_identifier.md)
 
 ## Neuerungen:
 
