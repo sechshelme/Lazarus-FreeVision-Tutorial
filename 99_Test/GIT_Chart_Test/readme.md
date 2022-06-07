@@ -4,36 +4,43 @@
 classDiagram
 direction LR
 
-TObject ..> TView
-TObject : 1 Ich bin die oberste Klasse !
-TObject : 2 Ich bin die oberste Klasse !
-TObject: 3 Ich bin die oberste Klasse !()
-TObject : 4 Ich bin die oberste Klasse !
-TObject: 3 Ich bin die oberste Klasse !
-TView: RevCol
-TView: BackGroundChar
-TView: Init()
-TView: Done()
-TView: Draw()
-TView ..> TGroup
-TView ..> TFrame
-TView ..> TScroller
-TView ..> TListViewer
-TListViewer ..> TListBox
-TView ..> TInputLine
-TView ..> TButton
-TView ..> TCluster
-TCluster ..> TRadioButton
-TCluster ..> TCheckBoxes
-TCluster ..> TMultiCheckBoxes
-TGroup ..> TProgram
-TGroup ..> TWindow
-TProgram ..> TApplication 
-TApplication ..> TMyApp
-class TWindow {
-  Ich bin ein Fenster
-  oder auch nicht
-}
+TInputLine...TView
+TButton...TView
+TCluster...TView
+TRadioButtons...TCluster
+TCheckBoxes...TCluster
+TMultiCheckBoxes...TCluster
+TListBox...TListViewer
+TStaticText...TView
+TParamText...TStaticText
+TLabel...TStaticText
+THistoryViewer...TListViewer
+THistoryWindow...TWindow
+THistory...TView
+TValidator...TObject
+TPXPictureValidator...TValidator
+TFilterValidator...TValidator
+TRangeValidator...TFilterValidator
+TLookupValidator...TValidator
+TStringLookupValidator...TLookupValidator
+TView...TObject
+TGroup...TView
+TFrame...TView
+TScrollBar...TView
+TScroller...TView
+TListViewer...TView
+TWindow...TGroup
+TMenuView...TView
+TMenuBar...TMenuView
+TMenuBox...TMenuView
+TMenuPopup...TMenuBox
+TStatusLine...TView
+TBackGround...TView
+TDeskTop...TGroup
+TProgram...TGroup
+TApplication...TProgram
+THeapView...TView
+TClockView...TView
 ```
 
 ```mermaid
