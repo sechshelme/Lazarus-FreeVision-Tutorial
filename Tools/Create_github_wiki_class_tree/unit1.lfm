@@ -24,8 +24,18 @@ object Form1: TForm1
     Top = 200
     Width = 75
     Anchors = [akRight, akBottom]
-    Caption = 'Button1'
+    Caption = 'Create'
     OnClick = Button1Click
     TabOrder = 1
+  end
+  object Button2: TButton
+    Left = 136
+    Height = 25
+    Top = 200
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Copy Clp'
+    OnClick = Button2Click
+    TabOrder = 2
   end
 end

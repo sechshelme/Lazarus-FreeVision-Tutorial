@@ -5,7 +5,7 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, FileUtil;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, FileUtil,Clipbrd;
 
 type
 
@@ -13,8 +13,10 @@ type
 
   TForm1 = class(TForm)
     Button1: TButton;
+    Button2: TButton;
     Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
 
   public
@@ -38,6 +40,9 @@ var
   sa: TStringArray;
 begin
   Memo1.Clear;
+  Memo1.Lines.Add('```mermaid');
+  Memo1.Lines.Add('classDiagram');
+  Memo1.Lines.Add('direction RL');
   fsl := FindAllFiles('/home/tux/fpcupdeluxe_avr5/fpcsrc/packages/fv/src', '*.pas;*.inc');
   for i := 0 to fsl.Count - 1 do begin
     sl := TStringList.Create;
@@ -55,6 +60,12 @@ begin
     sl.Free;
   end;
   fsl.Free;
+  Memo1.Lines.Add('```');
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  Clipboard.AsText:=Memo1.Text;
 end;
 
 end.

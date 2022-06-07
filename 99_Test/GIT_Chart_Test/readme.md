@@ -1,9 +1,6 @@
-## Chart Test
-
 ```mermaid
 classDiagram
 direction RL
-
 TTimedDialog..>TDialog
 TTimedDialogText..>TStaticText
 TInputLong..>TInputLine
@@ -94,5 +91,4 @@ THeapMaxAvail..>TAppStatus
 THeapMemAvail..>TAppStatus
 TTab..>TGroup
 ```
-
 
