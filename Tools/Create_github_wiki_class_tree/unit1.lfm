@@ -34,7 +34,7 @@ object Form1: TForm1
     Top = 200
     Width = 75
     Anchors = [akRight, akBottom]
-    Caption = 'Copy Clp'
+    Caption = 'Save'
     OnClick = Button2Click
     TabOrder = 2
   end

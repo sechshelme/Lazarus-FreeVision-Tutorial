@@ -53,7 +53,7 @@ begin
       if Pos('OBJECT(T', UpCase(s)) > 0 then begin
         sa := s.Split(['=', '(', ')']);
         if Length(sa) >= 3 then begin
-          Memo1.Lines.Add(sa[0] + '..>' + sa[2]);
+          Memo1.Lines.Add(sa[0] + '<..' + sa[2]);
         end;
       end;
     end;
@@ -65,7 +65,7 @@ end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  Clipboard.AsText:=Memo1.Text;
+  Memo1.Lines.SaveToFile('/n4800/DATEN/Programmierung/mit_GIT/Lazarus/Tutorial/FreeVision/Class_Tree.md');
 end;
 
 end.

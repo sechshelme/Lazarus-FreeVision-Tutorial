@@ -3,6 +3,10 @@
 Im Ordner <b>HTML-Tutorial</b> befindet sich das ganze Tutorial im HTML-Format, somit ist es im Browser anschaubar.
 Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
 
+## Klassen-Baum
+
+[Klassen-Baum](Class_Tree.md)
+
 ## Neuerungen:
 
 | Datum | Änderungen 
