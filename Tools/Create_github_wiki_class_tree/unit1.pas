@@ -46,6 +46,8 @@ begin
   Memo1.Lines.Add('direction RL');
   if Borland.Checked then begin
     fsl := FindAllFiles('/n4800/dos/bp70/DISK12/RTLTV', '*.PAS');
+    fsl.Add('/n4800/dos/bp70/DISK12/RTLCOM/OBJECTS.PAS');
+    fsl.Add('/n4800/dos/bp70/DISK12/RTLCOM/VALIDATE.PAS');
   end else begin
     fsl := FindAllFiles('/home/tux/fpcupdeluxe_avr5/fpcsrc/packages/fv/src', '*.pas;*.inc');
     fsl.Add('/home/tux/fpcupdeluxe_avr5/fpcsrc/packages/rtl-extra/src/inc/objects.pp');

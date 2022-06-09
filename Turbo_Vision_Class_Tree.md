@@ -109,4 +109,43 @@ TTextDevice<..TScroller
 TTextDevice:unit TextView
 TTerminal<..TTextDevice
 TTerminal:unit TextView
+TStream<..TObject
+TStream:unit Objects
+TDosStream<..TStream
+TDosStream:unit Objects
+TBufStream<..TDosStream
+TBufStream:unit Objects
+TEmsStream<..TStream
+TEmsStream:unit Objects
+TMemoryStream<..TStream
+TMemoryStream:unit Objects
+TCollection<..TObject
+TCollection:unit Objects
+TSortedCollection<..TCollection
+TSortedCollection:unit Objects
+TStringCollection<..TSortedCollection
+TStringCollection:unit Objects
+TStrCollection<..TSortedCollection
+TStrCollection:unit Objects
+TResourceCollection<..TStringCollection
+TResourceCollection:unit Objects
+TResourceFile<..TObject
+TResourceFile:unit Objects
+TStringList<..TObject
+TStringList:unit Objects
+TStrListMaker<..TObject
+TStrListMaker:unit Objects
+TValidator<..TObject
+TValidator:unit Validate
+TPXPictureValidator<..TValidator
+TPXPictureValidator:unit Validate
+TFilterValidator<..TValidator
+TFilterValidator:unit Validate
+TRangeValidator<..TFilterValidator
+TRangeValidator:unit Validate
+TLookupValidator<..TValidator
+TLookupValidator:unit Validate
+TStringLookupValidator<..TLookupValidator
+TStringLookupValidator:unit Validate
+TObject:unit Objects
 ```
