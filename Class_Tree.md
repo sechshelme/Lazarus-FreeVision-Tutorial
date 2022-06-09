@@ -179,4 +179,36 @@ THeapMemAvail<..TAppStatus
 THeapMemAvail:unit Statuses
 TTab<..TGroup
 TTab:unit tabs
+TStream<..TObject
+TStream:unit Objects
+TDosStream<..TStream
+TDosStream:unit Objects
+TBufStream<..TDosStream
+TBufStream:unit Objects
+TMemoryStream<..TStream
+TMemoryStream:unit Objects
+TCollection<..TObject
+TCollection:unit Objects
+TSortedCollection<..TCollection
+TSortedCollection:unit Objects
+TStringCollection<..TSortedCollection
+TStringCollection:unit Objects
+TRawByteStringCollection<..TSortedCollection
+TRawByteStringCollection:unit Objects
+TUnicodeStringCollection<..TSortedCollection
+TUnicodeStringCollection:unit Objects
+TStrCollection<..TSortedCollection
+TStrCollection:unit Objects
+TUnSortedStrCollection<..TStringCollection
+TUnSortedStrCollection:unit Objects
+TResourceCollection<..TStringCollection
+TResourceCollection:unit Objects
+TResourceFile<..TObject
+TResourceFile:unit Objects
+TStringList<..TObject
+TStringList:unit Objects
+TStrListMaker<..TObject
+TStrListMaker:unit Objects
+DummyObject<..TObject
+DummyObject:unit Objects
 ```

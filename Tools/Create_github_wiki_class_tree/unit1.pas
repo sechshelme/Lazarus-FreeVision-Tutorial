@@ -48,7 +48,9 @@ begin
     fsl := FindAllFiles('/n4800/dos/bp70/DISK12/RTLTV', '*.PAS');
   end else begin
     fsl := FindAllFiles('/home/tux/fpcupdeluxe_avr5/fpcsrc/packages/fv/src', '*.pas;*.inc');
+    fsl.Add('/home/tux/fpcupdeluxe_avr5/fpcsrc/packages/rtl-extra/src/inc/objects.pp');
   end;
+
   for i := 0 to fsl.Count - 1 do begin
     uname := '';
     sl := TStringList.Create;
