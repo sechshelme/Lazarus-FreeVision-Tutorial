@@ -19,7 +19,7 @@ uses
   Editors,
   Dialogs,
   Menus,
-  MyWindow;    // Füe das eigene Fenster.
+  MyWindow;    // Für das eigene Fenster.
 
 const
   cmNewWin = 1001;

@@ -5,7 +5,11 @@ Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
 
 ## Klassen-Baum:
 
-[Klassen-Baum](Class_Tree.md)
+Free Pascal:
+[Free-Vision Klassen-Baum](Class_Tree.md)
+
+Borland Pascal:
+[Turbo_Vision Klassen-Baum](Turbo_Vision_Class_Tree.md)
 
 ## Neuerungen:
 
