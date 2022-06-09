@@ -39,13 +39,13 @@ object Form1: TForm1
     OnClick = Button2Click
     TabOrder = 2
   end
-  object CheckBox1: TCheckBox
-    Left = 16
+  object Borland: TCheckBox
+    Left = 35
     Height = 23
     Top = 202
-    Width = 94
+    Width = 75
     Anchors = [akRight, akBottom]
-    Caption = 'CheckBox1'
+    Caption = 'Borland'
     TabOrder = 3
   end
 end
