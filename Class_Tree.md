@@ -113,10 +113,10 @@ TListViewer<..TView
 TListViewer:unit Views
 TWindow<..TGroup
 TWindow:unit Views
-Toutlineviewer<..Tscroller
-Toutlineviewer:unit outline
-Toutline<..Toutlineviewer
-Toutline:unit outline
+TOutlineviewer<..TScroller
+TOutlineviewer:unit outline
+TOutline<..TOutlineviewer
+TOutline:unit outline
 TIndicator<..TView
 TIndicator:unit Editors
 TEditor<..TView
@@ -209,6 +209,6 @@ TStringList<..TObject
 TStringList:unit Objects
 TStrListMaker<..TObject
 TStrListMaker:unit Objects
-DummyObject<..TObject
-DummyObject:unit Objects
+DUmmyObject<..TObject
+DUmmyObject:unit Objects
 ```

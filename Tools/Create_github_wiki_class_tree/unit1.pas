@@ -67,6 +67,8 @@ begin
       if Pos('=OBJECT(T', UpCase(s)) > 0 then begin
         sa := s.Split(['=', '(', ')']);
         if Length(sa) >= 3 then begin
+          sa[0, 2] := UpCase(sa[0, 2]);
+          sa[2, 2] := UpCase(sa[2, 2]);
           Memo1.Lines.Add(sa[0] + '<..' + sa[2]);
           if uname <> ' ' then  begin
             Memo1.Lines.Add(sa[0] + ':unit ' + uname);
