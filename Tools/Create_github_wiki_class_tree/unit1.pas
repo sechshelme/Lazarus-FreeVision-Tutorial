@@ -59,7 +59,6 @@ begin
         if Length(sa) >= 2 then begin
           if UpCase(sa[0])='UNIT' then    begin
           uname := sa[1];
-          Memo1.Lines.Add('...............:' + uname);
           end;
         end;
       s := StringReplace(s, ' ', '', [rfIgnoreCase, rfReplaceAll]);

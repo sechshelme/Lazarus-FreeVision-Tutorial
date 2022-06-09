@@ -1,7 +1,6 @@
 ```mermaid
 classDiagram
 direction RL
-...............:ColorSel
 TColorSelector<..TView
 TColorSelector:ColorSel
 TMonoSelector<..TCluster
@@ -14,9 +13,6 @@ TColorItemList<..TListViewer
 TColorItemList:ColorSel
 TColorDialog<..TDialog
 TColorDialog:ColorSel
-...............:MsgBox
-...............:Memory
-...............:Editors
 TIndicator<..TView
 TIndicator:Editors
 TEditor<..TView
@@ -27,7 +23,6 @@ TFileEditor<..TEditor
 TFileEditor:Editors
 TEditWindow<..TWindow
 TEditWindow:Editors
-...............:Menus
 TMenuView<..TView
 TMenuView:Menus
 TMenuBar<..TMenuView
@@ -38,7 +33,6 @@ TMenuPopup<..TMenuBox
 TMenuPopup:Menus
 TStatusLine<..TView
 TStatusLine:Menus
-...............:Views
 TView<..TObject
 TView:Views
 TFrame<..TView
@@ -53,7 +47,6 @@ TGroup<..TView
 TGroup:Views
 TWindow<..TGroup
 TWindow:Views
-...............:App
 TBackground<..TView
 TBackground:App
 TDesktop<..TGroup
@@ -62,14 +55,10 @@ TProgram<..TGroup
 TProgram:App
 TApplication<..TProgram
 TApplication:App
-...............:Outline
 TOutlineViewer<..TScroller
 TOutlineViewer:Outline
 TOutline<..TOutlineViewer
 TOutline:Outline
-...............:HistList
-...............:Drivers
-...............:Dialogs
 TDialog<..TWindow
 TDialog:Dialogs
 TInputLine<..TView
@@ -98,7 +87,6 @@ THistoryWindow<..TWindow
 THistoryWindow:Dialogs
 THistory<..TView
 THistory:Dialogs
-...............:StdDlg
 TFileInputLine<..TInputLine
 TFileInputLine:StdDlg
 TFileCollection<..TSortedCollection
@@ -117,7 +105,6 @@ TDirListBox<..TListBox
 TDirListBox:StdDlg
 TChDirDialog<..TDialog
 TChDirDialog:StdDlg
-...............:TextView
 TTextDevice<..TScroller
 TTextDevice:TextView
 TTerminal<..TTextDevice
