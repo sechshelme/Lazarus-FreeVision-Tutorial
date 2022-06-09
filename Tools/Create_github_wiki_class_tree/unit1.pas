@@ -80,6 +80,7 @@ begin
     sl.Free;
   end;
   fsl.Free;
+  Memo1.Lines.Add('TObject' + ':unit ' + 'Objects');
   Memo1.Lines.Add('```');
 end;
 

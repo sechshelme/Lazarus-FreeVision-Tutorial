@@ -211,4 +211,5 @@ TStrListMaker<..TObject
 TStrListMaker:unit Objects
 DUmmyObject<..TObject
 DUmmyObject:unit Objects
+TObject:unit Objects
 ```
