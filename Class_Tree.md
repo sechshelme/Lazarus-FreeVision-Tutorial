@@ -2,181 +2,181 @@
 classDiagram
 direction RL
 TTimedDialog<..TDialog
-TTimedDialog:timeddlg
+TTimedDialog:unit timeddlg
 TTimedDialogText<..TStaticText
-TTimedDialogText:timeddlg
+TTimedDialogText:unit timeddlg
 TInputLong<..TInputLine
-TInputLong:InpLong
+TInputLong:unit InpLong
 TInputLine<..TView
-TInputLine:Dialogs
+TInputLine:unit Dialogs
 TButton<..TView
-TButton:Dialogs
+TButton:unit Dialogs
 TCluster<..TView
-TCluster:Dialogs
+TCluster:unit Dialogs
 TRadioButtons<..TCluster
-TRadioButtons:Dialogs
+TRadioButtons:unit Dialogs
 TCheckBoxes<..TCluster
-TCheckBoxes:Dialogs
+TCheckBoxes:unit Dialogs
 TMultiCheckBoxes<..TCluster
-TMultiCheckBoxes:Dialogs
+TMultiCheckBoxes:unit Dialogs
 TListBox<..TListViewer
-TListBox:Dialogs
+TListBox:unit Dialogs
 TStaticText<..TView
-TStaticText:Dialogs
+TStaticText:unit Dialogs
 TParamText<..TStaticText
-TParamText:Dialogs
+TParamText:unit Dialogs
 TLabel<..TStaticText
-TLabel:Dialogs
+TLabel:unit Dialogs
 THistoryViewer<..TListViewer
-THistoryViewer:Dialogs
+THistoryViewer:unit Dialogs
 THistoryWindow<..TWindow
-THistoryWindow:Dialogs
+THistoryWindow:unit Dialogs
 THistory<..TView
-THistory:Dialogs
+THistory:unit Dialogs
 TBrowseInputLine<..TInputLine
-TBrowseInputLine:Dialogs
+TBrowseInputLine:unit Dialogs
 TBrowseButton<..TButton
-TBrowseButton:Dialogs
+TBrowseButton:unit Dialogs
 TCommandIcon<..TStaticText
-TCommandIcon:Dialogs
+TCommandIcon:unit Dialogs
 TCommandCheckBoxes<..TCheckBoxes
-TCommandCheckBoxes:Dialogs
+TCommandCheckBoxes:unit Dialogs
 TCommandRadioButtons<..TRadioButtons
-TCommandRadioButtons:Dialogs
+TCommandRadioButtons:unit Dialogs
 TEditListBox<..TListBox
-TEditListBox:Dialogs
+TEditListBox:unit Dialogs
 TModalInputLine<..TInputLine
-TModalInputLine:Dialogs
+TModalInputLine:unit Dialogs
 TDialog<..TWindow
-TDialog:Dialogs
+TDialog:unit Dialogs
 TListDlg<..TDialog
-TListDlg:Dialogs
+TListDlg:unit Dialogs
 TTable<..TView
-TTable:AsciiTab
+TTable:unit AsciiTab
 TReport<..TView
-TReport:AsciiTab
+TReport:unit AsciiTab
 TASCIIChart<..TWindow
-TASCIIChart:AsciiTab
+TASCIIChart:unit AsciiTab
 TValidator<..TObject
-TValidator:Validate
+TValidator:unit Validate
 TPXPictureValidator<..TValidator
-TPXPictureValidator:Validate
+TPXPictureValidator:unit Validate
 TFilterValidator<..TValidator
-TFilterValidator:Validate
+TFilterValidator:unit Validate
 TRangeValidator<..TFilterValidator
-TRangeValidator:Validate
+TRangeValidator:unit Validate
 TLookupValidator<..TValidator
-TLookupValidator:Validate
+TLookupValidator:unit Validate
 TStringLookupValidator<..TLookupValidator
-TStringLookupValidator:Validate
+TStringLookupValidator:unit Validate
 TConstant<..TObject
-TConstant:Resource
+TConstant:unit Resource
 TMemStringList<..TSortedCollection
-TMemStringList:Resource
+TMemStringList:unit Resource
 TFileInputLine<..TInputLine
-TFileInputLine:StdDlg
+TFileInputLine:unit StdDlg
 TFileCollection<..TSortedCollection
-TFileCollection:StdDlg
+TFileCollection:unit StdDlg
 TFileValidator<..TValidator
-TFileValidator:StdDlg
+TFileValidator:unit StdDlg
 TSortedListBox<..TListBox
-TSortedListBox:StdDlg
+TSortedListBox:unit StdDlg
 TFileList<..TSortedListBox
-TFileList:StdDlg
+TFileList:unit StdDlg
 TFileInfoPane<..TView
-TFileInfoPane:StdDlg
+TFileInfoPane:unit StdDlg
 TFileHistory<..THistory
-TFileHistory:StdDlg
+TFileHistory:unit StdDlg
 TFileDialog<..TDialog
-TFileDialog:StdDlg
+TFileDialog:unit StdDlg
 TDirCollection<..TCollection
-TDirCollection:StdDlg
+TDirCollection:unit StdDlg
 TDirListBox<..TListBox
-TDirListBox:StdDlg
+TDirListBox:unit StdDlg
 TChDirDialog<..TDialog
-TChDirDialog:StdDlg
+TChDirDialog:unit StdDlg
 TEditChDirDialog<..TChDirDialog
-TEditChDirDialog:StdDlg
+TEditChDirDialog:unit StdDlg
 TDirValidator<..TFilterValidator
-TDirValidator:StdDlg
+TDirValidator:unit StdDlg
 TView<..TObject
-TView:Views
+TView:unit Views
 TGroup<..TView
-TGroup:Views
+TGroup:unit Views
 TFrame<..TView
-TFrame:Views
+TFrame:unit Views
 TScrollBar<..TView
-TScrollBar:Views
+TScrollBar:unit Views
 TScroller<..TView
-TScroller:Views
+TScroller:unit Views
 TListViewer<..TView
-TListViewer:Views
+TListViewer:unit Views
 TWindow<..TGroup
-TWindow:Views
+TWindow:unit Views
 Toutlineviewer<..Tscroller
-Toutlineviewer:outline
+Toutlineviewer:unit outline
 Toutline<..Toutlineviewer
-Toutline:outline
+Toutline:unit outline
 TIndicator<..TView
-TIndicator:Editors
+TIndicator:unit Editors
 TEditor<..TView
-TEditor:Editors
+TEditor:unit Editors
 TMemo<..TEditor
-TMemo:Editors
+TMemo:unit Editors
 TFileEditor<..TEditor
-TFileEditor:Editors
+TFileEditor:unit Editors
 TEditWindow<..TWindow
-TEditWindow:Editors
+TEditWindow:unit Editors
 TMenuView<..TView
-TMenuView:Menus
+TMenuView:unit Menus
 TMenuBar<..TMenuView
-TMenuBar:Menus
+TMenuBar:unit Menus
 TMenuBox<..TMenuView
-TMenuBox:Menus
+TMenuBox:unit Menus
 TMenuPopup<..TMenuBox
-TMenuPopup:Menus
+TMenuPopup:unit Menus
 TStatusLine<..TView
-TStatusLine:Menus
+TStatusLine:unit Menus
 TColorGroupList<..TListViewer
-TColorGroupList:ColorSel
+TColorGroupList:unit ColorSel
 TColorDialog<..TDialog
-TColorDialog:ColorSel
+TColorDialog:unit ColorSel
 TBackGround<..TView
-TBackGround:App
+TBackGround:unit App
 TDeskTop<..TGroup
-TDeskTop:App
+TDeskTop:unit App
 TProgram<..TGroup
-TProgram:App
+TProgram:unit App
 TApplication<..TProgram
-TApplication:App
+TApplication:unit App
 TColoredText<..TStaticText
-TColoredText:ColorTxt
+TColoredText:unit ColorTxt
 THeapView<..TView
-THeapView:Gadgets
+THeapView:unit Gadgets
 TClockView<..TView
-TClockView:Gadgets
+TClockView:unit Gadgets
 TStatus<..TParamText
-TStatus:Statuses
+TStatus:unit Statuses
 TStatusDlg<..TDialog
-TStatusDlg:Statuses
+TStatusDlg:unit Statuses
 TStatusMessageDlg<..TStatusDlg
-TStatusMessageDlg:Statuses
+TStatusMessageDlg:unit Statuses
 TGauge<..TStatus
-TGauge:Statuses
+TGauge:unit Statuses
 TArrowGauge<..TGauge
-TArrowGauge:Statuses
+TArrowGauge:unit Statuses
 TPercentGauge<..TGauge
-TPercentGauge:Statuses
+TPercentGauge:unit Statuses
 TBarGauge<..TPercentGauge
-TBarGauge:Statuses
+TBarGauge:unit Statuses
 TSpinnerGauge<..TGauge
-TSpinnerGauge:Statuses
+TSpinnerGauge:unit Statuses
 TAppStatus<..TStatus
-TAppStatus:Statuses
+TAppStatus:unit Statuses
 THeapMaxAvail<..TAppStatus
-THeapMaxAvail:Statuses
+THeapMaxAvail:unit Statuses
 THeapMemAvail<..TAppStatus
-THeapMemAvail:Statuses
+THeapMemAvail:unit Statuses
 TTab<..TGroup
-TTab:tabs
+TTab:unit tabs
 ```

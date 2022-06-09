@@ -55,43 +55,22 @@ begin
     sl.LoadFromFile(fsl[i]);
     for j := 0 to sl.Count - 1 do begin
       s := sl[j];
-        sa := s.Split([' ', ';']);
-        if Length(sa) >= 2 then begin
-          if UpCase(sa[0])='UNIT' then    begin
+      sa := s.Split([' ', ';']);
+      if Length(sa) >= 2 then begin
+        if UpCase(sa[0]) = 'UNIT' then  begin
           uname := sa[1];
-          end;
         end;
+      end;
       s := StringReplace(s, ' ', '', [rfIgnoreCase, rfReplaceAll]);
       if Pos('OBJECT(T', UpCase(s)) > 0 then begin
         sa := s.Split(['=', '(', ')']);
         if Length(sa) >= 3 then begin
           Memo1.Lines.Add(sa[0] + '<..' + sa[2]);
           if uname <> ' ' then  begin
-            Memo1.Lines.Add(sa[0] + ':' + uname);
+            Memo1.Lines.Add(sa[0] + ':unit ' + uname);
           end;
           st := sa[0];
         end;
-        //if Borland.Checked then begin
-        //  p := j;
-        //  repeat
-        //    Inc(p);
-        //    s := sl[p];
-        //    s := StringReplace(s, ' ', '', [rfIgnoreCase, rfReplaceAll]);
-        //    sa := s.Split([':', ';']);
-        //    if Length(sa) >= 2 then begin
-        //      if (Pos('CONSTRUCTOR', UpCase(sl[p])) > 0) or (Pos('DESTRUCTOR', UpCase(sl[p])) > 0) or (Pos('FUNCTION', UpCase(sl[p])) > 0) or
-        //        (Pos('PROCEDURE', UpCase(sl[p])) > 0) then begin
-        //        //                Memo1.Lines.Add(st + ':' + sa[1] + '()');
-        //      end else begin
-        //        Memo1.Lines.Add(st + ':' + sa[0] + ' ' + sa[1]);
-        //      end;
-        //    end;
-        //
-        //
-        //  until Pos(' END;', UpCase(sl[p])) > 0;
-        //
-        //end;
-
       end;
     end;
     sl.Free;

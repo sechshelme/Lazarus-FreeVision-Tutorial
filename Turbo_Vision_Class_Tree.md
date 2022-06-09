@@ -2,111 +2,111 @@
 classDiagram
 direction RL
 TColorSelector<..TView
-TColorSelector:ColorSel
+TColorSelector:unit ColorSel
 TMonoSelector<..TCluster
-TMonoSelector:ColorSel
+TMonoSelector:unit ColorSel
 TColorDisplay<..TView
-TColorDisplay:ColorSel
+TColorDisplay:unit ColorSel
 TColorGroupList<..TListViewer
-TColorGroupList:ColorSel
+TColorGroupList:unit ColorSel
 TColorItemList<..TListViewer
-TColorItemList:ColorSel
+TColorItemList:unit ColorSel
 TColorDialog<..TDialog
-TColorDialog:ColorSel
+TColorDialog:unit ColorSel
 TIndicator<..TView
-TIndicator:Editors
+TIndicator:unit Editors
 TEditor<..TView
-TEditor:Editors
+TEditor:unit Editors
 TMemo<..TEditor
-TMemo:Editors
+TMemo:unit Editors
 TFileEditor<..TEditor
-TFileEditor:Editors
+TFileEditor:unit Editors
 TEditWindow<..TWindow
-TEditWindow:Editors
+TEditWindow:unit Editors
 TMenuView<..TView
-TMenuView:Menus
+TMenuView:unit Menus
 TMenuBar<..TMenuView
-TMenuBar:Menus
+TMenuBar:unit Menus
 TMenuBox<..TMenuView
-TMenuBox:Menus
+TMenuBox:unit Menus
 TMenuPopup<..TMenuBox
-TMenuPopup:Menus
+TMenuPopup:unit Menus
 TStatusLine<..TView
-TStatusLine:Menus
+TStatusLine:unit Menus
 TView<..TObject
-TView:Views
+TView:unit Views
 TFrame<..TView
-TFrame:Views
+TFrame:unit Views
 TScrollBar<..TView
-TScrollBar:Views
+TScrollBar:unit Views
 TScroller<..TView
-TScroller:Views
+TScroller:unit Views
 TListViewer<..TView
-TListViewer:Views
+TListViewer:unit Views
 TGroup<..TView
-TGroup:Views
+TGroup:unit Views
 TWindow<..TGroup
-TWindow:Views
+TWindow:unit Views
 TBackground<..TView
-TBackground:App
+TBackground:unit App
 TDesktop<..TGroup
-TDesktop:App
+TDesktop:unit App
 TProgram<..TGroup
-TProgram:App
+TProgram:unit App
 TApplication<..TProgram
-TApplication:App
+TApplication:unit App
 TOutlineViewer<..TScroller
-TOutlineViewer:Outline
+TOutlineViewer:unit Outline
 TOutline<..TOutlineViewer
-TOutline:Outline
+TOutline:unit Outline
 TDialog<..TWindow
-TDialog:Dialogs
+TDialog:unit Dialogs
 TInputLine<..TView
-TInputLine:Dialogs
+TInputLine:unit Dialogs
 TButton<..TView
-TButton:Dialogs
+TButton:unit Dialogs
 TCluster<..TView
-TCluster:Dialogs
+TCluster:unit Dialogs
 TRadioButtons<..TCluster
-TRadioButtons:Dialogs
+TRadioButtons:unit Dialogs
 TCheckBoxes<..TCluster
-TCheckBoxes:Dialogs
+TCheckBoxes:unit Dialogs
 TMultiCheckBoxes<..TCluster
-TMultiCheckBoxes:Dialogs
+TMultiCheckBoxes:unit Dialogs
 TListBox<..TListViewer
-TListBox:Dialogs
+TListBox:unit Dialogs
 TStaticText<..TView
-TStaticText:Dialogs
+TStaticText:unit Dialogs
 TParamText<..TStaticText
-TParamText:Dialogs
+TParamText:unit Dialogs
 TLabel<..TStaticText
-TLabel:Dialogs
+TLabel:unit Dialogs
 THistoryViewer<..TListViewer
-THistoryViewer:Dialogs
+THistoryViewer:unit Dialogs
 THistoryWindow<..TWindow
-THistoryWindow:Dialogs
+THistoryWindow:unit Dialogs
 THistory<..TView
-THistory:Dialogs
+THistory:unit Dialogs
 TFileInputLine<..TInputLine
-TFileInputLine:StdDlg
+TFileInputLine:unit StdDlg
 TFileCollection<..TSortedCollection
-TFileCollection:StdDlg
+TFileCollection:unit StdDlg
 TSortedListBox<..TListBox
-TSortedListBox:StdDlg
+TSortedListBox:unit StdDlg
 TFileList<..TSortedListBox
-TFileList:StdDlg
+TFileList:unit StdDlg
 TFileInfoPane<..TView
-TFileInfoPane:StdDlg
+TFileInfoPane:unit StdDlg
 TFileDialog<..TDialog
-TFileDialog:StdDlg
+TFileDialog:unit StdDlg
 TDirCollection<..TCollection
-TDirCollection:StdDlg
+TDirCollection:unit StdDlg
 TDirListBox<..TListBox
-TDirListBox:StdDlg
+TDirListBox:unit StdDlg
 TChDirDialog<..TDialog
-TChDirDialog:StdDlg
+TChDirDialog:unit StdDlg
 TTextDevice<..TScroller
-TTextDevice:TextView
+TTextDevice:unit TextView
 TTerminal<..TTextDevice
-TTerminal:TextView
+TTerminal:unit TextView
 ```
