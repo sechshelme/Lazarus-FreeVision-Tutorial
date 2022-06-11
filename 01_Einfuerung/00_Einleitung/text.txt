@@ -55,4 +55,5 @@ Das sieht man leider gut mit der Zeilen und Spalten-Anzeige der Fenster.
 In diesem Tutorial gibt es Sachen, welche <b>nicht</b> 100% kompatibel zu <b>Turbo-Vision</b> sind.
 Gewisse Komponenten und Funktionen wurden erst mit <b>Free-Vision</b> von <b>FPC</b> eingeführt.
 da gehört zB. <b>TabSheet dazu.</b>
+Es gibt auch Funktionen, welche es nur in Turbo-Vision gibt.
 *)
