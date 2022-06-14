@@ -3,17 +3,17 @@
 Hinweis: Die Sourcen auf GitHub sind aktueller als das Wiki.<br>
 Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.<br>
 ## Tutorial
-=== nfuerung ===
+## Einfuerung
 {|{{Prettytable_B1}} width="100%"
-## nfuerung
+## Einfuerung
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Einfuerung - Einleitung)|nleitung
 | [FPC FreeVision](Einfuerung - Erster Desktop)|ster Desktop
 | [FPC FreeVision](Einfuerung - Hello World)|llo World
-=== atuszeile und Menu ===
+## Statuszeile und Menu
 {|{{Prettytable_B1}} width="100%"
-## atuszeile und Menu
+## Statuszeile und Menu
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Statuszeile und Menu - Status Zeile)|atus Zeile
@@ -24,9 +24,9 @@ Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.
 | [FPC FreeVision](Statuszeile und Menu - Fertige Statuszeile und Menues)|rtige Statuszeile und Menues
 | [FPC FreeVision](Statuszeile und Menu - Menu Hinweise)|nu Hinweise
 | [FPC FreeVision](Statuszeile und Menu - Menu und Statuszeile tauschen)|nu und Statuszeile tauschen
-=== aloge ===
+## Dialoge
 {|{{Prettytable_B1}} width="100%"
-## aloge
+## Dialoge
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Dialoge - Event abarbeiten)|ent abarbeiten
@@ -40,9 +40,9 @@ Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.
 | [FPC FreeVision](Dialoge - Freien Speicher ueberpruefen)|eien Speicher ueberpruefen
 | [FPC FreeVision](Dialoge - Werte des Dialoges auf Platte speichern)|rte des Dialoges auf Platte speichern
 | [FPC FreeVision](Dialoge - StaticText gut fuer ein About)|aticText gut fuer ein About
-=== aloge als Komponente ===
+## Dialoge als Komponente
 {|{{Prettytable_B1}} width="100%"
-## aloge als Komponente
+## Dialoge als Komponente
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Dialoge als Komponente - Ein einfaches About)|n einfaches About
@@ -50,9 +50,9 @@ Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.
 | [FPC FreeVision](Dialoge als Komponente - Komponenten zur Laufzeit modifizieren)|mponenten zur Laufzeit modifizieren
 | [FPC FreeVision](Dialoge als Komponente - Verschiedene Dialog Farben)|rschiedene Dialog Farben
 | [FPC FreeVision](Dialoge als Komponente - Event an Dialog uebergeben)|ent an Dialog uebergeben
-=== sten und ListBoxen ===
+## Listen und ListBoxen
 {|{{Prettytable_B1}} width="100%"
-## sten und ListBoxen
+## Listen und ListBoxen
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Listen und ListBoxen - StringCollection unsortiert)|ringCollection unsortiert
@@ -62,47 +62,47 @@ Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.
 | [FPC FreeVision](Listen und ListBoxen - ListBox mehrere Spalten)|stBox mehrere Spalten
 | [FPC FreeVision](Listen und ListBoxen - ListBox einfuegen und entfernen von Eintraegen)|stBox einfuegen und entfernen von Eintraegen
 | [FPC FreeVision](Listen und ListBoxen - ListBox Doppelklick)|stBox Doppelklick
-=== entHandle auserhalb Komponenten ===
+## EventHandle auserhalb Komponenten
 {|{{Prettytable_B1}} width="100%"
-## entHandle auserhalb Komponenten
+## EventHandle auserhalb Komponenten
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](EventHandle auserhalb Komponenten - Maus-Event)|us-Event
 | [FPC FreeVision](EventHandle auserhalb Komponenten - Tastatur Event)|statur Event
-=== mponenten modifizieren ===
+## Komponenten modifizieren
 {|{{Prettytable_B1}} width="100%"
-## mponenten modifizieren
+## Komponenten modifizieren
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Komponenten modifizieren - Button modifizieren)|tton modifizieren
-=== nster ===
+## Fenster
 {|{{Prettytable_B1}} width="100%"
-## nster
+## Fenster
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Fenster - Erstes Fenster)|stes Fenster
 | [FPC FreeVision](Fenster - Fenster neu und schliessen)|nster neu und schliessen
 | [FPC FreeVision](Fenster - Fenster verwalten)|nster verwalten
 | [FPC FreeVision](Fenster - Fenster mit Bedienelemte ausstatten)|nster mit Bedienelemte ausstatten
-=== itor ===
+## Editor
 {|{{Prettytable_B1}} width="100%"
-## itor
+## Editor
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Editor - Einfaches Editor-Fenster)|nfaches Editor-Fenster
 | [FPC FreeVision](Editor - Speichern und oeffnen)|eichern und oeffnen
 | [FPC FreeVision](Editor - Suchen Ersetzen)|chen Ersetzen
 | [FPC FreeVision](Editor - Zwischenablage)|ischenablage
-=== iew ===
+## TView
 {|{{Prettytable_B1}} width="100%"
-## iew
+## TView
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](TView - Einfachstes TView)|nfachstes TView
 | [FPC FreeVision](TView - TView erweitern)|iew erweitern
-=== rtige Dialoge ===
+## Fertige Dialoge
 {|{{Prettytable_B1}} width="100%"
-## rtige Dialoge
+## Fertige Dialoge
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Fertige Dialoge - Einfache MessageBox)|nfache MessageBox
@@ -111,34 +111,34 @@ Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.
 | [FPC FreeVision](Fertige Dialoge - String-Eingabe Box)|ring-Eingabe Box
 | [FPC FreeVision](Fertige Dialoge - Datei Dialoge)|tei Dialoge
 | [FPC FreeVision](Fertige Dialoge - Ordner wechseln)|dner wechseln
-=== tische-Gestaltung ===
+## Optische-Gestaltung
 {|{{Prettytable_B1}} width="100%"
-## tische-Gestaltung
+## Optische-Gestaltung
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Optische-Gestaltung - Desktop-Hintergrund Zeichen)|sktop-Hintergrund Zeichen
 | [FPC FreeVision](Optische-Gestaltung - Desktop-Hintergrund Farbe)|sktop-Hintergrund Farbe
 | [FPC FreeVision](Optische-Gestaltung - Eigener Desktop Hintergrund)|gener Desktop Hintergrund
 | [FPC FreeVision](Optische-Gestaltung - Hintergrund auf Dialog)|ntergrund auf Dialog
-=== verses ===
+## Diverses
 {|{{Prettytable_B1}} width="100%"
-## verses
+## Diverses
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Diverses - Idle Handle eine Uhr)|le Handle eine Uhr
 | [FPC FreeVision](Diverses - String formatieren)|ring formatieren
 | [FPC FreeVision](Diverses - InputLine Validate)|putLine Validate
 | [FPC FreeVision](Diverses - Baum Ansicht)|um Ansicht
-=== dgets ===
+## Gadgets
 {|{{Prettytable_B1}} width="100%"
-## dgets
+## Gadgets
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Gadgets - RAM Verbrauch anzeigen (Heap))|M Verbrauch anzeigen (Heap)
 | [FPC FreeVision](Gadgets - Eine Uhr)|ne Uhr
-=== perimente ===
+## Experimente
 {|{{Prettytable_B1}} width="100%"
-## perimente
+## Experimente
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Experimente - 2 Menus)|Menus
@@ -149,9 +149,9 @@ Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.
 | [FPC FreeVision](Experimente - Eintrag einfuegen)|ntrag einfuegen
 | [FPC FreeVision](Experimente - EditListBox unsortiert)|itListBox unsortiert
 | [FPC FreeVision](Experimente - HistoryViewer)|storyViewer
-=== st ===
+## Test
 {|{{Prettytable_B1}} width="100%"
-## st
+## Test
 | Link | Beschreibung
 | :---: | ---
 | [FPC FreeVision](Test - Komponenten zur Laufzeit modifizieren)|mponenten zur Laufzeit modifizieren
