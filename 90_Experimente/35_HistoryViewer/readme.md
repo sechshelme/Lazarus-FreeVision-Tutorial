@@ -1,6 +1,6 @@
 <html>
-    <b><h1>06 Listen und ListBoxen</h1></b>
-    <b><h2>10 ListBox unsortiert</h2></b>
+    <b><h1>90 Experimente</h1></b>
+    <b><h2>35 HistoryViewer</h2></b>
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList freigeben.<br>
 Dies ist nicht Free-Vision üblich. Dies hat auch einen Sinn, da man Listen vielfach global verwendet, <br>
@@ -32,8 +32,9 @@ Komponenten für den Dialog generieren.<br>
 <b><font color="0000BB">constructor</font></b> TMyDialog.Init;
 <b><font color="0000BB">var</font></b>
   R: TRect;
-  ScrollBar: PScrollBar;
+  HScrollBar, VScrollBar: PScrollBar;
   i: Integer;
+  hw:PHistoryViewer;
 <b><font color="0000BB">const</font></b>
   Tage: <b><font color="0000BB">array</font></b> [<font color="#0077BB">0</font>..<font color="#0077BB">6</font>] <b><font color="0000BB">of</font></b> shortstring = (
     <font color="#FF0000">'Montag'</font>, <font color="#FF0000">'Dienstag'</font>, <font color="#FF0000">'Mittwoch'</font>, <font color="#FF0000">'Donnerstag'</font>, <font color="#FF0000">'Freitag'</font>, <font color="#FF0000">'Samstag'</font>, <font color="#FF0000">'Sonntag'</font>);
@@ -48,17 +49,31 @@ Komponenten für den Dialog generieren.<br>
     StringCollection^.Insert(NewStr(Tage[i]));
   <b><font color="0000BB">end</font></b>;
 <br>
-  <i><font color="#FFFF00">// ScrollBar für ListBox</font></i>
+  <i><font color="#FFFF00">// HScrollBar für ListBox</font></i>
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">7</font>, <font color="#0077BB">31</font>, <font color="#0077BB">8</font>);
+  HScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(R));
+  Insert(HScrollBar);
+<br>
+  <i><font color="#FFFF00">// VScrollBar für ListBox</font></i>
   R.Assign(<font color="#0077BB">31</font>, <font color="#0077BB">2</font>, <font color="#0077BB">32</font>, <font color="#0077BB">7</font>);
-  ScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(R));
-  Insert(ScrollBar);
+  VScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(R));
+  Insert(VScrollBar);
+<br>
+  <i><font color="#FFFF00">//// ListBox</font></i>
+  <i><font color="#FFFF00">//R.A.X := 5;</font></i>
+  <i><font color="#FFFF00">//Dec(R.B.X, 1);</font></i>
+  <i><font color="#FFFF00">//ListBox := new(PListBox, Init(R, 1, VScrollBar));</font></i>
+  <i><font color="#FFFF00">//ListBox^.NewList(StringCollection);</font></i>
+  <i><font color="#FFFF00">//Insert(ListBox);</font></i>
 <br>
   <i><font color="#FFFF00">// ListBox</font></i>
   R.A.X := <font color="#0077BB">5</font>;
   Dec(R.B.X, <font color="#0077BB">1</font>);
-  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(R, <font color="#0077BB">1</font>, ScrollBar));
-  ListBox^.NewList(StringCollection);
-  Insert(ListBox);
+  hw := <b><font color="0000BB">new</font></b>(PHistoryViewer, Init(R, HScrollBar, VScrollBar,<font color="#0077BB">1</font>));
+<i><font color="#FFFF00">//  hw^.NewList(StringCollection);</font></i>
+  Insert(hw);
+<br>
+
 <br>
   <i><font color="#FFFF00">// Tag-Button</font></i>
   R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">9</font>, <font color="#0077BB">18</font>, <font color="#0077BB">11</font>);
@@ -76,7 +91,7 @@ Komponenten für den Dialog generieren.<br>
 Manuell den Speicher der Liste frei geben.<br>
 <pre><code><b><font color="0000BB">destructor</font></b> TMyDialog.Done;
 <b><font color="0000BB">begin</font></b>
-  <b><font color="0000BB">Dispose</font></b>(ListBox^.List, Done); <i><font color="#FFFF00">// Die Liste freigeben</font></i>
+<i><font color="#FFFF00">//  Dispose(ListBox^.List, Done); // Die Liste freigeben</font></i>
   <b><font color="0000BB">inherited</font></b> Done;
 <b><font color="0000BB">end</font></b>;
 </code></pre>
