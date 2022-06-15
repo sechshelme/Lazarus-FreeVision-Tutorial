@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>15 - Baum Ansicht</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
+    <b><h1>20 - Diverses</h1></b>
+    <b><h2>15 - Baum Ansicht</h2></b>
+<img src="image.png" alt="Selfhtml"><br><br>
+Baumartige Darstellung.<br>
+<hr><br>
+Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.<br>
+<pre><code>  PTreeWindow = ^TTreeWindow;
+  TTreeWindow = <b><font color="0000BB">object</font></b>(TWindow)
+    <b><font color="0000BB">constructor</font></b> Init(R: TRect);
+  <b><font color="0000BB">end</font></b>;
+
+
+  <b><font color="0000BB">constructor</font></b> TTreeWindow.Init(R: TRect);
+  <b><font color="0000BB">var</font></b>
+    Outline: POutline;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'Computer'</font>, wnNoNumber);
+    Options := Options <b><font color="0000BB">or</font></b> ofTileable;
+    GetExtent(R);
+    R.Grow(-<font color="#0077BB">1</font>, -<font color="#0077BB">1</font>);
+    Outline := <b><font color="0000BB">New</font></b>(POutline, Init(R, StandardScrollBar(sbHorizontal), StandardScrollBar(sbVertical),
+      NewNode(<font color="#FF0000">'Computer'</font>,
+        NewNode(<font color="#FF0000">'IBM'</font>,
+          NewNode(<font color="#FF0000">'XT'</font>, <b><font color="0000BB">nil</font></b>,
+          NewNode(<font color="#FF0000">'AT'</font>, <b><font color="0000BB">nil</font></b>,
+          NewNode(<font color="#FF0000">'PS2'</font>, <b><font color="0000BB">nil</font></b>, <b><font color="0000BB">nil</font></b>))),
+        NewNode(<font color="#FF0000">'Mac'</font>,
+          NewNode(<font color="#FF0000">'Lisa'</font>, <b><font color="0000BB">nil</font></b>,
+          NewNode(<font color="#FF0000">'iMac'</font>, <b><font color="0000BB">nil</font></b>, <b><font color="0000BB">nil</font></b>)),
+        NewNode(<font color="#FF0000">'Amiga'</font>,
+          NewNode(<font color="#FF0000">'500'</font>, <b><font color="0000BB">nil</font></b>,
+          NewNode(<font color="#FF0000">'1000'</font>, <b><font color="0000BB">nil</font></b>, <b><font color="0000BB">nil</font></b>)), <b><font color="0000BB">nil</font></b>))), <b><font color="0000BB">nil</font></b>)));
+    Insert(Outline);
+  <b><font color="0000BB">end</font></b>;</code></pre>
+Hier wird das Fenster erzeugt, welches die Outline enthält.<br>
+<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+  <b><font color="0000BB">var</font></b>
+    R: TRect;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+
+    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmList: <b><font color="0000BB">begin</font></b>
+          R.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">2</font>, <font color="#0077BB">35</font>, <font color="#0077BB">17</font>);
+          InsertWindow(<b><font color="0000BB">New</font></b>(PTreeWindow, Init(R)));
+        <b><font color="0000BB">end</font></b>
+        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+          <b><font color="0000BB">Exit</font></b>;
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+    ClearEvent(Event);
+  <b><font color="0000BB">end</font></b>;</code></pre>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
+</html>
