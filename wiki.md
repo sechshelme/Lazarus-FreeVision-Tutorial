@@ -3,22 +3,22 @@
 Hinweis: Die Sourcen auf GitHub sind aktueller als das Wiki.<br>
 Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.<br>
 ## Tutorial
-[Einfuerung](#einfuerung)
-[Statuszeile_und_Menu](#statuszeile_und_menu)
-[Dialoge](#dialoge)
-[Dialoge_als_Komponente](#dialoge_als_komponente)
-[Listen_und_ListBoxen](#listen_und_listboxen)
-[EventHandle_auserhalb_Komponenten](#eventhandle_auserhalb_komponenten)
-[Komponenten_modifizieren](#komponenten_modifizieren)
-[Fenster](#fenster)
-[Editor](#editor)
-[TView](#tview)
-[Fertige_Dialoge](#fertige_dialoge)
-[Optische-Gestaltung](#optische-gestaltung)
-[Diverses](#diverses)
-[Gadgets](#gadgets)
-[Experimente](#experimente)
-[Test](#test)
+* [Einfuerung](#einfuerung)
+* [Statuszeile_und_Menu](#statuszeile_und_menu)
+* [Dialoge](#dialoge)
+* [Dialoge_als_Komponente](#dialoge_als_komponente)
+* [Listen_und_ListBoxen](#listen_und_listboxen)
+* [EventHandle_auserhalb_Komponenten](#eventhandle_auserhalb_komponenten)
+* [Komponenten_modifizieren](#komponenten_modifizieren)
+* [Fenster](#fenster)
+* [Editor](#editor)
+* [TView](#tview)
+* [Fertige_Dialoge](#fertige_dialoge)
+* [Optische-Gestaltung](#optische-gestaltung)
+* [Diverses](#diverses)
+* [Gadgets](#gadgets)
+* [Experimente](#experimente)
+* [Test](#test)
 ### Einfuerung
 | Link | Beschreibung
 | :---: | ---
