@@ -3,8 +3,7 @@
 Im Ordner <b>HTML-Tutorial</b> befindet sich das ganze Tutorial im HTML-Format, somit ist es im Browser anschaubar.
 Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
 
-[Tutorial](wiki.md)
-
+[Inhaltsverzeichniss Tutorial](wiki.md)
 
 ## Klassen-Baum:
 
@@ -24,6 +23,7 @@ https://github.com/romiras/turbo-pascal-archive/tree/master/User%20Interface
 
 | Datum | Änderungen 
 | :---: | ---
+| 15.06.2022 | <b>Inhaltsverzeichniss</b> zum Tutorial hinzugefügt. ([Link](wiki.md))
 | 05.06.2022 | Tutorial für <b>Standard Dialoge</b> hinzugefügt.
 | 30.05.2022 | Tutorial für <b>Listen</b> hinzugefügt.
 | 26.05.2022 | Alle Deklarationen von <b>TRect</b> von <b>Rec</b>t nach <b>R</b> ersetzt,<br> da dies Free/Turbo-Vision Komform ist.
