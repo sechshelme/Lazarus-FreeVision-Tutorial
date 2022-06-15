@@ -3,7 +3,7 @@
 Hinweis: Die Sourcen auf GitHub sind aktueller als das Wiki.<br>
 Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.<br>
 ## Tutorial
- [testlink](#event-an-dialog-uebergeben)
+ [testlink](#eventhandle-auserhalb-komponenten)
 ## Einfuerung
 | Link | Beschreibung
 | :---: | ---
