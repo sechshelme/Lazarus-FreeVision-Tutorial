@@ -1,9 +1,8 @@
-## FPC FreeVision Tutorial ( TurboVision )
+# FPC FreeVision Tutorial ( TurboVision )
+## Einleitung:
 
-Im Ordner <b>HTML-Tutorial</b> befindet sich das ganze Tutorial im HTML-Format, somit ist es im Browser anschaubar.
-Das Tutorial findet man auch direkt bei den Sourcen auf GitHub.
-
-[Inhaltsverzeichniss Tutorial](wiki.md)
+Im Ordner **HTML-Tutorial*** befindet sich das ganze Tutorial im HTML-Format, somit ist es im Browser anschaubar.
+Das Tutorial findet man auch direkt bei den Sourcen auf GitHub: [Inhaltsverzeichniss Tutorial](wiki.md)
 
 ## Klassen-Baum:
 
