@@ -1,6 +1,7 @@
 
 # Lazarus compiler-generated binaries (safe to delete)
-project1
+# project1
+# Project1
 *.exe
 *.dll
 *.so
