@@ -5,7 +5,7 @@
 In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.<br>
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.<br>
 Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows(Titel: ShortString);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows(Titel: ShortString);
   <b><font color="0000BB">var</font></b>
     Win: PWindow;
     R: TRect;

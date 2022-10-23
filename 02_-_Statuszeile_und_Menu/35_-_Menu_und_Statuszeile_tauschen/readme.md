@@ -8,7 +8,7 @@ Dazu wird die aktuelle Komponente entfernt und die neue eingefügt.<br>
 In dem Beispiel gibt es je eine deutsche und englische Komponente.<br>
 <hr><br>
 Deklaration der Komponenten<br>
-<pre><code>  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
+<pre><code=pascal>  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;                 <i><font color="#FFFF00">// Statuszeile</font></i>
     <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;                    <i><font color="#FFFF00">// Menü</font></i>
     <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>; <i><font color="#FFFF00">// Eventhandler</font></i>
@@ -17,7 +17,7 @@ Deklaration der Komponenten<br>
     StatusGer, StatusEng: PStatusLine;    <i><font color="#FFFF00">// Die beiden Stauszeilen</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Inizialisieren der beiden Statuszeilen.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitStatusLine;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitStatusLine;
   <b><font color="0000BB">var</font></b>
     R: TRect;
   <b><font color="0000BB">begin</font></b>
@@ -39,7 +39,7 @@ Inizialisieren der beiden Statuszeilen.<br>
     StatusLine := StatusGer; <i><font color="#FFFF00">// Deutsch per Default</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Inizialisieren der beiden Menüs.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;
   <b><font color="0000BB">begin</font></b>
@@ -77,7 +77,7 @@ Inizialisieren der beiden Menüs.<br>
     MenuBar := menuGer; <i><font color="#FFFF00">// Deutsch per Default</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Austauschen der Komponenten<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>
     Rect: TRect;              <i><font color="#FFFF00">// Rechteck für die Statuszeilen Position.</font></i>
 <br>

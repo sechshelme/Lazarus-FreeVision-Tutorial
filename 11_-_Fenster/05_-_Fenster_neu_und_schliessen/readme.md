@@ -6,7 +6,7 @@
 <hr><br>
 Neue Konstanten für Kommados.<br>
 Auch ist der HandleEvent dazugekommen.<br>
-<pre><code><b><font color="0000BB">const</font></b>
+<pre><code=pascal><b><font color="0000BB">const</font></b>
   cmNewWin = <font color="#0077BB">1001</font>;
 <b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
@@ -21,7 +21,7 @@ Auch ist der HandleEvent dazugekommen.<br>
     <b><font color="0000BB">procedure</font></b> NewWindows;
   <b><font color="0000BB">end</font></b>;</code></pre>
 Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;
   <b><font color="0000BB">begin</font></b>
@@ -37,7 +37,7 @@ Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.<br>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Dieser wird benutzt um die Fenster zu nummerieren.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
   <b><font color="0000BB">var</font></b>
     Win: PWindow;
     R: TRect;
@@ -55,7 +55,7 @@ Dieser wird benutzt um die Fenster zu nummerieren.<br>
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft es im Hintergrund automatisch.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>

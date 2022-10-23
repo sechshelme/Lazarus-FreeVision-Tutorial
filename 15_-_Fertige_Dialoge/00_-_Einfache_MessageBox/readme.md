@@ -5,7 +5,7 @@
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 <hr><br>
 Aufruf einer MessageBox.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>

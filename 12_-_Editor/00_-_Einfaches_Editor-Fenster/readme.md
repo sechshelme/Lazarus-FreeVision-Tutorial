@@ -6,7 +6,7 @@ Das Fenster ist nun ein Text-Editor, das man diese Funktion erreicht, nimmt man 
 Die Verwaltung der Fenster ist gleich, wie bei einem <b>TWindow</b>.<br>
 <hr><br>
 Einfügen eines leeren Editorfensters.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
   <b><font color="0000BB">var</font></b>
     Win: PEditWindow;
     R: TRect;

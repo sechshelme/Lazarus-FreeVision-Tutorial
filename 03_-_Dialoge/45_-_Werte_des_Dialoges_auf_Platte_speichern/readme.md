@@ -7,13 +7,13 @@ Es wird nicht überprüft, ob geschrieben werden kann, etc.<br>
 Wen man dies will müsste man mit <b>IOResult</b>, etc. überprüfen.<br>
 <hr><br>
 Hier kommt noch <b>sysutils</b> hinzu, sie wird für <b>FileExits</b> gebraucht.<br>
-<pre><code><b><font color="0000BB">uses</font></b>
+<pre><code=pascal><b><font color="0000BB">uses</font></b>
   SysUtils, <i><font color="#FFFF00">// Für Dateioperationen</font></i></code></pre>
 Die Datei, in welcher sich die Daten für den Dialog befinden.<br>
-<pre><code><b><font color="0000BB">const</font></b>
+<pre><code=pascal><b><font color="0000BB">const</font></b>
   DialogDatei = <font color="#FF0000">'parameter.cfg'</font>;</code></pre>
 Zu Beginn werden die Daten, wen vorhaden von der Platte geladen, ansonten werden sie erzeugt.<br>
-<pre><code>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+<pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> Init;
     <i><font color="#FFFF00">// Prüfen ob Datei vorhanden.</font></i>
@@ -33,7 +33,7 @@ Zu Beginn werden die Daten, wen vorhaden von der Platte geladen, ansonten werden
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
   <b><font color="0000BB">var</font></b>
     Dlg: PDialog;
     R: TRect;

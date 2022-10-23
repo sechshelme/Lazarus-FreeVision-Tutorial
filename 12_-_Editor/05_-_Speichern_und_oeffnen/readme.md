@@ -8,7 +8,7 @@ Einziger Unterschied, man gibt einen Dateinamen mit, welcher mit einem FileDialo
 Für das einfache speichern, muss man nicht viel machen. Man muss nur das Event <b>cmSave</b> aufrufen, zB. über das Menü.<br>
 <hr><br>
 Hier ist noch OpenWindows und SaveAll dazu gekommen.<br>
-<pre><code>  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
+<pre><code=pascal>  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     <b><font color="0000BB">constructor</font></b> Init;
 <br>
     <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;
@@ -29,7 +29,7 @@ Für die restlichen Diloage, werden die original Routinen verwendet, dies geschi
 Die Deklaration von <b>MyApp</b> ist schon hier oben, weil sie hier schon gebraucht wird.<br>
 <br>
 Bei MyApp.Init werden noch die neuen Standard-Dialoge zugeordnet.<br>
-<pre><code><b><font color="0000BB">var</font></b>
+<pre><code=pascal><b><font color="0000BB">var</font></b>
   MyApp: TMyApp;
 <br>
   <b><font color="0000BB">function</font></b> MyStdEditorDialog(Dialog: Int16; Info: Pointer): Word;
@@ -51,7 +51,7 @@ Bei MyApp.Init werden noch die neuen Standard-Dialoge zugeordnet.<br>
     NewWindows(<font color="#FF0000">''</font>);                     <i><font color="#FFFF00">// Leeres Fenster erzeugen.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;
   <b><font color="0000BB">begin</font></b>
@@ -83,7 +83,7 @@ Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Einfügen eines Editorfensters.<br>
 Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows(FileName: ShortString);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows(FileName: ShortString);
   <b><font color="0000BB">var</font></b>
     Win: PEditWindow;
     R: TRect;
@@ -103,7 +103,7 @@ Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
 Eine Datei öffnen und dies in ein Edit-Fenster laden.<br>
 Dabei wird ein <b>FileDialog</b> aufgerufen, in dem man eine Datei auswählen kann.<br>
 Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, dies geschieht automatisch.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.OpenWindows;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.OpenWindows;
   <b><font color="0000BB">var</font></b>
     FileDialog: PFileDialog;
     FileName: ShortString;
@@ -115,7 +115,7 @@ Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, die
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schliessen.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.SaveAll;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.SaveAll;
 <br>
     <b><font color="0000BB">procedure</font></b> SendSave(P: PView);
     <b><font color="0000BB">begin</font></b>
@@ -127,7 +127,7 @@ Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schlie
   <b><font color="0000BB">end</font></b>;</code></pre>
 Die verschiednen Events abfangen und abarbeiten.<br>
 Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt <b>PEditWindow</b> automatisch für einem.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>

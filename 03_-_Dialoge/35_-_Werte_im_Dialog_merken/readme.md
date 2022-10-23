@@ -8,14 +8,14 @@ Aus diesem Grund werden jetzt die Werte in einen Record gespeichert.<br>
   In diesem Record werden die Werte des Dialoges gespeichert.<br>
   Die Reihenfolge der Daten im Record <b>muss</b> genau gleich sein, wie bei der Erstellung der Komponenten, ansonten gibt es einen Kräsch.<br>
   Bei Turbo-Pascal musste ein <b>Word</b> anstelle von <b>LongWord</b> genommen werden, dies ist wichtig beim Portieren alter Anwendungen.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   TParameterData = <b><font color="0000BB">record</font></b>
     Druck,
     Schrift: longword;
     Hinweis: <b><font color="0000BB">string</font></b>[<font color="#0077BB">50</font>];
   <b><font color="0000BB">end</font></b>;</code></pre>
 Hier wird noch der Constructor vererbt, diesen Nachkomme wird gebraucht um die Dialogdaten mit Standard Werte zu laden.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     ParameterData: TParameterData;                     <i><font color="#FFFF00">// Daten für Parameter-Dialog</font></i>
     <b><font color="0000BB">constructor</font></b> Init;                                  <i><font color="#FFFF00">// Neuer Constructor</font></i>
@@ -29,7 +29,7 @@ Hier wird noch der Constructor vererbt, diesen Nachkomme wird gebraucht um die D
 Der Constructoer welcher die Werte für den Dialog ladet.<br>
 Die Datenstruktur für die RadioButtons ist einfach. 0 ist der erste Button, 1 der Zweite, 2 der Dritte, usw.<br>
 Bei den Checkboxen macht man es am besten Binär. Im Beispiel werden der erste und dritte CheckBox gesetzt.<br>
-<pre><code>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+<pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> Init;     <i><font color="#FFFF00">// Vorfahre aufrufen</font></i>
     <b><font color="0000BB">with</font></b> ParameterData <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
@@ -40,7 +40,7 @@ Bei den Checkboxen macht man es am besten Binär. Im Beispiel werden der erste u
   <b><font color="0000BB">end</font></b>;</code></pre>
 Der Dialog wird jetzt mit Werten geladen.<br>
 Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
   <b><font color="0000BB">var</font></b>
     Dlg: PDialog;
     R: TRect;

@@ -8,7 +8,7 @@ Hier wird der <b>PBackGround</b> auf einen Dialog gelegt, dies funktioniert gena
 Dies kann auch der benutzerdefiniert <b>PMyBackground</b> sein.<br>
 <b>Wichtig</b> ist, der Background <b>MUSS</b> zuerst in den Dialog eingefügt werden,<br>
 ansonsten übermahlt er die anderen Komponenten.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.MyOption;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyOption;
   <b><font color="0000BB">var</font></b>
     Dlg: PDialog;
     R: TRect;

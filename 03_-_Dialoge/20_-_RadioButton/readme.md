@@ -5,7 +5,7 @@
 Dialog um RadioButtons ergänzen.<br>
 <hr><br>
 Das Menü wurde noch ein wenig geändert/ergänzt.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;                          <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
 <br>
@@ -36,7 +36,7 @@ Das Menü wurde noch ein wenig geändert/ergänzt.<br>
     MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, M));
   <b><font color="0000BB">end</font></b>;</code></pre>
 Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den CheckBoxen.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
   <b><font color="0000BB">var</font></b>
     Dlg: PDialog;
     R: TRect;

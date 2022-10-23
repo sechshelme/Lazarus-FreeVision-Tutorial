@@ -5,14 +5,14 @@
 Hinzufügen eines Menüs.<br>
 <hr><br>
 Für das Menü werden die gleichen Units wie für die Statuszeile gebraucht.<br>
-<pre><code><b><font color="0000BB">uses</font></b>
+<pre><code=pascal><b><font color="0000BB">uses</font></b>
   App,      <i><font color="#FFFF00">// TApplication</font></i>
   Objects,  <i><font color="#FFFF00">// Fensterbereich (TRect)</font></i>
   Drivers,  <i><font color="#FFFF00">// Hotkey</font></i>
   Views,    <i><font color="#FFFF00">// Ereigniss (cmQuit)</font></i>
   Menus;    <i><font color="#FFFF00">// Statuszeile</font></i></code></pre>
 Für ein Menu muss man <b>InitMenuBar</b> vererben.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;   <i><font color="#FFFF00">// Statuszeile</font></i>
     <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;      <i><font color="#FFFF00">// Menü</font></i>
@@ -24,7 +24,7 @@ Es gibt auch direkte HotKey auf die Menüpunkte, hier im Beipiel ist die <b>[Alt
 Dieses überschneidet sich hier zufällig mit <b>[Alt+x]</b> von der Statuszeile, aber dies ist egal.<br>
 Der Aufbau der Menüerzeugung ist ähnlich der Statuszeile.<br>
 Beim letzten Menüpunkt kommt immer ein <b>nil</b>.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;           <i><font color="#FFFF00">// Rechteck für die Memüzeile Position.</font></i>
   <b><font color="0000BB">begin</font></b>

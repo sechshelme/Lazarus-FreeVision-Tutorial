@@ -1,4 +1,13 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <title>00 - Einleitung</title>
+    <style>
+      pre {background-color:#BBBBFF; color:#000000; font-family: Fixedsys,Courier,monospace; padding:10px;}
+    </style>
+  </head>
+  <body bgcolor="#DDDDFF">
     <b><h1>01 - Einfuehrung</h1></b>
     <b><h2>00 - Einleitung</h2></b>
 <b>Free Vision</b> ist die freie Variante von Turbo-Vision, welche bei Turbo-Pascal dabei war.<br>
@@ -28,7 +37,7 @@ Es ist eine Zip.<br>
 <br>
 Free Vision verwendet Codepage 437.<br>
 Aus diese Grund sollte man für eine fehlerfreie Darstellung der Umaute, diese als Char-Konstante verwenden.<br>
-<pre><code=pascal>ä = <font color="#FF0000">#132</font>  Ä = <font color="#FF0000">#142</font>
+<pre><code>ä = <font color="#FF0000">#132</font>  Ä = <font color="#FF0000">#142</font>
 ö = <font color="#FF0000">#148</font>  Ö = <font color="#FF0000">#153</font>
 ü = <font color="#FF0000">#129</font>  Ü = <font color="#FF0000">#154</font></code></pre>
 <br>
@@ -36,7 +45,7 @@ Aus diese Grund sollte man für eine fehlerfreie Darstellung der Umaute, diese a
 Wen man zur Laufzeit Texte ändern will, zB. <b>Label</b>, <b>StaticText</b>, ist Vorsicht geboten.<br>
 Da die Texte <b>PString</b> gespeichert sind, ist darauf zu achten, das man im Konstruktor (Init) schon genügend Speiher für die Texte reserviert.<br>
 Am einfachsten geht dies so, somit hat es dann genügend Platz noch für <b>world</b>.<br>
-<pre><code=pascal>  StaticText := <b><font color="0000BB">new</font></b>(PStaticText, Init(Rect, <font color="#FF0000">'Hallo           '</font>));
+<pre><code>  StaticText := <b><font color="0000BB">new</font></b>(PStaticText, Init(Rect, <font color="#FF0000">'Hallo           '</font>));
   StaticText^.Text^ := <font color="#FF0000">'Hello world'</font>;</code></pre>
 <br>
 <b>TListBox</b><br>
@@ -52,5 +61,8 @@ In diesem Tutorial gibt es Sachen, welche <b>nicht</b> 100% kompatibel zu <b>Tur
 Gewisse Komponenten und Funktionen wurden erst mit <b>Free-Vision</b> von <b>FPC</b> eingeführt.<br>
 da gehört zB. <b>TabSheet dazu.</b><br>
 Es gibt auch Funktionen, welche es nur in Turbo-Vision gibt.<br>
-<br>
+
+    <br><br><br>
+<h2><a href="../../index.html">zurück</a></h2>
+  </body>
 </html>

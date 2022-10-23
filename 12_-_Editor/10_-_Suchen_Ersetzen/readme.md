@@ -9,7 +9,7 @@ Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialo
 Gibt man sich mit den englischen Dialogen zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menü anpassen, der Rest geschieht automatisch.<br>
 <hr><br>
 Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verdeutscht.<br>
-<pre><code>  <i><font color="#FFFF00">// === Suchen Dialog</font></i>
+<pre><code=pascal>  <i><font color="#FFFF00">// === Suchen Dialog</font></i>
   <b><font color="0000BB">function</font></b> DECreateFindDialog: PDialog;
   <b><font color="0000BB">var</font></b>
     D: PDialog;
@@ -107,7 +107,7 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
     Result := Dialog;
   <b><font color="0000BB">end</font></b>;</code></pre>
 Hier wird die neuen Dialoge eingefügt.<br>
-<pre><code>  <b><font color="0000BB">function</font></b> MyStdEditorDialog(Dialog: Int16; Info: Pointer): word;
+<pre><code=pascal>  <b><font color="0000BB">function</font></b> MyStdEditorDialog(Dialog: Int16; Info: Pointer): word;
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">case</font></b> Dialog <b><font color="0000BB">of</font></b>
       edSaveAs: <b><font color="0000BB">begin</font></b>                           <i><font color="#FFFF00">// Neuer Dialog in Deutsch.</font></i>
@@ -127,7 +127,7 @@ Hier wird die neuen Dialoge eingefügt.<br>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Im Menü sind die neuen Suchen-Funktionen dazugekommen.<br>
 Dies ist das einzige was man machen muss.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;
   <b><font color="0000BB">begin</font></b>

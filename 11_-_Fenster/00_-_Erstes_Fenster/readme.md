@@ -5,7 +5,7 @@
 Erstes Memo-Fenster.<br>
 <hr><br>
 Der Constructor wird vererbt, so das von Anfang an ein neues Fenster erstellt wird.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     <b><font color="0000BB">constructor</font></b> Init;
 <br>
@@ -14,13 +14,13 @@ Der Constructor wird vererbt, so das von Anfang an ein neues Fenster erstellt wi
 <br>
     <b><font color="0000BB">procedure</font></b> NewWindows;
   <b><font color="0000BB">end</font></b>;</code></pre>
-<pre><code>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+<pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> Init;   <i><font color="#FFFF00">// Der Vorfahre aufrufen.</font></i>
     NewWindows;       <i><font color="#FFFF00">// Fenster erzeugen.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
   <b><font color="0000BB">var</font></b>
     Win: PWindow;
     R: TRect;

@@ -7,7 +7,7 @@ Auf den heutigen Rechner wird die wohl nicht mehr der Fall sein, das der Speiche
 <hr><br>
 Die virtuelle Procedure <b>OutOfMemory</b>, wen doch mal der Speicher überläuft.<br>
 Wen man diese Methode nicht überschreibt, dann wird keine Fehlermeldung ausgegeben, nur weis dann der Nutzer nicht, wieso sein View nicht erscheint.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     ParameterData: TParameterData;                     <i><font color="#FFFF00">// Parameter für Dialog.</font></i>
     <b><font color="0000BB">constructor</font></b> Init;                                  <i><font color="#FFFF00">// Neuer Constructor</font></i>
@@ -20,7 +20,7 @@ Wen man diese Methode nicht überschreibt, dann wird keine Fehlermeldung ausgege
     <b><font color="0000BB">procedure</font></b> MyParameter;                             <i><font color="#FFFF00">// neue Funktion für einen Dialog.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Die Procedure wird aufgerufen, wen zu wenig Speicher vorhanden ist.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.OutOfMemory;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.OutOfMemory;
   <b><font color="0000BB">begin</font></b>
     MessageBox(<font color="#FF0000">'Zu wenig Arbeitsspeicher !'</font>, <b><font color="0000BB">nil</font></b>, mfError + mfOkButton);
   <b><font color="0000BB">end</font></b>;</code></pre>
@@ -28,7 +28,7 @@ Der Dialog wird jetzt mit Werten geladen.<br>
 Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
 Mit <b>ValidView(...</b> prüft man ob genügend Specher vorhanden ist, um die Komponente zu erzeugen.<br>
 Wen nicht, kommt <b>nil<(b> zurück. Dabei spielt es keine Rolle, ob man <b>OutOfMemory</b> überschreibt.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
   <b><font color="0000BB">var</font></b>
     Dlg: PDialog;
     R: TRect;

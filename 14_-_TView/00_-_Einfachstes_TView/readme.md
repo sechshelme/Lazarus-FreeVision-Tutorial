@@ -7,13 +7,13 @@ Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>
 An diesem View sind keinerlei Änderungen möglich, da noch keine Event, Steurerelemente vorhanden sind.<br>
 <hr><br>
 Im Konstructor wird das View erzeugt.<br>
-<pre><code>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+<pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> Init;   <i><font color="#FFFF00">// Der Vorfahre aufrufen.</font></i>
     NewView;          <i><font color="#FFFF00">// View erzeugen.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Es wird ein einfaches View erzeugt, wie erwarte sieht man nicht viel, ausser eines grauen Rechteckes.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.NewView;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewView;
   <b><font color="0000BB">var</font></b>
     Win: PView;
     R: TRect;

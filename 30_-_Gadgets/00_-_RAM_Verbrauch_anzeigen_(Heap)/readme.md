@@ -8,13 +8,13 @@ Die <b>TListBox</b> ist ein gutes Beispiel, da diese die Liste nicht selbst aufr
 Dort feht der <b>destructor</b>, welcher den Speicher aufräumt. Dies macht auch Sinn, da man Listen auch global verwenden kann.<br>
 <hr><br>
     Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.<br>
-<pre><code>    GetExtent(R);
+<pre><code=pascal>    GetExtent(R);
     R.A.X := R.B.X - <font color="#0077BB">12</font>;
     R.A.Y := R.B.Y - <font color="#0077BB">1</font>;
     Heap := <b><font color="0000BB">New</font></b>(PHeapView, Init(R));
     Insert(Heap); </code></pre>
 Den Dialog mit dem Speicher Leak aufrufen.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>
     MyDialog: PMyDialog;
     FileDialog: PFileDialog;
@@ -48,7 +48,7 @@ Den Dialog mit dem Speicher Leak aufrufen.<br>
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
 Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.Idle;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.Idle;
 <br>
     <b><font color="0000BB">function</font></b> IsTileable(P: PView): Boolean;
     <b><font color="0000BB">begin</font></b>

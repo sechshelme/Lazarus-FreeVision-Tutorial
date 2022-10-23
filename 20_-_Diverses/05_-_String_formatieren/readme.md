@@ -10,7 +10,7 @@ Dabei sind filgende Formatierungen möglich:<br>
 %x: Hexadezimal<br>
 %#: Formatierungen<br>
 Bei Realzahlen muss man sich folgendermassen behelfen:<br>
-<pre><code><b><font color="0000BB">procedure</font></b> Str(<b><font color="0000BB">var</font></b> X: TNumericType[:NumPlaces[:Decimals]];<b><font color="0000BB">var</font></b> S: <b><font color="0000BB">String</font></b>);</code></pre>
+<pre><code=pascal><b><font color="0000BB">procedure</font></b> Str(<b><font color="0000BB">var</font></b> X: TNumericType[:NumPlaces[:Decimals]];<b><font color="0000BB">var</font></b> S: <b><font color="0000BB">String</font></b>);</code></pre>
 <hr><br>
 <hr><br>
 <pre><code><b><font color="0000BB">unit</font></b> MyDialog;

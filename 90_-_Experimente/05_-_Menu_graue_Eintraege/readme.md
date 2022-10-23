@@ -6,7 +6,7 @@ Menupunkt kann man auch ineinander verschachteln.<br>
 <hr><br>
 Bei der Statuszeile habe ich die Einträge verschachtelt, somit braucht man keine Zeiger.<br>
 Ich finde dies auch übersichtlicher, als ein Variablen-Urwald.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitStatusLine;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitStatusLine;
   <b><font color="0000BB">var</font></b>
     R: TRect;              <i><font color="#FFFF00">// Rechteck für die Statuszeilen Position.</font></i>
   <b><font color="0000BB">begin</font></b>
@@ -31,7 +31,7 @@ Demo
   Einfach 2
 Hilfe
   About</code></pre>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;                   <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
   <b><font color="0000BB">begin</font></b>

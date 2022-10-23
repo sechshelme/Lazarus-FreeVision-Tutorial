@@ -5,10 +5,10 @@
 Hier wird ein About-Dialog erstellt, das sieht man gut für was man Label gebrauchen kann.<br>
 <hr><br>
 Die Datei, in welcher sich die Daten für den Dialog befinden.<br>
-<pre><code><b><font color="0000BB">const</font></b>
+<pre><code=pascal><b><font color="0000BB">const</font></b>
   DialogDatei = <font color="#FF0000">'parameter.cfg'</font>;</code></pre>
 Eine neue Funktion <b>About</b> ist hinzugekommen.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     ParameterData: TParameterData;                     <i><font color="#FFFF00">// Parameter für Dialog.</font></i>
     fParameterData: <b><font color="0000BB">file</font></b> <b><font color="0000BB">of</font></b> TParameterData;            <i><font color="#FFFF00">// File-Hander füe das speichern/laden der Daten des Dialoges.</font></i>
@@ -24,7 +24,7 @@ Eine neue Funktion <b>About</b> ist hinzugekommen.<br>
     <b><font color="0000BB">procedure</font></b> About;                                   <i><font color="#FFFF00">// About Dialog.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Hier wird das About augerufen, wen im Menü About gewält wird.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>
@@ -52,7 +52,7 @@ Mit <b>#3</b> wird der Text horizontal im Rect zentriert.<br>
 Mit <b>#2</b> wird der Text rechtbündig geschrieben.<br>
 <br>
 Mit <b>PLabel</b> könnte man auch Text ausgeben, aber für festen Text eignet sich <b>PStaticText</b> besser.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.About;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.About;
   <b><font color="0000BB">var</font></b>
     Dlg: PDialog;
     R: TRect;

@@ -7,13 +7,13 @@ Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bek
 Somit kann man dieses sogar sichbar machen.<br>
 <hr><br>
 Ein Kommando für das öffnen des Zwischenablagefenster.<br>
-<pre><code><b><font color="0000BB">const</font></b>
+<pre><code=pascal><b><font color="0000BB">const</font></b>
   cmNewWin = <font color="#0077BB">1001</font>;
   cmRefresh = <font color="#0077BB">1002</font>;
   cmShowClip = <font color="#0077BB">1003</font>;</code></pre>
 Hier wird das Fenster für die Zwischenablage deklariert.<br>
 Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt werden soll.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     ClipWindow: PEditWindow;
 <br>
@@ -31,7 +31,7 @@ Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt 
     <b><font color="0000BB">procedure</font></b> CloseAll;
   <b><font color="0000BB">end</font></b>;</code></pre>
 Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;
   <b><font color="0000BB">begin</font></b>
@@ -74,7 +74,7 @@ Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
         NewItem(<font color="#FF0000">'~S~chliessen'</font>, <font color="#FF0000">'Alt+F3'</font>, kbAltF3, cmClose, hcNoContext, <b><font color="0000BB">nil</font></b>)))))))))))), <b><font color="0000BB">nil</font></b>)))))));
   <b><font color="0000BB">end</font></b>;</code></pre>
 Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
-<pre><code>  <b><font color="0000BB">function</font></b> TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = <b><font color="0000BB">False</font></b>) : PEditWindow;
+<pre><code=pascal>  <b><font color="0000BB">function</font></b> TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = <b><font color="0000BB">False</font></b>) : PEditWindow;
   <b><font color="0000BB">var</font></b>
     Win: PEditWindow;
     R: TRect;
@@ -94,7 +94,7 @@ Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>

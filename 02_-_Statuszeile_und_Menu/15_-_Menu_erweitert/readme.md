@@ -7,11 +7,11 @@ Hier wird dies auch der Übersicht zu liebe gesplittet gemacht.<br>
 <hr><br>
 Für eigene Kommandos, muss man noch Kommdocode definieren.<br>
 Es empfiehlt sich Werte &gt; 1000 zu verwenden, so das es keine Überschneidungen mit den Standard-Codes gibt.<br>
-<pre><code><b><font color="0000BB">const</font></b>
+<pre><code=pascal><b><font color="0000BB">const</font></b>
   cmList = <font color="#0077BB">1002</font>;      <i><font color="#FFFF00">// Datei Liste</font></i>
   cmAbout = <font color="#0077BB">1001</font>;     <i><font color="#FFFF00">// About anzeigen</font></i></code></pre>
 Für ein Menu muss man <b>InitMenuBar</b> vererben.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;   <i><font color="#FFFF00">// Statuszeile</font></i>
     <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;      <i><font color="#FFFF00">// Menü</font></i>
@@ -20,7 +20,7 @@ Mam kann die Menüeinträge auch gesplittet über Pointer machen.<br>
 Ob man es verschachtelt oder splittet, ist Geschmacksache.<br>
 Mit <b>NewLine</b> kann man eine Leerzeile einfügen.<br>
 Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeichnung <b>...</b> zu schreiben.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;                          <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
 <br>

@@ -5,7 +5,7 @@
 Dialog um CheckBoxen ergänzen.<br>
 <hr><br>
 Den Dialog mit CheckBoxen ergänzen.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
   <b><font color="0000BB">var</font></b>
     Dlg: PDialog;
     R: TRect;

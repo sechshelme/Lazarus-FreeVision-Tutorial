@@ -5,7 +5,7 @@
 Abarbeiten der Events, der Statuszeile und des Menu.<br>
 <hr><br>
 Für Dialoge muss man noch die Unit <b>Dialogs</b> einfügen.<br>
-<pre><code><b><font color="0000BB">uses</font></b>
+<pre><code=pascal><b><font color="0000BB">uses</font></b>
   App,      <i><font color="#FFFF00">// TApplication</font></i>
   Objects,  <i><font color="#FFFF00">// Fensterbereich (TRect)</font></i>
   Drivers,  <i><font color="#FFFF00">// Hotkey</font></i>
@@ -13,13 +13,13 @@ Für Dialoge muss man noch die Unit <b>Dialogs</b> einfügen.<br>
   Menus,    <i><font color="#FFFF00">// Statuszeile</font></i>
   Dialogs;  <i><font color="#FFFF00">// Dialoge</font></i></code></pre>
 Ein weiteres Kommando für den Aufruf des Dialoges.<br>
-<pre><code><b><font color="0000BB">const</font></b>
+<pre><code=pascal><b><font color="0000BB">const</font></b>
   cmAbout = <font color="#0077BB">1001</font>;     <i><font color="#FFFF00">// About anzeigen</font></i>
   cmList = <font color="#0077BB">1002</font>;      <i><font color="#FFFF00">// Datei Liste</font></i>
   cmPara = <font color="#0077BB">1003</font>;      <i><font color="#FFFF00">// Parameter</font></i></code></pre>
 Neue Funktionen kommen auch in die Klasse.<br>
 Hier ein Dialog für Paramtereingabe.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;                 <i><font color="#FFFF00">// Statuszeile</font></i>
     <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;                    <i><font color="#FFFF00">// Menü</font></i>
@@ -28,7 +28,7 @@ Hier ein Dialog für Paramtereingabe.<br>
     <b><font color="0000BB">procedure</font></b> MyParameter;                             <i><font color="#FFFF00">// neue Funktion für einen Dialog.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Das Menü wird um Parameter und Schliessen erweitert.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;                          <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
 <br>
@@ -57,7 +57,7 @@ Das Menü wird um Parameter und Schliessen erweitert.<br>
     MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, M));
   <b><font color="0000BB">end</font></b>;</code></pre>
 Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>
@@ -80,7 +80,7 @@ Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.<br>
 Bauen eines leeren Dialoges.<br>
 Auch da wird <b>TRect</b> gebraucht für die Grösse.<br>
 Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
   <b><font color="0000BB">var</font></b>
     Dlg: PDialog;
     R: TRect;

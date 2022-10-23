@@ -7,13 +7,13 @@ Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.<br>
 Das Object mit dem UhrenDialog befindet sich in der Unit <b>UhrDialog</b>.<br>
 <hr><br>
 Neue Konstante für das Kommado neuer UhrenDialog.<br>
-<pre><code><b><font color="0000BB">const</font></b>
+<pre><code=pascal><b><font color="0000BB">const</font></b>
   cmNewWin = <font color="#0077BB">1001</font>;
   cmNewUhr = <font color="#0077BB">1002</font>;</code></pre>
 Hier befindet sich die wichtigste Methode <b>Idle</b>.<br>
 Diese Methode wird aufgerufen, wen die CPU sonst nichts zu tun hat.<br>
 Hier wird sie verwendet um die Uhr-Zeit in den Dialogen zu aktualiesieren.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     zeitalt: Integer;
     <b><font color="0000BB">constructor</font></b> Init;
@@ -29,14 +29,14 @@ Hier wird sie verwendet um die Uhr-Zeit in den Dialogen zu aktualiesieren.<br>
     <b><font color="0000BB">procedure</font></b> Idle; <b><font color="0000BB">Virtual</font></b>;  <i><font color="#FFFF00">// Das wichtigste.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 Am Anfang wird ein Fenster und ein Uhrendialog erzeugt.<br>
-<pre><code><b><font color="0000BB">constructor</font></b> TMyApp.Init;
+<pre><code=pascal><b><font color="0000BB">constructor</font></b> TMyApp.Init;
 <b><font color="0000BB">begin</font></b>
   <b><font color="0000BB">inherited</font></b> Init;   <i><font color="#FFFF00">// Der Vorfahre aufrufen.</font></i>
   NewWindows;       <i><font color="#FFFF00">// Fenster erzeugen.</font></i>
   NewUhr;           <i><font color="#FFFF00">// Uhrendialog erzeugen.</font></i>
 <b><font color="0000BB">end</font></b>;</code></pre>
 Neuer Uhrendialog in den Desktop einfügen.<br>
-<pre><code><b><font color="0000BB">procedure</font></b> TMyApp.NewUhr;
+<pre><code=pascal><b><font color="0000BB">procedure</font></b> TMyApp.NewUhr;
 <b><font color="0000BB">begin</font></b>
   Desktop^.Insert(ValidView(<b><font color="0000BB">New</font></b>(PUhrView, Init)));
 <b><font color="0000BB">end</font></b>;</code></pre>
@@ -48,7 +48,7 @@ Beim Fenster läuft dieses einfach durch.<br>
 Auch sieht man gut, das das Message nur aufgerufen wird, wen ein Sekunde verstrichen ist.<br>
 Als letzter Parameter wird ein Pointer auf einen String übergeben, welcher dir aktuelle Zeit enthält.<br>
 Würde man es bei jedem Idle machen, würde die Uhr nur flimmern.<br>
-<pre><code><b><font color="0000BB">procedure</font></b> TMyApp.Idle;
+<pre><code=pascal><b><font color="0000BB">procedure</font></b> TMyApp.Idle;
 <b><font color="0000BB">var</font></b>
   zeitNeu: Integer;
   s: ShortString;      <i><font color="#FFFF00">// Speichert die aktuelle Zeit als String.</font></i>
@@ -61,7 +61,7 @@ Würde man es bei jedem Idle machen, würde die Uhr nur flimmern.<br>
   <b><font color="0000BB">end</font></b>;
 <b><font color="0000BB">end</font></b>;</code></pre>
 Dieses HandleEvent interessiert das Kommando <b>cmUhrRefresh</b> nicht.<br>
-<pre><code><b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal><b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
 <b><font color="0000BB">begin</font></b>
   <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>

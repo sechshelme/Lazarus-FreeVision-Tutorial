@@ -6,7 +6,7 @@ Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/k
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
 <hr><br>
 Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>
     MouseDialog: PMyMouse;
   <b><font color="0000BB">begin</font></b>

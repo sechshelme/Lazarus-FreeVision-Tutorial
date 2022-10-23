@@ -6,7 +6,7 @@ In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Di
 Im Beispiel wir eine MessageBox aufgerufen.<br>
 <hr><br>
 Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas gemacht wird.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>
     AboutDialog: PMyAbout;
   <b><font color="0000BB">begin</font></b>

@@ -5,7 +5,7 @@
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 <hr><br>
 Konstanten für die verschiedenen Menüeinträge.<br>
-<pre><code><b><font color="0000BB">const</font></b>
+<pre><code=pascal><b><font color="0000BB">const</font></b>
   cmAbout        = <font color="#0077BB">1001</font>;
   cmWarning      = <font color="#0077BB">1002</font>;
   cmError        = <font color="#0077BB">1003</font>;
@@ -14,7 +14,7 @@ Konstanten für die verschiedenen Menüeinträge.<br>
   cmYesNo        = <font color="#0077BB">1010</font>;
   cmYesNoCancel  = <font color="#0077BB">1011</font>;</code></pre>
 Aufruf der MessageBoxn.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>

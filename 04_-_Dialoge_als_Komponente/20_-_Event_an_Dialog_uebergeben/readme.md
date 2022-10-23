@@ -5,13 +5,13 @@
 In diesem Beispiel wird gezeigt, wie man ein Event an eine andere Komponente senden kann.<br>
 In diesem Fall wird ein Event an die Dialoge gesendet. In den Dialogen wird dann ein Counter hochgezählt.<br>
 Events für den Buttonklick.<br>
-<pre><code><b><font color="0000BB">const</font></b>
+<pre><code=pascal><b><font color="0000BB">const</font></b>
   cmDia1   = <font color="#0077BB">1001</font>;
   cmDia2   = <font color="#0077BB">1002</font>;
   cmDiaAll = <font color="#0077BB">1003</font>;</code></pre>
 Hier werden die 2 passiven Ausgabe-Dialoge erstellt, dies befinden sich in dem Object TMyDialog.<br>
 Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kommandos an die anderen Dialoge sendet.<br>
-<pre><code>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+<pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
   <b><font color="0000BB">var</font></b>
     R: TRect;
     Dia: PDialog;
@@ -61,7 +61,7 @@ Gibt man als ersten Parameter die View des Dialoges an, dann wird nur dieser Dia
 Gibt man <b>@Self</b> an, dann werden die Kommandos an alle Dialoge gesendet.<br>
 Beim 4. Paramter kann man noch einen Pointer auf einen Bezeichner übergeben,<br>
 die kann zB. ein String oder ein Record, etc. sein.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">begin</font></b>
     <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>

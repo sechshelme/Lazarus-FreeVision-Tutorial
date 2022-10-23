@@ -3,7 +3,7 @@
 Hinweis: Die Sourcen auf GitHub sind aktueller als das Wiki.<br>
 Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.<br>
 ## Tutorial
-* [Einfuerung](#einfuerung)
+* [Einfuehrung](#einfuehrung)
 * [Statuszeile_und_Menu](#statuszeile-und-menu)
 * [Dialoge](#dialoge)
 * [Dialoge_als_Komponente](#dialoge-als-komponente)
@@ -20,12 +20,12 @@ Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.
 * [Experimente](#experimente)
 * [Test](#test)
  [testlink](#radiobutton)
-### Einfuerung
+### Einfuehrung
 | Link | Beschreibung
 | :---: | ---
-| [Einleitung](01_-_Einfuerung/00_-_Einleitung/readme.md) | <img src="01_-_Einfuerung/00_-_Einleitung/image.png" height="100px">
-| [Erster Desktop](01_-_Einfuerung/05_-_Erster_Desktop/readme.md) | <img src="01_-_Einfuerung/05_-_Erster_Desktop/image.png" height="100px">
-| [Hello World](01_-_Einfuerung/10_-_Hello_World/readme.md) | <img src="01_-_Einfuerung/10_-_Hello_World/image.png" height="100px">
+| [Einleitung](01_-_Einfuehrung/00_-_Einleitung/readme.md) | <img src="01_-_Einfuehrung/00_-_Einleitung/image.png" height="100px">
+| [Erster Desktop](01_-_Einfuehrung/05_-_Erster_Desktop/readme.md) | <img src="01_-_Einfuehrung/05_-_Erster_Desktop/image.png" height="100px">
+| [Hello World](01_-_Einfuehrung/10_-_Hello_World/readme.md) | <img src="01_-_Einfuehrung/10_-_Hello_World/image.png" height="100px">
 ### Statuszeile und Menu
 | Link | Beschreibung
 | :---: | ---

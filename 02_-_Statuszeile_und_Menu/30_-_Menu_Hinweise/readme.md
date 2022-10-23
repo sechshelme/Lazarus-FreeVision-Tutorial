@@ -6,7 +6,7 @@ Hinweise in der Statuszeile der Menü-Punkte.<br>
 <hr><br>
 Konstanten der einzelnen Hilfen.<br>
 Am besten mimmt man da hcxxx Namen.<br>
-<pre><code><b><font color="0000BB">const</font></b>
+<pre><code=pascal><b><font color="0000BB">const</font></b>
   cmList   = <font color="#0077BB">1002</font>;  <i><font color="#FFFF00">// Datei Liste</font></i>
   cmAbout  = <font color="#0077BB">1001</font>;  <i><font color="#FFFF00">// About anzeigen</font></i>
 <br>
@@ -18,7 +18,7 @@ Am besten mimmt man da hcxxx Namen.<br>
   hcHelp   = <font color="#0077BB">15</font>;
   hcAbout  = <font color="#0077BB">16</font>;</code></pre>
 Die Hint-Zeile muss vererbt werden.<br>
-<pre><code>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
     R: TRect;                   <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
   <b><font color="0000BB">begin</font></b>
