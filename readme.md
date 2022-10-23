@@ -7,14 +7,14 @@ Das Tutorial findet man auch direkt bei den Sourcen auf GitHub: [Inhaltsverzeich
 ## Klassen-Baum:
 
 Free Pascal:
-[Free-Vision Klassen-Baum](Class_Tree.md)
+- [Free-Vision Klassen-Baum](Class_Tree.md)
 
 Borland Pascal:
-[Turbo_Vision Klassen-Baum](Turbo_Vision_Class_Tree.md)
+- [Turbo_Vision Klassen-Baum](Turbo_Vision_Class_Tree.md)
 
 ## Externe Beispiele:
 
-https://github.com/romiras/turbo-pascal-archive/tree/master/User%20Interface
+- https://github.com/romiras/turbo-pascal-archive/tree/master/User%20Interface
 
 
 
