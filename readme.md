@@ -22,6 +22,7 @@ https://github.com/romiras/turbo-pascal-archive/tree/master/User%20Interface
 
 | Datum | Änderungen 
 | :---: | ---
+| 23.10.2022 | Ausfürhbare Dateien im Tutorial entfernt (Project).
 | 15.06.2022 | **Inhaltsverzeichniss** zum Tutorial hinzugefügt. ([Link](wiki.md))
 | 05.06.2022 | Tutorial für **Standard Dialoge** hinzugefügt.
 | 30.05.2022 | Tutorial für **Listen** hinzugefügt.
