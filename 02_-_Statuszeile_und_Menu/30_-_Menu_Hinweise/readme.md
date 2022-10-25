@@ -3,8 +3,7 @@
 <br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinweise in der Statuszeile der Menü-Punkte.<br>
----
-<br>
+<hr><br>
 Konstanten der einzelnen Hilfen.<br>
 Am besten mimmt man da hcxxx Namen.<br>
 <pre><code=pascal><b><font color="0000BB">const</font></b>

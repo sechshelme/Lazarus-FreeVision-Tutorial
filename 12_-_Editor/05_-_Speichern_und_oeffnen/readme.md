@@ -6,8 +6,7 @@ Ein Editor wird erst brauchbar, wen Dateifunktionen dazu kommen, zB. öffnen und
 Das Öffnen ist ähnlich von wie ein leerses Fenster erzeugen.<br>
 Einziger Unterschied, man gibt einen Dateinamen mit, welcher mit einem FileDialog ermittelt wird.<br>
 Für das einfache speichern, muss man nicht viel machen. Man muss nur das Event <b>cmSave</b> aufrufen, zB. über das Menü.<br>
----
-<br>
+<hr><br>
 Hier ist noch OpenWindows und SaveAll dazu gekommen.<br>
 <pre><code=pascal>  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     <b><font color="0000BB">constructor</font></b> Init;

@@ -3,8 +3,7 @@
 <br>
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.<br>
----
-<br>
+<hr><br>
     Erzeugt ein kleines Fenster rechts-unten, welches die Uhr anzeigt.<br>
 <pre><code=pascal>    GetExtent(R);
     R.A.X := R.B.X - <font color="#0077BB">9</font>;
@@ -62,8 +61,7 @@ Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
       DisableCommands([cmTile, cmCascade]);
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
----
-<br>
+<hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit dem dem Speicher Leak<br>

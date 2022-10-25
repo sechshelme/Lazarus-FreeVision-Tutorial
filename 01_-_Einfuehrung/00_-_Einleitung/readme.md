@@ -23,8 +23,7 @@ Wen jemand noch Anregungen und Fehler sieht, kann er seine Kritik im deutschen L
 <br>
 Die Sourcen zum Tutorial, kann man alle auf der Hauptseite herunterladen.<br>
 Es ist eine Zip.<br>
----
-<br>
+<hr><br>
 <b>Hinweise zu den Coden:</b><br>
 <br>
 Free Vision verwendet Codepage 437.<br>

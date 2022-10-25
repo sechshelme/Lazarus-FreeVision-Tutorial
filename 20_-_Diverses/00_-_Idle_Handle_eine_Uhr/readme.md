@@ -5,8 +5,7 @@
 Hier wird gezeigt, wie man <b>Idle</b> verwenden kann.<br>
 Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.<br>
 Das Object mit dem UhrenDialog befindet sich in der Unit <b>UhrDialog</b>.<br>
----
-<br>
+<hr><br>
 Neue Konstante für das Kommado neuer UhrenDialog.<br>
 <pre><code=pascal><b><font color="0000BB">const</font></b>
   cmNewWin = <font color="#0077BB">1001</font>;
@@ -81,8 +80,7 @@ Dieses HandleEvent interessiert das Kommando <b>cmUhrRefresh</b> nicht.<br>
   <b><font color="0000BB">end</font></b>;
   ClearEvent(Event);
 <b><font color="0000BB">end</font></b>;</code></pre>
----
-<br>
+<hr><br>
 <b>Unit mit dem Uhren-Dialog.</b><br>
 <br><br>
 Die Komponenten auf dem Dialog sind nichts besonderes, es hat nur ein OK-Button.<br>

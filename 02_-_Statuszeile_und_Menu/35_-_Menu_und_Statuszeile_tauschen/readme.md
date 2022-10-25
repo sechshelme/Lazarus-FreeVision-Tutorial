@@ -6,8 +6,7 @@ Man kann zur Laufzeit das komplette Menü und Statuszeile austauschen.<br>
 ZB. um die Anwendung mehrsprachig zu machen.<br>
 Dazu wird die aktuelle Komponente entfernt und die neue eingefügt.<br>
 In dem Beispiel gibt es je eine deutsche und englische Komponente.<br>
----
-<br>
+<hr><br>
 Deklaration der Komponenten<br>
 <pre><code=pascal>  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;                 <i><font color="#FFFF00">// Statuszeile</font></i>

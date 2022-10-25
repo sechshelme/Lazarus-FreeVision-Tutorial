@@ -3,8 +3,7 @@
 <br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Baumartige Darstellung.<br>
----
-<br>
+<hr><br>
 Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.<br>
 <pre><code=pascal>  PTreeWindow = ^TTreeWindow;
   TTreeWindow = <b><font color="0000BB">object</font></b>(TWindow)

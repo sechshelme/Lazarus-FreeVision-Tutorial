@@ -5,8 +5,7 @@
 Wen man die Farbe des Hintergrundes änder will, ist ein wenig komplizierter als nur das Zeichen.<br>
 Dazu muss man beim Object <b>TBackground</b> die Funktion <b>GetPalette</b> überschreiben.<br>
 <br>
----
-<br>
+<hr><br>
 Für das Object <b>TBackground</b> wird ein Nachkomme erzeugt, welcher eine neue <b>GetPalette</b> Funktion bekommt.<br>
 <pre><code=pascal><b><font color="0000BB">type</font></b>
   PMyBackground = ^TMyBackground;

@@ -3,8 +3,7 @@
 <br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Dialog um CheckBoxen ergänzen.<br>
----
-<br>
+<hr><br>
 Den Dialog mit CheckBoxen ergänzen.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
   <b><font color="0000BB">var</font></b>

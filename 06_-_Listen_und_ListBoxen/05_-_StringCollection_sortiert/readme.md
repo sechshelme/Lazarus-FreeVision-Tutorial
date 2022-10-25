@@ -4,10 +4,8 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Eine sortierte String-Liste<br>
 für eine sortierte Liste muss man <b>PStringCollection</b> oder <b>PStrCollection</b> verwenden.<br>
----
-<br>
----
-<br>
+<hr><br>
+<hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der <b>StringCollection</b><br>

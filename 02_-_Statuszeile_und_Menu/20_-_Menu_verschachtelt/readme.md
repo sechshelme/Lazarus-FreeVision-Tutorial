@@ -3,8 +3,7 @@
 <br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Menupunkt kann man auch ineinander verschachteln.<br>
----
-<br>
+<hr><br>
 Bei der Statuszeile habe ich die Einträge verschachtelt, somit braucht man keine Zeiger.<br>
 Ich finde dies auch übersichtlicher, als ein Variablen-Urwald.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitStatusLine;

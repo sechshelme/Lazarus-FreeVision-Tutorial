@@ -6,10 +6,8 @@ Hier wird eine Bereichsbegrenzung für <b>PInputLine</b> gezeigt.<br>
 Bei der ersten Zeile ist nur eine Zahl zwischen 0 und 99 erlaubt.<br>
 Bei der zweiten Zeile muss es ein Wochentag ( Montag - Freitag ) sein.<br>
 Für den zweiten Fall wäre eine ListBox idealer, mir geht zum zeigen wie es mit der <b>PInputLine</b> geht.<br>
----
-<br>
----
-<br>
+<hr><br>
+<hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Ein Dialog mit <b>PInputLine</b> welche eine Prüfung bekommen.<br>

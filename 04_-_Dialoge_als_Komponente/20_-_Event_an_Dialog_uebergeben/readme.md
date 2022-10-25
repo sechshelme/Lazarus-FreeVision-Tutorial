@@ -83,8 +83,7 @@ die kann zB. ein String oder ein Record, etc. sein.<br>
     <b><font color="0000BB">end</font></b>;
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
----
-<br>
+<hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der Zähler-Ausgabe.<br>
