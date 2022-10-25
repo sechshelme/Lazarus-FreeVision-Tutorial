@@ -5,6 +5,7 @@
 In diesem Beispiel wird gezeigt, wie man ein Event an eine andere Komponente senden kann.
 In diesem Fall wird ein Event an die Dialoge gesendet. In den Dialogen wird dann ein Counter hochgezählt.
 Events für den Buttonklick.
+
 ```pascal
 const
   cmDia1   = 1001;
