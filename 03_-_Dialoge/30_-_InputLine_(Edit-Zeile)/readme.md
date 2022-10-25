@@ -1,12 +1,12 @@
 # 03 - Dialoge
 ## 30 - InputLine (Edit-Zeile)
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
-
+<br>
 ---
+<br>
 
-
-
+<br>
 ```pascal
   procedure TMyApp.MyParameter;
   var
@@ -19,7 +19,7 @@
     R.Move(23, 3);
     Dlg := New(PDialog, Init(R, 'Parameter'));
     with Dlg^ do begin
-
+<br>
       // CheckBoxen
       R.Assign(2, 3, 18, 7);
       View := New(PCheckBoxes, Init(R,
@@ -32,7 +32,7 @@
       // Label für CheckGroup.
       R.Assign(2, 2, 10, 3);
       Insert(New(PLabel, Init(R, 'Dr~u~cken', View)));
-
+<br>
       // RadioButton
       R.Assign(21, 3, 33, 6);
       View := New(PRadioButtons, Init(R,
@@ -44,7 +44,7 @@
       // Label für RadioGroup.
       R.Assign(20, 2, 31, 3);
       Insert(New(PLabel, Init(R, '~S~chrift', View)));
-
+<br>
       // Edit Zeile
       R.Assign(3,10,32,11);
       View:=New(PInputLine,Init(R,50));
@@ -52,11 +52,11 @@
       // Label für Edit Zeile
       R.Assign(2,9,10,10);
       Insert(New(PLabel,Init(R,'~H~inweis',View)));
-
+<br>
       // Ok-Button
       R.Assign(7, 12, 17, 14);
       Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
-
+<br>
       // Schliessen-Button
       R.Assign(19, 12, 32, 14);
       Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
@@ -65,5 +65,5 @@
     Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
   end;
 ```
-
+<br>
 

@@ -1,13 +1,13 @@
 # 03 - Dialoge
 ## 35 - Werte im Dialog merken
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
-
+<br>
 
 ---
+<br>
 
-
-
+<br>
 
 ```pascal
 type
@@ -17,27 +17,27 @@ type
     Hinweis: string[50];
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
 type
   TMyApp = object(TApplication)
     ParameterData: TParameterData;                     // Daten für Parameter-Dialog
     constructor Init;                                  // Neuer Constructor
-
+<br>
     procedure InitStatusLine; virtual;                 // Statuszeile
     procedure InitMenuBar; virtual;                    // Menü
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
-
+<br>
     procedure MyParameter;                             // neue Funktion für einen Dialog.
   end;
 ```
+<br>
 
+<br>
 
-
-
-
+<br>
 ```pascal
   constructor TMyApp.Init;
   begin
@@ -49,9 +49,9 @@ type
     end;
   end;
 ```
+<br>
 
-
-
+<br>
 
 ```pascal
   procedure TMyApp.MyParameter;
@@ -65,7 +65,7 @@ type
     R.Move(23, 3);
     Dlg := New(PDialog, Init(R, 'Parameter'));
     with Dlg^ do begin
-
+<br>
       // CheckBoxen
       R.Assign(2, 3, 18, 7);
       View := New(PCheckBoxes, Init(R,
@@ -78,7 +78,7 @@ type
       // Label für CheckGroup.
       R.Assign(2, 2, 10, 3);
       Insert(New(PLabel, Init(R, 'Dr~u~cken', View)));
-
+<br>
       // RadioButton
       R.Assign(21, 3, 33, 6);
       View := New(PRadioButtons, Init(R,
@@ -90,7 +90,7 @@ type
       // Label für RadioGroup.
       R.Assign(20, 2, 31, 3);
       Insert(New(PLabel, Init(R, '~S~chrift', View)));
-
+<br>
       // Edit Zeile
       R.Assign(3, 10, 32, 11);
       View := New(PInputLine, Init(R, 50));
@@ -98,11 +98,11 @@ type
       // Label für Edit Zeile
       R.Assign(2, 9, 10, 10);
       Insert(New(PLabel, Init(R, '~H~inweis', View)));
-
+<br>
       // Ok-Button
       R.Assign(7, 12, 17, 14);
       Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
-
+<br>
       // Schliessen-Button
       R.Assign(19, 12, 32, 14);
       Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
@@ -112,9 +112,9 @@ type
     if dummy = cmOK then begin        // Wen Dialog mit Ok beenden, dann Daten vom Dialog in Record laden.
       Dlg^.GetData(ParameterData);
     end;
-
+<br>
     Dispose(Dlg, Done);               // Dialog und Speicher frei geben.
   end;
 ```
-
+<br>
 

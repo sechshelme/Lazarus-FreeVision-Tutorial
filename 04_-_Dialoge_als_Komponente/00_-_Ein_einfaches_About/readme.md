@@ -1,12 +1,12 @@
 # 04 - Dialoge als Komponente
 ## 00 - Ein einfaches About
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
+<br>
 
-
-
+<br>
 ---
-
+<br>
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -14,7 +14,7 @@
     AboutDialog: PMyAbout;
   begin
     inherited HandleEvent(Event);
-
+<br>
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
@@ -32,46 +32,46 @@
     ClearEvent(Event);
   end;
 ```
-
+<br>
 ---
-
+<br>
 
 ```pascal
 unit MyDialog;
-
+<br>
 ```
+<br>
 
-
-
+<br>
 
 ```pascal
 interface
-
+<br>
 uses
   App, Objects, Drivers, Views, Dialogs;
-
+<br>
 type
   PMyAbout = ^TMyAbout;
   TMyAbout = object(TDialog)
     constructor Init;  // Neuer Konstruktor, welche den Dialog mit den Komponenten baut.
   end;
-
+<br>
 ```
+<br>
 
-
-
+<br>
 ```pascal
 implementation
-
+<br>
 constructor TMyAbout.Init;
 var
   R: TRect;
 begin
   R.Assign(0, 0, 42, 11);
   R.Move(23, 3);
-
+<br>
   inherited Init(R, 'About');  // Dialog in verdefinierter Grösse erzeugen.
-
+<br>
   // StaticText
   R.Assign(5, 2, 41, 8);
   Insert(new(PStaticText, Init(R,
@@ -79,12 +79,12 @@ begin
     '2017' + #13 +
     'Gechrieben von M. Burkhard' + #13#32#13 +
     'FPC: '+ {$I %FPCVERSION%} + '   OS:'+ {$I %FPCTARGETOS%} + '   CPU:' + {$I %FPCTARGETCPU%})));
-
+<br>
   // Ok-Button
   R.Assign(27, 8, 37, 10);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
-
+<br>
 ```
-
+<br>
 

@@ -1,10 +1,10 @@
 # 99 - Test
 ## 15 - ListBox Heap
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
+<br>
 
-
-
+<br>
 
 ```pascal
   procedure TMyApp.NewWindows(Titel: ShortString);
@@ -19,32 +19,32 @@
     end;
   end;
 ```
-
+<br>
 ---
+<br>
 
-
-
+<br>
 
 ```pascal
 unit MyDialog;
-
+<br>
 ```
+<br>
 
-
-
+<br>
 
 ```pascal
 type
-
+<br>
   PNewListBox = ^TNewListBox;
-
+<br>
   { TNewListBox }
-
+<br>
   TNewListBox = object(TListBox)
     destructor Done; virtual;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-
+<br>
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     ListBox: PNewListBox;
@@ -52,22 +52,22 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-
+<br>
 ```
+<br>
 
-
-
+<br>
 
 ```pascal
 const
   cmTag = 1000;  // Lokale Event Konstante
-
+<br>
 ```
+<br>
 
+<br>
 
-
-
-
+<br>
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 begin
@@ -89,7 +89,7 @@ begin
   end;
   inherited HandleEvent(Event);
 end;
-
+<br>
 ```
-
+<br>
 

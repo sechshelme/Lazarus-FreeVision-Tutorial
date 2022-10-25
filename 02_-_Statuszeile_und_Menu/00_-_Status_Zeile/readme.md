@@ -1,11 +1,11 @@
 # 02 - Statuszeile und Menu
 ## 00 - Status Zeile
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
-
+<br>
 
 ---
-
+<br>
 
 ```pascal
 uses
@@ -15,9 +15,9 @@ uses
   Views,    // Ereigniss (cmQuit)
   Menus;    // Statuszeile
 ```
+<br>
 
-
-
+<br>
 
 ```pascal
   procedure TMyApp.InitStatusLine;
@@ -26,20 +26,20 @@ uses
   begin
     GetExtent(R);       // Liefert die Grösse/Position der App, im Normalfall 0, 0, 80, 24.
     R.A.Y := R.B.Y - 1; // Position der Statuszeile, auf unterste Zeile der App setzen.
-
+<br>
     StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF, NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit, nil), nil)));
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
 var
   MyApp: TMyApp;
 ```
+<br>
 
-
-
+<br>
 ```pascal
 begin
   MyApp.Init;   // Inizialisieren
@@ -47,5 +47,5 @@ begin
   MyApp.Done;   // Freigeben
 end.
 ```
-
+<br>
 

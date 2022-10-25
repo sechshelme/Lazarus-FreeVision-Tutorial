@@ -1,10 +1,10 @@
 # 03 - Dialoge
 ## 05 - Erster Dialog
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
-
+<br>
 ---
-
+<br>
 
 ```pascal
 uses
@@ -15,18 +15,18 @@ uses
   Menus,    // Statuszeile
   Dialogs;  // Dialoge
 ```
+<br>
 
-
-
+<br>
 ```pascal
 const
   cmAbout = 1001;     // About anzeigen
   cmList = 1002;      // Datei Liste
   cmPara = 1003;      // Parameter
 ```
+<br>
 
-
-
+<br>
 
 ```pascal
 type
@@ -34,30 +34,30 @@ type
     procedure InitStatusLine; virtual;                 // Statuszeile
     procedure InitMenuBar; virtual;                    // Menü
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
-
+<br>
     procedure MyParameter;                             // neue Funktion für einen Dialog.
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;                          // Rechteck für die Menüzeilen-Position.
-
+<br>
     M: PMenu;                          // Ganzes Menü
     SM0, SM1,                          // Submenu
     M0_0, M0_1, M0_2, M0_3, M0_4, M0_5,
     M1_0: PMenuItem;                   // Einfache Menüpunkte
-
+<br>
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-
+<br>
     M1_0 := NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil);
     SM1 := NewSubMenu('~H~ilfe', hcNoContext, NewMenu(M1_0), nil);
-
+<br>
     M0_5 := NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil);
     M0_4 := NewLine(M0_5);
     M0_3 := NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext, M0_4);
@@ -65,20 +65,20 @@ type
     M0_1 := NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext, M0_2);
     M0_0 := NewItem('~L~iste', 'F2', kbF2, cmList, hcNoContext, M0_1);
     SM0 := NewSubMenu('~D~atei', hcNoContext, NewMenu(M0_0), SM1);
-
+<br>
     M := NewMenu(SM0);
-
+<br>
     MenuBar := New(PMenuBar, Init(R, M));
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-
+<br>
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
@@ -96,11 +96,11 @@ type
     ClearEvent(Event);
   end;
 ```
+<br>
 
+<br>
 
-
-
-
+<br>
 ```pascal
   procedure TMyApp.MyParameter;
   var
@@ -113,5 +113,5 @@ type
     Desktop^.Insert(Dlg);                      // Dialog der App zuweisen.
   end;
 ```
-
+<br>
 

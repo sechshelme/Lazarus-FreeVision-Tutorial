@@ -1,13 +1,13 @@
 # 02 - Statuszeile und Menu
 ## 35 - Menu und Statuszeile tauschen
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
+<br>
 
-
-
+<br>
 
 ---
-
+<br>
 
 ```pascal
   TMyApp = object(TApplication)
@@ -19,9 +19,9 @@
     StatusGer, StatusEng: PStatusLine;    // Die beiden Stauszeilen
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
   procedure TMyApp.InitStatusLine;
   var
@@ -29,25 +29,25 @@
   begin
     GetExtent(R);
     R.A.Y := R.B.Y - 1;
-
+<br>
     // Statuszeile deutsch
     StatusGer := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menue', kbF10, cmMenu,
       NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
-
+<br>
     // Statuszeile englisch
     StatusEng := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Exit', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ Help', kbF1, cmHelp, nil))), nil)));
-
+<br>
     StatusLine := StatusGer; // Deutsch per Default
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -55,7 +55,7 @@
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-
+<br>
     // Menü deutsch
     menuGer := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
@@ -69,7 +69,7 @@
         NewItem('~E~nglisch', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))))),
       NewSubMenu('~H~ilfe', hcNoContext, NewMenu(
         NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))))));
-
+<br>
     // Menü englisch
     menuEng := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~F~ile', hcNoContext, NewMenu(
@@ -83,50 +83,50 @@
         NewItem('English', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))))),
       NewSubMenu('~H~elp', hcNoContext, NewMenu(
         NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))))));
-
+<br>
     MenuBar := menuGer; // Deutsch per Default
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     Rect: TRect;              // Rechteck für die Statuszeilen Position.
-
+<br>
   begin
     GetExtent(Rect);
-
+<br>
     Rect.A.Y := Rect.B.Y - 1;
     inherited HandleEvent(Event);
-
+<br>
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
           // Ein About Dialog
         end;
-
+<br>
         // Menü auf englisch
         cmMenuEnlish: begin
-
+<br>
           // Menü tauschen
           Delete(MenuBar);          // Altes Menü entfernen
           MenuBar := menuEng;       // Neues Menü zuordnen
           Insert(MenuBar);          // Neues Menü einfügen
-
+<br>
           // Statuszeile tauschen
           Delete(StatusLine);       // Alte Statuszeile entfernen
           StatusLine := StatusEng;  // Neue Statuszeile zuordnen
           Insert(StatusLine);       // Neue Statuszeile einfügen
         end;
-
+<br>
         // Menü auf deutsch
         cmMenuGerman: begin
           Delete(MenuBar);
           MenuBar := menuGer;
           Insert(MenuBar);
-
+<br>
           Delete(StatusLine);
           StatusLine := StatusGer;
           Insert(StatusLine);
@@ -142,5 +142,5 @@
     ClearEvent(Event);
   end;
 ```
-
+<br>
 

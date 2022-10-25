@@ -1,46 +1,46 @@
 # 03 - Dialoge
 ## 20 - RadioButton
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
-
+<br>
 ---
-
+<br>
 
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;                          // Rechteck für die Menüzeilen-Position.
-
+<br>
     M: PMenu;                          // Ganzes Menü
     SM0, SM1, SM2,                     // Submenu
     M0_0, M0_2, M0_3, M0_4, M0_5,
     M1_0, M2_0: PMenuItem;             // Einfache Menüpunkte
-
+<br>
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-
+<br>
     M2_0 := NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil);
     SM2 := NewSubMenu('~H~ilfe', hcNoContext, NewMenu(M2_0), nil);
-
+<br>
     M1_0 := NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext, nil);
     SM1 := NewSubMenu('~O~ption', hcNoContext, NewMenu(M1_0), SM2);
-
+<br>
     M0_5 := NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil);
     M0_4 := NewLine(M0_5);
     M0_3 := NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext, M0_4);
     M0_2 := NewLine(M0_3);
     M0_0 := NewItem('~L~iste', 'F2', kbF2, cmList, hcNoContext, M0_2);
     SM0 := NewSubMenu('~D~atei', hcNoContext, NewMenu(M0_0), SM1);
-
+<br>
     M := NewMenu(SM0);
-
+<br>
     MenuBar := New(PMenuBar, Init(R, M));
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
   procedure TMyApp.MyParameter;
   var
@@ -53,7 +53,7 @@
     R.Move(23, 3);
     Dlg := New(PDialog, Init(R, 'Parameter'));
     with Dlg^ do begin
-
+<br>
       // CheckBoxen
       R.Assign(2, 3, 18, 7);
       View := New(PCheckBoxes, Init(R,
@@ -63,7 +63,7 @@
         NewSItem('~Z~eit',
         nil))))));
       Insert(View);
-
+<br>
       // RadioButton
       R.Assign(21, 3, 33, 6);
       View := New(PRadioButtons, Init(R,
@@ -72,11 +72,11 @@
         NewSItem('~K~lein',
         nil)))));
       Insert(View);
-
+<br>
       // Ok-Button
       R.Assign(7, 12, 17, 14);
       Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
-
+<br>
       // Schliessen-Button
       R.Assign(19, 12, 32, 14);
       Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
@@ -85,5 +85,5 @@
     Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
   end;
 ```
-
+<br>
 

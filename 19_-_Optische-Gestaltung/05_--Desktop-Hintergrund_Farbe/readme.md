@@ -1,12 +1,12 @@
 # 19 - Optische-Gestaltung
 ## 05 --Desktop-Hintergrund Farbe
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
+<br>
 
-
-
+<br>
 ---
-
+<br>
 
 ```pascal
 type
@@ -15,9 +15,9 @@ type
     function GetPalette: PPalette; virtual; // neu GetPalette
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
   function TMyBackground.GetPalette: PPalette;
   const
@@ -26,9 +26,9 @@ type
     Result := @P;
   end;
 ```
+<br>
 
-
-
+<br>
 
 ```pascal
   constructor TMyApp.Init;
@@ -37,9 +37,9 @@ type
   begin
     inherited Init;                                       // Vorfahre aufrufen
     GetExtent(R);
-
+<br>
     DeskTop^.Insert(New(PMyBackground, Init(R, #3)));  // Hintergrund einfügen.
   end;
 ```
-
+<br>
 

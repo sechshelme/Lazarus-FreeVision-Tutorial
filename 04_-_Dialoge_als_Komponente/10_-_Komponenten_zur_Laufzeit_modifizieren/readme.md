@@ -1,21 +1,21 @@
 # 04 - Dialoge als Komponente
 ## 10 - Komponenten zur Laufzeit modifizieren
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
-
+<br>
 
 ---
+<br>
 
-
-
+<br>
 
 ```pascal
 unit MyDialog;
-
+<br>
 ```
+<br>
 
-
-
+<br>
 
 ```pascal
 type
@@ -25,16 +25,16 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-
+<br>
 ```
+<br>
 
-
-
+<br>
 
 ```pascal
 const
   cmCounter = 1003;       // Wird lokal für den Zähler-Button gebraucht.
-
+<br>
 constructor TMyDialog.Init;
 var
   R: TRect;
@@ -42,36 +42,36 @@ begin
   R.Assign(0, 0, 42, 11);
   R.Move(23, 3);
   inherited Init(R, 'Mein Dialog');
-
+<br>
   // StaticText
   R.Assign(5, 2, 41, 8);
   Insert(new(PStaticText, Init(R, 'Rechter Button z' + #132 + 'hlt Counter hoch')));
-
+<br>
   // Button, bei den der Titel geändert wird.
   R.Assign(19, 8, 32, 10);
   CounterButton := new(PButton, Init(R, '    ', cmCounter, bfNormal));
   CounterButton^.Title^ := '1';
-
+<br>
   Insert(CounterButton);
-
+<br>
   // Ok-Button
   R.Assign(7, 8, 17, 10);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
-
+<br>
 ```
+<br>
 
+<br>
 
-
-
-
+<br>
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 var
   Counter: integer;
 begin
   inherited HandleEvent(Event);
-
+<br>
   case Event.What of
     evCommand: begin
       case Event.Command of
@@ -82,16 +82,16 @@ begin
             Counter := 9999;
           end;
           CounterButton^.Title^ := IntToStr(Counter); // Neuer Titel an Button übergeben.
-
+<br>
           CounterButton^.Draw;                        // Button neu zeichnen.
           ClearEvent(Event);                          // Event beenden.
         end;
       end;
     end;
   end;
-
+<br>
 end;
-
+<br>
 ```
-
+<br>
 

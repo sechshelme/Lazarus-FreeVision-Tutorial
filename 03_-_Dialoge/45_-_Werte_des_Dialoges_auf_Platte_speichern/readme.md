@@ -1,27 +1,27 @@
 # 03 - Dialoge
 ## 45 - Werte des Dialoges auf Platte speichern
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
+<br>
 
-
-
+<br>
 ---
-
+<br>
 
 ```pascal
 uses
   SysUtils, // Für Dateioperationen
 ```
+<br>
 
-
-
+<br>
 ```pascal
 const
   DialogDatei = 'parameter.cfg';
 ```
+<br>
 
-
-
+<br>
 ```pascal
   constructor TMyApp.Init;
   begin
@@ -43,9 +43,9 @@ const
     end;
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
   procedure TMyApp.MyParameter;
   var
@@ -58,7 +58,7 @@ const
     R.Move(23, 3);
     Dlg := New(PDialog, Init(R, 'Parameter'));
     with Dlg^ do begin
-
+<br>
       // CheckBoxen
       R.Assign(2, 3, 18, 7);
       View := New(PCheckBoxes, Init(R,
@@ -71,7 +71,7 @@ const
       // Label für CheckGroup.
       R.Assign(2, 2, 10, 3);
       Insert(New(PLabel, Init(R, 'Dr~u~cken', View)));
-
+<br>
       // RadioButton
       R.Assign(21, 3, 33, 6);
       View := New(PRadioButtons, Init(R,
@@ -83,7 +83,7 @@ const
       // Label für RadioGroup.
       R.Assign(20, 2, 31, 3);
       Insert(New(PLabel, Init(R, '~S~chrift', View)));
-
+<br>
       // Edit Zeile
       R.Assign(3, 10, 32, 11);
       View := New(PInputLine, Init(R, 50));
@@ -91,11 +91,11 @@ const
       // Label für Edit Zeile
       R.Assign(2, 9, 10, 10);
       Insert(New(PLabel, Init(R, '~H~inweis', View)));
-
+<br>
       // Ok-Button
       R.Assign(7, 12, 17, 14);
       Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
-
+<br>
       // Schliessen-Button
       R.Assign(19, 12, 32, 14);
       Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
@@ -105,17 +105,17 @@ const
       dummy := Desktop^.ExecView(Dlg);  // Dialog ausführen.
       if dummy = cmOK then begin        // Wen Dialog mit Ok beenden, dann Daten vom Dialog in Record laden.
         Dlg^.GetData(ParameterData);
-
+<br>
         // Daten auf Platte speichern.
         AssignFile(fParameterData, DialogDatei);
         Rewrite(fParameterData);
         Write(fParameterData, ParameterData);
         CloseFile(fParameterData);
       end;
-
+<br>
       Dispose(Dlg, Done);               // Dialog und Speicher frei geben.
     end;
   end;
 ```
-
+<br>
 

@@ -1,11 +1,11 @@
 # 15 - Fertige Dialoge
 ## 25 - Ordner wechseln
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
-
+<br>
 
 ---
-
+<br>
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -14,7 +14,7 @@
     Ordner: ShortString;
   begin
     inherited HandleEvent(Event);
-
+<br>
     if Event.What = evCommand then begin
       case Event.Command of
         cmChDir: begin
@@ -27,5 +27,5 @@
           Exit;
         end;
 ```
-
+<br>
 

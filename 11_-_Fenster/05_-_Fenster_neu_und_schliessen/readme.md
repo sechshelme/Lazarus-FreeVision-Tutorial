@@ -1,31 +1,31 @@
 # 11 - Fenster
 ## 05 - Fenster neu und schliessen
-
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
-
+<br>
 ---
+<br>
 
-
-
+<br>
 ```pascal
 const
   cmNewWin = 1001;
 type
   TMyApp = object(TApplication)
     constructor Init;
-
+<br>
     procedure InitStatusLine; virtual;
     procedure InitMenuBar; virtual;
-
+<br>
     procedure HandleEvent(var Event: TEvent); virtual; // Abarbeitung Kommandos
     procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
-
+<br>
     procedure NewWindows;
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -33,7 +33,7 @@ type
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-
+<br>
     MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
       NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
@@ -42,9 +42,9 @@ type
       NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil))))), nil))));
   end;
 ```
+<br>
 
-
-
+<br>
 
 ```pascal
   procedure TMyApp.NewWindows;
@@ -65,14 +65,14 @@ type
     end;
   end;
 ```
+<br>
 
-
-
+<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-
+<br>
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
@@ -86,5 +86,5 @@ type
     ClearEvent(Event);
   end;
 ```
-
+<br>
 
