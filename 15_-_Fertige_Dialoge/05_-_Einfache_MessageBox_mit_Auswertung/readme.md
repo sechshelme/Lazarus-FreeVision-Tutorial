@@ -13,7 +13,8 @@ const
   cmInfo         = 1004;
   cmConformation = 1005;
   cmYesNo        = 1010;
-  cmYesNoCancel  = 1011;```
+  cmYesNoCancel  = 1011;
+```
 Aufruf der MessageBoxn.<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -68,5 +69,6 @@ Aufruf der MessageBoxn.<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <br>

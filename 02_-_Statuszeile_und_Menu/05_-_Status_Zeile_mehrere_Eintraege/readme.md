@@ -24,7 +24,8 @@ Im Beispiel wird es gesplittet gemacht.<br>
     P0 := NewStatusDef(0, $FFFF, P1, nil);
 <br>
     StatusLine := New(PStatusLine, Init(R, P0));
-  end;```
+  end;
+```
 Die Deklaration und Ausführung bleibt gleich.<br>
 ```pascal
 var
@@ -34,5 +35,6 @@ begin
   MyApp.Init;   // Inizialisieren
   MyApp.Run;    // Abarbeiten
   MyApp.Done;   // Freigeben
-end.```
+end.
+```
 <br>

@@ -14,13 +14,15 @@ type
     procedure InitMenuBar; virtual;
 <br>
     procedure NewWindows;
-  end;```
+  end;
+```
 ```pascal
   constructor TMyApp.Init;
   begin
     inherited Init;   // Der Vorfahre aufrufen.
     NewWindows;       // Fenster erzeugen.
-  end;```
+  end;
+```
 Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.<br>
 ```pascal
   procedure TMyApp.NewWindows;
@@ -33,5 +35,6 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end;
-  end;```
+  end;
+```
 <br>

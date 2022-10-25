@@ -11,7 +11,8 @@ Ein Kommando für das öffnen des Zwischenablagefenster.<br>
 const
   cmNewWin = 1001;
   cmRefresh = 1002;
-  cmShowClip = 1003;```
+  cmShowClip = 1003;
+```
 Hier wird das Fenster für die Zwischenablage deklariert.<br>
 Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt werden soll.<br>
 ```pascal
@@ -31,7 +32,8 @@ type
     procedure OpenWindows;
     procedure SaveAll;
     procedure CloseAll;
-  end;```
+  end;
+```
 Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -75,7 +77,8 @@ Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
         NewItem('~V~orheriges', 'Shift+F6', kbShiftF6, cmPrev, hcNoContext,
         NewLine(
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, nil)))))))))))), nil)))))));
-  end;```
+  end;
+```
 Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
 ```pascal
   function TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = False) : PEditWindow;
@@ -96,7 +99,8 @@ Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
     end else begin
       Dec(WinCounter);
     end;
-  end;```
+  end;
+```
 Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -129,5 +133,6 @@ Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.<br>
         end;
       end;
     end;
-  end;```
+  end;
+```
 <br>

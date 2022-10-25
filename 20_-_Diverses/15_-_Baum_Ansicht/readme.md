@@ -33,7 +33,8 @@ Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.<br
           NewNode('500', nil,
           NewNode('1000', nil, nil)), nil))), nil)));
     Insert(Outline);
-  end;```
+  end;
+```
 Hier wird das Fenster erzeugt, welches die Outline enthält.<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -54,5 +55,6 @@ Hier wird das Fenster erzeugt, welches die Outline enthält.<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <br>

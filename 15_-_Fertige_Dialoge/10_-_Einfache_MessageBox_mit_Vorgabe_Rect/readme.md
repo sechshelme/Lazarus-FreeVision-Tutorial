@@ -18,5 +18,6 @@ Hier wird mir <b>R.Assign</b> die grösse der Box selbst festgelegt.<br>
         cmAbout: begin
           R.Assign(10, 3, 28, 20);  // Grösse der Box
           MessageBoxRect(R, 'Ich bin eine vorgegebene Box', nil, mfInformation + mfOkButton);
-        end;```
+        end;
+```
 <br>

@@ -35,7 +35,8 @@ Das Menü wurde noch ein wenig geändert/ergänzt.<br>
     M := NewMenu(SM0);
 <br>
     MenuBar := New(PMenuBar, Init(R, M));
-  end;```
+  end;
+```
 Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den CheckBoxen.<br>
 ```pascal
   procedure TMyApp.MyParameter;
@@ -79,5 +80,6 @@ Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den 
     end;
     dummy := Desktop^.ExecView(Dlg);   // Dialog Modal öffnen.
     Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
-  end;```
+  end;
+```
 <br>

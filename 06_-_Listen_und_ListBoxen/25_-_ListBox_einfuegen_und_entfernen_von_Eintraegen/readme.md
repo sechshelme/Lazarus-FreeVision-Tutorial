@@ -11,6 +11,7 @@ ZT. muss man da direkt auf die Liste zugreifen.<br>
 Der Dialog mit der mehrspaltigen ListBox<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
 ```pascal
@@ -24,6 +25,7 @@ type
     destructor Done; virtual;  // Wegen Speicher Leak in TList
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Komponenten für den Dialog generieren.<br>
 ```pascal
@@ -92,6 +94,7 @@ begin
   R.Move(0, 2);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 Manuell den Speicher der Liste frei geben.<br>
 ```pascal
@@ -100,6 +103,7 @@ begin
   Dispose(ListBox^.List, Done); // Die Liste freigeben
   inherited Done;
 end;
+<br>
 ```
 Der EventHandle<br>
 Hier sieht man, wie man Einträge einfügt und entfernt.<br>
@@ -141,5 +145,6 @@ begin
   end;
   inherited HandleEvent(Event);
 end;
+<br>
 ```
 <br>

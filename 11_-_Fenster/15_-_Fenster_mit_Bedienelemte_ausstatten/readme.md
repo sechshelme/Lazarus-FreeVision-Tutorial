@@ -27,12 +27,14 @@ Hier wird das neue vererbte Windows erzeugt.<br>
     end else begin
       Dec(WinCounter);
     end;
-  end;```
+  end;
+```
 <hr><br>
 <b>Unit mit dem neuen Fenster.</b><br>
 <br><br>
 ```pascal
 unit MyWindow;
+<br>
 ```
 Ein Horizontaler und ein Vertikaler Scrollbalken einfügen.<br>
 Es wird noch gezeigt, wie man die Position des Schiebers festlegen kann.<br>
@@ -66,5 +68,6 @@ begin
   Indicator := New (PIndicator, Init (R));
   Insert (Indicator);
 end;
+<br>
 ```
 <br>

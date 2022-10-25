@@ -106,7 +106,8 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
       SelectNext(False);
     end;
     Result := Dialog;
-  end;```
+  end;
+```
 Hier wird die neuen Dialoge eingefügt.<br>
 ```pascal
   function MyStdEditorDialog(Dialog: Int16; Info: Pointer): word;
@@ -126,7 +127,8 @@ Hier wird die neuen Dialoge eingefügt.<br>
         Result := StdEditorDialog(Dialog, Info);
       end;                                      // Original Dialoge aufrufen.
     end;
-  end;```
+  end;
+```
 Im Menü sind die neuen Suchen-Funktionen dazugekommen.<br>
 Dies ist das einzige was man machen muss.<br>
 ```pascal
@@ -162,5 +164,6 @@ Dies ist das einzige was man machen muss.<br>
         NewItem('~V~orheriges', 'Shift+F6', kbShiftF6, cmPrev, hcNoContext,
         NewLine(
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, nil)))))))))))), nil))))));
-  end;```
+  end;
+```
 <br>

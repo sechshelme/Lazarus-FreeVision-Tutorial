@@ -14,7 +14,8 @@ type
     Druck,
     Schrift: longword;
     Hinweis: string[50];
-  end;```
+  end;
+```
 Hier wird noch der Constructor vererbt, diesen Nachkomme wird gebraucht um die Dialogdaten mit Standard Werte zu laden.<br>
 ```pascal
 type
@@ -27,7 +28,8 @@ type
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
 <br>
     procedure MyParameter;                             // neue Funktion für einen Dialog.
-  end;```
+  end;
+```
 Der Constructoer welcher die Werte für den Dialog ladet.<br>
 Die Datenstruktur für die RadioButtons ist einfach. 0 ist der erste Button, 1 der Zweite, 2 der Dritte, usw.<br>
 Bei den Checkboxen macht man es am besten Binär. Im Beispiel werden der erste und dritte CheckBox gesetzt.<br>
@@ -40,7 +42,8 @@ Bei den Checkboxen macht man es am besten Binär. Im Beispiel werden der erste u
       Schrift := 2;
       Hinweis := 'Hello world';
     end;
-  end;```
+  end;
+```
 Der Dialog wird jetzt mit Werten geladen.<br>
 Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
 ```pascal
@@ -104,5 +107,6 @@ Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
     end;
 <br>
     Dispose(Dlg, Done);               // Dialog und Speicher frei geben.
-  end;```
+  end;
+```
 <br>

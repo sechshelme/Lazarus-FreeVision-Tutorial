@@ -22,7 +22,8 @@ Hier ist noch OpenWindows und SaveAll dazu gekommen.<br>
     procedure OpenWindows;
     procedure SaveAll;
     procedure CloseAll;
-  end;```
+  end;
+```
 Der <b>Speichern unter</b>-Dialog ist schon fest verbaut, aber leider in Englisch.<br>
 Daher wird diese Funktion auf eine eigene Routine umgeleitet.<br>
 Auch habe ich die Maske <b>*.*</b> durch <b>*.txt</b> ersetzt.<br>
@@ -51,7 +52,8 @@ var
     EditorDialog := @MyStdEditorDialog; // Die neue Dialog-Routine.
     DisableCommands([cmSave, cmSaveAs, cmCut, cmCopy, cmPaste, cmClear, cmUndo]);
     NewWindows('');                     // Leeres Fenster erzeugen.
-  end;```
+  end;
+```
 Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -83,7 +85,8 @@ Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
         NewLine(
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, Nil)))))))))))), nil)))));
 <br>
-  end;```
+  end;
+```
 Einfügen eines Editorfensters.<br>
 Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
 ```pascal
@@ -103,7 +106,8 @@ Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
     end else begin                // Fügt das Fenster ein.
       Dec(WinCounter);
     end;
-  end;```
+  end;
+```
 Eine Datei öffnen und dies in ein Edit-Fenster laden.<br>
 Dabei wird ein <b>FileDialog</b> aufgerufen, in dem man eine Datei auswählen kann.<br>
 Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, dies geschieht automatisch.<br>
@@ -118,7 +122,8 @@ Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, die
     if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
       NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
     end;
-  end;```
+  end;
+```
 Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schliessen.<br>
 ```pascal
   procedure TMyApp.SaveAll;
@@ -130,7 +135,8 @@ Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schlie
 <br>
   begin
     Desktop^.ForEach(@SendSave);          // Auf alle Fenster anwenden.
-  end;```
+  end;
+```
 Die verschiednen Events abfangen und abarbeiten.<br>
 Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt <b>PEditWindow</b> automatisch für einem.<br>
 ```pascal
@@ -160,5 +166,6 @@ Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt 
         end;
       end;
     end;
-  end;```
+  end;
+```
 <br>

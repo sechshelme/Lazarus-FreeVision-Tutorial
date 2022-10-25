@@ -31,7 +31,8 @@ Aus diese Grund sollte man für eine fehlerfreie Darstellung der Umaute, diese a
 ```pascal
 ä = #132  Ä = #142
 ö = #148  Ö = #153
-ü = #129  Ü = #154```
+ü = #129  Ü = #154
+```
 <br>
 <b>Genereller Hinweis:</b><br>
 Wen man zur Laufzeit Texte ändern will, zB. <b>Label</b>, <b>StaticText</b>, ist Vorsicht geboten.<br>
@@ -39,7 +40,8 @@ Da die Texte <b>PString</b> gespeichert sind, ist darauf zu achten, das man im K
 Am einfachsten geht dies so, somit hat es dann genügend Platz noch für <b>world</b>.<br>
 ```pascal
   StaticText := new(PStaticText, Init(Rect, 'Hallo           '));
-  StaticText^.Text^ := 'Hello world';```
+  StaticText^.Text^ := 'Hello world';
+```
 <br>
 <b>TListBox</b><br>
 Bei der Komponenten <b>TListBox<b> ist Vorsicht geboten, die <b>TList</b> welche man hier zuordnet, muss man selbst in einem <b>Destructor</b> aufräumen.<br>

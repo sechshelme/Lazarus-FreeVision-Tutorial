@@ -28,7 +28,8 @@ Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas ge
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
@@ -38,6 +39,7 @@ Vor allem dann, wen der Dialog nicht Modal geöffnet wird.<br>
 Ausser es ist gewünscht, wen man zB. über das Menü auf den Dialog zugreifen will.<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Für den Dialog kommt noch ein HandleEvent hinzu.<br>
 ```pascal
@@ -47,6 +49,7 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Ereigniss <b>cmMsg</b> abarbeitet.<br>
 ```pascal
@@ -77,6 +80,7 @@ begin
   R.Assign(7, 8, 17, 10);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 Im neuen EventHandle, werden loake Ereigniss (cmMsg) abarbeitet.<br>
 Andere Ereignisse, zB. <b>cmOk</b> wird an das Hauptprogramm weiter gereicht, welches dann den Dialog auch schliesst.<br>
@@ -98,5 +102,6 @@ begin
   end;
 <br>
 end;
+<br>
 ```
 <br>

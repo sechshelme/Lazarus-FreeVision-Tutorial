@@ -33,5 +33,6 @@ Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhaf
     end;
     dummy := Desktop^.ExecView(Dia);   // Dialog Modal öffnen.
     Dispose(Dia, Done);                // Dialog und Speicher frei geben.
-  end;```
+  end;
+```
 <br>

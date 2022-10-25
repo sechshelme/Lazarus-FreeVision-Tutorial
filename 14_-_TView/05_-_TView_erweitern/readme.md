@@ -25,7 +25,8 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
     end else begin
       Dec(WinCounter);
     end;
-  end;```
+  end;
+```
 Da es im View keine <b>cmClose</b> Abarbeitung gibt, wird manuell in einer Schleife überprüft, ob es Fenster gibt, wen ja, löschen.<br>
 ```pascal
 procedure TMyApp.CloseAll;
@@ -37,7 +38,8 @@ begin
     Desktop^.Delete(v);    // Fenster löschen.
     v := Desktop^.Current;
   end;
-end;```
+end;
+```
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -64,13 +66,15 @@ end;```
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.<br>
 ```pascal
 unit MyView;
+<br>
 ```
 Hier sind 3 Event-Konstante hinzugekommen.<br>
 ```pascal
@@ -87,6 +91,7 @@ type
     procedure Draw; virtual;
     procedure HandleEvent(var Event: TEvent); Virtual;
   end;
+<br>
 ```
 Das Bauen des Dialoges ist nichts besonderes.<br>
 ```pascal
@@ -116,6 +121,7 @@ begin
   WriteChar(1, Size.Y - 1, #205, MyCol, Size.X - 2);
   WriteChar(Size.X - 1, Size.Y - 1, #188, MyCol, 1);
 end;
+<br>
 ```
 Hier werden die Farb-Schemas mit Hilfe von <b>Palette := dpxxx</b> geändert.<br>
 Auch hier ist wichtig, das man <b>Draw</b> aufruft, diemal nicht für eine Komponente, sonder für den ganzen Dialog.<br>
@@ -131,5 +137,6 @@ begin
     end;
   end;
 end;
+<br>
 ```
 <br>

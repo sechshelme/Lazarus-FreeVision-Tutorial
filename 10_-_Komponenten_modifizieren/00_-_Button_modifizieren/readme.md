@@ -32,13 +32,15 @@ Man sieht auch, das man anstelle von Rect, nur X und Y angibt.<br>
     end;
     Desktop^.ExecView(Dia);   // Dialog Modal öffnen.
     Dispose(Dia, Done);       // Dialog und Speicher frei geben.
-  end;```
+  end;
+```
 <hr><br>
 <b>Unit mit dem neuen Button.</b><br>
 <br><br>
 Hier wird gezeigt, wie man einen Button abänder kann.<br>
 ```pascal
 unit MyButton;
+<br>
 ```
 Deklaration des neuen Buttons.<br>
 Hier sieht man, das man den Konstruktor überschreiben muss.<br>
@@ -48,6 +50,7 @@ type
   TMyButton = object(TButton)
     constructor Init(x, y: integer; ATitle: TTitleStr; ACommand: word; AFlags: word);
   end;
+<br>
 ```
 Im Konstruktor sieht man, das aus <b>X</b> und <b>Y</b> ein <b>Rect</b> generiert wird.<br>
 <b>StringReplace</b> werden noch die ~ gelöscht, da diese sonst die Länge des Stringes verfälschen.<br>
@@ -60,5 +63,6 @@ begin
 <br>
   inherited Init(R, ATitle, ACommand, AFlags);
 end;
+<br>
 ```
 <br>

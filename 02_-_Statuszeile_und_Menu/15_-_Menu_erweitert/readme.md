@@ -10,14 +10,16 @@ Es empfiehlt sich Werte &gt; 1000 zu verwenden, so das es keine Überschneidunge
 ```pascal
 const
   cmList = 1002;      // Datei Liste
-  cmAbout = 1001;     // About anzeigen```
+  cmAbout = 1001;     // About anzeigen
+```
 Für ein Menu muss man <b>InitMenuBar</b> vererben.<br>
 ```pascal
 type
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;   // Statuszeile
     procedure InitMenuBar; virtual;      // Menü
-  end;```
+  end;
+```
 Mam kann die Menüeinträge auch gesplittet über Pointer machen.<br>
 Ob man es verschachtelt oder splittet, ist Geschmacksache.<br>
 Mit <b>NewLine</b> kann man eine Leerzeile einfügen.<br>
@@ -46,5 +48,6 @@ Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeic
     M := NewMenu(SM0);
 <br>
     MenuBar := New(PMenuBar, Init(R, M));
-  end;```
+  end;
+```
 <br>

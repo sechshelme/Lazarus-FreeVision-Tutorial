@@ -20,7 +20,8 @@ type
     procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
 <br>
     procedure NewWindows;
-  end;```
+  end;
+```
 Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.<br>
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -36,7 +37,8 @@ Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.<br>
       NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
       NewLine(
       NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil))))), nil))));
-  end;```
+  end;
+```
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Dieser wird benutzt um die Fenster zu nummerieren.<br>
 ```pascal
@@ -56,7 +58,8 @@ Dieser wird benutzt um die Fenster zu nummerieren.<br>
     end else begin
       Dec(WinCounter);
     end;
-  end;```
+  end;
+```
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft es im Hintergrund automatisch.<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -74,5 +77,6 @@ Dieser wird benutzt um die Fenster zu nummerieren.<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <br>

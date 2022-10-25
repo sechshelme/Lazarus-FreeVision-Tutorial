@@ -9,7 +9,8 @@ Events für den Buttonklick.<br>
 const
   cmDia1   = 1001;
   cmDia2   = 1002;
-  cmDiaAll = 1003;```
+  cmDiaAll = 1003;
+```
 Hier werden die 2 passiven Ausgabe-Dialoge erstellt, dies befinden sich in dem Object TMyDialog.<br>
 Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kommandos an die anderen Dialoge sendet.<br>
 ```pascal
@@ -57,7 +58,8 @@ Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kom
     if ValidView(Dia) <> nil then begin
       Desktop^.Insert(Dia);
     end;
-  end;```
+  end;
+```
 Hier werden mit <b>Message</b>, die Kommandos an die Dialoge gesendet.<br>
 Gibt man als ersten Parameter die View des Dialoges an, dann wird nur dieser Dialog angesprochen.<br>
 Gibt man <b>@Self</b> an, dann werden die Kommandos an alle Dialoge gesendet.<br>
@@ -85,13 +87,15 @@ die kann zB. ein String oder ein Record, etc. sein.<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der Zähler-Ausgabe.<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Deklaration des Object der passiven Dialoge.<br>
 ```pascal
@@ -104,6 +108,7 @@ type
     constructor Init(var Bounds: TRect; ATitle: TTitleStr);
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Im Konstructor wird eine Ausgabezeile erzeugt.<br>
 ```pascal
@@ -118,6 +123,7 @@ begin
   CounterInputLine^.Data^ := '0';
   Insert(CounterInputLine);
 end;
+<br>
 ```
 Im EventHandle wird das Kommando empfangen, welches mit <b>Message</b> gesendet wurde.<br>
 Als Beweis dafür, wir die Zahl in der Ausgabezeile un eins erhöht.<br>
@@ -142,5 +148,6 @@ begin
   end;
 <br>
 end;
+<br>
 ```
 <br>

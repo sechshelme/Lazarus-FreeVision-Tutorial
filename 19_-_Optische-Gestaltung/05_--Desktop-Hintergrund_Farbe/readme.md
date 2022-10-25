@@ -12,7 +12,8 @@ type
   PMyBackground = ^TMyBackground;
   TMyBackground = object(TBackGround)
     function GetPalette: PPalette; virtual; // neu GetPalette
-  end;```
+  end;
+```
 In der neuen Funktion wird eine andere Palette zugeordnet.<br>
 ```pascal
   function TMyBackground.GetPalette: PPalette;
@@ -20,7 +21,8 @@ In der neuen Funktion wird eine andere Palette zugeordnet.<br>
     P: string[1] = #74;
   begin
     Result := @P;
-  end;```
+  end;
+```
 Der Konstruktor sieht fast gleich aus wie beim Hintergrundzeichen.<br>
 Einziger Unterschied anstelle von <b>PBackGround</b> wird <b>PMyBackground</b> genommen.<br>
 ```pascal
@@ -32,5 +34,6 @@ Einziger Unterschied anstelle von <b>PBackGround</b> wird <b>PMyBackground</b> g
     GetExtent(R);
 <br>
     DeskTop^.Insert(New(PMyBackground, Init(R, #3)));  // Hintergrund einfügen.
-  end;```
+  end;
+```
 <br>

@@ -7,7 +7,8 @@ Hier wird ein About-Dialog erstellt, das sieht man gut für was man Label gebrau
 Die Datei, in welcher sich die Daten für den Dialog befinden.<br>
 ```pascal
 const
-  DialogDatei = 'parameter.cfg';```
+  DialogDatei = 'parameter.cfg';
+```
 Eine neue Funktion <b>About</b> ist hinzugekommen.<br>
 ```pascal
 type
@@ -24,7 +25,8 @@ type
 <br>
     procedure MyParameter;                             // neue Funktion für einen Dialog.
     procedure About;                                   // About Dialog.
-  end;```
+  end;
+```
 Hier wird das About augerufen, wen im Menü About gewält wird.<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -47,7 +49,8 @@ Hier wird das About augerufen, wen im Menü About gewält wird.<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 About Dialog erstellen.<br>
 Mit <b>TRext.Grow(...</b> kann man das Rect verkleinern und vergrössern.<br>
 Mit <b>#13</b> kann man eine Zeilenumbruch einfügen.<br>
@@ -82,5 +85,6 @@ Mit <b>PLabel</b> könnte man auch Text ausgeben, aber für festen Text eignet s
       Desktop^.ExecView(Dlg);           // Modal aufrufen, Funktionsergebniss wird nicht ausgewrtet.
       Dispose(Dlg, Done);               // Dialog frei geben.
     end;
-  end;```
+  end;
+```
 <br>

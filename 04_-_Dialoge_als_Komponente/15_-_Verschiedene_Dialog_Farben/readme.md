@@ -7,7 +7,8 @@ Standardmässig wird folgendes verwendet:<br>
 ```pascal
 Editor-Fenster : Blau
 Dialog         : Grau
-Hilfe-Fenster  : Cyan```
+Hilfe-Fenster  : Cyan
+```
 <br>
 Ohne Zutun, kommen die Fenster/Dialog immer in der richtigen Farbe.<br>
 Eine Modifizierung ist nur in speziellen Fällen von Sinnen.<br>
@@ -17,6 +18,7 @@ Eine Modifizierung ist nur in speziellen Fällen von Sinnen.<br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Hier sind 3 Event-Konstante hinzugekommen.<br>
 ```pascal
@@ -27,6 +29,7 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Das Bauen des Dialoges ist nichts besonderes.<br>
 ```pascal
@@ -59,6 +62,7 @@ begin
   R.Assign(7, 8, 17, 10);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 Hier werden die Farb-Schemas mit Hilfe von <b>Palette := dpxxx</b> geändert.<br>
 Auch hier ist wichtig, das man <b>Draw</b> aufruft, diemal nicht für eine Komponente, sonder für den ganzen Dialog.<br>
@@ -90,5 +94,6 @@ begin
   end;
 <br>
 end;
+<br>
 ```
 <br>

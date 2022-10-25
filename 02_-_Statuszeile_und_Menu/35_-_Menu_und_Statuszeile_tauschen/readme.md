@@ -16,7 +16,8 @@ Deklaration der Komponenten<br>
   private
     menuGer, menuEng: PMenuView;          // Die beiden Menüs
     StatusGer, StatusEng: PStatusLine;    // Die beiden Stauszeilen
-  end;```
+  end;
+```
 Inizialisieren der beiden Statuszeilen.<br>
 ```pascal
   procedure TMyApp.InitStatusLine;
@@ -39,7 +40,8 @@ Inizialisieren der beiden Statuszeilen.<br>
       NewStatusKey('~F1~ Help', kbF1, cmHelp, nil))), nil)));
 <br>
     StatusLine := StatusGer; // Deutsch per Default
-  end;```
+  end;
+```
 Inizialisieren der beiden Menüs.<br>
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -78,7 +80,8 @@ Inizialisieren der beiden Menüs.<br>
         NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))))));
 <br>
     MenuBar := menuGer; // Deutsch per Default
-  end;```
+  end;
+```
 Austauschen der Komponenten<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -130,5 +133,6 @@ Austauschen der Komponenten<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <br>

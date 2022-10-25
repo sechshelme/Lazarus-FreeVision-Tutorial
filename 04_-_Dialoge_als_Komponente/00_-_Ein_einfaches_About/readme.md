@@ -29,11 +29,13 @@ Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeb
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Für den Dialog muss ein neuer Konstruktor erzeugt werden.<br>
 Noch ein Hinweis zu StaticText, wen man eine Leerzeile einfügen will, muss man <b>#13#32#13</b> schreiben, bei <b>#13#13</b>, wird nur ein einfacher Zeilenumbruch ausgefühert.<br>
@@ -48,6 +50,7 @@ type
   TMyAbout = object(TDialog)
     constructor Init;  // Neuer Konstruktor, welche den Dialog mit den Komponenten baut.
   end;
+<br>
 ```
 Im Konstruktor werden die Dialog-Komponeten erzeugt.<br>
 ```pascal
@@ -74,5 +77,6 @@ begin
   R.Assign(27, 8, 37, 10);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 <br>

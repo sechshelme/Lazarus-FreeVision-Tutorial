@@ -10,6 +10,7 @@ Die <b>ListBox</b> kann auch mehrere Spalten haben.<br>
 Der Dialog mit der mehrspaltigen ListBox<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
 ```pascal
@@ -23,6 +24,7 @@ type
     destructor Done; virtual;  // Wegen Speicher Leak in TList
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Komponenten für den Dialog generieren.<br>
 Der zweite Parameter bei Init von <b>TListBox</b> gibt die Anzahl Spalten an.<br>
@@ -75,6 +77,7 @@ begin
   R.Move(15, 0);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 Manuell den Speicher der Liste frei geben.<br>
 ```pascal
@@ -83,6 +86,7 @@ begin
   Dispose(ListBox^.List, Done); // Die Liste freigeben
   inherited Done;
 end;
+<br>
 ```
 Der EventHandle<br>
 Wen man auf <b>[Monat]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.<br>
@@ -107,5 +111,6 @@ begin
   end;
   inherited HandleEvent(Event);
 end;
+<br>
 ```
 <br>

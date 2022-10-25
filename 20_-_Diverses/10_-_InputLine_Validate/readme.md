@@ -15,6 +15,7 @@ Wen man <b>Ok</b> drückt, wird ein Validate-Prüfungen ausgeführt.<br>
 Bei <b>Abbruch</b> gibt es keine Prüfung.<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Die Deklaration des Dialoges, hier wird nur das Init überschrieben, welches die Komponenten, für den Dialog erzeugt.<br>
 So nebenbei werden noch die beiden Validate überschrieben.<br>
@@ -35,6 +36,7 @@ type
   TMyStringLookUpValidator = object(TStringLookUpValidator)
     procedure Error; Virtual;   // Überschreibt die englische Fehlermeldung.
   end;
+<br>
 ```
 Die beiden neuen Fehlermeldungen.<br>
 ```pascal
@@ -51,6 +53,7 @@ procedure TMyStringLookUpValidator.Error;
 begin
   MessageBox('Eingabe nicht in g'#129'ltiger Liste', nil, mfError or mfOKButton);
 end;
+<br>
 ```
 Hier sieht man, das eine Validate-Prüfung zu den <b>PInputLines</b> dazu kommt.<br>
 ```pascal
@@ -101,5 +104,6 @@ begin
   R.Assign(24, 8, 36, 10);
   Insert(new(PButton, Init(R, '~A~bbrechen', cmCancel, bfNormal)));
 end;
+<br>
 ```
 <br>

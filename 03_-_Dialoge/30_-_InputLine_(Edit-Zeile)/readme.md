@@ -62,5 +62,6 @@ Dies funktioniert fast gleich, wie ein normales Label. einziger Unterschied, ans
     end;
     dummy := Desktop^.ExecView(Dlg);   // Dialog Modal öffnen.
     Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
-  end;```
+  end;
+```
 <br>

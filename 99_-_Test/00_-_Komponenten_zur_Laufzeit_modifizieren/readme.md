@@ -12,6 +12,7 @@ Dort wird gezeigt, wie man Werte bei Komponenten zu Laufzeit lesen und schreiben
 Als Beispiel, wird die Zahl im Button bei jedem drücken um 1 erhöht.<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.<br>
 Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
@@ -27,6 +28,7 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.<br>
 <b>CounterButton</b> wird für die Modifikation gebraucht.<br>
@@ -52,6 +54,7 @@ begin
   Rect.Assign(7, 8, 17, 10);
   Insert(new(PButton, Init(Rect, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 Im EventHandle, wird die Zahl im Button beim Drücken erhöht.<br>
 Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.<br>
@@ -80,5 +83,6 @@ begin
   end;
 <br>
 end;
+<br>
 ```
 <br>

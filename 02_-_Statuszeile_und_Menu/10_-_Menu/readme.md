@@ -11,14 +11,16 @@ uses
   Objects,  // Fensterbereich (TRect)
   Drivers,  // Hotkey
   Views,    // Ereigniss (cmQuit)
-  Menus;    // Statuszeile```
+  Menus;    // Statuszeile
+```
 Für ein Menu muss man <b>InitMenuBar</b> vererben.<br>
 ```pascal
 type
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;   // Statuszeile
     procedure InitMenuBar; virtual;      // Menü
-  end;```
+  end;
+```
 Das Menü erzeugen, das Beispiel hat nur eine einziger Menüpunkt, Beenden.<br>
 Beim Menü sind die Zeichen die mit <b>~x~</b> hervorgehoben sind nicht nur Optischen, sonder auch funktionell.<br>
 Zum beenden, kann man auch <b>[Alt+s]</b>, <b>[b]</b> drücken.<br>
@@ -38,5 +40,6 @@ Beim letzten Menüpunkt kommt immer ein <b>nil</b>.<br>
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
       NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext,
       nil)), nil))));
-  end;```
+  end;
+```
 <br>

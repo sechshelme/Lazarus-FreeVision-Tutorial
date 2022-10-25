@@ -8,7 +8,8 @@ Kommmandos die abgearbeitet werden.<br>
 ```pascal
 const
   cmAbout = 1001;     // About anzeigen
-  cmList = 1002;      // Datei Liste```
+  cmList = 1002;      // Datei Liste
+```
 Der EventHandler ist auch ein Nachkommen.<br>
 ```pascal
 type
@@ -16,7 +17,8 @@ type
     procedure InitStatusLine; virtual;                 // Statuszeile
     procedure InitMenuBar; virtual;                    // Menü
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
-  end;```
+  end;
+```
 Abarbeiten der eigenen cmxxx Kommandos.<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -35,5 +37,6 @@ Abarbeiten der eigenen cmxxx Kommandos.<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <br>

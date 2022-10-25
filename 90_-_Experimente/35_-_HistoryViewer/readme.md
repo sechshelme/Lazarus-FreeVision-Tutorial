@@ -13,6 +13,7 @@ Dort fehlt der <b>destructor</b>, welcher den Speicher aufräumt.<br>
 Der Dialog mit der ListBox<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
 ```pascal
@@ -26,6 +27,7 @@ type
     destructor Done; virtual;  // Wegen Speicher Leak in TList
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Komponenten für den Dialog generieren.<br>
 ```pascal
@@ -90,6 +92,7 @@ begin
   R.Move(15, 0);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 Manuell den Speicher der Liste frei geben.<br>
 ```pascal
@@ -98,6 +101,7 @@ begin
 //  Dispose(ListBox^.List, Done); // Die Liste freigeben
   inherited Done;
 end;
+<br>
 ```
 Der EventHandle<br>
 Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.<br>
@@ -122,5 +126,6 @@ begin
   end;
   inherited HandleEvent(Event);
 end;
+<br>
 ```
 <br>

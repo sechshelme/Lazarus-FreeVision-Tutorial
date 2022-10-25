@@ -10,6 +10,7 @@ Will man bei einer <b>ListBox</b> den Doppelklick auswerten, muss man die ListBo
 Der Dialog mit der ListBox<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Das Vererben der ListBox.<br>
 Wen man schon vererbt, habe ich auch gleich den <b>Destructor</b> eingefügt, welcher am Schluss die Liste aufräumt.<br>
@@ -32,6 +33,7 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Der neue <b>HandleEvent</b> der beuen ListBox, welcher den Doppelklick abfängt und ihn als [Ok] interprediert.<br>
 ```pascal
@@ -45,6 +47,7 @@ begin
   end;
   inherited HandleEvent(Event);
 end;
+<br>
 ```
 Manuell den Speicher der Liste frei geben.<br>
 ```pascal
@@ -53,6 +56,7 @@ begin
   Dispose(List, Done); // Die Liste freigeben
   inherited Done;
 end;
+<br>
 ```
 Der EventHandle des Dialogs.<br>
 Hier wird einfach ein [Ok] bei dem Doppelklick abgearbeitet.<br>
@@ -76,5 +80,6 @@ begin
   end;
   inherited HandleEvent(Event);
 end;
+<br>
 ```
 <br>

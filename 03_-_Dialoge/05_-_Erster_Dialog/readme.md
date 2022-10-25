@@ -12,13 +12,15 @@ uses
   Drivers,  // Hotkey
   Views,    // Ereigniss (cmQuit)
   Menus,    // Statuszeile
-  Dialogs;  // Dialoge```
+  Dialogs;  // Dialoge
+```
 Ein weiteres Kommando für den Aufruf des Dialoges.<br>
 ```pascal
 const
   cmAbout = 1001;     // About anzeigen
   cmList = 1002;      // Datei Liste
-  cmPara = 1003;      // Parameter```
+  cmPara = 1003;      // Parameter
+```
 Neue Funktionen kommen auch in die Klasse.<br>
 Hier ein Dialog für Paramtereingabe.<br>
 ```pascal
@@ -29,7 +31,8 @@ type
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
 <br>
     procedure MyParameter;                             // neue Funktion für einen Dialog.
-  end;```
+  end;
+```
 Das Menü wird um Parameter und Schliessen erweitert.<br>
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -59,7 +62,8 @@ Das Menü wird um Parameter und Schliessen erweitert.<br>
     M := NewMenu(SM0);
 <br>
     MenuBar := New(PMenuBar, Init(R, M));
-  end;```
+  end;
+```
 Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -81,7 +85,8 @@ Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 Bauen eines leeren Dialoges.<br>
 Auch da wird <b>TRect</b> gebraucht für die Grösse.<br>
 Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.<br>
@@ -95,5 +100,6 @@ Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.<br>
     R.Move(23, 3);                             // Position des Dialogs.
     Dlg := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.
     Desktop^.Insert(Dlg);                      // Dialog der App zuweisen.
-  end;```
+  end;
+```
 <br>

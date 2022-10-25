@@ -19,13 +19,15 @@ type
     procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
 <br>
     procedure MyParameter;                             // neue Funktion für einen Dialog.
-  end;```
+  end;
+```
 Die Procedure wird aufgerufen, wen zu wenig Speicher vorhanden ist.<br>
 ```pascal
   procedure TMyApp.OutOfMemory;
   begin
     MessageBox('Zu wenig Arbeitsspeicher !', nil, mfError + mfOkButton);
-  end;```
+  end;
+```
 Der Dialog wird jetzt mit Werten geladen.<br>
 Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
 Mit <b>ValidView(...</b> prüft man ob genügend Specher vorhanden ist, um die Komponente zu erzeugen.<br>
@@ -93,5 +95,6 @@ Wen nicht, kommt <b>nil<(b> zurück. Dabei spielt es keine Rolle, ob man <b>OutO
 <br>
       Dispose(Dlg, Done);               // Dialog und Speicher frei geben.
     end;
-  end;```
+  end;
+```
 <br>

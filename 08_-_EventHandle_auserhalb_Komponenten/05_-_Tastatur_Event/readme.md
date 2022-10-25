@@ -28,12 +28,14 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <hr><br>
 <b>Unit mit dem Keyboardaktions-Dialog.</b><br>
 <br><br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei Mausaktionen modifiziert werden.<br>
 ```pascal
@@ -46,6 +48,7 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
 Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
@@ -94,6 +97,7 @@ begin
   R.Assign(27, 12, 37, 14);
   Insert(new(PButton, Init(R, 'OK', cmOK, bfDefault)));
 end;
+<br>
 ```
 Im EventHandle sieht man, das die Tastatur abgefangen wird. Es wird der Zeichencode und der Scancode ausgegeben.<br>
 In der untersten Zeile erscheint ein 3, wen die Shift-Taste mit gewissen anderen Tasten zB. Pfeil-Tasten gedrückt wird.<br>
@@ -117,5 +121,6 @@ begin
   end;
 <br>
 end;
+<br>
 ```
 <br>

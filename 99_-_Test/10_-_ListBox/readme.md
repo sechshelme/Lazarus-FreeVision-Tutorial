@@ -10,6 +10,7 @@ Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick e
 Der Dialog mit dem Zähler-Button.<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.<br>
 Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
@@ -26,6 +27,7 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.<br>
 <b>CounterButton</b> wird für die Modifikation gebraucht.<br>
@@ -76,6 +78,7 @@ begin
   R.Assign(7, 9, 17, 10);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 Im EventHandle, wird die Zahl im Button beim Drücken erhöht.<br>
 Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.<br>
@@ -101,5 +104,6 @@ begin
   end;
 <br>
 end;
+<br>
 ```
 <br>

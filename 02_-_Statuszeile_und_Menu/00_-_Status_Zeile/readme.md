@@ -12,7 +12,8 @@ uses
   Objects,  // Fensterbereich (TRect)
   Drivers,  // Hotkey
   Views,    // Ereigniss (cmQuit)
-  Menus;    // Statuszeile```
+  Menus;    // Statuszeile
+```
 Wen man etwas ändern will, muss man TApplication vererben.<br>
 Hier im Beispiel, wird die Statuszeile abgeändert, dazu muss man die Procedure <b>InitStatusLine</b> überschreiben.<br>
 ```pascal
@@ -24,16 +25,19 @@ Hier im Beispiel, wird die Statuszeile abgeändert, dazu muss man die Procedure 
     R.A.Y := R.B.Y - 1; // Position der Statuszeile, auf unterste Zeile der App setzen.
 <br>
     StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF, NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit, nil), nil)));
-  end;```
+  end;
+```
 Das die neue Statuszeile verwendet wird muss man den Nachkomme anstelle von <b>TApplication</b> deklarieren.<br>
 ```pascal
 var
-  MyApp: TMyApp;```
+  MyApp: TMyApp;
+```
 Die  bleibt gleich.<br>
 ```pascal
 begin
   MyApp.Init;   // Inizialisieren
   MyApp.Run;    // Abarbeiten
   MyApp.Done;   // Freigeben
-end.```
+end.
+```
 <br>

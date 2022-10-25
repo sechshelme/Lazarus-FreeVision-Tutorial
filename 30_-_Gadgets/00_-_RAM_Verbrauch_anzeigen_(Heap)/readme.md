@@ -13,7 +13,8 @@ Dort feht der <b>destructor</b>, welcher den Speicher aufräumt. Dies macht auch
     R.A.X := R.B.X - 12;
     R.A.Y := R.B.Y - 1;
     Heap := New(PHeapView, Init(R));
-    Insert(Heap); ```
+    Insert(Heap); 
+```
 Den Dialog mit dem Speicher Leak aufrufen.<br>
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -48,7 +49,8 @@ Den Dialog mit dem Speicher Leak aufrufen.<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
 ```pascal
   procedure TMyApp.Idle;
@@ -66,13 +68,15 @@ Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
     end else begin
       DisableCommands([cmTile, cmCascade]);
     end;
-  end;```
+  end;
+```
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit dem dem Speicher Leak<br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Den <b>Destructor</b> deklarieren, welcher das <b>Speicher Leak</b> behebt.<br>
 ```pascal
@@ -89,6 +93,7 @@ type
     destructor Done; virtual;  // Wegen Speicher Leak
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Komponenten für den Dialog generieren.<br>
 ```pascal
@@ -134,6 +139,7 @@ begin
   R.Move(15, 0);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 Manuell den Speicher frei geben.<br>
 Man kann hier versuchsweise das Dispose ausklammern, dann sieht man,<br>
@@ -144,6 +150,7 @@ begin
    Dispose(ListBox^.List, Done); // Dies Versuchsweise ausklammern
    inherited Done;
 end;
+<br>
 ```
 Der EventHandle<br>
 ```pascal
@@ -167,5 +174,6 @@ begin
   end;
   inherited HandleEvent(Event);
 end;
+<br>
 ```
 <br>

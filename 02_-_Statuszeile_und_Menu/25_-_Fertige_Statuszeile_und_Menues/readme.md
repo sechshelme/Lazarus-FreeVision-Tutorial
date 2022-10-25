@@ -17,7 +17,8 @@ Mit <b>StdStatusKeys(...</b> wird eine Statuszeile estellt, aber wie oben beschr
     R.A.Y := R.B.Y - 1;
 <br>
     StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF, StdStatusKeys(nil), nil)));
-  end;```
+  end;
+```
 Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber eben in Englisch.<br>
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -34,5 +35,6 @@ Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber 
          StdEditMenuItems (nil)),
       NewSubMenu('~F~enster', hcNoContext, NewMenu(
         StdWindowMenuItems(nil)), nil))))));
-  end;```
+  end;
+```
 <br>

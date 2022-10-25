@@ -16,6 +16,7 @@ type
   TMyDialog = object(TDialog)
     constructor Init;
   end;
+<br>
 ```
 Es wird eine UnSortedStrCollection gebaut und<br>
 als Demonstration wird deren Inhalt in ein StaticText geschrieben.<br>
@@ -55,5 +56,6 @@ begin
   R.Assign(5, 11, 18, 13);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 <br>

@@ -38,5 +38,6 @@ Den Dialog mit CheckBoxen ergänzen.<br>
     end;
     dummy := Desktop^.ExecView(Dlg);   // Dialog Modal öffnen.
     Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
-  end;```
+  end;
+```
 <br>

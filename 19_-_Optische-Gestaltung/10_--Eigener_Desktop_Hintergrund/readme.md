@@ -12,7 +12,8 @@ type
   PMyBackground = ^TMyBackground;
   TMyBackground = object(TView)
     procedure Draw; virtual; // neu Draw-Procedure.
-  end;```
+  end;
+```
 In der neuen Funktion wird ein Byte-Muster in Form einer Backsteinwand gezeichnet.<br>
 Die Möglickeiten sind unbegrenzt, man kann ein ganzes Bild erzeugen.<br>
 Das was man ausgeben will, kommt Zeilenweise in den <b>TDrawBuffer</b>.<br>
@@ -36,7 +37,8 @@ Anschliessend wird mit <b>WriteLine(...</b> der Buffer gezeichnet.<br>
       WriteLine(0, i * 2 + 0, Size.X, 1, Buf1);
       WriteLine(0, i * 2 + 1, Size.X, 1, Buf2);
     end;
-  end;```
+  end;
+```
 Der Konstruktor sieht gleich aus wie bei der Hintergrund-Zeichenfarbe.<br>
 Dem ist Egal ob <b>TMyBackground</b> ein Nachkomme von <b>TView</b> oder <b>TBackground</b> ist.<br>
 ```pascal
@@ -48,5 +50,6 @@ Dem ist Egal ob <b>TMyBackground</b> ein Nachkomme von <b>TView</b> oder <b>TBac
     GetExtent(R);
 <br>
     DeskTop^.Insert(New(PMyBackground, Init(R)));  // Hintergrund einfügen.
-  end;```
+  end;
+```
 <br>

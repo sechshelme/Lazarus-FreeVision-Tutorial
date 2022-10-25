@@ -9,11 +9,13 @@ Wen man dies will müsste man mit <b>IOResult</b>, etc. überprüfen.<br>
 Hier kommt noch <b>sysutils</b> hinzu, sie wird für <b>FileExits</b> gebraucht.<br>
 ```pascal
 uses
-  SysUtils, // Für Dateioperationen```
+  SysUtils, // Für Dateioperationen
+```
 Die Datei, in welcher sich die Daten für den Dialog befinden.<br>
 ```pascal
 const
-  DialogDatei = 'parameter.cfg';```
+  DialogDatei = 'parameter.cfg';
+```
 Zu Beginn werden die Daten, wen vorhaden von der Platte geladen, ansonten werden sie erzeugt.<br>
 ```pascal
   constructor TMyApp.Init;
@@ -34,7 +36,8 @@ Zu Beginn werden die Daten, wen vorhaden von der Platte geladen, ansonten werden
         Hinweis := 'Hello world !';
       end;
     end;
-  end;```
+  end;
+```
 Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.<br>
 ```pascal
   procedure TMyApp.MyParameter;
@@ -105,5 +108,6 @@ Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.<br>
 <br>
       Dispose(Dlg, Done);               // Dialog und Speicher frei geben.
     end;
-  end;```
+  end;
+```
 <br>

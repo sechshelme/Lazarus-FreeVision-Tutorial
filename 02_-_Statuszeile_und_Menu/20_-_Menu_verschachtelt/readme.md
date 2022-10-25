@@ -18,7 +18,8 @@ Ich finde dies auch übersichtlicher, als ein Variablen-Urwald.<br>
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
       NewStatusKey('~F10~ Menu', kbF10, cmMenu,
       NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
-  end;```
+  end;
+```
 Folgendes Beispiel demonstriert ein verschachteltes Menü.<br>
 Die Erzeugung ist auch verschachtelt.<br>
 ```Datei
@@ -31,7 +32,8 @@ Demo
     Menu 2
   Einfach 2
 Hilfe
-  About```
+  About
+```
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -54,5 +56,6 @@ Hilfe
 <br>
       NewSubMenu('~H~ilfe', hcNoContext, NewMenu(
         NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))))));
-  end;```
+  end;
+```
 <br>

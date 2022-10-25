@@ -11,11 +11,13 @@ Dabei sind filgende Formatierungen möglich:<br>
 %#: Formatierungen<br>
 Bei Realzahlen muss man sich folgendermassen behelfen:<br>
 ```pascal
-procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);```
+procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);
+```
 <hr><br>
 <hr><br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 Deklaration des Dialogs.<br>
 ```pascal
@@ -24,6 +26,7 @@ type
   TMyDialog = object(TDialog)
     constructor Init;
   end;
+<br>
 ```
 Bei Integern ist es wichtig, das man diese als <b>PtrInt</b> deklariert.<br>
 ```pascal
@@ -41,6 +44,7 @@ var
     i1, i2: PtrInt;
   end;
   s: ShortString;
+<br>
 ```
 Hier sieht man, die Formatierung mit <b>FormatStr</b>.<br>
 ```pascal
@@ -65,5 +69,6 @@ begin
   R.Assign(20, 8, 32, 10);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 <br>

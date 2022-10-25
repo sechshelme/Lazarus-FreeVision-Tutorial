@@ -28,12 +28,14 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <hr><br>
 <b>Unit mit dem Mausaktions-Dialog.</b><br>
 <br><br>
 ```pascal
 unit MyDialog;
+<br>
 ```
 In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei Mausaktionen modifiziert werden.<br>
 ```pascal
@@ -46,6 +48,7 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
+<br>
 ```
 Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
 Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
@@ -87,6 +90,7 @@ begin
   R.Assign(27, 10, 37, 12);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
+<br>
 ```
 Im EventHandle sieht man gut, das dort die Mausaktionen abgefangen werden.<br>
 Die Maus-Daten werden an die <b>EditLines</b> ausgegeben.<br>
@@ -116,5 +120,6 @@ begin
   end;
 <br>
 end;
+<br>
 ```
 <br>

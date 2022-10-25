@@ -15,5 +15,6 @@ Mit <b>#3</b> füllt es den Hintergrund mit Herzen auf.<br>
     GetExtent(R);
 <br>
     DeskTop^.Insert(New(PBackGround, Init(R, #3)));   // Hintergrund einfügen.
-  end;```
+  end;
+```
 <br>

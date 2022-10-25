@@ -23,5 +23,6 @@ Einfügen eines leeren Editorfensters.<br>
     end else begin                // Fügt das Fenster ein.
       Dec(WinCounter);
     end;
-  end;```
+  end;
+```
 <br>

@@ -12,7 +12,8 @@ Im Konstructor wird das View erzeugt.<br>
   begin
     inherited Init;   // Der Vorfahre aufrufen.
     NewView;          // View erzeugen.
-  end;```
+  end;
+```
 Es wird ein einfaches View erzeugt, wie erwarte sieht man nicht viel, ausser eines grauen Rechteckes.<br>
 ```pascal
   procedure TMyApp.NewView;
@@ -26,5 +27,6 @@ Es wird ein einfaches View erzeugt, wie erwarte sieht man nicht viel, ausser ein
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end;
-  end;```
+  end;
+```
 <br>

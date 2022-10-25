@@ -17,7 +17,8 @@ const
   hcFormat = 13;
   hcEdit   = 14;
   hcHelp   = 15;
-  hcAbout  = 16;```
+  hcAbout  = 16;
+```
 Die Hint-Zeile muss vererbt werden.<br>
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -37,5 +38,6 @@ Die Hint-Zeile muss vererbt werden.<br>
 <br>
       NewSubMenu('~H~ilfe', hcHelp, NewMenu(
         NewItem('~A~bout...', '', kbNoKey, cmAbout, hcAbout, nil)), nil))))));
-  end;```
+  end;
+```
 <br>

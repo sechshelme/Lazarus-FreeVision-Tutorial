@@ -33,7 +33,8 @@ Die ausgeklammerten Kommandos müssen manuel gemacht werden.<br>
         NewLine(
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, Nil)))))))))))), nil)))));
 <br>
-  end;```
+  end;
+```
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.<br>
 ```pascal
@@ -54,7 +55,8 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
     end else begin
       Dec(WinCounter);
     end;
-  end;```
+  end;
+```
 Diese Procedure schliesst alle Fenster im Desktop.<br>
 Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br>
 ```pascal
@@ -67,7 +69,8 @@ Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br
 <br>
   begin
     Desktop^.ForEach(@SendClose);
-  end;```
+  end;
+```
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.<br>
 ```pascal
 <br>
@@ -92,5 +95,6 @@ Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br
       end;
     end;
     ClearEvent(Event);
-  end;```
+  end;
+```
 <br>
