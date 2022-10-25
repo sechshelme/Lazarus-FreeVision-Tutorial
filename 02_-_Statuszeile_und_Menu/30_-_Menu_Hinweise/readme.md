@@ -1,6 +1,5 @@
-<html>
-    <b><h1>02 - Statuszeile und Menu</h1></b>
-    <b><h2>30 - Menu Hinweise</h2></b>
+# 02 - Statuszeile und Menu
+## 30 - Menu Hinweise
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinweise in der Statuszeile der Menü-Punkte.<br>
 <hr><br>
@@ -37,4 +36,3 @@ Die Hint-Zeile muss vererbt werden.<br>
         NewItem(<font color="#FF0000">'~A~bout...'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcAbout, <b><font color="0000BB">nil</font></b>)), <b><font color="0000BB">nil</font></b>))))));
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

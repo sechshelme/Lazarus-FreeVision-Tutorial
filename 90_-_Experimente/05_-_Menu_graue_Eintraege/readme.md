@@ -1,6 +1,5 @@
-<html>
-    <b><h1>90 - Experimente</h1></b>
-    <b><h2>05 - Menu graue Eintraege</h2></b>
+# 90 - Experimente
+## 05 - Menu graue Eintraege
 <img src="image.png" alt="Selfhtml"><br><br>
 Menupunkt kann man auch ineinander verschachteln.<br>
 <hr><br>
@@ -56,4 +55,3 @@ Hilfe
     MenuBar^.Menu^.Items^.Next^.SubMenu^.Items^.Next^.Disabled:=<b><font color="0000BB">True</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

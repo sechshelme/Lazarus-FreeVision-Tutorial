@@ -1,6 +1,5 @@
-<html>
-    <b><h1>12 - Editor</h1></b>
-    <b><h2>00 - Einfaches Editor-Fenster</h2></b>
+# 12 - Editor
+## 00 - Einfaches Editor-Fenster
 <img src="image.png" alt="Selfhtml"><br><br>
 Das Fenster ist nun ein Text-Editor, das man diese Funktion erreicht, nimmt man ein <b>PEditWindow</b>.<br>
 Die Verwaltung der Fenster ist gleich, wie bei einem <b>TWindow</b>.<br>
@@ -24,4 +23,3 @@ Einfügen eines leeren Editorfensters.<br>
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

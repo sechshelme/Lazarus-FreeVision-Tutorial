@@ -1,6 +1,5 @@
-<html>
-    <b><h1>14 - TView</h1></b>
-    <b><h2>05 - TView erweitern</h2></b>
+# 14 - TView
+## 05 - TView erweitern
 <img src="image.png" alt="Selfhtml"><br><br>
 <b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.<br>
 Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>
@@ -126,4 +125,3 @@ Auch hier ist wichtig, das man <b>Draw</b> aufruft, diemal nicht für eine Kompo
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

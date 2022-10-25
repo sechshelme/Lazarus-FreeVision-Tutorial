@@ -1,6 +1,5 @@
-<html>
-    <b><h1>20 - Diverses</h1></b>
-    <b><h2>10 - InputLine Validate</h2></b>
+# 20 - Diverses
+## 10 - InputLine Validate
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wird eine Bereichsbegrenzung für <b>PInputLine</b> gezeigt.<br>
 Bei der ersten Zeile ist nur eine Zahl zwischen 0 und 99 erlaubt.<br>
@@ -99,4 +98,3 @@ Hier sieht man, das eine Validate-Prüfung zu den <b>PInputLines</b> dazu kommt.
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

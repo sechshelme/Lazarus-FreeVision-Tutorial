@@ -1,6 +1,5 @@
-<html>
-    <b><h1>14 - TView</h1></b>
-    <b><h2>00 - Einfachstes TView</h2></b>
+# 14 - TView
+## 00 - Einfachstes TView
 <img src="image.png" alt="Selfhtml"><br><br>
 <b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.<br>
 Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>
@@ -26,4 +25,3 @@ Es wird ein einfaches View erzeugt, wie erwarte sieht man nicht viel, ausser ein
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

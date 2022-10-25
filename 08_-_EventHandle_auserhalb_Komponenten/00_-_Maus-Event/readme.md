@@ -1,6 +1,5 @@
-<html>
-    <b><h1>08 - EventHandle auserhalb Komponenten</h1></b>
-    <b><h2>00 - Maus-Event</h2></b>
+# 08 - EventHandle auserhalb Komponenten
+## 00 - Maus-Event
 <img src="image.png" alt="Selfhtml"><br><br>
 Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/klickt.<br>
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
@@ -113,4 +112,3 @@ Die Maus-Daten werden an die <b>EditLines</b> ausgegeben.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

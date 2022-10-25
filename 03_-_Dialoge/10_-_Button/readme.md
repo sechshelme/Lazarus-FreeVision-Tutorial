@@ -1,6 +1,5 @@
-<html>
-    <b><h1>03 - Dialoge</h1></b>
-    <b><h2>10 - Button</h2></b>
+# 03 - Dialoge
+## 10 - Button
 <img src="image.png" alt="Selfhtml"><br><br>
 Dialog um Buttons ergänzen.<br>
 <hr><br>
@@ -34,4 +33,3 @@ Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhaf
     <b><font color="0000BB">Dispose</font></b>(Dlg, Done);                <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

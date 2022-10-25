@@ -1,6 +1,5 @@
-<html>
-    <b><h1>20 - Diverses</h1></b>
-    <b><h2>00 - Idle Handle eine Uhr</h2></b>
+# 20 - Diverses
+## 00 - Idle Handle eine Uhr
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wird gezeigt, wie man <b>Idle</b> verwenden kann.<br>
 Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.<br>
@@ -157,4 +156,3 @@ Das Kommando <b>cmOk</b> ist nicht besonderes, es schliesst nur den Dialog.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

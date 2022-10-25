@@ -1,6 +1,5 @@
-<html>
-    <b><h1>06 - Listen und ListBoxen</h1></b>
-    <b><h2>15 - ListBox sortiert</h2></b>
+# 06 - Listen und ListBoxen
+## 15 - ListBox sortiert
 <img src="image.png" alt="Selfhtml"><br><br>
 Die ListBox kann auch sortiert sein.<br>
 <hr><br>
@@ -101,4 +100,3 @@ Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezei
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

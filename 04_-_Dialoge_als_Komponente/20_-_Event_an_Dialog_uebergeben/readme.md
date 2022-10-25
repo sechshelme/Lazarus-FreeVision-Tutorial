@@ -1,6 +1,5 @@
-<html>
-    <b><h1>04 - Dialoge als Komponente</h1></b>
-    <b><h2>20 - Event an Dialog uebergeben</h2></b>
+# 04 - Dialoge als Komponente
+## 20 - Event an Dialog uebergeben
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird gezeigt, wie man ein Event an eine andere Komponente senden kann.<br>
 In diesem Fall wird ein Event an die Dialoge gesendet. In den Dialogen wird dann ein Counter hochgezählt.<br>
@@ -137,4 +136,3 @@ Als Beweis dafür, wir die Zahl in der Ausgabezeile un eins erhöht.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

@@ -1,6 +1,5 @@
-<html>
-    <b><h1>03 - Dialoge</h1></b>
-    <b><h2>00 - Event abarbeiten</h2></b>
+# 03 - Dialoge
+## 00 - Event abarbeiten
 <img src="image.png" alt="Selfhtml"><br><br>
 Abarbeiten der Events, der Statuszeile und des Menu.<br>
 <hr><br>
@@ -34,4 +33,3 @@ Abarbeiten der eigenen cmxxx Kommandos.<br>
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

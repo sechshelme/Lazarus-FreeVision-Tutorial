@@ -1,6 +1,5 @@
-<html>
-    <b><h1>03 - Dialoge</h1></b>
-    <b><h2>15 - CheckBoxen</h2></b>
+# 03 - Dialoge
+## 15 - CheckBoxen
 <img src="image.png" alt="Selfhtml"><br><br>
 Dialog um CheckBoxen ergänzen.<br>
 <hr><br>
@@ -39,4 +38,3 @@ Den Dialog mit CheckBoxen ergänzen.<br>
     <b><font color="0000BB">Dispose</font></b>(Dlg, Done);                <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

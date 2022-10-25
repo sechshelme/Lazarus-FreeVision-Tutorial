@@ -1,6 +1,5 @@
-<html>
-    <b><h1>01 - Einfuehrung</h1></b>
-    <b><h2>00 - Einleitung</h2></b>
+# 01 - Einfuehrung
+## 00 - Einleitung
 <b>Free Vision</b> ist die freie Variante von Turbo-Vision, welche bei Turbo-Pascal dabei war.<br>
 Viele denken, das FV etwas veraltetes aus dem DOS-Zeitalter sei.<br>
 Für normale Desktop-Anwendungen stimmt dies zu.<br>
@@ -53,4 +52,3 @@ Gewisse Komponenten und Funktionen wurden erst mit <b>Free-Vision</b> von <b>FPC
 da gehört zB. <b>TabSheet dazu.</b><br>
 Es gibt auch Funktionen, welche es nur in Turbo-Vision gibt.<br>
 <br>
-</html>

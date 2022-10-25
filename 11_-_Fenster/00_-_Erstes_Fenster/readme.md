@@ -1,6 +1,5 @@
-<html>
-    <b><h1>11 - Fenster</h1></b>
-    <b><h2>00 - Erstes Fenster</h2></b>
+# 11 - Fenster
+## 00 - Erstes Fenster
 <img src="image.png" alt="Selfhtml"><br><br>
 Erstes Memo-Fenster.<br>
 <hr><br>
@@ -32,4 +31,3 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

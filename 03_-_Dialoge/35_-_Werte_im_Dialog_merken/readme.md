@@ -1,6 +1,5 @@
-<html>
-    <b><h1>03 - Dialoge</h1></b>
-    <b><h2>35 - Werte im Dialog merken</h2></b>
+# 03 - Dialoge
+## 35 - Werte im Dialog merken
 <img src="image.png" alt="Selfhtml"><br><br>
 Bis jetzt gingen die Werte im Dialog immer wieder verloren, wen man diesen schliesste und wieder öffnete.<br>
 Aus diesem Grund werden jetzt die Werte in einen Record gespeichert.<br>
@@ -102,4 +101,3 @@ Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
     <b><font color="0000BB">Dispose</font></b>(Dlg, Done);               <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

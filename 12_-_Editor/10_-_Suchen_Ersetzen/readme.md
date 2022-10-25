@@ -1,6 +1,5 @@
-<html>
-    <b><h1>12 - Editor</h1></b>
-    <b><h2>10 - Suchen Ersetzen</h2></b>
+# 12 - Editor
+## 10 - Suchen Ersetzen
 <img src="image.png" alt="Selfhtml"><br><br>
 Der Editor hat eine <b>Suchen</b> und <b>Ersetzen</b> Funktion bekommen.<br>
 Leider sind die Standard-Dialoge dafür in Englisch.<br>
@@ -161,4 +160,3 @@ Dies ist das einzige was man machen muss.<br>
         NewItem(<font color="#FF0000">'~S~chliessen'</font>, <font color="#FF0000">'Alt+F3'</font>, kbAltF3, cmClose, hcNoContext, <b><font color="0000BB">nil</font></b>)))))))))))), <b><font color="0000BB">nil</font></b>))))));
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

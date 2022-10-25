@@ -1,6 +1,5 @@
-<html>
-    <b><h1>11 - Fenster</h1></b>
-    <b><h2>05 - Fenster neu und schliessen</h2></b>
+# 11 - Fenster
+## 05 - Fenster neu und schliessen
 <img src="image.png" alt="Selfhtml"><br><br>
 Über das Menü Fenster erzeigen und schliessen.<br>
 <hr><br>
@@ -72,4 +71,3 @@ Dieser wird benutzt um die Fenster zu nummerieren.<br>
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

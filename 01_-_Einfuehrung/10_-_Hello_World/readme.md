@@ -1,6 +1,5 @@
-<html>
-    <b><h1>01 - Einfuehrung</h1></b>
-    <b><h2>10 - Hello World</h2></b>
+# 01 - Einfuehrung
+## 10 - Hello World
 <img src="image.png" alt="Selfhtml"><br><br>
 Ein Hello World mit Free-Vision.<br>
 Der Text wird in einer Message-Box ausgegeben.<br>
@@ -19,4 +18,3 @@ Der Text wird in einer Message-Box ausgegeben.<br>
   MyApp.Done;
 <b><font color="0000BB">end</font></b>.</code></pre>
 <br>
-</html>

@@ -1,6 +1,5 @@
-<html>
-    <b><h1>90 - Experimente</h1></b>
-    <b><h2>35 - HistoryViewer</h2></b>
+# 90 - Experimente
+## 35 - HistoryViewer
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList freigeben.<br>
 Dies ist nicht Free-Vision üblich. Dies hat auch einen Sinn, da man Listen vielfach global verwendet, <br>
@@ -119,4 +118,3 @@ Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezei
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

@@ -1,6 +1,5 @@
-<html>
-    <b><h1>06 - Listen und ListBoxen</h1></b>
-    <b><h2>00 - StringCollection unsortiert</h2></b>
+# 06 - Listen und ListBoxen
+## 00 - StringCollection unsortiert
 <img src="image.png" alt="Selfhtml"><br><br>
 Wen die Stringliste unsortiert bleiben soll, verwendet man <b>PUnSortedStrCollection</b>.<br>
 Nur <b>PCollection</b> reicht <b>nicht</b>, da diese bei <b>Dispose</b> abschmiert.<br>
@@ -55,4 +54,3 @@ als Demonstration wird deren Inhalt in ein StaticText geschrieben.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

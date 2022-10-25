@@ -1,6 +1,5 @@
-<html>
-    <b><h1>99 - Test</h1></b>
-    <b><h2>05 - TabSheet</h2></b>
+# 99 - Test
+## 05 - TabSheet
 <img src="image.png" alt="Selfhtml"><br><br>
 In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.<br>
 Im Beispiel wir eine MessageBox aufgerufen.<br>
@@ -112,4 +111,3 @@ Andere Ereignisse, zB. <b>cmOk</b> wird an das Hauptprogramm weiter gereicht, we
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

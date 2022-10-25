@@ -1,6 +1,5 @@
-<html>
-    <b><h1>02 - Statuszeile und Menu</h1></b>
-    <b><h2>20 - Menu verschachtelt</h2></b>
+# 02 - Statuszeile und Menu
+## 20 - Menu verschachtelt
 <img src="image.png" alt="Selfhtml"><br><br>
 Menupunkt kann man auch ineinander verschachteln.<br>
 <hr><br>
@@ -54,4 +53,3 @@ Hilfe
         NewItem(<font color="#FF0000">'~A~bout...'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext, <b><font color="0000BB">nil</font></b>)), <b><font color="0000BB">nil</font></b>))))));
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

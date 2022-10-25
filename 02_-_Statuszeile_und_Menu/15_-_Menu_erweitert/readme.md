@@ -1,6 +1,5 @@
-<html>
-    <b><h1>02 - Statuszeile und Menu</h1></b>
-    <b><h2>15 - Menu erweitert</h2></b>
+# 02 - Statuszeile und Menu
+## 15 - Menu erweitert
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinzufügen mehrere Menüpunkte.<br>
 Hier wird dies auch der Übersicht zu liebe gesplittet gemacht.<br>
@@ -45,4 +44,3 @@ Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeic
     MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, M));
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

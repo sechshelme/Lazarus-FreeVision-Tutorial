@@ -1,6 +1,5 @@
-<html>
-    <b><h1>15 - Fertige Dialoge</h1></b>
-    <b><h2>25 - Ordner wechseln</h2></b>
+# 15 - Fertige Dialoge
+## 25 - Ordner wechseln
 <img src="image.png" alt="Selfhtml"><br><br>
 Ordner Wechsel Dialog.<br>
 Der <b>PChDirDialog</b>.<br>
@@ -25,4 +24,3 @@ Der Ordnerwechsel Dialog<br>
           <b><font color="0000BB">Exit</font></b>;
         <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

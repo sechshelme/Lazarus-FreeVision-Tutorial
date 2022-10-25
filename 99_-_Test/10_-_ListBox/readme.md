@@ -1,6 +1,5 @@
-<html>
-    <b><h1>99 - Test</h1></b>
-    <b><h2>10 - ListBox</h2></b>
+# 99 - Test
+## 10 - ListBox
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.<br>
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.<br>
@@ -99,4 +98,3 @@ Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponent
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

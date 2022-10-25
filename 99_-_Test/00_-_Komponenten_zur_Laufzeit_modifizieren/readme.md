@@ -1,6 +1,5 @@
-<html>
-    <b><h1>99 - Test</h1></b>
-    <b><h2>00 - Komponenten zur Laufzeit modifizieren</h2></b>
+# 99 - Test
+## 00 - Komponenten zur Laufzeit modifizieren
 <img src="image.png" alt="Selfhtml"><br><br>
 In den vererbten Dialogen ist es möglich Buttons einubauen, welche lokal im Dialog eine Aktion ausführen.<br>
 Im Beispiel wir eine MessageBox aufgerufen.<br>
@@ -78,4 +77,3 @@ Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponent
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

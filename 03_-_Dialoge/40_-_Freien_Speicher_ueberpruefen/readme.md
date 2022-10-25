@@ -1,6 +1,5 @@
-<html>
-    <b><h1>03 - Dialoge</h1></b>
-    <b><h2>40 - Freien Speicher ueberpruefen</h2></b>
+# 03 - Dialoge
+## 40 - Freien Speicher ueberpruefen
 <img src="image.png" alt="Selfhtml"><br><br>
 Überprüfen ob genügend Speicher frei ist, um den Dialog zu erzeugen.<br>
 Auf den heutigen Rechner wird die wohl nicht mehr der Fall sein, das der Speicher wegen eines Dialoges überläuft.<br>
@@ -92,4 +91,3 @@ Wen nicht, kommt <b>nil<(b> zurück. Dabei spielt es keine Rolle, ob man <b>OutO
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

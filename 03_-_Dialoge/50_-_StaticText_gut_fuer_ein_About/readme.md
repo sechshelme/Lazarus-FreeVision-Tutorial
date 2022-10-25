@@ -1,6 +1,5 @@
-<html>
-    <b><h1>03 - Dialoge</h1></b>
-    <b><h2>50 - StaticText gut fuer ein About</h2></b>
+# 03 - Dialoge
+## 50 - StaticText gut fuer ein About
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wird ein About-Dialog erstellt, das sieht man gut für was man Label gebrauchen kann.<br>
 <hr><br>
@@ -80,4 +79,3 @@ Mit <b>PLabel</b> könnte man auch Text ausgeben, aber für festen Text eignet s
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

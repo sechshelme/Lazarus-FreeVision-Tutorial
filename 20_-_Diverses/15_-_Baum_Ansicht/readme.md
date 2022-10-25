@@ -1,6 +1,5 @@
-<html>
-    <b><h1>20 - Diverses</h1></b>
-    <b><h2>15 - Baum Ansicht</h2></b>
+# 20 - Diverses
+## 15 - Baum Ansicht
 <img src="image.png" alt="Selfhtml"><br><br>
 Baumartige Darstellung.<br>
 <hr><br>
@@ -54,4 +53,3 @@ Hier wird das Fenster erzeugt, welches die Outline enthält.<br>
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

@@ -1,6 +1,5 @@
-<html>
-    <b><h1>15 - Fertige Dialoge</h1></b>
-    <b><h2>10 - Einfache MessageBox mit Vorgabe Rect</h2></b>
+# 15 - Fertige Dialoge
+## 10 - Einfache MessageBox mit Vorgabe Rect
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei der MessageBox, kann man die Grösse auch manuell festlegen.<br>
 Dazu muss man <b>MeassgeBoxRect(...)</b> verwenden.<br>
@@ -19,4 +18,3 @@ Hier wird mir <b>R.Assign</b> die grösse der Box selbst festgelegt.<br>
           MessageBoxRect(R, <font color="#FF0000">'Ich bin eine vorgegebene Box'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
         <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

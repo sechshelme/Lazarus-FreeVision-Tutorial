@@ -1,6 +1,5 @@
-<html>
-    <b><h1>12 - Editor</h1></b>
-    <b><h2>05 - Speichern und oeffnen</h2></b>
+# 12 - Editor
+## 05 - Speichern und oeffnen
 <img src="image.png" alt="Selfhtml"><br><br>
 Ein Editor wird erst brauchbar, wen Dateifunktionen dazu kommen, zB. öffnen und speichern.<br>
 Das Öffnen ist ähnlich von wie ein leerses Fenster erzeugen.<br>
@@ -155,4 +154,3 @@ Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt 
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

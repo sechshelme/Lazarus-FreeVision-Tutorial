@@ -1,6 +1,5 @@
-<html>
-    <b><h1>15 - Fertige Dialoge</h1></b>
-    <b><h2>20 - Datei Dialoge</h2></b>
+# 15 - Fertige Dialoge
+## 20 - Datei Dialoge
 <img src="image.png" alt="Selfhtml"><br><br>
 Ein Dialog zum öffnen und speichern von Dateien.<br>
 Der <b>PFileDialog</b>.<br>
@@ -40,4 +39,3 @@ Verschiedene Datei-Dialoge<br>
           <b><font color="0000BB">Exit</font></b>;
         <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

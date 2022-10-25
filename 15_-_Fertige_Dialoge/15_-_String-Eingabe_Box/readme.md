@@ -1,6 +1,5 @@
-<html>
-    <b><h1>15 - Fertige Dialoge</h1></b>
-    <b><h2>15 - String-Eingabe Box</h2></b>
+# 15 - Fertige Dialoge
+## 15 - String-Eingabe Box
 <img src="image.png" alt="Selfhtml"><br><br>
 Es gibt auch einen fertigen Dialog für eine String-Eingabe.<br>
 Es gibt noch <b>InputBoxRect</b>, dort kann man die Grösser der Box selbst festlegen.<br>
@@ -25,4 +24,3 @@ So sieht der Code für die String-Eingabe aus.<br>
           <b><font color="0000BB">Exit</font></b>;
         <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

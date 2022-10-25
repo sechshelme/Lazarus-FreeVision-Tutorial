@@ -1,6 +1,5 @@
-<html>
-    <b><h1>06 - Listen und ListBoxen</h1></b>
-    <b><h2>20 - ListBox mehrere Spalten</h2></b>
+# 06 - Listen und ListBoxen
+## 20 - ListBox mehrere Spalten
 <img src="image.png" alt="Selfhtml"><br><br>
 Die <b>ListBox</b> kann auch mehrere Spalten haben.<br>
 <hr><br>
@@ -104,4 +103,3 @@ Wen man auf <b>[Monat]</b> klickt, wird der fokusierte Eintrag der ListBox angez
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

@@ -1,6 +1,5 @@
-<html>
-    <b><h1>15 - Fertige Dialoge</h1></b>
-    <b><h2>00 - Einfache MessageBox</h2></b>
+# 15 - Fertige Dialoge
+## 00 - Einfache MessageBox
 <img src="image.png" alt="Selfhtml"><br><br>
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 <hr><br>
@@ -34,4 +33,3 @@ Aufruf einer MessageBox.<br>
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

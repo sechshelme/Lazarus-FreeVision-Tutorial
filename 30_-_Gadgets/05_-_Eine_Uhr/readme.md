@@ -1,6 +1,5 @@
-<html>
-    <b><h1>30 - Gadgets</h1></b>
-    <b><h2>05 - Eine Uhr</h2></b>
+# 30 - Gadgets
+## 05 - Eine Uhr
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.<br>
 <hr><br>
@@ -158,4 +157,3 @@ Der EventHandle<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

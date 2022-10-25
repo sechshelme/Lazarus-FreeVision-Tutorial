@@ -1,6 +1,5 @@
-<html>
-    <b><h1>06 - Listen und ListBoxen</h1></b>
-    <b><h2>25 - ListBox einfuegen und entfernen von Eintraegen</h2></b>
+# 06 - Listen und ListBoxen
+## 25 - ListBox einfuegen und entfernen von Eintraegen
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei <b>ListBox</b> kann man auch Einträge einfügen, entfernen, etc.<br>
 ZT. muss man da direkt auf die Liste zugreifen.<br>
@@ -138,4 +137,3 @@ Hier sieht man, wie man Einträge einfügt und entfernt.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

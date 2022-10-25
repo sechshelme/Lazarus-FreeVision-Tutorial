@@ -1,6 +1,5 @@
-<html>
-    <b><h1>02 - Statuszeile und Menu</h1></b>
-    <b><h2>05 - Status Zeile mehrere Eintraege</h2></b>
+# 02 - Statuszeile und Menu
+## 05 - Status Zeile mehrere Eintraege
 <img src="image.png" alt="Selfhtml"><br><br>
 Ändern der Status-Zeile, mit mehreren Optionen.<br>
 <hr><br>
@@ -34,4 +33,3 @@ Die Deklaration und Ausführung bleibt gleich.<br>
   MyApp.Done;   <i><font color="#FFFF00">// Freigeben</font></i>
 <b><font color="0000BB">end</font></b>.</code></pre>
 <br>
-</html>

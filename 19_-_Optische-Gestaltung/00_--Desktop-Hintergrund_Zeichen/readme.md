@@ -1,6 +1,5 @@
-<html>
-    <b><h1>19 - Optische-Gestaltung</h1></b>
-    <b><h2>00 --Desktop-Hintergrund Zeichen</h2></b>
+# 19 - Optische-Gestaltung
+## 00 --Desktop-Hintergrund Zeichen
 <img src="image.png" alt="Selfhtml"><br><br>
 Beim Desktophintergrund kann man ein beliebiges Hintergrund-Zeichen zuordnen. Als Default ist das Zeichen <b>#176</b>.<br>
 <hr><br>
@@ -16,4 +15,3 @@ Mit <b>#3</b> füllt es den Hintergrund mit Herzen auf.<br>
     DeskTop^.Insert(<b><font color="0000BB">New</font></b>(PBackGround, Init(R, <font color="#FF0000">#3</font>)));   <i><font color="#FFFF00">// Hintergrund einfügen.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

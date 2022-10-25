@@ -1,6 +1,5 @@
-<html>
-    <b><h1>20 - Diverses</h1></b>
-    <b><h2>05 - String formatieren</h2></b>
+# 20 - Diverses
+## 05 - String formatieren
 <img src="image.png" alt="Selfhtml"><br><br>
 Mit <b>FormatStr</b> können Strings formatiert werden.<br>
 Dabei sind filgende Formatierungen möglich:<br>
@@ -62,4 +61,3 @@ Hier sieht man, die Formatierung mit <b>FormatStr</b>.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

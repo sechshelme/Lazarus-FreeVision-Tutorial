@@ -1,6 +1,5 @@
-<html>
-    <b><h1>30 - Gadgets</h1></b>
-    <b><h2>00 - RAM Verbrauch anzeigen (Heap)</h2></b>
+# 30 - Gadgets
+## 00 - RAM Verbrauch anzeigen (Heap)
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.<br>
 Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.<br>
@@ -161,4 +160,3 @@ Der EventHandle<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

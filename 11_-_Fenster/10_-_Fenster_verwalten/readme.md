@@ -1,6 +1,5 @@
-<html>
-    <b><h1>11 - Fenster</h1></b>
-    <b><h2>10 - Fenster verwalten</h2></b>
+# 11 - Fenster
+## 10 - Fenster verwalten
 <img src="image.png" alt="Selfhtml"><br><br>
 Fenster verwalten. Nun ist es möglich über das Menü Steuerkomandos für die Fensterverwaltung zu geben.<br>
 ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.<br>
@@ -90,4 +89,3 @@ Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

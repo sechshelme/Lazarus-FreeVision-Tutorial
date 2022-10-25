@@ -1,6 +1,5 @@
-<html>
-    <b><h1>19 - Optische-Gestaltung</h1></b>
-    <b><h2>15 --Hintergrund auf Dialog</h2></b>
+# 19 - Optische-Gestaltung
+## 15 --Hintergrund auf Dialog
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei Bedarf, kann man auch ein Hintergrund-Muster auf einen Dialog/Fenster legen.<br>
 <hr><br>
@@ -35,4 +34,3 @@ ansonsten übermahlt er die anderen Komponenten.<br>
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

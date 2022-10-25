@@ -1,6 +1,5 @@
-<html>
-    <b><h1>02 - Statuszeile und Menu</h1></b>
-    <b><h2>25 - Fertige Statuszeile und Menues</h2></b>
+# 02 - Statuszeile und Menu
+## 25 - Fertige Statuszeile und Menues
 <img src="image.png" alt="Selfhtml"><br><br>
 Für die Statuszeile und das Menü gibt es fertige Items, aber ich bevorzuge es, die Items selbst zu erstellen.<br>
 Die fetigen Items sind nur in Englisch.<br>
@@ -34,4 +33,3 @@ Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber 
         StdWindowMenuItems(<b><font color="0000BB">nil</font></b>)), <b><font color="0000BB">nil</font></b>))))));
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

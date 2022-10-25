@@ -1,6 +1,5 @@
-<html>
-    <b><h1>03 - Dialoge</h1></b>
-    <b><h2>30 - InputLine (Edit-Zeile)</h2></b>
+# 03 - Dialoge
+## 30 - InputLine (Edit-Zeile)
 <img src="image.png" alt="Selfhtml"><br><br>
 Einfügen eine Edit-Zeile.<br>
 <hr><br>
@@ -63,4 +62,3 @@ Dies funktioniert fast gleich, wie ein normales Label. einziger Unterschied, ans
     <b><font color="0000BB">Dispose</font></b>(Dlg, Done);                <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

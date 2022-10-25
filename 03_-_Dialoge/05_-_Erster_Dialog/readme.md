@@ -1,6 +1,5 @@
-<html>
-    <b><h1>03 - Dialoge</h1></b>
-    <b><h2>05 - Erster Dialog</h2></b>
+# 03 - Dialoge
+## 05 - Erster Dialog
 <img src="image.png" alt="Selfhtml"><br><br>
 Abarbeiten der Events, der Statuszeile und des Menu.<br>
 <hr><br>
@@ -91,4 +90,3 @@ Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.<br>
     Desktop^.Insert(Dlg);                      <i><font color="#FFFF00">// Dialog der App zuweisen.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

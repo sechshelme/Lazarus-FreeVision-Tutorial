@@ -1,6 +1,5 @@
-<html>
-    <b><h1>90 - Experimente</h1></b>
-    <b><h2>20 - Einfache MessageBox mit Dlg</h2></b>
+# 90 - Experimente
+## 20 - Einfache MessageBox mit Dlg
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei der MessageBox, kann man die Grösse auch manuell festlegen.<br>
 Dazu muss man <b>MeassgeBoxRect(...)</b> verwenden.<br>
@@ -51,4 +50,3 @@ Hier wird mir <b>R.Assign</b> die grösse der Box selbst festgelegt.<br>
           <b><font color="0000BB">Exit</font></b>;
         <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

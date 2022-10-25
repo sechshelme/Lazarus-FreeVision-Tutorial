@@ -1,6 +1,5 @@
-<html>
-    <b><h1>11 - Fenster</h1></b>
-    <b><h2>15 - Fenster mit Bedienelemte ausstatten</h2></b>
+# 11 - Fenster
+## 15 - Fenster mit Bedienelemte ausstatten
 <img src="image.png" alt="Selfhtml"><br><br>
 Dem Fenster wurden noch Scrollbalken spendiert.<br>
 Man könnte noch eine Indikator hinzufügen, welcher Zeilen und Spalten anzeigt.<br>
@@ -65,4 +64,3 @@ Ein Indicator wird auch noch eingefügt, welcher die Spalten und Zeilen anzeigt.
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

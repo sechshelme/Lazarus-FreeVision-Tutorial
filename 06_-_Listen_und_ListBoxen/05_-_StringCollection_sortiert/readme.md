@@ -1,6 +1,5 @@
-<html>
-    <b><h1>06 - Listen und ListBoxen</h1></b>
-    <b><h2>05 - StringCollection sortiert</h2></b>
+# 06 - Listen und ListBoxen
+## 05 - StringCollection sortiert
 <img src="image.png" alt="Selfhtml"><br><br>
 Eine sortierte String-Liste<br>
 für eine sortierte Liste muss man <b>PStringCollection</b> oder <b>PStrCollection</b> verwenden.<br>
@@ -56,4 +55,3 @@ Man sieht gut, das die Wochentage alphapetisch sortiert sind.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

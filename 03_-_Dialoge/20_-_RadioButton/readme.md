@@ -1,6 +1,5 @@
-<html>
-    <b><h1>03 - Dialoge</h1></b>
-    <b><h2>20 - RadioButton</h2></b>
+# 03 - Dialoge
+## 20 - RadioButton
 <img src="image.png" alt="Selfhtml"><br><br>
 Dialog um RadioButtons ergänzen.<br>
 <hr><br>
@@ -79,4 +78,3 @@ Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den 
     <b><font color="0000BB">Dispose</font></b>(Dlg, Done);                <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

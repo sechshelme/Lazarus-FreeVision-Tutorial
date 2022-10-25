@@ -1,6 +1,5 @@
-<html>
-    <b><h1>04 - Dialoge als Komponente</h1></b>
-    <b><h2>00 - Ein einfaches About</h2></b>
+# 04 - Dialoge als Komponente
+## 00 - Ein einfaches About
 <img src="image.png" alt="Selfhtml"><br><br>
 Wen man immer wieder die gleichen Dialog braucht, packt man diesen am besten als Komponente in eine Unit.<br>
 Dazu schreibt man einen Nachkommen von <b>TDialog</b>.<br>
@@ -72,4 +71,3 @@ Im Konstruktor werden die Dialog-Komponeten erzeugt.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

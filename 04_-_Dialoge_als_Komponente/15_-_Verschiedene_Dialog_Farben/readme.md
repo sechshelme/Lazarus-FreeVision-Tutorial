@@ -1,6 +1,5 @@
-<html>
-    <b><h1>04 - Dialoge als Komponente</h1></b>
-    <b><h2>15 - Verschiedene Dialog Farben</h2></b>
+# 04 - Dialoge als Komponente
+## 15 - Verschiedene Dialog Farben
 <img src="image.png" alt="Selfhtml"><br><br>
 Einem Fenster/Dialog, kann man verschiedene FarbeSchema zuordnen.<br>
 Standardmässig wird folgendes verwendet:<br>
@@ -87,4 +86,3 @@ Auch hier ist wichtig, das man <b>Draw</b> aufruft, diemal nicht für eine Kompo
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

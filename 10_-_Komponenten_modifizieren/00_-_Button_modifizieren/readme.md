@@ -1,6 +1,5 @@
-<html>
-    <b><h1>10 - Komponenten modifizieren</h1></b>
-    <b><h2>00 - Button modifizieren</h2></b>
+# 10 - Komponenten modifizieren
+## 00 - Button modifizieren
 <img src="image.png" alt="Selfhtml"><br><br>
 Man kann auch eine Komponente modifzieren, in diesem Beispiel ist es ein Button.<br>
 Dazu muss man einen Nachkommen von TButton erstellen.<br>
@@ -58,4 +57,3 @@ Im Konstruktor sieht man, das aus <b>X</b> und <b>Y</b> ein <b>Rect</b> generier
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

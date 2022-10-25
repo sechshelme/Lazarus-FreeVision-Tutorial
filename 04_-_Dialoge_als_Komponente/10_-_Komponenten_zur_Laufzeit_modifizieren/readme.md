@@ -1,6 +1,5 @@
-<html>
-    <b><h1>04 - Dialoge als Komponente</h1></b>
-    <b><h2>10 - Komponenten zur Laufzeit modifizieren</h2></b>
+# 04 - Dialoge als Komponente
+## 10 - Komponenten zur Laufzeit modifizieren
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.<br>
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.<br>
@@ -79,4 +78,3 @@ Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponent
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

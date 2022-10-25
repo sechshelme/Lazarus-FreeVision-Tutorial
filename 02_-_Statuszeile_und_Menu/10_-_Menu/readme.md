@@ -1,6 +1,5 @@
-<html>
-    <b><h1>02 - Statuszeile und Menu</h1></b>
-    <b><h2>10 - Menu</h2></b>
+# 02 - Statuszeile und Menu
+## 10 - Menu
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinzufügen eines Menüs.<br>
 <hr><br>
@@ -37,4 +36,3 @@ Beim letzten Menüpunkt kommt immer ein <b>nil</b>.<br>
       <b><font color="0000BB">nil</font></b>)), <b><font color="0000BB">nil</font></b>))));
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>

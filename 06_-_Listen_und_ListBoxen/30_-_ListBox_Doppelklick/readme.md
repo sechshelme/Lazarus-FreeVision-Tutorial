@@ -1,6 +1,5 @@
-<html>
-    <b><h1>06 - Listen und ListBoxen</h1></b>
-    <b><h2>30 - ListBox Doppelklick</h2></b>
+# 06 - Listen und ListBoxen
+## 30 - ListBox Doppelklick
 <img src="image.png" alt="Selfhtml"><br><br>
 Will man bei einer <b>ListBox</b> den Doppelklick auswerten, muss man die ListBox vererben und einen neuen Handleevent einfügen.<br>
 <hr><br>
@@ -73,4 +72,3 @@ Hier wird einfach ein [Ok] bei dem Doppelklick abgearbeitet.<br>
 <b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>
-</html>

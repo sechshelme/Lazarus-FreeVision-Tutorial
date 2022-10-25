@@ -1,6 +1,5 @@
-<html>
-    <b><h1>19 - Optische-Gestaltung</h1></b>
-    <b><h2>05 --Desktop-Hintergrund Farbe</h2></b>
+# 19 - Optische-Gestaltung
+## 05 --Desktop-Hintergrund Farbe
 <img src="image.png" alt="Selfhtml"><br><br>
 Wen man die Farbe des Hintergrundes änder will, ist ein wenig komplizierter als nur das Zeichen.<br>
 Dazu muss man beim Object <b>TBackground</b> die Funktion <b>GetPalette</b> überschreiben.<br>
@@ -31,4 +30,3 @@ Einziger Unterschied anstelle von <b>PBackGround</b> wird <b>PMyBackground</b> g
     DeskTop^.Insert(<b><font color="0000BB">New</font></b>(PMyBackground, Init(R, <font color="#FF0000">#3</font>)));  <i><font color="#FFFF00">// Hintergrund einfügen.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
-</html>
