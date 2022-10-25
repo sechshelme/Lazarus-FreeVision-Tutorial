@@ -7,13 +7,15 @@ Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.<br>
 Das Object mit dem UhrenDialog befindet sich in der Unit <b>UhrDialog</b>.<br>
 <hr><br>
 Neue Konstante für das Kommado neuer UhrenDialog.<br>
-```pascalconst
+```pascal
+const
   cmNewWin = 1001;
   cmNewUhr = 1002;```
 Hier befindet sich die wichtigste Methode <b>Idle</b>.<br>
 Diese Methode wird aufgerufen, wen die CPU sonst nichts zu tun hat.<br>
 Hier wird sie verwendet um die Uhr-Zeit in den Dialogen zu aktualiesieren.<br>
-```pascaltype
+```pascal
+type
   TMyApp = object(TApplication)
     zeitalt: Integer;
     constructor Init;
@@ -29,14 +31,16 @@ Hier wird sie verwendet um die Uhr-Zeit in den Dialogen zu aktualiesieren.<br>
     procedure Idle; Virtual;  // Das wichtigste.
   end;```
 Am Anfang wird ein Fenster und ein Uhrendialog erzeugt.<br>
-```pascalconstructor TMyApp.Init;
+```pascal
+constructor TMyApp.Init;
 begin
   inherited Init;   // Der Vorfahre aufrufen.
   NewWindows;       // Fenster erzeugen.
   NewUhr;           // Uhrendialog erzeugen.
 end;```
 Neuer Uhrendialog in den Desktop einfügen.<br>
-```pascalprocedure TMyApp.NewUhr;
+```pascal
+procedure TMyApp.NewUhr;
 begin
   Desktop^.Insert(ValidView(New(PUhrView, Init)));
 end;```
@@ -48,7 +52,8 @@ Beim Fenster läuft dieses einfach durch.<br>
 Auch sieht man gut, das das Message nur aufgerufen wird, wen ein Sekunde verstrichen ist.<br>
 Als letzter Parameter wird ein Pointer auf einen String übergeben, welcher dir aktuelle Zeit enthält.<br>
 Würde man es bei jedem Idle machen, würde die Uhr nur flimmern.<br>
-```pascalprocedure TMyApp.Idle;
+```pascal
+procedure TMyApp.Idle;
 var
   zeitNeu: Integer;
   s: ShortString;      // Speichert die aktuelle Zeit als String.
@@ -61,7 +66,8 @@ begin
   end;
 end;```
 Dieses HandleEvent interessiert das Kommando <b>cmUhrRefresh</b> nicht.<br>
-```pascalprocedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal
+procedure TMyApp.HandleEvent(var Event: TEvent);
 begin
   inherited HandleEvent(Event);
 <br>
@@ -86,11 +92,13 @@ end;```
 Die Komponenten auf dem Dialog sind nichts besonderes, es hat nur ein OK-Button.<br>
 Die Zeit wird direkt mit <b>WriteLine(...</b> reingeschrieben.<br>
 Aus diesem Grund wurde die Methode <b>Draw</b> ergänzt.<br>
-```pascalunit UhrDialog;
+```pascal
+unit UhrDialog;
 ```
 Die Deklaration des Dialoges.<br>
 Hier wird in <b>ZeitStr</b> die Zeit gespeichert, so das sie mit <b>Draw</b> ausgegeben werden kann.<br>
-```pascalconst
+```pascal
+const
   cmUhrRefresh = 1003;
 <br>
 type
@@ -105,7 +113,8 @@ type
   end;
 ```
 Im Dioalog wird nur ein OK-Button erzeugt.<br>
-```pascalconstructor TUhrView.Init;
+```pascal
+constructor TUhrView.Init;
 var
   R: TRect;
 begin
@@ -117,7 +126,8 @@ begin
 end;
 ```
 In <b>Draw</b> sieht man gut, das die Zeit direkt in den Dialog geschrieben wird.<br>
-```pascalprocedure TUhrView.Draw;
+```pascal
+procedure TUhrView.Draw;
 var
   b: TDrawBuffer;
   c: Byte;
@@ -133,7 +143,8 @@ Das <b>HandleEvent</b> ist schon interessanter, dort wird das Event <b>evBroadca
 das Kommando <b>cmUhrRefresh</b> abgefangen, welches im Hauptprogramm mit Message übergeben wurde.<br>
 Aus <b>Event.InfoPtr</b> wird noch der String übernommen welcher die Zeit enthält.<br>
 Das Kommando <b>cmOk</b> ist nicht besonderes, es schliesst nur den Dialog.<br>
-```pascalprocedure TUhrView.HandleEvent(var Event: TEvent);
+```pascal
+procedure TUhrView.HandleEvent(var Event: TEvent);
 begin
   inherited HandleEvent(Event);
 <br>

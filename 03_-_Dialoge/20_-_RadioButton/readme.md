@@ -5,7 +5,8 @@
 Dialog um RadioButtons ergänzen.<br>
 <hr><br>
 Das Menü wurde noch ein wenig geändert/ergänzt.<br>
-```pascal  procedure TMyApp.InitMenuBar;
+```pascal
+  procedure TMyApp.InitMenuBar;
   var
     R: TRect;                          // Rechteck für die Menüzeilen-Position.
 <br>
@@ -36,7 +37,8 @@ Das Menü wurde noch ein wenig geändert/ergänzt.<br>
     MenuBar := New(PMenuBar, Init(R, M));
   end;```
 Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den CheckBoxen.<br>
-```pascal  procedure TMyApp.MyParameter;
+```pascal
+  procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
     R: TRect;

@@ -13,12 +13,14 @@ Für den zweiten Fall wäre eine ListBox idealer, mir geht zum zeigen wie es mit
 Ein Dialog mit <b>PInputLine</b> welche eine Prüfung bekommen.<br>
 Wen man <b>Ok</b> drückt, wird ein Validate-Prüfungen ausgeführt.<br>
 Bei <b>Abbruch</b> gibt es keine Prüfung.<br>
-```pascalunit MyDialog;
+```pascal
+unit MyDialog;
 ```
 Die Deklaration des Dialoges, hier wird nur das Init überschrieben, welches die Komponenten, für den Dialog erzeugt.<br>
 So nebenbei werden noch die beiden Validate überschrieben.<br>
 Dies wird nur gemacht, das eine deutsche Fehlermeldung bei falscher Eingabe kommt.<br>
-```pascaltype
+```pascal
+type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     constructor Init;
@@ -35,7 +37,8 @@ Dies wird nur gemacht, das eine deutsche Fehlermeldung bei falscher Eingabe komm
   end;
 ```
 Die beiden neuen Fehlermeldungen.<br>
-```pascalprocedure TMyRangeValidator.Error;
+```pascal
+procedure TMyRangeValidator.Error;
 var
   Params: array[0..1] Of Longint;
 begin
@@ -50,7 +53,8 @@ begin
 end;
 ```
 Hier sieht man, das eine Validate-Prüfung zu den <b>PInputLines</b> dazu kommt.<br>
-```pascalconstructor TMyDialog.Init;
+```pascal
+constructor TMyDialog.Init;
 const
   // Wochentage, als String, welche in der PInputLine erlaubt sind.
   WochenTag:array[0..6] of String = ('Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');

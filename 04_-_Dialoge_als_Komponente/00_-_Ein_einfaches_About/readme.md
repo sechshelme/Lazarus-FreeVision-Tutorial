@@ -7,7 +7,8 @@ Dazu schreibt man einen Nachkommen von <b>TDialog</b>.<br>
 Als Beispiel wird hier ein About-Dialog gebaut.<br>
 <hr><br>
 Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeben.<br>
-```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal
+  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     AboutDialog: PMyAbout;
   begin
@@ -31,11 +32,13 @@ Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeb
   end;```
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
-```pascalunit MyDialog;
+```pascal
+unit MyDialog;
 ```
 Für den Dialog muss ein neuer Konstruktor erzeugt werden.<br>
 Noch ein Hinweis zu StaticText, wen man eine Leerzeile einfügen will, muss man <b>#13#32#13</b> schreiben, bei <b>#13#13</b>, wird nur ein einfacher Zeilenumbruch ausgefühert.<br>
-```pascalinterface
+```pascal
+interface
 <br>
 uses
   App, Objects, Drivers, Views, Dialogs;
@@ -47,7 +50,8 @@ type
   end;
 ```
 Im Konstruktor werden die Dialog-Komponeten erzeugt.<br>
-```pascalimplementation
+```pascal
+implementation
 <br>
 constructor TMyAbout.Init;
 var

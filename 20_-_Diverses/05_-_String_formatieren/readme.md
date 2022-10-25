@@ -10,20 +10,24 @@ Dabei sind filgende Formatierungen möglich:<br>
 %x: Hexadezimal<br>
 %#: Formatierungen<br>
 Bei Realzahlen muss man sich folgendermassen behelfen:<br>
-```pascalprocedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);```
+```pascal
+procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);```
 <hr><br>
 <hr><br>
-```pascalunit MyDialog;
+```pascal
+unit MyDialog;
 ```
 Deklaration des Dialogs.<br>
-```pascaltype
+```pascal
+type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     constructor Init;
   end;
 ```
 Bei Integern ist es wichtig, das man diese als <b>PtrInt</b> deklariert.<br>
-```pascalconstructor TMyDialog.Init;
+```pascal
+constructor TMyDialog.Init;
 const
   acht = 8;
   vier = 16;
@@ -39,7 +43,8 @@ var
   s: ShortString;
 ```
 Hier sieht man, die Formatierung mit <b>FormatStr</b>.<br>
-```pascalbegin
+```pascal
+begin
   Params.s1 := NewStr(Mo);
   Params.s2 := NewStr(Fr);
   Params.i1 := acht;

@@ -8,7 +8,8 @@ Der abgeänderte Button passt sich automatisch an die Länge des Titels an, auch
 <hr><br>
 Anstelle des normalen Button nehme ich jetzt den PMyButton.<br>
 Man sieht auch, das man anstelle von Rect, nur X und Y angibt.<br>
-```pascal  procedure TMyApp.MyParameter;
+```pascal
+  procedure TMyApp.MyParameter;
   var
     Dia: PDialog;
     R: TRect;
@@ -36,11 +37,13 @@ Man sieht auch, das man anstelle von Rect, nur X und Y angibt.<br>
 <b>Unit mit dem neuen Button.</b><br>
 <br><br>
 Hier wird gezeigt, wie man einen Button abänder kann.<br>
-```pascalunit MyButton;
+```pascal
+unit MyButton;
 ```
 Deklaration des neuen Buttons.<br>
 Hier sieht man, das man den Konstruktor überschreiben muss.<br>
-```pascaltype
+```pascal
+type
   PMyButton = ^TMyButton;
   TMyButton = object(TButton)
     constructor Init(x, y: integer; ATitle: TTitleStr; ACommand: word; AFlags: word);
@@ -48,7 +51,8 @@ Hier sieht man, das man den Konstruktor überschreiben muss.<br>
 ```
 Im Konstruktor sieht man, das aus <b>X</b> und <b>Y</b> ein <b>Rect</b> generiert wird.<br>
 <b>StringReplace</b> werden noch die ~ gelöscht, da diese sonst die Länge des Stringes verfälschen.<br>
-```pascalconstructor TMyButton.Init(x, y: integer; ATitle: TTitleStr; ACommand: word; AFlags: word);
+```pascal
+constructor TMyButton.Init(x, y: integer; ATitle: TTitleStr; ACommand: word; AFlags: word);
 var
   R: TRect;
 begin

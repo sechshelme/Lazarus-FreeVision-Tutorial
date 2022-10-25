@@ -7,7 +7,8 @@
 In der Statuszeile sind auch mehrere Hot-Key möglich.<br>
 Die Deklaration könnte man verschachtelt in einer Zeile schreiben.<br>
 Im Beispiel wird es gesplittet gemacht.<br>
-```pascal  procedure TMyApp.InitStatusLine;
+```pascal
+  procedure TMyApp.InitStatusLine;
   var
     R: TRect;                 // Rechteck für die Statuszeilen Position.
 <br>
@@ -25,7 +26,8 @@ Im Beispiel wird es gesplittet gemacht.<br>
     StatusLine := New(PStatusLine, Init(R, P0));
   end;```
 Die Deklaration und Ausführung bleibt gleich.<br>
-```pascalvar
+```pascal
+var
   MyApp: TMyApp;
 <br>
 begin

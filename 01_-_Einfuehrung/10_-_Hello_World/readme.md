@@ -5,7 +5,8 @@
 Ein Hello World mit Free-Vision.<br>
 Der Text wird in einer Message-Box ausgegeben.<br>
 <hr><br>
-```pascalprogram Project1;
+```pascal
+program Project1;
 <br>
 uses
   App, MsgBox;

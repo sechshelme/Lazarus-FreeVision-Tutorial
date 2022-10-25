@@ -10,11 +10,13 @@ Im Beispiel wir eine MessageBox aufgerufen.<br>
 <br><br>
 Dort wird gezeigt, wie man Werte bei Komponenten zu Laufzeit lesen und schreiben kann.<br>
 Als Beispiel, wird die Zahl im Button bei jedem drücken um 1 erhöht.<br>
-```pascalunit MyDialog;
+```pascal
+unit MyDialog;
 ```
 Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.<br>
 Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
-```pascaltype
+```pascal
+type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
   const
@@ -28,7 +30,8 @@ Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
 ```
 Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.<br>
 <b>CounterButton</b> wird für die Modifikation gebraucht.<br>
-```pascalconstructor TMyDialog.Init;
+```pascal
+constructor TMyDialog.Init;
 var
   Rect: TRect;
 begin
@@ -53,7 +56,8 @@ end;
 Im EventHandle, wird die Zahl im Button beim Drücken erhöht.<br>
 Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.<br>
 Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.<br>
-```pascalprocedure TMyDialog.HandleEvent(var Event: TEvent);
+```pascal
+procedure TMyDialog.HandleEvent(var Event: TEvent);
 var
   Counter: integer;
 begin

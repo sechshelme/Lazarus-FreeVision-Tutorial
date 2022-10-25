@@ -8,11 +8,13 @@ Will man bei einer <b>ListBox</b> den Doppelklick auswerten, muss man die ListBo
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der ListBox<br>
-```pascalunit MyDialog;
+```pascal
+unit MyDialog;
 ```
 Das Vererben der ListBox.<br>
 Wen man schon vererbt, habe ich auch gleich den <b>Destructor</b> eingefügt, welcher am Schluss die Liste aufräumt.<br>
-```pascaltype
+```pascal
+type
 <br>
   PNewListBox = ^TNewListBox;
 <br>
@@ -32,7 +34,8 @@ Wen man schon vererbt, habe ich auch gleich den <b>Destructor</b> eingefügt, we
   end;
 ```
 Der neue <b>HandleEvent</b> der beuen ListBox, welcher den Doppelklick abfängt und ihn als [Ok] interprediert.<br>
-```pascalprocedure TNewListBox.HandleEvent(var Event: TEvent);
+```pascal
+procedure TNewListBox.HandleEvent(var Event: TEvent);
 begin
   if (Event.What = evMouseDown) and (Event.double) then begin
     Event.What := evCommand;
@@ -44,7 +47,8 @@ begin
 end;
 ```
 Manuell den Speicher der Liste frei geben.<br>
-```pascaldestructor TNewListBox.Done;
+```pascal
+destructor TNewListBox.Done;
 begin
   Dispose(List, Done); // Die Liste freigeben
   inherited Done;
@@ -52,7 +56,8 @@ end;
 ```
 Der EventHandle des Dialogs.<br>
 Hier wird einfach ein [Ok] bei dem Doppelklick abgearbeitet.<br>
-```pascalprocedure TMyDialog.HandleEvent(var Event: TEvent);
+```pascal
+procedure TMyDialog.HandleEvent(var Event: TEvent);
 begin
   case Event.What of
     evCommand: begin

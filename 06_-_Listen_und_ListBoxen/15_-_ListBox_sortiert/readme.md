@@ -8,10 +8,12 @@ Die ListBox kann auch sortiert sein.<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der ListBox<br>
-```pascalunit MyDialog;
+```pascal
+unit MyDialog;
 ```
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
-```pascaltype
+```pascal
+type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     ListBox: PListBox;
@@ -23,7 +25,8 @@ Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gib
   end;
 ```
 Komponenten für den Dialog generieren.<br>
-```pascalconst
+```pascal
+const
   cmTag = 1000;  // Lokale Event Konstante
 <br>
 constructor TMyDialog.Init;
@@ -71,7 +74,8 @@ begin
 end;
 ```
 Manuell den Speicher der Liste frei geben.<br>
-```pascaldestructor TMyDialog.Done;
+```pascal
+destructor TMyDialog.Done;
 begin
   Dispose(ListBox^.List, Done); // Die Liste freigeben
   inherited Done;
@@ -79,7 +83,8 @@ end;
 ```
 Der EventHandle<br>
 Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.<br>
-```pascalprocedure TMyDialog.HandleEvent(var Event: TEvent);
+```pascal
+procedure TMyDialog.HandleEvent(var Event: TEvent);
 begin
   case Event.What of
     evCommand: begin

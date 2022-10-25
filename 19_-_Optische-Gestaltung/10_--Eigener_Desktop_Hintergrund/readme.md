@@ -7,7 +7,8 @@ Da man alles selbst zeichent kann man sich den Umweg über <b>TBackGround</b> sp
 <b>TBackGround</b> ist ein direkter Nachkomme von <b>TView</b>.<br>
 <hr><br>
 Für das Object <b>TView</b> wird ein Nachkomme erzeugt, welcher eine neue <b>Draw</b> Procedure bekommt.<br>
-```pascaltype
+```pascal
+type
   PMyBackground = ^TMyBackground;
   TMyBackground = object(TView)
     procedure Draw; virtual; // neu Draw-Procedure.
@@ -16,7 +17,8 @@ In der neuen Funktion wird ein Byte-Muster in Form einer Backsteinwand gezeichne
 Die Möglickeiten sind unbegrenzt, man kann ein ganzes Bild erzeugen.<br>
 Das was man ausgeben will, kommt Zeilenweise in den <b>TDrawBuffer</b>.<br>
 Anschliessend wird mit <b>WriteLine(...</b> der Buffer gezeichnet.<br>
-```pascal  procedure TMyBackground.Draw;
+```pascal
+  procedure TMyBackground.Draw;
   const
     b1 : array [0..3] of Byte = (196, 193, 196, 194); // obere Backsteinreihe.
     b2 : array [0..3] of Byte = (196, 194, 196, 193); // untere Backsteinreihe.
@@ -37,7 +39,8 @@ Anschliessend wird mit <b>WriteLine(...</b> der Buffer gezeichnet.<br>
   end;```
 Der Konstruktor sieht gleich aus wie bei der Hintergrund-Zeichenfarbe.<br>
 Dem ist Egal ob <b>TMyBackground</b> ein Nachkomme von <b>TView</b> oder <b>TBackground</b> ist.<br>
-```pascal  constructor TMyApp.Init;
+```pascal
+  constructor TMyApp.Init;
   var
     R: TRect;
   begin

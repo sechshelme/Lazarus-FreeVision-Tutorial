@@ -8,10 +8,12 @@ Die <b>ListBox</b> kann auch mehrere Spalten haben.<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der mehrspaltigen ListBox<br>
-```pascalunit MyDialog;
+```pascal
+unit MyDialog;
 ```
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
-```pascaltype
+```pascal
+type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     ListBox: PListBox;
@@ -25,7 +27,8 @@ Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gib
 Komponenten für den Dialog generieren.<br>
 Der zweite Parameter bei Init von <b>TListBox</b> gibt die Anzahl Spalten an.<br>
 Hier im Beispiel sind es 3.<br>
-```pascalconst
+```pascal
+const
   cmMonat = 1000;  // Lokale Event Konstante
 <br>
 constructor TMyDialog.Init;
@@ -74,7 +77,8 @@ begin
 end;
 ```
 Manuell den Speicher der Liste frei geben.<br>
-```pascaldestructor TMyDialog.Done;
+```pascal
+destructor TMyDialog.Done;
 begin
   Dispose(ListBox^.List, Done); // Die Liste freigeben
   inherited Done;
@@ -82,7 +86,8 @@ end;
 ```
 Der EventHandle<br>
 Wen man auf <b>[Monat]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.<br>
-```pascalprocedure TMyDialog.HandleEvent(var Event: TEvent);
+```pascal
+procedure TMyDialog.HandleEvent(var Event: TEvent);
 begin
   case Event.What of
     evCommand: begin

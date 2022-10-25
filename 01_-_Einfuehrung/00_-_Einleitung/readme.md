@@ -28,7 +28,8 @@ Es ist eine Zip.<br>
 <br>
 Free Vision verwendet Codepage 437.<br>
 Aus diese Grund sollte man für eine fehlerfreie Darstellung der Umaute, diese als Char-Konstante verwenden.<br>
-```pascalä = #132  Ä = #142
+```pascal
+ä = #132  Ä = #142
 ö = #148  Ö = #153
 ü = #129  Ü = #154```
 <br>
@@ -36,7 +37,8 @@ Aus diese Grund sollte man für eine fehlerfreie Darstellung der Umaute, diese a
 Wen man zur Laufzeit Texte ändern will, zB. <b>Label</b>, <b>StaticText</b>, ist Vorsicht geboten.<br>
 Da die Texte <b>PString</b> gespeichert sind, ist darauf zu achten, das man im Konstruktor (Init) schon genügend Speiher für die Texte reserviert.<br>
 Am einfachsten geht dies so, somit hat es dann genügend Platz noch für <b>world</b>.<br>
-```pascal  StaticText := new(PStaticText, Init(Rect, 'Hallo           '));
+```pascal
+  StaticText := new(PStaticText, Init(Rect, 'Hallo           '));
   StaticText^.Text^ := 'Hello world';```
 <br>
 <b>TListBox</b><br>

@@ -6,7 +6,8 @@ Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/k
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
 <hr><br>
 Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
-```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal
+  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     MouseDialog: PMyMouse;
   begin
@@ -31,10 +32,12 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
 <hr><br>
 <b>Unit mit dem Mausaktions-Dialog.</b><br>
 <br><br>
-```pascalunit MyDialog;
+```pascal
+unit MyDialog;
 ```
 In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei Mausaktionen modifiziert werden.<br>
-```pascaltype
+```pascal
+type
   PMyMouse = ^TMyMouse;
   TMyMouse = object(TDialog)
     EditMB,
@@ -46,7 +49,8 @@ In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei 
 ```
 Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
 Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
-```pascalconstructor TMyMouse.Init;
+```pascal
+constructor TMyMouse.Init;
 var
   R: TRect;
 begin
@@ -86,7 +90,8 @@ end;
 ```
 Im EventHandle sieht man gut, das dort die Mausaktionen abgefangen werden.<br>
 Die Maus-Daten werden an die <b>EditLines</b> ausgegeben.<br>
-```pascalprocedure TMyMouse.HandleEvent(var Event: TEvent);
+```pascal
+procedure TMyMouse.HandleEvent(var Event: TEvent);
 var
   Mouse : TPoint;
 begin

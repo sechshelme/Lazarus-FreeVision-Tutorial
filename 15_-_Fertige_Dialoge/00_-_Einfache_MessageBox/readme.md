@@ -5,7 +5,8 @@
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 <hr><br>
 Aufruf einer MessageBox.<br>
-```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal
+  procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
 <br>

@@ -5,14 +5,16 @@
 Hinzufügen eines Menüs.<br>
 <hr><br>
 Für das Menü werden die gleichen Units wie für die Statuszeile gebraucht.<br>
-```pascaluses
+```pascal
+uses
   App,      // TApplication
   Objects,  // Fensterbereich (TRect)
   Drivers,  // Hotkey
   Views,    // Ereigniss (cmQuit)
   Menus;    // Statuszeile```
 Für ein Menu muss man <b>InitMenuBar</b> vererben.<br>
-```pascaltype
+```pascal
+type
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;   // Statuszeile
     procedure InitMenuBar; virtual;      // Menü
@@ -24,7 +26,8 @@ Es gibt auch direkte HotKey auf die Menüpunkte, hier im Beipiel ist die <b>[Alt
 Dieses überschneidet sich hier zufällig mit <b>[Alt+x]</b> von der Statuszeile, aber dies ist egal.<br>
 Der Aufbau der Menüerzeugung ist ähnlich der Statuszeile.<br>
 Beim letzten Menüpunkt kommt immer ein <b>nil</b>.<br>
-```pascal  procedure TMyApp.InitMenuBar;
+```pascal
+  procedure TMyApp.InitMenuBar;
   var
     R: TRect;           // Rechteck für die Memüzeile Position.
   begin

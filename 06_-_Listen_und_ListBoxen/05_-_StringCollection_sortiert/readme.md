@@ -10,7 +10,8 @@ für eine sortierte Liste muss man <b>PStringCollection</b> oder <b>PStrCollecti
 <br><br>
 Der Dialog mit der <b>StringCollection</b><br>
 Deklaration des Dialog, nichts Besonderes.<br>
-```pascaltype
+```pascal
+type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     constructor Init;
@@ -19,7 +20,8 @@ Deklaration des Dialog, nichts Besonderes.<br>
 Es wird eine <b>StringCollection</b> gebaut und<br>
 als Demonstration wird deren Inhalt in ein StaticText geschrieben.<br>
 Man sieht gut, das die Wochentage alphapetisch sortiert sind.<br>
-```pascalconstructor TMyDialog.Init;
+```pascal
+constructor TMyDialog.Init;
 var
   R: TRect;
   s: shortstring;

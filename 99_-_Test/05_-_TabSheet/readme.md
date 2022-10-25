@@ -6,7 +6,8 @@ In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Di
 Im Beispiel wir eine MessageBox aufgerufen.<br>
 <hr><br>
 Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas gemacht wird.<br>
-```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal
+  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     AboutDialog: PMyAbout;
   begin
@@ -35,10 +36,12 @@ Dort sieht man gut, das es ein Button für lokale Ereignisse hat.<br>
 Wichtig ist, bei den Nummernvergabe, das sich dies nicht mit einem anderen Eventnummer überschneidet.<br>
 Vor allem dann, wen der Dialog nicht Modal geöffnet wird.<br>
 Ausser es ist gewünscht, wen man zB. über das Menü auf den Dialog zugreifen will.<br>
-```pascalunit MyDialog;
+```pascal
+unit MyDialog;
 ```
 Für den Dialog kommt noch ein HandleEvent hinzu.<br>
-```pascalconst
+```pascal
+const
   cmMsg = 1003;  //
 <br>
 type
@@ -51,7 +54,8 @@ type
   end;
 ```
 Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Ereigniss <b>cmMsg</b> abarbeitet.<br>
-```pascalconstructor TMyAbout.Init;
+```pascal
+constructor TMyAbout.Init;
 var
   R: TRect;
   Tabdef: PTabDef;
@@ -93,7 +97,8 @@ end;
 ```
 Im neuen EventHandle, werden loake Ereigniss (cmMsg) abarbeitet.<br>
 Andere Ereignisse, zB. <b>cmOk</b> wird an das Hauptprogramm weiter gereicht, welches dann den Dialog auch schliesst.<br>
-```pascalprocedure TMyAbout.HandleEvent(var Event: TEvent);
+```pascal
+procedure TMyAbout.HandleEvent(var Event: TEvent);
 begin
   inherited HandleEvent(Event);
 <br>

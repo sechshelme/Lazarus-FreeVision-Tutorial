@@ -9,7 +9,8 @@ Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialo
 Gibt man sich mit den englischen Dialogen zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menü anpassen, der Rest geschieht automatisch.<br>
 <hr><br>
 Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verdeutscht.<br>
-```pascal  // === Suchen Dialog
+```pascal
+  // === Suchen Dialog
   function DECreateFindDialog: PDialog;
   var
     D: PDialog;
@@ -107,7 +108,8 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
     Result := Dialog;
   end;```
 Hier wird die neuen Dialoge eingefügt.<br>
-```pascal  function MyStdEditorDialog(Dialog: Int16; Info: Pointer): word;
+```pascal
+  function MyStdEditorDialog(Dialog: Int16; Info: Pointer): word;
   begin
     case Dialog of
       edSaveAs: begin                           // Neuer Dialog in Deutsch.
@@ -127,7 +129,8 @@ Hier wird die neuen Dialoge eingefügt.<br>
   end;```
 Im Menü sind die neuen Suchen-Funktionen dazugekommen.<br>
 Dies ist das einzige was man machen muss.<br>
-```pascal  procedure TMyApp.InitMenuBar;
+```pascal
+  procedure TMyApp.InitMenuBar;
   var
     R: TRect;
   begin

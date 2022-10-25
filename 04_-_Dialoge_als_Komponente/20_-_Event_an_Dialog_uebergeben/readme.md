@@ -5,13 +5,15 @@
 In diesem Beispiel wird gezeigt, wie man ein Event an eine andere Komponente senden kann.<br>
 In diesem Fall wird ein Event an die Dialoge gesendet. In den Dialogen wird dann ein Counter hochgezählt.<br>
 Events für den Buttonklick.<br>
-```pascalconst
+```pascal
+const
   cmDia1   = 1001;
   cmDia2   = 1002;
   cmDiaAll = 1003;```
 Hier werden die 2 passiven Ausgabe-Dialoge erstellt, dies befinden sich in dem Object TMyDialog.<br>
 Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kommandos an die anderen Dialoge sendet.<br>
-```pascal  constructor TMyApp.Init;
+```pascal
+  constructor TMyApp.Init;
   var
     R: TRect;
     Dia: PDialog;
@@ -61,7 +63,8 @@ Gibt man als ersten Parameter die View des Dialoges an, dann wird nur dieser Dia
 Gibt man <b>@Self</b> an, dann werden die Kommandos an alle Dialoge gesendet.<br>
 Beim 4. Paramter kann man noch einen Pointer auf einen Bezeichner übergeben,<br>
 die kann zB. ein String oder ein Record, etc. sein.<br>
-```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal
+  procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
 <br>
@@ -87,10 +90,12 @@ die kann zB. ein String oder ein Record, etc. sein.<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der Zähler-Ausgabe.<br>
-```pascalunit MyDialog;
+```pascal
+unit MyDialog;
 ```
 Deklaration des Object der passiven Dialoge.<br>
-```pascaltype
+```pascal
+type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
   var
@@ -101,7 +106,8 @@ Deklaration des Object der passiven Dialoge.<br>
   end;
 ```
 Im Konstructor wird eine Ausgabezeile erzeugt.<br>
-```pascalconstructor TMyDialog.Init(var Bounds: TRect; ATitle: TTitleStr);
+```pascal
+constructor TMyDialog.Init(var Bounds: TRect; ATitle: TTitleStr);
 var
   R: TRect;
 begin
@@ -115,7 +121,8 @@ end;
 ```
 Im EventHandle wird das Kommando empfangen, welches mit <b>Message</b> gesendet wurde.<br>
 Als Beweis dafür, wir die Zahl in der Ausgabezeile un eins erhöht.<br>
-```pascalprocedure TMyDialog.HandleEvent(var Event: TEvent);
+```pascal
+procedure TMyDialog.HandleEvent(var Event: TEvent);
 var
   Counter: integer;
 begin

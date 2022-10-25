@@ -10,7 +10,8 @@ Nur <b>PCollection</b> reicht <b>nicht</b>, da diese bei <b>Dispose</b> abschmie
 <br><br>
 Der Dialog mit der UnSortedStrCollection.<br>
 Deklaration des Dialog, nichts Besonderes.<br>
-```pascaltype
+```pascal
+type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     constructor Init;
@@ -18,7 +19,8 @@ Deklaration des Dialog, nichts Besonderes.<br>
 ```
 Es wird eine UnSortedStrCollection gebaut und<br>
 als Demonstration wird deren Inhalt in ein StaticText geschrieben.<br>
-```pascalconstructor TMyDialog.Init;
+```pascal
+constructor TMyDialog.Init;
 var
   R: TRect;
   s: shortstring;
