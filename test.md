@@ -11,6 +11,7 @@ const
   cmDia2   = 1002;
   cmDiaAll = 1003;
 ```
+
 Hier werden die 2 passiven Ausgabe-Dialoge erstellt, dies befinden sich in dem Object TMyDialog.
 Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kommandos an die anderen Dialoge sendet.
 ```pascal
