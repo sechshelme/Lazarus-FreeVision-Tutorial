@@ -5,14 +5,14 @@
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 <hr><br>
 Aufruf einer MessageBox.<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
 <br>
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
-          MessageBox('Ich bin ein About !', nil, mfInformation + mfOkButton);</font>
+          MessageBox('Ich bin ein About !', nil, mfInformation + mfOkButton);
         end;
         cmWarning: begin
           MessageBox('Ich bin eine Warnung-Box', nil, mfWarning + mfOkButton);
@@ -21,10 +21,10 @@ Aufruf einer MessageBox.<br>
           MessageBox('Ich bin eine Fehlermeldung', nil, mfError + mfOkButton);
         end;
         cmInfo: begin
-          MessageBox('Ich bin eine Info-Box', nil, mfInformation + mfOkButton);</font>
+          MessageBox('Ich bin eine Info-Box', nil, mfInformation + mfOkButton);
         end;
         cmConformation: begin
-          MessageBox('Ich bin eine Info-Box', nil, mfConfirmation + mfOkButton);</font>
+          MessageBox('Ich bin eine Info-Box', nil, mfConfirmation + mfOkButton);
         end;
         else begin
           Exit;
@@ -32,5 +32,5 @@ Aufruf einer MessageBox.<br>
       end;
     end;
     ClearEvent(Event);
-  end;</code></pre>
+  end;```
 <br>

@@ -8,29 +8,29 @@ Die Statuszeile ist Textlos, das einzige, sie bringt Schnellkomandos mit. ( cmQu
 Bis aus <b>OS shell</b> und <b>Exit</b> passiert nichts.<br>
 <hr><br>
 Mit <b>StdStatusKeys(...</b> wird eine Statuszeile estellt, aber wie oben beschrieben, sieht man keinne Text.<br>
-<pre><code=pascal>  procedure TMyApp.InitStatusLine;
+```pascal>  procedure TMyApp.InitStatusLine;
   var
     R: TRect;
   begin
     GetExtent(R);
-    R.A.Y := R.B.Y - 1;</font>
+    R.A.Y := R.B.Y - 1;
 <br>
     StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF, StdStatusKeys(nil), nil)));
-  end;</code></pre>
+  end;```
 Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber eben in Englisch.<br>
-<pre><code=pascal>  procedure TMyApp.InitMenuBar;
+```pascal>  procedure TMyApp.InitMenuBar;
   var
     R: TRect;
   begin
     GetExtent(R);
-    R.B.Y := R.A.Y + 1;</font>
+    R.B.Y := R.A.Y + 1;
 <br>
     MenuBar := New(PMenuBar, Init(R, NewMenu(
-      NewSubMenu('~D~atei', hcNoContext, NewMenu(</font>
+      NewSubMenu('~D~atei', hcNoContext, NewMenu(
         StdFileMenuItems (nil)),
-      NewSubMenu('~B~earbeiten', hcNoContext, NewMenu(</font>
+      NewSubMenu('~B~earbeiten', hcNoContext, NewMenu(
          StdEditMenuItems (nil)),
-      NewSubMenu('~F~enster', hcNoContext, NewMenu(</font>
+      NewSubMenu('~F~enster', hcNoContext, NewMenu(
         StdWindowMenuItems(nil)), nil))))));
-  end;</code></pre>
+  end;```
 <br>

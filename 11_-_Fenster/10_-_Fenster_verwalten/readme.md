@@ -7,44 +7,44 @@ ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.<br>
 <hr><br>
 Das Menü wurde um die Steuerbefehle für die Fensterverwatung ergänzt.<br>
 Die ausgeklammerten Kommandos müssen manuel gemacht werden.<br>
-<pre><code=pascal>  procedure TMyApp.InitMenuBar;
+```pascal>  procedure TMyApp.InitMenuBar;
   var
     R: TRect;
   begin
     GetExtent(R);
-    R.B.Y := R.A.Y + 1;</font>
+    R.B.Y := R.A.Y + 1;
 <br>
     MenuBar := New(PMenuBar, Init(R, NewMenu(
-      NewSubMenu('~D~atei', hcNoContext, NewMenu(</font>
-        NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,</font>
+      NewSubMenu('~D~atei', hcNoContext, NewMenu(
+        NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
         NewLine(
-        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))),</font>
-      NewSubMenu('~F~enster', hcNoContext, NewMenu(</font>
-        NewItem('~N~ebeneinander', '', kbNoKey, cmTile, hcNoContext,</font>
+        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))),
+      NewSubMenu('~F~enster', hcNoContext, NewMenu(
+        NewItem('~N~ebeneinander', '', kbNoKey, cmTile, hcNoContext,
         NewItem(#154'ber~l~append', '', kbNoKey, cmCascade, hcNoContext,
-        NewItem('~A~lle schliessen', '', kbNoKey, cmCloseAll, hcNoContext,</font>
+        NewItem('~A~lle schliessen', '', kbNoKey, cmCloseAll, hcNoContext,
         NewItem('Anzeige ~e~rneuern', '', kbNoKey, cmRefresh, hcNoContext,
         NewLine(
-        NewItem('Gr'#148'sse/~P~osition', 'Ctrl+F5', kbCtrlF5, cmResize, hcNoContext,</font>
+        NewItem('Gr'#148'sse/~P~osition', 'Ctrl+F5', kbCtrlF5, cmResize, hcNoContext,
         NewItem('Ver~g~'#148'ssern', 'F5', kbF5, cmZoom, hcNoContext,
-        NewItem('~N~'#132'chstes', 'F6', kbF6, cmNext, hcNoContext,</font>
+        NewItem('~N~'#132'chstes', 'F6', kbF6, cmNext, hcNoContext,
         NewItem('~V~orheriges', 'Shift+F6', kbShiftF6, cmPrev, hcNoContext,
         NewLine(
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, Nil)))))))))))), nil)))));
 <br>
-  end;</code></pre>
+  end;```
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.<br>
-<pre><code=pascal>  procedure TMyApp.NewWindows;
+```pascal>  procedure TMyApp.NewWindows;
   var
     Win: PWindow;
     R: TRect;
   const
-    WinCounter: integer = 0;                    // Zählt Fenster</font>
+    WinCounter: integer = 0;                    // Zählt Fenster
   begin
-    R.Assign(0, 0, 60, 20);</font>
+    R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
-    Win := New(PWindow, Init(R, 'Fenster', WinCounter));</font>
+    Win := New(PWindow, Init(R, 'Fenster', WinCounter));
     Win^.Options := Win^.Options or ofTileable; // Für Tile und Cascade
 <br>
     if ValidView(Win) <> nil then begin
@@ -52,10 +52,10 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
     end else begin
       Dec(WinCounter);
     end;
-  end;</code></pre>
+  end;```
 Diese Procedure schliesst alle Fenster im Desktop.<br>
 Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br>
-<pre><code=pascal>  procedure TMyApp.CloseAll;
+```pascal>  procedure TMyApp.CloseAll;
 <br>
     procedure SendClose(P: PView);
     begin
@@ -64,9 +64,9 @@ Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br
 <br>
   begin
     Desktop^.ForEach(@SendClose);
-  end;</code></pre>
+  end;```
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.<br>
-<pre><code=pascal>
+```pascal>
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
@@ -88,5 +88,5 @@ Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br
       end;
     end;
     ClearEvent(Event);
-  end;</code></pre>
+  end;```
 <br>

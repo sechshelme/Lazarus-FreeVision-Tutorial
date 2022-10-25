@@ -5,23 +5,23 @@
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 <hr><br>
 Konstanten für die verschiedenen Menüeinträge.<br>
-<pre><code=pascal>const
-  cmAbout        = 1001;</font>
-  cmWarning      = 1002;</font>
-  cmError        = 1003;</font>
-  cmInfo         = 1004;</font>
-  cmConformation = 1005;</font>
-  cmYesNo        = 1010;</font>
-  cmYesNoCancel  = 1011;</font></code></pre>
+```pascal>const
+  cmAbout        = 1001;
+  cmWarning      = 1002;
+  cmError        = 1003;
+  cmInfo         = 1004;
+  cmConformation = 1005;
+  cmYesNo        = 1010;
+  cmYesNoCancel  = 1011;```
 Aufruf der MessageBoxn.<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
 <br>
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
-          MessageBox('Ich bin ein About !', nil, mfInformation + mfOkButton);</font>
+          MessageBox('Ich bin ein About !', nil, mfInformation + mfOkButton);
         end;
         cmWarning: begin
           MessageBox('Ich bin eine Warnung-Box', nil, mfWarning + mfOkButton);
@@ -30,14 +30,14 @@ Aufruf der MessageBoxn.<br>
           MessageBox('Ich bin eine Fehlermeldung', nil, mfError + mfOkButton);
         end;
         cmInfo: begin
-          MessageBox('Ich bin eine Info-Box', nil, mfInformation + mfOkButton);</font>
+          MessageBox('Ich bin eine Info-Box', nil, mfInformation + mfOkButton);
         end;
         cmConformation: begin
           MessageBox('Ich bin eine Konfirmation-Box', nil, mfConfirmation + mfOkButton);
         end;
         cmYesNo: begin
           case
-            MessageBox('Ich bin Ja/Nein Frage', nil, mfConfirmation + mfYesButton + mfNoButton) of</font>
+            MessageBox('Ich bin Ja/Nein Frage', nil, mfConfirmation + mfYesButton + mfNoButton) of
             cmYes: begin
               MessageBox('Es wurde [JA] geklickt', nil, mfInformation + mfOkButton);
             end;
@@ -66,5 +66,5 @@ Aufruf der MessageBoxn.<br>
       end;
     end;
     ClearEvent(Event);
-  end;</code></pre>
+  end;```
 <br>

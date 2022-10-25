@@ -6,7 +6,7 @@ Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/k
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
 <hr><br>
 Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     MouseDialog: PMyMouse;
   begin
@@ -27,14 +27,14 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
       end;
     end;
     ClearEvent(Event);
-  end;</code></pre>
+  end;```
 <hr><br>
 <b>Unit mit dem Mausaktions-Dialog.</b><br>
 <br><br>
-<pre><code>unit MyDialog;
-</code></pre>
+```pascalunit MyDialog;
+```
 In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei Mausaktionen modifiziert werden.<br>
-<pre><code>type
+```pascaltype
   PMyMouse = ^TMyMouse;
   TMyMouse = object(TDialog)
     EditMB,
@@ -43,50 +43,50 @@ In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei 
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-</code></pre>
+```
 Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
 Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
-<pre><code>constructor TMyMouse.Init;
+```pascalconstructor TMyMouse.Init;
 var
   R: TRect;
 begin
-  R.Assign(0, 0, 42, 13);</font>
-  R.Move(23, 3);</font>
-  inherited Init(R, 'Mausaktion');</font>
+  R.Assign(0, 0, 42, 13);
+  R.Move(23, 3);
+  inherited Init(R, 'Mausaktion');
 <br>
   // PosX
-  R.Assign(25, 2, 30, 3);</font>
-  EditX := new(PInputLine, Init(R, 5));</font>
+  R.Assign(25, 2, 30, 3);
+  EditX := new(PInputLine, Init(R, 5));
   Insert(EditX);
   EditX^.State := sfDisabled or EditX^.State;    // ReadOnly
-  R.Assign(5, 2, 20, 3);</font>
-  Insert(New(PLabel, Init(R, 'MausPosition ~X~:', EditX)));</font>
+  R.Assign(5, 2, 20, 3);
+  Insert(New(PLabel, Init(R, 'MausPosition ~X~:', EditX)));
 <br>
   // PosY
-  R.Assign(25, 4, 30, 5);</font>
-  EditY := new(PInputLine, Init(R, 5));</font>
+  R.Assign(25, 4, 30, 5);
+  EditY := new(PInputLine, Init(R, 5));
   EditY^.State := sfDisabled or EditY^.State;    // ReadOnly
   Insert(EditY);
-  R.Assign(5, 4, 20, 5);</font>
-  Insert(New(PLabel, Init(R, 'MausPosition ~Y~:', EditY)));</font>
+  R.Assign(5, 4, 20, 5);
+  Insert(New(PLabel, Init(R, 'MausPosition ~Y~:', EditY)));
 <br>
   // Maus-Tasten
-  R.Assign(25, 7, 32, 8);</font>
-  EditMB := new(PInputLine, Init(R, 7));</font>
+  R.Assign(25, 7, 32, 8);
+  EditMB := new(PInputLine, Init(R, 7));
   EditMB^.State := sfDisabled or EditMB^.State;  // ReadOnly
-  EditMB^.Data^:= 'oben';                        // Anfangs ist die Taste oben.</font>
+  EditMB^.Data^:= 'oben';                        // Anfangs ist die Taste oben.
   Insert(EditMB);
-  R.Assign(5, 7, 20, 8);</font>
-  Insert(New(PLabel, Init(R, '~M~austaste:', EditMB)));</font>
+  R.Assign(5, 7, 20, 8);
+  Insert(New(PLabel, Init(R, '~M~austaste:', EditMB)));
 <br>
   // Ok-Button
-  R.Assign(27, 10, 37, 12);</font>
-  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+  R.Assign(27, 10, 37, 12);
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
-</code></pre>
+```
 Im EventHandle sieht man gut, das dort die Mausaktionen abgefangen werden.<br>
 Die Maus-Daten werden an die <b>EditLines</b> ausgegeben.<br>
-<pre><code>procedure TMyMouse.HandleEvent(var Event: TEvent);
+```pascalprocedure TMyMouse.HandleEvent(var Event: TEvent);
 var
   Mouse : TPoint;
 begin
@@ -94,11 +94,11 @@ begin
 <br>
   case Event.What of
     evMouseDown: begin                 // Taste wurde gedrückt.
-      EditMB^.Data^:= 'unten';</font>
+      EditMB^.Data^:= 'unten';
       EditMB^.Draw;
     end;
     evMouseUp: begin                   // Taste wurde losgelassen.
-      EditMB^.Data^:= 'oben';</font>
+      EditMB^.Data^:= 'oben';
       EditMB^.Draw;
     end;
     evMouseMove: begin                 // Maus wurde bewegt.
@@ -111,5 +111,5 @@ begin
   end;
 <br>
 end;
-</code></pre>
+```
 <br>

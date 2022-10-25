@@ -5,37 +5,37 @@
 Dialog um CheckBoxen ergänzen.<br>
 <hr><br>
 Den Dialog mit CheckBoxen ergänzen.<br>
-<pre><code=pascal>  procedure TMyApp.MyParameter;
+```pascal>  procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
     R: TRect;
     dummy: word;
     View: PView;
   begin
-    R.Assign(0, 0, 35, 15);</font>
-    R.Move(23, 3);</font>
-    Dlg := New(PDialog, Init(R, 'Parameter'));</font>
+    R.Assign(0, 0, 35, 15);
+    R.Move(23, 3);
+    Dlg := New(PDialog, Init(R, 'Parameter'));
     with Dlg^ do begin
 <br>
       // CheckBoxen
-      R.Assign(4, 3, 18, 7);</font>
+      R.Assign(4, 3, 18, 7);
       View := New(PCheckBoxes, Init(R,
-        NewSItem('~D~atei',</font>
-        NewSItem('~Z~eile',</font>
-        NewSItem('D~a~tum',</font>
-        NewSItem('~Z~eit',</font>
+        NewSItem('~D~atei',
+        NewSItem('~Z~eile',
+        NewSItem('D~a~tum',
+        NewSItem('~Z~eit',
         nil))))));
       Insert(View);
 <br>
       // Ok-Button
-      R.Assign(7, 12, 17, 14);</font>
-      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+      R.Assign(7, 12, 17, 14);
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 <br>
       // Schliessen-Button
-      R.Assign(19, 12, 32, 14);</font>
-      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));</font>
+      R.Assign(19, 12, 32, 14);
+      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
     dummy := Desktop^.ExecView(Dlg);   // Dialog Modal öffnen.
     Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
-  end;</code></pre>
+  end;```
 <br>

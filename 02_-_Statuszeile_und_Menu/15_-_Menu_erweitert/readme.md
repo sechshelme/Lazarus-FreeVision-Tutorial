@@ -7,20 +7,20 @@ Hier wird dies auch der Übersicht zu liebe gesplittet gemacht.<br>
 <hr><br>
 Für eigene Kommandos, muss man noch Kommdocode definieren.<br>
 Es empfiehlt sich Werte &gt; 1000 zu verwenden, so das es keine Überschneidungen mit den Standard-Codes gibt.<br>
-<pre><code=pascal>const
-  cmList = 1002;      // Datei Liste</font>
-  cmAbout = 1001;     // About anzeigen</font></code></pre>
+```pascal>const
+  cmList = 1002;      // Datei Liste
+  cmAbout = 1001;     // About anzeigen```
 Für ein Menu muss man <b>InitMenuBar</b> vererben.<br>
-<pre><code=pascal>type
+```pascal>type
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;   // Statuszeile
     procedure InitMenuBar; virtual;      // Menü
-  end;</code></pre>
+  end;```
 Mam kann die Menüeinträge auch gesplittet über Pointer machen.<br>
 Ob man es verschachtelt oder splittet, ist Geschmacksache.<br>
 Mit <b>NewLine</b> kann man eine Leerzeile einfügen.<br>
 Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeichnung <b>...</b> zu schreiben.<br>
-<pre><code=pascal>  procedure TMyApp.InitMenuBar;
+```pascal>  procedure TMyApp.InitMenuBar;
   var
     R: TRect;                          // Rechteck für die Menüzeilen-Position.
 <br>
@@ -30,18 +30,18 @@ Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeic
 <br>
   begin
     GetExtent(R);
-    R.B.Y := R.A.Y + 1;</font>
+    R.B.Y := R.A.Y + 1;
 <br>
-    M1_0 := NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil);</font>
-    SM1 := NewSubMenu('~H~ilfe', hcNoContext, NewMenu(M1_0), nil);</font>
+    M1_0 := NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil);
+    SM1 := NewSubMenu('~H~ilfe', hcNoContext, NewMenu(M1_0), nil);
 <br>
-    M0_2 := NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil);</font>
+    M0_2 := NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil);
     M0_1 := NewLine(M0_2);
-    M0_0 := NewItem('~L~iste', 'F2', kbF2, cmList, hcNoContext, M0_1);</font>
-    SM0 := NewSubMenu('~D~atei', hcNoContext, NewMenu(M0_0), SM1);</font>
+    M0_0 := NewItem('~L~iste', 'F2', kbF2, cmList, hcNoContext, M0_1);
+    SM0 := NewSubMenu('~D~atei', hcNoContext, NewMenu(M0_0), SM1);
 <br>
     M := NewMenu(SM0);
 <br>
     MenuBar := New(PMenuBar, Init(R, M));
-  end;</code></pre>
+  end;```
 <br>

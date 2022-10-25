@@ -6,7 +6,7 @@ Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/k
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
 <hr><br>
 Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     KeyDialog: PMyKey;
   begin
@@ -27,14 +27,14 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
       end;
     end;
     ClearEvent(Event);
-  end;</code></pre>
+  end;```
 <hr><br>
 <b>Unit mit dem Keyboardaktions-Dialog.</b><br>
 <br><br>
-<pre><code>unit MyDialog;
-</code></pre>
+```pascalunit MyDialog;
+```
 In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei Mausaktionen modifiziert werden.<br>
-<pre><code>type
+```pascaltype
   PMyKey = ^TMyKey;
   TMyKey = object(TDialog)
     EditScanCode, EditShiftState,
@@ -43,58 +43,58 @@ In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei 
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-</code></pre>
+```
 Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
 Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
-<pre><code>constructor TMyKey.Init;
+```pascalconstructor TMyKey.Init;
 var
   R: TRect;
 begin
-  R.Assign(0, 0, 42, 15);</font>
-  R.Move(23, 3);</font>
-  inherited Init(R, 'Keyboard-Aktion');</font>
+  R.Assign(0, 0, 42, 15);
+  R.Move(23, 3);
+  inherited Init(R, 'Keyboard-Aktion');
 <br>
   // PosX
-  R.Assign(25, 2, 30, 3);</font>
-  EditZeichen := new(PInputLine, Init(R, 5));</font>
+  R.Assign(25, 2, 30, 3);
+  EditZeichen := new(PInputLine, Init(R, 5));
   Insert(EditZeichen);
   EditZeichen^.State := sfDisabled or EditZeichen^.State;    // ReadOnly
-  R.Assign(5, 2, 20, 3);</font>
-  Insert(New(PLabel, Init(R, 'Zeichen:', EditZeichen)));</font>
+  R.Assign(5, 2, 20, 3);
+  Insert(New(PLabel, Init(R, 'Zeichen:', EditZeichen)));
 <br>
   // PosY
-  R.Assign(25, 4, 30, 5);</font>
-  EditZeichenCode := new(PInputLine, Init(R, 5));</font>
+  R.Assign(25, 4, 30, 5);
+  EditZeichenCode := new(PInputLine, Init(R, 5));
   EditZeichenCode^.State := sfDisabled or EditZeichenCode^.State;    // ReadOnly
   Insert(EditZeichenCode);
-  R.Assign(5, 4, 20, 5);</font>
-  Insert(New(PLabel, Init(R, 'Zeichencode:', EditZeichenCode)));</font>
+  R.Assign(5, 4, 20, 5);
+  Insert(New(PLabel, Init(R, 'Zeichencode:', EditZeichenCode)));
 <br>
   // Maus-Tasten
-  R.Assign(25, 7, 30, 8);</font>
-  EditScanCode := new(PInputLine, Init(R, 7));</font>
+  R.Assign(25, 7, 30, 8);
+  EditScanCode := new(PInputLine, Init(R, 7));
   EditScanCode^.State := sfDisabled or EditScanCode^.State;  // ReadOnly
   Insert(EditScanCode);
-  R.Assign(5, 7, 20, 8);</font>
-  Insert(New(PLabel, Init(R, 'Scancode:', EditScanCode)));</font>
+  R.Assign(5, 7, 20, 8);
+  Insert(New(PLabel, Init(R, 'Scancode:', EditScanCode)));
 <br>
   // Maus-Tasten
-  R.Assign(25, 9, 30, 10);</font>
-  EditShiftState := new(PInputLine, Init(R, 7));</font>
+  R.Assign(25, 9, 30, 10);
+  EditShiftState := new(PInputLine, Init(R, 7));
   EditShiftState^.State := sfDisabled or EditShiftState^.State;  // ReadOnly
   Insert(EditShiftState);
-  R.Assign(5, 9, 20, 10);</font>
-  Insert(New(PLabel, Init(R, 'Shiftstate:', EditShiftState)));</font>
+  R.Assign(5, 9, 20, 10);
+  Insert(New(PLabel, Init(R, 'Shiftstate:', EditShiftState)));
 <br>
   // Ok-Button
-  R.Assign(27, 12, 37, 14);</font>
-  Insert(new(PButton, Init(R, 'OK', cmOK, bfDefault)));</font>
+  R.Assign(27, 12, 37, 14);
+  Insert(new(PButton, Init(R, 'OK', cmOK, bfDefault)));
 end;
-</code></pre>
+```
 Im EventHandle sieht man, das die Tastatur abgefangen wird. Es wird der Zeichencode und der Scancode ausgegeben.<br>
 In der untersten Zeile erscheint ein 3, wen die Shift-Taste mit gewissen anderen Tasten zB. Pfeil-Tasten gedrückt wird.<br>
 Die Tastatur-Daten werden an die <b>EditLines</b> ausgegeben.<br>
-<pre><code>procedure TMyKey.HandleEvent(var Event: TEvent);
+```pascalprocedure TMyKey.HandleEvent(var Event: TEvent);
 begin
   inherited HandleEvent(Event);
 <br>
@@ -112,5 +112,5 @@ begin
   end;
 <br>
 end;
-</code></pre>
+```
 <br>

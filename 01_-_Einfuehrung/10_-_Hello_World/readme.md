@@ -5,7 +5,7 @@
 Ein Hello World mit Free-Vision.<br>
 Der Text wird in einer Message-Box ausgegeben.<br>
 <hr><br>
-<pre><code=pascal>program Project1;
+```pascal>program Project1;
 <br>
 uses
   App, MsgBox;
@@ -14,8 +14,8 @@ var
 <br>
 begin
   MyApp.Init;
-  MessageBox('Hello World !', nil, mfOKButton);</font>
+  MessageBox('Hello World !', nil, mfOKButton);
   // MyApp.Run;   // Wen es weiter gehen soll.
   MyApp.Done;
-end.</code></pre>
+end.```
 <br>

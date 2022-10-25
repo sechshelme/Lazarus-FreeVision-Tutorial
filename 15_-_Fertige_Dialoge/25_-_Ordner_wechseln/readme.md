@@ -6,7 +6,7 @@ Ordner Wechsel Dialog.<br>
 Der <b>PChDirDialog</b>.<br>
 <hr><br>
 Der Ordnerwechsel Dialog<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     ChDirDialog: PChDirDialog;
     Ordner: ShortString;
@@ -16,12 +16,12 @@ Der Ordnerwechsel Dialog<br>
     if Event.What = evCommand then begin
       case Event.Command of
         cmChDir: begin
-          New(ChDirDialog, Init(fdOpenButton, 1));</font>
+          New(ChDirDialog, Init(fdOpenButton, 1));
           if ExecuteDialog(ChDirDialog, nil) <> cmCancel then begin
             MessageBox('Ordner wurde gewechselt', nil, mfOKButton);
           end;
         end;
         else begin
           Exit;
-        end;</code></pre>
+        end;```
 <br>

@@ -8,83 +8,83 @@ Dazu wird die aktuelle Komponente entfernt und die neue eingefügt.<br>
 In dem Beispiel gibt es je eine deutsche und englische Komponente.<br>
 <hr><br>
 Deklaration der Komponenten<br>
-<pre><code=pascal>  TMyApp = object(TApplication)
+```pascal>  TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;                 // Statuszeile
     procedure InitMenuBar; virtual;                    // Menü
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
   private
     menuGer, menuEng: PMenuView;          // Die beiden Menüs
     StatusGer, StatusEng: PStatusLine;    // Die beiden Stauszeilen
-  end;</code></pre>
+  end;```
 Inizialisieren der beiden Statuszeilen.<br>
-<pre><code=pascal>  procedure TMyApp.InitStatusLine;
+```pascal>  procedure TMyApp.InitStatusLine;
   var
     R: TRect;
   begin
     GetExtent(R);
-    R.A.Y := R.B.Y - 1;</font>
+    R.A.Y := R.B.Y - 1;
 <br>
     // Statuszeile deutsch
-    StatusGer := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,</font>
+    StatusGer := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
       NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
-      NewStatusKey('~F10~ Menue', kbF10, cmMenu,</font>
-      NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));</font>
+      NewStatusKey('~F10~ Menue', kbF10, cmMenu,
+      NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));
 <br>
     // Statuszeile englisch
-    StatusEng := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,</font>
-      NewStatusKey('~Alt+X~ Exit', kbAltX, cmQuit,</font>
-      NewStatusKey('~F10~ Menu', kbF10, cmMenu,</font>
-      NewStatusKey('~F1~ Help', kbF1, cmHelp, nil))), nil)));</font>
+    StatusEng := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,
+      NewStatusKey('~Alt+X~ Exit', kbAltX, cmQuit,
+      NewStatusKey('~F10~ Menu', kbF10, cmMenu,
+      NewStatusKey('~F1~ Help', kbF1, cmHelp, nil))), nil)));
 <br>
     StatusLine := StatusGer; // Deutsch per Default
-  end;</code></pre>
+  end;```
 Inizialisieren der beiden Menüs.<br>
-<pre><code=pascal>  procedure TMyApp.InitMenuBar;
+```pascal>  procedure TMyApp.InitMenuBar;
   var
     R: TRect;
   begin
     GetExtent(R);
-    R.B.Y := R.A.Y + 1;</font>
+    R.B.Y := R.A.Y + 1;
 <br>
     // Menü deutsch
     menuGer := New(PMenuBar, Init(R, NewMenu(
-      NewSubMenu('~D~atei', hcNoContext, NewMenu(</font>
+      NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
         NewLine(
-        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))),</font>
-      NewSubMenu('~O~ptionen', hcNoContext, NewMenu(</font>
-        NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext,</font>
+        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))),
+      NewSubMenu('~O~ptionen', hcNoContext, NewMenu(
+        NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext,
         NewLine(
-        NewItem('~D~eutsch', 'Alt-D', kbAltD, cmMenuGerman, hcNoContext,</font>
-        NewItem('~E~nglisch', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))))),</font>
-      NewSubMenu('~H~ilfe', hcNoContext, NewMenu(</font>
-        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))))));</font>
+        NewItem('~D~eutsch', 'Alt-D', kbAltD, cmMenuGerman, hcNoContext,
+        NewItem('~E~nglisch', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))))),
+      NewSubMenu('~H~ilfe', hcNoContext, NewMenu(
+        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))))));
 <br>
     // Menü englisch
     menuEng := New(PMenuBar, Init(R, NewMenu(
-      NewSubMenu('~F~ile', hcNoContext, NewMenu(</font>
-        NewItem('~C~lose', 'Alt-F3', kbAltF3, cmClose, hcNoContext,</font>
+      NewSubMenu('~F~ile', hcNoContext, NewMenu(
+        NewItem('~C~lose', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
         NewLine(
-        NewItem('E~x~it', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))),</font>
-      NewSubMenu('~O~ptions', hcNoContext, NewMenu(</font>
-        NewItem('~P~arameters...', '', kbF2, cmPara, hcNoContext,</font>
+        NewItem('E~x~it', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))),
+      NewSubMenu('~O~ptions', hcNoContext, NewMenu(
+        NewItem('~P~arameters...', '', kbF2, cmPara, hcNoContext,
         NewLine(
-        NewItem('German', 'Alt-D', kbAltD, cmMenuGerman, hcNoContext,</font>
-        NewItem('English', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))))),</font>
-      NewSubMenu('~H~elp', hcNoContext, NewMenu(</font>
-        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))))));</font>
+        NewItem('German', 'Alt-D', kbAltD, cmMenuGerman, hcNoContext,
+        NewItem('English', 'Alt-E', kbAltE, cmMenuEnlish, hcNoContext, nil))))),
+      NewSubMenu('~H~elp', hcNoContext, NewMenu(
+        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))))));
 <br>
     MenuBar := menuGer; // Deutsch per Default
-  end;</code></pre>
+  end;```
 Austauschen der Komponenten<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     Rect: TRect;              // Rechteck für die Statuszeilen Position.
 <br>
   begin
     GetExtent(Rect);
 <br>
-    Rect.A.Y := Rect.B.Y - 1;</font>
+    Rect.A.Y := Rect.B.Y - 1;
     inherited HandleEvent(Event);
 <br>
     if Event.What = evCommand then begin
@@ -126,5 +126,5 @@ Austauschen der Komponenten<br>
       end;
     end;
     ClearEvent(Event);
-  end;</code></pre>
+  end;```
 <br>

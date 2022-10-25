@@ -5,7 +5,7 @@
 Dialog um RadioButtons ergänzen.<br>
 <hr><br>
 Das Menü wurde noch ein wenig geändert/ergänzt.<br>
-<pre><code=pascal>  procedure TMyApp.InitMenuBar;
+```pascal>  procedure TMyApp.InitMenuBar;
   var
     R: TRect;                          // Rechteck für die Menüzeilen-Position.
 <br>
@@ -16,66 +16,66 @@ Das Menü wurde noch ein wenig geändert/ergänzt.<br>
 <br>
   begin
     GetExtent(R);
-    R.B.Y := R.A.Y + 1;</font>
+    R.B.Y := R.A.Y + 1;
 <br>
-    M2_0 := NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil);</font>
-    SM2 := NewSubMenu('~H~ilfe', hcNoContext, NewMenu(M2_0), nil);</font>
+    M2_0 := NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil);
+    SM2 := NewSubMenu('~H~ilfe', hcNoContext, NewMenu(M2_0), nil);
 <br>
-    M1_0 := NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext, nil);</font>
-    SM1 := NewSubMenu('~O~ption', hcNoContext, NewMenu(M1_0), SM2);</font>
+    M1_0 := NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext, nil);
+    SM1 := NewSubMenu('~O~ption', hcNoContext, NewMenu(M1_0), SM2);
 <br>
-    M0_5 := NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil);</font>
+    M0_5 := NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil);
     M0_4 := NewLine(M0_5);
     M0_3 := NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext, M0_4);
     M0_2 := NewLine(M0_3);
-    M0_0 := NewItem('~L~iste', 'F2', kbF2, cmList, hcNoContext, M0_2);</font>
-    SM0 := NewSubMenu('~D~atei', hcNoContext, NewMenu(M0_0), SM1);</font>
+    M0_0 := NewItem('~L~iste', 'F2', kbF2, cmList, hcNoContext, M0_2);
+    SM0 := NewSubMenu('~D~atei', hcNoContext, NewMenu(M0_0), SM1);
 <br>
     M := NewMenu(SM0);
 <br>
     MenuBar := New(PMenuBar, Init(R, M));
-  end;</code></pre>
+  end;```
 Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den CheckBoxen.<br>
-<pre><code=pascal>  procedure TMyApp.MyParameter;
+```pascal>  procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
     R: TRect;
     dummy: word;
     View: PView;
   begin
-    R.Assign(0, 0, 35, 15);</font>
-    R.Move(23, 3);</font>
-    Dlg := New(PDialog, Init(R, 'Parameter'));</font>
+    R.Assign(0, 0, 35, 15);
+    R.Move(23, 3);
+    Dlg := New(PDialog, Init(R, 'Parameter'));
     with Dlg^ do begin
 <br>
       // CheckBoxen
-      R.Assign(2, 3, 18, 7);</font>
+      R.Assign(2, 3, 18, 7);
       View := New(PCheckBoxes, Init(R,
-        NewSItem('~D~atei',</font>
-        NewSItem('~Z~eile',</font>
-        NewSItem('D~a~tum',</font>
-        NewSItem('~Z~eit',</font>
+        NewSItem('~D~atei',
+        NewSItem('~Z~eile',
+        NewSItem('D~a~tum',
+        NewSItem('~Z~eit',
         nil))))));
       Insert(View);
 <br>
       // RadioButton
-      R.Assign(21, 3, 33, 6);</font>
+      R.Assign(21, 3, 33, 6);
       View := New(PRadioButtons, Init(R,
-        NewSItem('~G~ross',</font>
-        NewSItem('~M~ittel',</font>
-        NewSItem('~K~lein',</font>
+        NewSItem('~G~ross',
+        NewSItem('~M~ittel',
+        NewSItem('~K~lein',
         nil)))));
       Insert(View);
 <br>
       // Ok-Button
-      R.Assign(7, 12, 17, 14);</font>
-      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+      R.Assign(7, 12, 17, 14);
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 <br>
       // Schliessen-Button
-      R.Assign(19, 12, 32, 14);</font>
-      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));</font>
+      R.Assign(19, 12, 32, 14);
+      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
     dummy := Desktop^.ExecView(Dlg);   // Dialog Modal öffnen.
     Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
-  end;</code></pre>
+  end;```
 <br>

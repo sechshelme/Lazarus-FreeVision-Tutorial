@@ -11,7 +11,7 @@ bfNormal ist ein gewöhnlicher Button.<br>
 Der Dialog wird nun Modal geöffnet, somit können <b>keine</b> weiteren Dialoge geöffnet werden.<br>
 dummy hat den Wert, des Button der gedrückt wurde, dies entspricht dem <b>cmxxx</b> Wert.<br>
 Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhafte Darstellung.<br>
-<pre><code=pascal>  procedure TMyApp.MyParameter;
+```pascal>  procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
     R: TRect;
@@ -19,18 +19,18 @@ Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhaf
   begin
     R.Assign(0, 0, 35, 15);                    // Grösse des Dialogs.
     R.Move(23, 3);                             // Position des Dialogs.
-    Dlg := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.</font>
+    Dlg := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.
     with Dlg^ do begin
 <br>
       // Ok-Button
-      R.Assign(7, 12, 17, 14);</font>
-      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+      R.Assign(7, 12, 17, 14);
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 <br>
       // Schliessen-Button
-      R.Move(12, 0);</font>
-      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));</font>
+      R.Move(12, 0);
+      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
     dummy := Desktop^.ExecView(Dlg);   // Dialog Modal öffnen.
     Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
-  end;</code></pre>
+  end;```
 <br>

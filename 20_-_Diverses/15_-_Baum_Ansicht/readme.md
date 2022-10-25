@@ -5,7 +5,7 @@
 Baumartige Darstellung.<br>
 <hr><br>
 Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.<br>
-<pre><code=pascal>  PTreeWindow = ^TTreeWindow;
+```pascal>  PTreeWindow = ^TTreeWindow;
   TTreeWindow = object(TWindow)
     constructor Init(R: TRect);
   end;
@@ -15,26 +15,26 @@ Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.<br
   var
     Outline: POutline;
   begin
-    inherited Init(R, 'Computer', wnNoNumber);</font>
+    inherited Init(R, 'Computer', wnNoNumber);
     Options := Options or ofTileable;
     GetExtent(R);
-    R.Grow(-1, -1);</font>
+    R.Grow(-1, -1);
     Outline := New(POutline, Init(R, StandardScrollBar(sbHorizontal), StandardScrollBar(sbVertical),
-      NewNode('Computer',</font>
-        NewNode('IBM',</font>
-          NewNode('XT', nil,</font>
-          NewNode('AT', nil,</font>
-          NewNode('PS2', nil, nil))),</font>
-        NewNode('Mac',</font>
-          NewNode('Lisa', nil,</font>
-          NewNode('iMac', nil, nil)),</font>
-        NewNode('Amiga',</font>
-          NewNode('500', nil,</font>
-          NewNode('1000', nil, nil)), nil))), nil)));</font>
+      NewNode('Computer',
+        NewNode('IBM',
+          NewNode('XT', nil,
+          NewNode('AT', nil,
+          NewNode('PS2', nil, nil))),
+        NewNode('Mac',
+          NewNode('Lisa', nil,
+          NewNode('iMac', nil, nil)),
+        NewNode('Amiga',
+          NewNode('500', nil,
+          NewNode('1000', nil, nil)), nil))), nil)));
     Insert(Outline);
-  end;</code></pre>
+  end;```
 Hier wird das Fenster erzeugt, welches die Outline enthält.<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     R: TRect;
   begin
@@ -43,7 +43,7 @@ Hier wird das Fenster erzeugt, welches die Outline enthält.<br>
     if Event.What = evCommand then begin
       case Event.Command of
         cmList: begin
-          R.Assign(2, 2, 35, 17);</font>
+          R.Assign(2, 2, 35, 17);
           InsertWindow(New(PTreeWindow, Init(R)));
         end
         else begin
@@ -52,5 +52,5 @@ Hier wird das Fenster erzeugt, welches die Outline enthält.<br>
       end;
     end;
     ClearEvent(Event);
-  end;</code></pre>
+  end;```
 <br>

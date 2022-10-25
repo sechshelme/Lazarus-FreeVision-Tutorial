@@ -5,13 +5,13 @@
 In diesem Beispiel wird gezeigt, wie man ein Event an eine andere Komponente senden kann.<br>
 In diesem Fall wird ein Event an die Dialoge gesendet. In den Dialogen wird dann ein Counter hochgezählt.<br>
 Events für den Buttonklick.<br>
-<pre><code=pascal>const
-  cmDia1   = 1001;</font>
-  cmDia2   = 1002;</font>
-  cmDiaAll = 1003;</font></code></pre>
+```pascal>const
+  cmDia1   = 1001;
+  cmDia2   = 1002;
+  cmDiaAll = 1003;```
 Hier werden die 2 passiven Ausgabe-Dialoge erstellt, dies befinden sich in dem Object TMyDialog.<br>
 Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kommandos an die anderen Dialoge sendet.<br>
-<pre><code=pascal>  constructor TMyApp.Init;
+```pascal>  constructor TMyApp.Init;
   var
     R: TRect;
     Dia: PDialog;
@@ -19,49 +19,49 @@ Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kom
     inherited init;
 <br>
     // erster passsiver Dialog
-    R.Assign(45, 2, 70, 9);</font>
-    Dialog1 := New(PMyDialog, Init(R, 'Dialog 1'));</font>
+    R.Assign(45, 2, 70, 9);
+    Dialog1 := New(PMyDialog, Init(R, 'Dialog 1'));
     Dialog1^.SetState(sfDisabled, True);    // Dialog auf ReadOnly.
     if ValidView(Dialog1) <> nil then begin // Prüfen ob genügend Speicher.
       Desktop^.Insert(Dialog1);
     end;
 <br>
     // zweiter passsiver Dialog
-    R.Assign(45, 12, 70, 19);</font>
-    Dialog2 := New(PMyDialog, Init(R, 'Dialog 2'));</font>
+    R.Assign(45, 12, 70, 19);
+    Dialog2 := New(PMyDialog, Init(R, 'Dialog 2'));
     Dialog2^.SetState(sfDisabled, True);
     if ValidView(Dialog2) <> nil then begin
       Desktop^.Insert(Dialog2);
     end;
 <br>
     // Steuerdialog
-    R.Assign(5, 5, 30, 20);</font>
-    Dia := New(PDialog, Init(R, 'Steuerung'));</font>
+    R.Assign(5, 5, 30, 20);
+    Dia := New(PDialog, Init(R, 'Steuerung'));
 <br>
     with Dia^ do begin
-      R.Assign(6, 2, 18, 4);</font>
-      Insert(new(PButton, Init(R, 'Dialog ~1~', cmDia1, bfNormal)));</font>
+      R.Assign(6, 2, 18, 4);
+      Insert(new(PButton, Init(R, 'Dialog ~1~', cmDia1, bfNormal)));
 <br>
-      R.Move(0, 3);</font>
-      Insert(new(PButton, Init(R, 'Dialog ~2~', cmDia2, bfNormal)));</font>
+      R.Move(0, 3);
+      Insert(new(PButton, Init(R, 'Dialog ~2~', cmDia2, bfNormal)));
 <br>
-      R.Move(0, 3);</font>
-      Insert(new(PButton, Init(R, '~A~lle', cmDiaAll, bfNormal)));</font>
+      R.Move(0, 3);
+      Insert(new(PButton, Init(R, '~A~lle', cmDiaAll, bfNormal)));
 <br>
-      R.Move(0, 4);</font>
-      Insert(new(PButton, Init(R, '~B~eenden', cmQuit, bfNormal)));</font>
+      R.Move(0, 4);
+      Insert(new(PButton, Init(R, '~B~eenden', cmQuit, bfNormal)));
     end;
 <br>
     if ValidView(Dia) <> nil then begin
       Desktop^.Insert(Dia);
     end;
-  end;</code></pre>
+  end;```
 Hier werden mit <b>Message</b>, die Kommandos an die Dialoge gesendet.<br>
 Gibt man als ersten Parameter die View des Dialoges an, dann wird nur dieser Dialog angesprochen.<br>
 Gibt man <b>@Self</b> an, dann werden die Kommandos an alle Dialoge gesendet.<br>
 Beim 4. Paramter kann man noch einen Pointer auf einen Bezeichner übergeben,<br>
 die kann zB. ein String oder ein Record, etc. sein.<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
 <br>
@@ -82,15 +82,15 @@ die kann zB. ein String oder ein Record, etc. sein.<br>
       end;
     end;
     ClearEvent(Event);
-  end;</code></pre>
+  end;```
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der Zähler-Ausgabe.<br>
-<pre><code>unit MyDialog;
-</code></pre>
+```pascalunit MyDialog;
+```
 Deklaration des Object der passiven Dialoge.<br>
-<pre><code>type
+```pascaltype
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
   var
@@ -99,23 +99,23 @@ Deklaration des Object der passiven Dialoge.<br>
     constructor Init(var Bounds: TRect; ATitle: TTitleStr);
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-</code></pre>
+```
 Im Konstructor wird eine Ausgabezeile erzeugt.<br>
-<pre><code>constructor TMyDialog.Init(var Bounds: TRect; ATitle: TTitleStr);
+```pascalconstructor TMyDialog.Init(var Bounds: TRect; ATitle: TTitleStr);
 var
   R: TRect;
 begin
   inherited Init(Bounds, ATitle);
 <br>
-  R.Assign(5, 2, 10, 3);</font>
-  CounterInputLine := new(PInputLine, Init(R, 20));</font>
-  CounterInputLine^.Data^ := '0';</font>
+  R.Assign(5, 2, 10, 3);
+  CounterInputLine := new(PInputLine, Init(R, 20));
+  CounterInputLine^.Data^ := '0';
   Insert(CounterInputLine);
 end;
-</code></pre>
+```
 Im EventHandle wird das Kommando empfangen, welches mit <b>Message</b> gesendet wurde.<br>
 Als Beweis dafür, wir die Zahl in der Ausgabezeile un eins erhöht.<br>
-<pre><code>procedure TMyDialog.HandleEvent(var Event: TEvent);
+```pascalprocedure TMyDialog.HandleEvent(var Event: TEvent);
 var
   Counter: integer;
 begin
@@ -135,5 +135,5 @@ begin
   end;
 <br>
 end;
-</code></pre>
+```
 <br>

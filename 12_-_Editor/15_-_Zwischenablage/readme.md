@@ -7,13 +7,13 @@ Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bek
 Somit kann man dieses sogar sichbar machen.<br>
 <hr><br>
 Ein Kommando für das öffnen des Zwischenablagefenster.<br>
-<pre><code=pascal>const
-  cmNewWin = 1001;</font>
-  cmRefresh = 1002;</font>
-  cmShowClip = 1003;</font></code></pre>
+```pascal>const
+  cmNewWin = 1001;
+  cmRefresh = 1002;
+  cmShowClip = 1003;```
 Hier wird das Fenster für die Zwischenablage deklariert.<br>
 Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt werden soll.<br>
-<pre><code=pascal>type
+```pascal>type
   TMyApp = object(TApplication)
     ClipWindow: PEditWindow;
 <br>
@@ -29,25 +29,25 @@ Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt 
     procedure OpenWindows;
     procedure SaveAll;
     procedure CloseAll;
-  end;</code></pre>
+  end;```
 Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
-<pre><code=pascal>  procedure TMyApp.InitMenuBar;
+```pascal>  procedure TMyApp.InitMenuBar;
   var
     R: TRect;
   begin
     GetExtent(R);
-    R.B.Y := R.A.Y + 1;</font>
+    R.B.Y := R.A.Y + 1;
 <br>
     MenuBar := New(PMenuBar, Init(R, NewMenu(
-      NewSubMenu('~D~atei', hcNoContext, NewMenu(</font>
-        NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,</font>
-        NewItem('~O~effnen...', 'F3', kbF3, cmOpen, hcNoContext,</font>
-        NewItem('~S~peichern', 'F2', kbF2, cmSave, hcNoContext,</font>
+      NewSubMenu('~D~atei', hcNoContext, NewMenu(
+        NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
+        NewItem('~O~effnen...', 'F3', kbF3, cmOpen, hcNoContext,
+        NewItem('~S~peichern', 'F2', kbF2, cmSave, hcNoContext,
         NewItem('Speichern ~u~nter...', '', kbNoKey, cmSaveAs, hcNoContext,
-        NewItem('~A~lle speichern', '', kbNoKey, cmSaveAll, hcNoContext,</font>
+        NewItem('~A~lle speichern', '', kbNoKey, cmSaveAll, hcNoContext,
         NewLine(
-        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))))))),</font>
-      NewSubMenu('~B~earbeiten', hcNoContext, NewMenu(</font>
+        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))))))),
+      NewSubMenu('~B~earbeiten', hcNoContext, NewMenu(
         NewItem('~R~'#129'ckg'#132'ngig', '', kbAltBack, cmUndo, hcUndo,
         NewLine(
         NewItem('Aus~s~chneiden', 'Shift+Del', kbShiftDel, cmCut, hcCut,
@@ -55,33 +55,33 @@ Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
         NewItem('~E~inf'#129'gen', 'Shift+Ins', kbShiftIns, cmPaste, hcPaste,
         NewItem('~L~'#148'schen', 'Ctrl+Del', kbCtrlDel, cmClear, hcClear,
         NewLine(
-        NewItem('~Z~wischenablage', '', kbNoKey, cmShowClip, hcCut, nil))))))))),</font>
-      NewSubMenu('~S~uchen', hcNoContext, NewMenu(</font>
-        NewItem('~S~uchen...', 'Ctrl+F', kbCtrlF, cmFind, hcNoContext,</font>
+        NewItem('~Z~wischenablage', '', kbNoKey, cmShowClip, hcCut, nil))))))))),
+      NewSubMenu('~S~uchen', hcNoContext, NewMenu(
+        NewItem('~S~uchen...', 'Ctrl+F', kbCtrlF, cmFind, hcNoContext,
         NewItem('~E~rsetzten...', 'Ctrl+H', kbCtrlH, cmReplace, hcNoContext,
         NewItem('Suche ~n~'#132'chstes', 'Ctrl+N', kbCtrlN, cmSearchAgain, hcNoContext, nil)))),
-      NewSubMenu('~F~enster', hcNoContext, NewMenu(</font>
-        NewItem('~N~ebeneinander', '', kbNoKey, cmTile, hcNoContext,</font>
+      NewSubMenu('~F~enster', hcNoContext, NewMenu(
+        NewItem('~N~ebeneinander', '', kbNoKey, cmTile, hcNoContext,
         NewItem(#154'ber~l~append', '', kbNoKey, cmCascade, hcNoContext,
-        NewItem('~A~lle schliessen', '', kbNoKey, cmCloseAll, hcNoContext,</font>
+        NewItem('~A~lle schliessen', '', kbNoKey, cmCloseAll, hcNoContext,
         NewItem('Anzeige ~e~rneuern', '', kbNoKey, cmRefresh, hcNoContext,
         NewLine(
-        NewItem('Gr'#148'sse/~P~osition', 'Ctrl+F5', kbCtrlF5, cmResize, hcNoContext,</font>
+        NewItem('Gr'#148'sse/~P~osition', 'Ctrl+F5', kbCtrlF5, cmResize, hcNoContext,
         NewItem('Ver~g~'#148'ssern', 'F5', kbF5, cmZoom, hcNoContext,
-        NewItem('~N~'#132'chstes', 'F6', kbF6, cmNext, hcNoContext,</font>
+        NewItem('~N~'#132'chstes', 'F6', kbF6, cmNext, hcNoContext,
         NewItem('~V~orheriges', 'Shift+F6', kbShiftF6, cmPrev, hcNoContext,
         NewLine(
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, nil)))))))))))), nil)))))));
-  end;</code></pre>
+  end;```
 Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
-<pre><code=pascal>  function TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = False) : PEditWindow;
+```pascal>  function TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = False) : PEditWindow;
   var
     Win: PEditWindow;
     R: TRect;
   const
-    WinCounter: integer = 0;</font>
+    WinCounter: integer = 0;
   begin
-    R.Assign(0, 0, 60, 20);</font>
+    R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
     Win := New(PEditWindow, Init(R, FileName, WinCounter));
     if ValidView(Win) <> nil then begin
@@ -92,16 +92,16 @@ Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
     end else begin
       Dec(WinCounter);
     end;
-  end;</code></pre>
+  end;```
 Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
 <br>
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
-          NewWindows('');</font>
+          NewWindows('');
         end;
         cmOpen: begin
           OpenWindows;
@@ -124,5 +124,5 @@ Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.<br>
         end;
       end;
     end;
-  end;</code></pre>
+  end;```
 <br>

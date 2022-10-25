@@ -7,7 +7,7 @@ Dazu schreibt man einen Nachkommen von <b>TDialog</b>.<br>
 Als Beispiel wird hier ein About-Dialog gebaut.<br>
 <hr><br>
 Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeben.<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     AboutDialog: PMyAbout;
   begin
@@ -28,14 +28,14 @@ Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeb
       end;
     end;
     ClearEvent(Event);
-  end;</code></pre>
+  end;```
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
-<pre><code>unit MyDialog;
-</code></pre>
+```pascalunit MyDialog;
+```
 Für den Dialog muss ein neuer Konstruktor erzeugt werden.<br>
 Noch ein Hinweis zu StaticText, wen man eine Leerzeile einfügen will, muss man <b>#13#32#13</b> schreiben, bei <b>#13#13</b>, wird nur ein einfacher Zeilenumbruch ausgefühert.<br>
-<pre><code>interface
+```pascalinterface
 <br>
 uses
   App, Objects, Drivers, Views, Dialogs;
@@ -45,30 +45,30 @@ type
   TMyAbout = object(TDialog)
     constructor Init;  // Neuer Konstruktor, welche den Dialog mit den Komponenten baut.
   end;
-</code></pre>
+```
 Im Konstruktor werden die Dialog-Komponeten erzeugt.<br>
-<pre><code>implementation
+```pascalimplementation
 <br>
 constructor TMyAbout.Init;
 var
   R: TRect;
 begin
-  R.Assign(0, 0, 42, 11);</font>
-  R.Move(23, 3);</font>
+  R.Assign(0, 0, 42, 11);
+  R.Move(23, 3);
 <br>
-  inherited Init(R, 'About');  // Dialog in verdefinierter Grösse erzeugen.</font>
+  inherited Init(R, 'About');  // Dialog in verdefinierter Grösse erzeugen.
 <br>
   // StaticText
-  R.Assign(5, 2, 41, 8);</font>
+  R.Assign(5, 2, 41, 8);
   Insert(new(PStaticText, Init(R,
     'Free Vison Tutorial 1.0' + #13 +
-    '2017' + #13 +</font>
-    'Gechrieben von M. Burkhard' + #13#32#13 +</font>
+    '2017' + #13 +
+    'Gechrieben von M. Burkhard' + #13#32#13 +
     'FPC: '+ {$I %FPCVERSION%} + '   OS:'+ {$I %FPCTARGETOS%} + '   CPU:' + {$I %FPCTARGETCPU%})));
 <br>
   // Ok-Button
-  R.Assign(27, 8, 37, 10);</font>
-  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+  R.Assign(27, 8, 37, 10);
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
-</code></pre>
+```
 <br>

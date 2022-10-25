@@ -10,15 +10,15 @@ Nur <b>PCollection</b> reicht <b>nicht</b>, da diese bei <b>Dispose</b> abschmie
 <br><br>
 Der Dialog mit der UnSortedStrCollection.<br>
 Deklaration des Dialog, nichts Besonderes.<br>
-<pre><code>type
+```pascaltype
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     constructor Init;
   end;
-</code></pre>
+```
 Es wird eine UnSortedStrCollection gebaut und<br>
 als Demonstration wird deren Inhalt in ein StaticText geschrieben.<br>
-<pre><code>constructor TMyDialog.Init;
+```pascalconstructor TMyDialog.Init;
 var
   R: TRect;
   s: shortstring;
@@ -27,31 +27,31 @@ var
 <br>
 const
   Tage: array [0..6] of shortstring = (
-    'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');</font>
+    'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
 <br>
 begin
-  R.Assign(10, 5, 50, 19);</font>
-  inherited Init(R, 'StringCollection Demo');</font>
+  R.Assign(10, 5, 50, 19);
+  inherited Init(R, 'StringCollection Demo');
 <br>
   // StringCollection
-  StringCollection := new(PUnSortedStrCollection, Init(5, 5));</font>
+  StringCollection := new(PUnSortedStrCollection, Init(5, 5));
   for i := 0 to Length(Tage) - 1 do begin
     StringCollection^.Insert(NewStr(Tage[i]));
   end;
-  s := '';</font>
+  s := '';
 <br>
-  for i := 0 to StringCollection^.Count - 1 do begin</font>
-    s := s + PString(StringCollection^.At(i))^ + #13;</font>
+  for i := 0 to StringCollection^.Count - 1 do begin
+    s := s + PString(StringCollection^.At(i))^ + #13;
   end;
 <br>
   Dispose(StringCollection, Done); // Die Liste freigeben
 <br>
-  R.Assign(5, 2, 36, 12);</font>
+  R.Assign(5, 2, 36, 12);
   Insert(new(PStaticText, Init(R, s)));
 <br>
   // Ok-Button
-  R.Assign(5, 11, 18, 13);</font>
-  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+  R.Assign(5, 11, 18, 13);
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
-</code></pre>
+```
 <br>

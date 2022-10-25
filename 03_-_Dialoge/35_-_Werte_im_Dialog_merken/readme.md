@@ -8,14 +8,14 @@ Aus diesem Grund werden jetzt die Werte in einen Record gespeichert.<br>
   In diesem Record werden die Werte des Dialoges gespeichert.<br>
   Die Reihenfolge der Daten im Record <b>muss</b> genau gleich sein, wie bei der Erstellung der Komponenten, ansonten gibt es einen Kräsch.<br>
   Bei Turbo-Pascal musste ein <b>Word</b> anstelle von <b>LongWord</b> genommen werden, dies ist wichtig beim Portieren alter Anwendungen.<br>
-<pre><code=pascal>type
+```pascal>type
   TParameterData = record
     Druck,
     Schrift: longword;
-    Hinweis: string[50];</font>
-  end;</code></pre>
+    Hinweis: string[50];
+  end;```
 Hier wird noch der Constructor vererbt, diesen Nachkomme wird gebraucht um die Dialogdaten mit Standard Werte zu laden.<br>
-<pre><code=pascal>type
+```pascal>type
   TMyApp = object(TApplication)
     ParameterData: TParameterData;                     // Daten für Parameter-Dialog
     constructor Init;                                  // Neuer Constructor
@@ -25,73 +25,73 @@ Hier wird noch der Constructor vererbt, diesen Nachkomme wird gebraucht um die D
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
 <br>
     procedure MyParameter;                             // neue Funktion für einen Dialog.
-  end;</code></pre>
+  end;```
 Der Constructoer welcher die Werte für den Dialog ladet.<br>
 Die Datenstruktur für die RadioButtons ist einfach. 0 ist der erste Button, 1 der Zweite, 2 der Dritte, usw.<br>
 Bei den Checkboxen macht man es am besten Binär. Im Beispiel werden der erste und dritte CheckBox gesetzt.<br>
-<pre><code=pascal>  constructor TMyApp.Init;
+```pascal>  constructor TMyApp.Init;
   begin
     inherited Init;     // Vorfahre aufrufen
     with ParameterData do begin
-      Druck := %0101;</font>
-      Schrift := 2;</font>
-      Hinweis := 'Hello world';</font>
+      Druck := %0101;
+      Schrift := 2;
+      Hinweis := 'Hello world';
     end;
-  end;</code></pre>
+  end;```
 Der Dialog wird jetzt mit Werten geladen.<br>
 Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
-<pre><code=pascal>  procedure TMyApp.MyParameter;
+```pascal>  procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
     R: TRect;
     dummy: word;
     View: PView;
   begin
-    R.Assign(0, 0, 35, 15);</font>
-    R.Move(23, 3);</font>
-    Dlg := New(PDialog, Init(R, 'Parameter'));</font>
+    R.Assign(0, 0, 35, 15);
+    R.Move(23, 3);
+    Dlg := New(PDialog, Init(R, 'Parameter'));
     with Dlg^ do begin
 <br>
       // CheckBoxen
-      R.Assign(2, 3, 18, 7);</font>
+      R.Assign(2, 3, 18, 7);
       View := New(PCheckBoxes, Init(R,
-        NewSItem('~D~atei',</font>
-        NewSItem('~Z~eile',</font>
-        NewSItem('D~a~tum',</font>
-        NewSItem('~Z~eit',</font>
+        NewSItem('~D~atei',
+        NewSItem('~Z~eile',
+        NewSItem('D~a~tum',
+        NewSItem('~Z~eit',
         nil))))));
       Insert(View);
       // Label für CheckGroup.
-      R.Assign(2, 2, 10, 3);</font>
-      Insert(New(PLabel, Init(R, 'Dr~u~cken', View)));</font>
+      R.Assign(2, 2, 10, 3);
+      Insert(New(PLabel, Init(R, 'Dr~u~cken', View)));
 <br>
       // RadioButton
-      R.Assign(21, 3, 33, 6);</font>
+      R.Assign(21, 3, 33, 6);
       View := New(PRadioButtons, Init(R,
-        NewSItem('~G~ross',</font>
-        NewSItem('~M~ittel',</font>
-        NewSItem('~K~lein',</font>
+        NewSItem('~G~ross',
+        NewSItem('~M~ittel',
+        NewSItem('~K~lein',
         nil)))));
       Insert(View);
       // Label für RadioGroup.
-      R.Assign(20, 2, 31, 3);</font>
-      Insert(New(PLabel, Init(R, '~S~chrift', View)));</font>
+      R.Assign(20, 2, 31, 3);
+      Insert(New(PLabel, Init(R, '~S~chrift', View)));
 <br>
       // Edit Zeile
-      R.Assign(3, 10, 32, 11);</font>
-      View := New(PInputLine, Init(R, 50));</font>
+      R.Assign(3, 10, 32, 11);
+      View := New(PInputLine, Init(R, 50));
       Insert(View);
       // Label für Edit Zeile
-      R.Assign(2, 9, 10, 10);</font>
-      Insert(New(PLabel, Init(R, '~H~inweis', View)));</font>
+      R.Assign(2, 9, 10, 10);
+      Insert(New(PLabel, Init(R, '~H~inweis', View)));
 <br>
       // Ok-Button
-      R.Assign(7, 12, 17, 14);</font>
-      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+      R.Assign(7, 12, 17, 14);
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 <br>
       // Schliessen-Button
-      R.Assign(19, 12, 32, 14);</font>
-      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));</font>
+      R.Assign(19, 12, 32, 14);
+      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
     Dlg^.SetData(ParameterData);      // Dialog mit den Werten laden.
     dummy := Desktop^.ExecView(Dlg);  // Dialog ausführen.
@@ -100,5 +100,5 @@ Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
     end;
 <br>
     Dispose(Dlg, Done);               // Dialog und Speicher frei geben.
-  end;</code></pre>
+  end;```
 <br>

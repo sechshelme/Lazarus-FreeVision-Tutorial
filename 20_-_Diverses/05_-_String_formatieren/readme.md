@@ -10,25 +10,25 @@ Dabei sind filgende Formatierungen möglich:<br>
 %x: Hexadezimal<br>
 %#: Formatierungen<br>
 Bei Realzahlen muss man sich folgendermassen behelfen:<br>
-<pre><code=pascal>procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);</code></pre>
+```pascal>procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);```
 <hr><br>
 <hr><br>
-<pre><code>unit MyDialog;
-</code></pre>
+```pascalunit MyDialog;
+```
 Deklaration des Dialogs.<br>
-<pre><code>type
+```pascaltype
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     constructor Init;
   end;
-</code></pre>
+```
 Bei Integern ist es wichtig, das man diese als <b>PtrInt</b> deklariert.<br>
-<pre><code>constructor TMyDialog.Init;
+```pascalconstructor TMyDialog.Init;
 const
-  acht = 8;</font>
-  vier = 16;</font>
-  Mo = 'Montag';</font>
-  Fr = 'Freitag';</font>
+  acht = 8;
+  vier = 16;
+  Mo = 'Montag';
+  Fr = 'Freitag';
 <br>
 var
   R: TRect;
@@ -37,9 +37,9 @@ var
     i1, i2: PtrInt;
   end;
   s: ShortString;
-</code></pre>
+```
 Hier sieht man, die Formatierung mit <b>FormatStr</b>.<br>
-<pre><code>begin
+```pascalbegin
   Params.s1 := NewStr(Mo);
   Params.s2 := NewStr(Fr);
   Params.i1 := acht;
@@ -48,17 +48,17 @@ Hier sieht man, die Formatierung mit <b>FormatStr</b>.<br>
   FormatStr(s, 'Gearbeitet wird zwischen %s und %s'#13+
     'und dies zwischen %d:00 und %d:00 Uhr.', (@Params)^);
 <br>
-  R.Assign(0, 0, 52, 13);</font>
-  R.Move(23, 3);</font>
-  inherited Init(R, 'String formatieren');</font>
+  R.Assign(0, 0, 52, 13);
+  R.Move(23, 3);
+  inherited Init(R, 'String formatieren');
 <br>
   // ---Statictext;
-  R.Assign(3, 2, 50, 5);</font>
+  R.Assign(3, 2, 50, 5);
   Insert(new(PStaticText, Init(R, s)));
 <br>
   // ---Ok-Button
-  R.Assign(20, 8, 32, 10);</font>
-  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+  R.Assign(20, 8, 32, 10);
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
-</code></pre>
+```
 <br>

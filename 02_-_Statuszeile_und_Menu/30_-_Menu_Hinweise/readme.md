@@ -6,34 +6,34 @@ Hinweise in der Statuszeile der Menü-Punkte.<br>
 <hr><br>
 Konstanten der einzelnen Hilfen.<br>
 Am besten mimmt man da hcxxx Namen.<br>
-<pre><code=pascal>const
-  cmList   = 1002;  // Datei Liste</font>
-  cmAbout  = 1001;  // About anzeigen</font>
+```pascal>const
+  cmList   = 1002;  // Datei Liste
+  cmAbout  = 1001;  // About anzeigen
 <br>
-  hcFile   = 10;</font>
-  hcClose  = 11;</font>
-  hcOption = 12;</font>
-  hcFormat = 13;</font>
-  hcEdit   = 14;</font>
-  hcHelp   = 15;</font>
-  hcAbout  = 16;</font></code></pre>
+  hcFile   = 10;
+  hcClose  = 11;
+  hcOption = 12;
+  hcFormat = 13;
+  hcEdit   = 14;
+  hcHelp   = 15;
+  hcAbout  = 16;```
 Die Hint-Zeile muss vererbt werden.<br>
-<pre><code=pascal>  procedure TMyApp.InitMenuBar;
+```pascal>  procedure TMyApp.InitMenuBar;
   var
     R: TRect;                   // Rechteck für die Menüzeilen-Position.
   begin
     GetExtent(R);
-    R.B.Y := R.A.Y + 1;</font>
+    R.B.Y := R.A.Y + 1;
 <br>
     MenuBar := New(PMenuBar, Init(R, NewMenu(
-      NewSubMenu('~D~atei', hcFile, NewMenu(</font>
-        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcClose, nil)),</font>
+      NewSubMenu('~D~atei', hcFile, NewMenu(
+        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcClose, nil)),
 <br>
-      NewSubMenu('~O~ptionen', hcOption, NewMenu(</font>
-        NewItem('~F~ormat', '', kbNoKey, cmAbout, hcFormat,</font>
-        NewItem('~E~itor', '', kbNoKey, cmAbout, hcEdit, nil))),</font>
+      NewSubMenu('~O~ptionen', hcOption, NewMenu(
+        NewItem('~F~ormat', '', kbNoKey, cmAbout, hcFormat,
+        NewItem('~E~itor', '', kbNoKey, cmAbout, hcEdit, nil))),
 <br>
-      NewSubMenu('~H~ilfe', hcHelp, NewMenu(</font>
-        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcAbout, nil)), nil))))));</font>
-  end;</code></pre>
+      NewSubMenu('~H~ilfe', hcHelp, NewMenu(
+        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcAbout, nil)), nil))))));
+  end;```
 <br>

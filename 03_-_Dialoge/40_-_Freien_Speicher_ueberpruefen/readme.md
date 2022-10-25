@@ -7,7 +7,7 @@ Auf den heutigen Rechner wird die wohl nicht mehr der Fall sein, das der Speiche
 <hr><br>
 Die virtuelle Procedure <b>OutOfMemory</b>, wen doch mal der Speicher überläuft.<br>
 Wen man diese Methode nicht überschreibt, dann wird keine Fehlermeldung ausgegeben, nur weis dann der Nutzer nicht, wieso sein View nicht erscheint.<br>
-<pre><code=pascal>type
+```pascal>type
   TMyApp = object(TApplication)
     ParameterData: TParameterData;                     // Parameter für Dialog.
     constructor Init;                                  // Neuer Constructor
@@ -18,68 +18,68 @@ Wen man diese Methode nicht überschreibt, dann wird keine Fehlermeldung ausgege
     procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
 <br>
     procedure MyParameter;                             // neue Funktion für einen Dialog.
-  end;</code></pre>
+  end;```
 Die Procedure wird aufgerufen, wen zu wenig Speicher vorhanden ist.<br>
-<pre><code=pascal>  procedure TMyApp.OutOfMemory;
+```pascal>  procedure TMyApp.OutOfMemory;
   begin
     MessageBox('Zu wenig Arbeitsspeicher !', nil, mfError + mfOkButton);
-  end;</code></pre>
+  end;```
 Der Dialog wird jetzt mit Werten geladen.<br>
 Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
 Mit <b>ValidView(...</b> prüft man ob genügend Specher vorhanden ist, um die Komponente zu erzeugen.<br>
 Wen nicht, kommt <b>nil<(b> zurück. Dabei spielt es keine Rolle, ob man <b>OutOfMemory</b> überschreibt.<br>
-<pre><code=pascal>  procedure TMyApp.MyParameter;
+```pascal>  procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
     R: TRect;
     dummy: word;
     View: PView;
   begin
-    R.Assign(0, 0, 35, 15);</font>
-    R.Move(23, 3);</font>
-    Dlg := New(PDialog, Init(R, 'Parameter'));</font>
+    R.Assign(0, 0, 35, 15);
+    R.Move(23, 3);
+    Dlg := New(PDialog, Init(R, 'Parameter'));
     with Dlg^ do begin
 <br>
       // CheckBoxen
-      R.Assign(2, 3, 18, 7);</font>
+      R.Assign(2, 3, 18, 7);
       View := New(PCheckBoxes, Init(R,
-        NewSItem('~D~atei',</font>
-        NewSItem('~Z~eile',</font>
-        NewSItem('D~a~tum',</font>
-        NewSItem('~Z~eit',</font>
+        NewSItem('~D~atei',
+        NewSItem('~Z~eile',
+        NewSItem('D~a~tum',
+        NewSItem('~Z~eit',
         nil))))));
       Insert(View);
       // Label für CheckGroup.
-      R.Assign(2, 2, 10, 3);</font>
-      Insert(New(PLabel, Init(R, 'Dr~u~cken', View)));</font>
+      R.Assign(2, 2, 10, 3);
+      Insert(New(PLabel, Init(R, 'Dr~u~cken', View)));
 <br>
       // RadioButton
-      R.Assign(21, 3, 33, 6);</font>
+      R.Assign(21, 3, 33, 6);
       View := New(PRadioButtons, Init(R,
-        NewSItem('~G~ross',</font>
-        NewSItem('~M~ittel',</font>
-        NewSItem('~K~lein',</font>
+        NewSItem('~G~ross',
+        NewSItem('~M~ittel',
+        NewSItem('~K~lein',
         nil)))));
       Insert(View);
       // Label für RadioGroup.
-      R.Assign(20, 2, 31, 3);</font>
-      Insert(New(PLabel, Init(R, '~S~chrift', View)));</font>
+      R.Assign(20, 2, 31, 3);
+      Insert(New(PLabel, Init(R, '~S~chrift', View)));
 <br>
       // Edit Zeile
-      R.Assign(3, 10, 32, 11);</font>
-      View := New(PInputLine, Init(R, 50));</font>
+      R.Assign(3, 10, 32, 11);
+      View := New(PInputLine, Init(R, 50));
       Insert(View);
       // Label für Edit Zeile
-      R.Assign(2, 9, 10, 10);</font>
-      Insert(New(PLabel, Init(R, '~H~inweis', View)));</font>
+      R.Assign(2, 9, 10, 10);
+      Insert(New(PLabel, Init(R, '~H~inweis', View)));
 <br>
       // Ok-Button
-      R.Assign(7, 12, 17, 14);</font>
-      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+      R.Assign(7, 12, 17, 14);
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 <br>
       // Schliessen-Button
-      R.Assign(19, 12, 32, 14);</font>
-      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));</font>
+      R.Assign(19, 12, 32, 14);
+      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
     end;
     if ValidView(Dlg) <> nil then begin // Prüfen ob genügend Speicher.
       Dlg^.SetData(ParameterData);      // Dialog mit den Werten laden.
@@ -90,5 +90,5 @@ Wen nicht, kommt <b>nil<(b> zurück. Dabei spielt es keine Rolle, ob man <b>OutO
 <br>
       Dispose(Dlg, Done);               // Dialog und Speicher frei geben.
     end;
-  end;</code></pre>
+  end;```
 <br>

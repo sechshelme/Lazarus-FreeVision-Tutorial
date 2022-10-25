@@ -5,26 +5,26 @@
 In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.<br>
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.<br>
 Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.<br>
-<pre><code=pascal>  procedure TMyApp.NewWindows(Titel: ShortString);
+```pascal>  procedure TMyApp.NewWindows(Titel: ShortString);
   var
     Win: PWindow;
     R: TRect;
   begin
-    R.Assign(0, 0, 60, 20);</font>
+    R.Assign(0, 0, 60, 20);
     Win := New(PWindow, Init(R, Titel, wnNoNumber));
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end;
-  end;</code></pre>
+  end;```
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit dem Zähler-Button.<br>
-<pre><code>unit MyDialog;
-</code></pre>
+```pascalunit MyDialog;
+```
 Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.<br>
 Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
-<pre><code>type
+```pascaltype
 <br>
   PNewListBox = ^TNewListBox;
 <br>
@@ -42,16 +42,16 @@ Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-</code></pre>
+```
 Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.<br>
 <b>CounterButton</b> wird für die Modifikation gebraucht.<br>
-<pre><code>const
-  cmTag = 1000;  // Lokale Event Konstante</font>
-</code></pre>
+```pascalconst
+  cmTag = 1000;  // Lokale Event Konstante
+```
 Im EventHandle, wird die Zahl im Button beim Drücken erhöht.<br>
 Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.<br>
 Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.<br>
-<pre><code>procedure TMyDialog.HandleEvent(var Event: TEvent);
+```pascalprocedure TMyDialog.HandleEvent(var Event: TEvent);
 begin
   case Event.What of
     evCommand: begin
@@ -71,5 +71,5 @@ begin
   end;
   inherited HandleEvent(Event);
 end;
-</code></pre>
+```
 <br>

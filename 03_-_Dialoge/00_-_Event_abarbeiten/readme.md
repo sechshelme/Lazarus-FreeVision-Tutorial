@@ -5,18 +5,18 @@
 Abarbeiten der Events, der Statuszeile und des Menu.<br>
 <hr><br>
 Kommmandos die abgearbeitet werden.<br>
-<pre><code=pascal>const
-  cmAbout = 1001;     // About anzeigen</font>
-  cmList = 1002;      // Datei Liste</font></code></pre>
+```pascal>const
+  cmAbout = 1001;     // About anzeigen
+  cmList = 1002;      // Datei Liste```
 Der EventHandler ist auch ein Nachkommen.<br>
-<pre><code=pascal>type
+```pascal>type
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;                 // Statuszeile
     procedure InitMenuBar; virtual;                    // Menü
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
-  end;</code></pre>
+  end;```
 Abarbeiten der eigenen cmxxx Kommandos.<br>
-<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
 <br>
@@ -32,5 +32,5 @@ Abarbeiten der eigenen cmxxx Kommandos.<br>
       end;
     end;
     ClearEvent(Event);
-  end;</code></pre>
+  end;```
 <br>
