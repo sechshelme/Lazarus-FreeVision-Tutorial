@@ -5,6 +5,7 @@
 Fenster verwalten. Nun ist es möglich über das Menü Steuerkomandos für die Fensterverwaltung zu geben.<br>
 ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.<br>
 ---
+<br>
 Das Menü wurde um die Steuerbefehle für die Fensterverwatung ergänzt.<br>
 Die ausgeklammerten Kommandos müssen manuel gemacht werden.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;

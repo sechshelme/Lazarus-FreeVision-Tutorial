@@ -6,6 +6,7 @@ Man hat sogar die Möglichkeit, den ganzen Background selbst zu zeichnen.<br>
 Da man alles selbst zeichent kann man sich den Umweg über <b>TBackGround</b> sparen und direkt <B>TView</b> vererben.<br>
 <b>TBackGround</b> ist ein direkter Nachkomme von <b>TView</b>.<br>
 ---
+<br>
 Für das Object <b>TView</b> wird ein Nachkomme erzeugt, welcher eine neue <b>Draw</b> Procedure bekommt.<br>
 <pre><code=pascal><b><font color="0000BB">type</font></b>
   PMyBackground = ^TMyBackground;

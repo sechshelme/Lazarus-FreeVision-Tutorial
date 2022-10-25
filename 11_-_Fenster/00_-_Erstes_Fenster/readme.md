@@ -4,6 +4,7 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Erstes Memo-Fenster.<br>
 ---
+<br>
 Der Constructor wird vererbt, so das von Anfang an ein neues Fenster erstellt wird.<br>
 <pre><code=pascal><b><font color="0000BB">type</font></b>
   TMyApp = <b><font color="0000BB">object</font></b>(TApplication)

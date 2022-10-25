@@ -7,6 +7,7 @@ Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.<b
 Die <b>TListBox</b> ist ein gutes Beispiel, da diese die Liste nicht selbst aufräumt.<br>
 Dort feht der <b>destructor</b>, welcher den Speicher aufräumt. Dies macht auch Sinn, da man Listen auch global verwenden kann.<br>
 ---
+<br>
     Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.<br>
 <pre><code=pascal>    GetExtent(R);
     R.A.X := R.B.X - <font color="#0077BB">12</font>;
@@ -65,6 +66,7 @@ Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
 ---
+<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit dem dem Speicher Leak<br>

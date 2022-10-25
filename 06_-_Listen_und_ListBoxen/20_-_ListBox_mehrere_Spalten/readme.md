@@ -4,7 +4,9 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Die <b>ListBox</b> kann auch mehrere Spalten haben.<br>
 ---
+<br>
 ---
+<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der mehrspaltigen ListBox<br>

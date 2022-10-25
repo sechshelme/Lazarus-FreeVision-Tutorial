@@ -11,6 +11,7 @@ Hilfe-Fenster  : Cyan</code></pre>
 Ohne Zutun, kommen die Fenster/Dialog immer in der richtigen Farbe.<br>
 Eine Modifizierung ist nur in speziellen Fällen von Sinnen.<br>
 ---
+<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.<br>

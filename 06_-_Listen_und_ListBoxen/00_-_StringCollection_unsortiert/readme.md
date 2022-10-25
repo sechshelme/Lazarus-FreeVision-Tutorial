@@ -5,7 +5,9 @@
 Wen die Stringliste unsortiert bleiben soll, verwendet man <b>PUnSortedStrCollection</b>.<br>
 Nur <b>PCollection</b> reicht <b>nicht</b>, da diese bei <b>Dispose</b> abschmiert.<br>
 ---
+<br>
 ---
+<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der UnSortedStrCollection.<br>

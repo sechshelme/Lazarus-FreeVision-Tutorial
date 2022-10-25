@@ -5,6 +5,7 @@
 Ein Dialog zum öffnen und speichern von Dateien.<br>
 Der <b>PFileDialog</b>.<br>
 ---
+<br>
 Verschiedene Datei-Dialoge<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>

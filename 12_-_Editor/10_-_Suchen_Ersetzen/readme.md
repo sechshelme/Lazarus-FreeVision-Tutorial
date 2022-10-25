@@ -8,6 +8,7 @@ Aus diesem Grund, wird es hier neu in deutsch gebaut.<br>
 Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialog der Fall ist.<br>
 Gibt man sich mit den englischen Dialogen zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menü anpassen, der Rest geschieht automatisch.<br>
 ---
+<br>
 Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verdeutscht.<br>
 <pre><code=pascal>  <i><font color="#FFFF00">// === Suchen Dialog</font></i>
   <b><font color="0000BB">function</font></b> DECreateFindDialog: PDialog;

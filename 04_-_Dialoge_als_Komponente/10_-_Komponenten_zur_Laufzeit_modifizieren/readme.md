@@ -5,6 +5,7 @@
 In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.<br>
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.<br>
 ---
+<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit dem Zähler-Button.<br>

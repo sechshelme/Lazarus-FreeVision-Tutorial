@@ -6,6 +6,7 @@ Hier wurde ein Zwischenablage hinzugefügt, somit ist auch kopieren und einfüge
 Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bekommt, wen man kopieren wählt.<br>
 Somit kann man dieses sogar sichbar machen.<br>
 ---
+<br>
 Ein Kommando für das öffnen des Zwischenablagefenster.<br>
 <pre><code=pascal><b><font color="0000BB">const</font></b>
   cmNewWin = <font color="#0077BB">1001</font>;

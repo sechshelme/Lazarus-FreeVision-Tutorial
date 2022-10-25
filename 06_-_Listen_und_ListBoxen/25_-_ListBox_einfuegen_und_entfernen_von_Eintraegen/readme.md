@@ -5,7 +5,9 @@
 Bei <b>ListBox</b> kann man auch Einträge einfügen, entfernen, etc.<br>
 ZT. muss man da direkt auf die Liste zugreifen.<br>
 ---
+<br>
 ---
+<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der mehrspaltigen ListBox<br>

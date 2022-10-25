@@ -5,7 +5,9 @@
 In den vererbten Dialogen ist es möglich Buttons einubauen, welche lokal im Dialog eine Aktion ausführen.<br>
 Im Beispiel wir eine MessageBox aufgerufen.<br>
 ---
+<br>
 ---
+<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Dort wird gezeigt, wie man Werte bei Komponenten zu Laufzeit lesen und schreiben kann.<br>

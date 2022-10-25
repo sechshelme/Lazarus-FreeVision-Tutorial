@@ -5,6 +5,7 @@
 Ändern der Status-Zeile.<br>
 Die Statuszeile wird gebraucht um wichtige Information und HotKey anzuzeigen.<br>
 ---
+<br>
 Für die Statuszeile werden noch verschiedene Units gebraucht.<br>
 <pre><code=pascal><b><font color="0000BB">uses</font></b>
   App,      <i><font color="#FFFF00">// TApplication</font></i>

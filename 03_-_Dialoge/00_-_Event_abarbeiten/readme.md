@@ -4,6 +4,7 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Abarbeiten der Events, der Statuszeile und des Menu.<br>
 ---
+<br>
 Kommmandos die abgearbeitet werden.<br>
 <pre><code=pascal><b><font color="0000BB">const</font></b>
   cmAbout = <font color="#0077BB">1001</font>;     <i><font color="#FFFF00">// About anzeigen</font></i>

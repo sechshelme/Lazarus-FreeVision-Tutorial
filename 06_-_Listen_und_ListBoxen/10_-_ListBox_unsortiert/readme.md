@@ -7,7 +7,9 @@ Dies ist nicht Free-Vision üblich. Dies hat auch einen Sinn, da man Listen viel
 ansonsten müsste man immer eine Kopie davon anlegen.<br>
 Dort fehlt der <b>destructor</b>, welcher den Speicher aufräumt.<br>
 ---
+<br>
 ---
+<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der ListBox<br>

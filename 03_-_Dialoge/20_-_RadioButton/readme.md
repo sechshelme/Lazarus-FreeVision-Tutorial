@@ -4,6 +4,7 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Dialog um RadioButtons ergänzen.<br>
 ---
+<br>
 Das Menü wurde noch ein wenig geändert/ergänzt.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
   <b><font color="0000BB">var</font></b>
