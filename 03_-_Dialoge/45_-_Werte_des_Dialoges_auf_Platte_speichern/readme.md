@@ -4,7 +4,7 @@
 Das die Werte des Dialoges auch nach beenden der Anwendung erhalten bleiben, speichern wir die Daten auf die Platte.<br>
 Es wird nicht überprüft, ob geschrieben werden kann, etc.<br>
 Wen man dies will müsste man mit <b>IOResult</b>, etc. überprüfen.<br>
-<hr><br>
+---
 Hier kommt noch <b>sysutils</b> hinzu, sie wird für <b>FileExits</b> gebraucht.<br>
 <pre><code=pascal><b><font color="0000BB">uses</font></b>
   SysUtils, <i><font color="#FFFF00">// Für Dateioperationen</font></i></code></pre>

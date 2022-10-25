@@ -2,7 +2,7 @@
 ## 10 - Menu
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinzufügen eines Menüs.<br>
-<hr><br>
+---
 Für das Menü werden die gleichen Units wie für die Statuszeile gebraucht.<br>
 <pre><code=pascal><b><font color="0000BB">uses</font></b>
   App,      <i><font color="#FFFF00">// TApplication</font></i>

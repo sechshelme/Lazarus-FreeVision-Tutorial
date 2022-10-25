@@ -3,7 +3,7 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.<br>
 Im Beispiel wir eine MessageBox aufgerufen.<br>
-<hr><br>
+---
 Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas gemacht wird.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>
@@ -27,7 +27,7 @@ Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas ge
     <b><font color="0000BB">end</font></b>;
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Dort sieht man gut, das es ein Button für lokale Ereignisse hat.<br>

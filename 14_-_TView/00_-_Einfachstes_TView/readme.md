@@ -4,7 +4,7 @@
 <b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.<br>
 Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>
 An diesem View sind keinerlei Änderungen möglich, da noch keine Event, Steurerelemente vorhanden sind.<br>
-<hr><br>
+---
 Im Konstructor wird das View erzeugt.<br>
 <pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
   <b><font color="0000BB">begin</font></b>

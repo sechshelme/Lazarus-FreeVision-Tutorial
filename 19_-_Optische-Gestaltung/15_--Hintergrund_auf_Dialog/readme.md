@@ -2,7 +2,7 @@
 ## 15 --Hintergrund auf Dialog
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei Bedarf, kann man auch ein Hintergrund-Muster auf einen Dialog/Fenster legen.<br>
-<hr><br>
+---
 Hier wird der <b>PBackGround</b> auf einen Dialog gelegt, dies funktioniert genau gleich, wie auf dem Desktop.<br>
 Dies kann auch der benutzerdefiniert <b>PMyBackground</b> sein.<br>
 <b>Wichtig</b> ist, der Background <b>MUSS</b> zuerst in den Dialog eingefügt werden,<br>

@@ -2,7 +2,7 @@
 ## 50 - StaticText gut fuer ein About
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wird ein About-Dialog erstellt, das sieht man gut für was man Label gebrauchen kann.<br>
-<hr><br>
+---
 Die Datei, in welcher sich die Daten für den Dialog befinden.<br>
 <pre><code=pascal><b><font color="0000BB">const</font></b>
   DialogDatei = <font color="#FF0000">'parameter.cfg'</font>;</code></pre>

@@ -15,7 +15,7 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
       Desktop^.Insert(Win);
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit dem Zähler-Button.<br>

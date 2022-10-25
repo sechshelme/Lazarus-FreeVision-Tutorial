@@ -7,7 +7,7 @@ Und das wichtigste für einen Editor, ein Memo in dem man schreiben kann.<br>
 <br>
 Wen man einen Editor schreiben will, dann nimmt man dazu <b>PEditWindow</b> aus der Unit <b>Editors</b>.<br>
 Dies ist viel einfacher, als alles selbst zu bauen.<br>
-<hr><br>
+---
 Hier wird das neue vererbte Windows erzeugt.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
   <b><font color="0000BB">var</font></b>
@@ -26,7 +26,7 @@ Hier wird das neue vererbte Windows erzeugt.<br>
       Dec(WinCounter);
     <b><font color="0000BB">end</font></b>;
   <b><font color="0000BB">end</font></b>;</code></pre>
-<hr><br>
+---
 <b>Unit mit dem neuen Fenster.</b><br>
 <br><br>
 <pre><code><b><font color="0000BB">unit</font></b> MyWindow;

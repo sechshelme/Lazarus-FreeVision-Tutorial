@@ -4,7 +4,7 @@
 Man kann auch eine Komponente modifzieren, in diesem Beispiel ist es ein Button.<br>
 Dazu muss man einen Nachkommen von TButton erstellen.<br>
 Der abgeänderte Button passt sich automatisch an die Länge des Titels an, auch wird er automatisch 2 Zeilen hoch.<br>
-<hr><br>
+---
 Anstelle des normalen Button nehme ich jetzt den PMyButton.<br>
 Man sieht auch, das man anstelle von Rect, nur X und Y angibt.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
@@ -31,7 +31,7 @@ Man sieht auch, das man anstelle von Rect, nur X und Y angibt.<br>
     Desktop^.ExecView(Dia);   <i><font color="#FFFF00">// Dialog Modal öffnen.</font></i>
     <b><font color="0000BB">Dispose</font></b>(Dia, Done);       <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
   <b><font color="0000BB">end</font></b>;</code></pre>
-<hr><br>
+---
 <b>Unit mit dem neuen Button.</b><br>
 <br><br>
 Hier wird gezeigt, wie man einen Button abänder kann.<br>

@@ -5,8 +5,8 @@ Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList 
 Dies ist nicht Free-Vision üblich. Dies hat auch einen Sinn, da man Listen vielfach global verwendet, <br>
 ansonsten müsste man immer eine Kopie davon anlegen.<br>
 Dort fehlt der <b>destructor</b>, welcher den Speicher aufräumt.<br>
-<hr><br>
-<hr><br>
+---
+---
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der ListBox<br>

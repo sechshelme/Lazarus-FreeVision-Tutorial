@@ -2,7 +2,7 @@
 ## 25 - Bezeichnung fuer Check und Radio-Group
 <img src="image.png" alt="Selfhtml"><br><br>
 Radio und Check-Group mit einem Label bezeichnen.<br>
-<hr><br>
+---
 Die Check und Radio-GroupButton mit Label ergänzen.<br>
 Dies funktioniert fast gleich, wie ein normales Label. einziger Unterschied, anstelle von <b>nil</b> gibt man den Pointer auf die Group mit.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;

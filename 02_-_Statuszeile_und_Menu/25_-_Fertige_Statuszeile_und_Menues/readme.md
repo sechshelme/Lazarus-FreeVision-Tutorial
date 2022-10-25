@@ -5,7 +5,7 @@ Für die Statuszeile und das Menü gibt es fertige Items, aber ich bevorzuge es,
 Die fetigen Items sind nur in Englisch.<br>
 Die Statuszeile ist Textlos, das einzige, sie bringt Schnellkomandos mit. ( cmQuit, cmMenu, cmClose, cmZoom, cmNext, cmPrev )<br>
 Bis aus <b>OS shell</b> und <b>Exit</b> passiert nichts.<br>
-<hr><br>
+---
 Mit <b>StdStatusKeys(...</b> wird eine Statuszeile estellt, aber wie oben beschrieben, sieht man keinne Text.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitStatusLine;
   <b><font color="0000BB">var</font></b>

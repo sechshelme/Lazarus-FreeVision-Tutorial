@@ -3,7 +3,7 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 <b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.<br>
 Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>
-<hr><br>
+---
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
@@ -61,7 +61,7 @@ Da es im View keine <b>cmClose</b> Abarbeitung gibt, wird manuell in einer Schle
     <b><font color="0000BB">end</font></b>;
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.<br>

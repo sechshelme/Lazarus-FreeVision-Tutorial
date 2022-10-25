@@ -3,7 +3,7 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei der MessageBox, kann man die Grösse auch manuell festlegen.<br>
 Dazu muss man <b>MeassgeBoxRect(...)</b> verwenden.<br>
-<hr><br>
+---
 Hier wird mir <b>R.Assign</b> die grösse der Box selbst festgelegt.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>

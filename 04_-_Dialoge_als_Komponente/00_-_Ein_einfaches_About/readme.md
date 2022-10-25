@@ -4,7 +4,7 @@
 Wen man immer wieder die gleichen Dialog braucht, packt man diesen am besten als Komponente in eine Unit.<br>
 Dazu schreibt man einen Nachkommen von <b>TDialog</b>.<br>
 Als Beispiel wird hier ein About-Dialog gebaut.<br>
-<hr><br>
+---
 Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeben.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>
@@ -28,7 +28,7 @@ Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeb
     <b><font color="0000BB">end</font></b>;
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b><br>
 <pre><code><b><font color="0000BB">unit</font></b> MyDialog;
 </code></pre>

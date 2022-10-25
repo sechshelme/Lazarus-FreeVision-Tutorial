@@ -2,7 +2,7 @@
 ## 05 - Fenster neu und schliessen
 <img src="image.png" alt="Selfhtml"><br><br>
 Über das Menü Fenster erzeigen und schliessen.<br>
-<hr><br>
+---
 Neue Konstanten für Kommados.<br>
 Auch ist der HandleEvent dazugekommen.<br>
 <pre><code=pascal><b><font color="0000BB">const</font></b>

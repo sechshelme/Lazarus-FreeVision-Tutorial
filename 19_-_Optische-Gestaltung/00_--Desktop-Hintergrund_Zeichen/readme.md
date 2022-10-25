@@ -2,7 +2,7 @@
 ## 00 --Desktop-Hintergrund Zeichen
 <img src="image.png" alt="Selfhtml"><br><br>
 Beim Desktophintergrund kann man ein beliebiges Hintergrund-Zeichen zuordnen. Als Default ist das Zeichen <b>#176</b>.<br>
-<hr><br>
+---
 Der Hintergrund fügt man ähnlich zu, wie ein Fenster/Dialog, dies geschieht auch mit <b>Insert</b>.<br>
 Mit <b>#3</b> füllt es den Hintergrund mit Herzen auf.<br>
 <pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;

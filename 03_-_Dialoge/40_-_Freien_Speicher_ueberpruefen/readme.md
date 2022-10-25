@@ -3,7 +3,7 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Überprüfen ob genügend Speicher frei ist, um den Dialog zu erzeugen.<br>
 Auf den heutigen Rechner wird die wohl nicht mehr der Fall sein, das der Speicher wegen eines Dialoges überläuft.<br>
-<hr><br>
+---
 Die virtuelle Procedure <b>OutOfMemory</b>, wen doch mal der Speicher überläuft.<br>
 Wen man diese Methode nicht überschreibt, dann wird keine Fehlermeldung ausgegeben, nur weis dann der Nutzer nicht, wieso sein View nicht erscheint.<br>
 <pre><code=pascal><b><font color="0000BB">type</font></b>

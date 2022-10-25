@@ -2,7 +2,7 @@
 ## 05 - Erster Dialog
 <img src="image.png" alt="Selfhtml"><br><br>
 Abarbeiten der Events, der Statuszeile und des Menu.<br>
-<hr><br>
+---
 Für Dialoge muss man noch die Unit <b>Dialogs</b> einfügen.<br>
 <pre><code=pascal><b><font color="0000BB">uses</font></b>
   App,      <i><font color="#FFFF00">// TApplication</font></i>

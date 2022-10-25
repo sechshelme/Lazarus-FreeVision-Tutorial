@@ -3,7 +3,7 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/klickt.<br>
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
-<hr><br>
+---
 Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>
@@ -27,7 +27,7 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
     <b><font color="0000BB">end</font></b>;
     ClearEvent(Event);
   <b><font color="0000BB">end</font></b>;</code></pre>
-<hr><br>
+---
 <b>Unit mit dem Keyboardaktions-Dialog.</b><br>
 <br><br>
 <pre><code><b><font color="0000BB">unit</font></b> MyDialog;

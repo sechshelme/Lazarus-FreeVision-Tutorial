@@ -2,7 +2,7 @@
 ## 05 - Status Zeile mehrere Eintraege
 <img src="image.png" alt="Selfhtml"><br><br>
 Ändern der Status-Zeile, mit mehreren Optionen.<br>
-<hr><br>
+---
 In der Statuszeile sind auch mehrere Hot-Key möglich.<br>
 Die Deklaration könnte man verschachtelt in einer Zeile schreiben.<br>
 Im Beispiel wird es gesplittet gemacht.<br>

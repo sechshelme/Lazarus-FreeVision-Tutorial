@@ -3,7 +3,7 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Es gibt auch einen fertigen Dialog für eine String-Eingabe.<br>
 Es gibt noch <b>InputBoxRect</b>, dort kann man die Grösser der Box selbst festlegen.<br>
-<hr><br>
+---
 So sieht der Code für die String-Eingabe aus.<br>
 <pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
   <b><font color="0000BB">var</font></b>

@@ -2,8 +2,8 @@
 ## 15 - ListBox sortiert
 <img src="image.png" alt="Selfhtml"><br><br>
 Die ListBox kann auch sortiert sein.<br>
-<hr><br>
-<hr><br>
+---
+---
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der ListBox<br>

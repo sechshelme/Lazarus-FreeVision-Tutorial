@@ -2,7 +2,7 @@
 ## 05 - Einfache MessageBox mit Auswertung
 <img src="image.png" alt="Selfhtml"><br><br>
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
-<hr><br>
+---
 Konstanten für die verschiedenen Menüeinträge.<br>
 <pre><code=pascal><b><font color="0000BB">const</font></b>
   cmAbout        = <font color="#0077BB">1001</font>;

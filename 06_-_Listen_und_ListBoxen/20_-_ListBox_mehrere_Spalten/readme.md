@@ -2,8 +2,8 @@
 ## 20 - ListBox mehrere Spalten
 <img src="image.png" alt="Selfhtml"><br><br>
 Die <b>ListBox</b> kann auch mehrere Spalten haben.<br>
-<hr><br>
-<hr><br>
+---
+---
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der mehrspaltigen ListBox<br>
