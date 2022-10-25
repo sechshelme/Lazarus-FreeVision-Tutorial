@@ -8,13 +8,13 @@ Die <b>TListBox</b> ist ein gutes Beispiel, da diese die Liste nicht selbst aufr
 Dort feht der <b>destructor</b>, welcher den Speicher aufräumt. Dies macht auch Sinn, da man Listen auch global verwenden kann.<br>
 <hr><br>
     Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.<br>
-```pascal>    GetExtent(R);
+```pascal    GetExtent(R);
     R.A.X := R.B.X - 12;
     R.A.Y := R.B.Y - 1;
     Heap := New(PHeapView, Init(R));
     Insert(Heap); ```
 Den Dialog mit dem Speicher Leak aufrufen.<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     MyDialog: PMyDialog;
     FileDialog: PFileDialog;
@@ -48,7 +48,7 @@ Den Dialog mit dem Speicher Leak aufrufen.<br>
     ClearEvent(Event);
   end;```
 Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
-```pascal>  procedure TMyApp.Idle;
+```pascal  procedure TMyApp.Idle;
 <br>
     function IsTileable(P: PView): Boolean;
     begin

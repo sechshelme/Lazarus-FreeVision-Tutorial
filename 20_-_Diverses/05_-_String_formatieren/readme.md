@@ -10,7 +10,7 @@ Dabei sind filgende Formatierungen möglich:<br>
 %x: Hexadezimal<br>
 %#: Formatierungen<br>
 Bei Realzahlen muss man sich folgendermassen behelfen:<br>
-```pascal>procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);```
+```pascalprocedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);```
 <hr><br>
 <hr><br>
 ```pascalunit MyDialog;

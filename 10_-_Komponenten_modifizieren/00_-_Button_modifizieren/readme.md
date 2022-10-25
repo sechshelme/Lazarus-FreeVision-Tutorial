@@ -8,7 +8,7 @@ Der abgeänderte Button passt sich automatisch an die Länge des Titels an, auch
 <hr><br>
 Anstelle des normalen Button nehme ich jetzt den PMyButton.<br>
 Man sieht auch, das man anstelle von Rect, nur X und Y angibt.<br>
-```pascal>  procedure TMyApp.MyParameter;
+```pascal  procedure TMyApp.MyParameter;
   var
     Dia: PDialog;
     R: TRect;

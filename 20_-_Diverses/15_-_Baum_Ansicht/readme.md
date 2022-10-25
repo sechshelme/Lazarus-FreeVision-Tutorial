@@ -5,7 +5,7 @@
 Baumartige Darstellung.<br>
 <hr><br>
 Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.<br>
-```pascal>  PTreeWindow = ^TTreeWindow;
+```pascal  PTreeWindow = ^TTreeWindow;
   TTreeWindow = object(TWindow)
     constructor Init(R: TRect);
   end;
@@ -34,7 +34,7 @@ Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.<br
     Insert(Outline);
   end;```
 Hier wird das Fenster erzeugt, welches die Outline enthält.<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     R: TRect;
   begin

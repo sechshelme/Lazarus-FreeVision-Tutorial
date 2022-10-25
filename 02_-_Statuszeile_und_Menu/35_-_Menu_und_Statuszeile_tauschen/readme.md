@@ -8,7 +8,7 @@ Dazu wird die aktuelle Komponente entfernt und die neue eingefügt.<br>
 In dem Beispiel gibt es je eine deutsche und englische Komponente.<br>
 <hr><br>
 Deklaration der Komponenten<br>
-```pascal>  TMyApp = object(TApplication)
+```pascal  TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;                 // Statuszeile
     procedure InitMenuBar; virtual;                    // Menü
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
@@ -17,7 +17,7 @@ Deklaration der Komponenten<br>
     StatusGer, StatusEng: PStatusLine;    // Die beiden Stauszeilen
   end;```
 Inizialisieren der beiden Statuszeilen.<br>
-```pascal>  procedure TMyApp.InitStatusLine;
+```pascal  procedure TMyApp.InitStatusLine;
   var
     R: TRect;
   begin
@@ -39,7 +39,7 @@ Inizialisieren der beiden Statuszeilen.<br>
     StatusLine := StatusGer; // Deutsch per Default
   end;```
 Inizialisieren der beiden Menüs.<br>
-```pascal>  procedure TMyApp.InitMenuBar;
+```pascal  procedure TMyApp.InitMenuBar;
   var
     R: TRect;
   begin
@@ -77,7 +77,7 @@ Inizialisieren der beiden Menüs.<br>
     MenuBar := menuGer; // Deutsch per Default
   end;```
 Austauschen der Komponenten<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     Rect: TRect;              // Rechteck für die Statuszeilen Position.
 <br>

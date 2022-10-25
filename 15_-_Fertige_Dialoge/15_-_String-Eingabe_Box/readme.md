@@ -6,7 +6,7 @@ Es gibt auch einen fertigen Dialog für eine String-Eingabe.<br>
 Es gibt noch <b>InputBoxRect</b>, dort kann man die Grösser der Box selbst festlegen.<br>
 <hr><br>
 So sieht der Code für die String-Eingabe aus.<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     s:ShortString;
   begin

@@ -7,13 +7,13 @@ Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bek
 Somit kann man dieses sogar sichbar machen.<br>
 <hr><br>
 Ein Kommando für das öffnen des Zwischenablagefenster.<br>
-```pascal>const
+```pascalconst
   cmNewWin = 1001;
   cmRefresh = 1002;
   cmShowClip = 1003;```
 Hier wird das Fenster für die Zwischenablage deklariert.<br>
 Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt werden soll.<br>
-```pascal>type
+```pascaltype
   TMyApp = object(TApplication)
     ClipWindow: PEditWindow;
 <br>
@@ -31,7 +31,7 @@ Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt 
     procedure CloseAll;
   end;```
 Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
-```pascal>  procedure TMyApp.InitMenuBar;
+```pascal  procedure TMyApp.InitMenuBar;
   var
     R: TRect;
   begin
@@ -74,7 +74,7 @@ Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, nil)))))))))))), nil)))))));
   end;```
 Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
-```pascal>  function TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = False) : PEditWindow;
+```pascal  function TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = False) : PEditWindow;
   var
     Win: PEditWindow;
     R: TRect;
@@ -94,7 +94,7 @@ Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
     end;
   end;```
 Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
 <br>

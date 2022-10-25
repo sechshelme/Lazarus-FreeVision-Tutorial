@@ -7,13 +7,13 @@ Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.<br>
 Das Object mit dem UhrenDialog befindet sich in der Unit <b>UhrDialog</b>.<br>
 <hr><br>
 Neue Konstante für das Kommado neuer UhrenDialog.<br>
-```pascal>const
+```pascalconst
   cmNewWin = 1001;
   cmNewUhr = 1002;```
 Hier befindet sich die wichtigste Methode <b>Idle</b>.<br>
 Diese Methode wird aufgerufen, wen die CPU sonst nichts zu tun hat.<br>
 Hier wird sie verwendet um die Uhr-Zeit in den Dialogen zu aktualiesieren.<br>
-```pascal>type
+```pascaltype
   TMyApp = object(TApplication)
     zeitalt: Integer;
     constructor Init;
@@ -29,14 +29,14 @@ Hier wird sie verwendet um die Uhr-Zeit in den Dialogen zu aktualiesieren.<br>
     procedure Idle; Virtual;  // Das wichtigste.
   end;```
 Am Anfang wird ein Fenster und ein Uhrendialog erzeugt.<br>
-```pascal>constructor TMyApp.Init;
+```pascalconstructor TMyApp.Init;
 begin
   inherited Init;   // Der Vorfahre aufrufen.
   NewWindows;       // Fenster erzeugen.
   NewUhr;           // Uhrendialog erzeugen.
 end;```
 Neuer Uhrendialog in den Desktop einfügen.<br>
-```pascal>procedure TMyApp.NewUhr;
+```pascalprocedure TMyApp.NewUhr;
 begin
   Desktop^.Insert(ValidView(New(PUhrView, Init)));
 end;```
@@ -48,7 +48,7 @@ Beim Fenster läuft dieses einfach durch.<br>
 Auch sieht man gut, das das Message nur aufgerufen wird, wen ein Sekunde verstrichen ist.<br>
 Als letzter Parameter wird ein Pointer auf einen String übergeben, welcher dir aktuelle Zeit enthält.<br>
 Würde man es bei jedem Idle machen, würde die Uhr nur flimmern.<br>
-```pascal>procedure TMyApp.Idle;
+```pascalprocedure TMyApp.Idle;
 var
   zeitNeu: Integer;
   s: ShortString;      // Speichert die aktuelle Zeit als String.
@@ -61,7 +61,7 @@ begin
   end;
 end;```
 Dieses HandleEvent interessiert das Kommando <b>cmUhrRefresh</b> nicht.<br>
-```pascal>procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascalprocedure TMyApp.HandleEvent(var Event: TEvent);
 begin
   inherited HandleEvent(Event);
 <br>

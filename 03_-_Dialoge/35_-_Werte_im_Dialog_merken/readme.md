@@ -8,14 +8,14 @@ Aus diesem Grund werden jetzt die Werte in einen Record gespeichert.<br>
   In diesem Record werden die Werte des Dialoges gespeichert.<br>
   Die Reihenfolge der Daten im Record <b>muss</b> genau gleich sein, wie bei der Erstellung der Komponenten, ansonten gibt es einen Kräsch.<br>
   Bei Turbo-Pascal musste ein <b>Word</b> anstelle von <b>LongWord</b> genommen werden, dies ist wichtig beim Portieren alter Anwendungen.<br>
-```pascal>type
+```pascaltype
   TParameterData = record
     Druck,
     Schrift: longword;
     Hinweis: string[50];
   end;```
 Hier wird noch der Constructor vererbt, diesen Nachkomme wird gebraucht um die Dialogdaten mit Standard Werte zu laden.<br>
-```pascal>type
+```pascaltype
   TMyApp = object(TApplication)
     ParameterData: TParameterData;                     // Daten für Parameter-Dialog
     constructor Init;                                  // Neuer Constructor
@@ -29,7 +29,7 @@ Hier wird noch der Constructor vererbt, diesen Nachkomme wird gebraucht um die D
 Der Constructoer welcher die Werte für den Dialog ladet.<br>
 Die Datenstruktur für die RadioButtons ist einfach. 0 ist der erste Button, 1 der Zweite, 2 der Dritte, usw.<br>
 Bei den Checkboxen macht man es am besten Binär. Im Beispiel werden der erste und dritte CheckBox gesetzt.<br>
-```pascal>  constructor TMyApp.Init;
+```pascal  constructor TMyApp.Init;
   begin
     inherited Init;     // Vorfahre aufrufen
     with ParameterData do begin
@@ -40,7 +40,7 @@ Bei den Checkboxen macht man es am besten Binär. Im Beispiel werden der erste u
   end;```
 Der Dialog wird jetzt mit Werten geladen.<br>
 Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
-```pascal>  procedure TMyApp.MyParameter;
+```pascal  procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
     R: TRect;

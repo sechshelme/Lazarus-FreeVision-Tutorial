@@ -11,7 +11,7 @@ bfNormal ist ein gewöhnlicher Button.<br>
 Der Dialog wird nun Modal geöffnet, somit können <b>keine</b> weiteren Dialoge geöffnet werden.<br>
 dummy hat den Wert, des Button der gedrückt wurde, dies entspricht dem <b>cmxxx</b> Wert.<br>
 Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhafte Darstellung.<br>
-```pascal>  procedure TMyApp.MyParameter;
+```pascal  procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
     R: TRect;

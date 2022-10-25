@@ -7,7 +7,7 @@ Auf den heutigen Rechner wird die wohl nicht mehr der Fall sein, das der Speiche
 <hr><br>
 Die virtuelle Procedure <b>OutOfMemory</b>, wen doch mal der Speicher überläuft.<br>
 Wen man diese Methode nicht überschreibt, dann wird keine Fehlermeldung ausgegeben, nur weis dann der Nutzer nicht, wieso sein View nicht erscheint.<br>
-```pascal>type
+```pascaltype
   TMyApp = object(TApplication)
     ParameterData: TParameterData;                     // Parameter für Dialog.
     constructor Init;                                  // Neuer Constructor
@@ -20,7 +20,7 @@ Wen man diese Methode nicht überschreibt, dann wird keine Fehlermeldung ausgege
     procedure MyParameter;                             // neue Funktion für einen Dialog.
   end;```
 Die Procedure wird aufgerufen, wen zu wenig Speicher vorhanden ist.<br>
-```pascal>  procedure TMyApp.OutOfMemory;
+```pascal  procedure TMyApp.OutOfMemory;
   begin
     MessageBox('Zu wenig Arbeitsspeicher !', nil, mfError + mfOkButton);
   end;```
@@ -28,7 +28,7 @@ Der Dialog wird jetzt mit Werten geladen.<br>
 Dies macht man, sobald man fertig ist mit Komponenten ertstellen.<br>
 Mit <b>ValidView(...</b> prüft man ob genügend Specher vorhanden ist, um die Komponente zu erzeugen.<br>
 Wen nicht, kommt <b>nil<(b> zurück. Dabei spielt es keine Rolle, ob man <b>OutOfMemory</b> überschreibt.<br>
-```pascal>  procedure TMyApp.MyParameter;
+```pascal  procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
     R: TRect;

@@ -6,7 +6,7 @@
 <hr><br>
 Neue Konstanten für Kommados.<br>
 Auch ist der HandleEvent dazugekommen.<br>
-```pascal>const
+```pascalconst
   cmNewWin = 1001;
 type
   TMyApp = object(TApplication)
@@ -21,7 +21,7 @@ type
     procedure NewWindows;
   end;```
 Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.<br>
-```pascal>  procedure TMyApp.InitMenuBar;
+```pascal  procedure TMyApp.InitMenuBar;
   var
     R: TRect;
   begin
@@ -37,7 +37,7 @@ Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.<br>
   end;```
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Dieser wird benutzt um die Fenster zu nummerieren.<br>
-```pascal>  procedure TMyApp.NewWindows;
+```pascal  procedure TMyApp.NewWindows;
   var
     Win: PWindow;
     R: TRect;
@@ -55,7 +55,7 @@ Dieser wird benutzt um die Fenster zu nummerieren.<br>
     end;
   end;```
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft es im Hintergrund automatisch.<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
 <br>

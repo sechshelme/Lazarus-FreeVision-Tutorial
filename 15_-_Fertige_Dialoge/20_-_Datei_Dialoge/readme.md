@@ -6,7 +6,7 @@ Ein Dialog zum öffnen und speichern von Dateien.<br>
 Der <b>PFileDialog</b>.<br>
 <hr><br>
 Verschiedene Datei-Dialoge<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+```pascal  procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     FileDialog: PFileDialog;
     FileName: shortstring;

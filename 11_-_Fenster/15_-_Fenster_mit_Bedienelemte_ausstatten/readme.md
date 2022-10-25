@@ -10,7 +10,7 @@ Wen man einen Editor schreiben will, dann nimmt man dazu <b>PEditWindow</b> aus 
 Dies ist viel einfacher, als alles selbst zu bauen.<br>
 <hr><br>
 Hier wird das neue vererbte Windows erzeugt.<br>
-```pascal>  procedure TMyApp.NewWindows;
+```pascal  procedure TMyApp.NewWindows;
   var
     Win: PMyWindow;
     R: TRect;
