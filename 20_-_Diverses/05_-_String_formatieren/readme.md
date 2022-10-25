@@ -10,55 +10,55 @@ Dabei sind filgende Formatierungen möglich:<br>
 %x: Hexadezimal<br>
 %#: Formatierungen<br>
 Bei Realzahlen muss man sich folgendermassen behelfen:<br>
-<pre><code=pascal><b><font color="0000BB">procedure</font></b> Str(<b><font color="0000BB">var</font></b> X: TNumericType[:NumPlaces[:Decimals]];<b><font color="0000BB">var</font></b> S: <b><font color="0000BB">String</font></b>);</code></pre>
+<pre><code=pascal>procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);</code></pre>
 <hr><br>
 <hr><br>
-<pre><code><b><font color="0000BB">unit</font></b> MyDialog;
+<pre><code>unit MyDialog;
 </code></pre>
 Deklaration des Dialogs.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code>type
   PMyDialog = ^TMyDialog;
-  TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
-    <b><font color="0000BB">constructor</font></b> Init;
-  <b><font color="0000BB">end</font></b>;
+  TMyDialog = object(TDialog)
+    constructor Init;
+  end;
 </code></pre>
 Bei Integern ist es wichtig, das man diese als <b>PtrInt</b> deklariert.<br>
-<pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
-<b><font color="0000BB">const</font></b>
-  acht = <font color="#0077BB">8</font>;
-  vier = <font color="#0077BB">16</font>;
-  Mo = <font color="#FF0000">'Montag'</font>;
-  Fr = <font color="#FF0000">'Freitag'</font>;
+<pre><code>constructor TMyDialog.Init;
+const
+  acht = 8;</font>
+  vier = 16;</font>
+  Mo = 'Montag';</font>
+  Fr = 'Freitag';</font>
 <br>
-<b><font color="0000BB">var</font></b>
+var
   R: TRect;
-  Params:<b><font color="0000BB">record</font></b>
+  Params:record
     s1, s2: PString;
     i1, i2: PtrInt;
-  <b><font color="0000BB">end</font></b>;
+  end;
   s: ShortString;
 </code></pre>
 Hier sieht man, die Formatierung mit <b>FormatStr</b>.<br>
-<pre><code><b><font color="0000BB">begin</font></b>
+<pre><code>begin
   Params.s1 := NewStr(Mo);
   Params.s2 := NewStr(Fr);
   Params.i1 := acht;
   Params.i2 := vier;
 <br>
-  FormatStr(s, <font color="#FF0000">'Gearbeitet wird zwischen %s und %s'</font><font color="#FF0000">#13</font>+
-    <font color="#FF0000">'und dies zwischen %d:00 und %d:00 Uhr.'</font>, (@Params)^);
+  FormatStr(s, 'Gearbeitet wird zwischen %s und %s'#13+
+    'und dies zwischen %d:00 und %d:00 Uhr.', (@Params)^);
 <br>
-  R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">52</font>, <font color="#0077BB">13</font>);
-  R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
-  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'<b><font color="0000BB">String</font></b> formatieren'</font>);
+  R.Assign(0, 0, 52, 13);</font>
+  R.Move(23, 3);</font>
+  inherited Init(R, 'String formatieren');</font>
 <br>
-  <i><font color="#FFFF00">// ---Statictext;</font></i>
-  R.Assign(<font color="#0077BB">3</font>, <font color="#0077BB">2</font>, <font color="#0077BB">50</font>, <font color="#0077BB">5</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PStaticText, Init(R, s)));
+  // ---Statictext;
+  R.Assign(3, 2, 50, 5);</font>
+  Insert(new(PStaticText, Init(R, s)));
 <br>
-  <i><font color="#FFFF00">// ---Ok-Button</font></i>
-  R.Assign(<font color="#0077BB">20</font>, <font color="#0077BB">8</font>, <font color="#0077BB">32</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
-<b><font color="0000BB">end</font></b>;
+  // ---Ok-Button
+  R.Assign(20, 8, 32, 10);</font>
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+end;
 </code></pre>
 <br>

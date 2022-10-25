@@ -5,30 +5,30 @@
 Erstes Memo-Fenster.<br>
 <hr><br>
 Der Constructor wird vererbt, so das von Anfang an ein neues Fenster erstellt wird.<br>
-<pre><code=pascal><b><font color="0000BB">type</font></b>
-  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
-    <b><font color="0000BB">constructor</font></b> Init;
+<pre><code=pascal>type
+  TMyApp = object(TApplication)
+    constructor Init;
 <br>
-    <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;
-    <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;
+    procedure InitStatusLine; virtual;
+    procedure InitMenuBar; virtual;
 <br>
-    <b><font color="0000BB">procedure</font></b> NewWindows;
-  <b><font color="0000BB">end</font></b>;</code></pre>
-<pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
-  <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> Init;   <i><font color="#FFFF00">// Der Vorfahre aufrufen.</font></i>
-    NewWindows;       <i><font color="#FFFF00">// Fenster erzeugen.</font></i>
-  <b><font color="0000BB">end</font></b>;</code></pre>
+    procedure NewWindows;
+  end;</code></pre>
+<pre><code=pascal>  constructor TMyApp.Init;
+  begin
+    inherited Init;   // Der Vorfahre aufrufen.
+    NewWindows;       // Fenster erzeugen.
+  end;</code></pre>
 Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
-  <b><font color="0000BB">var</font></b>
+<pre><code=pascal>  procedure TMyApp.NewWindows;
+  var
     Win: PWindow;
     R: TRect;
-  <b><font color="0000BB">begin</font></b>
-    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
-    Win := <b><font color="0000BB">New</font></b>(PWindow, Init(R, <font color="#FF0000">'Fenster'</font>, wnNoNumber));
-    <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+  begin
+    R.Assign(0, 0, 60, 20);</font>
+    Win := New(PWindow, Init(R, 'Fenster', wnNoNumber));</font>
+    if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;</code></pre>
+    end;
+  end;</code></pre>
 <br>

@@ -5,32 +5,32 @@
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 <hr><br>
 Aufruf einer MessageBox.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-  <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+  begin
+    inherited HandleEvent(Event);
 <br>
-    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        cmAbout: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Ich bin ein About !'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
-        <b><font color="0000BB">end</font></b>;
-        cmWarning: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Ich bin eine Warnung-Box'</font>, <b><font color="0000BB">nil</font></b>, mfWarning + mfOkButton);
-        <b><font color="0000BB">end</font></b>;
-        cmError: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Ich bin eine Fehlermeldung'</font>, <b><font color="0000BB">nil</font></b>, mfError + mfOkButton);
-        <b><font color="0000BB">end</font></b>;
-        cmInfo: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Ich bin eine Info-Box'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
-        <b><font color="0000BB">end</font></b>;
-        cmConformation: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Ich bin eine Info-Box'</font>, <b><font color="0000BB">nil</font></b>, mfConfirmation + mfOkButton);
-        <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
-          <b><font color="0000BB">Exit</font></b>;
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
+    if Event.What = evCommand then begin
+      case Event.Command of
+        cmAbout: begin
+          MessageBox('Ich bin ein About !', nil, mfInformation + mfOkButton);</font>
+        end;
+        cmWarning: begin
+          MessageBox('Ich bin eine Warnung-Box', nil, mfWarning + mfOkButton);
+        end;
+        cmError: begin
+          MessageBox('Ich bin eine Fehlermeldung', nil, mfError + mfOkButton);
+        end;
+        cmInfo: begin
+          MessageBox('Ich bin eine Info-Box', nil, mfInformation + mfOkButton);</font>
+        end;
+        cmConformation: begin
+          MessageBox('Ich bin eine Info-Box', nil, mfConfirmation + mfOkButton);</font>
+        end;
+        else begin
+          Exit;
+        end;
+      end;
+    end;
     ClearEvent(Event);
-  <b><font color="0000BB">end</font></b>;</code></pre>
+  end;</code></pre>
 <br>

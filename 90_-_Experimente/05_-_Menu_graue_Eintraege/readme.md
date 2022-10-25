@@ -6,18 +6,18 @@ Menupunkt kann man auch ineinander verschachteln.<br>
 <hr><br>
 Bei der Statuszeile habe ich die Einträge verschachtelt, somit braucht man keine Zeiger.<br>
 Ich finde dies auch übersichtlicher, als ein Variablen-Urwald.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitStatusLine;
-  <b><font color="0000BB">var</font></b>
-    R: TRect;              <i><font color="#FFFF00">// Rechteck für die Statuszeilen Position.</font></i>
-  <b><font color="0000BB">begin</font></b>
+<pre><code=pascal>  procedure TMyApp.InitStatusLine;
+  var
+    R: TRect;              // Rechteck für die Statuszeilen Position.
+  begin
     GetExtent(R);
-    R.A.Y := R.B.Y - <font color="#0077BB">1</font>;
+    R.A.Y := R.B.Y - 1;</font>
 <br>
-    StatusLine := <b><font color="0000BB">New</font></b>(PStatusLine, Init(R, NewStatusDef(<font color="#0077BB">0</font>, <font color="#0077BB">$</font>FFFF,
-      NewStatusKey(<font color="#FF0000">'~Alt+X~ Programm beenden'</font>, kbAltX, cmQuit,
-      NewStatusKey(<font color="#FF0000">'~F10~ Menu'</font>, kbF10, cmMenu,
-      NewStatusKey(<font color="#FF0000">'~F1~ Hilfe'</font>, kbF1, cmHelp, <b><font color="0000BB">nil</font></b>))), <b><font color="0000BB">nil</font></b>)));
-  <b><font color="0000BB">end</font></b>;</code></pre>
+    StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF,</font>
+      NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit,
+      NewStatusKey('~F10~ Menu', kbF10, cmMenu,</font>
+      NewStatusKey('~F1~ Hilfe', kbF1, cmHelp, nil))), nil)));</font>
+  end;</code></pre>
 Folgendes Beispiel demonstriert ein verschachteltes Menü.<br>
 Die Erzeugung ist auch verschachtelt.<br>
 <pre><code>Datei
@@ -31,28 +31,28 @@ Demo
   Einfach 2
 Hilfe
   About</code></pre>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
-  <b><font color="0000BB">var</font></b>
-    R: TRect;                   <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
-  <b><font color="0000BB">begin</font></b>
+<pre><code=pascal>  procedure TMyApp.InitMenuBar;
+  var
+    R: TRect;                   // Rechteck für die Menüzeilen-Position.
+  begin
     GetExtent(R);
-    R.B.Y := R.A.Y + <font color="#0077BB">1</font>;
+    R.B.Y := R.A.Y + 1;</font>
 <br>
-    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, NewMenu(
-      NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(
-        NewItem(<font color="#FF0000">'~B~eenden'</font>, <font color="#FF0000">'Alt-X'</font>, kbAltX, cmQuit, hcNoContext, <b><font color="0000BB">nil</font></b>)),
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
+      NewSubMenu('~D~atei', hcNoContext, NewMenu(</font>
+        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)),</font>
 <br>
-      NewSubMenu(<font color="#FF0000">'Dem~o~'</font>, hcNoContext, NewMenu(
-        NewItem(<font color="#FF0000">'Einfach ~1~'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext,
-        NewSubMenu(<font color="#FF0000">'~V~erschachtelt'</font>, hcNoContext, NewMenu(
-          NewItem(<font color="#FF0000">'Menu ~0~'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext,
-          NewItem(<font color="#FF0000">'Menu ~1~'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext,
-          NewItem(<font color="#FF0000">'Menu ~2~'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext, <b><font color="0000BB">nil</font></b>)))),
-        NewItem(<font color="#FF0000">'Einfach ~2~'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext, <b><font color="0000BB">nil</font></b>)))),
+      NewSubMenu('Dem~o~', hcNoContext, NewMenu(</font>
+        NewItem('Einfach ~1~', '', kbNoKey, cmAbout, hcNoContext,</font>
+        NewSubMenu('~V~erschachtelt', hcNoContext, NewMenu(</font>
+          NewItem('Menu ~0~', '', kbNoKey, cmAbout, hcNoContext,</font>
+          NewItem('Menu ~1~', '', kbNoKey, cmAbout, hcNoContext,</font>
+          NewItem('Menu ~2~', '', kbNoKey, cmAbout, hcNoContext, nil)))),</font>
+        NewItem('Einfach ~2~', '', kbNoKey, cmAbout, hcNoContext, nil)))),</font>
 <br>
-      NewSubMenu(<font color="#FF0000">'~H~ilfe'</font>, hcNoContext, NewMenu(
-        NewItem(<font color="#FF0000">'~A~bout...'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext, <b><font color="0000BB">nil</font></b>)), <b><font color="0000BB">nil</font></b>))))));
+      NewSubMenu('~H~ilfe', hcNoContext, NewMenu(</font>
+        NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil)), nil))))));</font>
 <br>
-    MenuBar^.Menu^.Items^.Next^.SubMenu^.Items^.Next^.Disabled:=<b><font color="0000BB">True</font></b>;
-  <b><font color="0000BB">end</font></b>;</code></pre>
+    MenuBar^.Menu^.Items^.Next^.SubMenu^.Items^.Next^.Disabled:=True;
+  end;</code></pre>
 <br>

@@ -6,110 +6,110 @@ Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/k
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
 <hr><br>
 Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-  <b><font color="0000BB">var</font></b>
+<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+  var
     MouseDialog: PMyMouse;
-  <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+  begin
+    inherited HandleEvent(Event);
 <br>
-    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        cmMouseAktion: <b><font color="0000BB">begin</font></b>
-          MouseDialog := <b><font color="0000BB">New</font></b>(PMyMouse, Init);
-          <b><font color="0000BB">if</font></b> ValidView(MouseDialog) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b> <i><font color="#FFFF00">// Prüfen ob genügend Speicher.</font></i>
-            Desktop^.ExecView(MouseDialog);           <i><font color="#FFFF00">// Dialog Mausaktion ausführen.</font></i>
-            <b><font color="0000BB">Dispose</font></b>(MouseDialog, Done);               <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
-          <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
-          <b><font color="0000BB">Exit</font></b>;
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
+    if Event.What = evCommand then begin
+      case Event.Command of
+        cmMouseAktion: begin
+          MouseDialog := New(PMyMouse, Init);
+          if ValidView(MouseDialog) <> nil then begin // Prüfen ob genügend Speicher.
+            Desktop^.ExecView(MouseDialog);           // Dialog Mausaktion ausführen.
+            Dispose(MouseDialog, Done);               // Dialog und Speicher frei geben.
+          end;
+        end;
+        else begin
+          Exit;
+        end;
+      end;
+    end;
     ClearEvent(Event);
-  <b><font color="0000BB">end</font></b>;</code></pre>
+  end;</code></pre>
 <hr><br>
 <b>Unit mit dem Mausaktions-Dialog.</b><br>
 <br><br>
-<pre><code><b><font color="0000BB">unit</font></b> MyDialog;
+<pre><code>unit MyDialog;
 </code></pre>
 In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei Mausaktionen modifiziert werden.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code>type
   PMyMouse = ^TMyMouse;
-  TMyMouse = <b><font color="0000BB">object</font></b>(TDialog)
+  TMyMouse = object(TDialog)
     EditMB,
     EditX, EditY: PInputLine;
 <br>
-    <b><font color="0000BB">constructor</font></b> Init;
-    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
-  <b><font color="0000BB">end</font></b>;
+    constructor Init;
+    procedure HandleEvent(var Event: TEvent); virtual;
+  end;
 </code></pre>
 Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
 Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
-<pre><code><b><font color="0000BB">constructor</font></b> TMyMouse.Init;
-<b><font color="0000BB">var</font></b>
+<pre><code>constructor TMyMouse.Init;
+var
   R: TRect;
-<b><font color="0000BB">begin</font></b>
-  R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">13</font>);
-  R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
-  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'Mausaktion'</font>);
+begin
+  R.Assign(0, 0, 42, 13);</font>
+  R.Move(23, 3);</font>
+  inherited Init(R, 'Mausaktion');</font>
 <br>
-  <i><font color="#FFFF00">// PosX</font></i>
-  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">2</font>, <font color="#0077BB">30</font>, <font color="#0077BB">3</font>);
-  EditX := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">5</font>));
+  // PosX
+  R.Assign(25, 2, 30, 3);</font>
+  EditX := new(PInputLine, Init(R, 5));</font>
   Insert(EditX);
-  EditX^.State := sfDisabled <b><font color="0000BB">or</font></b> EditX^.State;    <i><font color="#FFFF00">// ReadOnly</font></i>
-  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">20</font>, <font color="#0077BB">3</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'MausPosition ~X~:'</font>, EditX)));
+  EditX^.State := sfDisabled or EditX^.State;    // ReadOnly
+  R.Assign(5, 2, 20, 3);</font>
+  Insert(New(PLabel, Init(R, 'MausPosition ~X~:', EditX)));</font>
 <br>
-  <i><font color="#FFFF00">// PosY</font></i>
-  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">4</font>, <font color="#0077BB">30</font>, <font color="#0077BB">5</font>);
-  EditY := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">5</font>));
-  EditY^.State := sfDisabled <b><font color="0000BB">or</font></b> EditY^.State;    <i><font color="#FFFF00">// ReadOnly</font></i>
+  // PosY
+  R.Assign(25, 4, 30, 5);</font>
+  EditY := new(PInputLine, Init(R, 5));</font>
+  EditY^.State := sfDisabled or EditY^.State;    // ReadOnly
   Insert(EditY);
-  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">4</font>, <font color="#0077BB">20</font>, <font color="#0077BB">5</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'MausPosition ~Y~:'</font>, EditY)));
+  R.Assign(5, 4, 20, 5);</font>
+  Insert(New(PLabel, Init(R, 'MausPosition ~Y~:', EditY)));</font>
 <br>
-  <i><font color="#FFFF00">// Maus-Tasten</font></i>
-  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">7</font>, <font color="#0077BB">32</font>, <font color="#0077BB">8</font>);
-  EditMB := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">7</font>));
-  EditMB^.State := sfDisabled <b><font color="0000BB">or</font></b> EditMB^.State;  <i><font color="#FFFF00">// ReadOnly</font></i>
-  EditMB^.Data^:= <font color="#FF0000">'oben'</font>;                        <i><font color="#FFFF00">// Anfangs ist die Taste oben.</font></i>
+  // Maus-Tasten
+  R.Assign(25, 7, 32, 8);</font>
+  EditMB := new(PInputLine, Init(R, 7));</font>
+  EditMB^.State := sfDisabled or EditMB^.State;  // ReadOnly
+  EditMB^.Data^:= 'oben';                        // Anfangs ist die Taste oben.</font>
   Insert(EditMB);
-  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">7</font>, <font color="#0077BB">20</font>, <font color="#0077BB">8</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'~M~austaste:'</font>, EditMB)));
+  R.Assign(5, 7, 20, 8);</font>
+  Insert(New(PLabel, Init(R, '~M~austaste:', EditMB)));</font>
 <br>
-  <i><font color="#FFFF00">// Ok-Button</font></i>
-  R.Assign(<font color="#0077BB">27</font>, <font color="#0077BB">10</font>, <font color="#0077BB">37</font>, <font color="#0077BB">12</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
-<b><font color="0000BB">end</font></b>;
+  // Ok-Button
+  R.Assign(27, 10, 37, 12);</font>
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+end;
 </code></pre>
 Im EventHandle sieht man gut, das dort die Mausaktionen abgefangen werden.<br>
 Die Maus-Daten werden an die <b>EditLines</b> ausgegeben.<br>
-<pre><code><b><font color="0000BB">procedure</font></b> TMyMouse.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-<b><font color="0000BB">var</font></b>
+<pre><code>procedure TMyMouse.HandleEvent(var Event: TEvent);
+var
   Mouse : TPoint;
-<b><font color="0000BB">begin</font></b>
-  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+begin
+  inherited HandleEvent(Event);
 <br>
-  <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
-    evMouseDown: <b><font color="0000BB">begin</font></b>                 <i><font color="#FFFF00">// Taste wurde gedrückt.</font></i>
-      EditMB^.Data^:= <font color="#FF0000">'unten'</font>;
+  case Event.What of
+    evMouseDown: begin                 // Taste wurde gedrückt.
+      EditMB^.Data^:= 'unten';</font>
       EditMB^.Draw;
-    <b><font color="0000BB">end</font></b>;
-    evMouseUp: <b><font color="0000BB">begin</font></b>                   <i><font color="#FFFF00">// Taste wurde losgelassen.</font></i>
-      EditMB^.Data^:= <font color="#FF0000">'oben'</font>;
+    end;
+    evMouseUp: begin                   // Taste wurde losgelassen.
+      EditMB^.Data^:= 'oben';</font>
       EditMB^.Draw;
-    <b><font color="0000BB">end</font></b>;
-    evMouseMove: <b><font color="0000BB">begin</font></b>                 <i><font color="#FFFF00">// Maus wurde bewegt.</font></i>
-      MakeLocal (Event.Where, Mouse);  <i><font color="#FFFF00">// Mausposition ermitteln.</font></i>
+    end;
+    evMouseMove: begin                 // Maus wurde bewegt.
+      MakeLocal (Event.Where, Mouse);  // Mausposition ermitteln.
       EditX^.Data^:= IntToStr(Mouse.X);
       EditX^.Draw;
       EditY^.Data^:= IntToStr(Mouse.Y);
       EditY^.Draw;
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;
+    end;
+  end;
 <br>
-<b><font color="0000BB">end</font></b>;
+end;
 </code></pre>
 <br>

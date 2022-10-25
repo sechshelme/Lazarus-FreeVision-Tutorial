@@ -6,69 +6,69 @@
 <hr><br>
 Neue Konstanten für Kommados.<br>
 Auch ist der HandleEvent dazugekommen.<br>
-<pre><code=pascal><b><font color="0000BB">const</font></b>
-  cmNewWin = <font color="#0077BB">1001</font>;
-<b><font color="0000BB">type</font></b>
-  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
-    <b><font color="0000BB">constructor</font></b> Init;
+<pre><code=pascal>const
+  cmNewWin = 1001;</font>
+type
+  TMyApp = object(TApplication)
+    constructor Init;
 <br>
-    <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;
-    <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;
+    procedure InitStatusLine; virtual;
+    procedure InitMenuBar; virtual;
 <br>
-    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>; <i><font color="#FFFF00">// Abarbeitung Kommandos</font></i>
-    <b><font color="0000BB">procedure</font></b> OutOfMemory; <b><font color="0000BB">virtual</font></b>;                    <i><font color="#FFFF00">// Wird aufgerufen, wen Speicher überläuft.</font></i>
+    procedure HandleEvent(var Event: TEvent); virtual; // Abarbeitung Kommandos
+    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
 <br>
-    <b><font color="0000BB">procedure</font></b> NewWindows;
-  <b><font color="0000BB">end</font></b>;</code></pre>
+    procedure NewWindows;
+  end;</code></pre>
 Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
-  <b><font color="0000BB">var</font></b>
+<pre><code=pascal>  procedure TMyApp.InitMenuBar;
+  var
     R: TRect;
-  <b><font color="0000BB">begin</font></b>
+  begin
     GetExtent(R);
-    R.B.Y := R.A.Y + <font color="#0077BB">1</font>;
+    R.B.Y := R.A.Y + 1;</font>
 <br>
-    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, NewMenu(
-      NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(
-      NewItem(<font color="#FF0000">'~N~eu'</font>, <font color="#FF0000">'F4'</font>, kbF4, cmNewWin, hcNoContext,
-      NewItem(<font color="#FF0000">'S~c~hliessen'</font>, <font color="#FF0000">'Alt-F3'</font>, kbAltF3, cmClose, hcNoContext,
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
+      NewSubMenu('~D~atei', hcNoContext, NewMenu(</font>
+      NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,</font>
+      NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext,
       NewLine(
-      NewItem(<font color="#FF0000">'~B~eenden'</font>, <font color="#FF0000">'Alt-X'</font>, kbAltX, cmQuit, hcNoContext, <b><font color="0000BB">nil</font></b>))))), <b><font color="0000BB">nil</font></b>))));
-  <b><font color="0000BB">end</font></b>;</code></pre>
+      NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil))))), nil))));</font>
+  end;</code></pre>
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Dieser wird benutzt um die Fenster zu nummerieren.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
-  <b><font color="0000BB">var</font></b>
+<pre><code=pascal>  procedure TMyApp.NewWindows;
+  var
     Win: PWindow;
     R: TRect;
-  <b><font color="0000BB">const</font></b>
-    WinCounter: integer = <font color="#0077BB">0</font>;      <i><font color="#FFFF00">// Zählt Fenster</font></i>
-  <b><font color="0000BB">begin</font></b>
-    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
+  const
+    WinCounter: integer = 0;      // Zählt Fenster</font>
+  begin
+    R.Assign(0, 0, 60, 20);</font>
     Inc(WinCounter);
-    Win := <b><font color="0000BB">New</font></b>(PWindow, Init(R, <font color="#FF0000">'Fenster'</font>, WinCounter));
-    <i><font color="#FFFF00">// Wen zu wenig Speicher für Fenster, dann Counter wieder -1.</font></i>
-    <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+    Win := New(PWindow, Init(R, 'Fenster', WinCounter));</font>
+    // Wen zu wenig Speicher für Fenster, dann Counter wieder -1.
+    if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
-    <b><font color="0000BB">end</font></b> <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+    end else begin
       Dec(WinCounter);
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;</code></pre>
+    end;
+  end;</code></pre>
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft es im Hintergrund automatisch.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-  <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+<pre><code=pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+  begin
+    inherited HandleEvent(Event);
 <br>
-    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        cmNewWin: <b><font color="0000BB">begin</font></b>
-          NewWindows;    <i><font color="#FFFF00">// Fenster erzeugen.</font></i>
-        <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
-          <b><font color="0000BB">Exit</font></b>;
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
+    if Event.What = evCommand then begin
+      case Event.Command of
+        cmNewWin: begin
+          NewWindows;    // Fenster erzeugen.
+        end;
+        else begin
+          Exit;
+        end;
+      end;
+    end;
     ClearEvent(Event);
-  <b><font color="0000BB">end</font></b>;</code></pre>
+  end;</code></pre>
 <br>
