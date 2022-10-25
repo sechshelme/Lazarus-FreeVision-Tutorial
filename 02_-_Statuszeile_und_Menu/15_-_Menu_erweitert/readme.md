@@ -1,7 +1,6 @@
 # 02 - Statuszeile und Menu
 ## 15 - Menu erweitert
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Hinzufügen mehrere Menüpunkte.<br>
 Hier wird dies auch der Übersicht zu liebe gesplittet gemacht.<br>
 <hr><br>

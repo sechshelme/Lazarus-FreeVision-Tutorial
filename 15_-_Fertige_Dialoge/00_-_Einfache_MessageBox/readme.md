@@ -1,7 +1,6 @@
 # 15 - Fertige Dialoge
 ## 00 - Einfache MessageBox
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 <hr><br>
 Aufruf einer MessageBox.<br>

@@ -1,7 +1,6 @@
 # 19 - Optische-Gestaltung
 ## 15 --Hintergrund auf Dialog
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Bei Bedarf, kann man auch ein Hintergrund-Muster auf einen Dialog/Fenster legen.<br>
 <hr><br>
 Hier wird der <b>PBackGround</b> auf einen Dialog gelegt, dies funktioniert genau gleich, wie auf dem Desktop.<br>

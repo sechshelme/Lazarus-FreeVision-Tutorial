@@ -1,7 +1,6 @@
 # 90 - Experimente
 ## 10 - 2 Desktop
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Dialog um Buttons ergänzen.<br>
 <hr><br>
 Den Dialog mit Buttons ergänzen.<br>

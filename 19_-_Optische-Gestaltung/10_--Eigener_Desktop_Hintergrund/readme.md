@@ -1,7 +1,6 @@
 # 19 - Optische-Gestaltung
 ## 10 --Eigener Desktop Hintergrund
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Man hat sogar die Möglichkeit, den ganzen Background selbst zu zeichnen.<br>
 Da man alles selbst zeichent kann man sich den Umweg über <b>TBackGround</b> sparen und direkt <B>TView</b> vererben.<br>
 <b>TBackGround</b> ist ein direkter Nachkomme von <b>TView</b>.<br>

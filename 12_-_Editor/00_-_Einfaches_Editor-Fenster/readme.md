@@ -1,7 +1,6 @@
 # 12 - Editor
 ## 00 - Einfaches Editor-Fenster
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Das Fenster ist nun ein Text-Editor, das man diese Funktion erreicht, nimmt man ein <b>PEditWindow</b>.<br>
 Die Verwaltung der Fenster ist gleich, wie bei einem <b>TWindow</b>.<br>
 <hr><br>

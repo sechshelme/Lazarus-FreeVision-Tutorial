@@ -1,7 +1,6 @@
 # 19 - Optische-Gestaltung
 ## 05 --Desktop-Hintergrund Farbe
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Wen man die Farbe des Hintergrundes änder will, ist ein wenig komplizierter als nur das Zeichen.<br>
 Dazu muss man beim Object <b>TBackground</b> die Funktion <b>GetPalette</b> überschreiben.<br>
 <br>

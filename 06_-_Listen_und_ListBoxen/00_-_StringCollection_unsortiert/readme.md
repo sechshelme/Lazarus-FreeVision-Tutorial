@@ -1,7 +1,6 @@
 # 06 - Listen und ListBoxen
 ## 00 - StringCollection unsortiert
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Wen die Stringliste unsortiert bleiben soll, verwendet man <b>PUnSortedStrCollection</b>.<br>
 Nur <b>PCollection</b> reicht <b>nicht</b>, da diese bei <b>Dispose</b> abschmiert.<br>
 <hr><br>

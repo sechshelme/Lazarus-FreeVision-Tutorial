@@ -1,7 +1,6 @@
 # 02 - Statuszeile und Menu
 ## 05 - Status Zeile mehrere Eintraege
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Ändern der Status-Zeile, mit mehreren Optionen.<br>
 <hr><br>
 In der Statuszeile sind auch mehrere Hot-Key möglich.<br>

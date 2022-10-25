@@ -1,7 +1,6 @@
 # 02 - Statuszeile und Menu
 ## 10 - Menu
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Hinzufügen eines Menüs.<br>
 <hr><br>
 Für das Menü werden die gleichen Units wie für die Statuszeile gebraucht.<br>

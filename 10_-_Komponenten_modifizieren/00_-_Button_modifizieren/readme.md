@@ -1,7 +1,6 @@
 # 10 - Komponenten modifizieren
 ## 00 - Button modifizieren
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Man kann auch eine Komponente modifzieren, in diesem Beispiel ist es ein Button.<br>
 Dazu muss man einen Nachkommen von TButton erstellen.<br>
 Der abgeänderte Button passt sich automatisch an die Länge des Titels an, auch wird er automatisch 2 Zeilen hoch.<br>

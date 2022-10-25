@@ -1,7 +1,6 @@
 # 02 - Statuszeile und Menu
 ## 25 - Fertige Statuszeile und Menues
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Für die Statuszeile und das Menü gibt es fertige Items, aber ich bevorzuge es, die Items selbst zu erstellen.<br>
 Die fetigen Items sind nur in Englisch.<br>
 Die Statuszeile ist Textlos, das einzige, sie bringt Schnellkomandos mit. ( cmQuit, cmMenu, cmClose, cmZoom, cmNext, cmPrev )<br>

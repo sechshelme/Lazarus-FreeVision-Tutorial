@@ -1,7 +1,6 @@
 # 03 - Dialoge
 ## 10 - Button
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Dialog um Buttons ergänzen.<br>
 <hr><br>
 Den Dialog mit Buttons ergänzen.<br>

@@ -1,7 +1,6 @@
 # 99 - Test
 ## 00 - Komponenten zur Laufzeit modifizieren
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 In den vererbten Dialogen ist es möglich Buttons einubauen, welche lokal im Dialog eine Aktion ausführen.<br>
 Im Beispiel wir eine MessageBox aufgerufen.<br>
 <hr><br>

@@ -1,7 +1,6 @@
 # 04 - Dialoge als Komponente
 ## 20 - Event an Dialog uebergeben
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird gezeigt, wie man ein Event an eine andere Komponente senden kann.<br>
 In diesem Fall wird ein Event an die Dialoge gesendet. In den Dialogen wird dann ein Counter hochgezählt.<br>
 Events für den Buttonklick.<br>

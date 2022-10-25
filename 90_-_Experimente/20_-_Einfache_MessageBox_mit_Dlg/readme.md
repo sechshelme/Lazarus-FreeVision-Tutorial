@@ -1,7 +1,6 @@
 # 90 - Experimente
 ## 20 - Einfache MessageBox mit Dlg
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Bei der MessageBox, kann man die Grösse auch manuell festlegen.<br>
 Dazu muss man <b>MeassgeBoxRect(...)</b> verwenden.<br>
 <hr><br>

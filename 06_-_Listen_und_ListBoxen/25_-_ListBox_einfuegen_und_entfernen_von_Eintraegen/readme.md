@@ -1,7 +1,6 @@
 # 06 - Listen und ListBoxen
 ## 25 - ListBox einfuegen und entfernen von Eintraegen
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Bei <b>ListBox</b> kann man auch Einträge einfügen, entfernen, etc.<br>
 ZT. muss man da direkt auf die Liste zugreifen.<br>
 <hr><br>

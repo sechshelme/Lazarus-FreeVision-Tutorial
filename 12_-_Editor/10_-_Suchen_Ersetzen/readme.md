@@ -1,7 +1,6 @@
 # 12 - Editor
 ## 10 - Suchen Ersetzen
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Der Editor hat eine <b>Suchen</b> und <b>Ersetzen</b> Funktion bekommen.<br>
 Leider sind die Standard-Dialoge dafür in Englisch.<br>
 Aus diesem Grund, wird es hier neu in deutsch gebaut.<br>

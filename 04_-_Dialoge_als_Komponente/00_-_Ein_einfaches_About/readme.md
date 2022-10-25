@@ -1,7 +1,6 @@
 # 04 - Dialoge als Komponente
 ## 00 - Ein einfaches About
 <br>
-<img src="image.png" alt="Selfhtml"><br><br>
 Wen man immer wieder die gleichen Dialog braucht, packt man diesen am besten als Komponente in eine Unit.<br>
 Dazu schreibt man einen Nachkommen von <b>TDialog</b>.<br>
 Als Beispiel wird hier ein About-Dialog gebaut.<br>
