@@ -6,27 +6,27 @@ Dazu muss man beim Object <b>TBackground</b> die Funktion <b>GetPalette</b> übe
 <br>
 ---
 Für das Object <b>TBackground</b> wird ein Nachkomme erzeugt, welcher eine neue <b>GetPalette</b> Funktion bekommt.<br>
-```pascal>type
+<pre><code=pascal><b><font color="0000BB">type</font></b>
   PMyBackground = ^TMyBackground;
-  TMyBackground = object(TBackGround)
-    function GetPalette: PPalette; virtual; // neu GetPalette
-  end;```
+  TMyBackground = <b><font color="0000BB">object</font></b>(TBackGround)
+    <b><font color="0000BB">function</font></b> GetPalette: PPalette; <b><font color="0000BB">virtual</font></b>; <i><font color="#FFFF00">// neu GetPalette</font></i>
+  <b><font color="0000BB">end</font></b>;</code></pre>
 In der neuen Funktion wird eine andere Palette zugeordnet.<br>
-```pascal>  function TMyBackground.GetPalette: PPalette;
-  const
-    P: string[1] = #74;</font>
-  begin
+<pre><code=pascal>  <b><font color="0000BB">function</font></b> TMyBackground.GetPalette: PPalette;
+  <b><font color="0000BB">const</font></b>
+    P: <b><font color="0000BB">string</font></b>[<font color="#0077BB">1</font>] = <font color="#FF0000">#74</font>;
+  <b><font color="0000BB">begin</font></b>
     Result := @P;
-  end;```
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Der Konstruktor sieht fast gleich aus wie beim Hintergrundzeichen.<br>
 Einziger Unterschied anstelle von <b>PBackGround</b> wird <b>PMyBackground</b> genommen.<br>
-```pascal>  constructor TMyApp.Init;
-  var
+<pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+  <b><font color="0000BB">var</font></b>
     R:TRect;
-  begin
-    inherited Init;                                       // Vorfahre aufrufen
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> Init;                                       <i><font color="#FFFF00">// Vorfahre aufrufen</font></i>
     GetExtent(R);
 <br>
-    DeskTop^.Insert(New(PMyBackground, Init(R, #3)));  // Hintergrund einfügen.</font>
-  end;```
+    DeskTop^.Insert(<b><font color="0000BB">New</font></b>(PMyBackground, Init(R, <font color="#FF0000">#3</font>)));  <i><font color="#FFFF00">// Hintergrund einfügen.</font></i>
+  <b><font color="0000BB">end</font></b>;</code></pre>
 <br>

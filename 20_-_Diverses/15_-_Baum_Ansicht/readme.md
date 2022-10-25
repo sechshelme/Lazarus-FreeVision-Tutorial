@@ -4,52 +4,52 @@
 Baumartige Darstellung.<br>
 ---
 Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.<br>
-```pascal>  PTreeWindow = ^TTreeWindow;
-  TTreeWindow = object(TWindow)
-    constructor Init(R: TRect);
-  end;
+<pre><code=pascal>  PTreeWindow = ^TTreeWindow;
+  TTreeWindow = <b><font color="0000BB">object</font></b>(TWindow)
+    <b><font color="0000BB">constructor</font></b> Init(R: TRect);
+  <b><font color="0000BB">end</font></b>;
 <br>
 
-  constructor TTreeWindow.Init(R: TRect);
-  var
+  <b><font color="0000BB">constructor</font></b> TTreeWindow.Init(R: TRect);
+  <b><font color="0000BB">var</font></b>
     Outline: POutline;
-  begin
-    inherited Init(R, 'Computer', wnNoNumber);</font>
-    Options := Options or ofTileable;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'Computer'</font>, wnNoNumber);
+    Options := Options <b><font color="0000BB">or</font></b> ofTileable;
     GetExtent(R);
-    R.Grow(-1, -1);</font>
-    Outline := New(POutline, Init(R, StandardScrollBar(sbHorizontal), StandardScrollBar(sbVertical),
-      NewNode('Computer',</font>
-        NewNode('IBM',</font>
-          NewNode('XT', nil,</font>
-          NewNode('AT', nil,</font>
-          NewNode('PS2', nil, nil))),</font>
-        NewNode('Mac',</font>
-          NewNode('Lisa', nil,</font>
-          NewNode('iMac', nil, nil)),</font>
-        NewNode('Amiga',</font>
-          NewNode('500', nil,</font>
-          NewNode('1000', nil, nil)), nil))), nil)));</font>
+    R.Grow(-<font color="#0077BB">1</font>, -<font color="#0077BB">1</font>);
+    Outline := <b><font color="0000BB">New</font></b>(POutline, Init(R, StandardScrollBar(sbHorizontal), StandardScrollBar(sbVertical),
+      NewNode(<font color="#FF0000">'Computer'</font>,
+        NewNode(<font color="#FF0000">'IBM'</font>,
+          NewNode(<font color="#FF0000">'XT'</font>, <b><font color="0000BB">nil</font></b>,
+          NewNode(<font color="#FF0000">'AT'</font>, <b><font color="0000BB">nil</font></b>,
+          NewNode(<font color="#FF0000">'PS2'</font>, <b><font color="0000BB">nil</font></b>, <b><font color="0000BB">nil</font></b>))),
+        NewNode(<font color="#FF0000">'Mac'</font>,
+          NewNode(<font color="#FF0000">'Lisa'</font>, <b><font color="0000BB">nil</font></b>,
+          NewNode(<font color="#FF0000">'iMac'</font>, <b><font color="0000BB">nil</font></b>, <b><font color="0000BB">nil</font></b>)),
+        NewNode(<font color="#FF0000">'Amiga'</font>,
+          NewNode(<font color="#FF0000">'500'</font>, <b><font color="0000BB">nil</font></b>,
+          NewNode(<font color="#FF0000">'1000'</font>, <b><font color="0000BB">nil</font></b>, <b><font color="0000BB">nil</font></b>)), <b><font color="0000BB">nil</font></b>))), <b><font color="0000BB">nil</font></b>)));
     Insert(Outline);
-  end;```
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Hier wird das Fenster erzeugt, welches die Outline enthält.<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
-  var
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+  <b><font color="0000BB">var</font></b>
     R: TRect;
-  begin
-    inherited HandleEvent(Event);
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>
-    if Event.What = evCommand then begin
-      case Event.Command of
-        cmList: begin
-          R.Assign(2, 2, 35, 17);</font>
-          InsertWindow(New(PTreeWindow, Init(R)));
-        end
-        else begin
-          Exit;
-        end;
-      end;
-    end;
+    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmList: <b><font color="0000BB">begin</font></b>
+          R.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">2</font>, <font color="#0077BB">35</font>, <font color="#0077BB">17</font>);
+          InsertWindow(<b><font color="0000BB">New</font></b>(PTreeWindow, Init(R)));
+        <b><font color="0000BB">end</font></b>
+        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+          <b><font color="0000BB">Exit</font></b>;
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
     ClearEvent(Event);
-  end;```
+  <b><font color="0000BB">end</font></b>;</code></pre>
 <br>

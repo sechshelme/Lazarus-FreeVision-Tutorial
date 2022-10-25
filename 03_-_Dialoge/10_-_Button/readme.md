@@ -10,26 +10,26 @@ bfNormal ist ein gewöhnlicher Button.<br>
 Der Dialog wird nun Modal geöffnet, somit können <b>keine</b> weiteren Dialoge geöffnet werden.<br>
 dummy hat den Wert, des Button der gedrückt wurde, dies entspricht dem <b>cmxxx</b> Wert.<br>
 Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhafte Darstellung.<br>
-```pascal>  procedure TMyApp.MyParameter;
-  var
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
+  <b><font color="0000BB">var</font></b>
     Dlg: PDialog;
     R: TRect;
     dummy: word;
-  begin
-    R.Assign(0, 0, 35, 15);                    // Grösse des Dialogs.
-    R.Move(23, 3);                             // Position des Dialogs.
-    Dlg := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.</font>
-    with Dlg^ do begin
+  <b><font color="0000BB">begin</font></b>
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">35</font>, <font color="#0077BB">15</font>);                    <i><font color="#FFFF00">// Grösse des Dialogs.</font></i>
+    R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);                             <i><font color="#FFFF00">// Position des Dialogs.</font></i>
+    Dlg := <b><font color="0000BB">New</font></b>(PDialog, Init(R, <font color="#FF0000">'Parameter'</font>)); <i><font color="#FFFF00">// Dialog erzeugen.</font></i>
+    <b><font color="0000BB">with</font></b> Dlg^ <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
 <br>
-      // Ok-Button
-      R.Assign(7, 12, 17, 14);</font>
-      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+      <i><font color="#FFFF00">// Ok-Button</font></i>
+      R.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">12</font>, <font color="#0077BB">17</font>, <font color="#0077BB">14</font>);
+      Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
 <br>
-      // Schliessen-Button
-      R.Move(12, 0);</font>
-      Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));</font>
-    end;
-    dummy := Desktop^.ExecView(Dlg);   // Dialog Modal öffnen.
-    Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
-  end;```
+      <i><font color="#FFFF00">// Schliessen-Button</font></i>
+      R.Move(<font color="#0077BB">12</font>, <font color="#0077BB">0</font>);
+      Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~A~bbruch'</font>, cmCancel, bfNormal)));
+    <b><font color="0000BB">end</font></b>;
+    dummy := Desktop^.ExecView(Dlg);   <i><font color="#FFFF00">// Dialog Modal öffnen.</font></i>
+    <b><font color="0000BB">Dispose</font></b>(Dlg, Done);                <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
+  <b><font color="0000BB">end</font></b>;</code></pre>
 <br>

@@ -27,16 +27,16 @@ Es ist eine Zip.<br>
 <br>
 Free Vision verwendet Codepage 437.<br>
 Aus diese Grund sollte man für eine fehlerfreie Darstellung der Umaute, diese als Char-Konstante verwenden.<br>
-```pascal>ä = #132  Ä = #142</font>
-ö = #148  Ö = #153</font>
-ü = #129  Ü = #154</font>```
+<pre><code=pascal>ä = <font color="#FF0000">#132</font>  Ä = <font color="#FF0000">#142</font>
+ö = <font color="#FF0000">#148</font>  Ö = <font color="#FF0000">#153</font>
+ü = <font color="#FF0000">#129</font>  Ü = <font color="#FF0000">#154</font></code></pre>
 <br>
 <b>Genereller Hinweis:</b><br>
 Wen man zur Laufzeit Texte ändern will, zB. <b>Label</b>, <b>StaticText</b>, ist Vorsicht geboten.<br>
 Da die Texte <b>PString</b> gespeichert sind, ist darauf zu achten, das man im Konstruktor (Init) schon genügend Speiher für die Texte reserviert.<br>
 Am einfachsten geht dies so, somit hat es dann genügend Platz noch für <b>world</b>.<br>
-```pascal>  StaticText := new(PStaticText, Init(Rect, 'Hallo           '));</font>
-  StaticText^.Text^ := 'Hello world';</font>```
+<pre><code=pascal>  StaticText := <b><font color="0000BB">new</font></b>(PStaticText, Init(Rect, <font color="#FF0000">'Hallo           '</font>));
+  StaticText^.Text^ := <font color="#FF0000">'Hello world'</font>;</code></pre>
 <br>
 <b>TListBox</b><br>
 Bei der Komponenten <b>TListBox<b> ist Vorsicht geboten, die <b>TList</b> welche man hier zuordnet, muss man selbst in einem <b>Destructor</b> aufräumen.<br>

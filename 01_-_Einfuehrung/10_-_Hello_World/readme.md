@@ -4,17 +4,17 @@
 Ein Hello World mit Free-Vision.<br>
 Der Text wird in einer Message-Box ausgegeben.<br>
 ---
-```pascal>program Project1;
+<pre><code=pascal><b><font color="0000BB">program</font></b> Project1;
 <br>
-uses
+<b><font color="0000BB">uses</font></b>
   App, MsgBox;
-var
+<b><font color="0000BB">var</font></b>
   MyApp: TApplication;
 <br>
-begin
+<b><font color="0000BB">begin</font></b>
   MyApp.Init;
-  MessageBox('Hello World !', nil, mfOKButton);</font>
-  // MyApp.Run;   // Wen es weiter gehen soll.
+  MessageBox(<font color="#FF0000">'Hello World !'</font>, <b><font color="0000BB">nil</font></b>, mfOKButton);
+  <i><font color="#FFFF00">// MyApp.Run;   // Wen es weiter gehen soll.</font></i>
   MyApp.Done;
-end.```
+<b><font color="0000BB">end</font></b>.</code></pre>
 <br>

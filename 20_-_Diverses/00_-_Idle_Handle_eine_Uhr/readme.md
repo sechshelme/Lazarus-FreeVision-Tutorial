@@ -6,39 +6,39 @@ Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.<br>
 Das Object mit dem UhrenDialog befindet sich in der Unit <b>UhrDialog</b>.<br>
 ---
 Neue Konstante für das Kommado neuer UhrenDialog.<br>
-```pascal>const
-  cmNewWin = 1001;</font>
-  cmNewUhr = 1002;</font>```
+<pre><code=pascal><b><font color="0000BB">const</font></b>
+  cmNewWin = <font color="#0077BB">1001</font>;
+  cmNewUhr = <font color="#0077BB">1002</font>;</code></pre>
 Hier befindet sich die wichtigste Methode <b>Idle</b>.<br>
 Diese Methode wird aufgerufen, wen die CPU sonst nichts zu tun hat.<br>
 Hier wird sie verwendet um die Uhr-Zeit in den Dialogen zu aktualiesieren.<br>
-```pascal>type
-  TMyApp = object(TApplication)
+<pre><code=pascal><b><font color="0000BB">type</font></b>
+  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     zeitalt: Integer;
-    constructor Init;
+    <b><font color="0000BB">constructor</font></b> Init;
 <br>
-    procedure InitStatusLine; virtual;
-    procedure InitMenuBar; virtual;
+    <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;
+    <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;
 <br>
-    procedure HandleEvent(var Event: TEvent); virtual;
+    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
 <br>
-    procedure NewWindows;
-    procedure NewUhr;
+    <b><font color="0000BB">procedure</font></b> NewWindows;
+    <b><font color="0000BB">procedure</font></b> NewUhr;
 <br>
-    procedure Idle; Virtual;  // Das wichtigste.
-  end;```
+    <b><font color="0000BB">procedure</font></b> Idle; <b><font color="0000BB">Virtual</font></b>;  <i><font color="#FFFF00">// Das wichtigste.</font></i>
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Am Anfang wird ein Fenster und ein Uhrendialog erzeugt.<br>
-```pascal>constructor TMyApp.Init;
-begin
-  inherited Init;   // Der Vorfahre aufrufen.
-  NewWindows;       // Fenster erzeugen.
-  NewUhr;           // Uhrendialog erzeugen.
-end;```
+<pre><code=pascal><b><font color="0000BB">constructor</font></b> TMyApp.Init;
+<b><font color="0000BB">begin</font></b>
+  <b><font color="0000BB">inherited</font></b> Init;   <i><font color="#FFFF00">// Der Vorfahre aufrufen.</font></i>
+  NewWindows;       <i><font color="#FFFF00">// Fenster erzeugen.</font></i>
+  NewUhr;           <i><font color="#FFFF00">// Uhrendialog erzeugen.</font></i>
+<b><font color="0000BB">end</font></b>;</code></pre>
 Neuer Uhrendialog in den Desktop einfügen.<br>
-```pascal>procedure TMyApp.NewUhr;
-begin
-  Desktop^.Insert(ValidView(New(PUhrView, Init)));
-end;```
+<pre><code=pascal><b><font color="0000BB">procedure</font></b> TMyApp.NewUhr;
+<b><font color="0000BB">begin</font></b>
+  Desktop^.Insert(ValidView(<b><font color="0000BB">New</font></b>(PUhrView, Init)));
+<b><font color="0000BB">end</font></b>;</code></pre>
 Der Leeerlaufprozess <b>Idle</b>.<br>
 Mit <b>Message(...</b> werden allen Fenster und Dialgen das <b>cmUhrRefresh</b> Kommado übergeben.<br>
 Auch wird dazu das Event <b>evBroadcast</b> verwendet, das es um eine Übertragung handelt.<br>
@@ -47,112 +47,112 @@ Beim Fenster läuft dieses einfach durch.<br>
 Auch sieht man gut, das das Message nur aufgerufen wird, wen ein Sekunde verstrichen ist.<br>
 Als letzter Parameter wird ein Pointer auf einen String übergeben, welcher dir aktuelle Zeit enthält.<br>
 Würde man es bei jedem Idle machen, würde die Uhr nur flimmern.<br>
-```pascal>procedure TMyApp.Idle;
-var
+<pre><code=pascal><b><font color="0000BB">procedure</font></b> TMyApp.Idle;
+<b><font color="0000BB">var</font></b>
   zeitNeu: Integer;
-  s: ShortString;      // Speichert die aktuelle Zeit als String.
-begin
-  zeitNeu := round(time * 60 * 60 * 24);           // Sekunden berechnen.
-  if zeitNeu <> zeitalt then begin                 // Nur aktualliesieren wen ein Sek. vorbei.
+  s: ShortString;      <i><font color="#FFFF00">// Speichert die aktuelle Zeit als String.</font></i>
+<b><font color="0000BB">begin</font></b>
+  zeitNeu := round(time * <font color="#0077BB">60</font> * <font color="#0077BB">60</font> * <font color="#0077BB">24</font>);           <i><font color="#FFFF00">// Sekunden berechnen.</font></i>
+  <b><font color="0000BB">if</font></b> zeitNeu <> zeitalt <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>                 <i><font color="#FFFF00">// Nur aktualliesieren wen ein Sek. vorbei.</font></i>
     zeitalt := zeitNeu;
-    s:= TimeToStr(Now);                            // Aktuelle Zeit als String.
-    Message(@Self, evBroadcast, cmUhrRefresh, @s); // Ruft eigener HandleEvent auf.
-  end;
-end;```
+    s:= TimeToStr(Now);                            <i><font color="#FFFF00">// Aktuelle Zeit als String.</font></i>
+    Message(@<b><font color="0000BB">Self</font></b>, evBroadcast, cmUhrRefresh, @s); <i><font color="#FFFF00">// Ruft eigener HandleEvent auf.</font></i>
+  <b><font color="0000BB">end</font></b>;
+<b><font color="0000BB">end</font></b>;</code></pre>
 Dieses HandleEvent interessiert das Kommando <b>cmUhrRefresh</b> nicht.<br>
-```pascal>procedure TMyApp.HandleEvent(var Event: TEvent);
-begin
-  inherited HandleEvent(Event);
+<pre><code=pascal><b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<b><font color="0000BB">begin</font></b>
+  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>
-  if Event.What = evCommand then begin
-    case Event.Command of
-      cmNewWin: begin
-        NewWindows;    // Fenster erzeugen.
-      end;
-      cmNewUhr: begin
-        NewUhr;        // Uhrendialog erzeugen.
-      end;
-      else begin
-        Exit;
-      end;
-    end;
-  end;
+  <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+      cmNewWin: <b><font color="0000BB">begin</font></b>
+        NewWindows;    <i><font color="#FFFF00">// Fenster erzeugen.</font></i>
+      <b><font color="0000BB">end</font></b>;
+      cmNewUhr: <b><font color="0000BB">begin</font></b>
+        NewUhr;        <i><font color="#FFFF00">// Uhrendialog erzeugen.</font></i>
+      <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+        <b><font color="0000BB">Exit</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;
   ClearEvent(Event);
-end;```
+<b><font color="0000BB">end</font></b>;</code></pre>
 ---
 <b>Unit mit dem Uhren-Dialog.</b><br>
 <br><br>
 Die Komponenten auf dem Dialog sind nichts besonderes, es hat nur ein OK-Button.<br>
 Die Zeit wird direkt mit <b>WriteLine(...</b> reingeschrieben.<br>
 Aus diesem Grund wurde die Methode <b>Draw</b> ergänzt.<br>
-<pre><code>unit UhrDialog;
+<pre><code><b><font color="0000BB">unit</font></b> UhrDialog;
 </code></pre>
 Die Deklaration des Dialoges.<br>
 Hier wird in <b>ZeitStr</b> die Zeit gespeichert, so das sie mit <b>Draw</b> ausgegeben werden kann.<br>
-<pre><code>const
-  cmUhrRefresh = 1003;</font>
+<pre><code><b><font color="0000BB">const</font></b>
+  cmUhrRefresh = <font color="#0077BB">1003</font>;
 <br>
-type
+<b><font color="0000BB">type</font></b>
   PUhrView = ^TUhrView;
-  TUhrView = object(TDialog)
-  private
+  TUhrView = <b><font color="0000BB">object</font></b>(TDialog)
+  <b><font color="0000BB">private</font></b>
     ZeitStr: ShortString;
-  public
-    constructor Init;
-    procedure Draw; Virtual;
-    procedure HandleEvent(var Event: TEvent); virtual;
-  end;
+  <b><font color="0000BB">public</font></b>
+    <b><font color="0000BB">constructor</font></b> Init;
+    <b><font color="0000BB">procedure</font></b> Draw; <b><font color="0000BB">Virtual</font></b>;
+    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
+  <b><font color="0000BB">end</font></b>;
 </code></pre>
 Im Dioalog wird nur ein OK-Button erzeugt.<br>
-<pre><code>constructor TUhrView.Init;
-var
+<pre><code><b><font color="0000BB">constructor</font></b> TUhrView.Init;
+<b><font color="0000BB">var</font></b>
   R: TRect;
-begin
-  R.Assign(51, 1, 70, 8);</font>
-  inherited Init(R, 'Uhr');</font>
+<b><font color="0000BB">begin</font></b>
+  R.Assign(<font color="#0077BB">51</font>, <font color="#0077BB">1</font>, <font color="#0077BB">70</font>, <font color="#0077BB">8</font>);
+  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'Uhr'</font>);
 <br>
-  R.Assign(7, 4, 13, 6);</font>
-  Insert(new(PButton, Init(R, '~O~k', cmOK, bfDefault)));</font>
-end;
+  R.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">4</font>, <font color="#0077BB">13</font>, <font color="#0077BB">6</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~k'</font>, cmOK, bfDefault)));
+<b><font color="0000BB">end</font></b>;
 </code></pre>
 In <b>Draw</b> sieht man gut, das die Zeit direkt in den Dialog geschrieben wird.<br>
-<pre><code>procedure TUhrView.Draw;
-var
+<pre><code><b><font color="0000BB">procedure</font></b> TUhrView.Draw;
+<b><font color="0000BB">var</font></b>
   b: TDrawBuffer;
   c: Byte;
-begin
-  inherited Draw;
-  c := GetColor(7);</font>
-  MoveChar(b, ' ', c, Size.X + 4);</font>
+<b><font color="0000BB">begin</font></b>
+  <b><font color="0000BB">inherited</font></b> Draw;
+  c := GetColor(<font color="#0077BB">7</font>);
+  MoveChar(b, <font color="#FF0000">' '</font>, c, Size.X + <font color="#0077BB">4</font>);
   MoveStr(b, ZeitStr, c);
-  WriteLine(5, 2, Size.X + 2, 1, b);
-end;
+  WriteLine(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, Size.X + <font color="#0077BB">2</font>, <font color="#0077BB">1</font>, b);
+<b><font color="0000BB">end</font></b>;
 </code></pre>
 Das <b>HandleEvent</b> ist schon interessanter, dort wird das Event <b>evBroadcast</b> und<br>
 das Kommando <b>cmUhrRefresh</b> abgefangen, welches im Hauptprogramm mit Message übergeben wurde.<br>
 Aus <b>Event.InfoPtr</b> wird noch der String übernommen welcher die Zeit enthält.<br>
 Das Kommando <b>cmOk</b> ist nicht besonderes, es schliesst nur den Dialog.<br>
-<pre><code>procedure TUhrView.HandleEvent(var Event: TEvent);
-begin
-  inherited HandleEvent(Event);
+<pre><code><b><font color="0000BB">procedure</font></b> TUhrView.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<b><font color="0000BB">begin</font></b>
+  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>
-  case Event.What of
-    evBroadcast: begin
-      case Event.Command of
-        cmUhrRefresh: begin
+  <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
+    evBroadcast: <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmUhrRefresh: <b><font color="0000BB">begin</font></b>
           ZeitStr := PString(Event.InfoPtr)^;
           Draw;
-        end;
-      end;
-    end;
-    evCommand: begin
-      case Event.Command of
-        cmOK: begin
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+    evCommand: <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmOK: <b><font color="0000BB">begin</font></b>
           Close;
-        end;
-      end;
-    end;
-  end;
-end;
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;
+<b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>

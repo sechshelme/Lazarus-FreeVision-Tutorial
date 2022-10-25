@@ -6,122 +6,122 @@ Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bek
 Somit kann man dieses sogar sichbar machen.<br>
 ---
 Ein Kommando für das öffnen des Zwischenablagefenster.<br>
-```pascal>const
-  cmNewWin = 1001;</font>
-  cmRefresh = 1002;</font>
-  cmShowClip = 1003;</font>```
+<pre><code=pascal><b><font color="0000BB">const</font></b>
+  cmNewWin = <font color="#0077BB">1001</font>;
+  cmRefresh = <font color="#0077BB">1002</font>;
+  cmShowClip = <font color="#0077BB">1003</font>;</code></pre>
 Hier wird das Fenster für die Zwischenablage deklariert.<br>
 Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt werden soll.<br>
-```pascal>type
-  TMyApp = object(TApplication)
+<pre><code=pascal><b><font color="0000BB">type</font></b>
+  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
     ClipWindow: PEditWindow;
 <br>
-    constructor Init;
+    <b><font color="0000BB">constructor</font></b> Init;
 <br>
-    procedure InitStatusLine; virtual;
-    procedure InitMenuBar; virtual;
+    <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;
+    <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;
 <br>
-    procedure HandleEvent(var Event: TEvent); virtual;
-    procedure OutOfMemory; virtual;
+    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
+    <b><font color="0000BB">procedure</font></b> OutOfMemory; <b><font color="0000BB">virtual</font></b>;
 <br>
-    function NewWindows(FileName: ShortString; Visible: Boolean = False): PEditWindow;
-    procedure OpenWindows;
-    procedure SaveAll;
-    procedure CloseAll;
-  end;```
+    <b><font color="0000BB">function</font></b> NewWindows(FileName: ShortString; Visible: Boolean = <b><font color="0000BB">False</font></b>): PEditWindow;
+    <b><font color="0000BB">procedure</font></b> OpenWindows;
+    <b><font color="0000BB">procedure</font></b> SaveAll;
+    <b><font color="0000BB">procedure</font></b> CloseAll;
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
-```pascal>  procedure TMyApp.InitMenuBar;
-  var
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+  <b><font color="0000BB">var</font></b>
     R: TRect;
-  begin
+  <b><font color="0000BB">begin</font></b>
     GetExtent(R);
-    R.B.Y := R.A.Y + 1;</font>
+    R.B.Y := R.A.Y + <font color="#0077BB">1</font>;
 <br>
-    MenuBar := New(PMenuBar, Init(R, NewMenu(
-      NewSubMenu('~D~atei', hcNoContext, NewMenu(</font>
-        NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,</font>
-        NewItem('~O~effnen...', 'F3', kbF3, cmOpen, hcNoContext,</font>
-        NewItem('~S~peichern', 'F2', kbF2, cmSave, hcNoContext,</font>
-        NewItem('Speichern ~u~nter...', '', kbNoKey, cmSaveAs, hcNoContext,
-        NewItem('~A~lle speichern', '', kbNoKey, cmSaveAll, hcNoContext,</font>
+    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, NewMenu(
+      NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(
+        NewItem(<font color="#FF0000">'~N~eu'</font>, <font color="#FF0000">'F4'</font>, kbF4, cmNewWin, hcNoContext,
+        NewItem(<font color="#FF0000">'~O~effnen...'</font>, <font color="#FF0000">'F3'</font>, kbF3, cmOpen, hcNoContext,
+        NewItem(<font color="#FF0000">'~S~peichern'</font>, <font color="#FF0000">'F2'</font>, kbF2, cmSave, hcNoContext,
+        NewItem(<font color="#FF0000">'Speichern ~u~nter...'</font>, <font color="#FF0000">''</font>, kbNoKey, cmSaveAs, hcNoContext,
+        NewItem(<font color="#FF0000">'~A~lle speichern'</font>, <font color="#FF0000">''</font>, kbNoKey, cmSaveAll, hcNoContext,
         NewLine(
-        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))))))),</font>
-      NewSubMenu('~B~earbeiten', hcNoContext, NewMenu(</font>
-        NewItem('~R~'#129'ckg'#132'ngig', '', kbAltBack, cmUndo, hcUndo,
+        NewItem(<font color="#FF0000">'~B~eenden'</font>, <font color="#FF0000">'Alt-X'</font>, kbAltX, cmQuit, hcNoContext, <b><font color="0000BB">nil</font></b>)))))))),
+      NewSubMenu(<font color="#FF0000">'~B~earbeiten'</font>, hcNoContext, NewMenu(
+        NewItem(<font color="#FF0000">'~R~'</font><font color="#FF0000">#129</font><font color="#FF0000">'ckg'</font><font color="#FF0000">#132</font><font color="#FF0000">'ngig'</font>, <font color="#FF0000">''</font>, kbAltBack, cmUndo, hcUndo,
         NewLine(
-        NewItem('Aus~s~chneiden', 'Shift+Del', kbShiftDel, cmCut, hcCut,
-        NewItem('~K~opieren', 'Ctrl+Ins', kbCtrlIns, cmCopy, hcCopy,
-        NewItem('~E~inf'#129'gen', 'Shift+Ins', kbShiftIns, cmPaste, hcPaste,
-        NewItem('~L~'#148'schen', 'Ctrl+Del', kbCtrlDel, cmClear, hcClear,
+        NewItem(<font color="#FF0000">'Aus~s~chneiden'</font>, <font color="#FF0000">'Shift+Del'</font>, kbShiftDel, cmCut, hcCut,
+        NewItem(<font color="#FF0000">'~K~opieren'</font>, <font color="#FF0000">'Ctrl+Ins'</font>, kbCtrlIns, cmCopy, hcCopy,
+        NewItem(<font color="#FF0000">'~E~inf'</font><font color="#FF0000">#129</font><font color="#FF0000">'gen'</font>, <font color="#FF0000">'Shift+Ins'</font>, kbShiftIns, cmPaste, hcPaste,
+        NewItem(<font color="#FF0000">'~L~'</font><font color="#FF0000">#148</font><font color="#FF0000">'schen'</font>, <font color="#FF0000">'Ctrl+Del'</font>, kbCtrlDel, cmClear, hcClear,
         NewLine(
-        NewItem('~Z~wischenablage', '', kbNoKey, cmShowClip, hcCut, nil))))))))),</font>
-      NewSubMenu('~S~uchen', hcNoContext, NewMenu(</font>
-        NewItem('~S~uchen...', 'Ctrl+F', kbCtrlF, cmFind, hcNoContext,</font>
-        NewItem('~E~rsetzten...', 'Ctrl+H', kbCtrlH, cmReplace, hcNoContext,
-        NewItem('Suche ~n~'#132'chstes', 'Ctrl+N', kbCtrlN, cmSearchAgain, hcNoContext, nil)))),
-      NewSubMenu('~F~enster', hcNoContext, NewMenu(</font>
-        NewItem('~N~ebeneinander', '', kbNoKey, cmTile, hcNoContext,</font>
-        NewItem(#154'ber~l~append', '', kbNoKey, cmCascade, hcNoContext,
-        NewItem('~A~lle schliessen', '', kbNoKey, cmCloseAll, hcNoContext,</font>
-        NewItem('Anzeige ~e~rneuern', '', kbNoKey, cmRefresh, hcNoContext,
+        NewItem(<font color="#FF0000">'~Z~wischenablage'</font>, <font color="#FF0000">''</font>, kbNoKey, cmShowClip, hcCut, <b><font color="0000BB">nil</font></b>))))))))),
+      NewSubMenu(<font color="#FF0000">'~S~uchen'</font>, hcNoContext, NewMenu(
+        NewItem(<font color="#FF0000">'~S~uchen...'</font>, <font color="#FF0000">'Ctrl+F'</font>, kbCtrlF, cmFind, hcNoContext,
+        NewItem(<font color="#FF0000">'~E~rsetzten...'</font>, <font color="#FF0000">'Ctrl+H'</font>, kbCtrlH, cmReplace, hcNoContext,
+        NewItem(<font color="#FF0000">'Suche ~n~'</font><font color="#FF0000">#132</font><font color="#FF0000">'chstes'</font>, <font color="#FF0000">'Ctrl+N'</font>, kbCtrlN, cmSearchAgain, hcNoContext, <b><font color="0000BB">nil</font></b>)))),
+      NewSubMenu(<font color="#FF0000">'~F~enster'</font>, hcNoContext, NewMenu(
+        NewItem(<font color="#FF0000">'~N~ebeneinander'</font>, <font color="#FF0000">''</font>, kbNoKey, cmTile, hcNoContext,
+        NewItem(<font color="#FF0000">#154</font><font color="#FF0000">'ber~l~append'</font>, <font color="#FF0000">''</font>, kbNoKey, cmCascade, hcNoContext,
+        NewItem(<font color="#FF0000">'~A~lle schliessen'</font>, <font color="#FF0000">''</font>, kbNoKey, cmCloseAll, hcNoContext,
+        NewItem(<font color="#FF0000">'Anzeige ~e~rneuern'</font>, <font color="#FF0000">''</font>, kbNoKey, cmRefresh, hcNoContext,
         NewLine(
-        NewItem('Gr'#148'sse/~P~osition', 'Ctrl+F5', kbCtrlF5, cmResize, hcNoContext,</font>
-        NewItem('Ver~g~'#148'ssern', 'F5', kbF5, cmZoom, hcNoContext,
-        NewItem('~N~'#132'chstes', 'F6', kbF6, cmNext, hcNoContext,</font>
-        NewItem('~V~orheriges', 'Shift+F6', kbShiftF6, cmPrev, hcNoContext,
+        NewItem(<font color="#FF0000">'Gr'</font><font color="#FF0000">#148</font><font color="#FF0000">'sse/~P~osition'</font>, <font color="#FF0000">'Ctrl+F5'</font>, kbCtrlF5, cmResize, hcNoContext,
+        NewItem(<font color="#FF0000">'Ver~g~'</font><font color="#FF0000">#148</font><font color="#FF0000">'ssern'</font>, <font color="#FF0000">'F5'</font>, kbF5, cmZoom, hcNoContext,
+        NewItem(<font color="#FF0000">'~N~'</font><font color="#FF0000">#132</font><font color="#FF0000">'chstes'</font>, <font color="#FF0000">'F6'</font>, kbF6, cmNext, hcNoContext,
+        NewItem(<font color="#FF0000">'~V~orheriges'</font>, <font color="#FF0000">'Shift+F6'</font>, kbShiftF6, cmPrev, hcNoContext,
         NewLine(
-        NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, nil)))))))))))), nil)))))));
-  end;```
+        NewItem(<font color="#FF0000">'~S~chliessen'</font>, <font color="#FF0000">'Alt+F3'</font>, kbAltF3, cmClose, hcNoContext, <b><font color="0000BB">nil</font></b>)))))))))))), <b><font color="0000BB">nil</font></b>)))))));
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
-```pascal>  function TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = False) : PEditWindow;
-  var
+<pre><code=pascal>  <b><font color="0000BB">function</font></b> TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = <b><font color="0000BB">False</font></b>) : PEditWindow;
+  <b><font color="0000BB">var</font></b>
     Win: PEditWindow;
     R: TRect;
-  const
-    WinCounter: integer = 0;</font>
-  begin
-    R.Assign(0, 0, 60, 20);</font>
+  <b><font color="0000BB">const</font></b>
+    WinCounter: integer = <font color="#0077BB">0</font>;
+  <b><font color="0000BB">begin</font></b>
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
     Inc(WinCounter);
-    Win := New(PEditWindow, Init(R, FileName, WinCounter));
-    if ValidView(Win) <> nil then begin
-      if Visible then begin
-        win^.Hide;        // Fenster verstecken.
-      end;
+    Win := <b><font color="0000BB">New</font></b>(PEditWindow, Init(R, FileName, WinCounter));
+    <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">if</font></b> Visible <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+        win^.Hide;        <i><font color="#FFFF00">// Fenster verstecken.</font></i>
+      <b><font color="0000BB">end</font></b>;
       Result := PEditWindow(MyApp.InsertWindow(win));
-    end else begin
+    <b><font color="0000BB">end</font></b> <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
       Dec(WinCounter);
-    end;
-  end;```
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
-  begin
-    inherited HandleEvent(Event);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>
-    if Event.What = evCommand then begin
-      case Event.Command of
-        cmNewWin: begin
-          NewWindows('');</font>
-        end;
-        cmOpen: begin
+    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmNewWin: <b><font color="0000BB">begin</font></b>
+          NewWindows(<font color="#FF0000">''</font>);
+        <b><font color="0000BB">end</font></b>;
+        cmOpen: <b><font color="0000BB">begin</font></b>
           OpenWindows;
-        end;
-        cmSaveAll: begin
+        <b><font color="0000BB">end</font></b>;
+        cmSaveAll: <b><font color="0000BB">begin</font></b>
           SaveAll;
-        end;
-        cmCloseAll: begin
+        <b><font color="0000BB">end</font></b>;
+        cmCloseAll: <b><font color="0000BB">begin</font></b>
           CloseAll;
-        end;
-        cmRefresh: begin
+        <b><font color="0000BB">end</font></b>;
+        cmRefresh: <b><font color="0000BB">begin</font></b>
           ReDraw;
-        end;
-        cmShowClip: begin     // Clipboard anzeigen.
+        <b><font color="0000BB">end</font></b>;
+        cmShowClip: <b><font color="0000BB">begin</font></b>     <i><font color="#FFFF00">// Clipboard anzeigen.</font></i>
           ClipWindow^.Select;
           ClipWindow^.Show;
-        end;
-        else begin
-          Exit;
-        end;
-      end;
-    end;
-  end;```
+        <b><font color="0000BB">end</font></b>;
+        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+          <b><font color="0000BB">Exit</font></b>;
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</code></pre>
 <br>

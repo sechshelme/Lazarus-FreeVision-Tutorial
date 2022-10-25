@@ -7,94 +7,94 @@ Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick e
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit dem Zähler-Button.<br>
-<pre><code>unit MyDialog;
+<pre><code><b><font color="0000BB">unit</font></b> MyDialog;
 </code></pre>
 Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.<br>
 Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
-<pre><code>type
+<pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
 <br>
-  TMyDialog = object(TDialog)
-  const
-    cmTag = 1000;</font>
-  var
+  TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
+  <b><font color="0000BB">const</font></b>
+    cmTag = <font color="#0077BB">1000</font>;
+  <b><font color="0000BB">var</font></b>
     ListBox: PListBox;
 <br>
-    constructor Init;
-    procedure HandleEvent(var Event: TEvent); virtual;
-  end;
+    <b><font color="0000BB">constructor</font></b> Init;
+    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
+  <b><font color="0000BB">end</font></b>;
 </code></pre>
 Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.<br>
 <b>CounterButton</b> wird für die Modifikation gebraucht.<br>
-<pre><code>constructor TMyDialog.Init;
-var
+<pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
+<b><font color="0000BB">var</font></b>
   R: TRect;
   ScrollBar: PScrollBar;
   StringCollection: PCollection;
 <br>
-begin
-  R.Assign(10, 5, 67, 17);</font>
-  inherited Init(R, 'ListBox Demo');</font>
+<b><font color="0000BB">begin</font></b>
+  R.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">5</font>, <font color="#0077BB">67</font>, <font color="#0077BB">17</font>);
+  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'ListBox Demo'</font>);
 <br>
-  Title := NewStr('dfsfdsa');</font>
+  Title := NewStr(<font color="#FF0000">'dfsfdsa'</font>);
 <br>
-  // ListBox
-  R.Assign(31, 2, 32, 7);</font>
-  ScrollBar := new(PScrollBar, Init(R));
+  <i><font color="#FFFF00">// ListBox</font></i>
+  R.Assign(<font color="#0077BB">31</font>, <font color="#0077BB">2</font>, <font color="#0077BB">32</font>, <font color="#0077BB">7</font>);
+  ScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(R));
   Insert(ScrollBar);
 <br>
-  StringCollection := new(PCollection, Init(0, 1));</font>
-  StringCollection^.Insert(NewStr('Montag'));</font>
-  StringCollection^.Insert(NewStr('Dienstag'));</font>
-  StringCollection^.Insert(NewStr('Mittwoch'));</font>
-  StringCollection^.Insert(NewStr('Donnerstag'));</font>
-  StringCollection^.Insert(NewStr('Freitag'));</font>
-  StringCollection^.Insert(NewStr('Samstag'));</font>
-  StringCollection^.Insert(NewStr('Sonntag'));</font>
+  StringCollection := <b><font color="0000BB">new</font></b>(PCollection, Init(<font color="#0077BB">0</font>, <font color="#0077BB">1</font>));
+  StringCollection^.Insert(NewStr(<font color="#FF0000">'Montag'</font>));
+  StringCollection^.Insert(NewStr(<font color="#FF0000">'Dienstag'</font>));
+  StringCollection^.Insert(NewStr(<font color="#FF0000">'Mittwoch'</font>));
+  StringCollection^.Insert(NewStr(<font color="#FF0000">'Donnerstag'</font>));
+  StringCollection^.Insert(NewStr(<font color="#FF0000">'Freitag'</font>));
+  StringCollection^.Insert(NewStr(<font color="#FF0000">'Samstag'</font>));
+  StringCollection^.Insert(NewStr(<font color="#FF0000">'Sonntag'</font>));
 <br>
-  R.Assign(5, 2, 31, 7);</font>
-  ListBox := new(PListBox, Init(R, 1, ScrollBar));</font>
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">31</font>, <font color="#0077BB">7</font>);
+  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(R, <font color="#0077BB">1</font>, ScrollBar));
   ListBox^.NewList(StringCollection);
 <br>
   Insert(ListBox);
-  ListBox^.Insert(NewStr('aaaaaaaaa'));</font>
+  ListBox^.Insert(NewStr(<font color="#FF0000">'aaaaaaaaa'</font>));
 <br>
-  ListBox^.List^.Insert(NewStr('bbbbbbb'));</font>
+  ListBox^.List^.Insert(NewStr(<font color="#FF0000">'bbbbbbb'</font>));
   ListBox^.SetRange(ListBox^.List^.Count);
 <br>
 
 <br>
-  // Cancel-Button
-  R.Assign(19, 9, 32, 10);</font>
-  Insert(new(PButton, Init(R, '~T~ag', cmTag, bfNormal)));</font>
+  <i><font color="#FFFF00">// Cancel-Button</font></i>
+  R.Assign(<font color="#0077BB">19</font>, <font color="#0077BB">9</font>, <font color="#0077BB">32</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~T~ag'</font>, cmTag, bfNormal)));
 <br>
-  // Ok-Button
-  R.Assign(7, 9, 17, 10);</font>
-  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
-end;
+  <i><font color="#FFFF00">// Ok-Button</font></i>
+  R.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">9</font>, <font color="#0077BB">17</font>, <font color="#0077BB">10</font>);
+  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
+<b><font color="0000BB">end</font></b>;
 </code></pre>
 Im EventHandle, wird die Zahl im Button beim Drücken erhöht.<br>
 Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.<br>
 Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.<br>
-<pre><code>procedure TMyDialog.HandleEvent(var Event: TEvent);
-var
-  s: string;
+<pre><code><b><font color="0000BB">procedure</font></b> TMyDialog.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<b><font color="0000BB">var</font></b>
+  s: <b><font color="0000BB">string</font></b>;
 <br>
-begin
-  inherited HandleEvent(Event);
+<b><font color="0000BB">begin</font></b>
+  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>
-  case Event.What of
-    evCommand: begin
-      case Event.Command of
-        cmTag: begin
-          str(ListBox^.Focused + 1, s);</font>
-          MessageBox('Wochentag: ' + s + ' gew' + #132 + 'hlt', nil, mfOKButton);
-          ClearEvent(Event);   // Event beenden.
-        end;
-      end;
-    end;
-  end;
+  <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
+    evCommand: <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmTag: <b><font color="0000BB">begin</font></b>
+          str(ListBox^.Focused + <font color="#0077BB">1</font>, s);
+          MessageBox(<font color="#FF0000">'Wochentag: '</font> + s + <font color="#FF0000">' gew'</font> + <font color="#FF0000">#132</font> + <font color="#FF0000">'hlt'</font>, <b><font color="0000BB">nil</font></b>, mfOKButton);
+          ClearEvent(Event);   <i><font color="#FFFF00">// Event beenden.</font></i>
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;
 <br>
-end;
+<b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>

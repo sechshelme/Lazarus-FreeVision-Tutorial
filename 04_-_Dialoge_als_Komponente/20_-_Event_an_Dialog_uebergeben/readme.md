@@ -4,135 +4,135 @@
 In diesem Beispiel wird gezeigt, wie man ein Event an eine andere Komponente senden kann.<br>
 In diesem Fall wird ein Event an die Dialoge gesendet. In den Dialogen wird dann ein Counter hochgezählt.<br>
 Events für den Buttonklick.<br>
-```pascal>const
-  cmDia1   = 1001;</font>
-  cmDia2   = 1002;</font>
-  cmDiaAll = 1003;</font>```
+<pre><code=pascal><b><font color="0000BB">const</font></b>
+  cmDia1   = <font color="#0077BB">1001</font>;
+  cmDia2   = <font color="#0077BB">1002</font>;
+  cmDiaAll = <font color="#0077BB">1003</font>;</code></pre>
 Hier werden die 2 passiven Ausgabe-Dialoge erstellt, dies befinden sich in dem Object TMyDialog.<br>
 Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kommandos an die anderen Dialoge sendet.<br>
-```pascal>  constructor TMyApp.Init;
-  var
+<pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+  <b><font color="0000BB">var</font></b>
     R: TRect;
     Dia: PDialog;
-  begin
-    inherited init;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> init;
 <br>
-    // erster passsiver Dialog
-    R.Assign(45, 2, 70, 9);</font>
-    Dialog1 := New(PMyDialog, Init(R, 'Dialog 1'));</font>
-    Dialog1^.SetState(sfDisabled, True);    // Dialog auf ReadOnly.
-    if ValidView(Dialog1) <> nil then begin // Prüfen ob genügend Speicher.
+    <i><font color="#FFFF00">// erster passsiver Dialog</font></i>
+    R.Assign(<font color="#0077BB">45</font>, <font color="#0077BB">2</font>, <font color="#0077BB">70</font>, <font color="#0077BB">9</font>);
+    Dialog1 := <b><font color="0000BB">New</font></b>(PMyDialog, Init(R, <font color="#FF0000">'Dialog 1'</font>));
+    Dialog1^.SetState(sfDisabled, <b><font color="0000BB">True</font></b>);    <i><font color="#FFFF00">// Dialog auf ReadOnly.</font></i>
+    <b><font color="0000BB">if</font></b> ValidView(Dialog1) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b> <i><font color="#FFFF00">// Prüfen ob genügend Speicher.</font></i>
       Desktop^.Insert(Dialog1);
-    end;
+    <b><font color="0000BB">end</font></b>;
 <br>
-    // zweiter passsiver Dialog
-    R.Assign(45, 12, 70, 19);</font>
-    Dialog2 := New(PMyDialog, Init(R, 'Dialog 2'));</font>
-    Dialog2^.SetState(sfDisabled, True);
-    if ValidView(Dialog2) <> nil then begin
+    <i><font color="#FFFF00">// zweiter passsiver Dialog</font></i>
+    R.Assign(<font color="#0077BB">45</font>, <font color="#0077BB">12</font>, <font color="#0077BB">70</font>, <font color="#0077BB">19</font>);
+    Dialog2 := <b><font color="0000BB">New</font></b>(PMyDialog, Init(R, <font color="#FF0000">'Dialog 2'</font>));
+    Dialog2^.SetState(sfDisabled, <b><font color="0000BB">True</font></b>);
+    <b><font color="0000BB">if</font></b> ValidView(Dialog2) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
       Desktop^.Insert(Dialog2);
-    end;
+    <b><font color="0000BB">end</font></b>;
 <br>
-    // Steuerdialog
-    R.Assign(5, 5, 30, 20);</font>
-    Dia := New(PDialog, Init(R, 'Steuerung'));</font>
+    <i><font color="#FFFF00">// Steuerdialog</font></i>
+    R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">5</font>, <font color="#0077BB">30</font>, <font color="#0077BB">20</font>);
+    Dia := <b><font color="0000BB">New</font></b>(PDialog, Init(R, <font color="#FF0000">'Steuerung'</font>));
 <br>
-    with Dia^ do begin
-      R.Assign(6, 2, 18, 4);</font>
-      Insert(new(PButton, Init(R, 'Dialog ~1~', cmDia1, bfNormal)));</font>
+    <b><font color="0000BB">with</font></b> Dia^ <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
+      R.Assign(<font color="#0077BB">6</font>, <font color="#0077BB">2</font>, <font color="#0077BB">18</font>, <font color="#0077BB">4</font>);
+      Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'Dialog ~1~'</font>, cmDia1, bfNormal)));
 <br>
-      R.Move(0, 3);</font>
-      Insert(new(PButton, Init(R, 'Dialog ~2~', cmDia2, bfNormal)));</font>
+      R.Move(<font color="#0077BB">0</font>, <font color="#0077BB">3</font>);
+      Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'Dialog ~2~'</font>, cmDia2, bfNormal)));
 <br>
-      R.Move(0, 3);</font>
-      Insert(new(PButton, Init(R, '~A~lle', cmDiaAll, bfNormal)));</font>
+      R.Move(<font color="#0077BB">0</font>, <font color="#0077BB">3</font>);
+      Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~A~lle'</font>, cmDiaAll, bfNormal)));
 <br>
-      R.Move(0, 4);</font>
-      Insert(new(PButton, Init(R, '~B~eenden', cmQuit, bfNormal)));</font>
-    end;
+      R.Move(<font color="#0077BB">0</font>, <font color="#0077BB">4</font>);
+      Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~B~eenden'</font>, cmQuit, bfNormal)));
+    <b><font color="0000BB">end</font></b>;
 <br>
-    if ValidView(Dia) <> nil then begin
+    <b><font color="0000BB">if</font></b> ValidView(Dia) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
       Desktop^.Insert(Dia);
-    end;
-  end;```
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Hier werden mit <b>Message</b>, die Kommandos an die Dialoge gesendet.<br>
 Gibt man als ersten Parameter die View des Dialoges an, dann wird nur dieser Dialog angesprochen.<br>
 Gibt man <b>@Self</b> an, dann werden die Kommandos an alle Dialoge gesendet.<br>
 Beim 4. Paramter kann man noch einen Pointer auf einen Bezeichner übergeben,<br>
 die kann zB. ein String oder ein Record, etc. sein.<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
-  begin
-    inherited HandleEvent(Event);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>
-    if Event.What = evCommand then begin
-      case Event.Command of
-        cmDia1: begin
-          Message(Dialog1, evBroadcast, cmCounterUp, nil); // Kommando Dialog 1
-        end;
-        cmDia2: begin
-          Message(Dialog2, evBroadcast, cmCounterUp, nil); // Kommando Dialog 2
-        end;
-        cmDiaAll: begin
-          Message(@Self, evBroadcast, cmCounterUp, nil);   // Kommando an alle Dialoge
-        end;
-        else begin
-          Exit;
-        end;
-      end;
-    end;
+    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmDia1: <b><font color="0000BB">begin</font></b>
+          Message(Dialog1, evBroadcast, cmCounterUp, <b><font color="0000BB">nil</font></b>); <i><font color="#FFFF00">// Kommando Dialog 1</font></i>
+        <b><font color="0000BB">end</font></b>;
+        cmDia2: <b><font color="0000BB">begin</font></b>
+          Message(Dialog2, evBroadcast, cmCounterUp, <b><font color="0000BB">nil</font></b>); <i><font color="#FFFF00">// Kommando Dialog 2</font></i>
+        <b><font color="0000BB">end</font></b>;
+        cmDiaAll: <b><font color="0000BB">begin</font></b>
+          Message(@<b><font color="0000BB">Self</font></b>, evBroadcast, cmCounterUp, <b><font color="0000BB">nil</font></b>);   <i><font color="#FFFF00">// Kommando an alle Dialoge</font></i>
+        <b><font color="0000BB">end</font></b>;
+        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+          <b><font color="0000BB">Exit</font></b>;
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
     ClearEvent(Event);
-  end;```
+  <b><font color="0000BB">end</font></b>;</code></pre>
 ---
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der Zähler-Ausgabe.<br>
-<pre><code>unit MyDialog;
+<pre><code><b><font color="0000BB">unit</font></b> MyDialog;
 </code></pre>
 Deklaration des Object der passiven Dialoge.<br>
-<pre><code>type
+<pre><code><b><font color="0000BB">type</font></b>
   PMyDialog = ^TMyDialog;
-  TMyDialog = object(TDialog)
-  var
-    CounterInputLine: PInputLine; // Ausgabe Zeile für den Counter.
+  TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
+  <b><font color="0000BB">var</font></b>
+    CounterInputLine: PInputLine; <i><font color="#FFFF00">// Ausgabe Zeile für den Counter.</font></i>
 <br>
-    constructor Init(var Bounds: TRect; ATitle: TTitleStr);
-    procedure HandleEvent(var Event: TEvent); virtual;
-  end;
+    <b><font color="0000BB">constructor</font></b> Init(<b><font color="0000BB">var</font></b> Bounds: TRect; ATitle: TTitleStr);
+    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
+  <b><font color="0000BB">end</font></b>;
 </code></pre>
 Im Konstructor wird eine Ausgabezeile erzeugt.<br>
-<pre><code>constructor TMyDialog.Init(var Bounds: TRect; ATitle: TTitleStr);
-var
+<pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init(<b><font color="0000BB">var</font></b> Bounds: TRect; ATitle: TTitleStr);
+<b><font color="0000BB">var</font></b>
   R: TRect;
-begin
-  inherited Init(Bounds, ATitle);
+<b><font color="0000BB">begin</font></b>
+  <b><font color="0000BB">inherited</font></b> Init(Bounds, ATitle);
 <br>
-  R.Assign(5, 2, 10, 3);</font>
-  CounterInputLine := new(PInputLine, Init(R, 20));</font>
-  CounterInputLine^.Data^ := '0';</font>
+  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">10</font>, <font color="#0077BB">3</font>);
+  CounterInputLine := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">20</font>));
+  CounterInputLine^.Data^ := <font color="#FF0000">'0'</font>;
   Insert(CounterInputLine);
-end;
+<b><font color="0000BB">end</font></b>;
 </code></pre>
 Im EventHandle wird das Kommando empfangen, welches mit <b>Message</b> gesendet wurde.<br>
 Als Beweis dafür, wir die Zahl in der Ausgabezeile un eins erhöht.<br>
-<pre><code>procedure TMyDialog.HandleEvent(var Event: TEvent);
-var
+<pre><code><b><font color="0000BB">procedure</font></b> TMyDialog.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+<b><font color="0000BB">var</font></b>
   Counter: integer;
-begin
-  inherited HandleEvent(Event);
+<b><font color="0000BB">begin</font></b>
+  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>
-  case Event.What of
-    evBroadcast: begin
-      case Event.Command of
-        cmCounterUp: begin                              // cmCounterUp wurde mit Message gesendet.
-          Counter := StrToInt(CounterInputLine^.Data^); // Ausgabezeile auslesen.
-          Inc(Counter);                                 // Counter erhöhen.
-          CounterInputLine^.Data^ := IntToStr(Counter); // Neue Zahl ausgeben.
-          CounterInputLine^.Draw;                       // Asugabezeile aktualisieren.
-        end;
-      end;
-    end;
-  end;
+  <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
+    evBroadcast: <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmCounterUp: <b><font color="0000BB">begin</font></b>                              <i><font color="#FFFF00">// cmCounterUp wurde mit Message gesendet.</font></i>
+          Counter := StrToInt(CounterInputLine^.Data^); <i><font color="#FFFF00">// Ausgabezeile auslesen.</font></i>
+          Inc(Counter);                                 <i><font color="#FFFF00">// Counter erhöhen.</font></i>
+          CounterInputLine^.Data^ := IntToStr(Counter); <i><font color="#FFFF00">// Neue Zahl ausgeben.</font></i>
+          CounterInputLine^.Draw;                       <i><font color="#FFFF00">// Asugabezeile aktualisieren.</font></i>
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;
 <br>
-end;
+<b><font color="0000BB">end</font></b>;
 </code></pre>
 <br>

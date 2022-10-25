@@ -4,89 +4,89 @@
 Abarbeiten der Events, der Statuszeile und des Menu.<br>
 ---
 Für Dialoge muss man noch die Unit <b>Dialogs</b> einfügen.<br>
-```pascal>uses
-  App,      // TApplication
-  Objects,  // Fensterbereich (TRect)
-  Drivers,  // Hotkey
-  Views,    // Ereigniss (cmQuit)
-  Menus,    // Statuszeile
-  Dialogs;  // Dialoge```
+<pre><code=pascal><b><font color="0000BB">uses</font></b>
+  App,      <i><font color="#FFFF00">// TApplication</font></i>
+  Objects,  <i><font color="#FFFF00">// Fensterbereich (TRect)</font></i>
+  Drivers,  <i><font color="#FFFF00">// Hotkey</font></i>
+  Views,    <i><font color="#FFFF00">// Ereigniss (cmQuit)</font></i>
+  Menus,    <i><font color="#FFFF00">// Statuszeile</font></i>
+  Dialogs;  <i><font color="#FFFF00">// Dialoge</font></i></code></pre>
 Ein weiteres Kommando für den Aufruf des Dialoges.<br>
-```pascal>const
-  cmAbout = 1001;     // About anzeigen</font>
-  cmList = 1002;      // Datei Liste</font>
-  cmPara = 1003;      // Parameter</font>```
+<pre><code=pascal><b><font color="0000BB">const</font></b>
+  cmAbout = <font color="#0077BB">1001</font>;     <i><font color="#FFFF00">// About anzeigen</font></i>
+  cmList = <font color="#0077BB">1002</font>;      <i><font color="#FFFF00">// Datei Liste</font></i>
+  cmPara = <font color="#0077BB">1003</font>;      <i><font color="#FFFF00">// Parameter</font></i></code></pre>
 Neue Funktionen kommen auch in die Klasse.<br>
 Hier ein Dialog für Paramtereingabe.<br>
-```pascal>type
-  TMyApp = object(TApplication)
-    procedure InitStatusLine; virtual;                 // Statuszeile
-    procedure InitMenuBar; virtual;                    // Menü
-    procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
+<pre><code=pascal><b><font color="0000BB">type</font></b>
+  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
+    <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;                 <i><font color="#FFFF00">// Statuszeile</font></i>
+    <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;                    <i><font color="#FFFF00">// Menü</font></i>
+    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>; <i><font color="#FFFF00">// Eventhandler</font></i>
 <br>
-    procedure MyParameter;                             // neue Funktion für einen Dialog.
-  end;```
+    <b><font color="0000BB">procedure</font></b> MyParameter;                             <i><font color="#FFFF00">// neue Funktion für einen Dialog.</font></i>
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Das Menü wird um Parameter und Schliessen erweitert.<br>
-```pascal>  procedure TMyApp.InitMenuBar;
-  var
-    R: TRect;                          // Rechteck für die Menüzeilen-Position.
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
+  <b><font color="0000BB">var</font></b>
+    R: TRect;                          <i><font color="#FFFF00">// Rechteck für die Menüzeilen-Position.</font></i>
 <br>
-    M: PMenu;                          // Ganzes Menü
-    SM0, SM1,                          // Submenu
+    M: PMenu;                          <i><font color="#FFFF00">// Ganzes Menü</font></i>
+    SM0, SM1,                          <i><font color="#FFFF00">// Submenu</font></i>
     M0_0, M0_1, M0_2, M0_3, M0_4, M0_5,
-    M1_0: PMenuItem;                   // Einfache Menüpunkte
+    M1_0: PMenuItem;                   <i><font color="#FFFF00">// Einfache Menüpunkte</font></i>
 <br>
-  begin
+  <b><font color="0000BB">begin</font></b>
     GetExtent(R);
-    R.B.Y := R.A.Y + 1;</font>
+    R.B.Y := R.A.Y + <font color="#0077BB">1</font>;
 <br>
-    M1_0 := NewItem('~A~bout...', '', kbNoKey, cmAbout, hcNoContext, nil);</font>
-    SM1 := NewSubMenu('~H~ilfe', hcNoContext, NewMenu(M1_0), nil);</font>
+    M1_0 := NewItem(<font color="#FF0000">'~A~bout...'</font>, <font color="#FF0000">''</font>, kbNoKey, cmAbout, hcNoContext, <b><font color="0000BB">nil</font></b>);
+    SM1 := NewSubMenu(<font color="#FF0000">'~H~ilfe'</font>, hcNoContext, NewMenu(M1_0), <b><font color="0000BB">nil</font></b>);
 <br>
-    M0_5 := NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil);</font>
+    M0_5 := NewItem(<font color="#FF0000">'~B~eenden'</font>, <font color="#FF0000">'Alt-X'</font>, kbAltX, cmQuit, hcNoContext, <b><font color="0000BB">nil</font></b>);
     M0_4 := NewLine(M0_5);
-    M0_3 := NewItem('S~c~hliessen', 'Alt-F3', kbAltF3, cmClose, hcNoContext, M0_4);
+    M0_3 := NewItem(<font color="#FF0000">'S~c~hliessen'</font>, <font color="#FF0000">'Alt-F3'</font>, kbAltF3, cmClose, hcNoContext, M0_4);
     M0_2 := NewLine(M0_3);
-    M0_1 := NewItem('~P~arameter...', '', kbF2, cmPara, hcNoContext, M0_2);</font>
-    M0_0 := NewItem('~L~iste', 'F2', kbF2, cmList, hcNoContext, M0_1);</font>
-    SM0 := NewSubMenu('~D~atei', hcNoContext, NewMenu(M0_0), SM1);</font>
+    M0_1 := NewItem(<font color="#FF0000">'~P~arameter...'</font>, <font color="#FF0000">''</font>, kbF2, cmPara, hcNoContext, M0_2);
+    M0_0 := NewItem(<font color="#FF0000">'~L~iste'</font>, <font color="#FF0000">'F2'</font>, kbF2, cmList, hcNoContext, M0_1);
+    SM0 := NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(M0_0), SM1);
 <br>
     M := NewMenu(SM0);
 <br>
-    MenuBar := New(PMenuBar, Init(R, M));
-  end;```
+    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, M));
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.<br>
-```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
-  begin
-    inherited HandleEvent(Event);
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
 <br>
-    if Event.What = evCommand then begin
-      case Event.Command of
-        cmAbout: begin
-        end;
-        cmList: begin
-        end;
-        cmPara: begin     // Parameter Dialog öffnen.
+    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
+        cmAbout: <b><font color="0000BB">begin</font></b>
+        <b><font color="0000BB">end</font></b>;
+        cmList: <b><font color="0000BB">begin</font></b>
+        <b><font color="0000BB">end</font></b>;
+        cmPara: <b><font color="0000BB">begin</font></b>     <i><font color="#FFFF00">// Parameter Dialog öffnen.</font></i>
           MyParameter;
-        end;
-        else begin
-          Exit;
-        end;
-      end;
-    end;
+        <b><font color="0000BB">end</font></b>;
+        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+          <b><font color="0000BB">Exit</font></b>;
+        <b><font color="0000BB">end</font></b>;
+      <b><font color="0000BB">end</font></b>;
+    <b><font color="0000BB">end</font></b>;
     ClearEvent(Event);
-  end;```
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Bauen eines leeren Dialoges.<br>
 Auch da wird <b>TRect</b> gebraucht für die Grösse.<br>
 Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.<br>
-```pascal>  procedure TMyApp.MyParameter;
-  var
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyParameter;
+  <b><font color="0000BB">var</font></b>
     Dlg: PDialog;
     R: TRect;
-  begin
-    R.Assign(0, 0, 35, 15);                    // Grösse des Dialogs.
-    R.Move(23, 3);                             // Position des Dialogs.
-    Dlg := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.</font>
-    Desktop^.Insert(Dlg);                      // Dialog der App zuweisen.
-  end;```
+  <b><font color="0000BB">begin</font></b>
+    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">35</font>, <font color="#0077BB">15</font>);                    <i><font color="#FFFF00">// Grösse des Dialogs.</font></i>
+    R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);                             <i><font color="#FFFF00">// Position des Dialogs.</font></i>
+    Dlg := <b><font color="0000BB">New</font></b>(PDialog, Init(R, <font color="#FF0000">'Parameter'</font>)); <i><font color="#FFFF00">// Dialog erzeugen.</font></i>
+    Desktop^.Insert(Dlg);                      <i><font color="#FFFF00">// Dialog der App zuweisen.</font></i>
+  <b><font color="0000BB">end</font></b>;</code></pre>
 <br>

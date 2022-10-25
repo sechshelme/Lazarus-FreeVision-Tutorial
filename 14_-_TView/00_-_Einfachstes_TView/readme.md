@@ -6,22 +6,22 @@ Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>
 An diesem View sind keinerlei Änderungen möglich, da noch keine Event, Steurerelemente vorhanden sind.<br>
 ---
 Im Konstructor wird das View erzeugt.<br>
-```pascal>  constructor TMyApp.Init;
-  begin
-    inherited Init;   // Der Vorfahre aufrufen.
-    NewView;          // View erzeugen.
-  end;```
+<pre><code=pascal>  <b><font color="0000BB">constructor</font></b> TMyApp.Init;
+  <b><font color="0000BB">begin</font></b>
+    <b><font color="0000BB">inherited</font></b> Init;   <i><font color="#FFFF00">// Der Vorfahre aufrufen.</font></i>
+    NewView;          <i><font color="#FFFF00">// View erzeugen.</font></i>
+  <b><font color="0000BB">end</font></b>;</code></pre>
 Es wird ein einfaches View erzeugt, wie erwarte sieht man nicht viel, ausser eines grauen Rechteckes.<br>
-```pascal>  procedure TMyApp.NewView;
-  var
+<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewView;
+  <b><font color="0000BB">var</font></b>
     Win: PView;
     R: TRect;
-  begin
-    R.Assign(10, 5, 60, 20);</font>
-    Win := New(PView, Init(R));
+  <b><font color="0000BB">begin</font></b>
+    R.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">5</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
+    Win := <b><font color="0000BB">New</font></b>(PView, Init(R));
 <br>
-    if ValidView(Win) <> nil then begin
+    <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
       Desktop^.Insert(Win);
-    end;
-  end;```
+    <b><font color="0000BB">end</font></b>;
+  <b><font color="0000BB">end</font></b>;</code></pre>
 <br>
