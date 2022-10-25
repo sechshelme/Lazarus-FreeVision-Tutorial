@@ -1,5 +1,6 @@
 # 04 - Dialoge als Komponente
 ## 15 - Verschiedene Dialog Farben
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Einem Fenster/Dialog, kann man verschiedene FarbeSchema zuordnen.<br>
 Standardmässig wird folgendes verwendet:<br>

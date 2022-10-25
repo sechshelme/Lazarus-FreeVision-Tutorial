@@ -1,5 +1,6 @@
 # 02 - Statuszeile und Menu
 ## 10 - Menu
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinzufügen eines Menüs.<br>
 ---

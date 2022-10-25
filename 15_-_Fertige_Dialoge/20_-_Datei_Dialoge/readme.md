@@ -1,5 +1,6 @@
 # 15 - Fertige Dialoge
 ## 20 - Datei Dialoge
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Ein Dialog zum öffnen und speichern von Dateien.<br>
 Der <b>PFileDialog</b>.<br>

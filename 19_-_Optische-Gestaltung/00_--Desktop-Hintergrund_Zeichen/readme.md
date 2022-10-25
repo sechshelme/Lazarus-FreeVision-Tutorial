@@ -1,5 +1,6 @@
 # 19 - Optische-Gestaltung
 ## 00 --Desktop-Hintergrund Zeichen
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Beim Desktophintergrund kann man ein beliebiges Hintergrund-Zeichen zuordnen. Als Default ist das Zeichen <b>#176</b>.<br>
 ---

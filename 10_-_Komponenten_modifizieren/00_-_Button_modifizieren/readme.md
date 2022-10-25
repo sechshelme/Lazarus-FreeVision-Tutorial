@@ -1,5 +1,6 @@
 # 10 - Komponenten modifizieren
 ## 00 - Button modifizieren
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Man kann auch eine Komponente modifzieren, in diesem Beispiel ist es ein Button.<br>
 Dazu muss man einen Nachkommen von TButton erstellen.<br>

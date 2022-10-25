@@ -1,5 +1,6 @@
 # 30 - Gadgets
 ## 00 - RAM Verbrauch anzeigen (Heap)
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.<br>
 Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.<br>

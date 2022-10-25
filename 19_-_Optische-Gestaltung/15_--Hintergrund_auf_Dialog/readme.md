@@ -1,5 +1,6 @@
 # 19 - Optische-Gestaltung
 ## 15 --Hintergrund auf Dialog
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei Bedarf, kann man auch ein Hintergrund-Muster auf einen Dialog/Fenster legen.<br>
 ---

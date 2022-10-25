@@ -1,5 +1,6 @@
 # 02 - Statuszeile und Menu
 ## 05 - Status Zeile mehrere Eintraege
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Ändern der Status-Zeile, mit mehreren Optionen.<br>
 ---

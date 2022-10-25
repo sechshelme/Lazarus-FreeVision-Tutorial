@@ -1,5 +1,6 @@
 # 20 - Diverses
 ## 00 - Idle Handle eine Uhr
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wird gezeigt, wie man <b>Idle</b> verwenden kann.<br>
 Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.<br>

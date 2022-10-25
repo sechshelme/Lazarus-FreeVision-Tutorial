@@ -1,5 +1,6 @@
 # 30 - Gadgets
 ## 05 - Eine Uhr
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.<br>
 ---

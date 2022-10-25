@@ -1,5 +1,6 @@
 # 06 - Listen und ListBoxen
 ## 15 - ListBox sortiert
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Die ListBox kann auch sortiert sein.<br>
 ---

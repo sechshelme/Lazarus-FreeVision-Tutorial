@@ -1,5 +1,6 @@
 # 02 - Statuszeile und Menu
 ## 00 - Status Zeile
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Ändern der Status-Zeile.<br>
 Die Statuszeile wird gebraucht um wichtige Information und HotKey anzuzeigen.<br>

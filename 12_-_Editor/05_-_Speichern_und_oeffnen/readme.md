@@ -1,5 +1,6 @@
 # 12 - Editor
 ## 05 - Speichern und oeffnen
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Ein Editor wird erst brauchbar, wen Dateifunktionen dazu kommen, zB. öffnen und speichern.<br>
 Das Öffnen ist ähnlich von wie ein leerses Fenster erzeugen.<br>

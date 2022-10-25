@@ -1,5 +1,6 @@
 # 03 - Dialoge
 ## 45 - Werte des Dialoges auf Platte speichern
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Das die Werte des Dialoges auch nach beenden der Anwendung erhalten bleiben, speichern wir die Daten auf die Platte.<br>
 Es wird nicht überprüft, ob geschrieben werden kann, etc.<br>

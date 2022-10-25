@@ -1,5 +1,6 @@
 # 11 - Fenster
 ## 15 - Fenster mit Bedienelemte ausstatten
+<br>
 <img src="image.png" alt="Selfhtml"><br><br>
 Dem Fenster wurden noch Scrollbalken spendiert.<br>
 Man könnte noch eine Indikator hinzufügen, welcher Zeilen und Spalten anzeigt.<br>
