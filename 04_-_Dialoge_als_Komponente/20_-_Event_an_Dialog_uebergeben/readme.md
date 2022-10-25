@@ -5,7 +5,8 @@
 In diesem Beispiel wird gezeigt, wie man ein Event an eine andere Komponente senden kann.<br>
 In diesem Fall wird ein Event an die Dialoge gesendet. In den Dialogen wird dann ein Counter hochgezählt.<br>
 Events für den Buttonklick.<br>
-LineEnding+```pascal
+<br>
+```pascal
 const
   cmDia1   = 1001;
   cmDia2   = 1002;
@@ -14,7 +15,8 @@ const
 <br>
 Hier werden die 2 passiven Ausgabe-Dialoge erstellt, dies befinden sich in dem Object TMyDialog.<br>
 Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kommandos an die anderen Dialoge sendet.<br>
-LineEnding+```pascal
+<br>
+```pascal
   constructor TMyApp.Init;
   var
     R: TRect;
@@ -67,7 +69,8 @@ Gibt man als ersten Parameter die View des Dialoges an, dann wird nur dieser Dia
 Gibt man <b>@Self</b> an, dann werden die Kommandos an alle Dialoge gesendet.<br>
 Beim 4. Paramter kann man noch einen Pointer auf einen Bezeichner übergeben,<br>
 die kann zB. ein String oder ein Record, etc. sein.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);

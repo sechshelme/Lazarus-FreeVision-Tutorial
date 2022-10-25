@@ -5,13 +5,15 @@
 Hier wird ein About-Dialog erstellt, das sieht man gut für was man Label gebrauchen kann.<br>
 <hr><br>
 Die Datei, in welcher sich die Daten für den Dialog befinden.<br>
-LineEnding+```pascal
+<br>
+```pascal
 const
   DialogDatei = 'parameter.cfg';
 ```
 <br>
 Eine neue Funktion <b>About</b> ist hinzugekommen.<br>
-LineEnding+```pascal
+<br>
+```pascal
 type
   TMyApp = object(TApplication)
     ParameterData: TParameterData;                     // Parameter für Dialog.
@@ -30,7 +32,8 @@ type
 ```
 <br>
 Hier wird das About augerufen, wen im Menü About gewält wird.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
@@ -61,7 +64,8 @@ Mit <b>#3</b> wird der Text horizontal im Rect zentriert.<br>
 Mit <b>#2</b> wird der Text rechtbündig geschrieben.<br>
 <br>
 Mit <b>PLabel</b> könnte man auch Text ausgeben, aber für festen Text eignet sich <b>PStaticText</b> besser.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.About;
   var
     Dlg: PDialog;

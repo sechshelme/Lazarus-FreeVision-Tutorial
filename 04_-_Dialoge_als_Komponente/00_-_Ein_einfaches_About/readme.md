@@ -7,7 +7,8 @@ Dazu schreibt man einen Nachkommen von <b>TDialog</b>.<br>
 Als Beispiel wird hier ein About-Dialog gebaut.<br>
 <hr><br>
 Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeben.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     AboutDialog: PMyAbout;

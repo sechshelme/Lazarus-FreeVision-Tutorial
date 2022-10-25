@@ -5,7 +5,8 @@
 In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.<br>
 <hr><br>
     Erzeugt ein kleines Fenster rechts-unten, welches die Uhr anzeigt.<br>
-LineEnding+```pascal
+<br>
+```pascal
     GetExtent(R);
     R.A.X := R.B.X - 9;
     R.A.Y := R.B.Y - 1;
@@ -14,7 +15,8 @@ LineEnding+```pascal
 ```
 <br>
 Den Dialog mit dem Speicher Leak aufrufen.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     MyDialog: PMyDialog;
@@ -51,7 +53,8 @@ LineEnding+```pascal
 ```
 <br>
 Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.Idle;
 <br>
     function IsTileable(P: PView): Boolean;

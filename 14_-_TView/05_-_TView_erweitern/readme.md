@@ -7,7 +7,8 @@ Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>
 <hr><br>
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.NewWindows;
   var
     Win: PMyView;
@@ -29,7 +30,8 @@ LineEnding+```pascal
 ```
 <br>
 Da es im View keine <b>cmClose</b> Abarbeitung gibt, wird manuell in einer Schleife überprüft, ob es Fenster gibt, wen ja, löschen.<br>
-LineEnding+```pascal
+<br>
+```pascal
 procedure TMyApp.CloseAll;
 var
   v: PView;
@@ -43,7 +45,8 @@ end;
 ```
 <br>
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);

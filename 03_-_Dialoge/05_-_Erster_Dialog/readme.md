@@ -5,7 +5,8 @@
 Abarbeiten der Events, der Statuszeile und des Menu.<br>
 <hr><br>
 Für Dialoge muss man noch die Unit <b>Dialogs</b> einfügen.<br>
-LineEnding+```pascal
+<br>
+```pascal
 uses
   App,      // TApplication
   Objects,  // Fensterbereich (TRect)
@@ -16,7 +17,8 @@ uses
 ```
 <br>
 Ein weiteres Kommando für den Aufruf des Dialoges.<br>
-LineEnding+```pascal
+<br>
+```pascal
 const
   cmAbout = 1001;     // About anzeigen
   cmList = 1002;      // Datei Liste
@@ -25,7 +27,8 @@ const
 <br>
 Neue Funktionen kommen auch in die Klasse.<br>
 Hier ein Dialog für Paramtereingabe.<br>
-LineEnding+```pascal
+<br>
+```pascal
 type
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;                 // Statuszeile
@@ -37,7 +40,8 @@ type
 ```
 <br>
 Das Menü wird um Parameter und Schliessen erweitert.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;                          // Rechteck für die Menüzeilen-Position.
@@ -69,7 +73,8 @@ LineEnding+```pascal
 ```
 <br>
 Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
@@ -95,7 +100,8 @@ LineEnding+```pascal
 Bauen eines leeren Dialoges.<br>
 Auch da wird <b>TRect</b> gebraucht für die Grösse.<br>
 Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;

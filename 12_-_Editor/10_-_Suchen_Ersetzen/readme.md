@@ -9,7 +9,8 @@ Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialo
 Gibt man sich mit den englischen Dialogen zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menü anpassen, der Rest geschieht automatisch.<br>
 <hr><br>
 Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verdeutscht.<br>
-LineEnding+```pascal
+<br>
+```pascal
   // === Suchen Dialog
   function DECreateFindDialog: PDialog;
   var
@@ -110,7 +111,8 @@ LineEnding+```pascal
 ```
 <br>
 Hier wird die neuen Dialoge eingefügt.<br>
-LineEnding+```pascal
+<br>
+```pascal
   function MyStdEditorDialog(Dialog: Int16; Info: Pointer): word;
   begin
     case Dialog of
@@ -133,7 +135,8 @@ LineEnding+```pascal
 <br>
 Im Menü sind die neuen Suchen-Funktionen dazugekommen.<br>
 Dies ist das einzige was man machen muss.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;

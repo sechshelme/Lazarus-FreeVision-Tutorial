@@ -8,7 +8,8 @@ Einziger Unterschied, man gibt einen Dateinamen mit, welcher mit einem FileDialo
 Für das einfache speichern, muss man nicht viel machen. Man muss nur das Event <b>cmSave</b> aufrufen, zB. über das Menü.<br>
 <hr><br>
 Hier ist noch OpenWindows und SaveAll dazu gekommen.<br>
-LineEnding+```pascal
+<br>
+```pascal
   TMyApp = object(TApplication)
     constructor Init;
 <br>
@@ -32,7 +33,8 @@ Für die restlichen Diloage, werden die original Routinen verwendet, dies geschi
 Die Deklaration von <b>MyApp</b> ist schon hier oben, weil sie hier schon gebraucht wird.<br>
 <br>
 Bei MyApp.Init werden noch die neuen Standard-Dialoge zugeordnet.<br>
-LineEnding+```pascal
+<br>
+```pascal
 var
   MyApp: TMyApp;
 <br>
@@ -57,7 +59,8 @@ var
 ```
 <br>
 Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;
@@ -92,7 +95,8 @@ LineEnding+```pascal
 <br>
 Einfügen eines Editorfensters.<br>
 Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.NewWindows(FileName: ShortString);
   var
     Win: PEditWindow;
@@ -115,7 +119,8 @@ LineEnding+```pascal
 Eine Datei öffnen und dies in ein Edit-Fenster laden.<br>
 Dabei wird ein <b>FileDialog</b> aufgerufen, in dem man eine Datei auswählen kann.<br>
 Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, dies geschieht automatisch.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.OpenWindows;
   var
     FileDialog: PFileDialog;
@@ -130,7 +135,8 @@ LineEnding+```pascal
 ```
 <br>
 Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schliessen.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.SaveAll;
 <br>
     procedure SendSave(P: PView);
@@ -145,7 +151,8 @@ LineEnding+```pascal
 <br>
 Die verschiednen Events abfangen und abarbeiten.<br>
 Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt <b>PEditWindow</b> automatisch für einem.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);

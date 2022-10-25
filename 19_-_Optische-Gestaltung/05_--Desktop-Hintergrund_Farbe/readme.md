@@ -7,7 +7,8 @@ Dazu muss man beim Object <b>TBackground</b> die Funktion <b>GetPalette</b> übe
 <br>
 <hr><br>
 Für das Object <b>TBackground</b> wird ein Nachkomme erzeugt, welcher eine neue <b>GetPalette</b> Funktion bekommt.<br>
-LineEnding+```pascal
+<br>
+```pascal
 type
   PMyBackground = ^TMyBackground;
   TMyBackground = object(TBackGround)
@@ -16,7 +17,8 @@ type
 ```
 <br>
 In der neuen Funktion wird eine andere Palette zugeordnet.<br>
-LineEnding+```pascal
+<br>
+```pascal
   function TMyBackground.GetPalette: PPalette;
   const
     P: string[1] = #74;
@@ -27,7 +29,8 @@ LineEnding+```pascal
 <br>
 Der Konstruktor sieht fast gleich aus wie beim Hintergrundzeichen.<br>
 Einziger Unterschied anstelle von <b>PBackGround</b> wird <b>PMyBackground</b> genommen.<br>
-LineEnding+```pascal
+<br>
+```pascal
   constructor TMyApp.Init;
   var
     R:TRect;

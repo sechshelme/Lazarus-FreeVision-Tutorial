@@ -6,7 +6,8 @@ Beim Desktophintergrund kann man ein beliebiges Hintergrund-Zeichen zuordnen. Al
 <hr><br>
 Der Hintergrund fügt man ähnlich zu, wie ein Fenster/Dialog, dies geschieht auch mit <b>Insert</b>.<br>
 Mit <b>#3</b> füllt es den Hintergrund mit Herzen auf.<br>
-LineEnding+```pascal
+<br>
+```pascal
   constructor TMyApp.Init;
   var
     R: TRect;

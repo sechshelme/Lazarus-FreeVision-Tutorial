@@ -7,7 +7,8 @@ Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>
 An diesem View sind keinerlei Änderungen möglich, da noch keine Event, Steurerelemente vorhanden sind.<br>
 <hr><br>
 Im Konstructor wird das View erzeugt.<br>
-LineEnding+```pascal
+<br>
+```pascal
   constructor TMyApp.Init;
   begin
     inherited Init;   // Der Vorfahre aufrufen.
@@ -16,7 +17,8 @@ LineEnding+```pascal
 ```
 <br>
 Es wird ein einfaches View erzeugt, wie erwarte sieht man nicht viel, ausser eines grauen Rechteckes.<br>
-LineEnding+```pascal
+<br>
+```pascal
   procedure TMyApp.NewView;
   var
     Win: PView;

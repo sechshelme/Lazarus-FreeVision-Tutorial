@@ -4,7 +4,8 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Einem Fenster/Dialog, kann man verschiedene FarbeSchema zuordnen.<br>
 Standardmässig wird folgendes verwendet:<br>
-LineEnding+```pascal
+<br>
+```pascal
 Editor-Fenster : Blau
 Dialog         : Grau
 Hilfe-Fenster  : Cyan
