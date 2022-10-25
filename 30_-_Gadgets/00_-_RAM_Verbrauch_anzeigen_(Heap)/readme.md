@@ -8,15 +8,16 @@ Die <b>TListBox</b> ist ein gutes Beispiel, da diese die Liste nicht selbst aufr
 Dort feht der <b>destructor</b>, welcher den Speicher aufräumt. Dies macht auch Sinn, da man Listen auch global verwenden kann.<br>
 <hr><br>
     Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.<br>
-```pascal
+LineEnding+```pascal
     GetExtent(R);
     R.A.X := R.B.X - 12;
     R.A.Y := R.B.Y - 1;
     Heap := New(PHeapView, Init(R));
     Insert(Heap); 
 ```
+<br>
 Den Dialog mit dem Speicher Leak aufrufen.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     MyDialog: PMyDialog;
@@ -51,8 +52,9 @@ Den Dialog mit dem Speicher Leak aufrufen.<br>
     ClearEvent(Event);
   end;
 ```
+<br>
 Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.Idle;
 <br>
     function IsTileable(P: PView): Boolean;
@@ -70,15 +72,19 @@ Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
     end;
   end;
 ```
+<br>
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit dem dem Speicher Leak<br>
+<br>
 ```pascal
 unit MyDialog;
 <br>
 ```
+<br>
 Den <b>Destructor</b> deklarieren, welcher das <b>Speicher Leak</b> behebt.<br>
+<br>
 ```pascal
 type
   PMyDialog = ^TMyDialog;
@@ -95,7 +101,9 @@ type
   end;
 <br>
 ```
+<br>
 Komponenten für den Dialog generieren.<br>
+<br>
 ```pascal
 constructor TMyDialog.Init;
 var
@@ -141,9 +149,11 @@ begin
 end;
 <br>
 ```
+<br>
 Manuell den Speicher frei geben.<br>
 Man kann hier versuchsweise das Dispose ausklammern, dann sieht man,<br>
 das man eine Speicherleak bekommt.<br>
+<br>
 ```pascal
 destructor TMyDialog.Done;
 begin
@@ -152,7 +162,9 @@ begin
 end;
 <br>
 ```
+<br>
 Der EventHandle<br>
+<br>
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 var
@@ -177,3 +189,4 @@ end;
 <br>
 ```
 <br>
+

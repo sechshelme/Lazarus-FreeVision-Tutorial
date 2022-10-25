@@ -5,7 +5,7 @@
 Erstes Memo-Fenster.<br>
 <hr><br>
 Der Constructor wird vererbt, so das von Anfang an ein neues Fenster erstellt wird.<br>
-```pascal
+LineEnding+```pascal
 type
   TMyApp = object(TApplication)
     constructor Init;
@@ -16,15 +16,17 @@ type
     procedure NewWindows;
   end;
 ```
-```pascal
+<br>
+LineEnding+```pascal
   constructor TMyApp.Init;
   begin
     inherited Init;   // Der Vorfahre aufrufen.
     NewWindows;       // Fenster erzeugen.
   end;
 ```
+<br>
 Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.NewWindows;
   var
     Win: PWindow;
@@ -38,3 +40,4 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
   end;
 ```
 <br>
+

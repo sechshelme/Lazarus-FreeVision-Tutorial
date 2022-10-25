@@ -6,7 +6,7 @@ Ordner Wechsel Dialog.<br>
 Der <b>PChDirDialog</b>.<br>
 <hr><br>
 Der Ordnerwechsel Dialog<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     ChDirDialog: PChDirDialog;
@@ -27,3 +27,4 @@ Der Ordnerwechsel Dialog<br>
         end;
 ```
 <br>
+

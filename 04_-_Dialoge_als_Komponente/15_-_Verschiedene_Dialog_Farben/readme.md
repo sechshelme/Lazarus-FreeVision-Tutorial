@@ -4,11 +4,12 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Einem Fenster/Dialog, kann man verschiedene FarbeSchema zuordnen.<br>
 Standardmässig wird folgendes verwendet:<br>
-```pascal
+LineEnding+```pascal
 Editor-Fenster : Blau
 Dialog         : Grau
 Hilfe-Fenster  : Cyan
 ```
+<br>
 <br>
 Ohne Zutun, kommen die Fenster/Dialog immer in der richtigen Farbe.<br>
 Eine Modifizierung ist nur in speziellen Fällen von Sinnen.<br>
@@ -16,11 +17,14 @@ Eine Modifizierung ist nur in speziellen Fällen von Sinnen.<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.<br>
+<br>
 ```pascal
 unit MyDialog;
 <br>
 ```
+<br>
 Hier sind 3 Event-Konstante hinzugekommen.<br>
+<br>
 ```pascal
 type
   PMyDialog = ^TMyDialog;
@@ -31,7 +35,9 @@ type
   end;
 <br>
 ```
+<br>
 Das Bauen des Dialoges ist nichts besonderes.<br>
+<br>
 ```pascal
 const
   cmBlue = 1006;
@@ -64,8 +70,10 @@ begin
 end;
 <br>
 ```
+<br>
 Hier werden die Farb-Schemas mit Hilfe von <b>Palette := dpxxx</b> geändert.<br>
 Auch hier ist wichtig, das man <b>Draw</b> aufruft, diemal nicht für eine Komponente, sonder für den ganzen Dialog.<br>
+<br>
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 begin
@@ -97,3 +105,4 @@ end;
 <br>
 ```
 <br>
+

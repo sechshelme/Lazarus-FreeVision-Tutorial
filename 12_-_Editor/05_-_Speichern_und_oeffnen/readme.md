@@ -8,7 +8,7 @@ Einziger Unterschied, man gibt einen Dateinamen mit, welcher mit einem FileDialo
 Für das einfache speichern, muss man nicht viel machen. Man muss nur das Event <b>cmSave</b> aufrufen, zB. über das Menü.<br>
 <hr><br>
 Hier ist noch OpenWindows und SaveAll dazu gekommen.<br>
-```pascal
+LineEnding+```pascal
   TMyApp = object(TApplication)
     constructor Init;
 <br>
@@ -24,6 +24,7 @@ Hier ist noch OpenWindows und SaveAll dazu gekommen.<br>
     procedure CloseAll;
   end;
 ```
+<br>
 Der <b>Speichern unter</b>-Dialog ist schon fest verbaut, aber leider in Englisch.<br>
 Daher wird diese Funktion auf eine eigene Routine umgeleitet.<br>
 Auch habe ich die Maske <b>*.*</b> durch <b>*.txt</b> ersetzt.<br>
@@ -31,7 +32,7 @@ Für die restlichen Diloage, werden die original Routinen verwendet, dies geschi
 Die Deklaration von <b>MyApp</b> ist schon hier oben, weil sie hier schon gebraucht wird.<br>
 <br>
 Bei MyApp.Init werden noch die neuen Standard-Dialoge zugeordnet.<br>
-```pascal
+LineEnding+```pascal
 var
   MyApp: TMyApp;
 <br>
@@ -54,8 +55,9 @@ var
     NewWindows('');                     // Leeres Fenster erzeugen.
   end;
 ```
+<br>
 Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;
@@ -87,9 +89,10 @@ Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
 <br>
   end;
 ```
+<br>
 Einfügen eines Editorfensters.<br>
 Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.NewWindows(FileName: ShortString);
   var
     Win: PEditWindow;
@@ -108,10 +111,11 @@ Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
     end;
   end;
 ```
+<br>
 Eine Datei öffnen und dies in ein Edit-Fenster laden.<br>
 Dabei wird ein <b>FileDialog</b> aufgerufen, in dem man eine Datei auswählen kann.<br>
 Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, dies geschieht automatisch.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.OpenWindows;
   var
     FileDialog: PFileDialog;
@@ -124,8 +128,9 @@ Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, die
     end;
   end;
 ```
+<br>
 Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schliessen.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.SaveAll;
 <br>
     procedure SendSave(P: PView);
@@ -137,9 +142,10 @@ Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schlie
     Desktop^.ForEach(@SendSave);          // Auf alle Fenster anwenden.
   end;
 ```
+<br>
 Die verschiednen Events abfangen und abarbeiten.<br>
 Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt <b>PEditWindow</b> automatisch für einem.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
@@ -169,3 +175,4 @@ Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt 
   end;
 ```
 <br>
+

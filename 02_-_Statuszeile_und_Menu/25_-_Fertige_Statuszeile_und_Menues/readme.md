@@ -8,7 +8,7 @@ Die Statuszeile ist Textlos, das einzige, sie bringt Schnellkomandos mit. ( cmQu
 Bis aus <b>OS shell</b> und <b>Exit</b> passiert nichts.<br>
 <hr><br>
 Mit <b>StdStatusKeys(...</b> wird eine Statuszeile estellt, aber wie oben beschrieben, sieht man keinne Text.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.InitStatusLine;
   var
     R: TRect;
@@ -19,8 +19,9 @@ Mit <b>StdStatusKeys(...</b> wird eine Statuszeile estellt, aber wie oben beschr
     StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF, StdStatusKeys(nil), nil)));
   end;
 ```
+<br>
 Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber eben in Englisch.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;
@@ -38,3 +39,4 @@ Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber 
   end;
 ```
 <br>
+

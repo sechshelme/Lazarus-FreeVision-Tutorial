@@ -8,12 +8,15 @@ Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick e
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit dem Zähler-Button.<br>
+<br>
 ```pascal
 unit MyDialog;
 <br>
 ```
+<br>
 Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.<br>
 Direkt mit <b>Insert(New(...</b> geht nicht mehr.<br>
+<br>
 ```pascal
 type
   PMyDialog = ^TMyDialog;
@@ -29,8 +32,10 @@ type
   end;
 <br>
 ```
+<br>
 Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.<br>
 <b>CounterButton</b> wird für die Modifikation gebraucht.<br>
+<br>
 ```pascal
 constructor TMyDialog.Init;
 var
@@ -80,9 +85,11 @@ begin
 end;
 <br>
 ```
+<br>
 Im EventHandle, wird die Zahl im Button beim Drücken erhöht.<br>
 Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.<br>
 Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.<br>
+<br>
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 var
@@ -107,3 +114,4 @@ end;
 <br>
 ```
 <br>
+

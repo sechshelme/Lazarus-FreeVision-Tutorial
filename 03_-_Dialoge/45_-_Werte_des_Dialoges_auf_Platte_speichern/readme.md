@@ -7,17 +7,19 @@ Es wird nicht überprüft, ob geschrieben werden kann, etc.<br>
 Wen man dies will müsste man mit <b>IOResult</b>, etc. überprüfen.<br>
 <hr><br>
 Hier kommt noch <b>sysutils</b> hinzu, sie wird für <b>FileExits</b> gebraucht.<br>
-```pascal
+LineEnding+```pascal
 uses
   SysUtils, // Für Dateioperationen
 ```
+<br>
 Die Datei, in welcher sich die Daten für den Dialog befinden.<br>
-```pascal
+LineEnding+```pascal
 const
   DialogDatei = 'parameter.cfg';
 ```
+<br>
 Zu Beginn werden die Daten, wen vorhaden von der Platte geladen, ansonten werden sie erzeugt.<br>
-```pascal
+LineEnding+```pascal
   constructor TMyApp.Init;
   begin
     inherited Init;
@@ -38,8 +40,9 @@ Zu Beginn werden die Daten, wen vorhaden von der Platte geladen, ansonten werden
     end;
   end;
 ```
+<br>
 Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
@@ -111,3 +114,4 @@ Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.<br>
   end;
 ```
 <br>
+

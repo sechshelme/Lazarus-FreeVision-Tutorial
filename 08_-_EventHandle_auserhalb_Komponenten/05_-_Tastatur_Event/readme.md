@@ -6,7 +6,7 @@ Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/k
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
 <hr><br>
 Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     KeyDialog: PMyKey;
@@ -30,14 +30,18 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
     ClearEvent(Event);
   end;
 ```
+<br>
 <hr><br>
 <b>Unit mit dem Keyboardaktions-Dialog.</b><br>
 <br><br>
+<br>
 ```pascal
 unit MyDialog;
 <br>
 ```
+<br>
 In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei Mausaktionen modifiziert werden.<br>
+<br>
 ```pascal
 type
   PMyKey = ^TMyKey;
@@ -50,8 +54,10 @@ type
   end;
 <br>
 ```
+<br>
 Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
 Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
+<br>
 ```pascal
 constructor TMyKey.Init;
 var
@@ -99,9 +105,11 @@ begin
 end;
 <br>
 ```
+<br>
 Im EventHandle sieht man, das die Tastatur abgefangen wird. Es wird der Zeichencode und der Scancode ausgegeben.<br>
 In der untersten Zeile erscheint ein 3, wen die Shift-Taste mit gewissen anderen Tasten zB. Pfeil-Tasten gedrückt wird.<br>
 Die Tastatur-Daten werden an die <b>EditLines</b> ausgegeben.<br>
+<br>
 ```pascal
 procedure TMyKey.HandleEvent(var Event: TEvent);
 begin
@@ -124,3 +132,4 @@ end;
 <br>
 ```
 <br>
+

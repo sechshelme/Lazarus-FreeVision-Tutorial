@@ -7,15 +7,16 @@ Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bek
 Somit kann man dieses sogar sichbar machen.<br>
 <hr><br>
 Ein Kommando für das öffnen des Zwischenablagefenster.<br>
-```pascal
+LineEnding+```pascal
 const
   cmNewWin = 1001;
   cmRefresh = 1002;
   cmShowClip = 1003;
 ```
+<br>
 Hier wird das Fenster für die Zwischenablage deklariert.<br>
 Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt werden soll.<br>
-```pascal
+LineEnding+```pascal
 type
   TMyApp = object(TApplication)
     ClipWindow: PEditWindow;
@@ -34,8 +35,9 @@ type
     procedure CloseAll;
   end;
 ```
+<br>
 Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;
@@ -79,8 +81,9 @@ Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.<br>
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, nil)))))))))))), nil)))))));
   end;
 ```
+<br>
 Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
-```pascal
+LineEnding+```pascal
   function TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = False) : PEditWindow;
   var
     Win: PEditWindow;
@@ -101,8 +104,9 @@ Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.<br>
     end;
   end;
 ```
+<br>
 Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
@@ -136,3 +140,4 @@ Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.<br>
   end;
 ```
 <br>
+

@@ -8,7 +8,7 @@ Hier wird der <b>PBackGround</b> auf einen Dialog gelegt, dies funktioniert gena
 Dies kann auch der benutzerdefiniert <b>PMyBackground</b> sein.<br>
 <b>Wichtig</b> ist, der Background <b>MUSS</b> zuerst in den Dialog eingefügt werden,<br>
 ansonsten übermahlt er die anderen Komponenten.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.MyOption;
   var
     Dlg: PDialog;
@@ -37,3 +37,4 @@ ansonsten übermahlt er die anderen Komponenten.<br>
   end;
 ```
 <br>
+

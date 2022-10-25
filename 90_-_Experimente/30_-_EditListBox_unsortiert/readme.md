@@ -11,11 +11,14 @@ Dort fehlt der <b>destructor</b>, welcher den Speicher aufräumt.<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der ListBox<br>
+<br>
 ```pascal
 unit MyDialog;
 <br>
 ```
+<br>
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
+<br>
 ```pascal
 type
   PMyDialog = ^TMyDialog;
@@ -29,7 +32,9 @@ type
   end;
 <br>
 ```
+<br>
 Komponenten für den Dialog generieren.<br>
+<br>
 ```pascal
 const
   cmTag = 1000;  // Lokale Event Konstante
@@ -79,7 +84,9 @@ begin
 end;
 <br>
 ```
+<br>
 Manuell den Speicher der Liste frei geben.<br>
+<br>
 ```pascal
 destructor TMyDialog.Done;
 begin
@@ -88,8 +95,10 @@ begin
 end;
 <br>
 ```
+<br>
 Der EventHandle<br>
 Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.<br>
+<br>
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 begin
@@ -114,3 +123,4 @@ end;
 <br>
 ```
 <br>
+

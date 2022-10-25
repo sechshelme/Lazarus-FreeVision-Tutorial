@@ -6,7 +6,7 @@
 Die Statuszeile wird gebraucht um wichtige Information und HotKey anzuzeigen.<br>
 <hr><br>
 Für die Statuszeile werden noch verschiedene Units gebraucht.<br>
-```pascal
+LineEnding+```pascal
 uses
   App,      // TApplication
   Objects,  // Fensterbereich (TRect)
@@ -14,9 +14,10 @@ uses
   Views,    // Ereigniss (cmQuit)
   Menus;    // Statuszeile
 ```
+<br>
 Wen man etwas ändern will, muss man TApplication vererben.<br>
 Hier im Beispiel, wird die Statuszeile abgeändert, dazu muss man die Procedure <b>InitStatusLine</b> überschreiben.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.InitStatusLine;
   var
     R: TRect;           // Rechteck für die Statuszeilen Position.
@@ -27,13 +28,15 @@ Hier im Beispiel, wird die Statuszeile abgeändert, dazu muss man die Procedure 
     StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF, NewStatusKey('~Alt+X~ Programm beenden', kbAltX, cmQuit, nil), nil)));
   end;
 ```
+<br>
 Das die neue Statuszeile verwendet wird muss man den Nachkomme anstelle von <b>TApplication</b> deklarieren.<br>
-```pascal
+LineEnding+```pascal
 var
   MyApp: TMyApp;
 ```
+<br>
 Die  bleibt gleich.<br>
-```pascal
+LineEnding+```pascal
 begin
   MyApp.Init;   // Inizialisieren
   MyApp.Run;    // Abarbeiten
@@ -41,3 +44,4 @@ begin
 end.
 ```
 <br>
+

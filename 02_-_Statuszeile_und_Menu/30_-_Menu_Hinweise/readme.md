@@ -6,7 +6,7 @@ Hinweise in der Statuszeile der Menü-Punkte.<br>
 <hr><br>
 Konstanten der einzelnen Hilfen.<br>
 Am besten mimmt man da hcxxx Namen.<br>
-```pascal
+LineEnding+```pascal
 const
   cmList   = 1002;  // Datei Liste
   cmAbout  = 1001;  // About anzeigen
@@ -19,8 +19,9 @@ const
   hcHelp   = 15;
   hcAbout  = 16;
 ```
+<br>
 Die Hint-Zeile muss vererbt werden.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;                   // Rechteck für die Menüzeilen-Position.
@@ -41,3 +42,4 @@ Die Hint-Zeile muss vererbt werden.<br>
   end;
 ```
 <br>
+

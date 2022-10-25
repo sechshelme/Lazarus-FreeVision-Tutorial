@@ -7,7 +7,7 @@ ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.<br>
 <hr><br>
 Das Menü wurde um die Steuerbefehle für die Fensterverwatung ergänzt.<br>
 Die ausgeklammerten Kommandos müssen manuel gemacht werden.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;
@@ -35,9 +35,10 @@ Die ausgeklammerten Kommandos müssen manuel gemacht werden.<br>
 <br>
   end;
 ```
+<br>
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.NewWindows;
   var
     Win: PWindow;
@@ -57,9 +58,10 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
     end;
   end;
 ```
+<br>
 Diese Procedure schliesst alle Fenster im Desktop.<br>
 Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.CloseAll;
 <br>
     procedure SendClose(P: PView);
@@ -71,8 +73,9 @@ Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br
     Desktop^.ForEach(@SendClose);
   end;
 ```
+<br>
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.<br>
-```pascal
+LineEnding+```pascal
 <br>
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
@@ -98,3 +101,4 @@ Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br
   end;
 ```
 <br>
+

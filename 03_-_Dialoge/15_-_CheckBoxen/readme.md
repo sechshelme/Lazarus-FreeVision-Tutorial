@@ -5,7 +5,7 @@
 Dialog um CheckBoxen ergänzen.<br>
 <hr><br>
 Den Dialog mit CheckBoxen ergänzen.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.MyParameter;
   var
     Dlg: PDialog;
@@ -41,3 +41,4 @@ Den Dialog mit CheckBoxen ergänzen.<br>
   end;
 ```
 <br>
+

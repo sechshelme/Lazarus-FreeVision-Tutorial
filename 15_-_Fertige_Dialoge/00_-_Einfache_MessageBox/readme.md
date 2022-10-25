@@ -5,7 +5,7 @@
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 <hr><br>
 Aufruf einer MessageBox.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
@@ -36,3 +36,4 @@ Aufruf einer MessageBox.<br>
   end;
 ```
 <br>
+

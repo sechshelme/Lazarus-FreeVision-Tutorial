@@ -5,7 +5,7 @@
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 <hr><br>
 Konstanten für die verschiedenen Menüeinträge.<br>
-```pascal
+LineEnding+```pascal
 const
   cmAbout        = 1001;
   cmWarning      = 1002;
@@ -15,8 +15,9 @@ const
   cmYesNo        = 1010;
   cmYesNoCancel  = 1011;
 ```
+<br>
 Aufruf der MessageBoxn.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
@@ -72,3 +73,4 @@ Aufruf der MessageBoxn.<br>
   end;
 ```
 <br>
+

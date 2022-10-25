@@ -10,7 +10,7 @@ Wen man einen Editor schreiben will, dann nimmt man dazu <b>PEditWindow</b> aus 
 Dies ist viel einfacher, als alles selbst zu bauen.<br>
 <hr><br>
 Hier wird das neue vererbte Windows erzeugt.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.NewWindows;
   var
     Win: PMyWindow;
@@ -29,17 +29,21 @@ Hier wird das neue vererbte Windows erzeugt.<br>
     end;
   end;
 ```
+<br>
 <hr><br>
 <b>Unit mit dem neuen Fenster.</b><br>
 <br><br>
+<br>
 ```pascal
 unit MyWindow;
 <br>
 ```
+<br>
 Ein Horizontaler und ein Vertikaler Scrollbalken einfügen.<br>
 Es wird noch gezeigt, wie man die Position des Schiebers festlegen kann.<br>
 Mit <b>Min</b> und <b>Max</b> legt man den Bereich fest und mit <b>Value</b> gibt man die Position des Schiebers an.<br>
 Ein Indicator wird auch noch eingefügt, welcher die Spalten und Zeilen anzeigt. (Bei einem 64Bit OS ist diese fehlerhaft.)<br>
+<br>
 ```pascal
 constructor TMyWindow.Init(var Bounds: TRect; ATitle: TTitleStr; ANumber: Sw_Integer);
 var
@@ -71,3 +75,4 @@ end;
 <br>
 ```
 <br>
+

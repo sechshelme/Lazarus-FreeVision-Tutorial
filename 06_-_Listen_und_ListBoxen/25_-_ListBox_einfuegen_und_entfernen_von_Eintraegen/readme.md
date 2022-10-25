@@ -9,11 +9,14 @@ ZT. muss man da direkt auf die Liste zugreifen.<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der mehrspaltigen ListBox<br>
+<br>
 ```pascal
 unit MyDialog;
 <br>
 ```
+<br>
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.<br>
+<br>
 ```pascal
 type
   PMyDialog = ^TMyDialog;
@@ -27,7 +30,9 @@ type
   end;
 <br>
 ```
+<br>
 Komponenten für den Dialog generieren.<br>
+<br>
 ```pascal
 const
   cmMonat = 1000;  // Lokale Event Konstante
@@ -96,7 +101,9 @@ begin
 end;
 <br>
 ```
+<br>
 Manuell den Speicher der Liste frei geben.<br>
+<br>
 ```pascal
 destructor TMyDialog.Done;
 begin
@@ -105,8 +112,10 @@ begin
 end;
 <br>
 ```
+<br>
 Der EventHandle<br>
 Hier sieht man, wie man Einträge einfügt und entfernt.<br>
+<br>
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 begin
@@ -148,3 +157,4 @@ end;
 <br>
 ```
 <br>
+

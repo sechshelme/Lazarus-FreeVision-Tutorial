@@ -5,15 +5,16 @@
 In diesem Beispiel wird gezeigt, wie man ein Event an eine andere Komponente senden kann.<br>
 In diesem Fall wird ein Event an die Dialoge gesendet. In den Dialogen wird dann ein Counter hochgezählt.<br>
 Events für den Buttonklick.<br>
-```pascal
+LineEnding+```pascal
 const
   cmDia1   = 1001;
   cmDia2   = 1002;
   cmDiaAll = 1003;
 ```
+<br>
 Hier werden die 2 passiven Ausgabe-Dialoge erstellt, dies befinden sich in dem Object TMyDialog.<br>
 Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kommandos an die anderen Dialoge sendet.<br>
-```pascal
+LineEnding+```pascal
   constructor TMyApp.Init;
   var
     R: TRect;
@@ -60,12 +61,13 @@ Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kom
     end;
   end;
 ```
+<br>
 Hier werden mit <b>Message</b>, die Kommandos an die Dialoge gesendet.<br>
 Gibt man als ersten Parameter die View des Dialoges an, dann wird nur dieser Dialog angesprochen.<br>
 Gibt man <b>@Self</b> an, dann werden die Kommandos an alle Dialoge gesendet.<br>
 Beim 4. Paramter kann man noch einen Pointer auf einen Bezeichner übergeben,<br>
 die kann zB. ein String oder ein Record, etc. sein.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
@@ -89,15 +91,19 @@ die kann zB. ein String oder ein Record, etc. sein.<br>
     ClearEvent(Event);
   end;
 ```
+<br>
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der Zähler-Ausgabe.<br>
+<br>
 ```pascal
 unit MyDialog;
 <br>
 ```
+<br>
 Deklaration des Object der passiven Dialoge.<br>
+<br>
 ```pascal
 type
   PMyDialog = ^TMyDialog;
@@ -110,7 +116,9 @@ type
   end;
 <br>
 ```
+<br>
 Im Konstructor wird eine Ausgabezeile erzeugt.<br>
+<br>
 ```pascal
 constructor TMyDialog.Init(var Bounds: TRect; ATitle: TTitleStr);
 var
@@ -125,8 +133,10 @@ begin
 end;
 <br>
 ```
+<br>
 Im EventHandle wird das Kommando empfangen, welches mit <b>Message</b> gesendet wurde.<br>
 Als Beweis dafür, wir die Zahl in der Ausgabezeile un eins erhöht.<br>
+<br>
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
 var
@@ -151,3 +161,4 @@ end;
 <br>
 ```
 <br>
+

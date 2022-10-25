@@ -7,7 +7,7 @@ Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.<br>
 <hr><br>
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.NewWindows;
   var
     Win: PMyView;
@@ -27,8 +27,9 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
     end;
   end;
 ```
+<br>
 Da es im View keine <b>cmClose</b> Abarbeitung gibt, wird manuell in einer Schleife überprüft, ob es Fenster gibt, wen ja, löschen.<br>
-```pascal
+LineEnding+```pascal
 procedure TMyApp.CloseAll;
 var
   v: PView;
@@ -40,8 +41,9 @@ begin
   end;
 end;
 ```
+<br>
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
@@ -68,15 +70,19 @@ end;
     ClearEvent(Event);
   end;
 ```
+<br>
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.<br>
+<br>
 ```pascal
 unit MyView;
 <br>
 ```
+<br>
 Hier sind 3 Event-Konstante hinzugekommen.<br>
+<br>
 ```pascal
 type
   PMyView = ^TMyView;
@@ -93,7 +99,9 @@ type
   end;
 <br>
 ```
+<br>
 Das Bauen des Dialoges ist nichts besonderes.<br>
+<br>
 ```pascal
 procedure TMyView.Draw;
 const
@@ -123,8 +131,10 @@ begin
 end;
 <br>
 ```
+<br>
 Hier werden die Farb-Schemas mit Hilfe von <b>Palette := dpxxx</b> geändert.<br>
 Auch hier ist wichtig, das man <b>Draw</b> aufruft, diemal nicht für eine Komponente, sonder für den ganzen Dialog.<br>
+<br>
 ```pascal
 procedure TMyView.HandleEvent(var Event: TEvent);
 begin
@@ -140,3 +150,4 @@ end;
 <br>
 ```
 <br>
+

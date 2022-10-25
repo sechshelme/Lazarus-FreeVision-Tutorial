@@ -5,7 +5,7 @@
 Ein Hello World mit Free-Vision.<br>
 Der Text wird in einer Message-Box ausgegeben.<br>
 <hr><br>
-```pascal
+LineEnding+```pascal
 program Project1;
 <br>
 uses
@@ -21,3 +21,4 @@ begin
 end.
 ```
 <br>
+

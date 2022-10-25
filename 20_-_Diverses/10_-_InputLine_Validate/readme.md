@@ -13,13 +13,16 @@ Für den zweiten Fall wäre eine ListBox idealer, mir geht zum zeigen wie es mit
 Ein Dialog mit <b>PInputLine</b> welche eine Prüfung bekommen.<br>
 Wen man <b>Ok</b> drückt, wird ein Validate-Prüfungen ausgeführt.<br>
 Bei <b>Abbruch</b> gibt es keine Prüfung.<br>
+<br>
 ```pascal
 unit MyDialog;
 <br>
 ```
+<br>
 Die Deklaration des Dialoges, hier wird nur das Init überschrieben, welches die Komponenten, für den Dialog erzeugt.<br>
 So nebenbei werden noch die beiden Validate überschrieben.<br>
 Dies wird nur gemacht, das eine deutsche Fehlermeldung bei falscher Eingabe kommt.<br>
+<br>
 ```pascal
 type
   PMyDialog = ^TMyDialog;
@@ -38,7 +41,9 @@ type
   end;
 <br>
 ```
+<br>
 Die beiden neuen Fehlermeldungen.<br>
+<br>
 ```pascal
 procedure TMyRangeValidator.Error;
 var
@@ -55,7 +60,9 @@ begin
 end;
 <br>
 ```
+<br>
 Hier sieht man, das eine Validate-Prüfung zu den <b>PInputLines</b> dazu kommt.<br>
+<br>
 ```pascal
 constructor TMyDialog.Init;
 const
@@ -107,3 +114,4 @@ end;
 <br>
 ```
 <br>
+

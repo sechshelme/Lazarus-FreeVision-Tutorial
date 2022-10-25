@@ -10,6 +10,7 @@ Nur <b>PCollection</b> reicht <b>nicht</b>, da diese bei <b>Dispose</b> abschmie
 <br><br>
 Der Dialog mit der UnSortedStrCollection.<br>
 Deklaration des Dialog, nichts Besonderes.<br>
+<br>
 ```pascal
 type
   PMyDialog = ^TMyDialog;
@@ -18,8 +19,10 @@ type
   end;
 <br>
 ```
+<br>
 Es wird eine UnSortedStrCollection gebaut und<br>
 als Demonstration wird deren Inhalt in ein StaticText geschrieben.<br>
+<br>
 ```pascal
 constructor TMyDialog.Init;
 var
@@ -59,3 +62,4 @@ end;
 <br>
 ```
 <br>
+

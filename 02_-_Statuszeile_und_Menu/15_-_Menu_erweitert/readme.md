@@ -7,24 +7,26 @@ Hier wird dies auch der Übersicht zu liebe gesplittet gemacht.<br>
 <hr><br>
 Für eigene Kommandos, muss man noch Kommdocode definieren.<br>
 Es empfiehlt sich Werte &gt; 1000 zu verwenden, so das es keine Überschneidungen mit den Standard-Codes gibt.<br>
-```pascal
+LineEnding+```pascal
 const
   cmList = 1002;      // Datei Liste
   cmAbout = 1001;     // About anzeigen
 ```
+<br>
 Für ein Menu muss man <b>InitMenuBar</b> vererben.<br>
-```pascal
+LineEnding+```pascal
 type
   TMyApp = object(TApplication)
     procedure InitStatusLine; virtual;   // Statuszeile
     procedure InitMenuBar; virtual;      // Menü
   end;
 ```
+<br>
 Mam kann die Menüeinträge auch gesplittet über Pointer machen.<br>
 Ob man es verschachtelt oder splittet, ist Geschmacksache.<br>
 Mit <b>NewLine</b> kann man eine Leerzeile einfügen.<br>
 Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeichnung <b>...</b> zu schreiben.<br>
-```pascal
+LineEnding+```pascal
   procedure TMyApp.InitMenuBar;
   var
     R: TRect;                          // Rechteck für die Menüzeilen-Position.
@@ -51,3 +53,4 @@ Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeic
   end;
 ```
 <br>
+
