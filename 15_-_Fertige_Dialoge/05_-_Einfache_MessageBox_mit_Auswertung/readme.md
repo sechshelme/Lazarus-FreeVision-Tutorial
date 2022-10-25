@@ -1,11 +1,11 @@
 # 15 - Fertige Dialoge
 ## 05 - Einfache MessageBox mit Auswertung
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
-<hr><br>
-Konstanten für die verschiedenen Menüeinträge.<br>
-<br>
+
+---
+
+
 ```pascal
 const
   cmAbout        = 1001;
@@ -16,14 +16,14 @@ const
   cmYesNo        = 1010;
   cmYesNoCancel  = 1011;
 ```
-<br>
-Aufruf der MessageBoxn.<br>
-<br>
+
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
@@ -74,5 +74,5 @@ Aufruf der MessageBoxn.<br>
     ClearEvent(Event);
   end;
 ```
-<br>
+
 

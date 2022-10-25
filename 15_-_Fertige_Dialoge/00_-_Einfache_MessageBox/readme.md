@@ -1,16 +1,16 @@
 # 15 - Fertige Dialoge
 ## 00 - Einfache MessageBox
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
-<hr><br>
-Aufruf einer MessageBox.<br>
-<br>
+
+---
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
@@ -36,5 +36,5 @@ Aufruf einer MessageBox.<br>
     ClearEvent(Event);
   end;
 ```
-<br>
+
 

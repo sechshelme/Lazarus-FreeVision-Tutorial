@@ -1,23 +1,23 @@
 # 11 - Fenster
 ## 00 - Erstes Fenster
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Erstes Memo-Fenster.<br>
-<hr><br>
-Der Constructor wird vererbt, so das von Anfang an ein neues Fenster erstellt wird.<br>
-<br>
+
+---
+
+
 ```pascal
 type
   TMyApp = object(TApplication)
     constructor Init;
-<br>
+
     procedure InitStatusLine; virtual;
     procedure InitMenuBar; virtual;
-<br>
+
     procedure NewWindows;
   end;
 ```
-<br>
+
 
 ```pascal
   constructor TMyApp.Init;
@@ -26,9 +26,9 @@ type
     NewWindows;       // Fenster erzeugen.
   end;
 ```
-<br>
-Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.<br>
-<br>
+
+
+
 ```pascal
   procedure TMyApp.NewWindows;
   var
@@ -42,5 +42,5 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
     end;
   end;
 ```
-<br>
+
 

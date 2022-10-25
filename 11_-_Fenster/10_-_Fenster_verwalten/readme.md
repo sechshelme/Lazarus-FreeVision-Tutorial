@@ -1,13 +1,13 @@
 # 11 - Fenster
 ## 10 - Fenster verwalten
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Fenster verwalten. Nun ist es möglich über das Menü Steuerkomandos für die Fensterverwaltung zu geben.<br>
-ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.<br>
-<hr><br>
-Das Menü wurde um die Steuerbefehle für die Fensterverwatung ergänzt.<br>
-Die ausgeklammerten Kommandos müssen manuel gemacht werden.<br>
-<br>
+
+
+---
+
+
+
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -15,7 +15,7 @@ Die ausgeklammerten Kommandos müssen manuel gemacht werden.<br>
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-<br>
+
     MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
@@ -33,13 +33,13 @@ Die ausgeklammerten Kommandos müssen manuel gemacht werden.<br>
         NewItem('~V~orheriges', 'Shift+F6', kbShiftF6, cmPrev, hcNoContext,
         NewLine(
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, Nil)))))))))))), nil)))));
-<br>
+
   end;
 ```
-<br>
-Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
-Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.<br>
-<br>
+
+
+
+
 ```pascal
   procedure TMyApp.NewWindows;
   var
@@ -52,7 +52,7 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
     Inc(WinCounter);
     Win := New(PWindow, Init(R, 'Fenster', WinCounter));
     Win^.Options := Win^.Options or ofTileable; // Für Tile und Cascade
-<br>
+
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end else begin
@@ -60,31 +60,31 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
     end;
   end;
 ```
-<br>
-Diese Procedure schliesst alle Fenster im Desktop.<br>
-Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br>
-<br>
+
+
+
+
 ```pascal
   procedure TMyApp.CloseAll;
-<br>
+
     procedure SendClose(P: PView);
     begin
       Message(P, evCommand, cmClose, nil);
     end;
-<br>
+
   begin
     Desktop^.ForEach(@SendClose);
   end;
 ```
-<br>
-<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.<br>
-<br>
+
+
+
 ```pascal
-<br>
+
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
@@ -104,5 +104,5 @@ Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br
     ClearEvent(Event);
   end;
 ```
-<br>
+
 

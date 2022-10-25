@@ -1,17 +1,17 @@
 # 90 - Experimente
 ## 10 - 2 Desktop
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Dialog um Buttons ergänzen.<br>
-<hr><br>
-Den Dialog mit Buttons ergänzen.<br>
-Mit <b>Insert</b> fügt man die Komponenten hinzug, in diesem Fall sind es die Buttons.<br>
-Mit bfDefault legt man den Default-Button fest, dieser wird mit <b>[Enter]</b> aktiviert.<br>
-bfNormal ist ein gewöhnlicher Button.<br>
-Der Dialog wird nun Modal geöffnet, somit können <b>keine</b> weiteren Dialoge geöffnet werden.<br>
-dummy hat den Wert, des Button der gedrückt wurde, dies entspricht dem <b>cmxxx</b> Wert.<br>
-Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhafte Darstellung.<br>
-<br>
+
+---
+
+
+
+
+
+
+
+
 ```pascal
   procedure TMyApp.MyParameter;
   var
@@ -23,11 +23,11 @@ Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhaf
     R.Move(23, 3);                             // Position des Dialogs.
     Dia := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.
     with Dia^ do begin
-<br>
+
       // Ok-Button
       R.Assign(7, 12, 17, 14);
       Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
-<br>
+
       // Schliessen-Button
       R.Assign(19, 12, 32, 14);
       Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
@@ -36,5 +36,5 @@ Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhaf
     Dispose(Dia, Done);                // Dialog und Speicher frei geben.
   end;
 ```
-<br>
+
 

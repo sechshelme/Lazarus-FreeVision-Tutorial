@@ -1,43 +1,43 @@
 # 12 - Editor
 ## 05 - Speichern und oeffnen
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Ein Editor wird erst brauchbar, wen Dateifunktionen dazu kommen, zB. öffnen und speichern.<br>
-Das Öffnen ist ähnlich von wie ein leerses Fenster erzeugen.<br>
-Einziger Unterschied, man gibt einen Dateinamen mit, welcher mit einem FileDialog ermittelt wird.<br>
-Für das einfache speichern, muss man nicht viel machen. Man muss nur das Event <b>cmSave</b> aufrufen, zB. über das Menü.<br>
-<hr><br>
-Hier ist noch OpenWindows und SaveAll dazu gekommen.<br>
-<br>
+
+
+
+
+---
+
+
 ```pascal
   TMyApp = object(TApplication)
     constructor Init;
-<br>
+
     procedure InitStatusLine; virtual;
     procedure InitMenuBar; virtual;
-<br>
+
     procedure HandleEvent(var Event: TEvent); virtual;
     procedure OutOfMemory; virtual;
-<br>
+
     procedure NewWindows(FileName: ShortString);
     procedure OpenWindows;
     procedure SaveAll;
     procedure CloseAll;
   end;
 ```
-<br>
-Der <b>Speichern unter</b>-Dialog ist schon fest verbaut, aber leider in Englisch.<br>
-Daher wird diese Funktion auf eine eigene Routine umgeleitet.<br>
-Auch habe ich die Maske <b>*.*</b> durch <b>*.txt</b> ersetzt.<br>
-Für die restlichen Diloage, werden die original Routinen verwendet, dies geschieht mit <b>StdEditorDialog(...</b>.<br>
-Die Deklaration von <b>MyApp</b> ist schon hier oben, weil sie hier schon gebraucht wird.<br>
-<br>
-Bei MyApp.Init werden noch die neuen Standard-Dialoge zugeordnet.<br>
-<br>
+
+
+
+
+
+
+
+
+
 ```pascal
 var
   MyApp: TMyApp;
-<br>
+
   function MyStdEditorDialog(Dialog: Int16; Info: Pointer): Word;
   begin
     case Dialog of
@@ -48,7 +48,7 @@ var
       StdEditorDialog(Dialog, Info);  // Original Dialoge aufrufen.
     end;
   end;
-<br>
+
   constructor TMyApp.Init;
   begin
     inherited Init;
@@ -57,9 +57,9 @@ var
     NewWindows('');                     // Leeres Fenster erzeugen.
   end;
 ```
-<br>
-Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
-<br>
+
+
+
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -67,7 +67,7 @@ Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-<br>
+
     MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
@@ -89,13 +89,13 @@ Im Menü sind die neuen Datei-Funktionen dazugekommen.<br>
         NewItem('~V~orheriges', 'Shift+F6', kbShiftF6, cmPrev, hcNoContext,
         NewLine(
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, Nil)))))))))))), nil)))));
-<br>
+
   end;
 ```
-<br>
-Einfügen eines Editorfensters.<br>
-Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
-<br>
+
+
+
+
 ```pascal
   procedure TMyApp.NewWindows(FileName: ShortString);
   var
@@ -107,7 +107,7 @@ Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
     R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
     Win := New(PEditWindow, Init(R, FileName, WinCounter));
-<br>
+
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end else begin                // Fügt das Fenster ein.
@@ -115,11 +115,11 @@ Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.<br>
     end;
   end;
 ```
-<br>
-Eine Datei öffnen und dies in ein Edit-Fenster laden.<br>
-Dabei wird ein <b>FileDialog</b> aufgerufen, in dem man eine Datei auswählen kann.<br>
-Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, dies geschieht automatisch.<br>
-<br>
+
+
+
+
+
 ```pascal
   procedure TMyApp.OpenWindows;
   var
@@ -133,30 +133,30 @@ Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, die
     end;
   end;
 ```
-<br>
-Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schliessen.<br>
-<br>
+
+
+
 ```pascal
   procedure TMyApp.SaveAll;
-<br>
+
     procedure SendSave(P: PView);
     begin
       Message(P, evCommand, cmSave, nil); // Das Kommando speicherm mitgeben.
     end;
-<br>
+
   begin
     Desktop^.ForEach(@SendSave);          // Auf alle Fenster anwenden.
   end;
 ```
-<br>
-Die verschiednen Events abfangen und abarbeiten.<br>
-Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt <b>PEditWindow</b> automatisch für einem.<br>
-<br>
+
+
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
@@ -181,5 +181,5 @@ Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt 
     end;
   end;
 ```
-<br>
+
 

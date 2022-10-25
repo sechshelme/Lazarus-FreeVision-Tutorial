@@ -1,12 +1,12 @@
 # 15 - Fertige Dialoge
 ## 20 - Datei Dialoge
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Ein Dialog zum öffnen und speichern von Dateien.<br>
-Der <b>PFileDialog</b>.<br>
-<hr><br>
-Verschiedene Datei-Dialoge<br>
-<br>
+
+
+---
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
@@ -14,7 +14,7 @@ Verschiedene Datei-Dialoge<br>
     FileName: shortstring;
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmFileOpen: begin
@@ -42,5 +42,5 @@ Verschiedene Datei-Dialoge<br>
           Exit;
         end;
 ```
-<br>
+
 

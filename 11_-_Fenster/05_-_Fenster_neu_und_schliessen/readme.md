@@ -1,31 +1,31 @@
 # 11 - Fenster
 ## 05 - Fenster neu und schliessen
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Über das Menü Fenster erzeigen und schliessen.<br>
-<hr><br>
-Neue Konstanten für Kommados.<br>
-Auch ist der HandleEvent dazugekommen.<br>
-<br>
+
+---
+
+
+
 ```pascal
 const
   cmNewWin = 1001;
 type
   TMyApp = object(TApplication)
     constructor Init;
-<br>
+
     procedure InitStatusLine; virtual;
     procedure InitMenuBar; virtual;
-<br>
+
     procedure HandleEvent(var Event: TEvent); virtual; // Abarbeitung Kommandos
     procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
-<br>
+
     procedure NewWindows;
   end;
 ```
-<br>
-Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.<br>
-<br>
+
+
+
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -33,7 +33,7 @@ Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.<br>
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-<br>
+
     MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
       NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
@@ -42,10 +42,10 @@ Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.<br>
       NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil))))), nil))));
   end;
 ```
-<br>
-Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
-Dieser wird benutzt um die Fenster zu nummerieren.<br>
-<br>
+
+
+
+
 ```pascal
   procedure TMyApp.NewWindows;
   var
@@ -65,14 +65,14 @@ Dieser wird benutzt um die Fenster zu nummerieren.<br>
     end;
   end;
 ```
-<br>
-<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft es im Hintergrund automatisch.<br>
-<br>
+
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
@@ -86,5 +86,5 @@ Dieser wird benutzt um die Fenster zu nummerieren.<br>
     ClearEvent(Event);
   end;
 ```
-<br>
+
 

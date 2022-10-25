@@ -1,15 +1,15 @@
 # 12 - Editor
 ## 10 - Suchen Ersetzen
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Der Editor hat eine <b>Suchen</b> und <b>Ersetzen</b> Funktion bekommen.<br>
-Leider sind die Standard-Dialoge dafür in Englisch.<br>
-Aus diesem Grund, wird es hier neu in deutsch gebaut.<br>
-Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialog der Fall ist.<br>
-Gibt man sich mit den englischen Dialogen zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menü anpassen, der Rest geschieht automatisch.<br>
-<hr><br>
-Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verdeutscht.<br>
-<br>
+
+
+
+
+
+---
+
+
 ```pascal
   // === Suchen Dialog
   function DECreateFindDialog: PDialog;
@@ -22,7 +22,7 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
     D := New(PDialog, Init(R, 'Suchen'));
     with D^ do begin
       Options := Options or ofCentered;
-<br>
+
       R.Assign(3, 3, 32, 4);
       Control := New(PInputLine, Init(R, 80));
       Control^.HelpCtx := hcDFindText;
@@ -31,30 +31,30 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
       Insert(New(PLabel, Init(R, 'Zu ~s~uchenden Text', Control)));
       R.Assign(32, 3, 35, 4);
       Insert(New(PHistory, Init(R, PInputLine(Control), 10)));
-<br>
+
       R.Assign(3, 5, 35, 7);
       Control := New(PCheckBoxes, Init(R,
         NewSItem('~G~ross- und Kleinschreibung',
         NewSItem('~N~ur ganze W'#148'rter', nil))));
       Control^.HelpCtx := hcCCaseSensitive;
       Insert(Control);
-<br>
+
       R.Assign(14, 9, 24, 11);
       Control := New(PButton, Init(R, slOK, cmOk, bfDefault));
       Control^.HelpCtx := hcDOk;
       Insert(Control);
-<br>
+
       Inc(R.A.X, 12);
       Inc(R.B.X, 12);
       Control := New(PButton, Init(R, slCancel, cmCancel, bfNormal));
       Control^.HelpCtx := hcDCancel;
       Insert(Control);
-<br>
+
       SelectNext(False);
     end;
     Result := D;
   end;
-<br>
+
   // === Ersetzen Dialog
   function DECreateReplaceDialog: PDialog;
   var
@@ -66,7 +66,7 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
     Dialog := New(PDialog, Init(R, 'Ersetzen'));
     with Dialog^ do begin
       Options := Options or ofCentered;
-<br>
+
       R.Assign(3, 3, 34, 4);
       Control := New(PInputLine, Init(R, 80));
       Control^.HelpCtx := hcDFindText;
@@ -75,7 +75,7 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
       Insert(New(PLabel, Init(R, 'Zu ~s~uchenden Text', Control)));
       R.Assign(34, 3, 37, 4);
       Insert(New(PHistory, Init(R, PInputLine(Control), 10)));
-<br>
+
       R.Assign(3, 6, 34, 7);
       Control := New(PInputLine, Init(R, 80));
       Control^.HelpCtx := hcDReplaceText;
@@ -84,7 +84,7 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
       Insert(New(PLabel, Init(R, 'Neuer ~T~ext', Control)));
       R.Assign(34, 6, 37, 7);
       Insert(New(PHistory, Init(R, PInputLine(Control), 11)));
-<br>
+
       R.Assign(3, 8, 37, 12);
       Control := New(Dialogs.PCheckBoxes, Init(R,
         NewSItem('~G~ross- und Kleinschreibung',
@@ -93,25 +93,25 @@ Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verde
         NewSItem('~A~lle ersetzen', nil))))));
       Control^.HelpCtx := hcCCaseSensitive;
       Insert(Control);
-<br>
+
       R.Assign(8, 13, 18, 15);
       Control := New(PButton, Init(R, '~O~k', cmOk, bfDefault));
       Control^.HelpCtx := hcDOk;
       Insert(Control);
-<br>
+
       R.Assign(22, 13, 32, 15);
       Control := New(PButton, Init(R, 'Ab~b~ruch', cmCancel, bfNormal));
       Control^.HelpCtx := hcDCancel;
       Insert(Control);
-<br>
+
       SelectNext(False);
     end;
     Result := Dialog;
   end;
 ```
-<br>
-Hier wird die neuen Dialoge eingefügt.<br>
-<br>
+
+
+
 ```pascal
   function MyStdEditorDialog(Dialog: Int16; Info: Pointer): word;
   begin
@@ -132,10 +132,10 @@ Hier wird die neuen Dialoge eingefügt.<br>
     end;
   end;
 ```
-<br>
-Im Menü sind die neuen Suchen-Funktionen dazugekommen.<br>
-Dies ist das einzige was man machen muss.<br>
-<br>
+
+
+
+
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -143,7 +143,7 @@ Dies ist das einzige was man machen muss.<br>
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-<br>
+
     MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
@@ -171,5 +171,5 @@ Dies ist das einzige was man machen muss.<br>
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, nil)))))))))))), nil))))));
   end;
 ```
-<br>
+
 

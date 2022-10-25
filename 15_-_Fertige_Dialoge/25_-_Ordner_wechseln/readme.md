@@ -1,12 +1,12 @@
 # 15 - Fertige Dialoge
 ## 25 - Ordner wechseln
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Ordner Wechsel Dialog.<br>
-Der <b>PChDirDialog</b>.<br>
-<hr><br>
-Der Ordnerwechsel Dialog<br>
-<br>
+
+
+---
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
@@ -14,7 +14,7 @@ Der Ordnerwechsel Dialog<br>
     Ordner: ShortString;
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmChDir: begin
@@ -27,5 +27,5 @@ Der Ordnerwechsel Dialog<br>
           Exit;
         end;
 ```
-<br>
+
 

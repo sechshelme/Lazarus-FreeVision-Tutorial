@@ -1,31 +1,31 @@
 # 01 - Einfuehrung
 ## 05 - Erster Desktop
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Minimalste Free-Vision Anwendung<br>
-<hr><br>
-Programm-Name, wie es bei Pascal üblich ist.<br>
-<br>
+
+---
+
+
 ```pascal
 program Project1;
 ```
-<br>
-Das überhaupt Free-Vision möglich ist, muss die Unit <b>App</b> eingebunden werden.<br>
-<br>
+
+
+
 ```pascal
 uses
   App;   // TApplication
 ```
-<br>
-Deklaration für die Free-Vision Anwendung.<br>
-<br>
+
+
+
 ```pascal
 var
   MyApp: TApplication;
 ```
-<br>
-Für die Abarbeitung sind immer die drei Schritte notwendig.<br>
-<br>
+
+
+
 ```pascal
 begin
   MyApp.Init;   // Inizialisieren
@@ -33,5 +33,5 @@ begin
   MyApp.Done;   // Freigeben
 end.
 ```
-<br>
+
 

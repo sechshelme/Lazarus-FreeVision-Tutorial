@@ -1,19 +1,19 @@
 # 04 - Dialoge als Komponente
 ## 05 - Dialog mit lokalem Ereigniss
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.<br>
-Im Beispiel wir eine MessageBox aufgerufen.<br>
-<hr><br>
-Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas gemacht wird.<br>
-<br>
+
+
+---
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     AboutDialog: PMyAbout;
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of                   // About Dialog
         cmAbout: begin
@@ -31,22 +31,22 @@ Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas ge
     ClearEvent(Event);
   end;
 ```
-<br>
-<hr><br>
-<b>Unit mit dem neuen Dialog.</b><br>
-<br><br>
-Dort sieht man gut, das es ein Button für lokale Ereignisse hat.<br>
-Wichtig ist, bei den Nummernvergabe, das sich dies nicht mit einem anderen Eventnummer überschneidet.<br>
-Vor allem dann, wen der Dialog nicht Modal geöffnet wird.<br>
-Ausser es ist gewünscht, wen man zB. über das Menü auf den Dialog zugreifen will.<br>
-<br>
+
+---
+
+
+
+
+
+
+
 ```pascal
 unit MyDialog;
-<br>
+
 ```
-<br>
-Für den Dialog kommt noch ein HandleEvent hinzu.<br>
-<br>
+
+
+
 ```pascal
 type
   PMyAbout = ^TMyAbout;
@@ -54,15 +54,15 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-<br>
+
 ```
-<br>
-Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Ereigniss <b>cmMsg</b> abarbeitet.<br>
-<br>
+
+
+
 ```pascal
 const
     cmMsg = 1003;  // Lokales Ereigniss
-<br>
+
 constructor TMyAbout.Init;
 var
   R: TRect;
@@ -70,7 +70,7 @@ begin
   R.Assign(0, 0, 42, 11);
   R.Move(23, 3);
   inherited Init(R, 'About');
-<br>
+
   // StaticText
   R.Assign(5, 2, 41, 8);
   Insert(new(PStaticText, Init(R,
@@ -78,26 +78,26 @@ begin
     '2017' + #13 +
     'Gechrieben von MB'+ #13#32#13 +
     'FPC: '+ {$I %FPCVERSION%} + '   OS:'+ {$I %FPCTARGETOS%} + '   CPU:' + {$I %FPCTARGETCPU%})));
-<br>
+
   // MessageBox-Button, mit lokalem Ereigniss.
   R.Assign(19, 8, 32, 10);
   Insert(new(PButton, Init(R, '~M~sg-Box', cmMsg, bfNormal)));
-<br>
+
   // Ok-Button
   R.Assign(7, 8, 17, 10);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
-<br>
+
 ```
-<br>
-Im neuen EventHandle, werden loake Ereigniss (cmMsg) abarbeitet.<br>
-Andere Ereignisse, zB. <b>cmOk</b> wird an das Hauptprogramm weiter gereicht, welches dann den Dialog auch schliesst.<br>
-<br>
+
+
+
+
 ```pascal
 procedure TMyAbout.HandleEvent(var Event: TEvent);
 begin
   inherited HandleEvent(Event);
-<br>
+
   case Event.What of
     evCommand: begin
       case Event.Command of
@@ -109,9 +109,9 @@ begin
       end;
     end;
   end;
-<br>
+
 end;
-<br>
+
 ```
-<br>
+
 

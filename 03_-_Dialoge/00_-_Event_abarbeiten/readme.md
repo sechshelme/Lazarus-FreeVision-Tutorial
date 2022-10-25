@@ -1,19 +1,19 @@
 # 03 - Dialoge
 ## 00 - Event abarbeiten
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Abarbeiten der Events, der Statuszeile und des Menu.<br>
-<hr><br>
-Kommmandos die abgearbeitet werden.<br>
-<br>
+
+---
+
+
 ```pascal
 const
   cmAbout = 1001;     // About anzeigen
   cmList = 1002;      // Datei Liste
 ```
-<br>
-Der EventHandler ist auch ein Nachkommen.<br>
-<br>
+
+
+
 ```pascal
 type
   TMyApp = object(TApplication)
@@ -22,14 +22,14 @@ type
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
   end;
 ```
-<br>
-Abarbeiten der eigenen cmxxx Kommandos.<br>
-<br>
+
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin    // Mache was mit cmAbout.
@@ -44,5 +44,5 @@ Abarbeiten der eigenen cmxxx Kommandos.<br>
     ClearEvent(Event);
   end;
 ```
-<br>
+
 

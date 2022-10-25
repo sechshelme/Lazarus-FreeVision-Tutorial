@@ -1,14 +1,14 @@
 # 02 - Statuszeile und Menu
 ## 25 - Fertige Statuszeile und Menues
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-Für die Statuszeile und das Menü gibt es fertige Items, aber ich bevorzuge es, die Items selbst zu erstellen.<br>
-Die fetigen Items sind nur in Englisch.<br>
-Die Statuszeile ist Textlos, das einzige, sie bringt Schnellkomandos mit. ( cmQuit, cmMenu, cmClose, cmZoom, cmNext, cmPrev )<br>
-Bis aus <b>OS shell</b> und <b>Exit</b> passiert nichts.<br>
-<hr><br>
-Mit <b>StdStatusKeys(...</b> wird eine Statuszeile estellt, aber wie oben beschrieben, sieht man keinne Text.<br>
-<br>
+
+
+
+
+---
+
+
 ```pascal
   procedure TMyApp.InitStatusLine;
   var
@@ -16,13 +16,13 @@ Mit <b>StdStatusKeys(...</b> wird eine Statuszeile estellt, aber wie oben beschr
   begin
     GetExtent(R);
     R.A.Y := R.B.Y - 1;
-<br>
+
     StatusLine := New(PStatusLine, Init(R, NewStatusDef(0, $FFFF, StdStatusKeys(nil), nil)));
   end;
 ```
-<br>
-Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber eben in Englisch.<br>
-<br>
+
+
+
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -30,7 +30,7 @@ Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber 
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-<br>
+
     MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         StdFileMenuItems (nil)),
@@ -40,5 +40,5 @@ Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber 
         StdWindowMenuItems(nil)), nil))))));
   end;
 ```
-<br>
+
 
