@@ -7,68 +7,68 @@ Will man bei einer <b>ListBox</b> den Doppelklick auswerten, muss man die ListBo
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit der ListBox<br>
-<pre><code><b><font color="0000BB">unit</font></b> MyDialog;
+<pre><code>unit MyDialog;
 </code></pre>
 Das Vererben der ListBox.<br>
 Wen man schon vererbt, habe ich auch gleich den <b>Destructor</b> eingefügt, welcher am Schluss die Liste aufräumt.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code>type
 <br>
   PNewListBox = ^TNewListBox;
 <br>
-  <font color="#FFFF00">{ TNewListBox }</font>
+  { TNewListBox }
 <br>
-  TNewListBox = <b><font color="0000BB">object</font></b>(TListBox)
-    <b><font color="0000BB">destructor</font></b> Done; <b><font color="0000BB">virtual</font></b>;
-    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
-  <b><font color="0000BB">end</font></b>;
+  TNewListBox = object(TListBox)
+    destructor Done; virtual;
+    procedure HandleEvent(var Event: TEvent); virtual;
+  end;
 <br>
   PMyDialog = ^TMyDialog;
-  TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
+  TMyDialog = object(TDialog)
     ListBox: PNewListBox;
     StringCollection: PUnSortedStrCollection;
-    <b><font color="0000BB">constructor</font></b> Init;
-    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
-  <b><font color="0000BB">end</font></b>;
+    constructor Init;
+    procedure HandleEvent(var Event: TEvent); virtual;
+  end;
 </code></pre>
 Der neue <b>HandleEvent</b> der beuen ListBox, welcher den Doppelklick abfängt und ihn als [Ok] interprediert.<br>
-<pre><code><b><font color="0000BB">procedure</font></b> TNewListBox.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-<b><font color="0000BB">begin</font></b>
-  <b><font color="0000BB">if</font></b> (Event.What = evMouseDown) <b><font color="0000BB">and</font></b> (Event.double) <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+<pre><code>procedure TNewListBox.HandleEvent(var Event: TEvent);
+begin
+  if (Event.What = evMouseDown) and (Event.double) then begin
     Event.What := evCommand;
     Event.Command := cmOK;
     PutEvent(Event);
     ClearEvent(Event);
-  <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
-<b><font color="0000BB">end</font></b>;
+  end;
+  inherited HandleEvent(Event);
+end;
 </code></pre>
 Manuell den Speicher der Liste frei geben.<br>
-<pre><code><b><font color="0000BB">destructor</font></b> TNewListBox.Done;
-<b><font color="0000BB">begin</font></b>
-  <b><font color="0000BB">Dispose</font></b>(List, Done); <i><font color="#FFFF00">// Die Liste freigeben</font></i>
-  <b><font color="0000BB">inherited</font></b> Done;
-<b><font color="0000BB">end</font></b>;
+<pre><code>destructor TNewListBox.Done;
+begin
+  Dispose(List, Done); // Die Liste freigeben
+  inherited Done;
+end;
 </code></pre>
 Der EventHandle des Dialogs.<br>
 Hier wird einfach ein [Ok] bei dem Doppelklick abgearbeitet.<br>
-<pre><code><b><font color="0000BB">procedure</font></b> TMyDialog.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-<b><font color="0000BB">begin</font></b>
-  <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
-    evCommand: <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        <i><font color="#FFFF00">// Bei Doppelklick auf die ListBox oder beim [Ok] klicken.</font></i>
-        cmOK: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Wochentag: '</font> + PString(ListBox^.GetFocusedItem)^ + <font color="#FF0000">' gew'</font> + <font color="#FF0000">#132</font> + <font color="#FF0000">'hlt'</font>, <b><font color="0000BB">nil</font></b>, mfOKButton);
-        <b><font color="0000BB">end</font></b>;
-        cmTag: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Wochentag: '</font> + PString(ListBox^.GetFocusedItem)^ + <font color="#FF0000">' gew'</font> + <font color="#FF0000">#132</font> + <font color="#FF0000">'hlt'</font>, <b><font color="0000BB">nil</font></b>, mfOKButton);
-          <i><font color="#FFFF00">// Event beenden.</font></i>
+<pre><code>procedure TMyDialog.HandleEvent(var Event: TEvent);
+begin
+  case Event.What of
+    evCommand: begin
+      case Event.Command of
+        // Bei Doppelklick auf die ListBox oder beim [Ok] klicken.
+        cmOK: begin
+          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
+        end;
+        cmTag: begin
+          MessageBox('Wochentag: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
+          // Event beenden.
           ClearEvent(Event);
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
-<b><font color="0000BB">end</font></b>;
+        end;
+      end;
+    end;
+  end;
+  inherited HandleEvent(Event);
+end;
 </code></pre>
 <br>

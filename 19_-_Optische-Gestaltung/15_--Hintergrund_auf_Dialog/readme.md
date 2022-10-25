@@ -7,30 +7,30 @@ Hier wird der <b>PBackGround</b> auf einen Dialog gelegt, dies funktioniert gena
 Dies kann auch der benutzerdefiniert <b>PMyBackground</b> sein.<br>
 <b>Wichtig</b> ist, der Background <b>MUSS</b> zuerst in den Dialog eingefügt werden,<br>
 ansonsten übermahlt er die anderen Komponenten.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.MyOption;
-  <b><font color="0000BB">var</font></b>
+```pascal>  procedure TMyApp.MyOption;
+  var
     Dlg: PDialog;
     R: TRect;
-  <b><font color="0000BB">begin</font></b>
-    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">35</font>, <font color="#0077BB">15</font>);
-    R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
-    Dlg := <b><font color="0000BB">New</font></b>(PDialog, Init(R, <font color="#FF0000">'Parameter'</font>));
+  begin
+    R.Assign(0, 0, 35, 15);</font>
+    R.Move(23, 3);</font>
+    Dlg := New(PDialog, Init(R, 'Parameter'));</font>
 <br>
-    <b><font color="0000BB">with</font></b> Dlg^ <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
+    with Dlg^ do begin
 <br>
-      <i><font color="#FFFF00">// BackGround --> Immer zuerst</font></i>
+      // BackGround --> Immer zuerst
       GetExtent(R);
-      R.Grow(-<font color="#0077BB">1</font>, -<font color="#0077BB">1</font>);
-      Insert(<b><font color="0000BB">New</font></b>(PBackGround, Init(R, <font color="#FF0000">#3</font>)));  <i><font color="#FFFF00">// Hintergrund einfügen.</font></i>
+      R.Grow(-1, -1);</font>
+      Insert(New(PBackGround, Init(R, #3)));  // Hintergrund einfügen.</font>
 <br>
-      <i><font color="#FFFF00">// Ok-Button</font></i>
-      R.Assign(<font color="#0077BB">20</font>, <font color="#0077BB">11</font>, <font color="#0077BB">30</font>, <font color="#0077BB">13</font>);
-      Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
-    <b><font color="0000BB">end</font></b>;
+      // Ok-Button
+      R.Assign(20, 11, 30, 13);</font>
+      Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+    end;
 <br>
-    <b><font color="0000BB">if</font></b> ValidView(Dlg) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+    if ValidView(Dlg) <> nil then begin
       Desktop^.ExecView(Dlg);
-      <b><font color="0000BB">Dispose</font></b>(Dlg, Done);
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;</code></pre>
+      Dispose(Dlg, Done);
+    end;
+  end;```
 <br>

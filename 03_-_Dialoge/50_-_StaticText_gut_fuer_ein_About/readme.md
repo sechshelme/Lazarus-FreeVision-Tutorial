@@ -4,46 +4,46 @@
 Hier wird ein About-Dialog erstellt, das sieht man gut für was man Label gebrauchen kann.<br>
 ---
 Die Datei, in welcher sich die Daten für den Dialog befinden.<br>
-<pre><code=pascal><b><font color="0000BB">const</font></b>
-  DialogDatei = <font color="#FF0000">'parameter.cfg'</font>;</code></pre>
+```pascal>const
+  DialogDatei = 'parameter.cfg';</font>```
 Eine neue Funktion <b>About</b> ist hinzugekommen.<br>
-<pre><code=pascal><b><font color="0000BB">type</font></b>
-  TMyApp = <b><font color="0000BB">object</font></b>(TApplication)
-    ParameterData: TParameterData;                     <i><font color="#FFFF00">// Parameter für Dialog.</font></i>
-    fParameterData: <b><font color="0000BB">file</font></b> <b><font color="0000BB">of</font></b> TParameterData;            <i><font color="#FFFF00">// File-Hander füe das speichern/laden der Daten des Dialoges.</font></i>
+```pascal>type
+  TMyApp = object(TApplication)
+    ParameterData: TParameterData;                     // Parameter für Dialog.
+    fParameterData: file of TParameterData;            // File-Hander füe das speichern/laden der Daten des Dialoges.
 <br>
-    <b><font color="0000BB">constructor</font></b> Init;                                  <i><font color="#FFFF00">// Neuer Constructor</font></i>
+    constructor Init;                                  // Neuer Constructor
 <br>
-    <b><font color="0000BB">procedure</font></b> InitStatusLine; <b><font color="0000BB">virtual</font></b>;                 <i><font color="#FFFF00">// Statuszeile</font></i>
-    <b><font color="0000BB">procedure</font></b> InitMenuBar; <b><font color="0000BB">virtual</font></b>;                    <i><font color="#FFFF00">// Menü</font></i>
-    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>; <i><font color="#FFFF00">// Eventhandler</font></i>
-    <b><font color="0000BB">procedure</font></b> OutOfMemory; <b><font color="0000BB">virtual</font></b>;                    <i><font color="#FFFF00">// Wird aufgerufen, wen Speicher überläuft.</font></i>
+    procedure InitStatusLine; virtual;                 // Statuszeile
+    procedure InitMenuBar; virtual;                    // Menü
+    procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
+    procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
 <br>
-    <b><font color="0000BB">procedure</font></b> MyParameter;                             <i><font color="#FFFF00">// neue Funktion für einen Dialog.</font></i>
-    <b><font color="0000BB">procedure</font></b> About;                                   <i><font color="#FFFF00">// About Dialog.</font></i>
-  <b><font color="0000BB">end</font></b>;</code></pre>
+    procedure MyParameter;                             // neue Funktion für einen Dialog.
+    procedure About;                                   // About Dialog.
+  end;```
 Hier wird das About augerufen, wen im Menü About gewält wird.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-  <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+  begin
+    inherited HandleEvent(Event);
 <br>
-    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        cmAbout: <b><font color="0000BB">begin</font></b>
-          About;   <i><font color="#FFFF00">// About Dialog aufrufen</font></i>
-        <b><font color="0000BB">end</font></b>;
-        cmList: <b><font color="0000BB">begin</font></b>
-        <b><font color="0000BB">end</font></b>;
-        cmPara: <b><font color="0000BB">begin</font></b>
+    if Event.What = evCommand then begin
+      case Event.Command of
+        cmAbout: begin
+          About;   // About Dialog aufrufen
+        end;
+        cmList: begin
+        end;
+        cmPara: begin
           MyParameter;
-        <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
-          <b><font color="0000BB">Exit</font></b>;
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
+        end;
+        else begin
+          Exit;
+        end;
+      end;
+    end;
     ClearEvent(Event);
-  <b><font color="0000BB">end</font></b>;</code></pre>
+  end;```
 About Dialog erstellen.<br>
 Mit <b>TRext.Grow(...</b> kann man das Rect verkleinern und vergrössern.<br>
 Mit <b>#13</b> kann man eine Zeilenumbruch einfügen.<br>
@@ -51,31 +51,31 @@ Mit <b>#3</b> wird der Text horizontal im Rect zentriert.<br>
 Mit <b>#2</b> wird der Text rechtbündig geschrieben.<br>
 <br>
 Mit <b>PLabel</b> könnte man auch Text ausgeben, aber für festen Text eignet sich <b>PStaticText</b> besser.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.About;
-  <b><font color="0000BB">var</font></b>
+```pascal>  procedure TMyApp.About;
+  var
     Dlg: PDialog;
     R: TRect;
-  <b><font color="0000BB">begin</font></b>
-    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">11</font>);
-    R.Move(<font color="#0077BB">1</font>, <font color="#0077BB">1</font>);
-    Dlg := <b><font color="0000BB">New</font></b>(PDialog, Init(R, <font color="#FF0000">'About'</font>));
-    <b><font color="0000BB">with</font></b> Dlg^ <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
-      Options := Options <b><font color="0000BB">or</font></b> ofCentered; <i><font color="#FFFF00">// Dialog zentrieren</font></i>
+  begin
+    R.Assign(0, 0, 42, 11);</font>
+    R.Move(1, 1);</font>
+    Dlg := New(PDialog, Init(R, 'About'));</font>
+    with Dlg^ do begin
+      Options := Options or ofCentered; // Dialog zentrieren
 <br>
-      <i><font color="#FFFF00">// StaticText einfügen.</font></i>
-      R.Assign(<font color="#0077BB">2</font>, <font color="#0077BB">2</font>, <font color="#0077BB">40</font>, <font color="#0077BB">8</font>);
-      Insert(<b><font color="0000BB">New</font></b>(PStaticText, Init(R,
-        <font color="#FF0000">#13</font> +
-        <font color="#FF0000">'Free Vison Tutorial 1.0'</font> + <font color="#FF0000">#13</font> +
-        <font color="#FF0000">'2017'</font> + <font color="#FF0000">#13</font> +
-        <font color="#FF0000">#3</font> + <font color="#FF0000">'Zentriert'</font> + <font color="#FF0000">#13</font> +
-        <font color="#FF0000">#2</font> + <font color="#FF0000">'Rechts'</font>)));
-      R.Assign(<font color="#0077BB">16</font>, <font color="#0077BB">8</font>, <font color="#0077BB">26</font>, <font color="#0077BB">10</font>);
-      Insert(<b><font color="0000BB">New</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
-    <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">if</font></b> ValidView(Dlg) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-      Desktop^.ExecView(Dlg);           <i><font color="#FFFF00">// Modal aufrufen, Funktionsergebniss wird nicht ausgewrtet.</font></i>
-      <b><font color="0000BB">Dispose</font></b>(Dlg, Done);               <i><font color="#FFFF00">// Dialog frei geben.</font></i>
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;</code></pre>
+      // StaticText einfügen.
+      R.Assign(2, 2, 40, 8);</font>
+      Insert(New(PStaticText, Init(R,
+        #13 +</font>
+        'Free Vison Tutorial 1.0' + #13 +
+        '2017' + #13 +</font>
+        #3 + 'Zentriert' + #13 +
+        #2 + 'Rechts')));</font>
+      R.Assign(16, 8, 26, 10);</font>
+      Insert(New(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+    end;
+    if ValidView(Dlg) <> nil then begin
+      Desktop^.ExecView(Dlg);           // Modal aufrufen, Funktionsergebniss wird nicht ausgewrtet.
+      Dispose(Dlg, Done);               // Dialog frei geben.
+    end;
+  end;```
 <br>

@@ -6,86 +6,86 @@ ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.<br>
 ---
 Das Menü wurde um die Steuerbefehle für die Fensterverwatung ergänzt.<br>
 Die ausgeklammerten Kommandos müssen manuel gemacht werden.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.InitMenuBar;
-  <b><font color="0000BB">var</font></b>
+```pascal>  procedure TMyApp.InitMenuBar;
+  var
     R: TRect;
-  <b><font color="0000BB">begin</font></b>
+  begin
     GetExtent(R);
-    R.B.Y := R.A.Y + <font color="#0077BB">1</font>;
+    R.B.Y := R.A.Y + 1;</font>
 <br>
-    MenuBar := <b><font color="0000BB">New</font></b>(PMenuBar, Init(R, NewMenu(
-      NewSubMenu(<font color="#FF0000">'~D~atei'</font>, hcNoContext, NewMenu(
-        NewItem(<font color="#FF0000">'~N~eu'</font>, <font color="#FF0000">'F4'</font>, kbF4, cmNewWin, hcNoContext,
+    MenuBar := New(PMenuBar, Init(R, NewMenu(
+      NewSubMenu('~D~atei', hcNoContext, NewMenu(</font>
+        NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,</font>
         NewLine(
-        NewItem(<font color="#FF0000">'~B~eenden'</font>, <font color="#FF0000">'Alt-X'</font>, kbAltX, cmQuit, hcNoContext, <b><font color="0000BB">nil</font></b>)))),
-      NewSubMenu(<font color="#FF0000">'~F~enster'</font>, hcNoContext, NewMenu(
-        NewItem(<font color="#FF0000">'~N~ebeneinander'</font>, <font color="#FF0000">''</font>, kbNoKey, cmTile, hcNoContext,
-        NewItem(<font color="#FF0000">#154</font><font color="#FF0000">'ber~l~append'</font>, <font color="#FF0000">''</font>, kbNoKey, cmCascade, hcNoContext,
-        NewItem(<font color="#FF0000">'~A~lle schliessen'</font>, <font color="#FF0000">''</font>, kbNoKey, cmCloseAll, hcNoContext,
-        NewItem(<font color="#FF0000">'Anzeige ~e~rneuern'</font>, <font color="#FF0000">''</font>, kbNoKey, cmRefresh, hcNoContext,
+        NewItem('~B~eenden', 'Alt-X', kbAltX, cmQuit, hcNoContext, nil)))),</font>
+      NewSubMenu('~F~enster', hcNoContext, NewMenu(</font>
+        NewItem('~N~ebeneinander', '', kbNoKey, cmTile, hcNoContext,</font>
+        NewItem(#154'ber~l~append', '', kbNoKey, cmCascade, hcNoContext,
+        NewItem('~A~lle schliessen', '', kbNoKey, cmCloseAll, hcNoContext,</font>
+        NewItem('Anzeige ~e~rneuern', '', kbNoKey, cmRefresh, hcNoContext,
         NewLine(
-        NewItem(<font color="#FF0000">'Gr'</font><font color="#FF0000">#148</font><font color="#FF0000">'sse/~P~osition'</font>, <font color="#FF0000">'Ctrl+F5'</font>, kbCtrlF5, cmResize, hcNoContext,
-        NewItem(<font color="#FF0000">'Ver~g~'</font><font color="#FF0000">#148</font><font color="#FF0000">'ssern'</font>, <font color="#FF0000">'F5'</font>, kbF5, cmZoom, hcNoContext,
-        NewItem(<font color="#FF0000">'~N~'</font><font color="#FF0000">#132</font><font color="#FF0000">'chstes'</font>, <font color="#FF0000">'F6'</font>, kbF6, cmNext, hcNoContext,
-        NewItem(<font color="#FF0000">'~V~orheriges'</font>, <font color="#FF0000">'Shift+F6'</font>, kbShiftF6, cmPrev, hcNoContext,
+        NewItem('Gr'#148'sse/~P~osition', 'Ctrl+F5', kbCtrlF5, cmResize, hcNoContext,</font>
+        NewItem('Ver~g~'#148'ssern', 'F5', kbF5, cmZoom, hcNoContext,
+        NewItem('~N~'#132'chstes', 'F6', kbF6, cmNext, hcNoContext,</font>
+        NewItem('~V~orheriges', 'Shift+F6', kbShiftF6, cmPrev, hcNoContext,
         NewLine(
-        NewItem(<font color="#FF0000">'~S~chliessen'</font>, <font color="#FF0000">'Alt+F3'</font>, kbAltF3, cmClose, hcNoContext, <b><font color="0000BB">Nil</font></b>)))))))))))), <b><font color="0000BB">nil</font></b>)))));
+        NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, Nil)))))))))))), nil)))));
 <br>
-  <b><font color="0000BB">end</font></b>;</code></pre>
+  end;```
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.<br>
 Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.NewWindows;
-  <b><font color="0000BB">var</font></b>
+```pascal>  procedure TMyApp.NewWindows;
+  var
     Win: PWindow;
     R: TRect;
-  <b><font color="0000BB">const</font></b>
-    WinCounter: integer = <font color="#0077BB">0</font>;                    <i><font color="#FFFF00">// Zählt Fenster</font></i>
-  <b><font color="0000BB">begin</font></b>
-    R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">60</font>, <font color="#0077BB">20</font>);
+  const
+    WinCounter: integer = 0;                    // Zählt Fenster</font>
+  begin
+    R.Assign(0, 0, 60, 20);</font>
     Inc(WinCounter);
-    Win := <b><font color="0000BB">New</font></b>(PWindow, Init(R, <font color="#FF0000">'Fenster'</font>, WinCounter));
-    Win^.Options := Win^.Options <b><font color="0000BB">or</font></b> ofTileable; <i><font color="#FFFF00">// Für Tile und Cascade</font></i>
+    Win := New(PWindow, Init(R, 'Fenster', WinCounter));</font>
+    Win^.Options := Win^.Options or ofTileable; // Für Tile und Cascade
 <br>
-    <b><font color="0000BB">if</font></b> ValidView(Win) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+    if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
-    <b><font color="0000BB">end</font></b> <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+    end else begin
       Dec(WinCounter);
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;</code></pre>
+    end;
+  end;```
 Diese Procedure schliesst alle Fenster im Desktop.<br>
 Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.CloseAll;
+```pascal>  procedure TMyApp.CloseAll;
 <br>
-    <b><font color="0000BB">procedure</font></b> SendClose(P: PView);
-    <b><font color="0000BB">begin</font></b>
-      Message(P, evCommand, cmClose, <b><font color="0000BB">nil</font></b>);
-    <b><font color="0000BB">end</font></b>;
+    procedure SendClose(P: PView);
+    begin
+      Message(P, evCommand, cmClose, nil);
+    end;
 <br>
-  <b><font color="0000BB">begin</font></b>
+  begin
     Desktop^.ForEach(@SendClose);
-  <b><font color="0000BB">end</font></b>;</code></pre>
+  end;```
 <b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.<br>
-<pre><code=pascal>
-  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-  <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+```pascal>
+  procedure TMyApp.HandleEvent(var Event: TEvent);
+  begin
+    inherited HandleEvent(Event);
 <br>
-    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        cmNewWin: <b><font color="0000BB">begin</font></b>
-          NewWindows;    <i><font color="#FFFF00">// Fenster erzeugen.</font></i>
-        <b><font color="0000BB">end</font></b>;
-        cmCloseAll:<b><font color="0000BB">begin</font></b>
-          CloseAll;      <i><font color="#FFFF00">// Schliesst alle Fenster.</font></i>
-        <b><font color="0000BB">end</font></b>;
-        cmRefresh: <b><font color="0000BB">begin</font></b>
-          ReDraw;        <i><font color="#FFFF00">// Anwendung neu zeichnen.</font></i>
-        <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
-          <b><font color="0000BB">Exit</font></b>;
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
+    if Event.What = evCommand then begin
+      case Event.Command of
+        cmNewWin: begin
+          NewWindows;    // Fenster erzeugen.
+        end;
+        cmCloseAll:begin
+          CloseAll;      // Schliesst alle Fenster.
+        end;
+        cmRefresh: begin
+          ReDraw;        // Anwendung neu zeichnen.
+        end;
+        else begin
+          Exit;
+        end;
+      end;
+    end;
     ClearEvent(Event);
-  <b><font color="0000BB">end</font></b>;</code></pre>
+  end;```
 <br>

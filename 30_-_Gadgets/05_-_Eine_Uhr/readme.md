@@ -4,156 +4,156 @@
 In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.<br>
 ---
     Erzeugt ein kleines Fenster rechts-unten, welches die Uhr anzeigt.<br>
-<pre><code=pascal>    GetExtent(R);
-    R.A.X := R.B.X - <font color="#0077BB">9</font>;
-    R.A.Y := R.B.Y - <font color="#0077BB">1</font>;
-    Heap := <b><font color="0000BB">New</font></b>(PClockView, Init(R));
-    Insert(Heap); </code></pre>
+```pascal>    GetExtent(R);
+    R.A.X := R.B.X - 9;</font>
+    R.A.Y := R.B.Y - 1;</font>
+    Heap := New(PClockView, Init(R));
+    Insert(Heap); ```
 Den Dialog mit dem Speicher Leak aufrufen.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-  <b><font color="0000BB">var</font></b>
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+  var
     MyDialog: PMyDialog;
     FileDialog: PFileDialog;
     FileName: ShortString;
-  <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+  begin
+    inherited HandleEvent(Event);
 <br>
-    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        <i><font color="#FFFF00">// Dialog mit der ListBox, welcher ein Speicher Leak hat.</font></i>
-        cmDialog: <b><font color="0000BB">begin</font></b>
-          MyDialog := <b><font color="0000BB">New</font></b>(PMyDialog, Init);
-          <b><font color="0000BB">if</font></b> ValidView(MyDialog) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-            Desktop^.ExecView(MyDialog);   <i><font color="#FFFF00">// Dialog ausführen.</font></i>
-            <b><font color="0000BB">Dispose</font></b>(MyDialog, Done);       <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
-          <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">end</font></b>;
-        <i><font color="#FFFF00">// Ein FileOpenDialog, bei dem alles in Ordnung ist.</font></i>
-        cmFileTest:<b><font color="0000BB">begin</font></b>
-          FileName := <font color="#FF0000">'*.*'</font>;
-          <b><font color="0000BB">New</font></b>(FileDialog, Init(FileName, <font color="#FF0000">'Datei '</font><font color="#FF0000">#148</font><font color="#FF0000">'ffnen'</font>, <font color="#FF0000">'~D~ateiname'</font>, fdOpenButton, <font color="#0077BB">1</font>));
-          <b><font color="0000BB">if</font></b> ExecuteDialog(FileDialog, @FileName) <> cmCancel <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-            NewWindows(FileName); <i><font color="#FFFF00">// Neues Fenster mit der ausgewählten Datei.</font></i>
-          <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">end</font></b>
-        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
-          <b><font color="0000BB">Exit</font></b>;
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
+    if Event.What = evCommand then begin
+      case Event.Command of
+        // Dialog mit der ListBox, welcher ein Speicher Leak hat.
+        cmDialog: begin
+          MyDialog := New(PMyDialog, Init);
+          if ValidView(MyDialog) <> nil then begin
+            Desktop^.ExecView(MyDialog);   // Dialog ausführen.
+            Dispose(MyDialog, Done);       // Dialog und Speicher frei geben.
+          end;
+        end;
+        // Ein FileOpenDialog, bei dem alles in Ordnung ist.
+        cmFileTest:begin
+          FileName := '*.*';</font>
+          New(FileDialog, Init(FileName, 'Datei '#148'ffnen', '~D~ateiname', fdOpenButton, 1));</font>
+          if ExecuteDialog(FileDialog, @FileName) <> cmCancel then begin
+            NewWindows(FileName); // Neues Fenster mit der ausgewählten Datei.
+          end;
+        end
+        else begin
+          Exit;
+        end;
+      end;
+    end;
     ClearEvent(Event);
-  <b><font color="0000BB">end</font></b>;</code></pre>
+  end;```
 Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.Idle;
+```pascal>  procedure TMyApp.Idle;
 <br>
-    <b><font color="0000BB">function</font></b> IsTileable(P: PView): Boolean;
-    <b><font color="0000BB">begin</font></b>
-      Result := (P^.Options <b><font color="0000BB">and</font></b> ofTileable <> <font color="#0077BB">0</font>) <b><font color="0000BB">and</font></b> (P^.State <b><font color="0000BB">and</font></b> sfVisible <> <font color="#0077BB">0</font>);
-    <b><font color="0000BB">end</font></b>;
+    function IsTileable(P: PView): Boolean;
+    begin
+      Result := (P^.Options and ofTileable <> 0) and (P^.State and sfVisible <> 0);</font>
+    end;
 <br>
-  <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> Idle;
+  begin
+    inherited Idle;
     Heap^.Update;
-    <b><font color="0000BB">if</font></b> Desktop^.FirstThat(@IsTileable) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
+    if Desktop^.FirstThat(@IsTileable) <> nil then begin
       EnableCommands([cmTile, cmCascade])
-    <b><font color="0000BB">end</font></b> <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
+    end else begin
       DisableCommands([cmTile, cmCascade]);
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;</code></pre>
+    end;
+  end;```
 ---
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Der Dialog mit dem dem Speicher Leak<br>
-<pre><code><b><font color="0000BB">unit</font></b> MyDialog;
+<pre><code>unit MyDialog;
 </code></pre>
 Den <b>Destructor</b> deklarieren, welcher das <b>Speicher Leak</b> behebt.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code>type
   PMyDialog = ^TMyDialog;
-  TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
-  <b><font color="0000BB">const</font></b>
-    cmTag = <font color="#0077BB">1000</font>;  <i><font color="#FFFF00">// Lokale Event Konstante</font></i>
-  <b><font color="0000BB">var</font></b>
+  TMyDialog = object(TDialog)
+  const
+    cmTag = 1000;  // Lokale Event Konstante</font>
+  var
     ListBox: PListBox;
     StringCollection: PStringCollection;
 <br>
-    <b><font color="0000BB">constructor</font></b> Init;
-    <b><font color="0000BB">destructor</font></b> Done; <b><font color="0000BB">virtual</font></b>;  <i><font color="#FFFF00">// Wegen Speicher Leak</font></i>
-    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
-  <b><font color="0000BB">end</font></b>;
+    constructor Init;
+    destructor Done; virtual;  // Wegen Speicher Leak
+    procedure HandleEvent(var Event: TEvent); virtual;
+  end;
 </code></pre>
 Komponenten für den Dialog generieren.<br>
-<pre><code><b><font color="0000BB">constructor</font></b> TMyDialog.Init;
-<b><font color="0000BB">var</font></b>
+<pre><code>constructor TMyDialog.Init;
+var
   R: TRect;
   ScrollBar: PScrollBar;
   i: Sw_Integer;
-<b><font color="0000BB">const</font></b>
-  Tage: <b><font color="0000BB">array</font></b> [<font color="#0077BB">0</font>..<font color="#0077BB">6</font>] <b><font color="0000BB">of</font></b> shortstring = (
-    <font color="#FF0000">'Montag'</font>, <font color="#FF0000">'Dienstag'</font>, <font color="#FF0000">'Mittwoch'</font>, <font color="#FF0000">'Donnerstag'</font>, <font color="#FF0000">'Freitag'</font>, <font color="#FF0000">'Samstag'</font>, <font color="#FF0000">'Sonntag'</font>);
+const
+  Tage: array [0..6] of shortstring = (
+    'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');</font>
 <br>
-<b><font color="0000BB">begin</font></b>
-  R.Assign(<font color="#0077BB">10</font>, <font color="#0077BB">5</font>, <font color="#0077BB">64</font>, <font color="#0077BB">17</font>);
-  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'ListBox Demo'</font>);
+begin
+  R.Assign(10, 5, 64, 17);</font>
+  inherited Init(R, 'ListBox Demo');</font>
 <br>
-  <i><font color="#FFFF00">// StringCollection</font></i>
-  StringCollection := <b><font color="0000BB">new</font></b>(PStringCollection, Init(<font color="#0077BB">5</font>, <font color="#0077BB">5</font>));
-  <b><font color="0000BB">for</font></b> i := <font color="#0077BB">0</font> <b><font color="0000BB">to</font></b> Length(Tage) - <font color="#0077BB">1</font> <b><font color="0000BB">do</font></b> <b><font color="0000BB">begin</font></b>
+  // StringCollection
+  StringCollection := new(PStringCollection, Init(5, 5));</font>
+  for i := 0 to Length(Tage) - 1 do begin
     StringCollection^.Insert(NewStr(Tage[i]));
-  <b><font color="0000BB">end</font></b>;
+  end;
 <br>
-  <i><font color="#FFFF00">// ScrollBar für ListBox</font></i>
-  R.Assign(<font color="#0077BB">31</font>, <font color="#0077BB">2</font>, <font color="#0077BB">32</font>, <font color="#0077BB">7</font>);
-  ScrollBar := <b><font color="0000BB">new</font></b>(PScrollBar, Init(R));
+  // ScrollBar für ListBox
+  R.Assign(31, 2, 32, 7);</font>
+  ScrollBar := new(PScrollBar, Init(R));
   Insert(ScrollBar);
 <br>
-  <i><font color="#FFFF00">// ListBox</font></i>
-  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">31</font>, <font color="#0077BB">7</font>);
-  ListBox := <b><font color="0000BB">new</font></b>(PListBox, Init(R, <font color="#0077BB">1</font>, ScrollBar));
+  // ListBox
+  R.Assign(5, 2, 31, 7);</font>
+  ListBox := new(PListBox, Init(R, 1, ScrollBar));</font>
   ListBox^.NewList(StringCollection);
   Insert(ListBox);
 <br>
-  <i><font color="#FFFF00">// Tag-Button</font></i>
-  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">9</font>, <font color="#0077BB">18</font>, <font color="#0077BB">11</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~T~ag'</font>, cmTag, bfNormal)));
+  // Tag-Button
+  R.Assign(5, 9, 18, 11);</font>
+  Insert(new(PButton, Init(R, '~T~ag', cmTag, bfNormal)));</font>
 <br>
-  <i><font color="#FFFF00">// Cancel-Button</font></i>
-  R.Move(<font color="#0077BB">15</font>, <font color="#0077BB">0</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~C~ancel'</font>, cmCancel, bfNormal)));
+  // Cancel-Button
+  R.Move(15, 0);</font>
+  Insert(new(PButton, Init(R, '~C~ancel', cmCancel, bfNormal)));</font>
 <br>
-  <i><font color="#FFFF00">// Ok-Button</font></i>
-  R.Move(<font color="#0077BB">15</font>, <font color="#0077BB">0</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
-<b><font color="0000BB">end</font></b>;
+  // Ok-Button
+  R.Move(15, 0);</font>
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+end;
 </code></pre>
 Manuell den Speicher frei geben.<br>
 Man kann hier versuchsweise das Dispose ausklammern, dann sieht man,<br>
 das man eine Speicherleak bekommt.<br>
-<pre><code><b><font color="0000BB">destructor</font></b> TMyDialog.Done;
-<b><font color="0000BB">begin</font></b>
-   <b><font color="0000BB">Dispose</font></b>(ListBox^.List, Done); <i><font color="#FFFF00">// Dies Versuchsweise ausklammern</font></i>
-   <b><font color="0000BB">inherited</font></b> Done;
-<b><font color="0000BB">end</font></b>;
+<pre><code>destructor TMyDialog.Done;
+begin
+   Dispose(ListBox^.List, Done); // Dies Versuchsweise ausklammern
+   inherited Done;
+end;
 </code></pre>
 Der EventHandle<br>
-<pre><code><b><font color="0000BB">procedure</font></b> TMyDialog.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-<b><font color="0000BB">var</font></b>
+<pre><code>procedure TMyDialog.HandleEvent(var Event: TEvent);
+var
   s: ShortString;
-<b><font color="0000BB">begin</font></b>
-  <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
-    evCommand: <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        cmOK: <b><font color="0000BB">begin</font></b>
-          <i><font color="#FFFF00">// mache etwas</font></i>
-        <b><font color="0000BB">end</font></b>;
-        cmTag: <b><font color="0000BB">begin</font></b>
-          str(ListBox^.Focused + <font color="#0077BB">1</font>, s);
-          MessageBox(<font color="#FF0000">'Wochentag: '</font> + s + <font color="#FF0000">' gew'</font> + <font color="#FF0000">#132</font> + <font color="#FF0000">'hlt'</font>, <b><font color="0000BB">nil</font></b>, mfOKButton);
-          ClearEvent(Event);  <i><font color="#FFFF00">// Event beenden.</font></i>
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
-<b><font color="0000BB">end</font></b>;
+begin
+  case Event.What of
+    evCommand: begin
+      case Event.Command of
+        cmOK: begin
+          // mache etwas
+        end;
+        cmTag: begin
+          str(ListBox^.Focused + 1, s);</font>
+          MessageBox('Wochentag: ' + s + ' gew' + #132 + 'hlt', nil, mfOKButton);
+          ClearEvent(Event);  // Event beenden.
+        end;
+      end;
+    end;
+  end;
+  inherited HandleEvent(Event);
+end;
 </code></pre>
 <br>

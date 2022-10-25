@@ -3,9 +3,9 @@
 <img src="image.png" alt="Selfhtml"><br><br>
 Einem Fenster/Dialog, kann man verschiedene FarbeSchema zuordnen.<br>
 Standardmässig wird folgendes verwendet:<br>
-<pre><code=pascal>Editor-Fenster : Blau
+```pascal>Editor-Fenster : Blau
 Dialog         : Grau
-Hilfe-Fenster  : Cyan</code></pre>
+Hilfe-Fenster  : Cyan```
 <br>
 Ohne Zutun, kommen die Fenster/Dialog immer in der richtigen Farbe.<br>
 Eine Modifizierung ist nur in speziellen Fällen von Sinnen.<br>
@@ -13,76 +13,76 @@ Eine Modifizierung ist nur in speziellen Fällen von Sinnen.<br>
 <b>Unit mit dem neuen Dialog.</b><br>
 <br><br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.<br>
-<pre><code><b><font color="0000BB">unit</font></b> MyDialog;
+<pre><code>unit MyDialog;
 </code></pre>
 Hier sind 3 Event-Konstante hinzugekommen.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code>type
   PMyDialog = ^TMyDialog;
-  TMyDialog = <b><font color="0000BB">object</font></b>(TDialog)
-    CounterButton: PButton; <i><font color="#FFFF00">// Button mit Zähler.</font></i>
-    <b><font color="0000BB">constructor</font></b> Init;
-    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
-  <b><font color="0000BB">end</font></b>;
+  TMyDialog = object(TDialog)
+    CounterButton: PButton; // Button mit Zähler.
+    constructor Init;
+    procedure HandleEvent(var Event: TEvent); virtual;
+  end;
 </code></pre>
 Das Bauen des Dialoges ist nichts besonderes.<br>
-<pre><code><b><font color="0000BB">const</font></b>
-  cmBlue = <font color="#0077BB">1006</font>;
-  cmCyan = <font color="#0077BB">1007</font>;
-  cmGray = <font color="#0077BB">1008</font>;
+<pre><code>const
+  cmBlue = 1006;</font>
+  cmCyan = 1007;</font>
+  cmGray = 1008;</font>
 <br>
-<b><font color="0000BB">constructor</font></b> TMyDialog.Init;
-<b><font color="0000BB">var</font></b>
+constructor TMyDialog.Init;
+var
   R: TRect;
-<b><font color="0000BB">begin</font></b>
-  R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">11</font>);
-  R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
-  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'Mein Dialog'</font>);
+begin
+  R.Assign(0, 0, 42, 11);</font>
+  R.Move(23, 3);</font>
+  inherited Init(R, 'Mein Dialog');</font>
 <br>
-  <i><font color="#FFFF00">// StaticText</font></i>
-  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">41</font>, <font color="#0077BB">8</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PStaticText, Init(R, <font color="#FF0000">'W'</font> + <font color="#FF0000">#132</font> + <font color="#FF0000">'hle eine Farbe'</font>)));
+  // StaticText
+  R.Assign(5, 2, 41, 8);</font>
+  Insert(new(PStaticText, Init(R, 'W' + #132 + 'hle eine Farbe')));
 <br>
-  <i><font color="#FFFF00">// Farbe</font></i>
-  R.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">5</font>, <font color="#0077BB">15</font>, <font color="#0077BB">7</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'blue'</font>, cmBlue, bfNormal)));
-  R.Assign(<font color="#0077BB">17</font>, <font color="#0077BB">5</font>, <font color="#0077BB">25</font>, <font color="#0077BB">7</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'cyan'</font>, cmCyan, bfNormal)));
-  R.Assign(<font color="#0077BB">27</font>, <font color="#0077BB">5</font>, <font color="#0077BB">35</font>, <font color="#0077BB">7</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'gray'</font>, cmGray, bfNormal)));
+  // Farbe
+  R.Assign(7, 5, 15, 7);</font>
+  Insert(new(PButton, Init(R, 'blue', cmBlue, bfNormal)));</font>
+  R.Assign(17, 5, 25, 7);</font>
+  Insert(new(PButton, Init(R, 'cyan', cmCyan, bfNormal)));</font>
+  R.Assign(27, 5, 35, 7);</font>
+  Insert(new(PButton, Init(R, 'gray', cmGray, bfNormal)));</font>
 <br>
-  <i><font color="#FFFF00">// Ok-Button</font></i>
-  R.Assign(<font color="#0077BB">7</font>, <font color="#0077BB">8</font>, <font color="#0077BB">17</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'~O~K'</font>, cmOK, bfDefault)));
-<b><font color="0000BB">end</font></b>;
+  // Ok-Button
+  R.Assign(7, 8, 17, 10);</font>
+  Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));</font>
+end;
 </code></pre>
 Hier werden die Farb-Schemas mit Hilfe von <b>Palette := dpxxx</b> geändert.<br>
 Auch hier ist wichtig, das man <b>Draw</b> aufruft, diemal nicht für eine Komponente, sonder für den ganzen Dialog.<br>
-<pre><code><b><font color="0000BB">procedure</font></b> TMyDialog.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-<b><font color="0000BB">begin</font></b>
-  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);    <i><font color="#FFFF00">// Vorfahre aufrufen.</font></i>
+<pre><code>procedure TMyDialog.HandleEvent(var Event: TEvent);
+begin
+  inherited HandleEvent(Event);    // Vorfahre aufrufen.
 <br>
-  <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
-    evCommand: <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        cmBlue: <b><font color="0000BB">begin</font></b>
-          Palette := dpBlueDialog; <i><font color="#FFFF00">// Palette zuordnen, hier blau.</font></i>
-          Draw;                    <i><font color="#FFFF00">// Dialog neu zeichnen.</font></i>
-          ClearEvent(Event);       <i><font color="#FFFF00">// Das Event ist abgeschlossen.</font></i>
-        <b><font color="0000BB">end</font></b>;
-        cmCyan: <b><font color="0000BB">begin</font></b>
+  case Event.What of
+    evCommand: begin
+      case Event.Command of
+        cmBlue: begin
+          Palette := dpBlueDialog; // Palette zuordnen, hier blau.
+          Draw;                    // Dialog neu zeichnen.
+          ClearEvent(Event);       // Das Event ist abgeschlossen.
+        end;
+        cmCyan: begin
           Palette := dpCyanDialog;
           Draw;
           ClearEvent(Event);
-        <b><font color="0000BB">end</font></b>;
-        cmGray: <b><font color="0000BB">begin</font></b>
+        end;
+        cmGray: begin
           Palette := dpGrayDialog;
           Draw;
           ClearEvent(Event);
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;
+        end;
+      end;
+    end;
+  end;
 <br>
-<b><font color="0000BB">end</font></b>;
+end;
 </code></pre>
 <br>

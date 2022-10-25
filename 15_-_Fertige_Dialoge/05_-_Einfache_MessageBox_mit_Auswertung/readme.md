@@ -4,66 +4,66 @@
 Die einfachsten Dialoge sind die fertigen MessageBoxen.<br>
 ---
 Konstanten für die verschiedenen Menüeinträge.<br>
-<pre><code=pascal><b><font color="0000BB">const</font></b>
-  cmAbout        = <font color="#0077BB">1001</font>;
-  cmWarning      = <font color="#0077BB">1002</font>;
-  cmError        = <font color="#0077BB">1003</font>;
-  cmInfo         = <font color="#0077BB">1004</font>;
-  cmConformation = <font color="#0077BB">1005</font>;
-  cmYesNo        = <font color="#0077BB">1010</font>;
-  cmYesNoCancel  = <font color="#0077BB">1011</font>;</code></pre>
+```pascal>const
+  cmAbout        = 1001;</font>
+  cmWarning      = 1002;</font>
+  cmError        = 1003;</font>
+  cmInfo         = 1004;</font>
+  cmConformation = 1005;</font>
+  cmYesNo        = 1010;</font>
+  cmYesNoCancel  = 1011;</font>```
 Aufruf der MessageBoxn.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-  <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+  begin
+    inherited HandleEvent(Event);
 <br>
-    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        cmAbout: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Ich bin ein About !'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
-        <b><font color="0000BB">end</font></b>;
-        cmWarning: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Ich bin eine Warnung-Box'</font>, <b><font color="0000BB">nil</font></b>, mfWarning + mfOkButton);
-        <b><font color="0000BB">end</font></b>;
-        cmError: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Ich bin eine Fehlermeldung'</font>, <b><font color="0000BB">nil</font></b>, mfError + mfOkButton);
-        <b><font color="0000BB">end</font></b>;
-        cmInfo: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Ich bin eine Info-Box'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
-        <b><font color="0000BB">end</font></b>;
-        cmConformation: <b><font color="0000BB">begin</font></b>
-          MessageBox(<font color="#FF0000">'Ich bin eine Konfirmation-Box'</font>, <b><font color="0000BB">nil</font></b>, mfConfirmation + mfOkButton);
-        <b><font color="0000BB">end</font></b>;
-        cmYesNo: <b><font color="0000BB">begin</font></b>
-          <b><font color="0000BB">case</font></b>
-            MessageBox(<font color="#FF0000">'Ich bin Ja/Nein Frage'</font>, <b><font color="0000BB">nil</font></b>, mfConfirmation + mfYesButton + mfNoButton) <b><font color="0000BB">of</font></b>
-            cmYes: <b><font color="0000BB">begin</font></b>
-              MessageBox(<font color="#FF0000">'Es wurde [JA] geklickt'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
-            <b><font color="0000BB">end</font></b>;
-            cmNo: <b><font color="0000BB">begin</font></b>
-              MessageBox(<font color="#FF0000">'Es wurde [NEIN] geklickt'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
-            <b><font color="0000BB">end</font></b>;
-          <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">end</font></b>;
-        cmYesNoCancel: <b><font color="0000BB">begin</font></b>
-          <b><font color="0000BB">case</font></b>
-            MessageBox(<font color="#FF0000">'Ich bin Ja/Nein Frage mit Cancel'</font>, <b><font color="0000BB">nil</font></b>, mfConfirmation + mfYesButton + mfNoButton + mfCancelButton) <b><font color="0000BB">of</font></b>
-            cmYes: <b><font color="0000BB">begin</font></b>
-              MessageBox(<font color="#FF0000">'Es wurde [JA] geklickt'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
-            <b><font color="0000BB">end</font></b>;
-            cmNo: <b><font color="0000BB">begin</font></b>
-              MessageBox(<font color="#FF0000">'Es wurde [NEIN] geklickt'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
-            <b><font color="0000BB">end</font></b>;
-            cmCancel: <b><font color="0000BB">begin</font></b>
-              MessageBox(<font color="#FF0000">'Es wurde [CANCEL] geklickt'</font>, <b><font color="0000BB">nil</font></b>, mfInformation + mfOkButton);
-            <b><font color="0000BB">end</font></b>;
-          <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
-          <b><font color="0000BB">Exit</font></b>;
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
+    if Event.What = evCommand then begin
+      case Event.Command of
+        cmAbout: begin
+          MessageBox('Ich bin ein About !', nil, mfInformation + mfOkButton);</font>
+        end;
+        cmWarning: begin
+          MessageBox('Ich bin eine Warnung-Box', nil, mfWarning + mfOkButton);
+        end;
+        cmError: begin
+          MessageBox('Ich bin eine Fehlermeldung', nil, mfError + mfOkButton);
+        end;
+        cmInfo: begin
+          MessageBox('Ich bin eine Info-Box', nil, mfInformation + mfOkButton);</font>
+        end;
+        cmConformation: begin
+          MessageBox('Ich bin eine Konfirmation-Box', nil, mfConfirmation + mfOkButton);
+        end;
+        cmYesNo: begin
+          case
+            MessageBox('Ich bin Ja/Nein Frage', nil, mfConfirmation + mfYesButton + mfNoButton) of</font>
+            cmYes: begin
+              MessageBox('Es wurde [JA] geklickt', nil, mfInformation + mfOkButton);
+            end;
+            cmNo: begin
+              MessageBox('Es wurde [NEIN] geklickt', nil, mfInformation + mfOkButton);
+            end;
+          end;
+        end;
+        cmYesNoCancel: begin
+          case
+            MessageBox('Ich bin Ja/Nein Frage mit Cancel', nil, mfConfirmation + mfYesButton + mfNoButton + mfCancelButton) of
+            cmYes: begin
+              MessageBox('Es wurde [JA] geklickt', nil, mfInformation + mfOkButton);
+            end;
+            cmNo: begin
+              MessageBox('Es wurde [NEIN] geklickt', nil, mfInformation + mfOkButton);
+            end;
+            cmCancel: begin
+              MessageBox('Es wurde [CANCEL] geklickt', nil, mfInformation + mfOkButton);
+            end;
+          end;
+        end;
+        else begin
+          Exit;
+        end;
+      end;
+    end;
     ClearEvent(Event);
-  <b><font color="0000BB">end</font></b>;</code></pre>
+  end;```
 <br>

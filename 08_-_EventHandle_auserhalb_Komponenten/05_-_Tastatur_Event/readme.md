@@ -5,100 +5,100 @@ Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/k
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
 ---
 Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.<br>
-<pre><code=pascal>  <b><font color="0000BB">procedure</font></b> TMyApp.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-  <b><font color="0000BB">var</font></b>
+```pascal>  procedure TMyApp.HandleEvent(var Event: TEvent);
+  var
     KeyDialog: PMyKey;
-  <b><font color="0000BB">begin</font></b>
-    <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+  begin
+    inherited HandleEvent(Event);
 <br>
-    <b><font color="0000BB">if</font></b> Event.What = evCommand <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b>
-      <b><font color="0000BB">case</font></b> Event.Command <b><font color="0000BB">of</font></b>
-        cmKeyAktion: <b><font color="0000BB">begin</font></b>
-          KeyDialog := <b><font color="0000BB">New</font></b>(PMyKey, Init);
-          <b><font color="0000BB">if</font></b> ValidView(KeyDialog) <> <b><font color="0000BB">nil</font></b> <b><font color="0000BB">then</font></b> <b><font color="0000BB">begin</font></b> <i><font color="#FFFF00">// Prüfen ob genügend Speicher.</font></i>
-            Desktop^.ExecView(KeyDialog);           <i><font color="#FFFF00">// Dialog Mausaktion ausführen.</font></i>
-            <b><font color="0000BB">Dispose</font></b>(KeyDialog, Done);               <i><font color="#FFFF00">// Dialog und Speicher frei geben.</font></i>
-          <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">end</font></b>;
-        <b><font color="0000BB">else</font></b> <b><font color="0000BB">begin</font></b>
-          <b><font color="0000BB">Exit</font></b>;
-        <b><font color="0000BB">end</font></b>;
-      <b><font color="0000BB">end</font></b>;
-    <b><font color="0000BB">end</font></b>;
+    if Event.What = evCommand then begin
+      case Event.Command of
+        cmKeyAktion: begin
+          KeyDialog := New(PMyKey, Init);
+          if ValidView(KeyDialog) <> nil then begin // Prüfen ob genügend Speicher.
+            Desktop^.ExecView(KeyDialog);           // Dialog Mausaktion ausführen.
+            Dispose(KeyDialog, Done);               // Dialog und Speicher frei geben.
+          end;
+        end;
+        else begin
+          Exit;
+        end;
+      end;
+    end;
     ClearEvent(Event);
-  <b><font color="0000BB">end</font></b>;</code></pre>
+  end;```
 ---
 <b>Unit mit dem Keyboardaktions-Dialog.</b><br>
 <br><br>
-<pre><code><b><font color="0000BB">unit</font></b> MyDialog;
+<pre><code>unit MyDialog;
 </code></pre>
 In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei Mausaktionen modifiziert werden.<br>
-<pre><code><b><font color="0000BB">type</font></b>
+<pre><code>type
   PMyKey = ^TMyKey;
-  TMyKey = <b><font color="0000BB">object</font></b>(TDialog)
+  TMyKey = object(TDialog)
     EditScanCode, EditShiftState,
     EditZeichen, EditZeichenCode: PInputLine;
 <br>
-    <b><font color="0000BB">constructor</font></b> Init;
-    <b><font color="0000BB">procedure</font></b> HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent); <b><font color="0000BB">virtual</font></b>;
-  <b><font color="0000BB">end</font></b>;
+    constructor Init;
+    procedure HandleEvent(var Event: TEvent); virtual;
+  end;
 </code></pre>
 Es wird ein Dialog mit EditLine, Label und Button gebaut.<br>
 Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.<br>
-<pre><code><b><font color="0000BB">constructor</font></b> TMyKey.Init;
-<b><font color="0000BB">var</font></b>
+<pre><code>constructor TMyKey.Init;
+var
   R: TRect;
-<b><font color="0000BB">begin</font></b>
-  R.Assign(<font color="#0077BB">0</font>, <font color="#0077BB">0</font>, <font color="#0077BB">42</font>, <font color="#0077BB">15</font>);
-  R.Move(<font color="#0077BB">23</font>, <font color="#0077BB">3</font>);
-  <b><font color="0000BB">inherited</font></b> Init(R, <font color="#FF0000">'Keyboard-Aktion'</font>);
+begin
+  R.Assign(0, 0, 42, 15);</font>
+  R.Move(23, 3);</font>
+  inherited Init(R, 'Keyboard-Aktion');</font>
 <br>
-  <i><font color="#FFFF00">// PosX</font></i>
-  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">2</font>, <font color="#0077BB">30</font>, <font color="#0077BB">3</font>);
-  EditZeichen := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">5</font>));
+  // PosX
+  R.Assign(25, 2, 30, 3);</font>
+  EditZeichen := new(PInputLine, Init(R, 5));</font>
   Insert(EditZeichen);
-  EditZeichen^.State := sfDisabled <b><font color="0000BB">or</font></b> EditZeichen^.State;    <i><font color="#FFFF00">// ReadOnly</font></i>
-  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">2</font>, <font color="#0077BB">20</font>, <font color="#0077BB">3</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Zeichen:'</font>, EditZeichen)));
+  EditZeichen^.State := sfDisabled or EditZeichen^.State;    // ReadOnly
+  R.Assign(5, 2, 20, 3);</font>
+  Insert(New(PLabel, Init(R, 'Zeichen:', EditZeichen)));</font>
 <br>
-  <i><font color="#FFFF00">// PosY</font></i>
-  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">4</font>, <font color="#0077BB">30</font>, <font color="#0077BB">5</font>);
-  EditZeichenCode := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">5</font>));
-  EditZeichenCode^.State := sfDisabled <b><font color="0000BB">or</font></b> EditZeichenCode^.State;    <i><font color="#FFFF00">// ReadOnly</font></i>
+  // PosY
+  R.Assign(25, 4, 30, 5);</font>
+  EditZeichenCode := new(PInputLine, Init(R, 5));</font>
+  EditZeichenCode^.State := sfDisabled or EditZeichenCode^.State;    // ReadOnly
   Insert(EditZeichenCode);
-  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">4</font>, <font color="#0077BB">20</font>, <font color="#0077BB">5</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Zeichencode:'</font>, EditZeichenCode)));
+  R.Assign(5, 4, 20, 5);</font>
+  Insert(New(PLabel, Init(R, 'Zeichencode:', EditZeichenCode)));</font>
 <br>
-  <i><font color="#FFFF00">// Maus-Tasten</font></i>
-  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">7</font>, <font color="#0077BB">30</font>, <font color="#0077BB">8</font>);
-  EditScanCode := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">7</font>));
-  EditScanCode^.State := sfDisabled <b><font color="0000BB">or</font></b> EditScanCode^.State;  <i><font color="#FFFF00">// ReadOnly</font></i>
+  // Maus-Tasten
+  R.Assign(25, 7, 30, 8);</font>
+  EditScanCode := new(PInputLine, Init(R, 7));</font>
+  EditScanCode^.State := sfDisabled or EditScanCode^.State;  // ReadOnly
   Insert(EditScanCode);
-  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">7</font>, <font color="#0077BB">20</font>, <font color="#0077BB">8</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Scancode:'</font>, EditScanCode)));
+  R.Assign(5, 7, 20, 8);</font>
+  Insert(New(PLabel, Init(R, 'Scancode:', EditScanCode)));</font>
 <br>
-  <i><font color="#FFFF00">// Maus-Tasten</font></i>
-  R.Assign(<font color="#0077BB">25</font>, <font color="#0077BB">9</font>, <font color="#0077BB">30</font>, <font color="#0077BB">10</font>);
-  EditShiftState := <b><font color="0000BB">new</font></b>(PInputLine, Init(R, <font color="#0077BB">7</font>));
-  EditShiftState^.State := sfDisabled <b><font color="0000BB">or</font></b> EditShiftState^.State;  <i><font color="#FFFF00">// ReadOnly</font></i>
+  // Maus-Tasten
+  R.Assign(25, 9, 30, 10);</font>
+  EditShiftState := new(PInputLine, Init(R, 7));</font>
+  EditShiftState^.State := sfDisabled or EditShiftState^.State;  // ReadOnly
   Insert(EditShiftState);
-  R.Assign(<font color="#0077BB">5</font>, <font color="#0077BB">9</font>, <font color="#0077BB">20</font>, <font color="#0077BB">10</font>);
-  Insert(<b><font color="0000BB">New</font></b>(PLabel, Init(R, <font color="#FF0000">'Shiftstate:'</font>, EditShiftState)));
+  R.Assign(5, 9, 20, 10);</font>
+  Insert(New(PLabel, Init(R, 'Shiftstate:', EditShiftState)));</font>
 <br>
-  <i><font color="#FFFF00">// Ok-Button</font></i>
-  R.Assign(<font color="#0077BB">27</font>, <font color="#0077BB">12</font>, <font color="#0077BB">37</font>, <font color="#0077BB">14</font>);
-  Insert(<b><font color="0000BB">new</font></b>(PButton, Init(R, <font color="#FF0000">'OK'</font>, cmOK, bfDefault)));
-<b><font color="0000BB">end</font></b>;
+  // Ok-Button
+  R.Assign(27, 12, 37, 14);</font>
+  Insert(new(PButton, Init(R, 'OK', cmOK, bfDefault)));</font>
+end;
 </code></pre>
 Im EventHandle sieht man, das die Tastatur abgefangen wird. Es wird der Zeichencode und der Scancode ausgegeben.<br>
 In der untersten Zeile erscheint ein 3, wen die Shift-Taste mit gewissen anderen Tasten zB. Pfeil-Tasten gedrückt wird.<br>
 Die Tastatur-Daten werden an die <b>EditLines</b> ausgegeben.<br>
-<pre><code><b><font color="0000BB">procedure</font></b> TMyKey.HandleEvent(<b><font color="0000BB">var</font></b> Event: TEvent);
-<b><font color="0000BB">begin</font></b>
-  <b><font color="0000BB">inherited</font></b> HandleEvent(Event);
+<pre><code>procedure TMyKey.HandleEvent(var Event: TEvent);
+begin
+  inherited HandleEvent(Event);
 <br>
-  <b><font color="0000BB">case</font></b> Event.What <b><font color="0000BB">of</font></b>
-    evKeyDown: <b><font color="0000BB">begin</font></b>                 <i><font color="#FFFF00">// Taste wurde gedrückt.</font></i>
+  case Event.What of
+    evKeyDown: begin                 // Taste wurde gedrückt.
       EditZeichen^.Data^:= Event.CharCode;
       EditZeichen^.Draw;
       EditZeichenCode^.Data^:= IntToStr(Byte(Event.CharCode));
@@ -107,9 +107,9 @@ Die Tastatur-Daten werden an die <b>EditLines</b> ausgegeben.<br>
       EditScanCode^.Draw;
       EditShiftState^.Data^:= IntToStr(Event.KeyShift);
       EditShiftState^.Draw;
-    <b><font color="0000BB">end</font></b>;
-  <b><font color="0000BB">end</font></b>;
+    end;
+  end;
 <br>
-<b><font color="0000BB">end</font></b>;
+end;
 </code></pre>
 <br>
