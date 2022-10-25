@@ -1,6 +1,7 @@
 # 03 - Dialoge
 ## 30 - InputLine (Edit-Zeile)
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Einfügen eine Edit-Zeile.<br>
 <hr><br>
 Die Check und Radio-GroupButton mit Label ergänzen.<br>

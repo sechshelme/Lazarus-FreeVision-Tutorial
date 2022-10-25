@@ -1,6 +1,7 @@
 # 08 - EventHandle auserhalb Komponenten
 ## 05 - Tastatur Event
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/klickt.<br>
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.<br>
 <hr><br>

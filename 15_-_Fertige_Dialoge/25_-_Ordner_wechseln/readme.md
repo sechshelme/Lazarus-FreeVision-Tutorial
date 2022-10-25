@@ -1,6 +1,7 @@
 # 15 - Fertige Dialoge
 ## 25 - Ordner wechseln
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Ordner Wechsel Dialog.<br>
 Der <b>PChDirDialog</b>.<br>
 <hr><br>

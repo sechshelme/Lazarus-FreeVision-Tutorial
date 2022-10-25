@@ -1,6 +1,7 @@
 # 06 - Listen und ListBoxen
 ## 05 - StringCollection sortiert
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Eine sortierte String-Liste<br>
 für eine sortierte Liste muss man <b>PStringCollection</b> oder <b>PStrCollection</b> verwenden.<br>
 <hr><br>

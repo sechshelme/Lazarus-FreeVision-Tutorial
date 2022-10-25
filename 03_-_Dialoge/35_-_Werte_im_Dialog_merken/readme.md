@@ -1,6 +1,7 @@
 # 03 - Dialoge
 ## 35 - Werte im Dialog merken
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Bis jetzt gingen die Werte im Dialog immer wieder verloren, wen man diesen schliesste und wieder öffnete.<br>
 Aus diesem Grund werden jetzt die Werte in einen Record gespeichert.<br>
 <hr><br>

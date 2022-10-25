@@ -1,6 +1,7 @@
 # 03 - Dialoge
 ## 50 - StaticText gut fuer ein About
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Hier wird ein About-Dialog erstellt, das sieht man gut für was man Label gebrauchen kann.<br>
 <hr><br>
 Die Datei, in welcher sich die Daten für den Dialog befinden.<br>

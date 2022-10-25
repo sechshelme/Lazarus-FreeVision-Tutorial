@@ -1,6 +1,7 @@
 # 90 - Experimente
 ## 30 - EditListBox unsortiert
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList freigeben.<br>
 Dies ist nicht Free-Vision üblich. Dies hat auch einen Sinn, da man Listen vielfach global verwendet, <br>
 ansonsten müsste man immer eine Kopie davon anlegen.<br>

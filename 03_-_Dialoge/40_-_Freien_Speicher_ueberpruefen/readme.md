@@ -1,6 +1,7 @@
 # 03 - Dialoge
 ## 40 - Freien Speicher ueberpruefen
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Überprüfen ob genügend Speicher frei ist, um den Dialog zu erzeugen.<br>
 Auf den heutigen Rechner wird die wohl nicht mehr der Fall sein, das der Speicher wegen eines Dialoges überläuft.<br>
 <hr><br>

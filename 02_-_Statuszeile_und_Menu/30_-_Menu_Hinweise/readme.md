@@ -1,6 +1,7 @@
 # 02 - Statuszeile und Menu
 ## 30 - Menu Hinweise
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Hinweise in der Statuszeile der Menü-Punkte.<br>
 <hr><br>
 Konstanten der einzelnen Hilfen.<br>

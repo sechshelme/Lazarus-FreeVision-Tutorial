@@ -1,6 +1,7 @@
 # 20 - Diverses
 ## 10 - InputLine Validate
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Hier wird eine Bereichsbegrenzung für <b>PInputLine</b> gezeigt.<br>
 Bei der ersten Zeile ist nur eine Zahl zwischen 0 und 99 erlaubt.<br>
 Bei der zweiten Zeile muss es ein Wochentag ( Montag - Freitag ) sein.<br>

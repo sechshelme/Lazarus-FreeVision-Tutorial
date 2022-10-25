@@ -1,6 +1,7 @@
 # 20 - Diverses
 ## 05 - String formatieren
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Mit <b>FormatStr</b> können Strings formatiert werden.<br>
 Dabei sind filgende Formatierungen möglich:<br>
 %c: Char<br>

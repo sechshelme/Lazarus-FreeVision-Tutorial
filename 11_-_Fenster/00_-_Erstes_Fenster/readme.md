@@ -1,6 +1,7 @@
 # 11 - Fenster
 ## 00 - Erstes Fenster
 <br>
+<img src="image.png" alt="Selfhtml"><br><br>
 Erstes Memo-Fenster.<br>
 <hr><br>
 Der Constructor wird vererbt, so das von Anfang an ein neues Fenster erstellt wird.<br>
