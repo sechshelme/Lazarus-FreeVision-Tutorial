@@ -3,12 +3,9 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Ordner Wechsel Dialog.
-
 Der <b>PChDirDialog</b>.
-
 <hr><br>
 Der Ordnerwechsel Dialog
-
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

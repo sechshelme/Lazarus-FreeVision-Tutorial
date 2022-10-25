@@ -3,25 +3,16 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wird eine Bereichsbegrenzung für <b>PInputLine</b> gezeigt.
-
 Bei der ersten Zeile ist nur eine Zahl zwischen 0 und 99 erlaubt.
-
 Bei der zweiten Zeile muss es ein Wochentag ( Montag - Freitag ) sein.
-
 Für den zweiten Fall wäre eine ListBox idealer, mir geht zum zeigen wie es mit der <b>PInputLine</b> geht.
-
 <hr><br>
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b>
-
 <br>
-
 Ein Dialog mit <b>PInputLine</b> welche eine Prüfung bekommen.
-
 Wen man <b>Ok</b> drückt, wird ein Validate-Prüfungen ausgeführt.
-
 Bei <b>Abbruch</b> gibt es keine Prüfung.
-
 
 ```pascal
 unit MyDialog;
@@ -29,11 +20,8 @@ unit MyDialog;
 ```
 
 Die Deklaration des Dialoges, hier wird nur das Init überschrieben, welches die Komponenten, für den Dialog erzeugt.
-
 So nebenbei werden noch die beiden Validate überschrieben.
-
 Dies wird nur gemacht, das eine deutsche Fehlermeldung bei falscher Eingabe kommt.
-
 
 ```pascal
 type
@@ -56,7 +44,6 @@ type
 
 Die beiden neuen Fehlermeldungen.
 
-
 ```pascal
 procedure TMyRangeValidator.Error;
 var
@@ -75,7 +62,6 @@ end;
 ```
 
 Hier sieht man, das eine Validate-Prüfung zu den <b>PInputLines</b> dazu kommt.
-
 
 ```pascal
 constructor TMyDialog.Init;

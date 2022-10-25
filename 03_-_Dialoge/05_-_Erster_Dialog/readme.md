@@ -3,10 +3,8 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Abarbeiten der Events, der Statuszeile und des Menu.
-
 <hr><br>
 Für Dialoge muss man noch die Unit <b>Dialogs</b> einfügen.
-
 
 ```pascal
 uses
@@ -20,7 +18,6 @@ uses
 
 Ein weiteres Kommando für den Aufruf des Dialoges.
 
-
 ```pascal
 const
   cmAbout = 1001;     // About anzeigen
@@ -29,9 +26,7 @@ const
 ```
 
 Neue Funktionen kommen auch in die Klasse.
-
 Hier ein Dialog für Paramtereingabe.
-
 
 ```pascal
 type
@@ -45,7 +40,6 @@ type
 ```
 
 Das Menü wird um Parameter und Schliessen erweitert.
-
 
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -80,7 +74,6 @@ Das Menü wird um Parameter und Schliessen erweitert.
 
 Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.
 
-
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
@@ -105,11 +98,8 @@ Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.
 ```
 
 Bauen eines leeren Dialoges.
-
 Auch da wird <b>TRect</b> gebraucht für die Grösse.
-
 Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.
-
 
 ```pascal
   procedure TMyApp.MyParameter;

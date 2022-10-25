@@ -3,11 +3,8 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.
-
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.
-
 Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.
-
 
 ```pascal
   procedure TMyApp.NewWindows(Titel: ShortString);
@@ -25,11 +22,8 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
 
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b>
-
 <br>
-
 Der Dialog mit dem Zähler-Button.
-
 
 ```pascal
 unit MyDialog;
@@ -37,9 +31,7 @@ unit MyDialog;
 ```
 
 Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.
-
 Direkt mit <b>Insert(New(...</b> geht nicht mehr.
-
 
 ```pascal
 type
@@ -64,9 +56,7 @@ type
 ```
 
 Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.
-
 <b>CounterButton</b> wird für die Modifikation gebraucht.
-
 
 ```pascal
 const
@@ -75,11 +65,8 @@ const
 ```
 
 Im EventHandle, wird die Zahl im Button beim Drücken erhöht.
-
 Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.
-
 Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.
-
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);

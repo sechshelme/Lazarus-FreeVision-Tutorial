@@ -3,14 +3,10 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Wen man immer wieder die gleichen Dialog braucht, packt man diesen am besten als Komponente in eine Unit.
-
 Dazu schreibt man einen Nachkommen von <b>TDialog</b>.
-
 Als Beispiel wird hier ein About-Dialog gebaut.
-
 <hr><br>
 Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeben.
-
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -40,16 +36,13 @@ Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeb
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b>
 
-
 ```pascal
 unit MyDialog;
 
 ```
 
 Für den Dialog muss ein neuer Konstruktor erzeugt werden.
-
 Noch ein Hinweis zu StaticText, wen man eine Leerzeile einfügen will, muss man <b>#13#32#13</b> schreiben, bei <b>#13#13</b>, wird nur ein einfacher Zeilenumbruch ausgefühert.
-
 
 ```pascal
 interface
@@ -66,7 +59,6 @@ type
 ```
 
 Im Konstruktor werden die Dialog-Komponeten erzeugt.
-
 
 ```pascal
 implementation

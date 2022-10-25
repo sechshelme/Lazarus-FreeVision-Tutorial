@@ -3,10 +3,8 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Die einfachsten Dialoge sind die fertigen MessageBoxen.
-
 <hr><br>
 Konstanten für die verschiedenen Menüeinträge.
-
 
 ```pascal
 const
@@ -20,7 +18,6 @@ const
 ```
 
 Aufruf der MessageBoxn.
-
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

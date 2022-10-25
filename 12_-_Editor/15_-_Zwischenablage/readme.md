@@ -3,14 +3,10 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Hier wurde ein Zwischenablage hinzugefügt, somit ist auch kopieren und einfügen im Editor möglich.
-
 Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bekommt, wen man kopieren wählt.
-
 Somit kann man dieses sogar sichbar machen.
-
 <hr><br>
 Ein Kommando für das öffnen des Zwischenablagefenster.
-
 
 ```pascal
 const
@@ -20,9 +16,7 @@ const
 ```
 
 Hier wird das Fenster für die Zwischenablage deklariert.
-
 Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt werden soll.
-
 
 ```pascal
 type
@@ -45,7 +39,6 @@ type
 ```
 
 Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.
-
 
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -94,7 +87,6 @@ Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.
 
 Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.
 
-
 ```pascal
   function TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = False) : PEditWindow;
   var
@@ -118,7 +110,6 @@ Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.
 ```
 
 Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.
-
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

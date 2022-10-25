@@ -3,14 +3,10 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Das die Werte des Dialoges auch nach beenden der Anwendung erhalten bleiben, speichern wir die Daten auf die Platte.
-
 Es wird nicht überprüft, ob geschrieben werden kann, etc.
-
 Wen man dies will müsste man mit <b>IOResult</b>, etc. überprüfen.
-
 <hr><br>
 Hier kommt noch <b>sysutils</b> hinzu, sie wird für <b>FileExits</b> gebraucht.
-
 
 ```pascal
 uses
@@ -19,14 +15,12 @@ uses
 
 Die Datei, in welcher sich die Daten für den Dialog befinden.
 
-
 ```pascal
 const
   DialogDatei = 'parameter.cfg';
 ```
 
 Zu Beginn werden die Daten, wen vorhaden von der Platte geladen, ansonten werden sie erzeugt.
-
 
 ```pascal
   constructor TMyApp.Init;
@@ -51,7 +45,6 @@ Zu Beginn werden die Daten, wen vorhaden von der Platte geladen, ansonten werden
 ```
 
 Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.
-
 
 ```pascal
   procedure TMyApp.MyParameter;

@@ -3,9 +3,7 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Ein Hello World mit Free-Vision.
-
 Der Text wird in einer Message-Box ausgegeben.
-
 <hr><br>
 
 ```pascal

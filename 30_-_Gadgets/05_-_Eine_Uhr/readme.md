@@ -3,10 +3,8 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.
-
 <hr><br>
     Erzeugt ein kleines Fenster rechts-unten, welches die Uhr anzeigt.
-
 
 ```pascal
     GetExtent(R);
@@ -17,7 +15,6 @@ In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anz
 ```
 
 Den Dialog mit dem Speicher Leak aufrufen.
-
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -57,7 +54,6 @@ Den Dialog mit dem Speicher Leak aufrufen.
 
 Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.
 
-
 ```pascal
   procedure TMyApp.Idle;
 
@@ -79,11 +75,8 @@ Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.
 
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b>
-
 <br>
-
 Der Dialog mit dem dem Speicher Leak
-
 
 ```pascal
 unit MyDialog;
@@ -91,7 +84,6 @@ unit MyDialog;
 ```
 
 Den <b>Destructor</b> deklarieren, welcher das <b>Speicher Leak</b> behebt.
-
 
 ```pascal
 type
@@ -111,7 +103,6 @@ type
 ```
 
 Komponenten für den Dialog generieren.
-
 
 ```pascal
 constructor TMyDialog.Init;
@@ -160,11 +151,8 @@ end;
 ```
 
 Manuell den Speicher frei geben.
-
 Man kann hier versuchsweise das Dispose ausklammern, dann sieht man,
-
 das man eine Speicherleak bekommt.
-
 
 ```pascal
 destructor TMyDialog.Done;
@@ -176,7 +164,6 @@ end;
 ```
 
 Der EventHandle
-
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);

@@ -3,16 +3,11 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei Bedarf, kann man auch ein Hintergrund-Muster auf einen Dialog/Fenster legen.
-
 <hr><br>
 Hier wird der <b>PBackGround</b> auf einen Dialog gelegt, dies funktioniert genau gleich, wie auf dem Desktop.
-
 Dies kann auch der benutzerdefiniert <b>PMyBackground</b> sein.
-
 <b>Wichtig</b> ist, der Background <b>MUSS</b> zuerst in den Dialog eingefügt werden,
-
 ansonsten übermahlt er die anderen Komponenten.
-
 
 ```pascal
   procedure TMyApp.MyOption;

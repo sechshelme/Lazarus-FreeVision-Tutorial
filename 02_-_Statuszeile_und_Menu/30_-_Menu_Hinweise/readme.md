@@ -3,12 +3,9 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinweise in der Statuszeile der Menü-Punkte.
-
 <hr><br>
 Konstanten der einzelnen Hilfen.
-
 Am besten mimmt man da hcxxx Namen.
-
 
 ```pascal
 const
@@ -25,7 +22,6 @@ const
 ```
 
 Die Hint-Zeile muss vererbt werden.
-
 
 ```pascal
   procedure TMyApp.InitMenuBar;

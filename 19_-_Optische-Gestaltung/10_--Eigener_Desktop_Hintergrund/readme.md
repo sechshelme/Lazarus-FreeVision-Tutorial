@@ -3,14 +3,10 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Man hat sogar die Möglichkeit, den ganzen Background selbst zu zeichnen.
-
 Da man alles selbst zeichent kann man sich den Umweg über <b>TBackGround</b> sparen und direkt <B>TView</b> vererben.
-
 <b>TBackGround</b> ist ein direkter Nachkomme von <b>TView</b>.
-
 <hr><br>
 Für das Object <b>TView</b> wird ein Nachkomme erzeugt, welcher eine neue <b>Draw</b> Procedure bekommt.
-
 
 ```pascal
 type
@@ -21,13 +17,9 @@ type
 ```
 
 In der neuen Funktion wird ein Byte-Muster in Form einer Backsteinwand gezeichnet.
-
 Die Möglickeiten sind unbegrenzt, man kann ein ganzes Bild erzeugen.
-
 Das was man ausgeben will, kommt Zeilenweise in den <b>TDrawBuffer</b>.
-
 Anschliessend wird mit <b>WriteLine(...</b> der Buffer gezeichnet.
-
 
 ```pascal
   procedure TMyBackground.Draw;
@@ -52,9 +44,7 @@ Anschliessend wird mit <b>WriteLine(...</b> der Buffer gezeichnet.
 ```
 
 Der Konstruktor sieht gleich aus wie bei der Hintergrund-Zeichenfarbe.
-
 Dem ist Egal ob <b>TMyBackground</b> ein Nachkomme von <b>TView</b> oder <b>TBackground</b> ist.
-
 
 ```pascal
   constructor TMyApp.Init;

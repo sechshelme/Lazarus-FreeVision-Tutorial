@@ -3,17 +3,12 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Bei <b>ListBox</b> kann man auch Einträge einfügen, entfernen, etc.
-
 ZT. muss man da direkt auf die Liste zugreifen.
-
 <hr><br>
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b>
-
 <br>
-
 Der Dialog mit der mehrspaltigen ListBox
-
 
 ```pascal
 unit MyDialog;
@@ -21,7 +16,6 @@ unit MyDialog;
 ```
 
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.
-
 
 ```pascal
 type
@@ -38,7 +32,6 @@ type
 ```
 
 Komponenten für den Dialog generieren.
-
 
 ```pascal
 const
@@ -111,7 +104,6 @@ end;
 
 Manuell den Speicher der Liste frei geben.
 
-
 ```pascal
 destructor TMyDialog.Done;
 begin
@@ -122,9 +114,7 @@ end;
 ```
 
 Der EventHandle
-
 Hier sieht man, wie man Einträge einfügt und entfernt.
-
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);

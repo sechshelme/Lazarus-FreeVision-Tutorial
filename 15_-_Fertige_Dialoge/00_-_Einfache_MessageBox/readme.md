@@ -3,10 +3,8 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Die einfachsten Dialoge sind die fertigen MessageBoxen.
-
 <hr><br>
 Aufruf einer MessageBox.
-
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

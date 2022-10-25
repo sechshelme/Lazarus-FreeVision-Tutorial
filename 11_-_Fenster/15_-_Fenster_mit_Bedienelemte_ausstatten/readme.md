@@ -3,20 +3,13 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Dem Fenster wurden noch Scrollbalken spendiert.
-
 Man könnte noch eine Indikator hinzufügen, welcher Zeilen und Spalten anzeigt.
-
 Und das wichtigste für einen Editor, ein Memo in dem man schreiben kann.
 
-
-
 Wen man einen Editor schreiben will, dann nimmt man dazu <b>PEditWindow</b> aus der Unit <b>Editors</b>.
-
 Dies ist viel einfacher, als alles selbst zu bauen.
-
 <hr><br>
 Hier wird das neue vererbte Windows erzeugt.
-
 
 ```pascal
   procedure TMyApp.NewWindows;
@@ -40,9 +33,7 @@ Hier wird das neue vererbte Windows erzeugt.
 
 <hr><br>
 <b>Unit mit dem neuen Fenster.</b>
-
 <br>
-
 
 ```pascal
 unit MyWindow;
@@ -50,13 +41,9 @@ unit MyWindow;
 ```
 
 Ein Horizontaler und ein Vertikaler Scrollbalken einfügen.
-
 Es wird noch gezeigt, wie man die Position des Schiebers festlegen kann.
-
 Mit <b>Min</b> und <b>Max</b> legt man den Bereich fest und mit <b>Value</b> gibt man die Position des Schiebers an.
-
 Ein Indicator wird auch noch eingefügt, welcher die Spalten und Zeilen anzeigt. (Bei einem 64Bit OS ist diese fehlerhaft.)
-
 
 ```pascal
 constructor TMyWindow.Init(var Bounds: TRect; ATitle: TTitleStr; ANumber: Sw_Integer);

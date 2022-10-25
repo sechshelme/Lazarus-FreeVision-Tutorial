@@ -3,10 +3,8 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Dialog um RadioButtons ergänzen.
-
 <hr><br>
 Das Menü wurde noch ein wenig geändert/ergänzt.
-
 
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -42,7 +40,6 @@ Das Menü wurde noch ein wenig geändert/ergänzt.
 ```
 
 Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den CheckBoxen.
-
 
 ```pascal
   procedure TMyApp.MyParameter;

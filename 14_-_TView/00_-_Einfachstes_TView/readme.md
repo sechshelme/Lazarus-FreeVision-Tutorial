@@ -3,14 +3,10 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 <b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.
-
 Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.
-
 An diesem View sind keinerlei Änderungen möglich, da noch keine Event, Steurerelemente vorhanden sind.
-
 <hr><br>
 Im Konstructor wird das View erzeugt.
-
 
 ```pascal
   constructor TMyApp.Init;
@@ -21,7 +17,6 @@ Im Konstructor wird das View erzeugt.
 ```
 
 Es wird ein einfaches View erzeugt, wie erwarte sieht man nicht viel, ausser eines grauen Rechteckes.
-
 
 ```pascal
   procedure TMyApp.NewView;

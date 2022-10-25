@@ -3,15 +3,11 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Die <b>ListBox</b> kann auch mehrere Spalten haben.
-
 <hr><br>
 <hr><br>
 <b>Unit mit dem neuen Dialog.</b>
-
 <br>
-
 Der Dialog mit der mehrspaltigen ListBox
-
 
 ```pascal
 unit MyDialog;
@@ -19,7 +15,6 @@ unit MyDialog;
 ```
 
 Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.
-
 
 ```pascal
 type
@@ -36,11 +31,8 @@ type
 ```
 
 Komponenten für den Dialog generieren.
-
 Der zweite Parameter bei Init von <b>TListBox</b> gibt die Anzahl Spalten an.
-
 Hier im Beispiel sind es 3.
-
 
 ```pascal
 const
@@ -95,7 +87,6 @@ end;
 
 Manuell den Speicher der Liste frei geben.
 
-
 ```pascal
 destructor TMyDialog.Done;
 begin
@@ -106,9 +97,7 @@ end;
 ```
 
 Der EventHandle
-
 Wen man auf <b>[Monat]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.
-
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);

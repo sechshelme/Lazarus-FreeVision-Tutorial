@@ -3,21 +3,13 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Mit <b>FormatStr</b> können Strings formatiert werden.
-
 Dabei sind filgende Formatierungen möglich:
-
 %c: Char
-
 %s: String
-
 %d: Ganzzahlen
-
 %x: Hexadezimal
-
 %#: Formatierungen
-
 Bei Realzahlen muss man sich folgendermassen behelfen:
-
 
 ```pascal
 procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);
@@ -33,7 +25,6 @@ unit MyDialog;
 
 Deklaration des Dialogs.
 
-
 ```pascal
 type
   PMyDialog = ^TMyDialog;
@@ -44,7 +35,6 @@ type
 ```
 
 Bei Integern ist es wichtig, das man diese als <b>PtrInt</b> deklariert.
-
 
 ```pascal
 constructor TMyDialog.Init;
@@ -65,7 +55,6 @@ var
 ```
 
 Hier sieht man, die Formatierung mit <b>FormatStr</b>.
-
 
 ```pascal
 begin

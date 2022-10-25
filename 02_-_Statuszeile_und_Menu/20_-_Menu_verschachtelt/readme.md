@@ -3,12 +3,9 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Menupunkt kann man auch ineinander verschachteln.
-
 <hr><br>
 Bei der Statuszeile habe ich die Einträge verschachtelt, somit braucht man keine Zeiger.
-
 Ich finde dies auch übersichtlicher, als ein Variablen-Urwald.
-
 
 ```pascal
   procedure TMyApp.InitStatusLine;
@@ -26,9 +23,7 @@ Ich finde dies auch übersichtlicher, als ein Variablen-Urwald.
 ```
 
 Folgendes Beispiel demonstriert ein verschachteltes Menü.
-
 Die Erzeugung ist auch verschachtelt.
-
 
 ```Datei
   Beenden

@@ -3,16 +3,11 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Man kann auch eine Komponente modifzieren, in diesem Beispiel ist es ein Button.
-
 Dazu muss man einen Nachkommen von TButton erstellen.
-
 Der abgeänderte Button passt sich automatisch an die Länge des Titels an, auch wird er automatisch 2 Zeilen hoch.
-
 <hr><br>
 Anstelle des normalen Button nehme ich jetzt den PMyButton.
-
 Man sieht auch, das man anstelle von Rect, nur X und Y angibt.
-
 
 ```pascal
   procedure TMyApp.MyParameter;
@@ -43,11 +38,8 @@ Man sieht auch, das man anstelle von Rect, nur X und Y angibt.
 
 <hr><br>
 <b>Unit mit dem neuen Button.</b>
-
 <br>
-
 Hier wird gezeigt, wie man einen Button abänder kann.
-
 
 ```pascal
 unit MyButton;
@@ -55,9 +47,7 @@ unit MyButton;
 ```
 
 Deklaration des neuen Buttons.
-
 Hier sieht man, das man den Konstruktor überschreiben muss.
-
 
 ```pascal
 type
@@ -69,9 +59,7 @@ type
 ```
 
 Im Konstruktor sieht man, das aus <b>X</b> und <b>Y</b> ein <b>Rect</b> generiert wird.
-
 <b>StringReplace</b> werden noch die ~ gelöscht, da diese sonst die Länge des Stringes verfälschen.
-
 
 ```pascal
 constructor TMyButton.Init(x, y: integer; ATitle: TTitleStr; ACommand: word; AFlags: word);

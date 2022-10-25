@@ -3,10 +3,8 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Abarbeiten der Events, der Statuszeile und des Menu.
-
 <hr><br>
 Kommmandos die abgearbeitet werden.
-
 
 ```pascal
 const
@@ -15,7 +13,6 @@ const
 ```
 
 Der EventHandler ist auch ein Nachkommen.
-
 
 ```pascal
 type
@@ -27,7 +24,6 @@ type
 ```
 
 Abarbeiten der eigenen cmxxx Kommandos.
-
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

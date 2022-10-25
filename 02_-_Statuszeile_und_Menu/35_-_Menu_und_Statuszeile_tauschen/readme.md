@@ -3,16 +3,11 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Man kann zur Laufzeit das komplette Menü und Statuszeile austauschen.
-
 ZB. um die Anwendung mehrsprachig zu machen.
-
 Dazu wird die aktuelle Komponente entfernt und die neue eingefügt.
-
 In dem Beispiel gibt es je eine deutsche und englische Komponente.
-
 <hr><br>
 Deklaration der Komponenten
-
 
 ```pascal
   TMyApp = object(TApplication)
@@ -26,7 +21,6 @@ Deklaration der Komponenten
 ```
 
 Inizialisieren der beiden Statuszeilen.
-
 
 ```pascal
   procedure TMyApp.InitStatusLine;
@@ -53,7 +47,6 @@ Inizialisieren der beiden Statuszeilen.
 ```
 
 Inizialisieren der beiden Menüs.
-
 
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -96,7 +89,6 @@ Inizialisieren der beiden Menüs.
 ```
 
 Austauschen der Komponenten
-
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

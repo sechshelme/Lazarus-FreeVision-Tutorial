@@ -3,16 +3,11 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Bis jetzt gingen die Werte im Dialog immer wieder verloren, wen man diesen schliesste und wieder öffnete.
-
 Aus diesem Grund werden jetzt die Werte in einen Record gespeichert.
-
 <hr><br>
   In diesem Record werden die Werte des Dialoges gespeichert.
-
   Die Reihenfolge der Daten im Record <b>muss</b> genau gleich sein, wie bei der Erstellung der Komponenten, ansonten gibt es einen Kräsch.
-
   Bei Turbo-Pascal musste ein <b>Word</b> anstelle von <b>LongWord</b> genommen werden, dies ist wichtig beim Portieren alter Anwendungen.
-
 
 ```pascal
 type
@@ -24,7 +19,6 @@ type
 ```
 
 Hier wird noch der Constructor vererbt, diesen Nachkomme wird gebraucht um die Dialogdaten mit Standard Werte zu laden.
-
 
 ```pascal
 type
@@ -41,11 +35,8 @@ type
 ```
 
 Der Constructoer welcher die Werte für den Dialog ladet.
-
 Die Datenstruktur für die RadioButtons ist einfach. 0 ist der erste Button, 1 der Zweite, 2 der Dritte, usw.
-
 Bei den Checkboxen macht man es am besten Binär. Im Beispiel werden der erste und dritte CheckBox gesetzt.
-
 
 ```pascal
   constructor TMyApp.Init;
@@ -60,9 +51,7 @@ Bei den Checkboxen macht man es am besten Binär. Im Beispiel werden der erste u
 ```
 
 Der Dialog wird jetzt mit Werten geladen.
-
 Dies macht man, sobald man fertig ist mit Komponenten ertstellen.
-
 
 ```pascal
   procedure TMyApp.MyParameter;

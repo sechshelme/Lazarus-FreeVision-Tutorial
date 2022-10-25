@@ -3,10 +3,8 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Dialog um CheckBoxen ergänzen.
-
 <hr><br>
 Den Dialog mit CheckBoxen ergänzen.
-
 
 ```pascal
   procedure TMyApp.MyParameter;

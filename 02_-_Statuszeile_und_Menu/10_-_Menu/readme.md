@@ -3,10 +3,8 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Hinzufügen eines Menüs.
-
 <hr><br>
 Für das Menü werden die gleichen Units wie für die Statuszeile gebraucht.
-
 
 ```pascal
 uses
@@ -19,7 +17,6 @@ uses
 
 Für ein Menu muss man <b>InitMenuBar</b> vererben.
 
-
 ```pascal
 type
   TMyApp = object(TApplication)
@@ -29,19 +26,12 @@ type
 ```
 
 Das Menü erzeugen, das Beispiel hat nur eine einziger Menüpunkt, Beenden.
-
 Beim Menü sind die Zeichen die mit <b>~x~</b> hervorgehoben sind nicht nur Optischen, sonder auch funktionell.
-
 Zum beenden, kann man auch <b>[Alt+s]</b>, <b>[b]</b> drücken.
-
 Es gibt auch direkte HotKey auf die Menüpunkte, hier im Beipiel ist die <b>[Alt+x]</b> für beenden.
-
 Dieses überschneidet sich hier zufällig mit <b>[Alt+x]</b> von der Statuszeile, aber dies ist egal.
-
 Der Aufbau der Menüerzeugung ist ähnlich der Statuszeile.
-
 Beim letzten Menüpunkt kommt immer ein <b>nil</b>.
-
 
 ```pascal
   procedure TMyApp.InitMenuBar;

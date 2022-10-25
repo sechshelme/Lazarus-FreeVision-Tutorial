@@ -3,12 +3,9 @@
 
 <img src="image.png" alt="Selfhtml"><br><br>
 Ändern der Status-Zeile.
-
 Die Statuszeile wird gebraucht um wichtige Information und HotKey anzuzeigen.
-
 <hr><br>
 Für die Statuszeile werden noch verschiedene Units gebraucht.
-
 
 ```pascal
 uses
@@ -20,9 +17,7 @@ uses
 ```
 
 Wen man etwas ändern will, muss man TApplication vererben.
-
 Hier im Beispiel, wird die Statuszeile abgeändert, dazu muss man die Procedure <b>InitStatusLine</b> überschreiben.
-
 
 ```pascal
   procedure TMyApp.InitStatusLine;
@@ -38,14 +33,12 @@ Hier im Beispiel, wird die Statuszeile abgeändert, dazu muss man die Procedure 
 
 Das die neue Statuszeile verwendet wird muss man den Nachkomme anstelle von <b>TApplication</b> deklarieren.
 
-
 ```pascal
 var
   MyApp: TMyApp;
 ```
 
 Die  bleibt gleich.
-
 
 ```pascal
 begin
