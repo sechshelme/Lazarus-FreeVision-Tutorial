@@ -2,10 +2,14 @@
 ## 00 - Einfachstes TView
 
 <img src="image.png" alt="Selfhtml"><br><br>
+<b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.
 
+Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.
 
+An diesem View sind keinerlei Änderungen möglich, da noch keine Event, Steurerelemente vorhanden sind.
 
 <hr><br>
+Im Konstructor wird das View erzeugt.
 
 
 ```pascal
@@ -16,6 +20,7 @@
   end;
 ```
 
+Es wird ein einfaches View erzeugt, wie erwarte sieht man nicht viel, ausser eines grauen Rechteckes.
 
 
 ```pascal

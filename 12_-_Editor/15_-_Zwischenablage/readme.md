@@ -2,10 +2,14 @@
 ## 15 - Zwischenablage
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Hier wurde ein Zwischenablage hinzugefügt, somit ist auch kopieren und einfügen im Editor möglich.
 
+Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bekommt, wen man kopieren wählt.
 
+Somit kann man dieses sogar sichbar machen.
 
 <hr><br>
+Ein Kommando für das öffnen des Zwischenablagefenster.
 
 
 ```pascal
@@ -15,7 +19,9 @@ const
   cmShowClip = 1003;
 ```
 
+Hier wird das Fenster für die Zwischenablage deklariert.
 
+Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt werden soll.
 
 
 ```pascal
@@ -38,6 +44,7 @@ type
   end;
 ```
 
+Im Menü sind die neuen Bearbeiten-Funktionen dazugekommen.
 
 
 ```pascal
@@ -85,6 +92,7 @@ type
   end;
 ```
 
+Hier sieht man, wie man ein Fenster unsichbar erzeugen kann.
 
 
 ```pascal
@@ -109,6 +117,7 @@ type
   end;
 ```
 
+Hier sieht man, wie man das verborgene Zwischenablagefenster sichbar macht.
 
 
 ```pascal

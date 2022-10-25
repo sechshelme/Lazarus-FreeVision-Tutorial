@@ -2,10 +2,14 @@
 ## 05 - Status Zeile mehrere Eintraege
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Ändern der Status-Zeile, mit mehreren Optionen.
 
 <hr><br>
+In der Statuszeile sind auch mehrere Hot-Key möglich.
 
+Die Deklaration könnte man verschachtelt in einer Zeile schreiben.
 
+Im Beispiel wird es gesplittet gemacht.
 
 
 ```pascal
@@ -28,6 +32,7 @@
   end;
 ```
 
+Die Deklaration und Ausführung bleibt gleich.
 
 
 ```pascal

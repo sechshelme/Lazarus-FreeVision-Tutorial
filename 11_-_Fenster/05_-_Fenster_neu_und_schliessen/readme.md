@@ -2,9 +2,12 @@
 ## 05 - Fenster neu und schliessen
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Über das Menü Fenster erzeigen und schliessen.
 
 <hr><br>
+Neue Konstanten für Kommados.
 
+Auch ist der HandleEvent dazugekommen.
 
 
 ```pascal
@@ -24,6 +27,7 @@ type
   end;
 ```
 
+Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.
 
 
 ```pascal
@@ -43,7 +47,9 @@ type
   end;
 ```
 
+Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.
 
+Dieser wird benutzt um die Fenster zu nummerieren.
 
 
 ```pascal
@@ -66,6 +72,7 @@ type
   end;
 ```
 
+<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft es im Hintergrund automatisch.
 
 
 ```pascal

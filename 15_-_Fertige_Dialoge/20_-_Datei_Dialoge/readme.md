@@ -2,9 +2,12 @@
 ## 20 - Datei Dialoge
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Ein Dialog zum öffnen und speichern von Dateien.
 
+Der <b>PFileDialog</b>.
 
 <hr><br>
+Verschiedene Datei-Dialoge
 
 
 ```pascal

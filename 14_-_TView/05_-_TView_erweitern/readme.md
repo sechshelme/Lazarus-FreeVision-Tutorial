@@ -2,10 +2,14 @@
 ## 05 - TView erweitern
 
 <img src="image.png" alt="Selfhtml"><br><br>
+<b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.
 
+Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.
 
 <hr><br>
+Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.
 
+Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.
 
 
 ```pascal
@@ -29,6 +33,7 @@
   end;
 ```
 
+Da es im View keine <b>cmClose</b> Abarbeitung gibt, wird manuell in einer Schleife überprüft, ob es Fenster gibt, wen ja, löschen.
 
 
 ```pascal
@@ -44,6 +49,7 @@ begin
 end;
 ```
 
+<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.
 
 
 ```pascal
@@ -75,8 +81,11 @@ end;
 ```
 
 <hr><br>
+<b>Unit mit dem neuen Dialog.</b>
 
+<br>
 
+Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.
 
 
 ```pascal
@@ -84,6 +93,7 @@ unit MyView;
 
 ```
 
+Hier sind 3 Event-Konstante hinzugekommen.
 
 
 ```pascal
@@ -103,6 +113,7 @@ type
 
 ```
 
+Das Bauen des Dialoges ist nichts besonderes.
 
 
 ```pascal
@@ -135,7 +146,9 @@ end;
 
 ```
 
+Hier werden die Farb-Schemas mit Hilfe von <b>Palette := dpxxx</b> geändert.
 
+Auch hier ist wichtig, das man <b>Draw</b> aufruft, diemal nicht für eine Komponente, sonder für den ganzen Dialog.
 
 
 ```pascal

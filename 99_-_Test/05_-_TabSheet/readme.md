@@ -2,9 +2,12 @@
 ## 05 - TabSheet
 
 <img src="image.png" alt="Selfhtml"><br><br>
+In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.
 
+Im Beispiel wir eine MessageBox aufgerufen.
 
 <hr><br>
+Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas gemacht wird.
 
 
 ```pascal
@@ -33,11 +36,17 @@
 ```
 
 <hr><br>
+<b>Unit mit dem neuen Dialog.</b>
 
+<br>
 
+Dort sieht man gut, das es ein Button für lokale Ereignisse hat.
 
+Wichtig ist, bei den Nummernvergabe, das sich dies nicht mit einem anderen Eventnummer überschneidet.
 
+Vor allem dann, wen der Dialog nicht Modal geöffnet wird.
 
+Ausser es ist gewünscht, wen man zB. über das Menü auf den Dialog zugreifen will.
 
 
 ```pascal
@@ -45,6 +54,7 @@ unit MyDialog;
 
 ```
 
+Für den Dialog kommt noch ein HandleEvent hinzu.
 
 
 ```pascal
@@ -62,6 +72,7 @@ type
 
 ```
 
+Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Ereigniss <b>cmMsg</b> abarbeitet.
 
 
 ```pascal
@@ -107,7 +118,9 @@ end;
 
 ```
 
+Im neuen EventHandle, werden loake Ereigniss (cmMsg) abarbeitet.
 
+Andere Ereignisse, zB. <b>cmOk</b> wird an das Hauptprogramm weiter gereicht, welches dann den Dialog auch schliesst.
 
 
 ```pascal

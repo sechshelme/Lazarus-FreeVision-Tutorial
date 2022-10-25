@@ -2,13 +2,21 @@
 ## 05 - String formatieren
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Mit <b>FormatStr</b> können Strings formatiert werden.
 
+Dabei sind filgende Formatierungen möglich:
 
+%c: Char
 
+%s: String
 
+%d: Ganzzahlen
 
+%x: Hexadezimal
 
+%#: Formatierungen
 
+Bei Realzahlen muss man sich folgendermassen behelfen:
 
 
 ```pascal
@@ -23,6 +31,7 @@ unit MyDialog;
 
 ```
 
+Deklaration des Dialogs.
 
 
 ```pascal
@@ -34,6 +43,7 @@ type
 
 ```
 
+Bei Integern ist es wichtig, das man diese als <b>PtrInt</b> deklariert.
 
 
 ```pascal
@@ -54,6 +64,7 @@ var
 
 ```
 
+Hier sieht man, die Formatierung mit <b>FormatStr</b>.
 
 
 ```pascal

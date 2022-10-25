@@ -2,8 +2,10 @@
 ## 20 - RadioButton
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Dialog um RadioButtons ergänzen.
 
 <hr><br>
+Das Menü wurde noch ein wenig geändert/ergänzt.
 
 
 ```pascal
@@ -39,6 +41,7 @@
   end;
 ```
 
+Den Dialog mit RadioButton ergänzen, dies funktioniert fast gleich wie bei den CheckBoxen.
 
 
 ```pascal

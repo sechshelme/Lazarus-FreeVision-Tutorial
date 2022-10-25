@@ -2,11 +2,16 @@
 ## 10 - Komponenten zur Laufzeit modifizieren
 
 <img src="image.png" alt="Selfhtml"><br><br>
+In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.
 
+Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.
 
 <hr><br>
+<b>Unit mit dem neuen Dialog.</b>
 
+<br>
 
+Der Dialog mit dem Zähler-Button.
 
 
 ```pascal
@@ -14,7 +19,9 @@ unit MyDialog;
 
 ```
 
+Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.
 
+Direkt mit <b>Insert(New(...</b> geht nicht mehr.
 
 
 ```pascal
@@ -28,7 +35,9 @@ type
 
 ```
 
+Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.
 
+<b>CounterButton</b> wird für die Modifikation gebraucht.
 
 
 ```pascal
@@ -61,8 +70,11 @@ end;
 
 ```
 
+Im EventHandle, wird die Zahl im Button beim Drücken erhöht.
 
+Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.
 
+Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.
 
 
 ```pascal

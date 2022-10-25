@@ -2,9 +2,12 @@
 ## 30 - Menu Hinweise
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Hinweise in der Statuszeile der Menü-Punkte.
 
 <hr><br>
+Konstanten der einzelnen Hilfen.
 
+Am besten mimmt man da hcxxx Namen.
 
 
 ```pascal
@@ -21,6 +24,7 @@ const
   hcAbout  = 16;
 ```
 
+Die Hint-Zeile muss vererbt werden.
 
 
 ```pascal

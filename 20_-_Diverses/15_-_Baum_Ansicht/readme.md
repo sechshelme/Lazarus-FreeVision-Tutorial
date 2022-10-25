@@ -2,8 +2,10 @@
 ## 15 - Baum Ansicht
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Baumartige Darstellung.
 
 <hr><br>
+Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.
 
 
 ```pascal
@@ -37,6 +39,7 @@
   end;
 ```
 
+Hier wird das Fenster erzeugt, welches die Outline enthält.
 
 
 ```pascal

@@ -2,11 +2,16 @@
 ## 05 - Speichern und oeffnen
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Ein Editor wird erst brauchbar, wen Dateifunktionen dazu kommen, zB. öffnen und speichern.
 
+Das Öffnen ist ähnlich von wie ein leerses Fenster erzeugen.
 
+Einziger Unterschied, man gibt einen Dateinamen mit, welcher mit einem FileDialog ermittelt wird.
 
+Für das einfache speichern, muss man nicht viel machen. Man muss nur das Event <b>cmSave</b> aufrufen, zB. über das Menü.
 
 <hr><br>
+Hier ist noch OpenWindows und SaveAll dazu gekommen.
 
 
 ```pascal
@@ -26,12 +31,19 @@
   end;
 ```
 
+Der <b>Speichern unter</b>-Dialog ist schon fest verbaut, aber leider in Englisch.
+
+Daher wird diese Funktion auf eine eigene Routine umgeleitet.
+
+Auch habe ich die Maske <b>*.*</b> durch <b>*.txt</b> ersetzt.
+
+Für die restlichen Diloage, werden die original Routinen verwendet, dies geschieht mit <b>StdEditorDialog(...</b>.
+
+Die Deklaration von <b>MyApp</b> ist schon hier oben, weil sie hier schon gebraucht wird.
 
 
 
-
-
-
+Bei MyApp.Init werden noch die neuen Standard-Dialoge zugeordnet.
 
 
 ```pascal
@@ -58,6 +70,7 @@ var
   end;
 ```
 
+Im Menü sind die neuen Datei-Funktionen dazugekommen.
 
 
 ```pascal
@@ -93,7 +106,9 @@ var
   end;
 ```
 
+Einfügen eines Editorfensters.
 
+Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.
 
 
 ```pascal
@@ -116,8 +131,11 @@ var
   end;
 ```
 
+Eine Datei öffnen und dies in ein Edit-Fenster laden.
 
+Dabei wird ein <b>FileDialog</b> aufgerufen, in dem man eine Datei auswählen kann.
 
+Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, dies geschieht automatisch.
 
 
 ```pascal
@@ -134,6 +152,7 @@ var
   end;
 ```
 
+Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schliessen.
 
 
 ```pascal
@@ -149,7 +168,9 @@ var
   end;
 ```
 
+Die verschiednen Events abfangen und abarbeiten.
 
+Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt <b>PEditWindow</b> automatisch für einem.
 
 
 ```pascal

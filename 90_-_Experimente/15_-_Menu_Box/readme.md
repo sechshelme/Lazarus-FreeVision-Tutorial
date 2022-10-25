@@ -2,14 +2,22 @@
 ## 15 - Menu Box
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Dialog um Buttons ergänzen.
 
 <hr><br>
+Den Dialog mit Buttons ergänzen.
 
+Mit <b>Insert</b> fügt man die Komponenten hinzug, in diesem Fall sind es die Buttons.
 
+Mit bfDefault legt man den Default-Button fest, dieser wird mit <b>[Enter]</b> aktiviert.
 
+bfNormal ist ein gewöhnlicher Button.
 
+Der Dialog wird nun Modal geöffnet, somit können <b>keine</b> weiteren Dialoge geöffnet werden.
 
+dummy hat den Wert, des Button der gedrückt wurde, dies entspricht dem <b>cmxxx</b> Wert.
 
+Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhafte Darstellung.
 
 
 ```pascal

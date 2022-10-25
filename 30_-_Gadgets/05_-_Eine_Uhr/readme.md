@@ -2,8 +2,10 @@
 ## 05 - Eine Uhr
 
 <img src="image.png" alt="Selfhtml"><br><br>
+In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.
 
 <hr><br>
+    Erzeugt ein kleines Fenster rechts-unten, welches die Uhr anzeigt.
 
 
 ```pascal
@@ -14,6 +16,7 @@
     Insert(Heap); 
 ```
 
+Den Dialog mit dem Speicher Leak aufrufen.
 
 
 ```pascal
@@ -52,6 +55,7 @@
   end;
 ```
 
+Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.
 
 
 ```pascal
@@ -74,8 +78,11 @@
 ```
 
 <hr><br>
+<b>Unit mit dem neuen Dialog.</b>
 
+<br>
 
+Der Dialog mit dem dem Speicher Leak
 
 
 ```pascal
@@ -83,6 +90,7 @@ unit MyDialog;
 
 ```
 
+Den <b>Destructor</b> deklarieren, welcher das <b>Speicher Leak</b> behebt.
 
 
 ```pascal
@@ -102,6 +110,7 @@ type
 
 ```
 
+Komponenten für den Dialog generieren.
 
 
 ```pascal
@@ -150,8 +159,11 @@ end;
 
 ```
 
+Manuell den Speicher frei geben.
 
+Man kann hier versuchsweise das Dispose ausklammern, dann sieht man,
 
+das man eine Speicherleak bekommt.
 
 
 ```pascal
@@ -163,6 +175,7 @@ end;
 
 ```
 
+Der EventHandle
 
 
 ```pascal

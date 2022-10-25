@@ -2,8 +2,10 @@
 ## 00 - Event abarbeiten
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Abarbeiten der Events, der Statuszeile und des Menu.
 
 <hr><br>
+Kommmandos die abgearbeitet werden.
 
 
 ```pascal
@@ -12,6 +14,7 @@ const
   cmList = 1002;      // Datei Liste
 ```
 
+Der EventHandler ist auch ein Nachkommen.
 
 
 ```pascal
@@ -23,6 +26,7 @@ type
   end;
 ```
 
+Abarbeiten der eigenen cmxxx Kommandos.
 
 
 ```pascal

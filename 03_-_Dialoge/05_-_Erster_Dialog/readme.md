@@ -2,8 +2,10 @@
 ## 05 - Erster Dialog
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Abarbeiten der Events, der Statuszeile und des Menu.
 
 <hr><br>
+Für Dialoge muss man noch die Unit <b>Dialogs</b> einfügen.
 
 
 ```pascal
@@ -16,6 +18,7 @@ uses
   Dialogs;  // Dialoge
 ```
 
+Ein weiteres Kommando für den Aufruf des Dialoges.
 
 
 ```pascal
@@ -25,7 +28,9 @@ const
   cmPara = 1003;      // Parameter
 ```
 
+Neue Funktionen kommen auch in die Klasse.
 
+Hier ein Dialog für Paramtereingabe.
 
 
 ```pascal
@@ -39,6 +44,7 @@ type
   end;
 ```
 
+Das Menü wird um Parameter und Schliessen erweitert.
 
 
 ```pascal
@@ -72,6 +78,7 @@ type
   end;
 ```
 
+Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.
 
 
 ```pascal
@@ -97,8 +104,11 @@ type
   end;
 ```
 
+Bauen eines leeren Dialoges.
 
+Auch da wird <b>TRect</b> gebraucht für die Grösse.
 
+Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.
 
 
 ```pascal

@@ -2,8 +2,11 @@
 ## 20 - Event an Dialog uebergeben
 
 <img src="image.png" alt="Selfhtml"><br><br>
+In diesem Beispiel wird gezeigt, wie man ein Event an eine andere Komponente senden kann.
 
+In diesem Fall wird ein Event an die Dialoge gesendet. In den Dialogen wird dann ein Counter hochgezählt.
 
+Events für den Buttonklick.
 
 
 ```pascal
@@ -13,7 +16,9 @@ const
   cmDiaAll = 1003;
 ```
 
+Hier werden die 2 passiven Ausgabe-Dialoge erstellt, dies befinden sich in dem Object TMyDialog.
 
+Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kommandos an die anderen Dialoge sendet.
 
 
 ```pascal
@@ -64,10 +69,15 @@ const
   end;
 ```
 
+Hier werden mit <b>Message</b>, die Kommandos an die Dialoge gesendet.
 
+Gibt man als ersten Parameter die View des Dialoges an, dann wird nur dieser Dialog angesprochen.
 
+Gibt man <b>@Self</b> an, dann werden die Kommandos an alle Dialoge gesendet.
 
+Beim 4. Paramter kann man noch einen Pointer auf einen Bezeichner übergeben,
 
+die kann zB. ein String oder ein Record, etc. sein.
 
 
 ```pascal
@@ -96,8 +106,11 @@ const
 ```
 
 <hr><br>
+<b>Unit mit dem neuen Dialog.</b>
 
+<br>
 
+Der Dialog mit der Zähler-Ausgabe.
 
 
 ```pascal
@@ -105,6 +118,7 @@ unit MyDialog;
 
 ```
 
+Deklaration des Object der passiven Dialoge.
 
 
 ```pascal
@@ -120,6 +134,7 @@ type
 
 ```
 
+Im Konstructor wird eine Ausgabezeile erzeugt.
 
 
 ```pascal
@@ -137,7 +152,9 @@ end;
 
 ```
 
+Im EventHandle wird das Kommando empfangen, welches mit <b>Message</b> gesendet wurde.
 
+Als Beweis dafür, wir die Zahl in der Ausgabezeile un eins erhöht.
 
 
 ```pascal

@@ -2,13 +2,19 @@
 ## 05 - StringCollection sortiert
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Eine sortierte String-Liste
 
+für eine sortierte Liste muss man <b>PStringCollection</b> oder <b>PStrCollection</b> verwenden.
 
 <hr><br>
 <hr><br>
+<b>Unit mit dem neuen Dialog.</b>
 
+<br>
 
+Der Dialog mit der <b>StringCollection</b>
 
+Deklaration des Dialog, nichts Besonderes.
 
 
 ```pascal
@@ -20,8 +26,11 @@ type
 
 ```
 
+Es wird eine <b>StringCollection</b> gebaut und
 
+als Demonstration wird deren Inhalt in ein StaticText geschrieben.
 
+Man sieht gut, das die Wochentage alphapetisch sortiert sind.
 
 
 ```pascal

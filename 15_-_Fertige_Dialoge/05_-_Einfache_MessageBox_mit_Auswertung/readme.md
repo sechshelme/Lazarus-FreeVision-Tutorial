@@ -2,8 +2,10 @@
 ## 05 - Einfache MessageBox mit Auswertung
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Die einfachsten Dialoge sind die fertigen MessageBoxen.
 
 <hr><br>
+Konstanten für die verschiedenen Menüeinträge.
 
 
 ```pascal
@@ -17,6 +19,7 @@ const
   cmYesNoCancel  = 1011;
 ```
 
+Aufruf der MessageBoxn.
 
 
 ```pascal

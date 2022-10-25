@@ -2,9 +2,12 @@
 ## 15 - String-Eingabe Box
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Es gibt auch einen fertigen Dialog für eine String-Eingabe.
 
+Es gibt noch <b>InputBoxRect</b>, dort kann man die Grösser der Box selbst festlegen.
 
 <hr><br>
+So sieht der Code für die String-Eingabe aus.
 
 
 ```pascal

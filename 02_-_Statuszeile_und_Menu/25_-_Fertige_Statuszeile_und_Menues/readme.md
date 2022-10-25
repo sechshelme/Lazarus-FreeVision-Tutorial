@@ -2,11 +2,16 @@
 ## 25 - Fertige Statuszeile und Menues
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Für die Statuszeile und das Menü gibt es fertige Items, aber ich bevorzuge es, die Items selbst zu erstellen.
 
+Die fetigen Items sind nur in Englisch.
 
+Die Statuszeile ist Textlos, das einzige, sie bringt Schnellkomandos mit. ( cmQuit, cmMenu, cmClose, cmZoom, cmNext, cmPrev )
 
+Bis aus <b>OS shell</b> und <b>Exit</b> passiert nichts.
 
 <hr><br>
+Mit <b>StdStatusKeys(...</b> wird eine Statuszeile estellt, aber wie oben beschrieben, sieht man keinne Text.
 
 
 ```pascal
@@ -21,6 +26,7 @@
   end;
 ```
 
+Fur das Menü gibt es 3 fertige Items, für Datei, Bearbeiten und Fenster, aber eben in Englisch.
 
 
 ```pascal

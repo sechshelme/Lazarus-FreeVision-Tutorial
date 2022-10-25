@@ -2,10 +2,14 @@
 ## 40 - Freien Speicher ueberpruefen
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Überprüfen ob genügend Speicher frei ist, um den Dialog zu erzeugen.
 
+Auf den heutigen Rechner wird die wohl nicht mehr der Fall sein, das der Speicher wegen eines Dialoges überläuft.
 
 <hr><br>
+Die virtuelle Procedure <b>OutOfMemory</b>, wen doch mal der Speicher überläuft.
 
+Wen man diese Methode nicht überschreibt, dann wird keine Fehlermeldung ausgegeben, nur weis dann der Nutzer nicht, wieso sein View nicht erscheint.
 
 
 ```pascal
@@ -23,6 +27,7 @@ type
   end;
 ```
 
+Die Procedure wird aufgerufen, wen zu wenig Speicher vorhanden ist.
 
 
 ```pascal
@@ -32,9 +37,13 @@ type
   end;
 ```
 
+Der Dialog wird jetzt mit Werten geladen.
 
+Dies macht man, sobald man fertig ist mit Komponenten ertstellen.
 
+Mit <b>ValidView(...</b> prüft man ob genügend Specher vorhanden ist, um die Komponente zu erzeugen.
 
+Wen nicht, kommt <b>nil<(b> zurück. Dabei spielt es keine Rolle, ob man <b>OutOfMemory</b> überschreibt.
 
 
 ```pascal

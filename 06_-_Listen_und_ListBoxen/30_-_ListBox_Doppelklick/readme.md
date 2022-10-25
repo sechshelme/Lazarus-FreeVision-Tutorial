@@ -2,11 +2,15 @@
 ## 30 - ListBox Doppelklick
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Will man bei einer <b>ListBox</b> den Doppelklick auswerten, muss man die ListBox vererben und einen neuen Handleevent einfügen.
 
 <hr><br>
 <hr><br>
+<b>Unit mit dem neuen Dialog.</b>
 
+<br>
 
+Der Dialog mit der ListBox
 
 
 ```pascal
@@ -14,7 +18,9 @@ unit MyDialog;
 
 ```
 
+Das Vererben der ListBox.
 
+Wen man schon vererbt, habe ich auch gleich den <b>Destructor</b> eingefügt, welcher am Schluss die Liste aufräumt.
 
 
 ```pascal
@@ -39,6 +45,7 @@ type
 
 ```
 
+Der neue <b>HandleEvent</b> der beuen ListBox, welcher den Doppelklick abfängt und ihn als [Ok] interprediert.
 
 
 ```pascal
@@ -55,6 +62,7 @@ end;
 
 ```
 
+Manuell den Speicher der Liste frei geben.
 
 
 ```pascal
@@ -66,7 +74,9 @@ end;
 
 ```
 
+Der EventHandle des Dialogs.
 
+Hier wird einfach ein [Ok] bei dem Doppelklick abgearbeitet.
 
 
 ```pascal

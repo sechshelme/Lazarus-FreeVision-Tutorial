@@ -2,8 +2,10 @@
 ## 00 - Erstes Fenster
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Erstes Memo-Fenster.
 
 <hr><br>
+Der Constructor wird vererbt, so das von Anfang an ein neues Fenster erstellt wird.
 
 
 ```pascal
@@ -27,6 +29,7 @@ type
   end;
 ```
 
+Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.
 
 
 ```pascal

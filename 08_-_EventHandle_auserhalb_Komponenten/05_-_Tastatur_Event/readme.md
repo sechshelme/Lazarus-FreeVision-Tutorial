@@ -2,9 +2,12 @@
 ## 05 - Tastatur Event
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/klickt.
 
+Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.
 
 <hr><br>
+Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.
 
 
 ```pascal
@@ -33,7 +36,9 @@
 ```
 
 <hr><br>
+<b>Unit mit dem Keyboardaktions-Dialog.</b>
 
+<br>
 
 
 ```pascal
@@ -41,6 +46,7 @@ unit MyDialog;
 
 ```
 
+In dem Object sind die <b>PEditLine</b> globel deklariert, da diese später bei Mausaktionen modifiziert werden.
 
 
 ```pascal
@@ -56,7 +62,9 @@ type
 
 ```
 
+Es wird ein Dialog mit EditLine, Label und Button gebaut.
 
+Einzig besonderes dort, die <b>Editlline</b> wird der Status auf <b>ReadOnly</b> gesetzt eigene Eingaben sind dort unerwünscht.
 
 
 ```pascal
@@ -107,8 +115,11 @@ end;
 
 ```
 
+Im EventHandle sieht man, das die Tastatur abgefangen wird. Es wird der Zeichencode und der Scancode ausgegeben.
 
+In der untersten Zeile erscheint ein 3, wen die Shift-Taste mit gewissen anderen Tasten zB. Pfeil-Tasten gedrückt wird.
 
+Die Tastatur-Daten werden an die <b>EditLines</b> ausgegeben.
 
 
 ```pascal

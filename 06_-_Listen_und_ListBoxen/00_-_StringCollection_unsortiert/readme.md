@@ -2,13 +2,19 @@
 ## 00 - StringCollection unsortiert
 
 <img src="image.png" alt="Selfhtml"><br><br>
+Wen die Stringliste unsortiert bleiben soll, verwendet man <b>PUnSortedStrCollection</b>.
 
+Nur <b>PCollection</b> reicht <b>nicht</b>, da diese bei <b>Dispose</b> abschmiert.
 
 <hr><br>
 <hr><br>
+<b>Unit mit dem neuen Dialog.</b>
 
+<br>
 
+Der Dialog mit der UnSortedStrCollection.
 
+Deklaration des Dialog, nichts Besonderes.
 
 
 ```pascal
@@ -20,7 +26,9 @@ type
 
 ```
 
+Es wird eine UnSortedStrCollection gebaut und
 
+als Demonstration wird deren Inhalt in ein StaticText geschrieben.
 
 
 ```pascal
