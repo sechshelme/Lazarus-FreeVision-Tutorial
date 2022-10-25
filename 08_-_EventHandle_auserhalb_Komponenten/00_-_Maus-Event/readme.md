@@ -1,11 +1,11 @@
 # 08 - EventHandle auserhalb Komponenten
 ## 00 - Maus-Event
-<br>
-<img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
----
-<br>
+<img src="image.png" alt="Selfhtml"><br><br>
+
+
+<hr><br>
+
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -13,7 +13,7 @@
     MouseDialog: PMyMouse;
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmMouseAktion: begin
@@ -31,33 +31,33 @@
     ClearEvent(Event);
   end;
 ```
-<br>
----
-<br>
 
-<br>
+<hr><br>
+
+
+
 ```pascal
 unit MyDialog;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 type
   PMyMouse = ^TMyMouse;
   TMyMouse = object(TDialog)
     EditMB,
     EditX, EditY: PInputLine;
-<br>
+
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 
 ```pascal
 constructor TMyMouse.Init;
@@ -67,7 +67,7 @@ begin
   R.Assign(0, 0, 42, 13);
   R.Move(23, 3);
   inherited Init(R, 'Mausaktion');
-<br>
+
   // PosX
   R.Assign(25, 2, 30, 3);
   EditX := new(PInputLine, Init(R, 5));
@@ -75,7 +75,7 @@ begin
   EditX^.State := sfDisabled or EditX^.State;    // ReadOnly
   R.Assign(5, 2, 20, 3);
   Insert(New(PLabel, Init(R, 'MausPosition ~X~:', EditX)));
-<br>
+
   // PosY
   R.Assign(25, 4, 30, 5);
   EditY := new(PInputLine, Init(R, 5));
@@ -83,7 +83,7 @@ begin
   Insert(EditY);
   R.Assign(5, 4, 20, 5);
   Insert(New(PLabel, Init(R, 'MausPosition ~Y~:', EditY)));
-<br>
+
   // Maus-Tasten
   R.Assign(25, 7, 32, 8);
   EditMB := new(PInputLine, Init(R, 7));
@@ -92,16 +92,16 @@ begin
   Insert(EditMB);
   R.Assign(5, 7, 20, 8);
   Insert(New(PLabel, Init(R, '~M~austaste:', EditMB)));
-<br>
+
   // Ok-Button
   R.Assign(27, 10, 37, 12);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 
 ```pascal
 procedure TMyMouse.HandleEvent(var Event: TEvent);
@@ -109,7 +109,7 @@ var
   Mouse : TPoint;
 begin
   inherited HandleEvent(Event);
-<br>
+
   case Event.What of
     evMouseDown: begin                 // Taste wurde gedrückt.
       EditMB^.Data^:= 'unten';
@@ -127,9 +127,9 @@ begin
       EditY^.Draw;
     end;
   end;
-<br>
+
 end;
-<br>
+
 ```
-<br>
+
 

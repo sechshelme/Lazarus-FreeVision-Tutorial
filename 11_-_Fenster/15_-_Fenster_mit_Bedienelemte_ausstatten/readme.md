@@ -1,15 +1,15 @@
 # 11 - Fenster
 ## 15 - Fenster mit Bedienelemte ausstatten
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
-<br>
 
-<br>
 
----
-<br>
+
+
+
+<hr><br>
+
 
 ```pascal
   procedure TMyApp.NewWindows;
@@ -22,7 +22,7 @@
     R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
     Win := New(PMyWindow, Init(R, 'Fenster', WinCounter));
-<br>
+
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end else begin
@@ -30,20 +30,20 @@
     end;
   end;
 ```
-<br>
----
-<br>
 
-<br>
+<hr><br>
+
+
+
 ```pascal
 unit MyWindow;
-<br>
+
 ```
-<br>
 
-<br>
 
-<br>
+
+
+
 
 ```pascal
 constructor TMyWindow.Init(var Bounds: TRect; ATitle: TTitleStr; ANumber: Sw_Integer);
@@ -54,26 +54,26 @@ var
 begin
   inherited Init(Bounds, ATitle, ANumber);
   Options := Options or ofTileable;     // Für Tile und Cascade
-<br>
+
   R.Assign (18, Size.Y - 1, Size.X - 2, Size.Y);
   HScrollBar := New (PScrollBar, Init (R));
   HScrollBar^.Max := 100;
   HScrollBar^.Min := 0;
   HScrollBar^.Value := 50;
   Insert (HScrollBar);
-<br>
+
   R.Assign (Size.X - 1, 1, Size.X, Size.Y - 1);
   VScrollBar := New (PScrollBar, Init (R));
   VScrollBar^.Max := 100;
   VScrollBar^.Min := 0;
   VScrollBar^.Value := 20;
   Insert (VScrollBar);
-<br>
+
   R.Assign (2, Size.Y - 1, 16, Size.Y);
   Indicator := New (PIndicator, Init (R));
   Insert (Indicator);
 end;
-<br>
+
 ```
-<br>
+
 

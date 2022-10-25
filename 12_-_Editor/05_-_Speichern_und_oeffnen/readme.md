@@ -1,43 +1,43 @@
 # 12 - Editor
 ## 05 - Speichern und oeffnen
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
-<br>
 
----
-<br>
+
+
+<hr><br>
+
 
 ```pascal
   TMyApp = object(TApplication)
     constructor Init;
-<br>
+
     procedure InitStatusLine; virtual;
     procedure InitMenuBar; virtual;
-<br>
+
     procedure HandleEvent(var Event: TEvent); virtual;
     procedure OutOfMemory; virtual;
-<br>
+
     procedure NewWindows(FileName: ShortString);
     procedure OpenWindows;
     procedure SaveAll;
     procedure CloseAll;
   end;
 ```
-<br>
 
-<br>
 
-<br>
 
-<br>
 
-<br>
+
+
+
+
+
 ```pascal
 var
   MyApp: TMyApp;
-<br>
+
   function MyStdEditorDialog(Dialog: Int16; Info: Pointer): Word;
   begin
     case Dialog of
@@ -48,7 +48,7 @@ var
       StdEditorDialog(Dialog, Info);  // Original Dialoge aufrufen.
     end;
   end;
-<br>
+
   constructor TMyApp.Init;
   begin
     inherited Init;
@@ -57,9 +57,9 @@ var
     NewWindows('');                     // Leeres Fenster erzeugen.
   end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -67,7 +67,7 @@ var
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-<br>
+
     MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
@@ -89,12 +89,12 @@ var
         NewItem('~V~orheriges', 'Shift+F6', kbShiftF6, cmPrev, hcNoContext,
         NewLine(
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, Nil)))))))))))), nil)))));
-<br>
+
   end;
 ```
-<br>
 
-<br>
+
+
 
 ```pascal
   procedure TMyApp.NewWindows(FileName: ShortString);
@@ -107,7 +107,7 @@ var
     R.Assign(0, 0, 60, 20);
     Inc(WinCounter);
     Win := New(PEditWindow, Init(R, FileName, WinCounter));
-<br>
+
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end else begin                // Fügt das Fenster ein.
@@ -115,11 +115,11 @@ var
     end;
   end;
 ```
-<br>
 
-<br>
 
-<br>
+
+
+
 ```pascal
   procedure TMyApp.OpenWindows;
   var
@@ -133,30 +133,30 @@ var
     end;
   end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
   procedure TMyApp.SaveAll;
-<br>
+
     procedure SendSave(P: PView);
     begin
       Message(P, evCommand, cmSave, nil); // Das Kommando speicherm mitgeben.
     end;
-<br>
+
   begin
     Desktop^.ForEach(@SendSave);          // Auf alle Fenster anwenden.
   end;
 ```
-<br>
 
-<br>
+
+
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
@@ -181,5 +181,5 @@ var
     end;
   end;
 ```
-<br>
+
 

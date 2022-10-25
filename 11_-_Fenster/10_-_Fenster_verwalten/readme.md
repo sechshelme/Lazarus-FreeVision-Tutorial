@@ -1,13 +1,13 @@
 # 11 - Fenster
 ## 10 - Fenster verwalten
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
----
-<br>
 
-<br>
+<hr><br>
+
+
+
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -15,7 +15,7 @@
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-<br>
+
     MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
@@ -33,12 +33,12 @@
         NewItem('~V~orheriges', 'Shift+F6', kbShiftF6, cmPrev, hcNoContext,
         NewLine(
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, Nil)))))))))))), nil)))));
-<br>
+
   end;
 ```
-<br>
 
-<br>
+
+
 
 ```pascal
   procedure TMyApp.NewWindows;
@@ -52,7 +52,7 @@
     Inc(WinCounter);
     Win := New(PWindow, Init(R, 'Fenster', WinCounter));
     Win^.Options := Win^.Options or ofTileable; // Für Tile und Cascade
-<br>
+
     if ValidView(Win) <> nil then begin
       Desktop^.Insert(Win);
     end else begin
@@ -60,31 +60,31 @@
     end;
   end;
 ```
-<br>
 
-<br>
+
+
 
 ```pascal
   procedure TMyApp.CloseAll;
-<br>
+
     procedure SendClose(P: PView);
     begin
       Message(P, evCommand, cmClose, nil);
     end;
-<br>
+
   begin
     Desktop^.ForEach(@SendClose);
   end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
-<br>
+
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
@@ -104,5 +104,5 @@
     ClearEvent(Event);
   end;
 ```
-<br>
+
 

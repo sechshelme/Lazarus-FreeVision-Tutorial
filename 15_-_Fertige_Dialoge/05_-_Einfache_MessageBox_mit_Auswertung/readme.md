@@ -1,10 +1,10 @@
 # 15 - Fertige Dialoge
 ## 05 - Einfache MessageBox mit Auswertung
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-<br>
----
-<br>
+
+<hr><br>
+
 
 ```pascal
 const
@@ -16,14 +16,14 @@ const
   cmYesNo        = 1010;
   cmYesNoCancel  = 1011;
 ```
-<br>
 
-<br>
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
@@ -74,5 +74,5 @@ const
     ClearEvent(Event);
   end;
 ```
-<br>
+
 

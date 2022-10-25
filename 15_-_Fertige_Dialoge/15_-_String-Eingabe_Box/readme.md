@@ -1,11 +1,11 @@
 # 15 - Fertige Dialoge
 ## 15 - String-Eingabe Box
-<br>
-<img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
----
-<br>
+<img src="image.png" alt="Selfhtml"><br><br>
+
+
+<hr><br>
+
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -13,7 +13,7 @@
     s:ShortString;
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmInputLine: begin
@@ -27,5 +27,5 @@
           Exit;
         end;
 ```
-<br>
+
 

@@ -1,16 +1,16 @@
 # 03 - Dialoge
 ## 10 - Button
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-<br>
----
-<br>
 
-<br>
+<hr><br>
 
-<br>
 
-<br>
+
+
+
+
+
 
 ```pascal
   procedure TMyApp.MyParameter;
@@ -23,11 +23,11 @@
     R.Move(23, 3);                             // Position des Dialogs.
     Dlg := New(PDialog, Init(R, 'Parameter')); // Dialog erzeugen.
     with Dlg^ do begin
-<br>
+
       // Ok-Button
       R.Assign(7, 12, 17, 14);
       Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
-<br>
+
       // Schliessen-Button
       R.Move(12, 0);
       Insert(new(PButton, Init(R, '~A~bbruch', cmCancel, bfNormal)));
@@ -36,5 +36,5 @@
     Dispose(Dlg, Done);                // Dialog und Speicher frei geben.
   end;
 ```
-<br>
+
 

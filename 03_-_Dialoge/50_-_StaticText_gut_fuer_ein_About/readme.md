@@ -1,43 +1,43 @@
 # 03 - Dialoge
 ## 50 - StaticText gut fuer ein About
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-<br>
----
-<br>
+
+<hr><br>
+
 
 ```pascal
 const
   DialogDatei = 'parameter.cfg';
 ```
-<br>
 
-<br>
+
+
 ```pascal
 type
   TMyApp = object(TApplication)
     ParameterData: TParameterData;                     // Parameter für Dialog.
     fParameterData: file of TParameterData;            // File-Hander füe das speichern/laden der Daten des Dialoges.
-<br>
+
     constructor Init;                                  // Neuer Constructor
-<br>
+
     procedure InitStatusLine; virtual;                 // Statuszeile
     procedure InitMenuBar; virtual;                    // Menü
     procedure HandleEvent(var Event: TEvent); virtual; // Eventhandler
     procedure OutOfMemory; virtual;                    // Wird aufgerufen, wen Speicher überläuft.
-<br>
+
     procedure MyParameter;                             // neue Funktion für einen Dialog.
     procedure About;                                   // About Dialog.
   end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmAbout: begin
@@ -56,15 +56,15 @@ type
     ClearEvent(Event);
   end;
 ```
-<br>
 
-<br>
 
-<br>
 
-<br>
 
-<br>
+
+
+
+
+
 ```pascal
   procedure TMyApp.About;
   var
@@ -76,7 +76,7 @@ type
     Dlg := New(PDialog, Init(R, 'About'));
     with Dlg^ do begin
       Options := Options or ofCentered; // Dialog zentrieren
-<br>
+
       // StaticText einfügen.
       R.Assign(2, 2, 40, 8);
       Insert(New(PStaticText, Init(R,
@@ -94,5 +94,5 @@ type
     end;
   end;
 ```
-<br>
+
 

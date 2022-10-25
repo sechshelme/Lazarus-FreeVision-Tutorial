@@ -1,10 +1,10 @@
 # 04 - Dialoge als Komponente
 ## 20 - Event an Dialog uebergeben
-<br>
-<img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
-<br>
+<img src="image.png" alt="Selfhtml"><br><br>
+
+
+
 
 ```pascal
 const
@@ -12,9 +12,9 @@ const
   cmDia2   = 1002;
   cmDiaAll = 1003;
 ```
-<br>
 
-<br>
+
+
 
 ```pascal
   constructor TMyApp.Init;
@@ -23,7 +23,7 @@ const
     Dia: PDialog;
   begin
     inherited init;
-<br>
+
     // erster passsiver Dialog
     R.Assign(45, 2, 70, 9);
     Dialog1 := New(PMyDialog, Init(R, 'Dialog 1'));
@@ -31,7 +31,7 @@ const
     if ValidView(Dialog1) <> nil then begin // Prüfen ob genügend Speicher.
       Desktop^.Insert(Dialog1);
     end;
-<br>
+
     // zweiter passsiver Dialog
     R.Assign(45, 12, 70, 19);
     Dialog2 := New(PMyDialog, Init(R, 'Dialog 2'));
@@ -39,42 +39,42 @@ const
     if ValidView(Dialog2) <> nil then begin
       Desktop^.Insert(Dialog2);
     end;
-<br>
+
     // Steuerdialog
     R.Assign(5, 5, 30, 20);
     Dia := New(PDialog, Init(R, 'Steuerung'));
-<br>
+
     with Dia^ do begin
       R.Assign(6, 2, 18, 4);
       Insert(new(PButton, Init(R, 'Dialog ~1~', cmDia1, bfNormal)));
-<br>
+
       R.Move(0, 3);
       Insert(new(PButton, Init(R, 'Dialog ~2~', cmDia2, bfNormal)));
-<br>
+
       R.Move(0, 3);
       Insert(new(PButton, Init(R, '~A~lle', cmDiaAll, bfNormal)));
-<br>
+
       R.Move(0, 4);
       Insert(new(PButton, Init(R, '~B~eenden', cmQuit, bfNormal)));
     end;
-<br>
+
     if ValidView(Dia) <> nil then begin
       Desktop^.Insert(Dia);
     end;
   end;
 ```
-<br>
 
-<br>
 
-<br>
 
-<br>
+
+
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmDia1: begin
@@ -94,51 +94,51 @@ const
     ClearEvent(Event);
   end;
 ```
-<br>
----
-<br>
 
-<br>
+<hr><br>
+
+
+
 
 ```pascal
 unit MyDialog;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
   var
     CounterInputLine: PInputLine; // Ausgabe Zeile für den Counter.
-<br>
+
     constructor Init(var Bounds: TRect; ATitle: TTitleStr);
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 constructor TMyDialog.Init(var Bounds: TRect; ATitle: TTitleStr);
 var
   R: TRect;
 begin
   inherited Init(Bounds, ATitle);
-<br>
+
   R.Assign(5, 2, 10, 3);
   CounterInputLine := new(PInputLine, Init(R, 20));
   CounterInputLine^.Data^ := '0';
   Insert(CounterInputLine);
 end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
@@ -146,7 +146,7 @@ var
   Counter: integer;
 begin
   inherited HandleEvent(Event);
-<br>
+
   case Event.What of
     evBroadcast: begin
       case Event.Command of
@@ -159,9 +159,9 @@ begin
       end;
     end;
   end;
-<br>
+
 end;
-<br>
+
 ```
-<br>
+
 

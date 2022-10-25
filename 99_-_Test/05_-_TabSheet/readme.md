@@ -1,11 +1,11 @@
 # 99 - Test
 ## 05 - TabSheet
-<br>
-<img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
----
-<br>
+<img src="image.png" alt="Selfhtml"><br><br>
+
+
+<hr><br>
+
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -13,7 +13,7 @@
     AboutDialog: PMyAbout;
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of                   // About Dialog
         cmAbout: begin
@@ -31,39 +31,39 @@
     ClearEvent(Event);
   end;
 ```
-<br>
----
-<br>
 
-<br>
+<hr><br>
 
-<br>
 
-<br>
+
+
+
+
+
 ```pascal
 unit MyDialog;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 const
   cmMsg = 1003;  //
-<br>
+
 type
   PMyAbout = ^TMyAbout;
-<br>
+
   TMyAbout = object(TDialog)
-<br>
+
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 constructor TMyAbout.Init;
 var
@@ -76,45 +76,45 @@ begin
   R.Assign(0, 0, 42, 16);
   R.Move(23, 3);
   inherited Init(R, 'About');
-<br>
+
   R.Assign(2, 4, 12, 6);
   bt0 := new(PButton, Init(R, 'bt~a~', cmValid, bfDefault));
   R.Assign(2, 6, 12, 8);
   bt1 := new(PButton, Init(R, 'bt~b~', cmValid, bfDefault));
   R.Assign(2, 8, 12, 19);
   bt2 := new(PButton, Init(R, 'bt~c~', cmValid, bfDefault));
-<br>
+
 
   // Tab
   R.Assign(1, 1, 10, 5);
   Group := new(PGroup, Init(R));
   Group^.BackgroundChar := 'x';
-<br>
+
   R.Assign(5, 2, 41, 13);
   Tabdef := NewTabDef('Tab~1~', bt1, NewTabItem(bt0, NewTabItem(bt1, NewTabItem(bt2, nil))), NewTabDef('Tab~2~', nil, nil, nil));
   Tab := new(PTab, Init(R, Tabdef));
-<br>
+
   Insert(Tab);
-<br>
+
   // MessageBox-Button, mit lokalem Ereigniss.
   R.Assign(19, 13, 32, 15);
   Insert(new(PButton, Init(R, '~M~sg-Box', cmMsg, bfNormal)));
-<br>
+
   // Ok-Button
   R.Assign(7, 13, 17, 15);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
 end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 
 ```pascal
 procedure TMyAbout.HandleEvent(var Event: TEvent);
 begin
   inherited HandleEvent(Event);
-<br>
+
   case Event.What of
     evCommand: begin
       case Event.Command of
@@ -126,9 +126,9 @@ begin
       end;
     end;
   end;
-<br>
+
 end;
-<br>
+
 ```
-<br>
+
 

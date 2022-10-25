@@ -1,34 +1,34 @@
 # 06 - Listen und ListBoxen
 ## 30 - ListBox Doppelklick
-<br>
-<img src="image.png" alt="Selfhtml"><br><br>
-<br>
----
----
-<br>
 
-<br>
+<img src="image.png" alt="Selfhtml"><br><br>
+
+<hr><br>
+<hr><br>
+
+
+
 
 ```pascal
 unit MyDialog;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 
 ```pascal
 type
-<br>
+
   PNewListBox = ^TNewListBox;
-<br>
+
   { TNewListBox }
-<br>
+
   TNewListBox = object(TListBox)
     destructor Done; virtual;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-<br>
+
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     ListBox: PNewListBox;
@@ -36,11 +36,11 @@ type
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 procedure TNewListBox.HandleEvent(var Event: TEvent);
 begin
@@ -52,22 +52,22 @@ begin
   end;
   inherited HandleEvent(Event);
 end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 destructor TNewListBox.Done;
 begin
   Dispose(List, Done); // Die Liste freigeben
   inherited Done;
 end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);
@@ -89,7 +89,7 @@ begin
   end;
   inherited HandleEvent(Event);
 end;
-<br>
+
 ```
-<br>
+
 

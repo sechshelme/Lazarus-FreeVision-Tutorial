@@ -1,12 +1,12 @@
 # 12 - Editor
 ## 15 - Zwischenablage
-<br>
-<img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
-<br>
----
-<br>
+<img src="image.png" alt="Selfhtml"><br><br>
+
+
+
+<hr><br>
+
 
 ```pascal
 const
@@ -14,32 +14,32 @@ const
   cmRefresh = 1002;
   cmShowClip = 1003;
 ```
-<br>
 
-<br>
+
+
 
 ```pascal
 type
   TMyApp = object(TApplication)
     ClipWindow: PEditWindow;
-<br>
+
     constructor Init;
-<br>
+
     procedure InitStatusLine; virtual;
     procedure InitMenuBar; virtual;
-<br>
+
     procedure HandleEvent(var Event: TEvent); virtual;
     procedure OutOfMemory; virtual;
-<br>
+
     function NewWindows(FileName: ShortString; Visible: Boolean = False): PEditWindow;
     procedure OpenWindows;
     procedure SaveAll;
     procedure CloseAll;
   end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
   procedure TMyApp.InitMenuBar;
   var
@@ -47,7 +47,7 @@ type
   begin
     GetExtent(R);
     R.B.Y := R.A.Y + 1;
-<br>
+
     MenuBar := New(PMenuBar, Init(R, NewMenu(
       NewSubMenu('~D~atei', hcNoContext, NewMenu(
         NewItem('~N~eu', 'F4', kbF4, cmNewWin, hcNoContext,
@@ -84,9 +84,9 @@ type
         NewItem('~S~chliessen', 'Alt+F3', kbAltF3, cmClose, hcNoContext, nil)))))))))))), nil)))))));
   end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
   function TMyApp.NewWindows(FileName: ShortString; Visible: Boolean = False) : PEditWindow;
   var
@@ -108,14 +108,14 @@ type
     end;
   end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmNewWin: begin
@@ -144,5 +144,5 @@ type
     end;
   end;
 ```
-<br>
+
 

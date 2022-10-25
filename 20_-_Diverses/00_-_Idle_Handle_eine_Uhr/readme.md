@@ -1,43 +1,43 @@
 # 20 - Diverses
 ## 00 - Idle Handle eine Uhr
-<br>
-<img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
-<br>
----
-<br>
+<img src="image.png" alt="Selfhtml"><br><br>
+
+
+
+<hr><br>
+
 
 ```pascal
 const
   cmNewWin = 1001;
   cmNewUhr = 1002;
 ```
-<br>
 
-<br>
 
-<br>
+
+
+
 ```pascal
 type
   TMyApp = object(TApplication)
     zeitalt: Integer;
     constructor Init;
-<br>
+
     procedure InitStatusLine; virtual;
     procedure InitMenuBar; virtual;
-<br>
+
     procedure HandleEvent(var Event: TEvent); virtual;
-<br>
+
     procedure NewWindows;
     procedure NewUhr;
-<br>
+
     procedure Idle; Virtual;  // Das wichtigste.
   end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
 constructor TMyApp.Init;
 begin
@@ -46,24 +46,24 @@ begin
   NewUhr;           // Uhrendialog erzeugen.
 end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
 procedure TMyApp.NewUhr;
 begin
   Desktop^.Insert(ValidView(New(PUhrView, Init)));
 end;
 ```
-<br>
 
-<br>
 
-<br>
 
-<br>
 
-<br>
+
+
+
+
+
 
 ```pascal
 procedure TMyApp.Idle;
@@ -79,14 +79,14 @@ begin
   end;
 end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
 procedure TMyApp.HandleEvent(var Event: TEvent);
 begin
   inherited HandleEvent(Event);
-<br>
+
   if Event.What = evCommand then begin
     case Event.Command of
       cmNewWin: begin
@@ -103,26 +103,26 @@ begin
   ClearEvent(Event);
 end;
 ```
-<br>
----
-<br>
 
-<br>
+<hr><br>
 
-<br>
+
+
+
+
 
 ```pascal
 unit UhrDialog;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 
 ```pascal
 const
   cmUhrRefresh = 1003;
-<br>
+
 type
   PUhrView = ^TUhrView;
   TUhrView = object(TDialog)
@@ -133,11 +133,11 @@ type
     procedure Draw; Virtual;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 constructor TUhrView.Init;
 var
@@ -145,15 +145,15 @@ var
 begin
   R.Assign(51, 1, 70, 8);
   inherited Init(R, 'Uhr');
-<br>
+
   R.Assign(7, 4, 13, 6);
   Insert(new(PButton, Init(R, '~O~k', cmOK, bfDefault)));
 end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 procedure TUhrView.Draw;
 var
@@ -166,19 +166,19 @@ begin
   MoveStr(b, ZeitStr, c);
   WriteLine(5, 2, Size.X + 2, 1, b);
 end;
-<br>
+
 ```
-<br>
 
-<br>
 
-<br>
+
+
+
 
 ```pascal
 procedure TUhrView.HandleEvent(var Event: TEvent);
 begin
   inherited HandleEvent(Event);
-<br>
+
   case Event.What of
     evBroadcast: begin
       case Event.Command of
@@ -197,7 +197,7 @@ begin
     end;
   end;
 end;
-<br>
+
 ```
-<br>
+
 

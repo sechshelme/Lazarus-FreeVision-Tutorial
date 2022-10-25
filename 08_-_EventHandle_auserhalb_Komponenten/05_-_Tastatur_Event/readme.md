@@ -1,11 +1,11 @@
 # 08 - EventHandle auserhalb Komponenten
 ## 05 - Tastatur Event
-<br>
-<img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
----
-<br>
+<img src="image.png" alt="Selfhtml"><br><br>
+
+
+<hr><br>
+
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -13,7 +13,7 @@
     KeyDialog: PMyKey;
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmKeyAktion: begin
@@ -31,33 +31,33 @@
     ClearEvent(Event);
   end;
 ```
-<br>
----
-<br>
 
-<br>
+<hr><br>
+
+
+
 ```pascal
 unit MyDialog;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 type
   PMyKey = ^TMyKey;
   TMyKey = object(TDialog)
     EditScanCode, EditShiftState,
     EditZeichen, EditZeichenCode: PInputLine;
-<br>
+
     constructor Init;
     procedure HandleEvent(var Event: TEvent); virtual;
   end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 
 ```pascal
 constructor TMyKey.Init;
@@ -67,7 +67,7 @@ begin
   R.Assign(0, 0, 42, 15);
   R.Move(23, 3);
   inherited Init(R, 'Keyboard-Aktion');
-<br>
+
   // PosX
   R.Assign(25, 2, 30, 3);
   EditZeichen := new(PInputLine, Init(R, 5));
@@ -75,7 +75,7 @@ begin
   EditZeichen^.State := sfDisabled or EditZeichen^.State;    // ReadOnly
   R.Assign(5, 2, 20, 3);
   Insert(New(PLabel, Init(R, 'Zeichen:', EditZeichen)));
-<br>
+
   // PosY
   R.Assign(25, 4, 30, 5);
   EditZeichenCode := new(PInputLine, Init(R, 5));
@@ -83,7 +83,7 @@ begin
   Insert(EditZeichenCode);
   R.Assign(5, 4, 20, 5);
   Insert(New(PLabel, Init(R, 'Zeichencode:', EditZeichenCode)));
-<br>
+
   // Maus-Tasten
   R.Assign(25, 7, 30, 8);
   EditScanCode := new(PInputLine, Init(R, 7));
@@ -91,7 +91,7 @@ begin
   Insert(EditScanCode);
   R.Assign(5, 7, 20, 8);
   Insert(New(PLabel, Init(R, 'Scancode:', EditScanCode)));
-<br>
+
   // Maus-Tasten
   R.Assign(25, 9, 30, 10);
   EditShiftState := new(PInputLine, Init(R, 7));
@@ -99,23 +99,23 @@ begin
   Insert(EditShiftState);
   R.Assign(5, 9, 20, 10);
   Insert(New(PLabel, Init(R, 'Shiftstate:', EditShiftState)));
-<br>
+
   // Ok-Button
   R.Assign(27, 12, 37, 14);
   Insert(new(PButton, Init(R, 'OK', cmOK, bfDefault)));
 end;
-<br>
+
 ```
-<br>
 
-<br>
 
-<br>
+
+
+
 ```pascal
 procedure TMyKey.HandleEvent(var Event: TEvent);
 begin
   inherited HandleEvent(Event);
-<br>
+
   case Event.What of
     evKeyDown: begin                 // Taste wurde gedrückt.
       EditZeichen^.Data^:= Event.CharCode;
@@ -128,9 +128,9 @@ begin
       EditShiftState^.Draw;
     end;
   end;
-<br>
+
 end;
-<br>
+
 ```
-<br>
+
 

@@ -1,11 +1,11 @@
 # 15 - Fertige Dialoge
 ## 20 - Datei Dialoge
-<br>
-<img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
----
-<br>
+<img src="image.png" alt="Selfhtml"><br><br>
+
+
+<hr><br>
+
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -14,7 +14,7 @@
     FileName: shortstring;
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmFileOpen: begin
@@ -42,5 +42,5 @@
           Exit;
         end;
 ```
-<br>
+
 

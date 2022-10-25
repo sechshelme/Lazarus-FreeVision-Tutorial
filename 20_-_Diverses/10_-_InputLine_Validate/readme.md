@@ -1,49 +1,49 @@
 # 20 - Diverses
 ## 10 - InputLine Validate
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-<br>
 
-<br>
 
----
----
-<br>
 
-<br>
 
-<br>
+<hr><br>
+<hr><br>
+
+
+
+
+
 
 ```pascal
 unit MyDialog;
-<br>
+
 ```
-<br>
 
-<br>
 
-<br>
+
+
+
 ```pascal
 type
   PMyDialog = ^TMyDialog;
   TMyDialog = object(TDialog)
     constructor Init;
   end;
-<br>
+
   PMyRangeValidator = ^TMyRangeValidator;
   TMyRangeValidator = object(TRangeValidator)
     procedure Error; Virtual;   // Überschreibt die englische Fehlermeldung.
   end;
-<br>
+
   PMyStringLookUpValidator = ^TMyStringLookUpValidator;
   TMyStringLookUpValidator = object(TStringLookUpValidator)
     procedure Error; Virtual;   // Überschreibt die englische Fehlermeldung.
   end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 procedure TMyRangeValidator.Error;
 var
@@ -53,16 +53,16 @@ begin
   Params[1] := Max;
   MessageBox('Wert nicht im Bereich %d bis %d', @Params, mfError or mfOKButton);
 end;
-<br>
+
 procedure TMyStringLookUpValidator.Error;
 begin
   MessageBox('Eingabe nicht in g'#129'ltiger Liste', nil, mfError or mfOKButton);
 end;
-<br>
-```
-<br>
 
-<br>
+```
+
+
+
 ```pascal
 constructor TMyDialog.Init;
 const
@@ -78,7 +78,7 @@ begin
   R.Assign(0, 0, 42, 11);
   R.Move(23, 3);
   inherited Init(R, 'Validate');
-<br>
+
   // --- InputLine mit Bereichsbegrenzung 0-99.
   R.Assign(25, 2, 36, 3);
   InputLine := new(PInputLine, Init(R, 6));
@@ -87,7 +87,7 @@ begin
   Insert(InputLine);
   R.Assign(2, 2, 22, 3);
   Insert(New(PLabel, Init(R, '~B~ereich: 0-99', InputLine)));
-<br>
+
   // --- Wochentage
   // Stringliste erzeugen.
   StringCollektion := new(PStringCollection, Init(10, 2));
@@ -102,16 +102,16 @@ begin
   Insert(InputLine);
   R.Assign(2, 4, 22, 5);
   Insert(New(PLabel, Init(R, '~W~ochentage:', InputLine)));
-<br>
+
   // ---Ok-Button
   R.Assign(7, 8, 19, 10);
   Insert(new(PButton, Init(R, '~O~K', cmOK, bfDefault)));
-<br>
+
   // --- Abbrechen-Button
   R.Assign(24, 8, 36, 10);
   Insert(new(PButton, Init(R, '~A~bbrechen', cmCancel, bfNormal)));
 end;
-<br>
+
 ```
-<br>
+
 

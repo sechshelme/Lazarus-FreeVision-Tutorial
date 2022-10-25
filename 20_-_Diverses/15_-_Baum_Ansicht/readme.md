@@ -1,17 +1,17 @@
 # 20 - Diverses
 ## 15 - Baum Ansicht
-<br>
+
 <img src="image.png" alt="Selfhtml"><br><br>
-<br>
----
-<br>
+
+<hr><br>
+
 
 ```pascal
   PTreeWindow = ^TTreeWindow;
   TTreeWindow = object(TWindow)
     constructor Init(R: TRect);
   end;
-<br>
+
 
   constructor TTreeWindow.Init(R: TRect);
   var
@@ -36,16 +36,16 @@
     Insert(Outline);
   end;
 ```
-<br>
 
-<br>
+
+
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
   var
     R: TRect;
   begin
     inherited HandleEvent(Event);
-<br>
+
     if Event.What = evCommand then begin
       case Event.Command of
         cmList: begin
@@ -60,5 +60,5 @@
     ClearEvent(Event);
   end;
 ```
-<br>
+
 
