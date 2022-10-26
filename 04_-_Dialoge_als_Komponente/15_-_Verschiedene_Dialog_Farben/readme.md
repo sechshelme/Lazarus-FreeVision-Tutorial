@@ -2,6 +2,7 @@
 ## 15 - Verschiedene Dialog Farben
 
 ![image.png](image.png)
+
 Einem Fenster/Dialog, kann man verschiedene FarbeSchema zuordnen.
 Standardmässig wird folgendes verwendet:
 

@@ -2,6 +2,7 @@
 ## 15 - Zwischenablage
 
 ![image.png](image.png)
+
 Hier wurde ein Zwischenablage hinzugefügt, somit ist auch kopieren und einfügen im Editor möglich.
 Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bekommt, wen man kopieren wählt.
 Somit kann man dieses sogar sichbar machen.

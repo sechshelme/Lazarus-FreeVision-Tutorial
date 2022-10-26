@@ -2,6 +2,7 @@
 ## 15 - ListBox Heap
 
 ![image.png](image.png)
+
 In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.
 Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.

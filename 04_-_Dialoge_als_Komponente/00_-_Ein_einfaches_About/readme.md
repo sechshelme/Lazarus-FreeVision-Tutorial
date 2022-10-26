@@ -2,6 +2,7 @@
 ## 00 - Ein einfaches About
 
 ![image.png](image.png)
+
 Wen man immer wieder die gleichen Dialog braucht, packt man diesen am besten als Komponente in eine Unit.
 Dazu schreibt man einen Nachkommen von <b>TDialog</b>.
 Als Beispiel wird hier ein About-Dialog gebaut.

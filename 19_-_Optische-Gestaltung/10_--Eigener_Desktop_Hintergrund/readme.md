@@ -2,6 +2,7 @@
 ## 10 --Eigener Desktop Hintergrund
 
 ![image.png](image.png)
+
 Man hat sogar die Möglichkeit, den ganzen Background selbst zu zeichnen.
 Da man alles selbst zeichent kann man sich den Umweg über <b>TBackGround</b> sparen und direkt <B>TView</b> vererben.
 <b>TBackGround</b> ist ein direkter Nachkomme von <b>TView</b>.

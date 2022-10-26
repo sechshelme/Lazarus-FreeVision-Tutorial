@@ -2,6 +2,7 @@
 ## 05 - Speichern und oeffnen
 
 ![image.png](image.png)
+
 Ein Editor wird erst brauchbar, wen Dateifunktionen dazu kommen, zB. öffnen und speichern.
 Das Öffnen ist ähnlich von wie ein leerses Fenster erzeugen.
 Einziger Unterschied, man gibt einen Dateinamen mit, welcher mit einem FileDialog ermittelt wird.

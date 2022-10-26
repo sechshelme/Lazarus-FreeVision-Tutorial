@@ -2,6 +2,7 @@
 ## 10 - Fenster verwalten
 
 ![image.png](image.png)
+
 Fenster verwalten. Nun ist es möglich über das Menü Steuerkomandos für die Fensterverwaltung zu geben.
 ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.
 ---

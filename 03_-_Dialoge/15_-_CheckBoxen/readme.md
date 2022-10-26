@@ -2,6 +2,7 @@
 ## 15 - CheckBoxen
 
 ![image.png](image.png)
+
 Dialog um CheckBoxen ergänzen.
 ---
 Den Dialog mit CheckBoxen ergänzen.

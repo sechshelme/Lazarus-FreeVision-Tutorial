@@ -2,6 +2,7 @@
 ## 05 - StringCollection sortiert
 
 ![image.png](image.png)
+
 Eine sortierte String-Liste
 für eine sortierte Liste muss man <b>PStringCollection</b> oder <b>PStrCollection</b> verwenden.
 ---

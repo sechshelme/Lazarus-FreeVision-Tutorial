@@ -2,6 +2,7 @@
 ## 35 - Menu und Statuszeile tauschen
 
 ![image.png](image.png)
+
 Man kann zur Laufzeit das komplette Menü und Statuszeile austauschen.
 ZB. um die Anwendung mehrsprachig zu machen.
 Dazu wird die aktuelle Komponente entfernt und die neue eingefügt.

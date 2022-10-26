@@ -2,6 +2,7 @@
 ## 15 - Fenster mit Bedienelemte ausstatten
 
 ![image.png](image.png)
+
 Dem Fenster wurden noch Scrollbalken spendiert.
 Man könnte noch eine Indikator hinzufügen, welcher Zeilen und Spalten anzeigt.
 Und das wichtigste für einen Editor, ein Memo in dem man schreiben kann.

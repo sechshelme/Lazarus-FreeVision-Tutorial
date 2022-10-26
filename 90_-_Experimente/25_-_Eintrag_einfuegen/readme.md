@@ -2,6 +2,7 @@
 ## 25 - Eintrag einfuegen
 
 ![image.png](image.png)
+
 Dialog um Buttons ergänzen.
 ---
 Den Dialog mit Buttons ergänzen.

@@ -2,6 +2,7 @@
 ## 10 - Menu
 
 ![image.png](image.png)
+
 Hinzufügen eines Menüs.
 ---
 Für das Menü werden die gleichen Units wie für die Statuszeile gebraucht.

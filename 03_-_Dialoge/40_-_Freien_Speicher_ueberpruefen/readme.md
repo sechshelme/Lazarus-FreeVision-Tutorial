@@ -2,6 +2,7 @@
 ## 40 - Freien Speicher ueberpruefen
 
 ![image.png](image.png)
+
 Überprüfen ob genügend Speicher frei ist, um den Dialog zu erzeugen.
 Auf den heutigen Rechner wird die wohl nicht mehr der Fall sein, das der Speicher wegen eines Dialoges überläuft.
 ---

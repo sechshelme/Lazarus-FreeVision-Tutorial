@@ -2,6 +2,7 @@
 ## 05 - Status Zeile mehrere Eintraege
 
 ![image.png](image.png)
+
 Ändern der Status-Zeile, mit mehreren Optionen.
 ---
 In der Statuszeile sind auch mehrere Hot-Key möglich.

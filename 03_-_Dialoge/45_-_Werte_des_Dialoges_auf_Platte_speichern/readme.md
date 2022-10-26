@@ -2,6 +2,7 @@
 ## 45 - Werte des Dialoges auf Platte speichern
 
 ![image.png](image.png)
+
 Das die Werte des Dialoges auch nach beenden der Anwendung erhalten bleiben, speichern wir die Daten auf die Platte.
 Es wird nicht überprüft, ob geschrieben werden kann, etc.
 Wen man dies will müsste man mit <b>IOResult</b>, etc. überprüfen.

@@ -2,6 +2,7 @@
 ## 10 - InputLine Validate
 
 ![image.png](image.png)
+
 Hier wird eine Bereichsbegrenzung für <b>PInputLine</b> gezeigt.
 Bei der ersten Zeile ist nur eine Zahl zwischen 0 und 99 erlaubt.
 Bei der zweiten Zeile muss es ein Wochentag ( Montag - Freitag ) sein.

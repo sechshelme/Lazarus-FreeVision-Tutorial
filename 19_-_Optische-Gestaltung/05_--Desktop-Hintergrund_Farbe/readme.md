@@ -2,6 +2,7 @@
 ## 05 --Desktop-Hintergrund Farbe
 
 ![image.png](image.png)
+
 Wen man die Farbe des Hintergrundes änder will, ist ein wenig komplizierter als nur das Zeichen.
 Dazu muss man beim Object <b>TBackground</b> die Funktion <b>GetPalette</b> überschreiben.
 

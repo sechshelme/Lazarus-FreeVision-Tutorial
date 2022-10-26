@@ -2,6 +2,7 @@
 ## 15 --Hintergrund auf Dialog
 
 ![image.png](image.png)
+
 Bei Bedarf, kann man auch ein Hintergrund-Muster auf einen Dialog/Fenster legen.
 ---
 Hier wird der <b>PBackGround</b> auf einen Dialog gelegt, dies funktioniert genau gleich, wie auf dem Desktop.

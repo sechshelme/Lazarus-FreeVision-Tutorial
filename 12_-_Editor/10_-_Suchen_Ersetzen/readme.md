@@ -2,6 +2,7 @@
 ## 10 - Suchen Ersetzen
 
 ![image.png](image.png)
+
 Der Editor hat eine <b>Suchen</b> und <b>Ersetzen</b> Funktion bekommen.
 Leider sind die Standard-Dialoge dafür in Englisch.
 Aus diesem Grund, wird es hier neu in deutsch gebaut.

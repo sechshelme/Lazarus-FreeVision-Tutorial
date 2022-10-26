@@ -2,6 +2,7 @@
 ## 25 - ListBox einfuegen und entfernen von Eintraegen
 
 ![image.png](image.png)
+
 Bei <b>ListBox</b> kann man auch Einträge einfügen, entfernen, etc.
 ZT. muss man da direkt auf die Liste zugreifen.
 ---

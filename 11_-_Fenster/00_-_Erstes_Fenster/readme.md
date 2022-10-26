@@ -2,6 +2,7 @@
 ## 00 - Erstes Fenster
 
 ![image.png](image.png)
+
 Erstes Memo-Fenster.
 ---
 Der Constructor wird vererbt, so das von Anfang an ein neues Fenster erstellt wird.

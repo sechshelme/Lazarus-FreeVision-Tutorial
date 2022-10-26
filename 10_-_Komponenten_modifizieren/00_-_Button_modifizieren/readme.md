@@ -2,6 +2,7 @@
 ## 00 - Button modifizieren
 
 ![image.png](image.png)
+
 Man kann auch eine Komponente modifzieren, in diesem Beispiel ist es ein Button.
 Dazu muss man einen Nachkommen von TButton erstellen.
 Der abgeänderte Button passt sich automatisch an die Länge des Titels an, auch wird er automatisch 2 Zeilen hoch.

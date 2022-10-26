@@ -2,6 +2,7 @@
 ## 00 - Komponenten zur Laufzeit modifizieren
 
 ![image.png](image.png)
+
 In den vererbten Dialogen ist es möglich Buttons einubauen, welche lokal im Dialog eine Aktion ausführen.
 Im Beispiel wir eine MessageBox aufgerufen.
 ---

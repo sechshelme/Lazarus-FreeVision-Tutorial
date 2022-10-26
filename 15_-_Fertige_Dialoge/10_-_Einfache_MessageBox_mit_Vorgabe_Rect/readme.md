@@ -2,6 +2,7 @@
 ## 10 - Einfache MessageBox mit Vorgabe Rect
 
 ![image.png](image.png)
+
 Bei der MessageBox, kann man die Grösse auch manuell festlegen.
 Dazu muss man <b>MeassgeBoxRect(...)</b> verwenden.
 ---

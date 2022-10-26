@@ -2,6 +2,7 @@
 ## 00 - Einfache MessageBox
 
 ![image.png](image.png)
+
 Die einfachsten Dialoge sind die fertigen MessageBoxen.
 ---
 Aufruf einer MessageBox.

@@ -2,6 +2,7 @@
 ## 35 - Werte im Dialog merken
 
 ![image.png](image.png)
+
 Bis jetzt gingen die Werte im Dialog immer wieder verloren, wen man diesen schliesste und wieder öffnete.
 Aus diesem Grund werden jetzt die Werte in einen Record gespeichert.
 ---

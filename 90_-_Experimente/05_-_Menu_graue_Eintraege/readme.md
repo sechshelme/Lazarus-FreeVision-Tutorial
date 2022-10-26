@@ -2,6 +2,7 @@
 ## 05 - Menu graue Eintraege
 
 ![image.png](image.png)
+
 Menupunkt kann man auch ineinander verschachteln.
 ---
 Bei der Statuszeile habe ich die Einträge verschachtelt, somit braucht man keine Zeiger.

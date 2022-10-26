@@ -2,6 +2,7 @@
 ## 05 - Erster Dialog
 
 ![image.png](image.png)
+
 Abarbeiten der Events, der Statuszeile und des Menu.
 ---
 Für Dialoge muss man noch die Unit <b>Dialogs</b> einfügen.

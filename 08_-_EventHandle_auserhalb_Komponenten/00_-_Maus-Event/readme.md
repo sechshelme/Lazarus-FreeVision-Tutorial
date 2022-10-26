@@ -2,6 +2,7 @@
 ## 00 - Maus-Event
 
 ![image.png](image.png)
+
 Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/klickt.
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.
 ---

@@ -2,6 +2,7 @@
 ## 05 - Dialog mit lokalem Ereigniss
 
 ![image.png](image.png)
+
 In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.
 Im Beispiel wir eine MessageBox aufgerufen.
 ---

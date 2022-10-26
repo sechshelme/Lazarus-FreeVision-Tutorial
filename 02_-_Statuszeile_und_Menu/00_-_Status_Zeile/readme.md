@@ -2,6 +2,7 @@
 ## 00 - Status Zeile
 
 ![image.png](image.png)
+
 Ändern der Status-Zeile.
 Die Statuszeile wird gebraucht um wichtige Information und HotKey anzuzeigen.
 ---

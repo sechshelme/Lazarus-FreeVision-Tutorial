@@ -2,6 +2,7 @@
 ## 05 - String formatieren
 
 ![image.png](image.png)
+
 Mit <b>FormatStr</b> können Strings formatiert werden.
 Dabei sind filgende Formatierungen möglich:
 %c: Char

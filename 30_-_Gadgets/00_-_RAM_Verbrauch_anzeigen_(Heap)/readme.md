@@ -2,6 +2,7 @@
 ## 00 - RAM Verbrauch anzeigen (Heap)
 
 ![image.png](image.png)
+
 In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.
 Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.
 Die <b>TListBox</b> ist ein gutes Beispiel, da diese die Liste nicht selbst aufräumt.

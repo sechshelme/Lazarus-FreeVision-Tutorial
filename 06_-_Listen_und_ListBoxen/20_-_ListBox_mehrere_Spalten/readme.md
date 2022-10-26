@@ -2,6 +2,7 @@
 ## 20 - ListBox mehrere Spalten
 
 ![image.png](image.png)
+
 Die <b>ListBox</b> kann auch mehrere Spalten haben.
 ---
 ---

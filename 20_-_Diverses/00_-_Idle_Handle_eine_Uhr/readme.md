@@ -2,6 +2,7 @@
 ## 00 - Idle Handle eine Uhr
 
 ![image.png](image.png)
+
 Hier wird gezeigt, wie man <b>Idle</b> verwenden kann.
 Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.
 Das Object mit dem UhrenDialog befindet sich in der Unit <b>UhrDialog</b>.

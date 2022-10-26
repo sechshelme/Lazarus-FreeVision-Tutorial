@@ -2,6 +2,7 @@
 ## 50 - StaticText gut fuer ein About
 
 ![image.png](image.png)
+
 Hier wird ein About-Dialog erstellt, das sieht man gut für was man Label gebrauchen kann.
 ---
 Die Datei, in welcher sich die Daten für den Dialog befinden.

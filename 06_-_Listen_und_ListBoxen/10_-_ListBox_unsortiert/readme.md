@@ -2,6 +2,7 @@
 ## 10 - ListBox unsortiert
 
 ![image.png](image.png)
+
 Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList freigeben.
 Dies ist nicht Free-Vision üblich. Dies hat auch einen Sinn, da man Listen vielfach global verwendet, 
 ansonsten müsste man immer eine Kopie davon anlegen.

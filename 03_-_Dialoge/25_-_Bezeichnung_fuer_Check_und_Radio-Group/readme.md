@@ -2,6 +2,7 @@
 ## 25 - Bezeichnung fuer Check und Radio-Group
 
 ![image.png](image.png)
+
 Radio und Check-Group mit einem Label bezeichnen.
 ---
 Die Check und Radio-GroupButton mit Label ergänzen.

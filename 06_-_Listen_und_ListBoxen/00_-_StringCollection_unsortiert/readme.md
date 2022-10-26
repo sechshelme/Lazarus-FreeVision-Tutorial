@@ -2,6 +2,7 @@
 ## 00 - StringCollection unsortiert
 
 ![image.png](image.png)
+
 Wen die Stringliste unsortiert bleiben soll, verwendet man <b>PUnSortedStrCollection</b>.
 Nur <b>PCollection</b> reicht <b>nicht</b>, da diese bei <b>Dispose</b> abschmiert.
 ---

@@ -2,6 +2,7 @@
 ## 00 --Desktop-Hintergrund Zeichen
 
 ![image.png](image.png)
+
 Beim Desktophintergrund kann man ein beliebiges Hintergrund-Zeichen zuordnen. Als Default ist das Zeichen <b>#176</b>.
 ---
 Der Hintergrund fügt man ähnlich zu, wie ein Fenster/Dialog, dies geschieht auch mit <b>Insert</b>.
