@@ -34,8 +34,6 @@ Borland Pascal:
 | 01.07.2018 | Menü Hilfe hinzugefügt.
 
 ![FreeVision](image.png)
-bla bla
-<img src="image.png">
 
 
 
