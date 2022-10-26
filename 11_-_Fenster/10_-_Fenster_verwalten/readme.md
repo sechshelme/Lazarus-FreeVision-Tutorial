@@ -1,10 +1,10 @@
 # 11 - Fenster
 ## 10 - Fenster verwalten
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Fenster verwalten. Nun ist es möglich über das Menü Steuerkomandos für die Fensterverwaltung zu geben.
 ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.
-<hr><br>
+---
 Das Menü wurde um die Steuerbefehle für die Fensterverwatung ergänzt.
 Die ausgeklammerten Kommandos müssen manuel gemacht werden.
 

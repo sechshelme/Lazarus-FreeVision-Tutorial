@@ -1,14 +1,14 @@
 # 11 - Fenster
 ## 15 - Fenster mit Bedienelemte ausstatten
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Dem Fenster wurden noch Scrollbalken spendiert.
 Man könnte noch eine Indikator hinzufügen, welcher Zeilen und Spalten anzeigt.
 Und das wichtigste für einen Editor, ein Memo in dem man schreiben kann.
 
 Wen man einen Editor schreiben will, dann nimmt man dazu <b>PEditWindow</b> aus der Unit <b>Editors</b>.
 Dies ist viel einfacher, als alles selbst zu bauen.
-<hr><br>
+---
 Hier wird das neue vererbte Windows erzeugt.
 
 ```pascal
@@ -31,7 +31,7 @@ Hier wird das neue vererbte Windows erzeugt.
   end;
 ```
 
-<hr><br>
+---
 <b>Unit mit dem neuen Fenster.</b>
 <br>
 

@@ -1,9 +1,9 @@
 # 03 - Dialoge
 ## 05 - Erster Dialog
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Abarbeiten der Events, der Statuszeile und des Menu.
-<hr><br>
+---
 Für Dialoge muss man noch die Unit <b>Dialogs</b> einfügen.
 
 ```pascal

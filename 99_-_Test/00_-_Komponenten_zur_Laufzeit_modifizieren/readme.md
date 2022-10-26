@@ -1,11 +1,11 @@
 # 99 - Test
 ## 00 - Komponenten zur Laufzeit modifizieren
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 In den vererbten Dialogen ist es möglich Buttons einubauen, welche lokal im Dialog eine Aktion ausführen.
 Im Beispiel wir eine MessageBox aufgerufen.
-<hr><br>
-<hr><br>
+---
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Dort wird gezeigt, wie man Werte bei Komponenten zu Laufzeit lesen und schreiben kann.

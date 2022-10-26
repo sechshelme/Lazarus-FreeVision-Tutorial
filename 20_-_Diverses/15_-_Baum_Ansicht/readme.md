@@ -1,9 +1,9 @@
 # 20 - Diverses
 ## 15 - Baum Ansicht
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Baumartige Darstellung.
-<hr><br>
+---
 Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.
 
 ```pascal

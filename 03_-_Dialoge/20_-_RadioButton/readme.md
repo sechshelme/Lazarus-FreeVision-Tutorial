@@ -1,9 +1,9 @@
 # 03 - Dialoge
 ## 20 - RadioButton
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Dialog um RadioButtons ergänzen.
-<hr><br>
+---
 Das Menü wurde noch ein wenig geändert/ergänzt.
 
 ```pascal

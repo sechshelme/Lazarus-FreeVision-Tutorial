@@ -1,10 +1,10 @@
 # 14 - TView
 ## 05 - TView erweitern
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 <b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.
 Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.
-<hr><br>
+---
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.
 Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.
 
@@ -74,7 +74,7 @@ end;
   end;
 ```
 
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.

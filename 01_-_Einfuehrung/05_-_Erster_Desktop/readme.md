@@ -1,9 +1,9 @@
 # 01 - Einfuehrung
 ## 05 - Erster Desktop
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Minimalste Free-Vision Anwendung
-<hr><br>
+---
 Programm-Name, wie es bei Pascal üblich ist.
 
 ```pascal

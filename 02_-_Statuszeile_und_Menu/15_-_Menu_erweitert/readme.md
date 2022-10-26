@@ -1,10 +1,10 @@
 # 02 - Statuszeile und Menu
 ## 15 - Menu erweitert
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Hinzufügen mehrere Menüpunkte.
 Hier wird dies auch der Übersicht zu liebe gesplittet gemacht.
-<hr><br>
+---
 Für eigene Kommandos, muss man noch Kommdocode definieren.
 Es empfiehlt sich Werte &gt; 1000 zu verwenden, so das es keine Überschneidungen mit den Standard-Codes gibt.
 

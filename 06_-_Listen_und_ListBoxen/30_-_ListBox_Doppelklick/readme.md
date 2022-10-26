@@ -1,10 +1,10 @@
 # 06 - Listen und ListBoxen
 ## 30 - ListBox Doppelklick
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Will man bei einer <b>ListBox</b> den Doppelklick auswerten, muss man die ListBox vererben und einen neuen Handleevent einfügen.
-<hr><br>
-<hr><br>
+---
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Der Dialog mit der ListBox

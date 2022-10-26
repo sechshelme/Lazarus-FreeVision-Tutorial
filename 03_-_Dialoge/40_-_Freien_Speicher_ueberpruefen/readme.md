@@ -1,10 +1,10 @@
 # 03 - Dialoge
 ## 40 - Freien Speicher ueberpruefen
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Überprüfen ob genügend Speicher frei ist, um den Dialog zu erzeugen.
 Auf den heutigen Rechner wird die wohl nicht mehr der Fall sein, das der Speicher wegen eines Dialoges überläuft.
-<hr><br>
+---
 Die virtuelle Procedure <b>OutOfMemory</b>, wen doch mal der Speicher überläuft.
 Wen man diese Methode nicht überschreibt, dann wird keine Fehlermeldung ausgegeben, nur weis dann der Nutzer nicht, wieso sein View nicht erscheint.
 

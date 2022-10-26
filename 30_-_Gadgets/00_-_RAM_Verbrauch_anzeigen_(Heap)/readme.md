@@ -1,12 +1,12 @@
 # 30 - Gadgets
 ## 00 - RAM Verbrauch anzeigen (Heap)
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 In diesem Beispiel wird ein kleines Gadgets geladen, welches den verbrauchten <b>Heap</b> anzeigt.
 Diese Funktion macht Sinn, wen man schauen will, ob man ein Speicher Leak hat.
 Die <b>TListBox</b> ist ein gutes Beispiel, da diese die Liste nicht selbst aufräumt.
 Dort feht der <b>destructor</b>, welcher den Speicher aufräumt. Dies macht auch Sinn, da man Listen auch global verwenden kann.
-<hr><br>
+---
     Erzeugt ein kleines Fenster rechts-unten, welches den Heap anzeigt.
 
 ```pascal
@@ -76,7 +76,7 @@ Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.
   end;
 ```
 
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Der Dialog mit dem dem Speicher Leak

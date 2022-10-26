@@ -1,9 +1,9 @@
 # 15 - Fertige Dialoge
 ## 00 - Einfache MessageBox
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Die einfachsten Dialoge sind die fertigen MessageBoxen.
-<hr><br>
+---
 Aufruf einer MessageBox.
 
 ```pascal

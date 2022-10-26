@@ -1,9 +1,9 @@
 # 11 - Fenster
 ## 00 - Erstes Fenster
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Erstes Memo-Fenster.
-<hr><br>
+---
 Der Constructor wird vererbt, so das von Anfang an ein neues Fenster erstellt wird.
 
 ```pascal

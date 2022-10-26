@@ -1,7 +1,7 @@
 # 99 - Test
 ## 15 - ListBox Heap
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.
 Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da man meistens mehrere davon öffnen will.
@@ -20,7 +20,7 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
   end;
 ```
 
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Der Dialog mit dem Zähler-Button.

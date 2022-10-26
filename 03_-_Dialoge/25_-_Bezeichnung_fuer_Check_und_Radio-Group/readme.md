@@ -1,9 +1,9 @@
 # 03 - Dialoge
 ## 25 - Bezeichnung fuer Check und Radio-Group
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Radio und Check-Group mit einem Label bezeichnen.
-<hr><br>
+---
 Die Check und Radio-GroupButton mit Label ergänzen.
 Dies funktioniert fast gleich, wie ein normales Label. einziger Unterschied, anstelle von <b>nil</b> gibt man den Pointer auf die Group mit.
 

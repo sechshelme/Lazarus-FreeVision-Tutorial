@@ -1,12 +1,12 @@
 # 02 - Statuszeile und Menu
 ## 35 - Menu und Statuszeile tauschen
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Man kann zur Laufzeit das komplette Menü und Statuszeile austauschen.
 ZB. um die Anwendung mehrsprachig zu machen.
 Dazu wird die aktuelle Komponente entfernt und die neue eingefügt.
 In dem Beispiel gibt es je eine deutsche und englische Komponente.
-<hr><br>
+---
 Deklaration der Komponenten
 
 ```pascal

@@ -1,7 +1,7 @@
 # 20 - Diverses
 ## 05 - String formatieren
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Mit <b>FormatStr</b> können Strings formatiert werden.
 Dabei sind filgende Formatierungen möglich:
 %c: Char
@@ -15,8 +15,8 @@ Bei Realzahlen muss man sich folgendermassen behelfen:
 procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);
 ```
 
-<hr><br>
-<hr><br>
+---
+---
 
 ```pascal
 unit MyDialog;

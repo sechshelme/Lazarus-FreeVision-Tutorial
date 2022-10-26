@@ -1,9 +1,9 @@
 # 11 - Fenster
 ## 05 - Fenster neu und schliessen
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Über das Menü Fenster erzeigen und schliessen.
-<hr><br>
+---
 Neue Konstanten für Kommados.
 Auch ist der HandleEvent dazugekommen.
 

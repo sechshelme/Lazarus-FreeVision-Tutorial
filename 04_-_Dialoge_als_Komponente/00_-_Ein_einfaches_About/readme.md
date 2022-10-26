@@ -1,11 +1,11 @@
 # 04 - Dialoge als Komponente
 ## 00 - Ein einfaches About
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Wen man immer wieder die gleichen Dialog braucht, packt man diesen am besten als Komponente in eine Unit.
 Dazu schreibt man einen Nachkommen von <b>TDialog</b>.
 Als Beispiel wird hier ein About-Dialog gebaut.
-<hr><br>
+---
 Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeben.
 
 ```pascal
@@ -33,7 +33,7 @@ Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeb
   end;
 ```
 
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b>
 
 ```pascal

@@ -1,13 +1,13 @@
 # 20 - Diverses
 ## 10 - InputLine Validate
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Hier wird eine Bereichsbegrenzung für <b>PInputLine</b> gezeigt.
 Bei der ersten Zeile ist nur eine Zahl zwischen 0 und 99 erlaubt.
 Bei der zweiten Zeile muss es ein Wochentag ( Montag - Freitag ) sein.
 Für den zweiten Fall wäre eine ListBox idealer, mir geht zum zeigen wie es mit der <b>PInputLine</b> geht.
-<hr><br>
-<hr><br>
+---
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Ein Dialog mit <b>PInputLine</b> welche eine Prüfung bekommen.

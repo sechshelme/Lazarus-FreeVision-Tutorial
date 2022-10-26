@@ -1,12 +1,12 @@
 # 12 - Editor
 ## 05 - Speichern und oeffnen
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Ein Editor wird erst brauchbar, wen Dateifunktionen dazu kommen, zB. öffnen und speichern.
 Das Öffnen ist ähnlich von wie ein leerses Fenster erzeugen.
 Einziger Unterschied, man gibt einen Dateinamen mit, welcher mit einem FileDialog ermittelt wird.
 Für das einfache speichern, muss man nicht viel machen. Man muss nur das Event <b>cmSave</b> aufrufen, zB. über das Menü.
-<hr><br>
+---
 Hier ist noch OpenWindows und SaveAll dazu gekommen.
 
 ```pascal

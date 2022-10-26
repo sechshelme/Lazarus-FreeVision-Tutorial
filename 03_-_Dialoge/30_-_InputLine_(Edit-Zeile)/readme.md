@@ -1,9 +1,9 @@
 # 03 - Dialoge
 ## 30 - InputLine (Edit-Zeile)
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Einfügen eine Edit-Zeile.
-<hr><br>
+---
 Die Check und Radio-GroupButton mit Label ergänzen.
 Dies funktioniert fast gleich, wie ein normales Label. einziger Unterschied, anstelle von <b>nil</b> gibt man den Pointer auf die Group mit.
 

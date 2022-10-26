@@ -1,10 +1,10 @@
 # 15 - Fertige Dialoge
 ## 10 - Einfache MessageBox mit Vorgabe Rect
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Bei der MessageBox, kann man die Grösse auch manuell festlegen.
 Dazu muss man <b>MeassgeBoxRect(...)</b> verwenden.
-<hr><br>
+---
 Hier wird mir <b>R.Assign</b> die grösse der Box selbst festgelegt.
 
 ```pascal

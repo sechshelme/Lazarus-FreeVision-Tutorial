@@ -1,13 +1,13 @@
 # 90 - Experimente
 ## 35 - HistoryViewer
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList freigeben.
 Dies ist nicht Free-Vision üblich. Dies hat auch einen Sinn, da man Listen vielfach global verwendet, 
 ansonsten müsste man immer eine Kopie davon anlegen.
 Dort fehlt der <b>destructor</b>, welcher den Speicher aufräumt.
-<hr><br>
-<hr><br>
+---
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Der Dialog mit der ListBox

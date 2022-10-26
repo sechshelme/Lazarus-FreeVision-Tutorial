@@ -1,7 +1,7 @@
 # 04 - Dialoge als Komponente
 ## 15 - Verschiedene Dialog Farben
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Einem Fenster/Dialog, kann man verschiedene FarbeSchema zuordnen.
 Standardmässig wird folgendes verwendet:
 
@@ -14,7 +14,7 @@ Hilfe-Fenster  : Cyan
 
 Ohne Zutun, kommen die Fenster/Dialog immer in der richtigen Farbe.
 Eine Modifizierung ist nur in speziellen Fällen von Sinnen.
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.

@@ -1,10 +1,10 @@
 # 99 - Test
 ## 10 - ListBox
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 In diesem Beispiel wird gezeigt, wie man Komponenten zu Laufzeit ändern kann.
 Dafür wird ein Button verwendet, bei dem sich die Bezeichnung bei jedem Klick erhöht.
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Der Dialog mit dem Zähler-Button.

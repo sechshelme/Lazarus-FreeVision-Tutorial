@@ -1,10 +1,10 @@
 # 03 - Dialoge
 ## 35 - Werte im Dialog merken
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Bis jetzt gingen die Werte im Dialog immer wieder verloren, wen man diesen schliesste und wieder öffnete.
 Aus diesem Grund werden jetzt die Werte in einen Record gespeichert.
-<hr><br>
+---
   In diesem Record werden die Werte des Dialoges gespeichert.
   Die Reihenfolge der Daten im Record <b>muss</b> genau gleich sein, wie bei der Erstellung der Komponenten, ansonten gibt es einen Kräsch.
   Bei Turbo-Pascal musste ein <b>Word</b> anstelle von <b>LongWord</b> genommen werden, dies ist wichtig beim Portieren alter Anwendungen.

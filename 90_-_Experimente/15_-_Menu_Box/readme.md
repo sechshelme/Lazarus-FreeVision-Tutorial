@@ -1,9 +1,9 @@
 # 90 - Experimente
 ## 15 - Menu Box
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Dialog um Buttons ergänzen.
-<hr><br>
+---
 Den Dialog mit Buttons ergänzen.
 Mit <b>Insert</b> fügt man die Komponenten hinzug, in diesem Fall sind es die Buttons.
 Mit bfDefault legt man den Default-Button fest, dieser wird mit <b>[Enter]</b> aktiviert.

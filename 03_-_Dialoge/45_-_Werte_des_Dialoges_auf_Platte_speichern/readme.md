@@ -1,11 +1,11 @@
 # 03 - Dialoge
 ## 45 - Werte des Dialoges auf Platte speichern
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Das die Werte des Dialoges auch nach beenden der Anwendung erhalten bleiben, speichern wir die Daten auf die Platte.
 Es wird nicht überprüft, ob geschrieben werden kann, etc.
 Wen man dies will müsste man mit <b>IOResult</b>, etc. überprüfen.
-<hr><br>
+---
 Hier kommt noch <b>sysutils</b> hinzu, sie wird für <b>FileExits</b> gebraucht.
 
 ```pascal

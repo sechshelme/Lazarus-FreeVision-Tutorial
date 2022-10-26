@@ -1,10 +1,10 @@
 # 01 - Einfuehrung
 ## 10 - Hello World
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Ein Hello World mit Free-Vision.
 Der Text wird in einer Message-Box ausgegeben.
-<hr><br>
+---
 
 ```pascal
 program Project1;

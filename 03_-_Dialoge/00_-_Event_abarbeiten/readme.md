@@ -1,9 +1,9 @@
 # 03 - Dialoge
 ## 00 - Event abarbeiten
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Abarbeiten der Events, der Statuszeile und des Menu.
-<hr><br>
+---
 Kommmandos die abgearbeitet werden.
 
 ```pascal

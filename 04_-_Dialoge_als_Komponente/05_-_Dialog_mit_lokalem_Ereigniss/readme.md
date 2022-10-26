@@ -1,10 +1,10 @@
 # 04 - Dialoge als Komponente
 ## 05 - Dialog mit lokalem Ereigniss
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.
 Im Beispiel wir eine MessageBox aufgerufen.
-<hr><br>
+---
 Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas gemacht wird.
 
 ```pascal
@@ -32,7 +32,7 @@ Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas ge
   end;
 ```
 
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Dort sieht man gut, das es ein Button für lokale Ereignisse hat.

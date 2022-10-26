@@ -1,11 +1,11 @@
 # 20 - Diverses
 ## 00 - Idle Handle eine Uhr
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Hier wird gezeigt, wie man <b>Idle</b> verwenden kann.
 Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.
 Das Object mit dem UhrenDialog befindet sich in der Unit <b>UhrDialog</b>.
-<hr><br>
+---
 Neue Konstante für das Kommado neuer UhrenDialog.
 
 ```pascal
@@ -104,7 +104,7 @@ begin
 end;
 ```
 
-<hr><br>
+---
 <b>Unit mit dem Uhren-Dialog.</b>
 <br>
 Die Komponenten auf dem Dialog sind nichts besonderes, es hat nur ein OK-Button.

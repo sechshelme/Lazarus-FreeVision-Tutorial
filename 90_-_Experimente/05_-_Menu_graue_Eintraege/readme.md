@@ -1,9 +1,9 @@
 # 90 - Experimente
 ## 05 - Menu graue Eintraege
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Menupunkt kann man auch ineinander verschachteln.
-<hr><br>
+---
 Bei der Statuszeile habe ich die Einträge verschachtelt, somit braucht man keine Zeiger.
 Ich finde dies auch übersichtlicher, als ein Variablen-Urwald.
 

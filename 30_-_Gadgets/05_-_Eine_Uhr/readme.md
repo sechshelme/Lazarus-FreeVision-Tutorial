@@ -1,9 +1,9 @@
 # 30 - Gadgets
 ## 05 - Eine Uhr
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.
-<hr><br>
+---
     Erzeugt ein kleines Fenster rechts-unten, welches die Uhr anzeigt.
 
 ```pascal
@@ -73,7 +73,7 @@ Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.
   end;
 ```
 
-<hr><br>
+---
 <b>Unit mit dem neuen Dialog.</b>
 <br>
 Der Dialog mit dem dem Speicher Leak

@@ -1,10 +1,10 @@
 # 02 - Statuszeile und Menu
 ## 00 - Status Zeile
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Ändern der Status-Zeile.
 Die Statuszeile wird gebraucht um wichtige Information und HotKey anzuzeigen.
-<hr><br>
+---
 Für die Statuszeile werden noch verschiedene Units gebraucht.
 
 ```pascal

@@ -1,9 +1,9 @@
 # 03 - Dialoge
 ## 15 - CheckBoxen
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Dialog um CheckBoxen ergänzen.
-<hr><br>
+---
 Den Dialog mit CheckBoxen ergänzen.
 
 ```pascal

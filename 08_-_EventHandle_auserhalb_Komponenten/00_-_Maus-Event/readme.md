@@ -1,10 +1,10 @@
 # 08 - EventHandle auserhalb Komponenten
 ## 00 - Maus-Event
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Man kann einen EventHandle im Dialog/Fenster abfangen, wen man die Maus bewegt/klickt.
 Im Hauptprogramm hat es dafür nichts besonders, dies alles läuft lokal im Dialog/Fenster ab.
-<hr><br>
+---
 Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.
 
 ```pascal
@@ -32,7 +32,7 @@ Im Hauptprogramm wird nur der Dialog gebaut, aufgerufe und geschlossen.
   end;
 ```
 
-<hr><br>
+---
 <b>Unit mit dem Mausaktions-Dialog.</b>
 <br>
 

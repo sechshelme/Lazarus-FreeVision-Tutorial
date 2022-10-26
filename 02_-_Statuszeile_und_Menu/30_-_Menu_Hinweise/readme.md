@@ -1,9 +1,9 @@
 # 02 - Statuszeile und Menu
 ## 30 - Menu Hinweise
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Hinweise in der Statuszeile der Menü-Punkte.
-<hr><br>
+---
 Konstanten der einzelnen Hilfen.
 Am besten mimmt man da hcxxx Namen.
 

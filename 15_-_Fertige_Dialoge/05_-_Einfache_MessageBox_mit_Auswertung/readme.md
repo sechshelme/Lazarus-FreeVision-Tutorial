@@ -1,9 +1,9 @@
 # 15 - Fertige Dialoge
 ## 05 - Einfache MessageBox mit Auswertung
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Die einfachsten Dialoge sind die fertigen MessageBoxen.
-<hr><br>
+---
 Konstanten für die verschiedenen Menüeinträge.
 
 ```pascal

@@ -1,11 +1,11 @@
 # 10 - Komponenten modifizieren
 ## 00 - Button modifizieren
 
-<img src="image.png" alt="Selfhtml"><br><br>
+![image.png](image.png)
 Man kann auch eine Komponente modifzieren, in diesem Beispiel ist es ein Button.
 Dazu muss man einen Nachkommen von TButton erstellen.
 Der abgeänderte Button passt sich automatisch an die Länge des Titels an, auch wird er automatisch 2 Zeilen hoch.
-<hr><br>
+---
 Anstelle des normalen Button nehme ich jetzt den PMyButton.
 Man sieht auch, das man anstelle von Rect, nur X und Y angibt.
 
@@ -36,7 +36,7 @@ Man sieht auch, das man anstelle von Rect, nur X und Y angibt.
   end;
 ```
 
-<hr><br>
+---
 <b>Unit mit dem neuen Button.</b>
 <br>
 Hier wird gezeigt, wie man einen Button abänder kann.
