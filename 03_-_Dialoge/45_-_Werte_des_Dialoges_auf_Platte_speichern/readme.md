@@ -5,9 +5,10 @@
 
 Das die Werte des Dialoges auch nach beenden der Anwendung erhalten bleiben, speichern wir die Daten auf die Platte.
 Es wird nicht überprüft, ob geschrieben werden kann, etc.
-Wen man dies will müsste man mit <b>IOResult</b>, etc. überprüfen.
+Wen man dies will müsste man mit **IOResult**, etc. überprüfen.
+
 ---
-Hier kommt noch <b>sysutils</b> hinzu, sie wird für <b>FileExits</b> gebraucht.
+Hier kommt noch **sysutils** hinzu, sie wird für **FileExits** gebraucht.
 
 ```pascal
 uses
@@ -45,7 +46,7 @@ Zu Beginn werden die Daten, wen vorhaden von der Platte geladen, ansonten werden
   end;
 ```
 
-Die Daten werden auf die Platte gespeichert, wen <b>Ok</b> gedrückt wird.
+Die Daten werden auf die Platte gespeichert, wen **Ok** gedrückt wird.
 
 ```pascal
   procedure TMyApp.MyParameter;

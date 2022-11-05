@@ -3,7 +3,7 @@
 
 ![image.png](image.png)
 
-Mit <b>FormatStr</b> können Strings formatiert werden.
+Mit **FormatStr** können Strings formatiert werden.
 Dabei sind filgende Formatierungen möglich:
 %c: Char
 %s: String
@@ -16,7 +16,9 @@ Bei Realzahlen muss man sich folgendermassen behelfen:
 procedure Str(var X: TNumericType[:NumPlaces[:Decimals]];var S: String);
 ```
 
+
 ---
+
 ---
 
 ```pascal
@@ -35,7 +37,7 @@ type
 
 ```
 
-Bei Integern ist es wichtig, das man diese als <b>PtrInt</b> deklariert.
+Bei Integern ist es wichtig, das man diese als **PtrInt** deklariert.
 
 ```pascal
 constructor TMyDialog.Init;
@@ -55,7 +57,7 @@ var
 
 ```
 
-Hier sieht man, die Formatierung mit <b>FormatStr</b>.
+Hier sieht man, die Formatierung mit **FormatStr**.
 
 ```pascal
 begin

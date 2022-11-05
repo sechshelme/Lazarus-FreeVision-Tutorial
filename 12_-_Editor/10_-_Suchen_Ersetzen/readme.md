@@ -3,11 +3,12 @@
 
 ![image.png](image.png)
 
-Der Editor hat eine <b>Suchen</b> und <b>Ersetzen</b> Funktion bekommen.
+Der Editor hat eine **Suchen** und **Ersetzen** Funktion bekommen.
 Leider sind die Standard-Dialoge dafür in Englisch.
 Aus diesem Grund, wird es hier neu in deutsch gebaut.
 Da man leider nicht einfach die Texte ersetzen kann, so wie es bei dem FileDialog der Fall ist.
 Gibt man sich mit den englischen Dialogen zu frieden, muss man für die Suchen/Ersetzen-Funktionen nur das Menü anpassen, der Rest geschieht automatisch.
+
 ---
 Neuer ersetzen Dialog, dieser habe ich von den FPC-Sourcen übernommen und verdeutscht.
 

@@ -7,8 +7,9 @@ Dem Fenster wurden noch Scrollbalken spendiert.
 Man könnte noch eine Indikator hinzufügen, welcher Zeilen und Spalten anzeigt.
 Und das wichtigste für einen Editor, ein Memo in dem man schreiben kann.
 
-Wen man einen Editor schreiben will, dann nimmt man dazu <b>PEditWindow</b> aus der Unit <b>Editors</b>.
+Wen man einen Editor schreiben will, dann nimmt man dazu **PEditWindow** aus der Unit **Editors**.
 Dies ist viel einfacher, als alles selbst zu bauen.
+
 ---
 Hier wird das neue vererbte Windows erzeugt.
 
@@ -32,8 +33,9 @@ Hier wird das neue vererbte Windows erzeugt.
   end;
 ```
 
+
 ---
-<b>Unit mit dem neuen Fenster.</b>
+**Unit mit dem neuen Fenster.**
 <br>
 
 ```pascal
@@ -43,7 +45,7 @@ unit MyWindow;
 
 Ein Horizontaler und ein Vertikaler Scrollbalken einfügen.
 Es wird noch gezeigt, wie man die Position des Schiebers festlegen kann.
-Mit <b>Min</b> und <b>Max</b> legt man den Bereich fest und mit <b>Value</b> gibt man die Position des Schiebers an.
+Mit **Min** und **Max** legt man den Bereich fest und mit **Value** gibt man die Position des Schiebers an.
 Ein Indicator wird auch noch eingefügt, welcher die Spalten und Zeilen anzeigt. (Bei einem 64Bit OS ist diese fehlerhaft.)
 
 ```pascal

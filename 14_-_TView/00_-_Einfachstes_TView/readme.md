@@ -3,9 +3,10 @@
 
 ![image.png](image.png)
 
-<b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.
-Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.
+**TView**, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.
+Au diesem Grund habe ich dieses kleine Beispiel von **TView** gemacht.
 An diesem View sind keinerlei Änderungen möglich, da noch keine Event, Steurerelemente vorhanden sind.
+
 ---
 Im Konstructor wird das View erzeugt.
 

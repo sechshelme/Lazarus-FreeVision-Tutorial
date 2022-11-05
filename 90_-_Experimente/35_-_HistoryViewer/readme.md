@@ -6,10 +6,12 @@
 Bei der TListBox muss man unbedingt mit einem Destructor den Speicher der TList freigeben.
 Dies ist nicht Free-Vision üblich. Dies hat auch einen Sinn, da man Listen vielfach global verwendet, 
 ansonsten müsste man immer eine Kopie davon anlegen.
-Dort fehlt der <b>destructor</b>, welcher den Speicher aufräumt.
+Dort fehlt der **destructor**, welcher den Speicher aufräumt.
+
 ---
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Der Dialog mit der ListBox
 
@@ -18,7 +20,7 @@ unit MyDialog;
 
 ```
 
-Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.
+Den **Destructor** deklarieren, welcher den **Speicher** der List frei gibt.
 
 ```pascal
 type
@@ -113,7 +115,7 @@ end;
 ```
 
 Der EventHandle
-Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.
+Wen man auf **[Tag]** klickt, wird der fokusierte Eintrag der ListBox angezeigt.
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);

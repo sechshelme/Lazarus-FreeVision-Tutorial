@@ -4,8 +4,9 @@
 ![image.png](image.png)
 
 Baumartige Darstellung.
+
 ---
-Für die Baumartige Darstellung verwendet man die Komponente <b>POutline</b>.
+Für die Baumartige Darstellung verwendet man die Komponente **POutline**.
 
 ```pascal
   PTreeWindow = ^TTreeWindow;

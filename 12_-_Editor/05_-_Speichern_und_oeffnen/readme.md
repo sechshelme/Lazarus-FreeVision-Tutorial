@@ -6,7 +6,8 @@
 Ein Editor wird erst brauchbar, wen Dateifunktionen dazu kommen, zB. öffnen und speichern.
 Das Öffnen ist ähnlich von wie ein leerses Fenster erzeugen.
 Einziger Unterschied, man gibt einen Dateinamen mit, welcher mit einem FileDialog ermittelt wird.
-Für das einfache speichern, muss man nicht viel machen. Man muss nur das Event <b>cmSave</b> aufrufen, zB. über das Menü.
+Für das einfache speichern, muss man nicht viel machen. Man muss nur das Event **cmSave** aufrufen, zB. über das Menü.
+
 ---
 Hier ist noch OpenWindows und SaveAll dazu gekommen.
 
@@ -27,11 +28,11 @@ Hier ist noch OpenWindows und SaveAll dazu gekommen.
   end;
 ```
 
-Der <b>Speichern unter</b>-Dialog ist schon fest verbaut, aber leider in Englisch.
+Der **Speichern unter**-Dialog ist schon fest verbaut, aber leider in Englisch.
 Daher wird diese Funktion auf eine eigene Routine umgeleitet.
-Auch habe ich die Maske <b>*.*</b> durch <b>*.txt</b> ersetzt.
-Für die restlichen Diloage, werden die original Routinen verwendet, dies geschieht mit <b>StdEditorDialog(...</b>.
-Die Deklaration von <b>MyApp</b> ist schon hier oben, weil sie hier schon gebraucht wird.
+Auch habe ich die Maske ***.*** durch ***.txt** ersetzt.
+Für die restlichen Diloage, werden die original Routinen verwendet, dies geschieht mit **StdEditorDialog(...**.
+Die Deklaration von **MyApp** ist schon hier oben, weil sie hier schon gebraucht wird.
 
 Bei MyApp.Init werden noch die neuen Standard-Dialoge zugeordnet.
 
@@ -118,7 +119,7 @@ Wen der Dateiname '' ist, wird einfach ein leeres Fenster erzeugt.
 ```
 
 Eine Datei öffnen und dies in ein Edit-Fenster laden.
-Dabei wird ein <b>FileDialog</b> aufgerufen, in dem man eine Datei auswählen kann.
+Dabei wird ein **FileDialog** aufgerufen, in dem man eine Datei auswählen kann.
 Um das laden der Datei in das Editor-Fenster  muss man sich nicht kümmeren, dies geschieht automatisch.
 
 ```pascal
@@ -151,7 +152,7 @@ Alle Dateien speichern, geschieht auf fast die gleiche Weise wie das alle schlie
 ```
 
 Die verschiednen Events abfangen und abarbeiten.
-Um <b>cmSave</b> und <b>cmSaveAs</b> muss man sich nicht kümmern, das erledigt <b>PEditWindow</b> automatisch für einem.
+Um **cmSave** und **cmSaveAs** muss man sich nicht kümmern, das erledigt **PEditWindow** automatisch für einem.
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

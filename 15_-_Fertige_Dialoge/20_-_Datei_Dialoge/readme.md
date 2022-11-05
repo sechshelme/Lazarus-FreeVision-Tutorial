@@ -4,7 +4,8 @@
 ![image.png](image.png)
 
 Ein Dialog zum öffnen und speichern von Dateien.
-Der <b>PFileDialog</b>.
+Der **PFileDialog**.
+
 ---
 Verschiedene Datei-Dialoge
 

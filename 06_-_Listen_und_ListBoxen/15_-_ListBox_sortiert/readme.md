@@ -4,9 +4,11 @@
 ![image.png](image.png)
 
 Die ListBox kann auch sortiert sein.
+
 ---
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Der Dialog mit der ListBox
 
@@ -15,7 +17,7 @@ unit MyDialog;
 
 ```
 
-Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.
+Den **Destructor** deklarieren, welcher den **Speicher** der List frei gibt.
 
 ```pascal
 type
@@ -95,7 +97,7 @@ end;
 ```
 
 Der EventHandle
-Wen man auf <b>[Tag]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.
+Wen man auf **[Tag]** klickt, wird der fokusierte Eintrag der ListBox angezeigt.
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);

@@ -65,9 +65,9 @@ Auserdem wird ein Dialog erstellt, welcher 3 Button erhält, welche dann die Kom
   end;
 ```
 
-Hier werden mit <b>Message</b>, die Kommandos an die Dialoge gesendet.
+Hier werden mit **Message**, die Kommandos an die Dialoge gesendet.
 Gibt man als ersten Parameter die View des Dialoges an, dann wird nur dieser Dialog angesprochen.
-Gibt man <b>@Self</b> an, dann werden die Kommandos an alle Dialoge gesendet.
+Gibt man **@Self** an, dann werden die Kommandos an alle Dialoge gesendet.
 Beim 4. Paramter kann man noch einen Pointer auf einen Bezeichner übergeben,
 die kann zB. ein String oder ein Record, etc. sein.
 
@@ -96,8 +96,9 @@ die kann zB. ein String oder ein Record, etc. sein.
   end;
 ```
 
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Der Dialog mit der Zähler-Ausgabe.
 
@@ -138,7 +139,7 @@ end;
 
 ```
 
-Im EventHandle wird das Kommando empfangen, welches mit <b>Message</b> gesendet wurde.
+Im EventHandle wird das Kommando empfangen, welches mit **Message** gesendet wurde.
 Als Beweis dafür, wir die Zahl in der Ausgabezeile un eins erhöht.
 
 ```pascal

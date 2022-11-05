@@ -15,8 +15,9 @@ Hilfe-Fenster  : Cyan
 
 Ohne Zutun, kommen die Fenster/Dialog immer in der richtigen Farbe.
 Eine Modifizierung ist nur in speziellen Fällen von Sinnen.
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.
 
@@ -73,8 +74,8 @@ end;
 
 ```
 
-Hier werden die Farb-Schemas mit Hilfe von <b>Palette := dpxxx</b> geändert.
-Auch hier ist wichtig, das man <b>Draw</b> aufruft, diemal nicht für eine Komponente, sonder für den ganzen Dialog.
+Hier werden die Farb-Schemas mit Hilfe von **Palette := dpxxx** geändert.
+Auch hier ist wichtig, das man **Draw** aufruft, diemal nicht für eine Komponente, sonder für den ganzen Dialog.
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);

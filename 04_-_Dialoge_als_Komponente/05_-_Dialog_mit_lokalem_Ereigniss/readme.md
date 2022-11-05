@@ -5,6 +5,7 @@
 
 In den vererbten Dialogen ist es möglich Buttons einzubauen, welche lokal im Dialog eine Aktion ausführen.
 Im Beispiel wir eine MessageBox aufgerufen.
+
 ---
 Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas gemacht wird.
 
@@ -33,8 +34,9 @@ Im Hauptprogramm ändert sich nichts daran, dem ist egal, ob lokal noch etwas ge
   end;
 ```
 
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Dort sieht man gut, das es ein Button für lokale Ereignisse hat.
 Wichtig ist, bei den Nummernvergabe, das sich dies nicht mit einem anderen Eventnummer überschneidet.
@@ -58,7 +60,7 @@ type
 
 ```
 
-Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Ereigniss <b>cmMsg</b> abarbeitet.
+Im Konstruktor wird der Dialog noch um den Button Msg-box ergänzt, welcher das lokale Ereigniss **cmMsg** abarbeitet.
 
 ```pascal
 const
@@ -92,7 +94,7 @@ end;
 ```
 
 Im neuen EventHandle, werden loake Ereigniss (cmMsg) abarbeitet.
-Andere Ereignisse, zB. <b>cmOk</b> wird an das Hauptprogramm weiter gereicht, welches dann den Dialog auch schliesst.
+Andere Ereignisse, zB. **cmOk** wird an das Hauptprogramm weiter gereicht, welches dann den Dialog auch schliesst.
 
 ```pascal
 procedure TMyAbout.HandleEvent(var Event: TEvent);

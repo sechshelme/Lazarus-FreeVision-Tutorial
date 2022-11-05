@@ -4,10 +4,11 @@
 ![image.png](image.png)
 
 Bei Bedarf, kann man auch ein Hintergrund-Muster auf einen Dialog/Fenster legen.
+
 ---
-Hier wird der <b>PBackGround</b> auf einen Dialog gelegt, dies funktioniert genau gleich, wie auf dem Desktop.
-Dies kann auch der benutzerdefiniert <b>PMyBackground</b> sein.
-<b>Wichtig</b> ist, der Background <b>MUSS</b> zuerst in den Dialog eingefügt werden,
+Hier wird der **PBackGround** auf einen Dialog gelegt, dies funktioniert genau gleich, wie auf dem Desktop.
+Dies kann auch der benutzerdefiniert **PMyBackground** sein.
+**Wichtig** ist, der Background **MUSS** zuerst in den Dialog eingefügt werden,
 ansonsten übermahlt er die anderen Komponenten.
 
 ```pascal

@@ -5,9 +5,10 @@
 
 Hinzufügen mehrere Menüpunkte.
 Hier wird dies auch der Übersicht zu liebe gesplittet gemacht.
+
 ---
 Für eigene Kommandos, muss man noch Kommdocode definieren.
-Es empfiehlt sich Werte &gt; 1000 zu verwenden, so das es keine Überschneidungen mit den Standard-Codes gibt.
+Es empfiehlt sich Werte > 1000 zu verwenden, so das es keine Überschneidungen mit den Standard-Codes gibt.
 
 ```pascal
 const
@@ -15,7 +16,7 @@ const
   cmAbout = 1001;     // About anzeigen
 ```
 
-Für ein Menu muss man <b>InitMenuBar</b> vererben.
+Für ein Menu muss man **InitMenuBar** vererben.
 
 ```pascal
 type
@@ -27,8 +28,8 @@ type
 
 Mam kann die Menüeinträge auch gesplittet über Pointer machen.
 Ob man es verschachtelt oder splittet, ist Geschmacksache.
-Mit <b>NewLine</b> kann man eine Leerzeile einfügen.
-Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeichnung <b>...</b> zu schreiben.
+Mit **NewLine** kann man eine Leerzeile einfügen.
+Es empfiehlt sich wen bei einem Menüpunkt ein Dialog aufgeht, Hinter der Bezeichnung **...** zu schreiben.
 
 ```pascal
   procedure TMyApp.InitMenuBar;

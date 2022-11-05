@@ -3,11 +3,12 @@
 
 ![image.png](image.png)
 
-<b>TView</b>, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.
-Au diesem Grund habe ich dieses kleine Beispiel von <b>TView</b> gemacht.
+**TView**, ist die unterste Ebene von allen Fenster, Dialog, Button, etc.
+Au diesem Grund habe ich dieses kleine Beispiel von **TView** gemacht.
+
 ---
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.
-Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.
+Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status **ofTileable** setzen.
 
 ```pascal
   procedure TMyApp.NewWindows;
@@ -30,7 +31,7 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
   end;
 ```
 
-Da es im View keine <b>cmClose</b> Abarbeitung gibt, wird manuell in einer Schleife überprüft, ob es Fenster gibt, wen ja, löschen.
+Da es im View keine **cmClose** Abarbeitung gibt, wird manuell in einer Schleife überprüft, ob es Fenster gibt, wen ja, löschen.
 
 ```pascal
 procedure TMyApp.CloseAll;
@@ -45,7 +46,7 @@ begin
 end;
 ```
 
-<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.
+**cmNewWin** muss man selbst abarbeiten. **cmClose** für das Schliessen des Fenster läuft im Hintergrund automatisch.
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -75,8 +76,9 @@ end;
   end;
 ```
 
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Mit den 3 oberen Button, kann man das Farb-Schema des Dialoges ändern.
 
@@ -136,8 +138,8 @@ end;
 
 ```
 
-Hier werden die Farb-Schemas mit Hilfe von <b>Palette := dpxxx</b> geändert.
-Auch hier ist wichtig, das man <b>Draw</b> aufruft, diemal nicht für eine Komponente, sonder für den ganzen Dialog.
+Hier werden die Farb-Schemas mit Hilfe von **Palette := dpxxx** geändert.
+Auch hier ist wichtig, das man **Draw** aufruft, diemal nicht für eine Komponente, sonder für den ganzen Dialog.
 
 ```pascal
 procedure TMyView.HandleEvent(var Event: TEvent);

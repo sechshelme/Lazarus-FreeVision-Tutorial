@@ -3,10 +3,12 @@
 
 ![image.png](image.png)
 
-Will man bei einer <b>ListBox</b> den Doppelklick auswerten, muss man die ListBox vererben und einen neuen Handleevent einfügen.
+Will man bei einer **ListBox** den Doppelklick auswerten, muss man die ListBox vererben und einen neuen Handleevent einfügen.
+
 ---
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Der Dialog mit der ListBox
 
@@ -16,7 +18,7 @@ unit MyDialog;
 ```
 
 Das Vererben der ListBox.
-Wen man schon vererbt, habe ich auch gleich den <b>Destructor</b> eingefügt, welcher am Schluss die Liste aufräumt.
+Wen man schon vererbt, habe ich auch gleich den **Destructor** eingefügt, welcher am Schluss die Liste aufräumt.
 
 ```pascal
 type
@@ -40,7 +42,7 @@ type
 
 ```
 
-Der neue <b>HandleEvent</b> der beuen ListBox, welcher den Doppelklick abfängt und ihn als [Ok] interprediert.
+Der neue **HandleEvent** der beuen ListBox, welcher den Doppelklick abfängt und ihn als [Ok] interprediert.
 
 ```pascal
 procedure TNewListBox.HandleEvent(var Event: TEvent);

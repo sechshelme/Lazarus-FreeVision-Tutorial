@@ -4,6 +4,7 @@
 ![image.png](image.png)
 
 Über das Menü Fenster erzeigen und schliessen.
+
 ---
 Neue Konstanten für Kommados.
 Auch ist der HandleEvent dazugekommen.
@@ -25,7 +26,7 @@ type
   end;
 ```
 
-Das Menü wurde um <b>Neu</b> und <b>Schliessen</b> ergänzt.
+Das Menü wurde um **Neu** und **Schliessen** ergänzt.
 
 ```pascal
   procedure TMyApp.InitMenuBar;
@@ -67,7 +68,7 @@ Dieser wird benutzt um die Fenster zu nummerieren.
   end;
 ```
 
-<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft es im Hintergrund automatisch.
+**cmNewWin** muss man selbst abarbeiten. **cmClose** für das Schliessen des Fenster läuft es im Hintergrund automatisch.
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

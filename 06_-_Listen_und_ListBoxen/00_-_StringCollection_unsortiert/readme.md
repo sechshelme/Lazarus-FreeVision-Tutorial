@@ -3,11 +3,13 @@
 
 ![image.png](image.png)
 
-Wen die Stringliste unsortiert bleiben soll, verwendet man <b>PUnSortedStrCollection</b>.
-Nur <b>PCollection</b> reicht <b>nicht</b>, da diese bei <b>Dispose</b> abschmiert.
+Wen die Stringliste unsortiert bleiben soll, verwendet man **PUnSortedStrCollection**.
+Nur **PCollection** reicht **nicht**, da diese bei **Dispose** abschmiert.
+
 ---
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Der Dialog mit der UnSortedStrCollection.
 Deklaration des Dialog, nichts Besonderes.

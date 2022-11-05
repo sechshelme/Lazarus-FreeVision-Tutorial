@@ -3,11 +3,13 @@
 
 ![image.png](image.png)
 
-Bei <b>ListBox</b> kann man auch Einträge einfügen, entfernen, etc.
+Bei **ListBox** kann man auch Einträge einfügen, entfernen, etc.
 ZT. muss man da direkt auf die Liste zugreifen.
+
 ---
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Der Dialog mit der mehrspaltigen ListBox
 
@@ -16,7 +18,7 @@ unit MyDialog;
 
 ```
 
-Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.
+Den **Destructor** deklarieren, welcher den **Speicher** der List frei gibt.
 
 ```pascal
 type
@@ -144,7 +146,7 @@ begin
         end;
         cmMonat: begin
           // Eintrag mit Fokus ausgeben
-          if ListBox^.List^.Count &gt; 0 then begin
+          if ListBox^.List^.Count > 0 then begin
             MessageBox('Monat: ' + PString(ListBox^.GetFocusedItem)^ + ' gew' + #132 + 'hlt', nil, mfOKButton);
           end;
           // Event beenden.

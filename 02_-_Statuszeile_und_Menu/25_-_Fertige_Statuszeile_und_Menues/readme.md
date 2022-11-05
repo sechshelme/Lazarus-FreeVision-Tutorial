@@ -6,9 +6,10 @@
 Für die Statuszeile und das Menü gibt es fertige Items, aber ich bevorzuge es, die Items selbst zu erstellen.
 Die fetigen Items sind nur in Englisch.
 Die Statuszeile ist Textlos, das einzige, sie bringt Schnellkomandos mit. ( cmQuit, cmMenu, cmClose, cmZoom, cmNext, cmPrev )
-Bis aus <b>OS shell</b> und <b>Exit</b> passiert nichts.
+Bis aus **OS shell** und **Exit** passiert nichts.
+
 ---
-Mit <b>StdStatusKeys(...</b> wird eine Statuszeile estellt, aber wie oben beschrieben, sieht man keinne Text.
+Mit **StdStatusKeys(...** wird eine Statuszeile estellt, aber wie oben beschrieben, sieht man keinne Text.
 
 ```pascal
   procedure TMyApp.InitStatusLine;

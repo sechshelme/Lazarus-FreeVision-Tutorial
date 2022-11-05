@@ -3,10 +3,11 @@
 
 ![image.png](image.png)
 
-Beim Desktophintergrund kann man ein beliebiges Hintergrund-Zeichen zuordnen. Als Default ist das Zeichen <b>#176</b>.
+Beim Desktophintergrund kann man ein beliebiges Hintergrund-Zeichen zuordnen. Als Default ist das Zeichen **#176**.
+
 ---
-Der Hintergrund fügt man ähnlich zu, wie ein Fenster/Dialog, dies geschieht auch mit <b>Insert</b>.
-Mit <b>#3</b> füllt es den Hintergrund mit Herzen auf.
+Der Hintergrund fügt man ähnlich zu, wie ein Fenster/Dialog, dies geschieht auch mit **Insert**.
+Mit **#3** füllt es den Hintergrund mit Herzen auf.
 
 ```pascal
   constructor TMyApp.Init;

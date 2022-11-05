@@ -6,6 +6,7 @@
 Hier wurde ein Zwischenablage hinzugefügt, somit ist auch kopieren und einfügen im Editor möglich.
 Die Zwischeablage ist nicht anderes als ein Editor-Fenster welches die Daten bekommt, wen man kopieren wählt.
 Somit kann man dieses sogar sichbar machen.
+
 ---
 Ein Kommando für das öffnen des Zwischenablagefenster.
 
@@ -17,7 +18,7 @@ const
 ```
 
 Hier wird das Fenster für die Zwischenablage deklariert.
-Auch kann man bei <b>NewWindows</b> sagen, ob das Fenster nicht sichtbar ezeigt werden soll.
+Auch kann man bei **NewWindows** sagen, ob das Fenster nicht sichtbar ezeigt werden soll.
 
 ```pascal
 type

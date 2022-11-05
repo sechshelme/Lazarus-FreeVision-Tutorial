@@ -4,9 +4,10 @@
 ![image.png](image.png)
 
 Bei der MessageBox, kann man die Grösse auch manuell festlegen.
-Dazu muss man <b>MeassgeBoxRect(...)</b> verwenden.
+Dazu muss man **MeassgeBoxRect(...)** verwenden.
+
 ---
-Hier wird mir <b>R.Assign</b> die grösse der Box selbst festgelegt.
+Hier wird mir **R.Assign** die grösse der Box selbst festgelegt.
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);

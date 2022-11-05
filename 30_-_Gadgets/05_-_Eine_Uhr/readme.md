@@ -3,7 +3,8 @@
 
 ![image.png](image.png)
 
-In diesem Beispiel wird ein kleines Gadgets geladen, welches eine <b>Uhr</b> anzeigt.
+In diesem Beispiel wird ein kleines Gadgets geladen, welches eine **Uhr** anzeigt.
+
 ---
     Erzeugt ein kleines Fenster rechts-unten, welches die Uhr anzeigt.
 
@@ -74,8 +75,9 @@ Die Idle Routine, welche im Leerlauf den Heap prüft und anzeigt.
   end;
 ```
 
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Der Dialog mit dem dem Speicher Leak
 
@@ -84,7 +86,7 @@ unit MyDialog;
 
 ```
 
-Den <b>Destructor</b> deklarieren, welcher das <b>Speicher Leak</b> behebt.
+Den **Destructor** deklarieren, welcher das **Speicher Leak** behebt.
 
 ```pascal
 type

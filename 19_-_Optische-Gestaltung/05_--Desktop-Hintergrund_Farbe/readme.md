@@ -4,10 +4,11 @@
 ![image.png](image.png)
 
 Wen man die Farbe des Hintergrundes änder will, ist ein wenig komplizierter als nur das Zeichen.
-Dazu muss man beim Object <b>TBackground</b> die Funktion <b>GetPalette</b> überschreiben.
+Dazu muss man beim Object **TBackground** die Funktion **GetPalette** überschreiben.
+
 
 ---
-Für das Object <b>TBackground</b> wird ein Nachkomme erzeugt, welcher eine neue <b>GetPalette</b> Funktion bekommt.
+Für das Object **TBackground** wird ein Nachkomme erzeugt, welcher eine neue **GetPalette** Funktion bekommt.
 
 ```pascal
 type
@@ -29,7 +30,7 @@ In der neuen Funktion wird eine andere Palette zugeordnet.
 ```
 
 Der Konstruktor sieht fast gleich aus wie beim Hintergrundzeichen.
-Einziger Unterschied anstelle von <b>PBackGround</b> wird <b>PMyBackground</b> genommen.
+Einziger Unterschied anstelle von **PBackGround** wird **PMyBackground** genommen.
 
 ```pascal
   constructor TMyApp.Init;

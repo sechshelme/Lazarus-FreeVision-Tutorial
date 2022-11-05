@@ -5,10 +5,11 @@
 
 Bis jetzt gingen die Werte im Dialog immer wieder verloren, wen man diesen schliesste und wieder öffnete.
 Aus diesem Grund werden jetzt die Werte in einen Record gespeichert.
+
 ---
   In diesem Record werden die Werte des Dialoges gespeichert.
-  Die Reihenfolge der Daten im Record <b>muss</b> genau gleich sein, wie bei der Erstellung der Komponenten, ansonten gibt es einen Kräsch.
-  Bei Turbo-Pascal musste ein <b>Word</b> anstelle von <b>LongWord</b> genommen werden, dies ist wichtig beim Portieren alter Anwendungen.
+  Die Reihenfolge der Daten im Record **muss** genau gleich sein, wie bei der Erstellung der Komponenten, ansonten gibt es einen Kräsch.
+  Bei Turbo-Pascal musste ein **Word** anstelle von **LongWord** genommen werden, dies ist wichtig beim Portieren alter Anwendungen.
 
 ```pascal
 type

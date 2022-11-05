@@ -4,7 +4,8 @@
 ![image.png](image.png)
 
 Ordner Wechsel Dialog.
-Der <b>PChDirDialog</b>.
+Der **PChDirDialog**.
+
 ---
 Der Ordnerwechsel Dialog
 

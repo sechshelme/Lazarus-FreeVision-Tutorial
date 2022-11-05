@@ -4,8 +4,9 @@
 ![image.png](image.png)
 
 Wen man immer wieder die gleichen Dialog braucht, packt man diesen am besten als Komponente in eine Unit.
-Dazu schreibt man einen Nachkommen von <b>TDialog</b>.
+Dazu schreibt man einen Nachkommen von **TDialog**.
 Als Beispiel wird hier ein About-Dialog gebaut.
+
 ---
 Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeben.
 
@@ -34,8 +35,9 @@ Hier wird der About-Dialog geladen und anschliessend bei Close wieder frei gegeb
   end;
 ```
 
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 
 ```pascal
 unit MyDialog;
@@ -43,7 +45,7 @@ unit MyDialog;
 ```
 
 Für den Dialog muss ein neuer Konstruktor erzeugt werden.
-Noch ein Hinweis zu StaticText, wen man eine Leerzeile einfügen will, muss man <b>#13#32#13</b> schreiben, bei <b>#13#13</b>, wird nur ein einfacher Zeilenumbruch ausgefühert.
+Noch ein Hinweis zu StaticText, wen man eine Leerzeile einfügen will, muss man **#13#32#13** schreiben, bei **#13#13**, wird nur ein einfacher Zeilenumbruch ausgefühert.
 
 ```pascal
 interface

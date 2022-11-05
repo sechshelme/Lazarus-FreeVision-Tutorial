@@ -4,6 +4,7 @@
 ![image.png](image.png)
 
 Die einfachsten Dialoge sind die fertigen MessageBoxen.
+
 ---
 Konstanten für die verschiedenen Menüeinträge.
 

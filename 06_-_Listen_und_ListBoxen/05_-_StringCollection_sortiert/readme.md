@@ -4,12 +4,14 @@
 ![image.png](image.png)
 
 Eine sortierte String-Liste
-für eine sortierte Liste muss man <b>PStringCollection</b> oder <b>PStrCollection</b> verwenden.
+für eine sortierte Liste muss man **PStringCollection** oder **PStrCollection** verwenden.
+
 ---
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
-Der Dialog mit der <b>StringCollection</b>
+Der Dialog mit der **StringCollection**
 Deklaration des Dialog, nichts Besonderes.
 
 ```pascal
@@ -21,7 +23,7 @@ type
 
 ```
 
-Es wird eine <b>StringCollection</b> gebaut und
+Es wird eine **StringCollection** gebaut und
 als Demonstration wird deren Inhalt in ein StaticText geschrieben.
 Man sieht gut, das die Wochentage alphapetisch sortiert sind.
 

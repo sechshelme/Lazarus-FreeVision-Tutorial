@@ -5,6 +5,7 @@
 
 Fenster verwalten. Nun ist es möglich über das Menü Steuerkomandos für die Fensterverwaltung zu geben.
 ZB. Zoom, verkleinern, Fensterwechsel, Kaskade, etc.
+
 ---
 Das Menü wurde um die Steuerbefehle für die Fensterverwatung ergänzt.
 Die ausgeklammerten Kommandos müssen manuel gemacht werden.
@@ -39,7 +40,7 @@ Die ausgeklammerten Kommandos müssen manuel gemacht werden.
 ```
 
 Beim Fenster erzeugen, ist noch ein Counter hinzugekommen.
-Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status <b>ofTileable</b> setzen.
+Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, muss man noch den Status **ofTileable** setzen.
 
 ```pascal
   procedure TMyApp.NewWindows;
@@ -63,7 +64,7 @@ Wen man bei den Fenster eine überlappend oder nebeneinader Darstellung will, mu
 ```
 
 Diese Procedure schliesst alle Fenster im Desktop.
-Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.
+Dazu wird jedem Fenster mit **ForEach** ein **cmClose**-Event gesendet.
 
 ```pascal
   procedure TMyApp.CloseAll;
@@ -78,7 +79,7 @@ Dazu wird jedem Fenster mit <b>ForEach</b> ein <b>cmClose</b>-Event gesendet.
   end;
 ```
 
-<b>cmNewWin</b> muss man selbst abarbeiten. <b>cmClose</b> für das Schliessen des Fenster läuft im Hintergrund automatisch.
+**cmNewWin** muss man selbst abarbeiten. **cmClose** für das Schliessen des Fenster läuft im Hintergrund automatisch.
 
 ```pascal
 

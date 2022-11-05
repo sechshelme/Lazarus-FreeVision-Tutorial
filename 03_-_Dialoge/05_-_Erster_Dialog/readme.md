@@ -4,8 +4,9 @@
 ![image.png](image.png)
 
 Abarbeiten der Events, der Statuszeile und des Menu.
+
 ---
-Für Dialoge muss man noch die Unit <b>Dialogs</b> einfügen.
+Für Dialoge muss man noch die Unit **Dialogs** einfügen.
 
 ```pascal
 uses
@@ -73,7 +74,7 @@ Das Menü wird um Parameter und Schliessen erweitert.
   end;
 ```
 
-Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.
+Hier wird mit dem Kommando **cmPara** ein Dialog geöffnet.
 
 ```pascal
   procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -99,7 +100,7 @@ Hier wird mit dem Kommando <b>cmPara</b> ein Dialog geöffnet.
 ```
 
 Bauen eines leeren Dialoges.
-Auch da wird <b>TRect</b> gebraucht für die Grösse.
+Auch da wird **TRect** gebraucht für die Grösse.
 Dies wird bei allen Komponenten gebraucht, egal ob Button, etc.
 
 ```pascal

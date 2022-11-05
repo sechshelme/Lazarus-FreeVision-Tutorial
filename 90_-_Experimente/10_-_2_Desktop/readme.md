@@ -4,14 +4,15 @@
 ![image.png](image.png)
 
 Dialog um Buttons ergänzen.
+
 ---
 Den Dialog mit Buttons ergänzen.
-Mit <b>Insert</b> fügt man die Komponenten hinzug, in diesem Fall sind es die Buttons.
-Mit bfDefault legt man den Default-Button fest, dieser wird mit <b>[Enter]</b> aktiviert.
+Mit **Insert** fügt man die Komponenten hinzug, in diesem Fall sind es die Buttons.
+Mit bfDefault legt man den Default-Button fest, dieser wird mit **[Enter]** aktiviert.
 bfNormal ist ein gewöhnlicher Button.
-Der Dialog wird nun Modal geöffnet, somit können <b>keine</b> weiteren Dialoge geöffnet werden.
-dummy hat den Wert, des Button der gedrückt wurde, dies entspricht dem <b>cmxxx</b> Wert.
-Die Höhe der Buttons muss immer <b>2</b> sein, ansonsten gibt es eine fehlerhafte Darstellung.
+Der Dialog wird nun Modal geöffnet, somit können **keine** weiteren Dialoge geöffnet werden.
+dummy hat den Wert, des Button der gedrückt wurde, dies entspricht dem **cmxxx** Wert.
+Die Höhe der Buttons muss immer **2** sein, ansonsten gibt es eine fehlerhafte Darstellung.
 
 ```pascal
   procedure TMyApp.MyParameter;

@@ -4,6 +4,7 @@
 ![image.png](image.png)
 
 Ändern der Status-Zeile, mit mehreren Optionen.
+
 ---
 In der Statuszeile sind auch mehrere Hot-Key möglich.
 Die Deklaration könnte man verschachtelt in einer Zeile schreiben.

@@ -4,9 +4,10 @@
 ![image.png](image.png)
 
 Radio und Check-Group mit einem Label bezeichnen.
+
 ---
 Die Check und Radio-GroupButton mit Label ergänzen.
-Dies funktioniert fast gleich, wie ein normales Label. einziger Unterschied, anstelle von <b>nil</b> gibt man den Pointer auf die Group mit.
+Dies funktioniert fast gleich, wie ein normales Label. einziger Unterschied, anstelle von **nil** gibt man den Pointer auf die Group mit.
 
 ```pascal
   procedure TMyApp.MyParameter;

@@ -4,6 +4,7 @@
 ![image.png](image.png)
 
 Minimalste Free-Vision Anwendung
+
 ---
 Programm-Name, wie es bei Pascal üblich ist.
 
@@ -11,7 +12,7 @@ Programm-Name, wie es bei Pascal üblich ist.
 program Project1;
 ```
 
-Das überhaupt Free-Vision möglich ist, muss die Unit <b>App</b> eingebunden werden.
+Das überhaupt Free-Vision möglich ist, muss die Unit **App** eingebunden werden.
 
 ```pascal
 uses

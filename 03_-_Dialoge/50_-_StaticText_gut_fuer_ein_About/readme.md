@@ -4,6 +4,7 @@
 ![image.png](image.png)
 
 Hier wird ein About-Dialog erstellt, das sieht man gut für was man Label gebrauchen kann.
+
 ---
 Die Datei, in welcher sich die Daten für den Dialog befinden.
 
@@ -12,7 +13,7 @@ const
   DialogDatei = 'parameter.cfg';
 ```
 
-Eine neue Funktion <b>About</b> ist hinzugekommen.
+Eine neue Funktion **About** ist hinzugekommen.
 
 ```pascal
 type
@@ -59,12 +60,12 @@ Hier wird das About augerufen, wen im Menü About gewält wird.
 ```
 
 About Dialog erstellen.
-Mit <b>TRext.Grow(...</b> kann man das Rect verkleinern und vergrössern.
-Mit <b>#13</b> kann man eine Zeilenumbruch einfügen.
-Mit <b>#3</b> wird der Text horizontal im Rect zentriert.
-Mit <b>#2</b> wird der Text rechtbündig geschrieben.
+Mit **TRext.Grow(...** kann man das Rect verkleinern und vergrössern.
+Mit **#13** kann man eine Zeilenumbruch einfügen.
+Mit **#3** wird der Text horizontal im Rect zentriert.
+Mit **#2** wird der Text rechtbündig geschrieben.
 
-Mit <b>PLabel</b> könnte man auch Text ausgeben, aber für festen Text eignet sich <b>PStaticText</b> besser.
+Mit **PLabel** könnte man auch Text ausgeben, aber für festen Text eignet sich **PStaticText** besser.
 
 ```pascal
   procedure TMyApp.About;

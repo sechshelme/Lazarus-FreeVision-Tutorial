@@ -7,6 +7,7 @@ Man kann zur Laufzeit das komplette Menü und Statuszeile austauschen.
 ZB. um die Anwendung mehrsprachig zu machen.
 Dazu wird die aktuelle Komponente entfernt und die neue eingefügt.
 In dem Beispiel gibt es je eine deutsche und englische Komponente.
+
 ---
 Deklaration der Komponenten
 

@@ -5,6 +5,7 @@
 
 Ändern der Status-Zeile.
 Die Statuszeile wird gebraucht um wichtige Information und HotKey anzuzeigen.
+
 ---
 Für die Statuszeile werden noch verschiedene Units gebraucht.
 
@@ -18,7 +19,7 @@ uses
 ```
 
 Wen man etwas ändern will, muss man TApplication vererben.
-Hier im Beispiel, wird die Statuszeile abgeändert, dazu muss man die Procedure <b>InitStatusLine</b> überschreiben.
+Hier im Beispiel, wird die Statuszeile abgeändert, dazu muss man die Procedure **InitStatusLine** überschreiben.
 
 ```pascal
   procedure TMyApp.InitStatusLine;
@@ -32,7 +33,7 @@ Hier im Beispiel, wird die Statuszeile abgeändert, dazu muss man die Procedure 
   end;
 ```
 
-Das die neue Statuszeile verwendet wird muss man den Nachkomme anstelle von <b>TApplication</b> deklarieren.
+Das die neue Statuszeile verwendet wird muss man den Nachkomme anstelle von **TApplication** deklarieren.
 
 ```pascal
 var

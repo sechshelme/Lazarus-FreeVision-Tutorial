@@ -4,6 +4,7 @@
 ![image.png](image.png)
 
 Hinweise in der Statuszeile der Menü-Punkte.
+
 ---
 Konstanten der einzelnen Hilfen.
 Am besten mimmt man da hcxxx Namen.

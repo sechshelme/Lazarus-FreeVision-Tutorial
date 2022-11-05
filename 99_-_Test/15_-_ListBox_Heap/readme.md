@@ -21,8 +21,9 @@ Neues Fenster erzeugen. Fenster werden in der Regel nicht modal geöffnet, da ma
   end;
 ```
 
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Der Dialog mit dem Zähler-Button.
 
@@ -32,7 +33,7 @@ unit MyDialog;
 ```
 
 Will man eine Komponente zur Laufzeit modifizieren, dann muss man sie deklarieren, ansonsten kann man nicht mehr auf sie zugreifen.
-Direkt mit <b>Insert(New(...</b> geht nicht mehr.
+Direkt mit **Insert(New(...** geht nicht mehr.
 
 ```pascal
 type
@@ -56,8 +57,8 @@ type
 
 ```
 
-Im Konstruktor sieht man, das man den Umweg über der <b>CounterButton</b> macht.
-<b>CounterButton</b> wird für die Modifikation gebraucht.
+Im Konstruktor sieht man, das man den Umweg über der **CounterButton** macht.
+**CounterButton** wird für die Modifikation gebraucht.
 
 ```pascal
 const
@@ -66,8 +67,8 @@ const
 ```
 
 Im EventHandle, wird die Zahl im Button beim Drücken erhöht.
-Das sieht man, warum man den <b>CounterButton</b> braucht, ohne dem hätte man keinen Zugriff auf <b>Titel</b>.
-Wichtig, wen man eine Komponente ändert, muss man mit <b>Draw</b> die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.
+Das sieht man, warum man den **CounterButton** braucht, ohne dem hätte man keinen Zugriff auf **Titel**.
+Wichtig, wen man eine Komponente ändert, muss man mit **Draw** die Komponente neu zeichnen, ansonsten sieht man den geänderten Wert nicht.
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);

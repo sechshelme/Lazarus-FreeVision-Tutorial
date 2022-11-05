@@ -4,6 +4,7 @@
 ![image.png](image.png)
 
 Hinzufügen eines Menüs.
+
 ---
 Für das Menü werden die gleichen Units wie für die Statuszeile gebraucht.
 
@@ -16,7 +17,7 @@ uses
   Menus;    // Statuszeile
 ```
 
-Für ein Menu muss man <b>InitMenuBar</b> vererben.
+Für ein Menu muss man **InitMenuBar** vererben.
 
 ```pascal
 type
@@ -27,12 +28,12 @@ type
 ```
 
 Das Menü erzeugen, das Beispiel hat nur eine einziger Menüpunkt, Beenden.
-Beim Menü sind die Zeichen die mit <b>~x~</b> hervorgehoben sind nicht nur Optischen, sonder auch funktionell.
-Zum beenden, kann man auch <b>[Alt+s]</b>, <b>[b]</b> drücken.
-Es gibt auch direkte HotKey auf die Menüpunkte, hier im Beipiel ist die <b>[Alt+x]</b> für beenden.
-Dieses überschneidet sich hier zufällig mit <b>[Alt+x]</b> von der Statuszeile, aber dies ist egal.
+Beim Menü sind die Zeichen die mit **~x~** hervorgehoben sind nicht nur Optischen, sonder auch funktionell.
+Zum beenden, kann man auch **[Alt+s]**, **[b]** drücken.
+Es gibt auch direkte HotKey auf die Menüpunkte, hier im Beipiel ist die **[Alt+x]** für beenden.
+Dieses überschneidet sich hier zufällig mit **[Alt+x]** von der Statuszeile, aber dies ist egal.
 Der Aufbau der Menüerzeugung ist ähnlich der Statuszeile.
-Beim letzten Menüpunkt kommt immer ein <b>nil</b>.
+Beim letzten Menüpunkt kommt immer ein **nil**.
 
 ```pascal
   procedure TMyApp.InitMenuBar;

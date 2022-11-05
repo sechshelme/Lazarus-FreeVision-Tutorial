@@ -3,10 +3,12 @@
 
 ![image.png](image.png)
 
-Die <b>ListBox</b> kann auch mehrere Spalten haben.
+Die **ListBox** kann auch mehrere Spalten haben.
+
 ---
+
 ---
-<b>Unit mit dem neuen Dialog.</b>
+**Unit mit dem neuen Dialog.**
 <br>
 Der Dialog mit der mehrspaltigen ListBox
 
@@ -15,7 +17,7 @@ unit MyDialog;
 
 ```
 
-Den <b>Destructor</b> deklarieren, welcher den <b>Speicher</b> der List frei gibt.
+Den **Destructor** deklarieren, welcher den **Speicher** der List frei gibt.
 
 ```pascal
 type
@@ -32,7 +34,7 @@ type
 ```
 
 Komponenten für den Dialog generieren.
-Der zweite Parameter bei Init von <b>TListBox</b> gibt die Anzahl Spalten an.
+Der zweite Parameter bei Init von **TListBox** gibt die Anzahl Spalten an.
 Hier im Beispiel sind es 3.
 
 ```pascal
@@ -98,7 +100,7 @@ end;
 ```
 
 Der EventHandle
-Wen man auf <b>[Monat]</b> klickt, wird der fokusierte Eintrag der ListBox angezeigt.
+Wen man auf **[Monat]** klickt, wird der fokusierte Eintrag der ListBox angezeigt.
 
 ```pascal
 procedure TMyDialog.HandleEvent(var Event: TEvent);

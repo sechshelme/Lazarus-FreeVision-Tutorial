@@ -3,9 +3,10 @@
 
 ![image.png](image.png)
 
-Hier wird gezeigt, wie man <b>Idle</b> verwenden kann.
+Hier wird gezeigt, wie man **Idle** verwenden kann.
 Diese Leerlaufzeit wird verwendet um eine Uhr in Dialogen zu aktualiesieren.
-Das Object mit dem UhrenDialog befindet sich in der Unit <b>UhrDialog</b>.
+Das Object mit dem UhrenDialog befindet sich in der Unit **UhrDialog**.
+
 ---
 Neue Konstante für das Kommado neuer UhrenDialog.
 
@@ -15,7 +16,7 @@ const
   cmNewUhr = 1002;
 ```
 
-Hier befindet sich die wichtigste Methode <b>Idle</b>.
+Hier befindet sich die wichtigste Methode **Idle**.
 Diese Methode wird aufgerufen, wen die CPU sonst nichts zu tun hat.
 Hier wird sie verwendet um die Uhr-Zeit in den Dialogen zu aktualiesieren.
 
@@ -57,9 +58,9 @@ begin
 end;
 ```
 
-Der Leeerlaufprozess <b>Idle</b>.
-Mit <b>Message(...</b> werden allen Fenster und Dialgen das <b>cmUhrRefresh</b> Kommado übergeben.
-Auch wird dazu das Event <b>evBroadcast</b> verwendet, das es um eine Übertragung handelt.
+Der Leeerlaufprozess **Idle**.
+Mit **Message(...** werden allen Fenster und Dialgen das **cmUhrRefresh** Kommado übergeben.
+Auch wird dazu das Event **evBroadcast** verwendet, das es um eine Übertragung handelt.
 Reagieren tut nur der UhrenDialog auf dieses Kommando, weil es dort abgefangen wird.
 Beim Fenster läuft dieses einfach durch.
 Auch sieht man gut, das das Message nur aufgerufen wird, wen ein Sekunde verstrichen ist.
@@ -81,7 +82,7 @@ begin
 end;
 ```
 
-Dieses HandleEvent interessiert das Kommando <b>cmUhrRefresh</b> nicht.
+Dieses HandleEvent interessiert das Kommando **cmUhrRefresh** nicht.
 
 ```pascal
 procedure TMyApp.HandleEvent(var Event: TEvent);
@@ -105,12 +106,13 @@ begin
 end;
 ```
 
+
 ---
-<b>Unit mit dem Uhren-Dialog.</b>
+**Unit mit dem Uhren-Dialog.**
 <br>
 Die Komponenten auf dem Dialog sind nichts besonderes, es hat nur ein OK-Button.
-Die Zeit wird direkt mit <b>WriteLine(...</b> reingeschrieben.
-Aus diesem Grund wurde die Methode <b>Draw</b> ergänzt.
+Die Zeit wird direkt mit **WriteLine(...** reingeschrieben.
+Aus diesem Grund wurde die Methode **Draw** ergänzt.
 
 ```pascal
 unit UhrDialog;
@@ -118,7 +120,7 @@ unit UhrDialog;
 ```
 
 Die Deklaration des Dialoges.
-Hier wird in <b>ZeitStr</b> die Zeit gespeichert, so das sie mit <b>Draw</b> ausgegeben werden kann.
+Hier wird in **ZeitStr** die Zeit gespeichert, so das sie mit **Draw** ausgegeben werden kann.
 
 ```pascal
 const
@@ -153,7 +155,7 @@ end;
 
 ```
 
-In <b>Draw</b> sieht man gut, das die Zeit direkt in den Dialog geschrieben wird.
+In **Draw** sieht man gut, das die Zeit direkt in den Dialog geschrieben wird.
 
 ```pascal
 procedure TUhrView.Draw;
@@ -170,10 +172,10 @@ end;
 
 ```
 
-Das <b>HandleEvent</b> ist schon interessanter, dort wird das Event <b>evBroadcast</b> und
-das Kommando <b>cmUhrRefresh</b> abgefangen, welches im Hauptprogramm mit Message übergeben wurde.
-Aus <b>Event.InfoPtr</b> wird noch der String übernommen welcher die Zeit enthält.
-Das Kommando <b>cmOk</b> ist nicht besonderes, es schliesst nur den Dialog.
+Das **HandleEvent** ist schon interessanter, dort wird das Event **evBroadcast** und
+das Kommando **cmUhrRefresh** abgefangen, welches im Hauptprogramm mit Message übergeben wurde.
+Aus **Event.InfoPtr** wird noch der String übernommen welcher die Zeit enthält.
+Das Kommando **cmOk** ist nicht besonderes, es schliesst nur den Dialog.
 
 ```pascal
 procedure TUhrView.HandleEvent(var Event: TEvent);
