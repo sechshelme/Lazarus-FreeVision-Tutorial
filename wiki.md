@@ -120,6 +120,7 @@ Auch befinden sich Beispiele auf GitHub, welche im Wiki nicht dokumentiert sind.
 | [String formatieren](20_-_Diverses/05_-_String_formatieren/readme.md) | <img src="20_-_Diverses/05_-_String_formatieren/image.png" height="100px">
 | [InputLine Validate](20_-_Diverses/10_-_InputLine_Validate/readme.md) | <img src="20_-_Diverses/10_-_InputLine_Validate/image.png" height="100px">
 | [Baum Ansicht](20_-_Diverses/15_-_Baum_Ansicht/readme.md) | <img src="20_-_Diverses/15_-_Baum_Ansicht/image.png" height="100px">
+| [Terminal Resize abfangen (nur Linux)](20_-_Diverses/20_-_Terminal_Resize_abfangen_(nur_Linux)/readme.md) | <img src="20_-_Diverses/20_-_Terminal_Resize_abfangen_(nur_Linux)/image.png" height="100px">
 ### Gadgets
 | Link | Beschreibung
 | :---: | ---

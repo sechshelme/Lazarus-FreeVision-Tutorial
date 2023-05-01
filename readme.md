@@ -17,11 +17,11 @@ Borland Pascal:
 - https://github.com/romiras/turbo-pascal-archive/tree/master/User%20Interface
 
 
-
 ## Neuerungen:
 
 | Datum | Änderungen 
 | :---: | ---
+| 01.05.2023 | **Terminal Resize** abfangen und darauf reagieren.
 | 23.10.2022 | Ausfürhbare Dateien im Tutorial entfernt (Project).
 | 15.06.2022 | **Inhaltsverzeichniss** zum Tutorial hinzugefügt. ([Link](wiki.md))
 | 05.06.2022 | Tutorial für **Standard Dialoge** hinzugefügt.
