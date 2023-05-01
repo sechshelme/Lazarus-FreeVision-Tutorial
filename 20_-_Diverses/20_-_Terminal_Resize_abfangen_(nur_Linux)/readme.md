@@ -29,24 +29,24 @@ const
   TIOCGWINSZ = $5413;
   SIGWINCH = 28;      // Window size change
 
-procedure resize(signal: longint); cdecl;
-var
-  w: record
-  ws_row, ws_col, ws_xpixel, ws_ypixel: cshort;
+  procedure resize(signal: longint); cdecl;
+  var
+    w: record
+      ws_row, ws_col, ws_xpixel, ws_ypixel: cshort;
     end;
-  vm: TVideoMode;
-begin
-  FpIOCtl(STDOUT_FILENO, TIOCGWINSZ, @w);
-  if w.ws_col > 255 then begin
-    w.ws_col := 255;
+    vm: TVideoMode;
+  begin
+    FpIOCtl(STDOUT_FILENO, TIOCGWINSZ, @w);  // Aktuelle Auflösung abfragen.
+    if w.ws_col > 255 then begin  // Abfragen, ob mehr als 255 Zeichen pro Spalte,
+      w.ws_col := 255;            // Wen ja auf 255 Zeichen begrenzen.
+    end;                          // Mehr als 255 Zeichen liegt technisch bei FV nicht drin !
+
+    vm.Col := w.ws_col;
+    vm.Row := w.ws_row;
+    MyApp.SetScreenVideoMode(vm); // Neue Koordinaten FV übergeben.
+
+    MyApp.ReDraw;                 // Desktop neu zeichen.
   end;
-
-  vm.Col := w.ws_col;
-  vm.Row := w.ws_row;
-  MyApp.SetScreenVideoMode(vm);
-
-  MyApp.ReDraw;
-end;
 
 begin
   MyApp.Init;
