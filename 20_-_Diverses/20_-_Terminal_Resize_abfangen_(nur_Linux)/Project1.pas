@@ -6,6 +6,8 @@ Technisch bedingt von Free-Vision ist bei <b>255</b> Zeichen pro Zeile Schluss.
 
 Achtung !
 Dies ist eine Eigenkreation, daher kann es Bugs haben.
+Es kann zu Konflikten kommen, wen das Resize-Ereigniss aufgerufen wird,
+während eine andere Ausgabe läuft.
 *)
 //lineal
 program Project1;

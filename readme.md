@@ -16,6 +16,10 @@ Borland Pascal:
 
 - https://github.com/romiras/turbo-pascal-archive/tree/master/User%20Interface
 
+## Externe Tools:
+
+- https://web.archive.org/web/20151002202724/http://home.comcast.net/%7EJamesMClark5/Pascal/index.htm
+
 
 ## Neuerungen:
 

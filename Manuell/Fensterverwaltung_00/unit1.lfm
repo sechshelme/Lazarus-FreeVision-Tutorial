@@ -6,9 +6,9 @@ object Form1: TForm1
   Caption = 'Form1'
   ClientHeight = 756
   ClientWidth = 1317
+  LCLVersion = '3.99.0.0'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  LCLVersion = '2.0.8.0'
   object Panel1: TPanel
     Left = 0
     Height = 708
@@ -29,8 +29,8 @@ object Form1: TForm1
     Top = 8
     Width = 32
     Caption = '-'
-    OnClick = ButtonminusClick
     TabOrder = 1
+    OnClick = ButtonminusClick
   end
   object Buttonplus: TButton
     Left = 16
@@ -38,8 +38,8 @@ object Form1: TForm1
     Top = 8
     Width = 32
     Caption = '+'
-    OnClick = ButtonminusClick
     TabOrder = 0
+    OnClick = ButtonminusClick
   end
   object Buttonleft: TButton
     Left = 104
@@ -47,8 +47,8 @@ object Form1: TForm1
     Top = 8
     Width = 32
     Caption = '<'
-    OnClick = ButtonminusClick
     TabOrder = 2
+    OnClick = ButtonminusClick
   end
   object Buttonright: TButton
     Left = 152
@@ -56,8 +56,8 @@ object Form1: TForm1
     Top = 8
     Width = 32
     Caption = '>'
-    OnClick = ButtonminusClick
     TabOrder = 3
+    OnClick = ButtonminusClick
   end
   object Buttondown: TButton
     Left = 248
@@ -65,8 +65,8 @@ object Form1: TForm1
     Top = 8
     Width = 32
     Caption = 'v'
-    OnClick = ButtonminusClick
     TabOrder = 5
+    OnClick = ButtonminusClick
   end
   object Buttonup: TButton
     Left = 200
@@ -74,7 +74,7 @@ object Form1: TForm1
     Top = 8
     Width = 32
     Caption = '^'
-    OnClick = ButtonminusClick
     TabOrder = 4
+    OnClick = ButtonminusClick
   end
 end

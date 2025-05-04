@@ -53,8 +53,6 @@ type
       Shift: TShiftState; X, Y: integer);
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
   private
-    //    MousePos: TPoint;
-    //    isDown: boolean;
     Views: array of TView;
   public
   end;
